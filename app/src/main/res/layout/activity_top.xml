@@ -16,6 +16,7 @@
 
     <Button
         android:id="@+id/button"
+        android:onClick="aneiClick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -24,6 +25,7 @@
         android:text="安栄観光"/>
 
     <Button
+        android:onClick="ykfClick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"

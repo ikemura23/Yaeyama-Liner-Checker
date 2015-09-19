@@ -4,6 +4,8 @@ package com.ikmr.banbara23.yaeyama_liner_checker;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 public class TopActivity extends BaseActivity {
 
@@ -33,5 +35,23 @@ public class TopActivity extends BaseActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * 安栄クリック
+     * 
+     * @param view
+     */
+    public void aneiClick(View view) {
+        Toast.makeText(this, "aneiClick", Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * 八重山観光フェリークリック
+     * 
+     * @param view
+     */
+    public void ykfClick(View view) {
+        Toast.makeText(this, "ykfClick", Toast.LENGTH_SHORT).show();
     }
 }
