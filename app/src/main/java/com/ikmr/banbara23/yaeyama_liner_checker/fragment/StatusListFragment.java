@@ -6,17 +6,22 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAdapter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * ステータスリストのFragment
  */
-public class StatusListFragment extends ListFragment {
+public class StatusListFragment extends ListFragment implements AbsListView.OnClickListener {
     StatusListAdapter mListAdapter;
     ProgressBar mProgressBar;
     ListView mListView;
@@ -34,6 +39,14 @@ public class StatusListFragment extends ListFragment {
     }
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mListAdapter = new StatusListAdapter(getActivity().getApplicationContext(),
+                R.layout.fragment_status_list_view, new ArrayList<String>());
+        setListAdapter(mListAdapter);
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
         getHtml();
@@ -47,6 +60,29 @@ public class StatusListFragment extends ListFragment {
     }
 
     public void getHtml() {
+        mListAdapter.clear();
+        // 通信して取得
 
+        mListAdapter.addAll(getData());
+        mListView.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onClick(View v) {
+        Toast.makeText(getActivity().getApplicationContext(), "click", Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * 結果を作成
+     *
+     * @return
+     */
+    private List<String> getData() {
+        List<String> list = new ArrayList<>();
+
+        for (int i = 1; i < 10; i++) {
+            list.add(String.valueOf(i));
+        }
+        return list;
     }
 }
