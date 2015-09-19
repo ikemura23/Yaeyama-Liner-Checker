@@ -8,12 +8,14 @@ import android.widget.Toast;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
+import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAdapter;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusListFragment;
 
 /**
  * ステータス一覧Activity
  */
-public class StatusListActivity extends BaseActivity {
+public class StatusListActivity extends BaseActivity implements
+        StatusListAdapter.ListItemClickListener {
 
     final static String PARAM_COMPANY = "company";
     Company mCompany;
@@ -53,5 +55,10 @@ public class StatusListActivity extends BaseActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onItemClick(String string) {
+        Toast.makeText(this, "click", Toast.LENGTH_SHORT).show();
     }
 }

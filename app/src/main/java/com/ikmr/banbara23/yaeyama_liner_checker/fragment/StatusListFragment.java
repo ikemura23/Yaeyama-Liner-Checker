@@ -6,10 +6,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
@@ -21,7 +19,7 @@ import java.util.List;
 /**
  * ステータスリストのFragment
  */
-public class StatusListFragment extends ListFragment implements AbsListView.OnClickListener {
+public class StatusListFragment extends ListFragment {
     StatusListAdapter mListAdapter;
     ProgressBar mProgressBar;
     ListView mListView;
@@ -41,8 +39,7 @@ public class StatusListFragment extends ListFragment implements AbsListView.OnCl
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mListAdapter = new StatusListAdapter(getActivity().getApplicationContext(),
-                R.layout.fragment_status_list_view, new ArrayList<String>());
+        mListAdapter = new StatusListAdapter(getActivity().getApplicationContext(), getActivity());
         setListAdapter(mListAdapter);
     }
 
@@ -65,11 +62,6 @@ public class StatusListFragment extends ListFragment implements AbsListView.OnCl
 
         mListAdapter.addAll(getData());
         mListView.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public void onClick(View v) {
-        Toast.makeText(getActivity().getApplicationContext(), "click", Toast.LENGTH_SHORT).show();
     }
 
     /**
