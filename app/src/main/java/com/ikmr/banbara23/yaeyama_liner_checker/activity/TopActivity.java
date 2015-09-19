@@ -1,12 +1,13 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
+import com.ikmr.banbara23.yaeyama_liner_checker.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 
 public class TopActivity extends BaseActivity {
@@ -44,8 +45,10 @@ public class TopActivity extends BaseActivity {
      * 
      * @param view
      */
-    public void aneiClick(View view) {
-        Toast.makeText(this, "aneiClick", Toast.LENGTH_SHORT).show();
+    public void anneiClick(View view) {
+        Intent intent = new Intent(this, StatusListActivity.class);
+        intent.putExtra(StatusListActivity.PARAM_COMPANY, Company.ANNEI);
+        startActivity(intent);
     }
 
     /**
@@ -54,6 +57,8 @@ public class TopActivity extends BaseActivity {
      * @param view
      */
     public void ykfClick(View view) {
-        Toast.makeText(this, "ykfClick", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, StatusListActivity.class);
+        intent.putExtra(StatusListActivity.PARAM_COMPANY, Company.YKF);
+        startActivity(intent);
     }
 }

@@ -12,6 +12,18 @@
         <activity
             android:name=".activity.TopActivity"
             android:label="@string/title_activity_top">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.StatusListActivity"
+            android:label="@string/title_activity_status_list">
+        </activity>
+        <activity
+            android:name=".activity.StatusDetailActivity"
+            android:label="@string/title_activity_status_detail">
         </activity>
     </application>
 
