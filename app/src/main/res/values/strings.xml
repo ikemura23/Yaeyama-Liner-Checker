@@ -1,9 +1,17 @@
 <resources>
     <string name="app_name">Yaeyama-Liner-Checker</string>
-
+    <!--アプリ情報-->
     <string name="action_settings">Settings</string>
     <string name="title_activity_top">八重山高速船チェッカー</string>
     <string name="title_activity_status_list">の運航状況一覧</string>
     <string name="title_activity_status_detail">運航状況の詳細</string>
     <string name="hello_world">観光会社を選んでください</string>
+
+    <!--URL-->
+    <!--安栄-->
+    <string name="url_annei_list">http://www.aneikankou.co.jp/</string>
+    <!--八重山観光フェリー-->
+    <string name="url_ykf_list">http://sync5-cnsl.digitalstage.jp/sync/docs.action?s=document%3A1s9n6naZmRe88T4iHVVZkHfyOgyci5qvWMkuaySZJFM0</string>
+    <!--ドリーム観光-->
+    <string name="url_dream_list">http://www.ishigaki-dream.co.jp/data.cgi?no=78</string>
 </resources>
