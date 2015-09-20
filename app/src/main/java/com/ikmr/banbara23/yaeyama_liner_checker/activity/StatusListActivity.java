@@ -1,6 +1,7 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -59,6 +60,8 @@ public class StatusListActivity extends BaseActivity implements
 
     @Override
     public void onItemClick(String string) {
-        Toast.makeText(this, "click", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, StatusDetailActivity.class);
+        intent.putExtra(StatusDetailActivity.PARAM, string);
+        startActivity(intent);
     }
 }
