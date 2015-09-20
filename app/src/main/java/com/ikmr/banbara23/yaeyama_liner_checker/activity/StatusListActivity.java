@@ -28,6 +28,7 @@ public class StatusListActivity extends BaseActivity implements
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mCompany = (Company) getIntent().getSerializableExtra(PARAM_COMPANY);
+        setPageTitle();
 
         if (savedInstanceState == null) {
             StatusListFragment statusListFragment = StatusListFragment.NewInstance(mCompany);
@@ -35,6 +36,14 @@ public class StatusListActivity extends BaseActivity implements
                     .add(R.id.container, statusListFragment)
                     .commit();
         }
+    }
+
+    private void setPageTitle() {
+        if (mCompany == null) {
+            return;
+        }
+        String title = mCompany.getCompanyName() + getString(R.string.title_activity_status_list);
+        setTitle(title);
     }
 
     @Override

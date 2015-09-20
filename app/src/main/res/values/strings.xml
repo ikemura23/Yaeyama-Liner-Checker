@@ -3,7 +3,7 @@
 
     <string name="action_settings">Settings</string>
     <string name="title_activity_top">八重山高速船チェッカー</string>
-    <string name="title_activity_status_list">運航状況の一覧</string>
+    <string name="title_activity_status_list">の運航状況一覧</string>
     <string name="title_activity_status_detail">運航状況の詳細</string>
     <string name="hello_world">観光会社を選んでください</string>
 </resources>
