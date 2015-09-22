@@ -23,4 +23,12 @@ public enum Company {
     public String getCompanyName() {
         return companyName;
     }
+
+    @Override
+    public String toString() {
+        return "Company{" +
+                "company='" + company + '\'' +
+                ", companyName='" + companyName + '\'' +
+                '}';
+    }
 }

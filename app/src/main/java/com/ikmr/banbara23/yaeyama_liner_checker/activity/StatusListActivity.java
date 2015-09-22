@@ -12,16 +12,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.androidquery.AQuery;
 import com.ikmr.banbara23.yaeyama_liner_checker.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAdapter;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusListFragment;
 
 import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.jsoup.nodes.Document;
 
 import java.io.IOException;
 
@@ -104,18 +103,32 @@ public class StatusListActivity extends BaseActivity implements
 
     @Override
     public void onLoadFinished(Loader<Document> loader, Document doc) {
-        if (doc != null) {
-            // 取得成功
-            Element content = (Element) doc.getElementById("mp-tfa");
-            Elements images = content.getElementsByTag("img");
-            Element image = images.get(0);
-            String imagePath = "http:" + image.attr("src");
-
-            AQuery imageView = new AQuery(this);
-            // imageView.id(R.id.imageView).visible().webImage(imagePath, true,
-            // false, 0);
-            Log.d("imagePath", imagePath);
+        if (doc == null) {
+            return;
         }
+        // 取得成功
+        Element liner = doc.getElementById("liner");
+        if (liner == null) {
+            return;
+        }
+        // div#boxクラス
+        Elements boxes = liner.getElementsByTag("div");
+        if (boxes == null || boxes.get(0) == null) {
+            return;
+        }
+        Element box = boxes.get(0);
+
+        // 更新日
+        Elements h4 = box.getElementsByTag("h4");
+        // ヘッダー
+        Elements h5 = box.getElementsByTag("h5");
+        Elements div = box.getElementsByTag("div");
+        // div.get(0).tag()
+        // String imagePath = "http:" + image.attr("src");
+
+        // AQuery imageView = new AQuery(this);
+        // imageView.id(R.id.imageView).visible().webImage(imagePath, true,
+        // false, 0);
     }
 
     @Override
@@ -133,8 +146,10 @@ public class StatusListActivity extends BaseActivity implements
         public Document loadInBackground() {
             Document doc = null;
             try {
+                String url = getContext().getString(R.string.url_annei_list);
                 // HTML取得
-                doc = Jsoup.connect("http://en.wikipedia.org/wiki/Main_Page").get();
+                doc = Jsoup.connect(url).get();
+                Log.d("MyAsyncTaskLoader", "doc:" + doc);
             } catch (IOException e) {
                 e.printStackTrace();
             }
