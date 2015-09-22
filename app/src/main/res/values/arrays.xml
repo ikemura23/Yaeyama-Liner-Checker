@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--安栄-->
     <array name="annei_port_list">
+        <item>波照間</item>
+        <item>上原</item>
+        <item>鳩間島</item>
+        <item>大原</item>
+        <item>黒島</item>
+        <item>小浜</item>
+        <item>竹富</item>
+    </array>
+
+    <!--八重山観光フェリー-->
+    <array name="ykf_port_list">
         <item>波照間</item>
         <item>上原</item>
         <item>鳩間島</item>
