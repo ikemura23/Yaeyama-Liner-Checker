@@ -5,22 +5,33 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.Company;
-import com.ikmr.banbara23.yaeyama_liner_checker.Port;
-import com.ikmr.banbara23.yaeyama_liner_checker.Status;
+import com.ikmr.banbara23.yaeyama_liner_checker.Liner;
+
+import java.util.ArrayList;
 
 /**
  * Created by banbara23 on 15/09/21.
  */
 public class Result implements Parcelable {
 
-    private Company company;
-    private Port port;
-    private Status status;
+    private Company mCompany;
+    private String mUpdateTime;
+    private String mTitle;
+    ArrayList<Liner> mLiners = new ArrayList<>();
+
+    public Result() {
+    }
 
     protected Result(Parcel in) {
-        company = (Company) in.readValue(Company.class.getClassLoader());
-        status = (Status) in.readValue(Status.class.getClassLoader());
-        port = (Port) in.readValue(Port.class.getClassLoader());
+        mCompany = (Company) in.readValue(Company.class.getClassLoader());
+        mUpdateTime = in.readString();
+        mTitle = in.readString();
+        if (in.readByte() == 0x01) {
+            mLiners = new ArrayList<Liner>();
+            in.readList(mLiners, Liner.class.getClassLoader());
+        } else {
+            mLiners = null;
+        }
     }
 
     @Override
@@ -30,9 +41,15 @@ public class Result implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeValue(company);
-        dest.writeValue(status);
-        dest.writeValue(port);
+        dest.writeValue(mCompany);
+        dest.writeString(mUpdateTime);
+        dest.writeString(mTitle);
+        if (mLiners == null) {
+            dest.writeByte((byte) (0x00));
+        } else {
+            dest.writeByte((byte) (0x01));
+            dest.writeList(mLiners);
+        }
     }
 
     @SuppressWarnings("unused")
@@ -49,35 +66,34 @@ public class Result implements Parcelable {
     };
 
     public Company getCompany() {
-        return company;
+        return mCompany;
     }
 
     public void setCompany(Company company) {
-        this.company = company;
+        mCompany = company;
     }
 
-    public Port getPort() {
-        return port;
+    public String getUpdateTime() {
+        return mUpdateTime;
     }
 
-    public void setPort(Port port) {
-        this.port = port;
+    public void setUpdateTime(String updateTime) {
+        mUpdateTime = updateTime;
     }
 
-    public Status getStatus() {
-        return status;
+    public String getTitle() {
+        return mTitle;
     }
 
-    public void setStatus(Status status) {
-        this.status = status;
+    public void setTitle(String title) {
+        mTitle = title;
     }
 
-    @Override
-    public String toString() {
-        return "Result{" +
-                "company=" + company +
-                ", port=" + port +
-                ", status=" + status +
-                '}';
+    public ArrayList<Liner> getLiners() {
+        return mLiners;
+    }
+
+    public void setLiners(ArrayList<Liner> liners) {
+        mLiners = liners;
     }
 }

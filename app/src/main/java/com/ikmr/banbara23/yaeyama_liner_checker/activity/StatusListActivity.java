@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.ikmr.banbara23.yaeyama_liner_checker.AnneiParser;
 import com.ikmr.banbara23.yaeyama_liner_checker.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAdapter;
@@ -19,8 +20,6 @@ import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusListFragment;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 import java.io.IOException;
 
@@ -106,29 +105,15 @@ public class StatusListActivity extends BaseActivity implements
         if (doc == null) {
             return;
         }
-        // 取得成功
-        Element liner = doc.getElementById("liner");
-        if (liner == null) {
-            return;
+        if (mCompany == Company.ANNEI) {
+            // 安栄のHTMLパース呼び出し
+            AnneiParser.pars(doc);
         }
-        // div#boxクラス
-        Elements boxes = liner.getElementsByTag("div");
-        if (boxes == null || boxes.get(0) == null) {
-            return;
+        else {
+            parsYkf(doc);
+            // 八重山観光フェリーのHTMLパース呼び出し
         }
-        Element box = boxes.get(0);
 
-        // 更新日
-        Elements h4 = box.getElementsByTag("h4");
-        // ヘッダー
-        Elements h5 = box.getElementsByTag("h5");
-        Elements div = box.getElementsByTag("div");
-        // div.get(0).tag()
-        // String imagePath = "http:" + image.attr("src");
-
-        // AQuery imageView = new AQuery(this);
-        // imageView.id(R.id.imageView).visible().webImage(imagePath, true,
-        // false, 0);
     }
 
     @Override
@@ -155,6 +140,24 @@ public class StatusListActivity extends BaseActivity implements
             }
             return doc;
         }
+    }
+
+    /**
+     * 安栄のHTMLパース
+     * 
+     * @param doc HTMLデータ
+     */
+    private void parsAnnei(Document doc) {
+        // AnneiParser.pars(doc);
+    }
+
+    /**
+     * 八重山観光フェリーのHTMLパース
+     * 
+     * @param doc
+     */
+    private void parsYkf(Document doc) {
+
     }
 
 }
