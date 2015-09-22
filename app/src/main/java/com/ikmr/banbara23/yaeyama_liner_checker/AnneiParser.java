@@ -95,12 +95,24 @@ public class AnneiParser {
         if (h6.text().contains("波照間")) {
             Elements p = div.getElementsByTag("p");
 
+            // <p>タグのクラスを判定
             if (p.get(0).hasClass("normal")) {
+                // 通常運航
                 liner.setStatus(Status.NORMAL);
             }
-            liner.setText(p.text());
-        }
+            if (p.get(0).hasClass("cancel")) {
+                // 欠航有り
+                liner.setStatus(Status.CANCEL);
+            }
+            else {
+                // 運航にも欠航にも当てはまらないもの、未定とか
+                liner.setStatus(Status.CAUTION);
+            }
 
-        return null;
+            // テキストを取得
+            liner.setText(p.text());
+            return liner;
+        }
+        return liner;
     }
 }
