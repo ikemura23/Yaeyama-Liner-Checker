@@ -1,6 +1,8 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker;
 
+import android.util.Log;
+
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 
 import org.jsoup.nodes.Document;
@@ -40,16 +42,11 @@ public class AnneiParser {
 
         // 港別の運航状況
         Elements div = box.getElementsByTag("div");
-        for (Element d : div) {
-            mLiners.add(getDivPort(d));
+        ArrayList<String> array = getAnneiPortArray();
+        for (String port : array) {
+            mLiners.add(getDivPort(port, div));
         }
-
-        // div.get(0).tag()
-        // String imagePath = "http:" + image.attr("src");
-
-        // AQuery imageView = new AQuery(this);
-        // imageView.id(R.id.imageView).visible().webImage(imagePath, true,
-        // false, 0);
+        result.setLiners(mLiners);
     }
 
     /**
@@ -81,38 +78,61 @@ public class AnneiParser {
     /**
      * 波照間
      * 
-     * @param div
+     * @param port 港名
+     * @param div <div class="box">
      * @return
      */
-    private static Liner getDivPort(Element div) {
+    private static Liner getDivPort(String port, Elements div) {
         Liner liner = new Liner();
         liner.setPort(Port.HATERUMA);
 
         if (div == null) {
             return null;
         }
-        Elements h6 = div.getElementsByTag("h6");
-        if (h6.text().contains("波照間")) {
-            Elements p = div.getElementsByTag("p");
+        Elements devChild = div.get(0).children();
+        for (int i = 0; i < devChild.size(); i++) {
+            
+            Log.d("AnneiParser", "child.get(0):" + devChild.get(i));
 
-            // <p>タグのクラスを判定
-            if (p.get(0).hasClass("normal")) {
-                // 通常運航
-                liner.setStatus(Status.NORMAL);
-            }
-            if (p.get(0).hasClass("cancel")) {
-                // 欠航有り
-                liner.setStatus(Status.CANCEL);
-            }
-            else {
-                // 運航にも欠航にも当てはまらないもの、未定とか
-                liner.setStatus(Status.CAUTION);
-            }
-
-            // テキストを取得
-            liner.setText(p.text());
-            return liner;
         }
+        // for (Element d : div) {
+        //
+        // Elements h6 = d.getElementsByTag("h6");
+        // if (h6.text().contains(port)) {
+        // Elements p = d.getElementsByTag("p");
+        //
+        // // <p>タグのクラスを判定
+        // if (p.get(0).hasClass("normal")) {
+        // // 通常運航
+        // liner.setStatus(Status.NORMAL);
+        // }
+        // else if (p.get(0).hasClass("cancel")) {
+        // // 欠航有り
+        // liner.setStatus(Status.CANCEL);
+        // }
+        // else {
+        // // 運航にも欠航にも当てはまらないもの、未定とか
+        // liner.setStatus(Status.CAUTION);
+        // }
+        //
+        // // テキストを取得
+        // liner.setText(p.text());
+        // return liner;
+        // }
+        // }
+
         return liner;
+    }
+
+    private static ArrayList<String> getAnneiPortArray() {
+        ArrayList<String> list = new ArrayList<>();
+        list.add("波照間");
+        list.add("上原");
+        list.add("鳩間島");
+        list.add("大原");
+        list.add("黒島");
+        list.add("小浜");
+        list.add("竹富");
+        return list;
     }
 }
