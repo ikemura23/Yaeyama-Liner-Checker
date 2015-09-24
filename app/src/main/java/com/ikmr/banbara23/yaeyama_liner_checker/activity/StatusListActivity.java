@@ -1,6 +1,12 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker.activity;
 
+import java.io.IOException;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
+import android.app.Fragment;
 import android.app.LoaderManager;
 import android.content.AsyncTaskLoader;
 import android.content.Context;
@@ -16,12 +22,8 @@ import com.ikmr.banbara23.yaeyama_liner_checker.AnneiParser;
 import com.ikmr.banbara23.yaeyama_liner_checker.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAdapter;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusListFragment;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-
-import java.io.IOException;
 
 /**
  * ステータス一覧Activity
@@ -30,7 +32,8 @@ public class StatusListActivity extends BaseActivity implements
         StatusListAdapter.ListItemClickListener, LoaderManager.LoaderCallbacks<Document> {
 
     final static String PARAM_COMPANY = "company";
-    Company mCompany;
+    private Company mCompany;
+    onApiCallListener mOnApiCallListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,14 +108,20 @@ public class StatusListActivity extends BaseActivity implements
         if (doc == null) {
             return;
         }
+        Result result = null;
         if (mCompany == Company.ANNEI) {
             // 安栄のHTMLパース呼び出し
-            AnneiParser.pars(doc);
+            result = AnneiParser.pars(doc);
         }
         else {
             parsYkf(doc);
             // 八重山観光フェリーのHTMLパース呼び出し
         }
+        createList(result);
+    }
+
+    private void createList(Result result) {
+        Fragment fragment = getFragmentManager().findFragmentById(R.id.container);
 
     }
 
@@ -156,8 +165,15 @@ public class StatusListActivity extends BaseActivity implements
      * 
      * @param doc
      */
-    private void parsYkf(Document doc) {
-
+    private Result parsYkf(Document doc) {
+        return null;
     }
 
+    public interface onApiCallListener {
+        void onLoadStart();
+
+        void onLoadEnd(Result result);
+
+        void onFinish();
+    }
 }

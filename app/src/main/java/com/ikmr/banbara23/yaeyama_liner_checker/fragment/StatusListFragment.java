@@ -12,6 +12,8 @@ import android.widget.ProgressBar;
 import com.ikmr.banbara23.yaeyama_liner_checker.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAdapter;
+import com.ikmr.banbara23.yaeyama_liner_checker.activity.StatusListActivity;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +21,7 @@ import java.util.List;
 /**
  * ステータスリストのFragment
  */
-public class StatusListFragment extends ListFragment {
+public class StatusListFragment extends ListFragment implements StatusListActivity.onApiCallListener {
     StatusListAdapter mListAdapter;
     ProgressBar mProgressBar;
     ListView mListView;
@@ -76,5 +78,20 @@ public class StatusListFragment extends ListFragment {
             list.add(String.valueOf(i));
         }
         return list;
+    }
+
+    @Override
+    public void onLoadStart() {
+
+    }
+
+    @Override
+    public void onLoadEnd(Result result) {
+
+    }
+
+    @Override
+    public void onFinish() {
+
     }
 }

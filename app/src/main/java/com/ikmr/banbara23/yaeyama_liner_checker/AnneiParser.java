@@ -1,34 +1,34 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker;
 
-import java.util.ArrayList;
+import android.text.TextUtils;
+
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import android.text.TextUtils;
-
-import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
+import java.util.ArrayList;
 
 /**
  * 安栄HTMLのパース処理
  */
 public class AnneiParser {
 
-    public static void pars(Document doc) {
+    public static Result pars(Document doc) {
         Result result = new Result();
         ArrayList<Liner> mLiners = new ArrayList<>();
 
         // <div id="liner"> 取得
         Element liner = doc.getElementById("liner");
         if (liner == null) {
-            return;
+            return null;
         }
         // <div class="box"> 取得
         Elements boxs = liner.getElementsByClass("box");
         if (boxs == null || boxs.get(0) == null) {
-            return;
+            return null;
         }
         Element box = boxs.get(0);
 
@@ -47,6 +47,7 @@ public class AnneiParser {
             mLiners.add(getDivPort(port, div));
         }
         result.setLiners(mLiners);
+        return result;
     }
 
     /**
@@ -95,7 +96,7 @@ public class AnneiParser {
             // div.boxの中身を取得
             Element element = devChild.get(i);
 
-            /// h6タグに港名が入っている
+            // h6タグに港名が入っている
             Elements h6 = element.getElementsByTag("h6");
             if (TextUtils.isEmpty(h6.text())) {
                 // 空白は飛ばす
