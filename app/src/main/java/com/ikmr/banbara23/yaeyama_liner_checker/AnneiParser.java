@@ -1,15 +1,15 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker;
 
-import android.util.Log;
-
-import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
+import java.util.ArrayList;
 
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.util.ArrayList;
+import android.text.TextUtils;
+
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 
 /**
  * 安栄HTMLのパース処理
@@ -91,35 +91,45 @@ public class AnneiParser {
         }
         Elements devChild = div.get(0).children();
         for (int i = 0; i < devChild.size(); i++) {
-            
-            Log.d("AnneiParser", "child.get(0):" + devChild.get(i));
 
+            // div.boxの中身を取得
+            Element element = devChild.get(i);
+
+            /// h6タグに港名が入っている
+            Elements h6 = element.getElementsByTag("h6");
+            if (TextUtils.isEmpty(h6.text())) {
+                // 空白は飛ばす
+                continue;
+            }
+            // h6タグの中身と引数の港名が一致しているか？
+            if (h6.text().contains(port)) {
+                // <p>タグの中身を取得、以下はサンプル
+                // <p class="normal"><a href="liner/kohamajima.html"
+                // title="小浜島航路 時刻表へ">通常運航</a></p>
+                Elements p = element.getElementsByTag("p");
+
+                // <p>タグのクラスを判定
+                if (p.get(0).hasClass("normal")) {
+                    // 通常運航
+                    liner.setStatus(Status.NORMAL);
+                } else if (p.get(0).hasClass("cancel")) {
+                    // 欠航有り
+                    liner.setStatus(Status.CANCEL);
+                } else {
+                    // 運航にも欠航にも当てはまらないもの、未定とか
+                    liner.setStatus(Status.CAUTION);
+                }
+
+                // <p>タグのテキストを取得
+                if (TextUtils.isEmpty(p.text())) {
+                    // 取得できなかったら以下の文字が一覧に表示される
+                    liner.setText("エラー 取得失敗");
+                } else {
+                    liner.setText(p.text());
+                }
+                return liner;
+            }
         }
-        // for (Element d : div) {
-        //
-        // Elements h6 = d.getElementsByTag("h6");
-        // if (h6.text().contains(port)) {
-        // Elements p = d.getElementsByTag("p");
-        //
-        // // <p>タグのクラスを判定
-        // if (p.get(0).hasClass("normal")) {
-        // // 通常運航
-        // liner.setStatus(Status.NORMAL);
-        // }
-        // else if (p.get(0).hasClass("cancel")) {
-        // // 欠航有り
-        // liner.setStatus(Status.CANCEL);
-        // }
-        // else {
-        // // 運航にも欠航にも当てはまらないもの、未定とか
-        // liner.setStatus(Status.CAUTION);
-        // }
-        //
-        // // テキストを取得
-        // liner.setText(p.text());
-        // return liner;
-        // }
-        // }
 
         return liner;
     }
