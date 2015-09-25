@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.AnneiParser;
 import com.ikmr.banbara23.yaeyama_liner_checker.Company;
+import com.ikmr.banbara23.yaeyama_liner_checker.ListFragmentInterface;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAdapter;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
@@ -112,8 +113,7 @@ public class StatusListActivity extends BaseActivity implements
         if (mCompany == Company.ANNEI) {
             // 安栄のHTMLパース呼び出し
             result = AnneiParser.pars(doc);
-        }
-        else {
+        } else {
             parsYkf(doc);
             // 八重山観光フェリーのHTMLパース呼び出し
         }
@@ -167,22 +167,5 @@ public class StatusListActivity extends BaseActivity implements
      */
     private Result parsYkf(Document doc) {
         return null;
-    }
-
-    public interface ListFragmentInterface {
-        /** 初回検索時 */
-        void onResetQuery(String newVersion);
-
-        /** 検索開始時 */
-        void onStartQuery(String version);
-
-        /** API結果取得時 */
-        void onResultQuery(String version, int count, int total);
-
-        /** APIエラー時 */
-        void onFailedQuery(Exception error);
-
-        /** API 終了時 */
-        void onFinishQuery();
     }
 }

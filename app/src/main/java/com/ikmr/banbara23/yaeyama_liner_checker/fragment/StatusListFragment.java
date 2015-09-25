@@ -1,6 +1,9 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker.fragment;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.ListFragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,18 +13,14 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.Company;
+import com.ikmr.banbara23.yaeyama_liner_checker.ListFragmentInterface;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAdapter;
-import com.ikmr.banbara23.yaeyama_liner_checker.activity.StatusListActivity;
-import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * ステータスリストのFragment
  */
-public class StatusListFragment extends ListFragment implements StatusListActivity.onApiCallListener {
+public class StatusListFragment extends ListFragment implements ListFragmentInterface {
     StatusListAdapter mListAdapter;
     ProgressBar mProgressBar;
     ListView mListView;
@@ -55,6 +54,7 @@ public class StatusListFragment extends ListFragment implements StatusListActivi
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_status_list, container, false);
         mListView = (ListView) view.findViewById(android.R.id.list);
+        mProgressBar = (ProgressBar) view.findViewById(R.id.progressbar);
         return view;
     }
 
@@ -80,18 +80,33 @@ public class StatusListFragment extends ListFragment implements StatusListActivi
         return list;
     }
 
+    /** 初回検索時 */
     @Override
-    public void onLoadStart() {
+    public void onResetQuery(String newVersion) {
+        mProgressBar.setIndeterminate(true);
+    }
+
+    /** 検索開始時 */
+    @Override
+    public void onStartQuery(String version) {
+        mProgressBar.setVisibility(View.VISIBLE);
+    }
+
+    /** API結果取得時 */
+    @Override
+    public void onResultQuery(String version, int count, int total) {
 
     }
 
+    /** APIエラー時 */
     @Override
-    public void onLoadEnd(Result result) {
+    public void onFailedQuery(Exception error) {
 
     }
 
+    /** API 終了時 */
     @Override
-    public void onFinish() {
+    public void onFinishQuery() {
 
     }
 }
