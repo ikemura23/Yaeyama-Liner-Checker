@@ -33,7 +33,7 @@ public class StatusListActivity extends BaseActivity implements
 
     final static String PARAM_COMPANY = "company";
     private Company mCompany;
-    onApiCallListener mOnApiCallListener;
+    ListFragmentInterface mListFragmentInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -169,11 +169,20 @@ public class StatusListActivity extends BaseActivity implements
         return null;
     }
 
-    public interface onApiCallListener {
-        void onLoadStart();
+    public interface ListFragmentInterface {
+        /** 初回検索時 */
+        void onResetQuery(String newVersion);
 
-        void onLoadEnd(Result result);
+        /** 検索開始時 */
+        void onStartQuery(String version);
 
-        void onFinish();
+        /** API結果取得時 */
+        void onResultQuery(String version, int count, int total);
+
+        /** APIエラー時 */
+        void onFailedQuery(Exception error);
+
+        /** API 終了時 */
+        void onFinishQuery();
     }
 }
