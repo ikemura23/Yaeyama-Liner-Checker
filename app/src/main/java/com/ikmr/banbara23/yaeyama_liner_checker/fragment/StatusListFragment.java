@@ -16,6 +16,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.ListFragmentInterface;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAdapter;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 
 /**
  * ステータスリストのFragment
@@ -94,13 +95,18 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
 
     /** API結果取得時 */
     @Override
-    public void onResultQuery(int total) {
-
+    public void onResultQuery(Result result) {
+        if (result == null) {
+            return;
+        }
+        mListAdapter.clear();
+        // todo:resultを渡す
+        mListAdapter.add(null);
     }
 
     /** APIエラー時 */
     @Override
-    public void onFailedQuery(Exception error) {
+    public void onFailedQuery() {
 
     }
 

@@ -13,7 +13,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -39,6 +38,7 @@ public class StatusListActivity extends BaseActivity implements
     private ListFragmentInterface mListFragmentInterface;
     /** クエリ起動中かどうか */
     private boolean mQuerying;
+    Fragment mFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,9 +50,9 @@ public class StatusListActivity extends BaseActivity implements
         setPageTitle();
 
         if (savedInstanceState == null) {
-            StatusListFragment statusListFragment = StatusListFragment.NewInstance(mCompany);
+            mFragment = StatusListFragment.NewInstance(mCompany);
             getFragmentManager().beginTransaction()
-                    .add(R.id.container, statusListFragment)
+                    .add(R.id.container, mFragment)
                     .commit();
         }
     }
@@ -105,12 +105,20 @@ public class StatusListActivity extends BaseActivity implements
 
         // loaderの開始
         appLoader.forceLoad();
+        //
+        if (mFragment != null && mFragment instanceof ListFragmentInterface) {
+            ((ListFragmentInterface) mFragment).onStartQuery();
+        }
         return appLoader;
     }
 
     @Override
     public void onLoadFinished(Loader<Document> loader, Document doc) {
         if (doc == null) {
+            // エラーを通知
+            if (mFragment != null && mFragment instanceof ListFragmentInterface) {
+                ((ListFragmentInterface) mFragment).onFailedQuery();
+            }
             return;
         }
         Result result = null;
@@ -121,12 +129,14 @@ public class StatusListActivity extends BaseActivity implements
             parsYkf(doc);
             // 八重山観光フェリーのHTMLパース呼び出し
         }
-        createList(result);
-    }
-
-    private void createList(Result result) {
-        Fragment fragment = getFragmentManager().findFragmentById(R.id.container);
-
+        // 結果を通知
+        if (mFragment != null && mFragment instanceof ListFragmentInterface) {
+            ((ListFragmentInterface) mFragment).onResultQuery(result);
+        }
+        // 終了
+        if (mFragment != null && mFragment instanceof ListFragmentInterface) {
+            ((ListFragmentInterface) mFragment).onFinishQuery();
+        }
     }
 
     @Override
@@ -147,7 +157,6 @@ public class StatusListActivity extends BaseActivity implements
                 String url = getContext().getString(R.string.url_annei_list);
                 // HTML取得
                 doc = Jsoup.connect(url).get();
-                Log.d("MyAsyncTaskLoader", "doc:" + doc);
             } catch (IOException e) {
                 e.printStackTrace();
             }
