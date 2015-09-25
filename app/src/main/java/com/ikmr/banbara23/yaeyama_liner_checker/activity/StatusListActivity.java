@@ -33,8 +33,12 @@ public class StatusListActivity extends BaseActivity implements
         StatusListAdapter.ListItemClickListener, LoaderManager.LoaderCallbacks<Document> {
 
     final static String PARAM_COMPANY = "company";
+    // 観光会社
     private Company mCompany;
-    ListFragmentInterface mListFragmentInterface;
+    // 通知用インターフェース
+    private ListFragmentInterface mListFragmentInterface;
+    /** クエリ起動中かどうか */
+    private boolean mQuerying;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

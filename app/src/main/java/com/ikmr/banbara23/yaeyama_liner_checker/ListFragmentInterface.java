@@ -6,13 +6,13 @@ package com.ikmr.banbara23.yaeyama_liner_checker;
  */
 public interface ListFragmentInterface {
     /** 初回検索時 */
-    void onResetQuery(String newVersion);
+    void onResetQuery();
 
     /** 検索開始時 */
-    void onStartQuery(String version);
+    void onStartQuery();
 
     /** API結果取得時 */
-    void onResultQuery(String version, int count, int total);
+    void onResultQuery(int total);
 
     /** APIエラー時 */
     void onFailedQuery(Exception error);

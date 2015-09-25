@@ -82,19 +82,19 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
 
     /** 初回検索時 */
     @Override
-    public void onResetQuery(String newVersion) {
+    public void onResetQuery() {
         mProgressBar.setIndeterminate(true);
     }
 
     /** 検索開始時 */
     @Override
-    public void onStartQuery(String version) {
+    public void onStartQuery() {
         mProgressBar.setVisibility(View.VISIBLE);
     }
 
     /** API結果取得時 */
     @Override
-    public void onResultQuery(String version, int count, int total) {
+    public void onResultQuery(int total) {
 
     }
 
