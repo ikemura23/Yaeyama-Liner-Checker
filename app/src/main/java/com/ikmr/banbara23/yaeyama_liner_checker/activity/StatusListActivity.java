@@ -18,6 +18,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.ListFragmentInterface;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAdapter;
+import com.ikmr.banbara23.yaeyama_liner_checker.YkfParser;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusListFragment;
 
@@ -95,7 +96,7 @@ public class StatusListActivity extends BaseActivity implements
 
     @Override
     public Loader<Document> onCreateLoader(int id, Bundle args) {
-        MyAsyncTaskLoader appLoader = new MyAsyncTaskLoader(getApplication());
+        MyAsyncTaskLoader appLoader = new MyAsyncTaskLoader(getApplication(), mCompany);
 
         // loaderの開始
         appLoader.forceLoad();
@@ -116,20 +117,26 @@ public class StatusListActivity extends BaseActivity implements
             return;
         }
         Result result = null;
-        if (mCompany == Company.ANNEI) {
-            // 安栄のHTMLパース呼び出し
-            result = AnneiParser.pars(doc);
-        } else {
-            parsYkf(doc);
-            // 八重山観光フェリーのHTMLパース呼び出し
-        }
-        // 結果を通知
-        if (mFragment != null && mFragment instanceof ListFragmentInterface) {
-            ((ListFragmentInterface) mFragment).onResultQuery(result);
-        }
-        // 終了
-        if (mFragment != null && mFragment instanceof ListFragmentInterface) {
-            ((ListFragmentInterface) mFragment).onFinishQuery();
+        try {
+            if (mCompany == Company.ANNEI) {
+                // 安栄のHTMLパース呼び出し
+                result = AnneiParser.pars(doc);
+            } else {
+                // 八重山観光フェリーのHTMLパース呼び出し
+                result = YkfParser.pars(doc);
+            }
+            // 結果を通知
+            if (mFragment != null && mFragment instanceof ListFragmentInterface) {
+                ((ListFragmentInterface) mFragment).onResultQuery(result);
+            }
+            // 終了
+            if (mFragment != null && mFragment instanceof ListFragmentInterface) {
+                ((ListFragmentInterface) mFragment).onFinishQuery();
+            }
+        } catch (Exception e) {
+            if (mFragment != null && mFragment instanceof ListFragmentInterface) {
+                ((ListFragmentInterface) mFragment).onFailedQuery();
+            }
         }
     }
 
@@ -145,17 +152,29 @@ public class StatusListActivity extends BaseActivity implements
         startActivity(intent);
     }
 
+    /**
+     * AsyncTaskLoaderクラス
+     */
     public static class MyAsyncTaskLoader extends AsyncTaskLoader<Document> {
+        Company mCompany;
 
-        public MyAsyncTaskLoader(Context context) {
+        public MyAsyncTaskLoader(Context context, Company company) {
             super(context);
+            this.mCompany = company;
         }
 
         @Override
         public Document loadInBackground() {
             Document doc = null;
+            String url;
+            if (mCompany == Company.ANNEI) {
+                url = getContext().getString(R.string.url_annei_list);
+            }
+            else {
+                url = getContext().getString(R.string.url_ykf_list);
+            }
+
             try {
-                String url = getContext().getString(R.string.url_annei_list);
                 // HTML取得
                 doc = Jsoup.connect(url).get();
             } catch (IOException e) {
