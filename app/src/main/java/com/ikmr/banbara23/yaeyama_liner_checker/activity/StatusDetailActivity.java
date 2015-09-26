@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.ikmr.banbara23.yaeyama_liner_checker.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusDetailFragment;
 
@@ -13,19 +14,18 @@ import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusDetailFragment;
  * ステータス詳細のActivity
  */
 public class StatusDetailActivity extends BaseActivity {
-    final static String PARAM = "port";
 
-    String value;
+    Liner liner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_status_detail);
-        value = getIntent().getStringExtra(PARAM);
+        liner = (Liner) getIntent().getSerializableExtra(StatusDetailActivity.class.getName());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         if (savedInstanceState == null) {
-            StatusDetailFragment statusDetailFragment = StatusDetailFragment.NewInstance(value);
+            StatusDetailFragment statusDetailFragment = StatusDetailFragment.NewInstance(liner);
             getFragmentManager().beginTransaction()
                     .add(R.id.container, statusDetailFragment)
                     .commit();

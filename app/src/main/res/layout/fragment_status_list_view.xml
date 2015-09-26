@@ -2,10 +2,33 @@
 <com.ikmr.banbara23.yaeyama_liner_checker.view.StatusListView xmlns:android="http://schemas.android.com/apk/res/android"
                                                               android:layout_width="match_parent"
                                                               android:layout_height="match_parent"
-                                                              android:orientation="vertical">
+                                                              android:orientation="horizontal">
 
     <TextView
-        android:id="@+id/view_status_list_text"
+        android:id="@+id/view_status_list_port_text"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="鳩間航路"
+        android:textColor="@color/background_material_dark"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/view_status_list_status_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="運航状況"
+        android:textColor="@color/background_material_dark"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/view_status_list_comment_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="コメント"
+        android:textColor="@color/background_material_dark"
+        android:textSize="20dp"/>
+
 </com.ikmr.banbara23.yaeyama_liner_checker.view.StatusListView>

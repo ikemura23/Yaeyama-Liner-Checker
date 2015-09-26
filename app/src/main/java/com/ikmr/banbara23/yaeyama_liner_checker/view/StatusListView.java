@@ -6,13 +6,16 @@ import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.ikmr.banbara23.yaeyama_liner_checker.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 
 /**
  * ステータスリストのカスタムビュー
  */
 public class StatusListView extends LinearLayout {
-    TextView mNameText;
+    TextView mPortText;
+    TextView mStatusText;
+    TextView mCommentText;
 
     public StatusListView(Context context) {
         super(context);
@@ -25,10 +28,14 @@ public class StatusListView extends LinearLayout {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        mNameText = (TextView) findViewById(R.id.view_status_list_text);
+        mPortText = (TextView) findViewById(R.id.view_status_list_port_text);
+        mStatusText = (TextView) findViewById(R.id.view_status_list_status_text);
+        mCommentText = (TextView) findViewById(R.id.view_status_list_comment_text);
     }
 
-    public void bind(String value) {
-        mNameText.setText(value);
+    public void bind(Liner liner) {
+        mPortText.setText(liner.getPort().getValue());
+        mStatusText.setText(liner.getStatus().getStatus());
+        mCommentText.setText(liner.getText());
     }
 }

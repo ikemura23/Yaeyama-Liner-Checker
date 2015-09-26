@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.ikmr.banbara23.yaeyama_liner_checker.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailView;
 
@@ -18,10 +19,10 @@ public class StatusDetailFragment extends BaseFragment {
 
     StatusDetailView mStatusDetailView;
 
-    public static StatusDetailFragment NewInstance(String value) {
+    public static StatusDetailFragment NewInstance(Liner liner) {
         StatusDetailFragment fragment = new StatusDetailFragment();
         Bundle bundle = new Bundle();
-        bundle.putSerializable(StatusDetailFragment.class.getName(), value);
+        bundle.putParcelable(StatusDetailFragment.class.getName(), liner);
         fragment.setArguments(bundle);
         return fragment;
     }

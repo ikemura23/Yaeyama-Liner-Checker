@@ -13,7 +13,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusListView;
 /**
  * 一覧アダプター
  */
-public class StatusListAdapter extends ArrayAdapter<String> {
+public class StatusListAdapter extends ArrayAdapter<Liner> {
     ListItemClickListener mListItemClickListener;
 
     public StatusListAdapter(Context context, Activity activity) {
@@ -45,6 +45,6 @@ public class StatusListAdapter extends ArrayAdapter<String> {
      * 通知用
      */
     public interface ListItemClickListener {
-        void onItemClick(String string);
+        void onItemClick(Liner liner);
     }
 }

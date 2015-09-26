@@ -1,11 +1,6 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker.activity;
 
-import java.io.IOException;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-
 import android.app.Fragment;
 import android.app.LoaderManager;
 import android.content.AsyncTaskLoader;
@@ -19,11 +14,17 @@ import android.widget.Toast;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.AnneiParser;
 import com.ikmr.banbara23.yaeyama_liner_checker.Company;
+import com.ikmr.banbara23.yaeyama_liner_checker.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.ListFragmentInterface;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAdapter;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusListFragment;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
+import java.io.IOException;
 
 /**
  * ステータス一覧Activity
@@ -93,13 +94,6 @@ public class StatusListActivity extends BaseActivity implements
     }
 
     @Override
-    public void onItemClick(String string) {
-        Intent intent = new Intent(this, StatusDetailActivity.class);
-        intent.putExtra(StatusDetailActivity.PARAM, string);
-        startActivity(intent);
-    }
-
-    @Override
     public Loader<Document> onCreateLoader(int id, Bundle args) {
         MyAsyncTaskLoader appLoader = new MyAsyncTaskLoader(getApplication());
 
@@ -142,6 +136,13 @@ public class StatusListActivity extends BaseActivity implements
     @Override
     public void onLoaderReset(Loader<Document> loader) {
 
+    }
+
+    @Override
+    public void onItemClick(Liner liner) {
+        Intent intent = new Intent(this, StatusDetailActivity.class);
+        intent.putExtra(StatusDetailActivity.class.getName(), liner);
+        startActivity(intent);
     }
 
     public static class MyAsyncTaskLoader extends AsyncTaskLoader<Document> {

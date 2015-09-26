@@ -42,10 +42,9 @@ public class AnneiParser {
 
         // 港別の運航状況
         Elements div = box.getElementsByTag("div");
-        ArrayList<String> array = getAnneiPortArray();
-        for (String port : array) {
+        ArrayList<Port> array = getAnneiPortArray();
+        for (Port port : array)
             mLiners.add(getDivPort(port, div));
-        }
         result.setLiners(mLiners);
         return result;
     }
@@ -83,9 +82,9 @@ public class AnneiParser {
      * @param div <div class="box">
      * @return
      */
-    private static Liner getDivPort(String port, Elements div) {
+    private static Liner getDivPort(Port port, Elements div) {
         Liner liner = new Liner();
-        liner.setPort(Port.HATERUMA);
+        liner.setPort(port);
 
         if (div == null) {
             return null;
@@ -103,7 +102,7 @@ public class AnneiParser {
                 continue;
             }
             // h6タグの中身と引数の港名が一致しているか？
-            if (h6.text().contains(port)) {
+            if (h6.text().contains(port.getPortSimple())) {
                 // <p>タグの中身を取得、以下はサンプル
                 // <p class="normal"><a href="liner/kohamajima.html"
                 // title="小浜島航路 時刻表へ">通常運航</a></p>
@@ -135,15 +134,15 @@ public class AnneiParser {
         return liner;
     }
 
-    private static ArrayList<String> getAnneiPortArray() {
-        ArrayList<String> list = new ArrayList<>();
-        list.add("波照間");
-        list.add("上原");
-        list.add("鳩間島");
-        list.add("大原");
-        list.add("黒島");
-        list.add("小浜");
-        list.add("竹富");
+    private static ArrayList<Port> getAnneiPortArray() {
+        ArrayList<Port> list = new ArrayList<>();
+        list.add(Port.HATERUMA);
+        list.add(Port.UEHARA);
+        list.add(Port.HATOMA);
+        list.add(Port.OOHARA);
+        list.add(Port.KUROSHIMA);
+        list.add(Port.KOHAMA);
+        list.add(Port.TAKETOMI);
         return list;
     }
 }
