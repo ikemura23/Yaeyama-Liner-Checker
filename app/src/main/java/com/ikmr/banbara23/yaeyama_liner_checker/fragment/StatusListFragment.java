@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -30,6 +31,7 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
     TextView mTitleText;
     TextView mUpdateText;
     LinearLayout mHeaderLayout;
+    FrameLayout mProgressLayout;
 
     final static String PARAM_COMPANY = "company";
 
@@ -60,6 +62,7 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
         mHeaderLayout = (LinearLayout) view.findViewById(R.id.fragment_status_list_header);
         mTitleText = (TextView) view.findViewById(R.id.fragment_status_list_toolbar_title_text);
         mUpdateText = (TextView) view.findViewById(R.id.fragment_status_list_toolbar_update_text);
+        mProgressLayout = (FrameLayout) view.findViewById(R.id.progressbar_layout);
         return view;
     }
 
@@ -77,7 +80,8 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
     @Override
     public void onStartQuery() {
         mHeaderLayout.setVisibility(View.GONE);
-        mProgressBar.setVisibility(View.VISIBLE);
+        mProgressLayout.setVisibility(View.VISIBLE);
+        // mProgressBar.setVisibility(View.VISIBLE);
     }
 
     /**
@@ -143,6 +147,7 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
      */
     @Override
     public void onFinishQuery() {
-        mProgressBar.setVisibility(View.GONE);
+        mProgressLayout.setVisibility(View.INVISIBLE);
+        // mProgressBar.setVisibility(View.GONE);
     }
 }

@@ -5,12 +5,10 @@ import android.app.Fragment;
 import android.app.LoaderManager;
 import android.content.AsyncTaskLoader;
 import android.content.Context;
-import android.content.Intent;
 import android.content.Loader;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.ListFragmentInterface;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
@@ -61,6 +59,24 @@ public class StatusListActivity extends BaseActivity implements
         }
     }
 
+    /**
+     * 一覧の取得開始
+     */
+    private void startQuery() {
+        if (mFragment != null && mFragment instanceof ListFragmentInterface) {
+            ((ListFragmentInterface) mFragment).onStartQuery();
+        }
+        mQuerying = true;
+        getLoaderManager().initLoader(0, null, this);
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        // 一覧の取得開始
+        startQuery();
+    }
+
     private void setPageTitle() {
         if (mCompany == null) {
             return;
@@ -69,12 +85,6 @@ public class StatusListActivity extends BaseActivity implements
         // getString(R.string.title_activity_status_list);
         String title = mCompany.getCompanyName();
         setTitle(title);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        getLoaderManager().initLoader(0, null, this);
     }
 
     @Override
@@ -91,7 +101,9 @@ public class StatusListActivity extends BaseActivity implements
                 finish();
                 break;
             case R.id.action_reload:
-                Toast.makeText(this, "更新処理", Toast.LENGTH_SHORT).show();
+                if (!mQuerying) {
+                    startQuery();
+                }
                 break;
         }
 
@@ -105,9 +117,6 @@ public class StatusListActivity extends BaseActivity implements
         // loaderの開始
         appLoader.forceLoad();
         //
-        if (mFragment != null && mFragment instanceof ListFragmentInterface) {
-            ((ListFragmentInterface) mFragment).onStartQuery();
-        }
         return appLoader;
     }
 
@@ -143,6 +152,8 @@ public class StatusListActivity extends BaseActivity implements
                     ListFragmentInterface) {
                 ((ListFragmentInterface) mFragment).onFailedQuery();
             }
+        } finally {
+            mQuerying = false;
         }
     }
 
@@ -151,11 +162,16 @@ public class StatusListActivity extends BaseActivity implements
 
     }
 
+    /**
+     * リストのセルビュークリック処理
+     * 
+     * @param liner
+     */
     @Override
     public void onItemClick(Liner liner) {
-        Intent intent = new Intent(this, StatusDetailActivity.class);
-        intent.putExtra(StatusDetailActivity.class.getName(), liner);
-        startActivity(intent);
+        // Intent intent = new Intent(this, StatusDetailActivity.class);
+        // intent.putExtra(StatusDetailActivity.class.getName(), liner);
+        // startActivity(intent);
     }
 
     /**

@@ -12,6 +12,7 @@
             android:id="@+id/fragment_status_list_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/ripple_material_light"
             android:orientation="vertical"
             android:padding="5dp"
             android:visibility="gone">
@@ -21,7 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="yyyy/MM/dd hh:mm:ss更新"
-                android:textSize="15dp"
+                android:textSize="20dp"
                 android:textStyle="bold"/>
 
             <TextView
@@ -29,7 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="title"
-                android:textSize="15dp"/>
+                android:textSize="20dp"/>
 
         </LinearLayout>
 
@@ -41,10 +42,17 @@
             android:layout_below="@+id/fragment_status_list_header"/>
     </RelativeLayout>
 
-    <ProgressBar
-        android:id="@+id/progressbar"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"/>
+    <FrameLayout
+        android:id="@+id/progressbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff">
+
+        <ProgressBar
+            android:id="@+id/progressbar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+    </FrameLayout>
 </FrameLayout>
