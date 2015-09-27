@@ -1,8 +1,6 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker.parser;
 
-import android.util.Log;
-
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
@@ -15,7 +13,7 @@ import org.jsoup.select.Elements;
 import java.util.ArrayList;
 
 /**
- * Created by banbara23 on 15/09/26.
+ * 八重山観光フェリーのHTMLパースクラス
  */
 public class YkfParser {
 
@@ -26,8 +24,8 @@ public class YkfParser {
         Result result = new Result();
         ArrayList<Liner> mLiners = new ArrayList<>();
 
-        // 八重山観光フェリーはタイトルなし
-        result.setTitle(null);
+        // タイトル（通常はないがたまに出てくる）
+        result.setTitle(getTitle(doc.getElementsByTag("body")));
         // 更新日時 「Ｈ27/9/26 06：30現在」という感じになる
         result.setUpdateTime(getUpdateTime(doc.getElementsByTag("body")));
 
@@ -63,23 +61,31 @@ public class YkfParser {
         if (p == null || p.size() < 2) {
             return null;
         }
-        Log.d("YkfParser", p.get(1).text());
 
         return p.get(1).text();
     }
 
-    // /**
-    // * タイトル取得
-    // *
-    // * @param h5 タグ
-    // * @return タイトル
-    // */
-    // private static String getTitle(Elements h5) {
-    // if (h5 == null) {
-    // return "";
-    // }
-    // return h5.text();
-    // }
+    /**
+     * タイトル取得
+     *
+     * @param body タグ
+     * @return タイトル
+     */
+    private static String getTitle(Elements body) {
+        if (body == null) {
+            return "";
+        }
+        Element b = body.get(0);
+        if (b == null) {
+            return null;
+        }
+        Elements p = b.getElementsByTag("p");
+        if (p == null || p.size() < 3) {
+            return null;
+        }
+
+        return p.get(2).text();
+    }
 
     /**
      * 波照間
