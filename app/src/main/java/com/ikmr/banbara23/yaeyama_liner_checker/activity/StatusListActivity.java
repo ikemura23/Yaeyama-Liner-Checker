@@ -12,20 +12,22 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.ikmr.banbara23.yaeyama_liner_checker.parser.AnneiParser;
-import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
-import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.ListFragmentInterface;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAdapter;
-import com.ikmr.banbara23.yaeyama_liner_checker.parser.YkfParser;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusListFragment;
+import com.ikmr.banbara23.yaeyama_liner_checker.parser.AnneiParser;
+import com.ikmr.banbara23.yaeyama_liner_checker.parser.YkfParser;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 import java.io.IOException;
+
+import timber.log.Timber;
 
 /**
  * ステータス一覧Activity
@@ -134,7 +136,9 @@ public class StatusListActivity extends BaseActivity implements
                 ((ListFragmentInterface) mFragment).onFinishQuery();
             }
         } catch (Exception e) {
-            if (mFragment != null && mFragment instanceof ListFragmentInterface) {
+            Timber.d(e.getMessage());
+            if (mFragment != null && mFragment instanceof
+                    ListFragmentInterface) {
                 ((ListFragmentInterface) mFragment).onFailedQuery();
             }
         }

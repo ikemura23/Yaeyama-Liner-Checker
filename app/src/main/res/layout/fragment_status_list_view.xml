@@ -24,6 +24,7 @@
         android:text="○"
         android:textColor="#4169e1"
         android:textSize="20dp"
+        android:textStyle="bold"
         android:visibility="gone"/>
 
     <TextView
@@ -35,6 +36,7 @@
         android:text="×"
         android:textColor="#ff0000"
         android:textSize="20dp"
+        android:textStyle="bold"
         android:visibility="gone"/>
 
     <TextView
@@ -46,6 +48,7 @@
         android:text="△"
         android:textColor="#ffa500"
         android:textSize="20dp"
+        android:textStyle="bold"
         android:visibility="gone"/>
 
     <TextView

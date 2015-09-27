@@ -3,21 +3,22 @@ package com.ikmr.banbara23.yaeyama_liner_checker.fragment;
 
 import android.app.ListFragment;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.ListFragmentInterface;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAdapter;
+import com.ikmr.banbara23.yaeyama_liner_checker.StringUtils;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * ステータスリストのFragment
@@ -26,6 +27,10 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
     StatusListAdapter mListAdapter;
     ProgressBar mProgressBar;
     ListView mListView;
+    TextView mTitleText;
+    TextView mUpdateText;
+    LinearLayout mHeaderLayout;
+
     final static String PARAM_COMPANY = "company";
 
     public StatusListFragment() {
@@ -47,40 +52,15 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        // getHtml();
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_status_list, container, false);
         mListView = (ListView) view.findViewById(android.R.id.list);
         mProgressBar = (ProgressBar) view.findViewById(R.id.progressbar);
         mProgressBar.setIndeterminate(true);
+        mHeaderLayout = (LinearLayout) view.findViewById(R.id.fragment_status_list_header);
+        mTitleText = (TextView) view.findViewById(R.id.fragment_status_list_toolbar_title_text);
+        mUpdateText = (TextView) view.findViewById(R.id.fragment_status_list_toolbar_update_text);
         return view;
-    }
-
-    public void getHtml() {
-        // mListAdapter.clear();
-        // 通信して取得
-
-        // mListAdapter.addAll();
-        // mListView.setVisibility(View.VISIBLE);
-    }
-
-    /**
-     * 結果を作成
-     *
-     * @return
-     */
-    private List<String> getData() {
-        List<String> list = new ArrayList<>();
-
-        for (int i = 1; i < 10; i++) {
-            list.add(String.valueOf(i));
-        }
-        return list;
     }
 
     /**
@@ -96,6 +76,7 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
      */
     @Override
     public void onStartQuery() {
+        mHeaderLayout.setVisibility(View.GONE);
         mProgressBar.setVisibility(View.VISIBLE);
     }
 
@@ -104,11 +85,47 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
      */
     @Override
     public void onResultQuery(Result result) {
+        bind(result);
+    }
+
+    private void bind(Result result) {
+        mListAdapter.clear();
         if (result == null) {
             return;
         }
-        mListAdapter.clear();
         mListAdapter.addAll(result.getLiners());
+
+        // ヘッダー設定
+        mHeaderLayout.setVisibility(View.VISIBLE);
+        setTitle(result.getTitle());
+        setUpdate(result.getUpdateTime());
+
+    }
+
+    /**
+     * 更新時間
+     * 
+     * @param update
+     */
+    private void setUpdate(String update) {
+        if (TextUtils.isEmpty(update)) {
+            mUpdateText.setVisibility(View.GONE);
+            return;
+        }
+        mUpdateText.setText(update);
+
+    }
+
+    /**
+     * タイトル
+     * 
+     * @param title
+     */
+    private void setTitle(String title) {
+        if (TextUtils.isEmpty(title)) {
+            mTitleText.setVisibility(View.GONE);
+        }
+        mTitleText.setText(StringUtils.replaceAllSpace(title));
     }
 
     /**

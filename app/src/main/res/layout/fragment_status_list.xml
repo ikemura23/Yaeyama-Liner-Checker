@@ -4,10 +4,42 @@
              android:layout_height="match_parent"
              android:orientation="vertical">
 
-    <ListView
-        android:id="@id/android:list"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/fragment_status_list_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/fragment_status_list_toolbar_update_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="yyyy/MM/dd hh:mm:ss更新"
+                android:textSize="15dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/fragment_status_list_toolbar_title_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="title"
+                android:textSize="15dp"/>
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@id/android:list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="@id/fragment_status_list_header"
+            android:layout_below="@+id/fragment_status_list_header"/>
+    </RelativeLayout>
 
     <ProgressBar
         android:id="@+id/progressbar"
