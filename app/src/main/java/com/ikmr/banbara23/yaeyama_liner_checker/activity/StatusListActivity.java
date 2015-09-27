@@ -65,7 +65,9 @@ public class StatusListActivity extends BaseActivity implements
         if (mCompany == null) {
             return;
         }
-        String title = mCompany.getCompanyName() + getString(R.string.title_activity_status_list);
+        // String title = mCompany.getCompanyName() +
+        // getString(R.string.title_activity_status_list);
+        String title = mCompany.getCompanyName();
         setTitle(title);
     }
 
@@ -186,23 +188,5 @@ public class StatusListActivity extends BaseActivity implements
             }
             return doc;
         }
-    }
-
-    /**
-     * 安栄のHTMLパース
-     * 
-     * @param doc HTMLデータ
-     */
-    private void parsAnnei(Document doc) {
-        // AnneiParser.pars(doc);
-    }
-
-    /**
-     * 八重山観光フェリーのHTMLパース
-     * 
-     * @param doc
-     */
-    private Result parsYkf(Document doc) {
-        return null;
     }
 }
