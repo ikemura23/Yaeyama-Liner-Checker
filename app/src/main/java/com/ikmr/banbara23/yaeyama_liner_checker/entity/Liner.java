@@ -1,5 +1,5 @@
 
-package com.ikmr.banbara23.yaeyama_liner_checker;
+package com.ikmr.banbara23.yaeyama_liner_checker.entity;
 
 import android.os.Parcel;
 import android.os.Parcelable;

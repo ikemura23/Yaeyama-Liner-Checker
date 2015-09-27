@@ -7,7 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.ikmr.banbara23.yaeyama_liner_checker.Company;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 
 public class TopActivity extends BaseActivity {

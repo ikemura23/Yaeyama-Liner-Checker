@@ -4,9 +4,6 @@ package com.ikmr.banbara23.yaeyama_liner_checker.entity;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.ikmr.banbara23.yaeyama_liner_checker.Company;
-import com.ikmr.banbara23.yaeyama_liner_checker.Liner;
-
 import java.util.ArrayList;
 
 /**

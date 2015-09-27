@@ -1,9 +1,12 @@
 
-package com.ikmr.banbara23.yaeyama_liner_checker;
+package com.ikmr.banbara23.yaeyama_liner_checker.parser;
 
 import android.util.Log;
 
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Status;
 
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;

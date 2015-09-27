@@ -1,5 +1,5 @@
 
-package com.ikmr.banbara23.yaeyama_liner_checker;
+package com.ikmr.banbara23.yaeyama_liner_checker.entity;
 
 public enum Status {
     NORMAL("normal", "通常運航"), CANCEL("cancel", "欠航"), CAUTION("other", "注意");

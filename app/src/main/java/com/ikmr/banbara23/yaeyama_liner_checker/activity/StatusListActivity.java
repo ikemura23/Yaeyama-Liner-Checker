@@ -12,13 +12,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.ikmr.banbara23.yaeyama_liner_checker.AnneiParser;
-import com.ikmr.banbara23.yaeyama_liner_checker.Company;
-import com.ikmr.banbara23.yaeyama_liner_checker.Liner;
+import com.ikmr.banbara23.yaeyama_liner_checker.parser.AnneiParser;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.ListFragmentInterface;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAdapter;
-import com.ikmr.banbara23.yaeyama_liner_checker.YkfParser;
+import com.ikmr.banbara23.yaeyama_liner_checker.parser.YkfParser;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusListFragment;
 
