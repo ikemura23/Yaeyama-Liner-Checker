@@ -1,5 +1,5 @@
 
-package com.ikmr.banbara23.yaeyama_liner_checker;
+package com.ikmr.banbara23.yaeyama_liner_checker.fragment;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 

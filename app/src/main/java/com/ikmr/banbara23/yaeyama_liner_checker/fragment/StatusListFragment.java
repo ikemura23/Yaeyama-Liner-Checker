@@ -1,6 +1,7 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker.fragment;
 
+import android.app.Activity;
 import android.app.ListFragment;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -14,7 +15,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ikmr.banbara23.yaeyama_liner_checker.ListFragmentInterface;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAdapter;
 import com.ikmr.banbara23.yaeyama_liner_checker.StringUtils;
@@ -47,13 +47,6 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mListAdapter = new StatusListAdapter(getActivity().getApplicationContext(), getActivity());
-        setListAdapter(mListAdapter);
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_status_list, container, false);
         mListView = (ListView) view.findViewById(android.R.id.list);
@@ -64,6 +57,37 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
         mUpdateText = (TextView) view.findViewById(R.id.fragment_status_list_toolbar_update_text);
         mProgressLayout = (FrameLayout) view.findViewById(R.id.progressbar_layout);
         return view;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        Activity activity = getActivity();
+        if (activity != null && activity instanceof QueryInterface) {
+            // リストアダプターの生成
+            mListAdapter = new StatusListAdapter(getActivity().getApplicationContext(), getActivity());
+            setListAdapter(mListAdapter);
+            // API通信処理の開始準備の完了
+            ((QueryInterface) activity).startQuery();
+            showProgress();
+        }
+    }
+
+    /**
+     * 読込中の表示開始
+     */
+    private void showProgress() {
+        mHeaderLayout.setVisibility(View.GONE);
+        mProgressLayout.setVisibility(View.VISIBLE);
+        // mProgressBar.setVisibility(View.GONE);
+    }
+
+    /**
+     * 読込中の表示完了
+     */
+    private void hideProgress() {
+        mHeaderLayout.setVisibility(View.VISIBLE);
+        mProgressLayout.setVisibility(View.INVISIBLE);
     }
 
     /**
@@ -79,9 +103,7 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
      */
     @Override
     public void onStartQuery() {
-        mHeaderLayout.setVisibility(View.GONE);
-        mProgressLayout.setVisibility(View.VISIBLE);
-        // mProgressBar.setVisibility(View.VISIBLE);
+        showProgress();
     }
 
     /**
@@ -100,7 +122,6 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
         mListAdapter.addAll(result.getLiners());
 
         // ヘッダー設定
-        mHeaderLayout.setVisibility(View.VISIBLE);
         setTitle(result.getTitle());
         setUpdate(result.getUpdateTime());
 
@@ -147,7 +168,6 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
      */
     @Override
     public void onFinishQuery() {
-        mProgressLayout.setVisibility(View.INVISIBLE);
-        // mProgressBar.setVisibility(View.GONE);
+        hideProgress();
     }
 }

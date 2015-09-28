@@ -1,6 +1,13 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker.activity;
 
+import java.io.IOException;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
+import timber.log.Timber;
+
 import android.app.Fragment;
 import android.app.LoaderManager;
 import android.content.AsyncTaskLoader;
@@ -10,34 +17,28 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.ikmr.banbara23.yaeyama_liner_checker.ListFragmentInterface;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAdapter;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
+import com.ikmr.banbara23.yaeyama_liner_checker.fragment.ListFragmentInterface;
+import com.ikmr.banbara23.yaeyama_liner_checker.fragment.QueryInterface;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusListFragment;
 import com.ikmr.banbara23.yaeyama_liner_checker.parser.AnneiParser;
 import com.ikmr.banbara23.yaeyama_liner_checker.parser.YkfParser;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-
-import java.io.IOException;
-
-import timber.log.Timber;
 
 /**
  * ステータス一覧Activity
  */
 public class StatusListActivity extends BaseActivity implements
-        StatusListAdapter.ListItemClickListener, LoaderManager.LoaderCallbacks<Document> {
+        StatusListAdapter.ListItemClickListener, LoaderManager.LoaderCallbacks<Document>, QueryInterface {
 
     final static String PARAM_COMPANY = "company";
     // 観光会社
     private Company mCompany;
     // 通知用インターフェース
-    private ListFragmentInterface mListFragmentInterface;
+    // private ListFragmentInterface mListFragmentInterface;
     /** クエリ起動中かどうか */
     private boolean mQuerying;
     Fragment mFragment;
@@ -60,23 +61,8 @@ public class StatusListActivity extends BaseActivity implements
     }
 
     /**
-     * 一覧の取得開始
+     * タイトルの設定
      */
-    private void startQuery() {
-        if (mFragment != null && mFragment instanceof ListFragmentInterface) {
-            ((ListFragmentInterface) mFragment).onStartQuery();
-        }
-        mQuerying = true;
-        getLoaderManager().initLoader(0, null, this);
-    }
-
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        // 一覧の取得開始
-        startQuery();
-    }
-
     private void setPageTitle() {
         if (mCompany == null) {
             return;
@@ -85,6 +71,23 @@ public class StatusListActivity extends BaseActivity implements
         // getString(R.string.title_activity_status_list);
         String title = mCompany.getCompanyName();
         setTitle(title);
+    }
+
+    @Override
+    public void startQuery() {
+        // 一覧の取得開始
+        createList();
+    }
+
+    /**
+     * 一覧の取得開始
+     */
+    private void createList() {
+        if (mFragment != null && mFragment instanceof ListFragmentInterface) {
+            ((ListFragmentInterface) mFragment).onStartQuery();
+        }
+        mQuerying = true;
+        getLoaderManager().initLoader(0, null, this);
     }
 
     @Override
@@ -102,7 +105,7 @@ public class StatusListActivity extends BaseActivity implements
                 break;
             case R.id.action_reload:
                 if (!mQuerying) {
-                    startQuery();
+                    createList();
                 }
                 break;
         }
@@ -148,8 +151,7 @@ public class StatusListActivity extends BaseActivity implements
             }
         } catch (Exception e) {
             Timber.d(e.getMessage());
-            if (mFragment != null && mFragment instanceof
-                    ListFragmentInterface) {
+            if (mFragment != null && mFragment instanceof ListFragmentInterface) {
                 ((ListFragmentInterface) mFragment).onFailedQuery();
             }
         } finally {
@@ -191,8 +193,7 @@ public class StatusListActivity extends BaseActivity implements
             String url;
             if (mCompany == Company.ANNEI) {
                 url = getContext().getString(R.string.url_annei_list);
-            }
-            else {
+            } else {
                 url = getContext().getString(R.string.url_ykf_list);
             }
 
