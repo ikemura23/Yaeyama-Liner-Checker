@@ -1,13 +1,6 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker.activity;
 
-import java.io.IOException;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-
-import timber.log.Timber;
-
 import android.app.Fragment;
 import android.app.LoaderManager;
 import android.content.AsyncTaskLoader;
@@ -28,6 +21,13 @@ import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusListFragment;
 import com.ikmr.banbara23.yaeyama_liner_checker.parser.AnneiParser;
 import com.ikmr.banbara23.yaeyama_liner_checker.parser.YkfParser;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
+import java.io.IOException;
+
+import timber.log.Timber;
+
 /**
  * ステータス一覧Activity
  */
@@ -37,8 +37,6 @@ public class StatusListActivity extends BaseActivity implements
     final static String PARAM_COMPANY = "company";
     // 観光会社
     private Company mCompany;
-    // 通知用インターフェース
-    // private ListFragmentInterface mListFragmentInterface;
     /** クエリ起動中かどうか */
     private boolean mQuerying;
     Fragment mFragment;
@@ -150,7 +148,9 @@ public class StatusListActivity extends BaseActivity implements
                 ((ListFragmentInterface) mFragment).onFinishQuery();
             }
         } catch (Exception e) {
+            Timber.d("エラー発生！！");
             Timber.d(e.getMessage());
+            Timber.d(e.getLocalizedMessage());
             if (mFragment != null && mFragment instanceof ListFragmentInterface) {
                 ((ListFragmentInterface) mFragment).onFailedQuery();
             }
