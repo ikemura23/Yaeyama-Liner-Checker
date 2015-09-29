@@ -15,44 +15,45 @@
         android:layout_marginRight="10dp"
         android:text="西表(上原)"
         android:textColor="@color/background_material_dark"
-        android:textSize="25dp"/>
+        android:textSize="20dp"/>
 
-    <TextView
-        android:id="@+id/view_status_list_status_normal_text"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:text="○"
-        android:textColor="#4169e1"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        android:visibility="gone"/>
 
     <FrameLayout
-        android:layout_width="wrap_content"
+        android:layout_width="30dp"
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/view_status_list_status_cancel_text"
-            android:layout_width="30dp"
+            android:id="@+id/view_status_list_status_normal_text"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="×"
-            android:textColor="#ff0000"
-            android:textSize="30dp"
+            android:layout_gravity="center"
+            android:text="○"
+            android:textColor="#4169e1"
+            android:textSize="25dp"
             android:textStyle="bold"
             android:visibility="gone"/>
 
         <TextView
             android:id="@+id/view_status_list_status_cation_text"
-            android:layout_width="30dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:layout_gravity="center"
             android:text="△"
             android:textColor="#ffa500"
-            android:textSize="30dp"
+            android:textSize="25dp"
             android:textStyle="bold"
             android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/view_status_list_status_cancel_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="×"
+            android:textColor="#ff0000"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            />
     </FrameLayout>
 
     <TextView
@@ -63,6 +64,6 @@
         android:layout_marginLeft="10dp"
         android:text="正常運航"
         android:textColor="@color/background_material_dark"
-        android:textSize="25dp"/>
+        android:textSize="20dp"/>
 
 </com.ikmr.banbara23.yaeyama_liner_checker.view.StatusListView>
