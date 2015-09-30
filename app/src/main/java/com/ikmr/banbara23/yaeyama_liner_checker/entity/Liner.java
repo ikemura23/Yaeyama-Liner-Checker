@@ -16,6 +16,7 @@ public class Liner implements Parcelable {
     protected Liner(Parcel in) {
         port = (Port) in.readValue(Port.class.getClassLoader());
         status = (Status) in.readValue(Status.class.getClassLoader());
+        text = in.readString();
     }
 
     @Override
@@ -65,5 +66,14 @@ public class Liner implements Parcelable {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    @Override
+    public String toString() {
+        return "Liner{" +
+                "port=" + port +
+                ", status=" + status +
+                ", text='" + text + '\'' +
+                '}';
     }
 }

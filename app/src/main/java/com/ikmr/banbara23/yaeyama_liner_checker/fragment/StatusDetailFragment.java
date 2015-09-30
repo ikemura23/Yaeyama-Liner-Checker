@@ -33,7 +33,7 @@ public class StatusDetailFragment extends BaseFragment {
      *
      * @return
      */
-    private String getParam() {
+    private Liner getParam() {
         Log.d("StatusDetailFragment", "getArguments():" + getArguments());
         return getArguments().getParcelable(StatusDetailFragment.class.getName());
     }
@@ -41,7 +41,7 @@ public class StatusDetailFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        Toast.makeText(getActivity().getApplicationContext(), getParam(), Toast.LENGTH_SHORT)
+        Toast.makeText(getActivity().getApplicationContext(), getParam().toString(), Toast.LENGTH_SHORT)
                 .show();
     }
 
