@@ -4,11 +4,37 @@
                                                                 android:layout_height="match_parent"
                                                                 android:orientation="vertical">
 
+
     <TextView
-        android:id="@+id/view_status_detail_text"
+        android:id="@+id/view_status_detail_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="本日の運航状況"/>
+
+    <TextView
+        android:id="@+id/view_status_detail_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="9月30日（水）　通常運航。
+ 【お知らせ】2015.10.1から冬季時刻表に変更になります。
+【お知らせ】原油価格の下落により、「燃料油価格変動調整金」を９月１日より撤廃いたします。料金表は、弊社ホームぺージをご参照ください。
+
+航行中、予想以上に船が大きく揺れる場合があります。
+客室内前方において高齢者の方が腰椎圧迫骨折をする事故が発生しています。
+乗船中は、常時シートベルトを腰の低い位置でしっかりとお締め下さい。
+
+※時刻は、予告なく変更になる場合があります。
+
+★印の運航時間は、西表島上原港経由になります。"/>
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="value"/>
+        android:text="石垣港発"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="鳩間島発"/>
 
 </com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailView>

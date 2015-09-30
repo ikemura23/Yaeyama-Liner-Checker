@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.app.LoaderManager;
 import android.content.AsyncTaskLoader;
 import android.content.Context;
+import android.content.Intent;
 import android.content.Loader;
 import android.os.Bundle;
 import android.util.Log;
@@ -173,9 +174,9 @@ public class StatusListActivity extends BaseActivity implements
      */
     @Override
     public void onItemClick(Liner liner) {
-        // Intent intent = new Intent(this, StatusDetailActivity.class);
-        // intent.putExtra(StatusDetailActivity.class.getName(), liner);
-        // startActivity(intent);
+        Intent intent = new Intent(this, StatusDetailActivity.class);
+        intent.putExtra(StatusDetailActivity.class.getName(), liner);
+        startActivity(intent);
     }
 
     /**

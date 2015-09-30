@@ -1,6 +1,8 @@
+
 package com.ikmr.banbara23.yaeyama_liner_checker.view;
 
 import android.content.Context;
+import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
 /**
@@ -10,4 +12,9 @@ public class StatusDetailView extends LinearLayout {
     public StatusDetailView(Context context) {
         super(context);
     }
+
+    public StatusDetailView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
 }

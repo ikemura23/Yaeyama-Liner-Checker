@@ -3,13 +3,14 @@ package com.ikmr.banbara23.yaeyama_liner_checker.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailView;
 
 /**
@@ -33,7 +34,8 @@ public class StatusDetailFragment extends BaseFragment {
      * @return
      */
     private String getParam() {
-        return getArguments().getString(StatusDetailFragment.class.getName());
+        Log.d("StatusDetailFragment", "getArguments():" + getArguments());
+        return getArguments().getParcelable(StatusDetailFragment.class.getName());
     }
 
     @Override
@@ -47,8 +49,7 @@ public class StatusDetailFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_status_detail, container, false);
-        // mStatusDetailView = (StatusDetailView)
-        // view.findViewById(R.id.fragment_detail_view);
+        mStatusDetailView = (StatusDetailView) view.findViewById(R.id.fragment_status_detail);
         return view;
     }
 }

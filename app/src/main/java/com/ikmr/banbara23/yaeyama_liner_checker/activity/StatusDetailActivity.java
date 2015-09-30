@@ -6,8 +6,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusDetailFragment;
 
 /**
@@ -16,12 +17,16 @@ import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusDetailFragment;
 public class StatusDetailActivity extends BaseActivity {
 
     Liner liner;
+    // 観光会社
+    private Company mCompany;
+    /** クエリ起動中かどうか */
+    private boolean mQuerying;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_status_detail);
-        liner = (Liner) getIntent().getSerializableExtra(StatusDetailActivity.class.getName());
+        liner = getIntent().getParcelableExtra(StatusDetailActivity.class.getName());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         if (savedInstanceState == null) {
