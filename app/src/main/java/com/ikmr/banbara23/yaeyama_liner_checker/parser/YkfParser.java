@@ -118,13 +118,11 @@ public class YkfParser {
      * @return
      */
     private static Status getStatus(String text) {
-        String replaceText = text.replace(" ", "");
-        replaceText = replaceText.replace("　", "");
 
-        if (replaceText.contains("◯")) {
+        if (text.contains("○") || text.contains("〇")) {
             return Status.NORMAL;
         }
-        else if (replaceText.contains("×")) {
+        else if (text.contains("×")) {
             return Status.CANCEL;
         }
         else {

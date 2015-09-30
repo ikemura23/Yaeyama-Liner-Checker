@@ -41,4 +41,27 @@ public class StringUtils {
         replace = replace.replaceAll("　", "");
         return replace;
     }
+
+    /**
+     * 全角、半角スペースを削除
+     * 
+     * @param value
+     * @return
+     */
+    public static String trim(String value) {
+        if (value == null) {
+            return null;
+        }
+        int len = value.length();
+        int st = 0;
+        char[] val = value.toCharArray();
+
+        while ((st < len) && (val[st] <= ' ' || val[st] == '　')) {
+            st++;
+        }
+        while ((st < len) && (val[len - 1] <= ' ' || val[len - 1] == '　')) {
+            len--;
+        }
+        return ((st > 0) || (len < value.length())) ? value.substring(st, len) : value;
+    }
 }
