@@ -3,11 +3,10 @@
   <component name="EclipseCodeFormatter">
     <option name="defaultSettings" value="true" />
     <option name="formatter" value="ECLIPSE" />
-    <option name="id" value="1436025906782" />
+    <option name="id" value="1435909558973" />
     <option name="name" value="default" />
-    <option name="pathToConfigFileJava" value="$USER_HOME$/AndroidStudioProjects/android-formatting.xml" />
+    <option name="pathToConfigFileJava" value="$USER_HOME$/AndroidStudioProjects/zexy_formatter.xml" />
     <option name="selectedJavaProfile" value="Android" />
-    <option name="useOldEclipseJavaFormatter" value="true" />
   </component>
   <component name="EntryPointsManager">
     <entry_points version="2.0" />

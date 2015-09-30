@@ -25,4 +25,5 @@ dependencies {
     compile 'com.jakewharton.timber:timber:3.1.0'
     compile 'com.google.code.gson:gson:2.3'
     compile 'com.squareup.retrofit:retrofit:2.0.0-beta1'
+    compile 'com.google.android.gms:play-services:7.0.0'
 }
