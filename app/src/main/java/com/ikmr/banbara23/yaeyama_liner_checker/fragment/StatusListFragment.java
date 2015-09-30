@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.ListFragment;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAdapter;
 import com.ikmr.banbara23.yaeyama_liner_checker.StringUtils;
@@ -32,6 +35,7 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
     TextView mUpdateText;
     LinearLayout mHeaderLayout;
     FrameLayout mProgressLayout;
+    AdView mAdView;
 
     final static String PARAM_COMPANY = "company";
 
@@ -56,12 +60,29 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
         mTitleText = (TextView) view.findViewById(R.id.fragment_status_list_toolbar_title_text);
         mUpdateText = (TextView) view.findViewById(R.id.fragment_status_list_toolbar_update_text);
         mProgressLayout = (FrameLayout) view.findViewById(R.id.progressbar_layout);
+        mAdView = (AdView) view.findViewById(R.id.adView);
         return view;
+    }
+
+    /**
+     * 広告読み込み
+     */
+    protected void loadAd() {
+        if (mAdView == null) {
+            return;
+        }
+        try {
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
+        } catch (Exception e) {
+            Log.d("StatusListFragment", "loadAd e:" + e);
+        }
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        loadAd();
         Activity activity = getActivity();
         if (activity != null && activity instanceof QueryInterface) {
             // リストアダプターの生成

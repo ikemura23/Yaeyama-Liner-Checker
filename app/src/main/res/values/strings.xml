@@ -14,4 +14,7 @@
     <string name="url_ykf_list">http://sync5-cnsl.digitalstage.jp/sync/docs.action?s=document%3A1s9n6naZmRe88T4iHVVZkHfyOgyci5qvWMkuaySZJFM0</string>
     <!--ドリーム観光-->
     <string name="url_dream_list">http://www.ishigaki-dream.co.jp/data.cgi?no=78</string>
+
+    <!--広告-->
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
 </resources>

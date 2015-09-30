@@ -7,6 +7,7 @@ import android.content.AsyncTaskLoader;
 import android.content.Context;
 import android.content.Loader;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -148,6 +149,7 @@ public class StatusListActivity extends BaseActivity implements
                 ((ListFragmentInterface) mFragment).onFinishQuery();
             }
         } catch (Exception e) {
+            Log.d("StatusListActivity", "e:" + e);
             Timber.d("エラー発生！！");
             Timber.d(e.getMessage());
             Timber.d(e.getLocalizedMessage());
