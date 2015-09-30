@@ -17,7 +17,7 @@ import java.util.ArrayList;
 /**
  * 安栄HTMLのパース処理
  */
-public class AnneiParser {
+public class AnneiListParser {
 
     public static Result pars(Document doc) {
         Result result = new Result();

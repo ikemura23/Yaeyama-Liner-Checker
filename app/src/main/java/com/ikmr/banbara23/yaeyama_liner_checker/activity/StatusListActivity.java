@@ -18,7 +18,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.ListFragmentInterface;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.QueryInterface;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusListFragment;
-import com.ikmr.banbara23.yaeyama_liner_checker.parser.AnneiParser;
+import com.ikmr.banbara23.yaeyama_liner_checker.parser.AnneiListParser;
 import com.ikmr.banbara23.yaeyama_liner_checker.parser.YkfParser;
 
 import org.jsoup.Jsoup;
@@ -134,7 +134,7 @@ public class StatusListActivity extends BaseActivity implements
         try {
             if (mCompany == Company.ANNEI) {
                 // 安栄のHTMLパース呼び出し
-                result = AnneiParser.pars(doc);
+                result = AnneiListParser.pars(doc);
             } else {
                 // 八重山観光フェリーのHTMLパース呼び出し
                 result = YkfParser.pars(doc);
