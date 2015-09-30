@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:drawablePadding="5dp"
                 android:text="yyyy/MM/dd hh:mm:ss更新"
-                android:textSize="25dp"
+                android:textSize="20dp"
                 android:textStyle="bold"/>
             <!--タイトル-->
             <TextView
@@ -35,7 +35,7 @@
                 android:layout_marginTop="5dp"
                 android:drawablePadding="5dp"
                 android:text="title"
-                android:textSize="20dp"/>
+                android:textSize="18dp"/>
 
         </LinearLayout>
 
