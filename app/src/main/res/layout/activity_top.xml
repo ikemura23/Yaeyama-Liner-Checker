@@ -23,7 +23,8 @@
         android:layout_below="@+id/textView"
         android:layout_marginTop="10dp"
         android:onClick="anneiClick"
-        android:text="安栄観光"/>
+        android:text="安栄観光"
+        android:transitionName="@string/transition_top_annei"/>
 
     <Button
         android:layout_width="match_parent"

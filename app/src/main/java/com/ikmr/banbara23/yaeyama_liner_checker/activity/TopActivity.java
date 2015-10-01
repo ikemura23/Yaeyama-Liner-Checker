@@ -58,11 +58,16 @@ public class TopActivity extends BaseActivity {
     /**
      * 安栄クリック
      * 
-     * @param view
+     * @param view 安栄観光ボタン
      */
     public void anneiClick(View view) {
         Intent intent = new Intent(this, StatusListActivity.class);
         intent.putExtra(StatusListActivity.PARAM_COMPANY, Company.ANNEI);
+        // todo:shared elementsの途中
+        // shared elements http://googledevjp.blogspot.jp/2014/11/android.html
+        // String transitionName = getString(R.string.transition_top_annei);
+        // ActivityOptionsCompat options =
+        // ActivityOptionsCompat.makeSceneTransitionAnimation(this,)
         startActivity(intent);
     }
 
