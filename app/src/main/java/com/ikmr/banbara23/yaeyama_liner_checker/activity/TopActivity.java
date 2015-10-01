@@ -48,6 +48,9 @@ public class TopActivity extends BaseActivity {
      */
     protected void loadAd() {
         AdView mAdView = (AdView) findViewById(R.id.adView);
+        if (mAdView == null) {
+            return;
+        }
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
     }
