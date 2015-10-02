@@ -3,8 +3,6 @@ package com.ikmr.banbara23.yaeyama_liner_checker.activity;
 
 import android.app.Fragment;
 import android.app.LoaderManager;
-import android.content.AsyncTaskLoader;
-import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
 import android.os.Bundle;
@@ -12,6 +10,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAsyncTaskLoader;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAdapter;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
@@ -23,10 +22,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusListFragment;
 import com.ikmr.banbara23.yaeyama_liner_checker.parser.AnneiListParser;
 import com.ikmr.banbara23.yaeyama_liner_checker.parser.YkfParser;
 
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-
-import java.io.IOException;
 
 import timber.log.Timber;
 
@@ -115,7 +111,13 @@ public class StatusListActivity extends BaseActivity implements
 
     @Override
     public Loader<Document> onCreateLoader(int id, Bundle args) {
-        MyAsyncTaskLoader appLoader = new MyAsyncTaskLoader(getApplication(), mCompany);
+        String url;
+        if (mCompany == Company.ANNEI) {
+            url = getApplicationContext().getString(R.string.url_annei_list);
+        } else {
+            url = getApplicationContext().getString(R.string.url_ykf_list);
+        }
+        StatusListAsyncTaskLoader appLoader = new StatusListAsyncTaskLoader(getApplication(), mCompany, url);
 
         // loaderの開始
         appLoader.forceLoad();
@@ -179,34 +181,4 @@ public class StatusListActivity extends BaseActivity implements
         startActivity(intent);
     }
 
-    /**
-     * AsyncTaskLoaderクラス
-     */
-    public static class MyAsyncTaskLoader extends AsyncTaskLoader<Document> {
-        Company mCompany;
-
-        public MyAsyncTaskLoader(Context context, Company company) {
-            super(context);
-            this.mCompany = company;
-        }
-
-        @Override
-        public Document loadInBackground() {
-            Document doc = null;
-            String url;
-            if (mCompany == Company.ANNEI) {
-                url = getContext().getString(R.string.url_annei_list);
-            } else {
-                url = getContext().getString(R.string.url_ykf_list);
-            }
-
-            try {
-                // HTML取得
-                doc = Jsoup.connect(url).get();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return doc;
-        }
-    }
 }
