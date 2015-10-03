@@ -10,7 +10,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAsyncTaskLoader;
+import com.ikmr.banbara23.yaeyama_liner_checker.StatusAsyncTaskLoader;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAdapter;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
@@ -117,7 +117,7 @@ public class StatusListActivity extends BaseActivity implements
         } else {
             url = getApplicationContext().getString(R.string.url_ykf_list);
         }
-        StatusListAsyncTaskLoader appLoader = new StatusListAsyncTaskLoader(getApplication(), mCompany, url);
+        StatusAsyncTaskLoader appLoader = new StatusAsyncTaskLoader(getApplication(), mCompany, url);
 
         // loaderの開始
         appLoader.forceLoad();

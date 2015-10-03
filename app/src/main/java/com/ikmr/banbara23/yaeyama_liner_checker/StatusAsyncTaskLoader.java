@@ -1,26 +1,22 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker;
 
-import java.io.IOException;
+import android.content.AsyncTaskLoader;
+import android.content.Context;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
-import android.content.AsyncTaskLoader;
-import android.content.Context;
-
-import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
+import java.io.IOException;
 
 /**
  * Created by banbara23 on 15/10/03.
  */
-public class StatusListAsyncTaskLoader extends AsyncTaskLoader<Document> {
-    Company mCompany;
+public class StatusAsyncTaskLoader extends AsyncTaskLoader<Document> {
     String mUrl;
 
-    public StatusListAsyncTaskLoader(Context context, Company company, String url) {
+    public StatusAsyncTaskLoader(Context context, String url) {
         super(context);
-        this.mCompany = company;
         this.mUrl = url;
     }
 
