@@ -26,7 +26,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 /**
  * ステータスリストのFragment
  */
-public class StatusListFragment extends ListFragment implements FragmentInterface {
+public class StatusListFragment extends ListFragment implements ListFragmentInterface {
     StatusListAdapter mListAdapter;
     ProgressBar mProgressBar;
     ListView mListView;

@@ -4,16 +4,13 @@ package com.ikmr.banbara23.yaeyama_liner_checker.fragment;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
-import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailView;
 
 /**
@@ -38,22 +35,14 @@ public class StatusDetailFragment extends BaseFragment implements FragmentInterf
      * @return
      */
     private Liner getParam() {
-        Log.d("StatusDetailFragment", "getArguments():" + getArguments());
         return getArguments().getParcelable(StatusDetailFragment.class.getName());
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        Toast.makeText(getActivity().getApplicationContext(), getParam().toString(), Toast.LENGTH_SHORT)
-                .show();
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_status_detail, container, false);
-        mStatusDetailView = (StatusDetailView) view.findViewById(R.id.fragment_status_detail);
+        mStatusDetailView = (StatusDetailView) view.findViewById(R.id.fragment_status_detail_view);
         mProgressBar = (ProgressBar) view.findViewById(R.id.progressbar);
         return view;
     }
@@ -88,8 +77,8 @@ public class StatusDetailFragment extends BaseFragment implements FragmentInterf
     }
 
     @Override
-    public void onResultQuery(Result result) {
-
+    public void onResultQuery(String value) {
+        mStatusDetailView.bind(value);
     }
 
     @Override

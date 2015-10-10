@@ -9,7 +9,7 @@
         android:layout_height="match_parent">
 
         <com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailView
-            android:id="@+id/fragment_status_detail"
+            android:id="@+id/fragment_status_detail_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 

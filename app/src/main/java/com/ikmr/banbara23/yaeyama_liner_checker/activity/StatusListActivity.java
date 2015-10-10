@@ -16,7 +16,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAdapter;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
-import com.ikmr.banbara23.yaeyama_liner_checker.fragment.FragmentInterface;
+import com.ikmr.banbara23.yaeyama_liner_checker.fragment.ListFragmentInterface;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.QueryInterface;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusListFragment;
 import com.ikmr.banbara23.yaeyama_liner_checker.parser.AnneiListParser;
@@ -81,8 +81,8 @@ public class StatusListActivity extends BaseActivity implements
      * 一覧の取得開始
      */
     private void createList() {
-        if (mFragment != null && mFragment instanceof FragmentInterface) {
-            ((FragmentInterface) mFragment).onStartQuery();
+        if (mFragment != null && mFragment instanceof ListFragmentInterface) {
+            ((ListFragmentInterface) mFragment).onStartQuery();
         }
         mQuerying = true;
         getLoaderManager().initLoader(0, null, this);
@@ -131,8 +131,8 @@ public class StatusListActivity extends BaseActivity implements
     public void onLoadFinished(Loader<Document> loader, Document doc) {
         if (doc == null) {
             // エラーを通知
-            if (mFragment != null && mFragment instanceof FragmentInterface) {
-                ((FragmentInterface) mFragment).onFailedQuery();
+            if (mFragment != null && mFragment instanceof ListFragmentInterface) {
+                ((ListFragmentInterface) mFragment).onFailedQuery();
             }
             return;
         }
@@ -146,20 +146,20 @@ public class StatusListActivity extends BaseActivity implements
                 result = YkfParser.pars(doc);
             }
             // 結果を通知
-            if (mFragment != null && mFragment instanceof FragmentInterface) {
-                ((FragmentInterface) mFragment).onResultQuery(result);
+            if (mFragment != null && mFragment instanceof ListFragmentInterface) {
+                ((ListFragmentInterface) mFragment).onResultQuery(result);
             }
             // 終了
-            if (mFragment != null && mFragment instanceof FragmentInterface) {
-                ((FragmentInterface) mFragment).onFinishQuery();
+            if (mFragment != null && mFragment instanceof ListFragmentInterface) {
+                ((ListFragmentInterface) mFragment).onFinishQuery();
             }
         } catch (Exception e) {
             Log.d("StatusListActivity", "e:" + e);
             Timber.d("エラー発生！！");
             Timber.d(e.getMessage());
             Timber.d(e.getLocalizedMessage());
-            if (mFragment != null && mFragment instanceof FragmentInterface) {
-                ((FragmentInterface) mFragment).onFailedQuery();
+            if (mFragment != null && mFragment instanceof ListFragmentInterface) {
+                ((ListFragmentInterface) mFragment).onFailedQuery();
             }
         } finally {
             mQuerying = false;

@@ -13,9 +13,7 @@ import android.widget.Toast;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusAsyncTaskLoader;
 import com.ikmr.banbara23.yaeyama_liner_checker.UrlSelector;
-import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
-import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.FragmentInterface;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.QueryInterface;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusDetailFragment;
@@ -32,7 +30,6 @@ public class StatusDetailActivity extends BaseActivity implements LoaderManager.
 
     Liner mLiner;
     // 観光会社
-    private Company mCompany;
     Fragment mFragment;
     /**
      * クエリ起動中かどうか
@@ -91,18 +88,18 @@ public class StatusDetailActivity extends BaseActivity implements LoaderManager.
             ((FragmentInterface) mFragment).onStartQuery();
         }
         mQuerying = true;
-        getLoaderManager().initLoader(0, null, this);
+        getLoaderManager().initLoader(1, null, this);
     }
 
     @Override
     public Loader<Document> onCreateLoader(int id, Bundle args) {
-        String url = UrlSelector.geDetailtUrl(getApplicationContext(), mCompany, mLiner.port);
+        String url = UrlSelector.geDetailtUrl(getApplicationContext(), mLiner.company, mLiner.port);
         StatusAsyncTaskLoader appLoader = new StatusAsyncTaskLoader(getApplication(), url);
 
         // loaderの開始
         appLoader.forceLoad();
 
-        return null;
+        return appLoader;
     }
 
     @Override
@@ -114,7 +111,7 @@ public class StatusDetailActivity extends BaseActivity implements LoaderManager.
             }
             return;
         }
-        Result result = null;
+        String result = null;
         try {
             // 安栄のHTMLパース呼び出し
             result = AnneiDetailParser.pars(document);
