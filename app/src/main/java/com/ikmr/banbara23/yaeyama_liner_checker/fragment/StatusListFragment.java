@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.app.ListFragment;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +26,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 /**
  * ステータスリストのFragment
  */
-public class StatusListFragment extends ListFragment implements ListFragmentInterface {
+public class StatusListFragment extends ListFragment implements FragmentInterface {
     StatusListAdapter mListAdapter;
     ProgressBar mProgressBar;
     ListView mListView;
@@ -75,7 +74,6 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
             AdRequest adRequest = new AdRequest.Builder().build();
             mAdView.loadAd(adRequest);
         } catch (Exception e) {
-            Log.d("StatusListFragment", "loadAd e:" + e);
         }
     }
 
@@ -150,7 +148,7 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
 
     /**
      * 更新時間
-     * 
+     *
      * @param update
      */
     private void setUpdate(String update) {
@@ -164,7 +162,7 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
 
     /**
      * タイトル
-     * 
+     *
      * @param title
      */
     private void setTitle(String title) {

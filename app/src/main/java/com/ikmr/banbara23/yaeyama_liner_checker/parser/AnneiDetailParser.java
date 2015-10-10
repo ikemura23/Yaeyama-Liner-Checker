@@ -80,9 +80,9 @@ public class AnneiDetailParser {
 
     /**
      * 波照間
-     * 
+     *
      * @param port 港名
-     * @param div <div class="box">
+     * @param div  <div class="box">
      * @return
      */
     private static Liner getDivPort(Port port, Elements div) {

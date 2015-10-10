@@ -10,7 +10,7 @@ import org.jsoup.nodes.Document;
 import java.io.IOException;
 
 /**
- * Created by banbara23 on 15/10/03.
+ * 指定HTMLを取得する
  */
 public class StatusAsyncTaskLoader extends AsyncTaskLoader<Document> {
     String mUrl;

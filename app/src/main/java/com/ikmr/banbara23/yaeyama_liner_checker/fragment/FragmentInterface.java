@@ -6,7 +6,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 /**
  * 一覧系画面の Fragment 共通のインタフェース
  */
-public interface ListFragmentInterface {
+public interface FragmentInterface {
     /** 初回検索時 */
     void onResetQuery();
 

@@ -10,13 +10,13 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.ikmr.banbara23.yaeyama_liner_checker.StatusAsyncTaskLoader;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
+import com.ikmr.banbara23.yaeyama_liner_checker.StatusAsyncTaskLoader;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAdapter;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
-import com.ikmr.banbara23.yaeyama_liner_checker.fragment.ListFragmentInterface;
+import com.ikmr.banbara23.yaeyama_liner_checker.fragment.FragmentInterface;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.QueryInterface;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusListFragment;
 import com.ikmr.banbara23.yaeyama_liner_checker.parser.AnneiListParser;
@@ -35,7 +35,9 @@ public class StatusListActivity extends BaseActivity implements
     final static String PARAM_COMPANY = "company";
     // 観光会社
     private Company mCompany;
-    /** クエリ起動中かどうか */
+    /**
+     * クエリ起動中かどうか
+     */
     private boolean mQuerying;
     Fragment mFragment;
 
@@ -79,8 +81,8 @@ public class StatusListActivity extends BaseActivity implements
      * 一覧の取得開始
      */
     private void createList() {
-        if (mFragment != null && mFragment instanceof ListFragmentInterface) {
-            ((ListFragmentInterface) mFragment).onStartQuery();
+        if (mFragment != null && mFragment instanceof FragmentInterface) {
+            ((FragmentInterface) mFragment).onStartQuery();
         }
         mQuerying = true;
         getLoaderManager().initLoader(0, null, this);
@@ -117,7 +119,7 @@ public class StatusListActivity extends BaseActivity implements
         } else {
             url = getApplicationContext().getString(R.string.url_ykf_list);
         }
-        StatusAsyncTaskLoader appLoader = new StatusAsyncTaskLoader(getApplication(), mCompany, url);
+        StatusAsyncTaskLoader appLoader = new StatusAsyncTaskLoader(getApplication(), url);
 
         // loaderの開始
         appLoader.forceLoad();
@@ -129,8 +131,8 @@ public class StatusListActivity extends BaseActivity implements
     public void onLoadFinished(Loader<Document> loader, Document doc) {
         if (doc == null) {
             // エラーを通知
-            if (mFragment != null && mFragment instanceof ListFragmentInterface) {
-                ((ListFragmentInterface) mFragment).onFailedQuery();
+            if (mFragment != null && mFragment instanceof FragmentInterface) {
+                ((FragmentInterface) mFragment).onFailedQuery();
             }
             return;
         }
@@ -144,20 +146,20 @@ public class StatusListActivity extends BaseActivity implements
                 result = YkfParser.pars(doc);
             }
             // 結果を通知
-            if (mFragment != null && mFragment instanceof ListFragmentInterface) {
-                ((ListFragmentInterface) mFragment).onResultQuery(result);
+            if (mFragment != null && mFragment instanceof FragmentInterface) {
+                ((FragmentInterface) mFragment).onResultQuery(result);
             }
             // 終了
-            if (mFragment != null && mFragment instanceof ListFragmentInterface) {
-                ((ListFragmentInterface) mFragment).onFinishQuery();
+            if (mFragment != null && mFragment instanceof FragmentInterface) {
+                ((FragmentInterface) mFragment).onFinishQuery();
             }
         } catch (Exception e) {
             Log.d("StatusListActivity", "e:" + e);
             Timber.d("エラー発生！！");
             Timber.d(e.getMessage());
             Timber.d(e.getLocalizedMessage());
-            if (mFragment != null && mFragment instanceof ListFragmentInterface) {
-                ((ListFragmentInterface) mFragment).onFailedQuery();
+            if (mFragment != null && mFragment instanceof FragmentInterface) {
+                ((FragmentInterface) mFragment).onFailedQuery();
             }
         } finally {
             mQuerying = false;
@@ -171,11 +173,12 @@ public class StatusListActivity extends BaseActivity implements
 
     /**
      * リストのセルビュークリック処理
-     * 
+     *
      * @param liner
      */
     @Override
     public void onItemClick(Liner liner) {
+        liner.setCompany(mCompany);
         Intent intent = new Intent(this, StatusDetailActivity.class);
         intent.putExtra(StatusDetailActivity.class.getName(), liner);
         startActivity(intent);
