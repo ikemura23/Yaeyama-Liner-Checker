@@ -28,7 +28,7 @@ import timber.log.Timber;
 /**
  * ステータス詳細のActivity
  */
-public class StatusDetailActivity extends BaseActivity implements LoaderManager.LoaderCallbacks<Document>, QueryInterface {
+public class StatusDetailWebActivity extends BaseActivity implements LoaderManager.LoaderCallbacks<Document>, QueryInterface {
 
     Liner mLiner;
     // 観光会社
@@ -42,7 +42,7 @@ public class StatusDetailActivity extends BaseActivity implements LoaderManager.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_status_detail);
-        mLiner = getIntent().getParcelableExtra(StatusDetailActivity.class.getName());
+        mLiner = getIntent().getParcelableExtra(StatusDetailWebActivity.class.getName());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitleString();
 

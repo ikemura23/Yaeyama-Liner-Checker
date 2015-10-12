@@ -16,15 +16,15 @@ import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailView;
 /**
  * 詳細のフラグメント
  */
-public class StatusDetailFragment extends BaseFragment implements FragmentInterface {
+public class StatusDetailWebFragment extends BaseFragment implements FragmentInterface {
 
     StatusDetailView mStatusDetailView;
     ProgressBar mProgressBar;
 
-    public static StatusDetailFragment NewInstance(Liner liner) {
-        StatusDetailFragment fragment = new StatusDetailFragment();
+    public static StatusDetailWebFragment NewInstance(Liner liner) {
+        StatusDetailWebFragment fragment = new StatusDetailWebFragment();
         Bundle bundle = new Bundle();
-        bundle.putParcelable(StatusDetailFragment.class.getName(), liner);
+        bundle.putParcelable(StatusDetailWebFragment.class.getName(), liner);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -35,7 +35,7 @@ public class StatusDetailFragment extends BaseFragment implements FragmentInterf
      * @return
      */
     private Liner getParam() {
-        return getArguments().getParcelable(StatusDetailFragment.class.getName());
+        return getArguments().getParcelable(StatusDetailWebFragment.class.getName());
     }
 
     @Nullable
