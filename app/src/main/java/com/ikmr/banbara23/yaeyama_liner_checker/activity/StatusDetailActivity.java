@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusAsyncTaskLoader;
+import com.ikmr.banbara23.yaeyama_liner_checker.StringUtils;
 import com.ikmr.banbara23.yaeyama_liner_checker.UrlSelector;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.FragmentInterface;
@@ -42,6 +43,7 @@ public class StatusDetailActivity extends BaseActivity implements LoaderManager.
         setContentView(R.layout.activity_status_detail);
         mLiner = getIntent().getParcelableExtra(StatusDetailActivity.class.getName());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setTitleString();
 
         if (savedInstanceState == null) {
             mFragment = StatusDetailFragment.NewInstance(mLiner);
@@ -49,6 +51,23 @@ public class StatusDetailActivity extends BaseActivity implements LoaderManager.
                     .add(R.id.container, mFragment)
                     .commit();
         }
+    }
+
+    /**
+     * タイトルバーの設定
+     */
+    private void setTitleString() {
+        if (mLiner == null) {
+            return;
+        }
+        if (mLiner.getPort() == null) {
+            return;
+        }
+        if (StringUtils.isEmpty(mLiner.getPort().getPort())) {
+            setTitle("運航状況の詳細");
+        }
+
+        setTitle(mLiner.getPort().getPort() + "航路");
     }
 
     @Override
