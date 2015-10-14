@@ -11,14 +11,13 @@ import android.widget.ProgressBar;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
-import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailView;
 
 /**
  * 詳細のフラグメント
  */
 public class StatusDetailWebFragment extends BaseFragment implements FragmentInterface {
 
-    StatusDetailView mStatusDetailView;
+    //    StatusDetailView mStatusDetailView;
     ProgressBar mProgressBar;
 
     public static StatusDetailWebFragment NewInstance(Liner liner) {
@@ -41,9 +40,9 @@ public class StatusDetailWebFragment extends BaseFragment implements FragmentInt
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_status_detail, container, false);
-        mStatusDetailView = (StatusDetailView) view.findViewById(R.id.fragment_status_detail_view);
-        mProgressBar = (ProgressBar) view.findViewById(R.id.fragment_progressbar);
+        View view = inflater.inflate(R.layout.fragment_status_detail_web, container, false);
+//        mStatusDetailView = (StatusDetailView) view.findViewById(R.id.fragment_status_detail_view);
+        mProgressBar = (ProgressBar) view.findViewById(R.id.fragment_web_progressbar);
         return view;
     }
 
@@ -77,7 +76,7 @@ public class StatusDetailWebFragment extends BaseFragment implements FragmentInt
 
     @Override
     public void onResultQuery(String value) {
-        mStatusDetailView.bind(value);
+//        mStatusDetailView.bind(value);
     }
 
     @Override

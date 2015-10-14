@@ -179,9 +179,17 @@ public class StatusListActivity extends BaseActivity implements
     @Override
     public void onItemClick(Liner liner) {
         liner.setCompany(mCompany);
-        Intent intent = new Intent(this, StatusDetailActivity.class);
-        intent.putExtra(StatusDetailActivity.class.getName(), liner);
-        startActivity(intent);
+
+        if (mCompany == Company.ANNEI) {
+            Intent intent = new Intent(this, StatusDetailActivity.class);
+            intent.putExtra(StatusDetailActivity.class.getName(), liner);
+            startActivity(intent);
+        } else {
+            Intent intent = new Intent(this, StatusDetailWebActivity.class);
+            intent.putExtra(StatusDetailWebActivity.class.getName(), liner);
+            startActivity(intent);
+        }
+
     }
 
 }

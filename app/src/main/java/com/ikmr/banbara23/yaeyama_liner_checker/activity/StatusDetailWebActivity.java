@@ -18,7 +18,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.UrlSelector;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.FragmentInterface;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.QueryInterface;
-import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusDetailFragment;
+import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusDetailWebFragment;
 import com.ikmr.banbara23.yaeyama_liner_checker.parser.AnneiDetailParser;
 
 import org.jsoup.nodes.Document;
@@ -47,7 +47,7 @@ public class StatusDetailWebActivity extends BaseActivity implements LoaderManag
         setTitleString();
 
         if (savedInstanceState == null) {
-            mFragment = StatusDetailFragment.NewInstance(mLiner);
+            mFragment = StatusDetailWebFragment.NewInstance(mLiner);
             getFragmentManager().beginTransaction()
                     .add(R.id.container, mFragment)
                     .commit();

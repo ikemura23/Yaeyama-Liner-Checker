@@ -33,6 +33,10 @@
             android:name=".activity.StatusDetailActivity"
             android:label="@string/title_activity_status_detail">
         </activity>
+        <activity
+            android:name=".activity.StatusDetailWebActivity"
+            android:label="@string/title_activity_status_detail">
+        </activity>
         <!--Include the AdActivity configChanges and theme. -->
         <activity
             android:name="com.google.android.gms.ads.AdActivity"
