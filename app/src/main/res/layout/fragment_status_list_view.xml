@@ -62,6 +62,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_marginLeft="10dp"
+        android:ellipsize="end"
+        android:maxLines="1"
         android:text="正常運航"
         android:textColor="@color/background_material_dark"
         android:textSize="20dp"/>
