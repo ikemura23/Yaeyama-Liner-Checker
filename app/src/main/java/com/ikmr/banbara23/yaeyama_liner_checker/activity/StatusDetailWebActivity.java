@@ -137,7 +137,7 @@ public class StatusDetailWebActivity extends BaseActivity implements LoaderManag
             result = AnneiDetailParser.pars(document);
             // 結果を通知
             if (mFragment != null && mFragment instanceof FragmentInterface) {
-                ((FragmentInterface) mFragment).onResultQuery(result);
+                ((FragmentInterface) mFragment).onResultQuery(mLiner, result);
             }
             // 終了
             if (mFragment != null && mFragment instanceof FragmentInterface) {

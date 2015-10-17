@@ -76,9 +76,9 @@ public class StatusDetailFragment extends BaseFragment implements FragmentInterf
     }
 
     @Override
-    public void onResultQuery(String value) {
+    public void onResultQuery(Liner liner, String value) {
         mStatusDetailView.setVisibility(View.VISIBLE);
-        mStatusDetailView.bind(value);
+        mStatusDetailView.bind(liner, value);
     }
 
     @Override

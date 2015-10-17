@@ -185,8 +185,8 @@ public class StatusListActivity extends BaseActivity implements
             intent.putExtra(StatusDetailActivity.class.getName(), liner);
             startActivity(intent);
         } else {
-            Intent intent = new Intent(this, StatusDetailWebActivity.class);
-            intent.putExtra(StatusDetailWebActivity.class.getName(), liner);
+            Intent intent = new Intent(this, StatusDetailActivity.class);
+            intent.putExtra(StatusDetailActivity.class.getName(), liner);
             startActivity(intent);
         }
 

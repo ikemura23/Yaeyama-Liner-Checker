@@ -75,7 +75,7 @@ public class StatusDetailWebFragment extends BaseFragment implements FragmentInt
     }
 
     @Override
-    public void onResultQuery(String value) {
+    public void onResultQuery(Liner liner, String value) {
 //        mStatusDetailView.bind(value);
     }
 
