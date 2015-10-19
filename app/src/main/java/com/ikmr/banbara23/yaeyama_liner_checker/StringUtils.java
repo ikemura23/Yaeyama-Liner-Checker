@@ -48,7 +48,7 @@ public class StringUtils {
      * @param value
      * @return
      */
-    public static String trim(String value) {
+    public static String trimAll(String value) {
         if (value == null) {
             return null;
         }

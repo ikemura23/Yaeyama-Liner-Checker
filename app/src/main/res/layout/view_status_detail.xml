@@ -20,7 +20,7 @@
                 android:id="@+id/view_status_detail_value"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=""/>
+                android:textSize="16sp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"

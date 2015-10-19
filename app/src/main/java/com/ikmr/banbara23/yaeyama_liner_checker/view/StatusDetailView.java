@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
+import com.ikmr.banbara23.yaeyama_liner_checker.StringUtils;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 
 /**
@@ -35,7 +36,7 @@ public class StatusDetailView extends LinearLayout {
         if (value == null) {
             return;
         }
-        mValueText.setText(value);
+        mValueText.setText(StringUtils.trimAll(value));
     }
 
 }

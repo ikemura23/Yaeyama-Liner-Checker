@@ -16,6 +16,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAdapter;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.YkfLinerDetail;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.ListFragmentInterface;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.QueryInterface;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusListFragment;
@@ -39,7 +40,8 @@ public class StatusListActivity extends BaseActivity implements
      * クエリ起動中かどうか
      */
     private boolean mQuerying;
-    Fragment mFragment;
+    private Fragment mFragment;
+    private Result mResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,18 +138,17 @@ public class StatusListActivity extends BaseActivity implements
             }
             return;
         }
-        Result result = null;
         try {
             if (mCompany == Company.ANNEI) {
                 // 安栄のHTMLパース呼び出し
-                result = AnneiListParser.pars(doc);
+                mResult = AnneiListParser.pars(doc);
             } else {
                 // 八重山観光フェリーのHTMLパース呼び出し
-                result = YkfParser.pars(doc);
+                mResult = YkfParser.pars(doc);
             }
             // 結果を通知
             if (mFragment != null && mFragment instanceof ListFragmentInterface) {
-                ((ListFragmentInterface) mFragment).onResultQuery(result);
+                ((ListFragmentInterface) mFragment).onResultQuery(mResult);
             }
             // 終了
             if (mFragment != null && mFragment instanceof ListFragmentInterface) {
@@ -185,8 +186,13 @@ public class StatusListActivity extends BaseActivity implements
             intent.putExtra(StatusDetailActivity.class.getName(), liner);
             startActivity(intent);
         } else {
-            Intent intent = new Intent(this, StatusDetailActivity.class);
-            intent.putExtra(StatusDetailActivity.class.getName(), liner);
+            YkfLinerDetail ykfLinerDetail = new YkfLinerDetail();
+            ykfLinerDetail.setLiner(liner);
+            ykfLinerDetail.setUpdateTime(mResult.getUpdateTime());
+            ykfLinerDetail.setTitle(mResult.getTitle());
+
+            Intent intent = new Intent(this, StatusDetailWebActivity.class);
+            intent.putExtra(StatusDetailWebActivity.class.getName(), ykfLinerDetail);
             startActivity(intent);
         }
 

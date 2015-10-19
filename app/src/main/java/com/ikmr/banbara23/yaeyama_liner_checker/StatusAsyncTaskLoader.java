@@ -25,8 +25,8 @@ public class StatusAsyncTaskLoader extends AsyncTaskLoader<Document> {
         Document doc = null;
 
         try {
-            // HTML取得
-            doc = Jsoup.connect(mUrl).get();
+            // HTML取得 タイムアウトは10秒
+            doc = Jsoup.connect(mUrl).timeout(10000).get();
         } catch (IOException e) {
             e.printStackTrace();
         }
