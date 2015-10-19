@@ -3,7 +3,7 @@ package com.ikmr.banbara23.yaeyama_liner_checker.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.widget.LinearLayout;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
@@ -14,7 +14,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.entity.Status;
 /**
  * ステータスリストのカスタムビュー
  */
-public class StatusListView extends LinearLayout {
+public class StatusListView extends FrameLayout {
     TextView mPortText;
     TextView mStatus_normal;
     TextView mStatus_cancel;
