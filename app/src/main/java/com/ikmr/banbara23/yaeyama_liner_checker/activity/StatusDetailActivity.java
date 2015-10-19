@@ -113,7 +113,7 @@ public class StatusDetailActivity extends BaseActivity implements LoaderManager.
 
     @Override
     public Loader<Document> onCreateLoader(int id, Bundle args) {
-        String url = UrlSelector.geDetailtUrl(getApplicationContext(), mLiner.company, mLiner.port);
+        String url = UrlSelector.getDetailUrl(getApplicationContext(), mLiner.company, mLiner.port);
         StatusAsyncTaskLoader appLoader = new StatusAsyncTaskLoader(getApplication(), url);
 
         // loaderの開始

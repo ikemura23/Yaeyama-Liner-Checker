@@ -10,7 +10,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
  */
 public class UrlSelector {
 
-    public static String geDetailtUrl(Context context, Company company, Port port) {
+    public static String getDetailUrl(Context context, Company company, Port port) {
         switch (company) {
             case ANNEI:
                 return getAnneiUrl(context, port);
