@@ -169,7 +169,9 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
         if (TextUtils.isEmpty(title)) {
             mTitleText.setVisibility(View.GONE);
         }
-        mTitleText.setText(StringUtils.trimAll(title));
+
+        String replaceTitle = StringUtils.replacePunctuation(StringUtils.replaceSpaceJ(title));
+        mTitleText.setText(replaceTitle);
     }
 
     /**
