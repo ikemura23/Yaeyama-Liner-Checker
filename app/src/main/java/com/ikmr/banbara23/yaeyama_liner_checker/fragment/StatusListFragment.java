@@ -53,7 +53,7 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_status_list, container, false);
         mListView = (ListView) view.findViewById(android.R.id.list);
-        mProgressBar = (ProgressBar) view.findViewById(R.id.progressbar);
+        mProgressBar = (ProgressBar) view.findViewById(R.id.fragment_list_material_progress_bar);
         mProgressBar.setIndeterminate(true);
         mHeaderLayout = (LinearLayout) view.findViewById(R.id.fragment_status_list_header);
         mTitleText = (TextView) view.findViewById(R.id.fragment_status_list_toolbar_title_text);

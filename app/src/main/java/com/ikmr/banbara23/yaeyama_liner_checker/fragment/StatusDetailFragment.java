@@ -43,7 +43,7 @@ public class StatusDetailFragment extends BaseFragment implements FragmentInterf
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_status_detail, container, false);
         mStatusDetailView = (StatusDetailView) view.findViewById(R.id.fragment_status_detail_view);
-        mProgressBar = (ProgressBar) view.findViewById(R.id.fragment_progressbar);
+        mProgressBar = (ProgressBar) view.findViewById(R.id.fragment_detail_material_progress_bar);
         return view;
     }
 
