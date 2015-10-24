@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:wheel="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -14,10 +15,21 @@
             android:id="@+id/fragment_status_list_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:background="@color/ripple_material_light"
             android:orientation="vertical"
-            android:padding="13dp"
-            android:visibility="gone">
+            android:padding="10dp"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <!--タイトル-->
+            <TextView
+                android:id="@+id/fragment_status_list_toolbar_title_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="5dp"
+                android:text="title"
+                android:textSize="18dp"/>
 
             <!--更新時刻-->
             <TextView
@@ -26,17 +38,7 @@
                 android:layout_height="wrap_content"
                 android:drawablePadding="5dp"
                 android:text="yyyy/MM/dd hh:mm:ss更新"
-                android:textSize="20dp"
-                android:textStyle="bold"/>
-            <!--タイトル-->
-            <TextView
-                android:id="@+id/fragment_status_list_toolbar_title_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:drawablePadding="5dp"
-                android:text="title"
-                android:textSize="18dp"/>
+                android:textSize="12dp"/>
 
         </LinearLayout>
 
@@ -57,6 +59,7 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_gravity="center"
+        tools:visibility="gone"
         wheel:matProg_barColor="#5588FF"
         wheel:matProg_progressIndeterminate="true"
         wheel:matProg_rimColor="#FFCFC9C9"/>
