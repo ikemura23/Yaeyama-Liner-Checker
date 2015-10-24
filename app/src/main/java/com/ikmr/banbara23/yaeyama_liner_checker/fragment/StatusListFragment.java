@@ -27,7 +27,6 @@ import com.pnikosis.materialishprogress.ProgressWheel;
  */
 public class StatusListFragment extends ListFragment implements ListFragmentInterface {
     StatusListAdapter mListAdapter;
-    // ProgressBar mProgressBar;
     ListView mListView;
     TextView mTitleText;
     TextView mUpdateText;
@@ -53,14 +52,9 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
         View view = inflater.inflate(R.layout.fragment_status_list, container, false);
         mListView = (ListView) view.findViewById(android.R.id.list);
         mProgressWheel = (ProgressWheel) view.findViewById(R.id.fragment_list_material_progress_bar);
-        // mProgressBar.setIndeterminate(true);
         mHeaderLayout = (LinearLayout) view.findViewById(R.id.fragment_status_list_header);
         mTitleText = (TextView) view.findViewById(R.id.fragment_status_list_toolbar_title_text);
         mUpdateText = (TextView) view.findViewById(R.id.fragment_status_list_toolbar_update_text);
-        // mProgressLayout = (FrameLayout)
-        // view.findViewById(R.id.progressbar_layout);
-//        mProgressWheel.setBarColor(Color.BLUE);
-//        mProgressWheel.setRimColor(Color.GRAY);
         mAdView = (AdView) view.findViewById(R.id.adView);
         return view;
     }
@@ -99,7 +93,6 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
      */
     private void showProgress() {
         mHeaderLayout.setVisibility(View.GONE);
-        // mProgressLayout.setVisibility(View.VISIBLE);
         mProgressWheel.setVisibility(View.VISIBLE);
     }
 
@@ -108,7 +101,6 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
      */
     private void hideProgress() {
         mHeaderLayout.setVisibility(View.VISIBLE);
-        // mProgressLayout.setVisibility(View.INVISIBLE);
         mProgressWheel.setVisibility(View.GONE);
     }
 

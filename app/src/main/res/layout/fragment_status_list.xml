@@ -61,16 +61,6 @@
         </com.google.android.gms.ads.AdView>
     </RelativeLayout>
 
-    <!--プログレス-->
-    <!--<me.zhanghai.android.materialprogressbar.MaterialProgressBar-->
-    <!--android:id="@+id/fragment_list_material_progress_bar"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_gravity="center"-->
-    <!--android:indeterminate="true"-->
-    <!--android:visibility="gone"-->
-    <!--app:mpb_progressStyle="horizontal"/>-->
-
     <com.pnikosis.materialishprogress.ProgressWheel
         android:id="@+id/fragment_list_material_progress_bar"
         android:layout_width="80dp"
