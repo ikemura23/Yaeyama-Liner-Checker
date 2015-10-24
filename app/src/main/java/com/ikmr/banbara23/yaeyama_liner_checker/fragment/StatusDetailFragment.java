@@ -2,6 +2,8 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.fragment;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -107,10 +109,56 @@ public class StatusDetailFragment extends BaseFragment implements FragmentInterf
     }
 
     private void startTel() {
+        String tell;
+        switch (getParam().getCompany()) {
+            case ANNEI:
+                tell = getActivity().getApplicationContext().getString(R.string.tel_annei);
+                break;
 
+            case YKF:
+                tell = getActivity().getApplicationContext().getString(R.string.tel_ykf);
+                break;
+            default:
+                tell = null;
+        }
+        if (tell == null) {
+            return;
+        }
+        try {
+            Intent intent = new Intent(
+                    Intent.ACTION_CALL,
+                    Uri.parse("tel:" + tell));
+
+            startActivity(intent);
+        } catch (Exception e) {
+            // 何もしない
+        }
     }
 
     private void startWeb() {
+        String hpUrl;
+        switch (getParam().getCompany()) {
+            case ANNEI:
+                hpUrl = getActivity().getApplicationContext().getString(R.string.hp_annei);
+                break;
+
+            case YKF:
+                hpUrl = getActivity().getApplicationContext().getString(R.string.hp_ykf);
+                break;
+            default:
+                hpUrl = null;
+        }
+        if (hpUrl == null) {
+            return;
+        }
+
+        Uri uri = Uri.parse(hpUrl);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        try {
+            startActivity(intent);
+        } catch (Exception e) {
+            // 何もしない
+        }
 
     }
 }

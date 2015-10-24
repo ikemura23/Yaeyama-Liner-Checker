@@ -28,4 +28,14 @@
     <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
 
     <string name="transition_top_annei">transition_top_annei</string>
+
+    <!--安栄の電話番号-->
+    <string name="tel_annei">0980830055</string>
+    <!--八重山観光フェリーのHP-->
+    <string name="hp_annei">http://aneikankou.co.jp/</string>
+    <!--八重山観光フェリーの電話番号-->
+    <string name="tel_ykf">0980825010</string>
+    <!--八重山観光フェリーのHP-->
+    <string name="hp_ykf">http://www.yaeyama.co.jp/pg104.html</string>
+
 </resources>
