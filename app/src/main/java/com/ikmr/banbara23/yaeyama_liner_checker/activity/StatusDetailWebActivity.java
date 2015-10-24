@@ -12,7 +12,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StringUtils;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.YkfLinerDetail;
-import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusDetailWebFragment;
+import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusDetailYkfFragment;
 
 /**
  * ステータス詳細のActivity
@@ -39,7 +39,7 @@ public class StatusDetailWebActivity extends BaseActivity {
         setTitleString();
 
         if (savedInstanceState == null) {
-            mFragment = StatusDetailWebFragment.NewInstance(mYkfLinerDetail);
+            mFragment = StatusDetailYkfFragment.NewInstance(mYkfLinerDetail);
             getFragmentManager().beginTransaction()
                     .add(R.id.container, mFragment)
                     .commit();
