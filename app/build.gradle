@@ -26,5 +26,5 @@ dependencies {
     compile 'com.google.android.gms:play-services:7.0.0'
     compile 'com.android.support:design:22.2.0'
     compile "com.android.support:cardview-v7:+"
-    compile 'me.zhanghai.android.materialprogressbar:library:1.1.4'
+    compile 'com.pnikosis:materialish-progress:1.7'
 }

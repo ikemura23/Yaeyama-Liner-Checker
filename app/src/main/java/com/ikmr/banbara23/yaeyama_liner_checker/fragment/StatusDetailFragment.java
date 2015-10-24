@@ -7,11 +7,11 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailView;
+import com.pnikosis.materialishprogress.ProgressWheel;
 
 /**
  * 詳細のフラグメント
@@ -19,7 +19,8 @@ import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailView;
 public class StatusDetailFragment extends BaseFragment implements FragmentInterface {
 
     StatusDetailView mStatusDetailView;
-    ProgressBar mProgressBar;
+    // ProgressBar mProgressBar;
+    ProgressWheel mProgressWheel;
 
     public static StatusDetailFragment NewInstance(Liner liner) {
         StatusDetailFragment fragment = new StatusDetailFragment();
@@ -43,7 +44,10 @@ public class StatusDetailFragment extends BaseFragment implements FragmentInterf
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_status_detail, container, false);
         mStatusDetailView = (StatusDetailView) view.findViewById(R.id.fragment_status_detail_view);
-        mProgressBar = (ProgressBar) view.findViewById(R.id.fragment_detail_material_progress_bar);
+        // mProgressBar = (ProgressBar)
+        // view.findViewById(R.id.fragment_detail_material_progress_bar);
+        mProgressWheel = (ProgressWheel) view.findViewById(R.id.fragment_detail_material_progress_bar);
+//        mProgressWheel.setBarColor(Color.BLUE);
         return view;
     }
 
@@ -62,7 +66,7 @@ public class StatusDetailFragment extends BaseFragment implements FragmentInterf
      * 読込中の表示開始
      */
     private void showProgress() {
-        mProgressBar.setVisibility(View.VISIBLE);
+        mProgressWheel.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -88,6 +92,6 @@ public class StatusDetailFragment extends BaseFragment implements FragmentInterf
 
     @Override
     public void onFinishQuery() {
-        mProgressBar.setVisibility(View.GONE);
+        mProgressWheel.setVisibility(View.GONE);
     }
 }

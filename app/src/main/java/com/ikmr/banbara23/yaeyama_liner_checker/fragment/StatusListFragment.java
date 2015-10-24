@@ -8,10 +8,8 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,18 +20,19 @@ import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAdapter;
 import com.ikmr.banbara23.yaeyama_liner_checker.StringUtils;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
+import com.pnikosis.materialishprogress.ProgressWheel;
 
 /**
  * ステータスリストのFragment
  */
 public class StatusListFragment extends ListFragment implements ListFragmentInterface {
     StatusListAdapter mListAdapter;
-    ProgressBar mProgressBar;
+    // ProgressBar mProgressBar;
     ListView mListView;
     TextView mTitleText;
     TextView mUpdateText;
     LinearLayout mHeaderLayout;
-    FrameLayout mProgressLayout;
+    ProgressWheel mProgressWheel;
     AdView mAdView;
 
     final static String PARAM_COMPANY = "company";
@@ -53,12 +52,15 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_status_list, container, false);
         mListView = (ListView) view.findViewById(android.R.id.list);
-        mProgressBar = (ProgressBar) view.findViewById(R.id.fragment_list_material_progress_bar);
-        mProgressBar.setIndeterminate(true);
+        mProgressWheel = (ProgressWheel) view.findViewById(R.id.fragment_list_material_progress_bar);
+        // mProgressBar.setIndeterminate(true);
         mHeaderLayout = (LinearLayout) view.findViewById(R.id.fragment_status_list_header);
         mTitleText = (TextView) view.findViewById(R.id.fragment_status_list_toolbar_title_text);
         mUpdateText = (TextView) view.findViewById(R.id.fragment_status_list_toolbar_update_text);
-        mProgressLayout = (FrameLayout) view.findViewById(R.id.progressbar_layout);
+        // mProgressLayout = (FrameLayout)
+        // view.findViewById(R.id.progressbar_layout);
+//        mProgressWheel.setBarColor(Color.BLUE);
+//        mProgressWheel.setRimColor(Color.GRAY);
         mAdView = (AdView) view.findViewById(R.id.adView);
         return view;
     }
@@ -97,8 +99,8 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
      */
     private void showProgress() {
         mHeaderLayout.setVisibility(View.GONE);
-        mProgressLayout.setVisibility(View.VISIBLE);
-        // mProgressBar.setVisibility(View.GONE);
+        // mProgressLayout.setVisibility(View.VISIBLE);
+        mProgressWheel.setVisibility(View.VISIBLE);
     }
 
     /**
@@ -106,7 +108,8 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
      */
     private void hideProgress() {
         mHeaderLayout.setVisibility(View.VISIBLE);
-        mProgressLayout.setVisibility(View.INVISIBLE);
+        // mProgressLayout.setVisibility(View.INVISIBLE);
+        mProgressWheel.setVisibility(View.GONE);
     }
 
     /**
@@ -179,7 +182,7 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
      */
     @Override
     public void onFailedQuery() {
-        mProgressBar.setVisibility(View.GONE);
+        mProgressWheel.setVisibility(View.GONE);
         Toast.makeText(getActivity().getApplicationContext(), "エラーが発生しました", Toast.LENGTH_SHORT)
                 .show();
     }
