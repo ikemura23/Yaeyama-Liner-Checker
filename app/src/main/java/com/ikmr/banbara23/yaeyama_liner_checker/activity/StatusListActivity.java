@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusAsyncTaskLoader;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAdapter;
@@ -50,8 +52,11 @@ public class StatusListActivity extends BaseActivity implements
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mCompany = (Company) getIntent().getSerializableExtra(PARAM_COMPANY);
+        // タイトル
         setPageTitle();
-
+        // 広告
+        loadAd();
+        // フラグメント
         if (savedInstanceState == null) {
             mFragment = StatusListFragment.NewInstance(mCompany);
             getFragmentManager().beginTransaction()
@@ -71,6 +76,21 @@ public class StatusListActivity extends BaseActivity implements
         // getString(R.string.title_activity_status_list);
         String title = mCompany.getCompanyName();
         setTitle(title);
+    }
+
+    /**
+     * 広告読み込み
+     */
+    protected void loadAd() {
+        AdView adView = (AdView) findViewById(R.id.adView);
+        if (adView == null) {
+            return;
+        }
+        try {
+            AdRequest adRequest = new AdRequest.Builder().build();
+            adView.loadAd(adRequest);
+        } catch (Exception e) {
+        }
     }
 
     @Override
