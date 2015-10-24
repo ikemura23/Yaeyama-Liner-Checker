@@ -44,6 +44,21 @@ public class StatusDetailFragment extends BaseFragment implements FragmentInterf
         View view = inflater.inflate(R.layout.fragment_status_detail, container, false);
         mStatusDetailView = (StatusDetailView) view.findViewById(R.id.fragment_status_detail_view);
         mProgressWheel = (ProgressWheel) view.findViewById(R.id.fragment_detail_material_progress_bar);
+
+        // 電話ボタン
+        view.findViewById(R.id.view_action_box_tel).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startTel();
+            }
+        });
+        // サイト
+        view.findViewById(R.id.view_action_box_web).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startWeb();
+            }
+        });
         return view;
     }
 
@@ -89,5 +104,13 @@ public class StatusDetailFragment extends BaseFragment implements FragmentInterf
     @Override
     public void onFinishQuery() {
         mProgressWheel.setVisibility(View.GONE);
+    }
+
+    private void startTel() {
+
+    }
+
+    private void startWeb() {
+
     }
 }
