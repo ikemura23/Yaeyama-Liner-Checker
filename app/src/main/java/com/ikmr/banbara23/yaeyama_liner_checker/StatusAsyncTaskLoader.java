@@ -3,6 +3,7 @@ package com.ikmr.banbara23.yaeyama_liner_checker;
 
 import android.content.AsyncTaskLoader;
 import android.content.Context;
+import android.util.Log;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -21,9 +22,16 @@ public class StatusAsyncTaskLoader extends AsyncTaskLoader<Document> {
     }
 
     @Override
+    protected void onStartLoading() {
+        super.onStartLoading();
+        forceLoad();
+        Log.d("StatusAsyncTaskLoader", "onStartLoading");
+    }
+
+    @Override
     public Document loadInBackground() {
         Document doc = null;
-
+        Log.d("StatusAsyncTaskLoader", "loadInBackground");
         try {
             // HTML取得 タイムアウトは10秒
             doc = Jsoup.connect(mUrl).timeout(10000).get();

@@ -99,6 +99,8 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
     @Override
     public void onStartQuery() {
         showProgress();
+        mListAdapter.clear();
+        mListAdapter.notifyDataSetChanged();
     }
 
     /**

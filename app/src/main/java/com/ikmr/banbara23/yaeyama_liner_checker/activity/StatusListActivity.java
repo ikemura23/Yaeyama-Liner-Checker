@@ -9,9 +9,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.ikmr.banbara23.yaeyama_liner_checker.Loading;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusAsyncTaskLoader;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAdapter;
@@ -44,6 +46,7 @@ public class StatusListActivity extends BaseActivity implements
     private boolean mQuerying;
     private Fragment mFragment;
     private Result mResult;
+    Loading mLoading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +66,7 @@ public class StatusListActivity extends BaseActivity implements
                     .add(R.id.container, mFragment)
                     .commit();
         }
+        mLoading = new Loading(this);
     }
 
     /**
@@ -103,17 +107,13 @@ public class StatusListActivity extends BaseActivity implements
      * 一覧の取得開始
      */
     private void createList() {
+        Toast.makeText(this, "createList", Toast.LENGTH_SHORT).show();
         if (mFragment != null && mFragment instanceof ListFragmentInterface) {
             ((ListFragmentInterface) mFragment).onStartQuery();
         }
+        mLoading.show();
         mQuerying = true;
         getLoaderManager().initLoader(0, null, this);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_list, menu);
-        return true;
     }
 
     @Override
@@ -134,7 +134,16 @@ public class StatusListActivity extends BaseActivity implements
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_list, menu);
+        return true;
+    }
+
+    @Override
     public Loader<Document> onCreateLoader(int id, Bundle args) {
+        Log.d("StatusListActivity", "onCreateLoader");
+        Toast.makeText(this, "onCreateLoader", Toast.LENGTH_SHORT).show();
+
         String url;
         if (mCompany == Company.ANNEI) {
             url = getApplicationContext().getString(R.string.url_annei_list);
@@ -145,12 +154,15 @@ public class StatusListActivity extends BaseActivity implements
 
         // loaderの開始
         appLoader.forceLoad();
+
         //
         return appLoader;
     }
 
     @Override
     public void onLoadFinished(Loader<Document> loader, Document doc) {
+        Log.d("StatusListActivity", "onLoadFinished");
+        Toast.makeText(this, "onLoadFinished", Toast.LENGTH_SHORT).show();
         if (doc == null) {
             // エラーを通知
             if (mFragment != null && mFragment instanceof ListFragmentInterface) {
@@ -183,6 +195,7 @@ public class StatusListActivity extends BaseActivity implements
                 ((ListFragmentInterface) mFragment).onFailedQuery();
             }
         } finally {
+            mLoading.close();
             mQuerying = false;
         }
     }
