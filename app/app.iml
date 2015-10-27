@@ -75,7 +75,6 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.1.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/design/22.2.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.1/jars" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.github.d-max/spots-dialog/0.4/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/7.0.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/7.0.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/7.0.0/jars" />
@@ -130,7 +129,6 @@
     <orderEntry type="library" exported="" name="play-services-wallet-7.0.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-cast-7.0.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-maps-7.0.0" level="project" />
-    <orderEntry type="library" exported="" name="spots-dialog-0.4" level="project" />
     <orderEntry type="library" exported="" name="play-services-fitness-7.0.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-identity-7.0.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-ads-7.0.0" level="project" />
