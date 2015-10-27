@@ -36,17 +36,17 @@
     </LinearLayout>
 
     <!--プログレス-->
-    <com.pnikosis.materialishprogress.ProgressWheel
-        android:id="@+id/fragment_detail_material_progress_bar"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_gravity="center"
-        tools:visibility="gone"
-        wheel:matProg_barColor="#5588FF"
-        wheel:matProg_progressIndeterminate="true"
-        wheel:matProg_rimColor="#FFCFC9C9"/>
+    <!--<com.pnikosis.materialishprogress.ProgressWheel-->
+        <!--android:id="@+id/fragment_detail_material_progress_bar"-->
+        <!--android:layout_width="80dp"-->
+        <!--android:layout_height="80dp"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_gravity="center"-->
+        <!--tools:visibility="gone"-->
+        <!--wheel:matProg_barColor="#5588FF"-->
+        <!--wheel:matProg_progressIndeterminate="true"-->
+        <!--wheel:matProg_rimColor="#FFCFC9C9"/>-->
 
 
 </FrameLayout>

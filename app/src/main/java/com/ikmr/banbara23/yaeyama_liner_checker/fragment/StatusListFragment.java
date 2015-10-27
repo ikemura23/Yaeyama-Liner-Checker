@@ -18,7 +18,6 @@ import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAdapter;
 import com.ikmr.banbara23.yaeyama_liner_checker.StringUtils;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
-import com.pnikosis.materialishprogress.ProgressWheel;
 
 /**
  * ステータスリストのFragment
@@ -29,7 +28,7 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
     TextView mTitleText;
     TextView mUpdateText;
     LinearLayout mHeaderLayout;
-    ProgressWheel mProgressWheel;
+//    ProgressWheel mProgressWheel;
 
     final static String PARAM_COMPANY = "company";
 
@@ -48,7 +47,7 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_status_list, container, false);
         mListView = (ListView) view.findViewById(android.R.id.list);
-        mProgressWheel = (ProgressWheel) view.findViewById(R.id.fragment_list_material_progress_bar);
+//        mProgressWheel = (ProgressWheel) view.findViewById(R.id.fragment_list_material_progress_bar);
         mHeaderLayout = (LinearLayout) view.findViewById(R.id.fragment_status_list_header);
         mTitleText = (TextView) view.findViewById(R.id.fragment_status_list_toolbar_title_text);
         mUpdateText = (TextView) view.findViewById(R.id.fragment_status_list_toolbar_update_text);
@@ -74,7 +73,7 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
      */
     private void showProgress() {
         mHeaderLayout.setVisibility(View.GONE);
-        mProgressWheel.setVisibility(View.VISIBLE);
+//        mProgressWheel.setVisibility(View.VISIBLE);
     }
 
     /**
@@ -82,7 +81,7 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
      */
     private void hideProgress() {
         mHeaderLayout.setVisibility(View.VISIBLE);
-        mProgressWheel.setVisibility(View.GONE);
+//        mProgressWheel.setVisibility(View.GONE);
     }
 
     /**
@@ -157,7 +156,7 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
      */
     @Override
     public void onFailedQuery() {
-        mProgressWheel.setVisibility(View.GONE);
+//        mProgressWheel.setVisibility(View.GONE);
         Toast.makeText(getActivity().getApplicationContext(), "エラーが発生しました", Toast.LENGTH_SHORT)
                 .show();
     }

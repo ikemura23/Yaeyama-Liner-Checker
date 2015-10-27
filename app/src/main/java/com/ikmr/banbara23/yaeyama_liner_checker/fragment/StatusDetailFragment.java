@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailView;
-import com.pnikosis.materialishprogress.ProgressWheel;
 
 /**
  * 詳細のフラグメント
@@ -21,7 +20,7 @@ import com.pnikosis.materialishprogress.ProgressWheel;
 public class StatusDetailFragment extends BaseFragment implements FragmentInterface {
 
     StatusDetailView mStatusDetailView;
-    ProgressWheel mProgressWheel;
+//    ProgressWheel mProgressWheel;
 
     public static StatusDetailFragment NewInstance(Liner liner) {
         StatusDetailFragment fragment = new StatusDetailFragment();
@@ -45,7 +44,7 @@ public class StatusDetailFragment extends BaseFragment implements FragmentInterf
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_status_detail, container, false);
         mStatusDetailView = (StatusDetailView) view.findViewById(R.id.fragment_status_detail_view);
-        mProgressWheel = (ProgressWheel) view.findViewById(R.id.fragment_detail_material_progress_bar);
+//        mProgressWheel = (ProgressWheel) view.findViewById(R.id.fragment_detail_material_progress_bar);
 
         // 電話ボタン
         view.findViewById(R.id.view_action_box_tel).setOnClickListener(new View.OnClickListener() {
@@ -79,7 +78,7 @@ public class StatusDetailFragment extends BaseFragment implements FragmentInterf
      * 読込中の表示開始
      */
     private void showProgress() {
-        mProgressWheel.setVisibility(View.VISIBLE);
+//        mProgressWheel.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -105,7 +104,7 @@ public class StatusDetailFragment extends BaseFragment implements FragmentInterf
 
     @Override
     public void onFinishQuery() {
-        mProgressWheel.setVisibility(View.GONE);
+//        mProgressWheel.setVisibility(View.GONE);
     }
 
     private void startTel() {

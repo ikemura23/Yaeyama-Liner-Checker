@@ -49,7 +49,7 @@ public class StatusListActivity extends BaseActivity implements
     private Fragment mFragment;
     private Result mResult;
 
-     Loading mLoading;
+    Loading mLoading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +69,7 @@ public class StatusListActivity extends BaseActivity implements
                     .add(R.id.container, mFragment)
                     .commit();
         }
-         mLoading = new Loading(this);
+        mLoading = new Loading(this);
     }
 
     /**
@@ -214,7 +214,7 @@ public class StatusListActivity extends BaseActivity implements
                 ((ListFragmentInterface) mFragment).onFailedQuery();
             }
         } finally {
-             mLoading.close();
+            mLoading.close();
             mQuerying = false;
         }
     }
@@ -252,10 +252,11 @@ public class StatusListActivity extends BaseActivity implements
 
     @Override
     public void preExecute() {
-//        if (mFragment != null && mFragment instanceof ListFragmentInterface) {
-//            ((ListFragmentInterface) mFragment).onStartQuery();
-//        }
-         mLoading.show();
+        // if (mFragment != null && mFragment instanceof ListFragmentInterface)
+        // {
+        // ((ListFragmentInterface) mFragment).onStartQuery();
+        // }
+        mLoading.show();
         mQuerying = true;
     }
 
@@ -294,7 +295,7 @@ public class StatusListActivity extends BaseActivity implements
                 ((ListFragmentInterface) mFragment).onFailedQuery();
             }
         } finally {
-             mLoading.close();
+            mLoading.close();
             mQuerying = false;
         }
     }
