@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.app.LoaderManager;
 import android.content.Intent;
 import android.content.Loader;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -15,6 +16,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.ikmr.banbara23.yaeyama_liner_checker.Loading;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
+import com.ikmr.banbara23.yaeyama_liner_checker.StatusAsync;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusAsyncTaskLoader;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAdapter;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
@@ -35,7 +37,7 @@ import timber.log.Timber;
  * ステータス一覧Activity
  */
 public class StatusListActivity extends BaseActivity implements
-        StatusListAdapter.ListItemClickListener, LoaderManager.LoaderCallbacks<Document>, QueryInterface {
+        StatusListAdapter.ListItemClickListener, LoaderManager.LoaderCallbacks<Document>, QueryInterface, StatusAsync.AsyncTaskCallback {
 
     final static String PARAM_COMPANY = "company";
     // 観光会社
@@ -46,7 +48,8 @@ public class StatusListActivity extends BaseActivity implements
     private boolean mQuerying;
     private Fragment mFragment;
     private Result mResult;
-    Loading mLoading;
+
+     Loading mLoading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +69,7 @@ public class StatusListActivity extends BaseActivity implements
                     .add(R.id.container, mFragment)
                     .commit();
         }
-        mLoading = new Loading(this);
+         mLoading = new Loading(this);
     }
 
     /**
@@ -108,13 +111,29 @@ public class StatusListActivity extends BaseActivity implements
      */
     private void createList() {
         Toast.makeText(this, "createList", Toast.LENGTH_SHORT).show();
-        if (mFragment != null && mFragment instanceof ListFragmentInterface) {
-            ((ListFragmentInterface) mFragment).onStartQuery();
+
+        String url;
+        if (mCompany == Company.ANNEI) {
+            url = getApplicationContext().getString(R.string.url_annei_list);
+        } else {
+            url = getApplicationContext().getString(R.string.url_ykf_list);
         }
-        mLoading.show();
-        mQuerying = true;
-        getLoaderManager().initLoader(0, null, this);
+
+        new StatusAsync(this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, url);
     }
+
+    // /**
+    // * 一覧の取得開始
+    // */
+    // private void createList() {
+    // Toast.makeText(this, "createList", Toast.LENGTH_SHORT).show();
+    // if (mFragment != null && mFragment instanceof ListFragmentInterface) {
+    // ((ListFragmentInterface) mFragment).onStartQuery();
+    // }
+    // mLoading.show();
+    // mQuerying = true;
+    // getLoaderManager().initLoader(0, null, this);
+    // }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -195,7 +214,7 @@ public class StatusListActivity extends BaseActivity implements
                 ((ListFragmentInterface) mFragment).onFailedQuery();
             }
         } finally {
-            mLoading.close();
+             mLoading.close();
             mQuerying = false;
         }
     }
@@ -231,4 +250,52 @@ public class StatusListActivity extends BaseActivity implements
 
     }
 
+    @Override
+    public void preExecute() {
+//        if (mFragment != null && mFragment instanceof ListFragmentInterface) {
+//            ((ListFragmentInterface) mFragment).onStartQuery();
+//        }
+         mLoading.show();
+        mQuerying = true;
+    }
+
+    @Override
+    public void postExecute(Document doc) {
+        Toast.makeText(this, "onLoadFinished", Toast.LENGTH_SHORT).show();
+        if (doc == null) {
+            // エラーを通知
+            if (mFragment != null && mFragment instanceof ListFragmentInterface) {
+                ((ListFragmentInterface) mFragment).onFailedQuery();
+            }
+            return;
+        }
+        try {
+            if (mCompany == Company.ANNEI) {
+                // 安栄のHTMLパース呼び出し
+                mResult = AnneiListParser.pars(doc);
+            } else {
+                // 八重山観光フェリーのHTMLパース呼び出し
+                mResult = YkfParser.pars(doc);
+            }
+            // 結果を通知
+            if (mFragment != null && mFragment instanceof ListFragmentInterface) {
+                ((ListFragmentInterface) mFragment).onResultQuery(mResult);
+            }
+            // 終了
+            if (mFragment != null && mFragment instanceof ListFragmentInterface) {
+                ((ListFragmentInterface) mFragment).onFinishQuery();
+            }
+        } catch (Exception e) {
+            Log.d("StatusListActivity", "e:" + e);
+            Timber.d("エラー発生！！");
+            Timber.d(e.getMessage());
+            Timber.d(e.getLocalizedMessage());
+            if (mFragment != null && mFragment instanceof ListFragmentInterface) {
+                ((ListFragmentInterface) mFragment).onFailedQuery();
+            }
+        } finally {
+             mLoading.close();
+            mQuerying = false;
+        }
+    }
 }

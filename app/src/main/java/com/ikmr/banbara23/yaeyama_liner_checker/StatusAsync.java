@@ -42,7 +42,9 @@ public class StatusAsync extends AsyncTask<String, Integer, Document> {
     @Override
     protected void onPostExecute(Document result) {
         super.onPostExecute(result);
-        callback.postExecute(result);
+        if (callback != null) {
+            callback.postExecute(result);
+        }
     }
 
     // @Override
