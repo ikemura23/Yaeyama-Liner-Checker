@@ -4,6 +4,7 @@ package com.ikmr.banbara23.yaeyama_liner_checker.activity;
 import android.app.Fragment;
 import android.app.LoaderManager;
 import android.content.Loader;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -11,7 +12,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.ikmr.banbara23.yaeyama_liner_checker.Loading;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
+import com.ikmr.banbara23.yaeyama_liner_checker.StatusAsync;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusAsyncTaskLoader;
 import com.ikmr.banbara23.yaeyama_liner_checker.StringUtils;
 import com.ikmr.banbara23.yaeyama_liner_checker.UrlSelector;
@@ -28,11 +31,11 @@ import timber.log.Timber;
 /**
  * ステータス詳細のActivity
  */
-public class StatusDetailActivity extends BaseActivity implements LoaderManager.LoaderCallbacks<Document>, QueryInterface {
+public class StatusDetailActivity extends BaseActivity implements LoaderManager.LoaderCallbacks<Document>, QueryInterface, StatusAsync.AsyncTaskCallback {
 
     Liner mLiner;
-    // 観光会社
     Fragment mFragment;
+    Loading mLoading;
     /**
      * クエリ起動中かどうか
      */
@@ -52,6 +55,29 @@ public class StatusDetailActivity extends BaseActivity implements LoaderManager.
                     .add(R.id.container, mFragment)
                     .commit();
         }
+        mLoading = new Loading(this);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_list, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                break;
+            case R.id.action_reload:
+                if (!mQuerying) {
+                    createDetail();
+                }
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     /**
@@ -71,27 +97,6 @@ public class StatusDetailActivity extends BaseActivity implements LoaderManager.
         setTitle(mLiner.getPort().getPort() + "航路");
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_list, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                finish();
-                break;
-            case R.id.action_reload:
-                Toast.makeText(this, "更新処理", Toast.LENGTH_SHORT).show();
-                break;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
     /**
      * Fragmentの準備が完了
      */
@@ -108,7 +113,9 @@ public class StatusDetailActivity extends BaseActivity implements LoaderManager.
             ((FragmentInterface) mFragment).onStartQuery();
         }
         mQuerying = true;
-        getLoaderManager().initLoader(1, null, this);
+        // getLoaderManager().initLoader(1, null, this);
+        String url = UrlSelector.getDetailUrl(getApplicationContext(), mLiner.company, mLiner.port);
+        new StatusAsync(this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, url);
     }
 
     @Override
@@ -173,5 +180,48 @@ public class StatusDetailActivity extends BaseActivity implements LoaderManager.
      */
     public void onWebClicked(View view) {
         Toast.makeText(getApplicationContext(), "サイトで確認クリック", Toast.LENGTH_SHORT);
+    }
+
+    @Override
+    public void preExecute() {
+        mLoading.show();
+        mQuerying = true;
+    }
+
+    @Override
+    public void postExecute(Document document) {
+        // if (document == null) {
+        // // エラーを通知
+        // if (mFragment != null && mFragment instanceof FragmentInterface) {
+        // ((FragmentInterface) mFragment).onFailedQuery();
+        // }
+        // mLoading.close();
+        // mQuerying = false;
+        // return;
+        // }
+        String result = null;
+        try {
+            // 安栄のHTMLパース呼び出し
+            result = AnneiDetailParser.pars(document);
+            // 結果を通知
+            if (mFragment != null && mFragment instanceof FragmentInterface) {
+                ((FragmentInterface) mFragment).onResultQuery(mLiner, result);
+            }
+            // 終了
+            if (mFragment != null && mFragment instanceof FragmentInterface) {
+                ((FragmentInterface) mFragment).onFinishQuery();
+            }
+        } catch (Exception e) {
+            Log.d("StatusDetailActivity", "e:" + e);
+            Timber.d("エラー発生！！");
+            Timber.d(e.getMessage());
+            Timber.d(e.getLocalizedMessage());
+            if (mFragment != null && mFragment instanceof FragmentInterface) {
+                ((FragmentInterface) mFragment).onFailedQuery();
+            }
+        } finally {
+            mQuerying = false;
+            mLoading.close();
+        }
     }
 }

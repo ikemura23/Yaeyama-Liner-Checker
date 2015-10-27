@@ -85,6 +85,41 @@ public class StatusListActivity extends BaseActivity implements
         setTitle(title);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                break;
+            case R.id.action_reload:
+                if (!mQuerying) {
+                    createList();
+                }
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_list, menu);
+        return true;
+    }
+
+    // /**
+    // * 一覧の取得開始
+    // */
+    // private void createList() {
+    // Toast.makeText(this, "createList", Toast.LENGTH_SHORT).show();
+    // if (mFragment != null && mFragment instanceof ListFragmentInterface) {
+    // ((ListFragmentInterface) mFragment).onStartQuery();
+    // }
+    // mLoading.show();
+    // mQuerying = true;
+    // getLoaderManager().initLoader(0, null, this);
+
     /**
      * 広告読み込み
      */
@@ -110,7 +145,7 @@ public class StatusListActivity extends BaseActivity implements
      * 一覧の取得開始
      */
     private void createList() {
-        Toast.makeText(this, "createList", Toast.LENGTH_SHORT).show();
+        // Toast.makeText(this, "createList", Toast.LENGTH_SHORT).show();
 
         String url;
         if (mCompany == Company.ANNEI) {
@@ -122,41 +157,7 @@ public class StatusListActivity extends BaseActivity implements
         new StatusAsync(this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, url);
     }
 
-    // /**
-    // * 一覧の取得開始
-    // */
-    // private void createList() {
-    // Toast.makeText(this, "createList", Toast.LENGTH_SHORT).show();
-    // if (mFragment != null && mFragment instanceof ListFragmentInterface) {
-    // ((ListFragmentInterface) mFragment).onStartQuery();
     // }
-    // mLoading.show();
-    // mQuerying = true;
-    // getLoaderManager().initLoader(0, null, this);
-    // }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                finish();
-                break;
-            case R.id.action_reload:
-                if (!mQuerying) {
-                    createList();
-                }
-                break;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_list, menu);
-        return true;
-    }
 
     @Override
     public Loader<Document> onCreateLoader(int id, Bundle args) {
@@ -262,14 +263,18 @@ public class StatusListActivity extends BaseActivity implements
 
     @Override
     public void postExecute(Document doc) {
-        Toast.makeText(this, "onLoadFinished", Toast.LENGTH_SHORT).show();
-        if (doc == null) {
-            // エラーを通知
-            if (mFragment != null && mFragment instanceof ListFragmentInterface) {
-                ((ListFragmentInterface) mFragment).onFailedQuery();
-            }
-            return;
-        }
+
+        // Toast.makeText(this, "onLoadFinished", Toast.LENGTH_SHORT).show();
+        // if (doc == null) {
+        // // エラーを通知
+        // if (mFragment != null && mFragment instanceof ListFragmentInterface)
+        // {
+        // ((ListFragmentInterface) mFragment).onFailedQuery();
+        // }
+        // mLoading.close();
+        // mQuerying = false;
+        // return;
+        // }
         try {
             if (mCompany == Company.ANNEI) {
                 // 安栄のHTMLパース呼び出し
@@ -296,7 +301,6 @@ public class StatusListActivity extends BaseActivity implements
             }
         } finally {
             mLoading.close();
-            mQuerying = false;
         }
     }
 }
