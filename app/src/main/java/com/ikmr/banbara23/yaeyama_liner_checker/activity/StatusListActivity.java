@@ -2,22 +2,18 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.activity;
 
 import android.app.Fragment;
-import android.app.LoaderManager;
 import android.content.Intent;
-import android.content.Loader;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.ikmr.banbara23.yaeyama_liner_checker.Loading;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusAsync;
-import com.ikmr.banbara23.yaeyama_liner_checker.StatusAsyncTaskLoader;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAdapter;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
@@ -37,7 +33,7 @@ import timber.log.Timber;
  * ステータス一覧Activity
  */
 public class StatusListActivity extends BaseActivity implements
-        StatusListAdapter.ListItemClickListener, LoaderManager.LoaderCallbacks<Document>, QueryInterface, StatusAsync.AsyncTaskCallback {
+        StatusListAdapter.ListItemClickListener, QueryInterface, StatusAsync.AsyncTaskCallback {
 
     final static String PARAM_COMPANY = "company";
     // 観光会社
@@ -108,18 +104,6 @@ public class StatusListActivity extends BaseActivity implements
         return true;
     }
 
-    // /**
-    // * 一覧の取得開始
-    // */
-    // private void createList() {
-    // Toast.makeText(this, "createList", Toast.LENGTH_SHORT).show();
-    // if (mFragment != null && mFragment instanceof ListFragmentInterface) {
-    // ((ListFragmentInterface) mFragment).onStartQuery();
-    // }
-    // mLoading.show();
-    // mQuerying = true;
-    // getLoaderManager().initLoader(0, null, this);
-
     /**
      * 広告読み込み
      */
@@ -157,74 +141,6 @@ public class StatusListActivity extends BaseActivity implements
         new StatusAsync(this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, url);
     }
 
-    // }
-
-    @Override
-    public Loader<Document> onCreateLoader(int id, Bundle args) {
-        Log.d("StatusListActivity", "onCreateLoader");
-        Toast.makeText(this, "onCreateLoader", Toast.LENGTH_SHORT).show();
-
-        String url;
-        if (mCompany == Company.ANNEI) {
-            url = getApplicationContext().getString(R.string.url_annei_list);
-        } else {
-            url = getApplicationContext().getString(R.string.url_ykf_list);
-        }
-        StatusAsyncTaskLoader appLoader = new StatusAsyncTaskLoader(getApplication(), url);
-
-        // loaderの開始
-        appLoader.forceLoad();
-
-        //
-        return appLoader;
-    }
-
-    @Override
-    public void onLoadFinished(Loader<Document> loader, Document doc) {
-        Log.d("StatusListActivity", "onLoadFinished");
-        Toast.makeText(this, "onLoadFinished", Toast.LENGTH_SHORT).show();
-        if (doc == null) {
-            // エラーを通知
-            if (mFragment != null && mFragment instanceof ListFragmentInterface) {
-                ((ListFragmentInterface) mFragment).onFailedQuery();
-            }
-            return;
-        }
-        try {
-            if (mCompany == Company.ANNEI) {
-                // 安栄のHTMLパース呼び出し
-                mResult = AnneiListParser.pars(doc);
-            } else {
-                // 八重山観光フェリーのHTMLパース呼び出し
-                mResult = YkfParser.pars(doc);
-            }
-            // 結果を通知
-            if (mFragment != null && mFragment instanceof ListFragmentInterface) {
-                ((ListFragmentInterface) mFragment).onResultQuery(mResult);
-            }
-            // 終了
-            if (mFragment != null && mFragment instanceof ListFragmentInterface) {
-                ((ListFragmentInterface) mFragment).onFinishQuery();
-            }
-        } catch (Exception e) {
-            Log.d("StatusListActivity", "e:" + e);
-            Timber.d("エラー発生！！");
-            Timber.d(e.getMessage());
-            Timber.d(e.getLocalizedMessage());
-            if (mFragment != null && mFragment instanceof ListFragmentInterface) {
-                ((ListFragmentInterface) mFragment).onFailedQuery();
-            }
-        } finally {
-            mLoading.close();
-            mQuerying = false;
-        }
-    }
-
-    @Override
-    public void onLoaderReset(Loader<Document> loader) {
-
-    }
-
     /**
      * リストのセルビュークリック処理
      *
@@ -253,28 +169,16 @@ public class StatusListActivity extends BaseActivity implements
 
     @Override
     public void preExecute() {
-        // if (mFragment != null && mFragment instanceof ListFragmentInterface)
-        // {
-        // ((ListFragmentInterface) mFragment).onStartQuery();
-        // }
+         if (mFragment != null && mFragment instanceof ListFragmentInterface)
+         {
+         ((ListFragmentInterface) mFragment).onStartQuery();
+         }
         mLoading.show();
         mQuerying = true;
     }
 
     @Override
     public void postExecute(Document doc) {
-
-        // Toast.makeText(this, "onLoadFinished", Toast.LENGTH_SHORT).show();
-        // if (doc == null) {
-        // // エラーを通知
-        // if (mFragment != null && mFragment instanceof ListFragmentInterface)
-        // {
-        // ((ListFragmentInterface) mFragment).onFailedQuery();
-        // }
-        // mLoading.close();
-        // mQuerying = false;
-        // return;
-        // }
         try {
             if (mCompany == Company.ANNEI) {
                 // 安栄のHTMLパース呼び出し
@@ -301,6 +205,7 @@ public class StatusListActivity extends BaseActivity implements
             }
         } finally {
             mLoading.close();
+            mQuerying = false;
         }
     }
 }

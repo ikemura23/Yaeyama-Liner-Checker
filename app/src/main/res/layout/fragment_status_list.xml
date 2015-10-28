@@ -2,7 +2,6 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:wheel="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -36,7 +35,7 @@
                 android:id="@+id/fragment_status_list_toolbar_update_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawablePadding="5dp"
+                android:paddingTop="5dp"
                 android:text="yyyy/MM/dd hh:mm:ss更新"
                 android:textSize="12dp"/>
 
@@ -53,15 +52,15 @@
     </RelativeLayout>
 
     <!--<com.pnikosis.materialishprogress.ProgressWheel-->
-        <!--android:id="@+id/fragment_list_material_progress_bar"-->
-        <!--android:layout_width="80dp"-->
-        <!--android:layout_height="80dp"-->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--android:layout_centerVertical="true"-->
-        <!--android:layout_gravity="center"-->
-        <!--tools:visibility="gone"-->
-        <!--wheel:matProg_barColor="#5588FF"-->
-        <!--wheel:matProg_progressIndeterminate="true"-->
-        <!--wheel:matProg_rimColor="#FFCFC9C9"/>-->
+    <!--android:id="@+id/fragment_list_material_progress_bar"-->
+    <!--android:layout_width="80dp"-->
+    <!--android:layout_height="80dp"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:layout_gravity="center"-->
+    <!--tools:visibility="gone"-->
+    <!--wheel:matProg_barColor="#5588FF"-->
+    <!--wheel:matProg_progressIndeterminate="true"-->
+    <!--wheel:matProg_rimColor="#FFCFC9C9"/>-->
 
 </FrameLayout>

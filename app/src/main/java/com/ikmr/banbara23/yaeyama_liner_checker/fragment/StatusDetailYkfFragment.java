@@ -73,10 +73,10 @@ public class StatusDetailYkfFragment extends BaseFragment {
             return "";
         }
         StringBuilder sb = new StringBuilder();
-        if (StringUtils.isNotEmpty(getParam().getUpdateTime())) {
-            sb.append(getParam().getUpdateTime());
-            sb.append("\n");
-        }
+//        if (StringUtils.isNotEmpty(getParam().getUpdateTime())) {
+//            sb.append(getParam().getUpdateTime());
+//            sb.append("\n");
+//        }
         if (StringUtils.isNotEmpty(getParam().getTitle())) {
             sb.append(getParam().getTitle());
             sb.append("\n");
