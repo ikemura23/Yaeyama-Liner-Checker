@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -125,11 +126,12 @@ public class StatusDetailFragment extends BaseFragment implements FragmentInterf
         }
         try {
             Intent intent = new Intent(
-                    Intent.ACTION_CALL,
+                    Intent.ACTION_VIEW,
                     Uri.parse("tel:" + tell));
 
             startActivity(intent);
         } catch (Exception e) {
+            Log.d("StatusDetailFragment", e.getMessage());
             // 何もしない
         }
     }
