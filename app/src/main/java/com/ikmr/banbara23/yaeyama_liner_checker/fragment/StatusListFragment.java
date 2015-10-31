@@ -4,11 +4,12 @@ package com.ikmr.banbara23.yaeyama_liner_checker.fragment;
 import android.app.Activity;
 import android.app.ListFragment;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,7 +28,7 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
     ListView mListView;
     TextView mTitleText;
     TextView mUpdateText;
-    LinearLayout mHeaderLayout;
+    FrameLayout mHeaderCardLayout;
     // ProgressWheel mProgressWheel;
 
     final static String PARAM_COMPANY = "company";
@@ -49,7 +50,7 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
         mListView = (ListView) view.findViewById(android.R.id.list);
         // mProgressWheel = (ProgressWheel)
         // view.findViewById(R.id.fragment_list_material_progress_bar);
-        mHeaderLayout = (LinearLayout) view.findViewById(R.id.fragment_status_list_header);
+        mHeaderCardLayout = (CardView) view.findViewById(R.id.fragment_status_list_header_card_view);
         mTitleText = (TextView) view.findViewById(R.id.fragment_status_list_toolbar_title_text);
         mUpdateText = (TextView) view.findViewById(R.id.fragment_status_list_toolbar_update_text);
         return view;
@@ -73,7 +74,7 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
      * 読込中の表示開始
      */
     private void showProgress() {
-        mHeaderLayout.setVisibility(View.GONE);
+        mHeaderCardLayout.setVisibility(View.GONE);
         // mProgressWheel.setVisibility(View.VISIBLE);
     }
 
@@ -81,7 +82,7 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
      * 読込中の表示完了
      */
     private void hideProgress() {
-        mHeaderLayout.setVisibility(View.VISIBLE);
+        mHeaderCardLayout.setVisibility(View.VISIBLE);
         // mProgressWheel.setVisibility(View.GONE);
     }
 
