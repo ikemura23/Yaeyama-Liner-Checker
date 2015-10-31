@@ -14,10 +14,12 @@
             android:id="@+id/fragment_status_list_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_marginLeft="@dimen/status_list_info_margin"
+            android:layout_marginRight="@dimen/status_list_info_margin"
+            android:layout_marginTop="@dimen/status_list_info_margin"
             android:background="@color/light_primary_color"
             android:orientation="vertical"
-            android:padding="10dp"
+            android:padding="8dp"
             android:visibility="gone"
             tools:visibility="visible">
 
@@ -28,9 +30,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:drawablePadding="5dp"
+                android:lineSpacingExtra="2dp"
                 android:text="title"
                 android:textColor="@color/secondary_text"
-                android:textSize="18dp"/>
+                android:textSize="15dp"/>
 
             <!--更新時刻-->
             <TextView
@@ -39,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:text="yyyy/MM/dd hh:mm:ss更新"
                 android:textColor="@color/secondary_text"
-                android:textSize="12dp"/>
+                android:textSize="13dp"/>
 
         </LinearLayout>
 
