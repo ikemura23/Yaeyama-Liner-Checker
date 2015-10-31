@@ -15,3 +15,17 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+
+#-keep class org.apache.http.** { *; }
+#-dontwarn org.apache.http.**
+#
+#-keep class android.net.http.** { *; }
+#-dontwarn android.net.http.**
+#
+#-keep class android.support.v7.** { *; }
+#-keep class android.support.v4.** { *; }
+#
+-keep class com.google.android.gms.** { *; }
+-dontwarn com.google.android.gms.**
+
+-dontwarn com.androidquery.**
