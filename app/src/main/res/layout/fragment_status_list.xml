@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:background="@color/ripple_material_light"
+            android:background="@color/light_primary_color"
             android:orientation="vertical"
             android:padding="10dp"
             android:visibility="gone"
@@ -26,8 +26,10 @@
                 android:id="@+id/fragment_status_list_toolbar_title_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 android:drawablePadding="5dp"
                 android:text="title"
+                android:textColor="@color/secondary_text"
                 android:textSize="18dp"/>
 
             <!--更新時刻-->
@@ -35,8 +37,8 @@
                 android:id="@+id/fragment_status_list_toolbar_update_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="5dp"
                 android:text="yyyy/MM/dd hh:mm:ss更新"
+                android:textColor="@color/secondary_text"
                 android:textSize="12dp"/>
 
         </LinearLayout>
