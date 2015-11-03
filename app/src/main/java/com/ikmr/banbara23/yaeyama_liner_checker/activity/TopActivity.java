@@ -81,4 +81,14 @@ public class TopActivity extends BaseActivity {
         intent.putExtra(StatusListActivity.PARAM_COMPANY, Company.YKF);
         startActivity(intent);
     }
+
+    /**
+     * 八重山観光フェリークリック
+     *
+     * @param view
+     */
+    public void otherClick(View view) {
+        Intent intent = new Intent(this, OtherActivity.class);
+        startActivity(intent);
+    }
 }

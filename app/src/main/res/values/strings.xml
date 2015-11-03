@@ -5,7 +5,9 @@
     <string name="title_activity_top">八重山高速船チェッカー</string>
     <string name="title_activity_status_list">の運航状況一覧</string>
     <string name="title_activity_status_detail">運航状況の詳細</string>
-    <string name="hello_world">観光会社を選んでください</string>
+    <string name="title_activity_other">その他</string>
+
+    <string name="top_description">観光会社を選んでください</string>
 
     <!--URL-->
     <!--安栄-->
@@ -38,5 +40,8 @@
     <string name="tel_ykf">0980825010</string>
     <!--八重山観光フェリーのHP-->
     <string name="hp_ykf">http://www.yaeyama.co.jp/pg104.html</string>
+
+    <!--その他-->
+    <string name="other_info">当アプリは個人が作成したアプリであり、安栄観光様・八重山観光フェリー様の公式アプリではありません。\n当アプリについての安栄観光様・八重山観光フェリー様へのお問い合わせは、ご遠慮頂くようお願い申し上げます。</string>
 
 </resources>

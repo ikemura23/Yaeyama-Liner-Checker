@@ -12,11 +12,11 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world"
+        android:text="@string/top_description"
         android:textSize="15sp"/>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/annei_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -29,14 +29,26 @@
         android:transitionName="@string/transition_top_annei"/>
 
     <Button
+        android:id="@+id/ykf_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/button"
+        android:layout_below="@+id/annei_button"
         android:layout_marginTop="10dp"
         android:onClick="ykfClick"
         android:text="八重山観光フェリー"
+        android:textSize="18sp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/ykf_button"
+        android:layout_marginTop="10dp"
+        android:onClick="otherClick"
+        android:text="その他"
         android:textSize="18sp"/>
 
     <!--広告-->
