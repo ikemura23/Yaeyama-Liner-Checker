@@ -28,4 +28,5 @@
 -keep class com.google.android.gms.** { *; }
 -dontwarn com.google.android.gms.**
 
+-keep class com.androidquery.** { *; }
 -dontwarn com.androidquery.**
