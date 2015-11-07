@@ -63,7 +63,7 @@ public class StringUtils {
             if (Character.isWhitespace(c)) {
                 continue;
             }
-            if (c <= ' ' || c == '　') {
+            if (c == ' ' || c == '　') {
                 continue;
             }
             sb.append(c);
