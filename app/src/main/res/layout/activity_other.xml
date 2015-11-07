@@ -19,37 +19,48 @@
         android:layout_marginBottom="8dp"
         android:text="@string/other_info"/>
 
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginBottom="8dp"-->
+    <!--android:layout_marginTop="16dp"-->
+    <!--android:text="当アプリへの問い合わせ"-->
+    <!--android:textSize="16dp"-->
+    <!--android:textStyle="bold"/>-->
+    <!-- -->
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginBottom="8dp"-->
+    <!--android:text="メールでのご意見はこちらからお願いします。"/>-->
+    <!--<Button-->
+    <!--android:id="@+id/other_mail_button"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginBottom="8dp"-->
+    <!--android:onClick="mailClick"-->
+    <!--android:text="メールで問い合わせる"/>-->
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="16dp"
-        android:text="当アプリへの問い合わせ"
+        android:text="アプリへのご意見・ご感想"
         android:textSize="16dp"
         android:textStyle="bold"/>
-
-    <Button
-        android:id="@+id/other_mail_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:onClick="mailClick"
-        android:text="お問い合わせ"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginTop="16dp"
-        android:text="当アプリへのご意見"
-        android:textSize="16dp"
-        android:textStyle="bold"/>
+        android:text="当アプリのご利用ありがとうございます。アプリへのご意見・感想があれば下記ボタンからお願いします。\n(ブラウザアプリに切り替わります)"/>
 
     <Button
         android:id="@+id/other_form_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="formClick"
-        android:text="意見を投稿する"/>
+        android:text="ご意見箱"/>
 
 </LinearLayout>
