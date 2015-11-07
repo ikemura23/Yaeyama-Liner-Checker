@@ -22,7 +22,7 @@ public class OtherActivity extends BaseActivity {
     }
 
     /**
-     * 八重山観光フェリークリック
+     * メール問い合わせボタン押下
      *
      * @param view
      */
@@ -40,6 +40,22 @@ public class OtherActivity extends BaseActivity {
             startActivity(intent);
         } catch (Exception e) {
             Toast.makeText(this, "メール起動でエラーが発生しました", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    /**
+     * アンケートボタン押下
+     *
+     * @param view
+     */
+    public void formClick(View view) {
+
+        Uri uri = Uri.parse(getString(R.string.form_address));
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        try {
+            startActivity(intent);
+        } catch (Exception e) {
+            // 何もしない
         }
     }
 

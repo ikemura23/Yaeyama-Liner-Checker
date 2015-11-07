@@ -49,6 +49,7 @@
         android:id="@+id/other_form_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="formClick"
         android:text="意見を投稿する"/>
 
 </LinearLayout>

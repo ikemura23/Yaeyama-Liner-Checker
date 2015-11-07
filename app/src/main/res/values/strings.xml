@@ -47,4 +47,6 @@
     <string name="mail_address">banbara.work@gmail.com</string>
     <string name="EXTRA_SUBJECT">へのご意見</string>
 
+    <string name="form_address">https://docs.google.com/forms/d/1JXzrILj5OPWVlv1QcJbROSuqFyri9s8rgc7dZR-Ate0/viewform?usp=send_form</string>
+
 </resources>
