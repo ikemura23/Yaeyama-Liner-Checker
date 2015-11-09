@@ -5,7 +5,7 @@ android {
     buildToolsVersion "22.0.1"
 
     defaultConfig {
-        applicationId "com.ikmr.banbara23.yaeyama_liner_checker"
+        applicationId "com.banbara.yaeyama.liner.checker"
         minSdkVersion 14
         targetSdkVersion 22
         versionCode 1
