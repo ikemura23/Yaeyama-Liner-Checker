@@ -8,6 +8,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StringUtils;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
@@ -36,7 +38,12 @@ public class StatusDetailYkfActivity extends BaseActivity {
         mYkfLinerDetail = getIntent().getParcelableExtra(StatusDetailYkfActivity.class.getName());
         mLiner = mYkfLinerDetail.getLiner();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        // タイトル
         setTitleString();
+
+        // 広告
+        loadAd();
 
         if (savedInstanceState == null) {
             mFragment = StatusDetailYkfFragment.NewInstance(mYkfLinerDetail);
@@ -61,6 +68,21 @@ public class StatusDetailYkfActivity extends BaseActivity {
         }
 
         setTitle(mLiner.getPort().getPort() + "航路");
+    }
+
+    /**
+     * 広告読み込み
+     */
+    protected void loadAd() {
+        AdView adView = (AdView) findViewById(R.id.adView);
+        if (adView == null) {
+            return;
+        }
+        try {
+            AdRequest adRequest = new AdRequest.Builder().build();
+            adView.loadAd(adRequest);
+        } catch (Exception e) {
+        }
     }
 
     @Override
