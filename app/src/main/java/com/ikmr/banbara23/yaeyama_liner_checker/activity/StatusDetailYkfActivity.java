@@ -17,7 +17,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusDetailYkfFragment
 /**
  * ステータス詳細のActivity
  */
-public class StatusDetailWebActivity extends BaseActivity {
+public class StatusDetailYkfActivity extends BaseActivity {
 
     YkfLinerDetail mYkfLinerDetail;
     Liner mLiner;
@@ -33,7 +33,7 @@ public class StatusDetailWebActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_status_detail);
-        mYkfLinerDetail = getIntent().getParcelableExtra(StatusDetailWebActivity.class.getName());
+        mYkfLinerDetail = getIntent().getParcelableExtra(StatusDetailYkfActivity.class.getName());
         mLiner = mYkfLinerDetail.getLiner();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitleString();

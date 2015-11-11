@@ -160,8 +160,8 @@ public class StatusListActivity extends BaseActivity implements
             ykfLinerDetail.setUpdateTime(mResult.getUpdateTime());
             ykfLinerDetail.setTitle(mResult.getTitle());
 
-            Intent intent = new Intent(this, StatusDetailWebActivity.class);
-            intent.putExtra(StatusDetailWebActivity.class.getName(), ykfLinerDetail);
+            Intent intent = new Intent(this, StatusDetailYkfActivity.class);
+            intent.putExtra(StatusDetailYkfActivity.class.getName(), ykfLinerDetail);
             startActivity(intent);
         }
 
