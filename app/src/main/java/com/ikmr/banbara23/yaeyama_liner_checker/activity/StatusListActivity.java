@@ -60,12 +60,30 @@ public class StatusListActivity extends BaseActivity implements
         loadAd();
         // フラグメント
         if (savedInstanceState == null) {
-            mFragment = StatusListFragment.NewInstance(mCompany);
-            getFragmentManager().beginTransaction()
-                    .add(R.id.container, mFragment)
-                    .commit();
+            createFragment();
+        }
+        else {
+            mCompany = (Company) savedInstanceState.get(PARAM_COMPANY);
         }
         mLoading = new Loading(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (mFragment == null) {
+            createFragment();
+        }
+    }
+
+    /**
+     * フラグメント作成
+     */
+    private void createFragment() {
+        mFragment = StatusListFragment.NewInstance(mCompany);
+        getFragmentManager().beginTransaction()
+                .add(R.id.container, mFragment)
+                .commit();
     }
 
     /**
@@ -120,6 +138,18 @@ public class StatusListActivity extends BaseActivity implements
     }
 
     @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable(PARAM_COMPANY, mCompany);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        mCompany = (Company) savedInstanceState.get(PARAM_COMPANY);
+    }
+
+    @Override
     public void startQuery() {
         // 一覧の取得開始
         createList();
@@ -169,10 +199,10 @@ public class StatusListActivity extends BaseActivity implements
 
     @Override
     public void preExecute() {
-         if (mFragment != null && mFragment instanceof ListFragmentInterface)
-         {
-         ((ListFragmentInterface) mFragment).onStartQuery();
-         }
+        if (mFragment != null && mFragment instanceof ListFragmentInterface)
+        {
+            ((ListFragmentInterface) mFragment).onStartQuery();
+        }
         mLoading.show();
         mQuerying = true;
     }
