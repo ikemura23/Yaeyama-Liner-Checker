@@ -52,13 +52,42 @@ public class StatusDetailActivity extends BaseActivity implements LoaderManager.
 
         setTitleString();
         loadAd();
-        if (savedInstanceState == null) {
-            mFragment = StatusDetailFragment.NewInstance(mLiner);
-            getFragmentManager().beginTransaction()
-                    .add(R.id.container, mFragment)
-                    .commit();
+        if (savedInstanceState != null) {
+            mLiner = (Liner) savedInstanceState.get(Liner.class.getCanonicalName());
         }
-        mLoading = new Loading(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (mLoading == null) {
+            mLoading = new Loading(this);
+        }
+        if (mFragment == null) {
+            createFragment();
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelable(Liner.class.getCanonicalName(), mLiner);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        mLiner = (Liner) savedInstanceState.get(Liner.class.getCanonicalName());
+    }
+
+    /**
+     * フラグメント作成
+     */
+    private void createFragment() {
+        mFragment = StatusDetailFragment.NewInstance(mLiner);
+        getFragmentManager().beginTransaction()
+                .replace(R.id.container, mFragment)
+                .commit();
     }
 
     @Override

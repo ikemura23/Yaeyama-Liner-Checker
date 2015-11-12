@@ -59,13 +59,9 @@ public class StatusListActivity extends BaseActivity implements
         // 広告
         loadAd();
         // フラグメント
-        if (savedInstanceState == null) {
-            createFragment();
-        }
-        else {
+        if (savedInstanceState != null) {
             mCompany = (Company) savedInstanceState.get(PARAM_COMPANY);
         }
-        mLoading = new Loading(this);
     }
 
     @Override
@@ -82,7 +78,7 @@ public class StatusListActivity extends BaseActivity implements
     private void createFragment() {
         mFragment = StatusListFragment.NewInstance(mCompany);
         getFragmentManager().beginTransaction()
-                .add(R.id.container, mFragment)
+                .replace(R.id.container, mFragment)
                 .commit();
     }
 
@@ -197,13 +193,20 @@ public class StatusListActivity extends BaseActivity implements
 
     }
 
+    public Loading getLoading() {
+        if (mLoading == null) {
+            mLoading = new Loading(this);
+        }
+        return mLoading;
+    }
+
     @Override
     public void preExecute() {
         if (mFragment != null && mFragment instanceof ListFragmentInterface)
         {
             ((ListFragmentInterface) mFragment).onStartQuery();
         }
-        mLoading.show();
+        getLoading().show();
         mQuerying = true;
     }
 
@@ -234,7 +237,7 @@ public class StatusListActivity extends BaseActivity implements
                 ((ListFragmentInterface) mFragment).onFailedQuery();
             }
         } finally {
-            mLoading.close();
+            getLoading().close();
             mQuerying = false;
         }
     }

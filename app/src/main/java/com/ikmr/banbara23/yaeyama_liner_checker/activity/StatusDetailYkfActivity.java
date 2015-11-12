@@ -30,7 +30,7 @@ public class StatusDetailYkfActivity extends BaseActivity {
     /**
      * クエリ起動中かどうか
      */
-//    private boolean mQuerying;
+    // private boolean mQuerying;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,12 +45,42 @@ public class StatusDetailYkfActivity extends BaseActivity {
         // 広告
         loadAd();
 
-        if (savedInstanceState == null) {
-            mFragment = StatusDetailYkfFragment.NewInstance(mYkfLinerDetail);
-            getFragmentManager().beginTransaction()
-                    .add(R.id.container, mFragment)
-                    .commit();
+        if (savedInstanceState != null) {
+            mYkfLinerDetail = (YkfLinerDetail) savedInstanceState.get(YkfLinerDetail.class.getCanonicalName());
+            mLiner = (Liner) savedInstanceState.get(Liner.class.getCanonicalName());
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (mFragment == null) {
+            createFragment();
+        }
+    }
+
+    /**
+     * フラグメント作成
+     */
+    private void createFragment() {
+        mFragment = StatusDetailYkfFragment.NewInstance(mYkfLinerDetail);
+        getFragmentManager().beginTransaction()
+                .replace(R.id.container, mFragment)
+                .commit();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelable(YkfLinerDetail.class.getCanonicalName(), mYkfLinerDetail);
+        outState.putParcelable(Liner.class.getCanonicalName(), mLiner);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        mYkfLinerDetail = (YkfLinerDetail) savedInstanceState.get(YkfLinerDetail.class.getCanonicalName());
+        mLiner = (Liner) savedInstanceState.get(Liner.class.getCanonicalName());
     }
 
     /**
@@ -106,84 +136,87 @@ public class StatusDetailYkfActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-//    /**
-//     * Fragmentの準備が完了
-//     */
-//    @Override
-//    public void startQuery() {
-//        createDetail();
-//    }
-//
-//    /**
-//     * 詳細の作成開始
-//     */
-//    private void createDetail() {
-//        if (mFragment != null && mFragment instanceof FragmentInterface) {
-//            ((FragmentInterface) mFragment).onStartQuery();
-//        }
-//        mQuerying = true;
-////        getLoaderManager().initLoader(1, null, this);
-//
-//        //一時的
-//        if (mFragment != null && mFragment instanceof FragmentInterface) {
-//            ((FragmentInterface) mFragment).onResultQuery(mYkfLinerDetail, mYkfLinerDetail.getText());
-//        }
-//        // 終了
-//        if (mFragment != null && mFragment instanceof FragmentInterface) {
-//            ((FragmentInterface) mFragment).onFinishQuery();
-//        }
-//    }
-//
-//    // 以下、呼ばれない
-//    @Override
-//    public Loader<Document> onCreateLoader(int id, Bundle args) {
-//        String url = UrlSelector.geDetailtUrl(getApplicationContext(), mYkfLinerDetail.company, mYkfLinerDetail.port);
-//        StatusAsyncTaskLoader appLoader = new StatusAsyncTaskLoader(getApplication(), url);
-//
-//        // loaderの開始
-//        appLoader.forceLoad();
-//
-//        return appLoader;
-//    }
-//
-//    @Override
-//    public void onLoadFinished(Loader<Document> loader, Document document) {
-//        if (document == null) {
-//            // エラーを通知
-//            if (mFragment != null && mFragment instanceof FragmentInterface) {
-//                ((FragmentInterface) mFragment).onFailedQuery();
-//            }
-//            return;
-//        }
-//        String result = null;
-//        try {
-//            // 安栄のHTMLパース呼び出し
-//            result = AnneiDetailParser.pars(document);
-//            // 結果を通知
-//            if (mFragment != null && mFragment instanceof FragmentInterface) {
-//                ((FragmentInterface) mFragment).onResultQuery(mYkfLinerDetail, result);
-//            }
-//            // 終了
-//            if (mFragment != null && mFragment instanceof FragmentInterface) {
-//                ((FragmentInterface) mFragment).onFinishQuery();
-//            }
-//        } catch (Exception e) {
-//            Log.d("StatusDetailActivity", "e:" + e);
-//            Timber.d("エラー発生！！");
-//            Timber.d(e.getMessage());
-//            Timber.d(e.getLocalizedMessage());
-//            if (mFragment != null && mFragment instanceof FragmentInterface) {
-//                ((FragmentInterface) mFragment).onFailedQuery();
-//            }
-//        } finally {
-//            mQuerying = false;
-//        }
-//    }
-//
-//    @Override
-//    public void onLoaderReset(Loader<Document> loader) {
-//
-//    }
+    // /**
+    // * Fragmentの準備が完了
+    // */
+    // @Override
+    // public void startQuery() {
+    // createDetail();
+    // }
+    //
+    // /**
+    // * 詳細の作成開始
+    // */
+    // private void createDetail() {
+    // if (mFragment != null && mFragment instanceof FragmentInterface) {
+    // ((FragmentInterface) mFragment).onStartQuery();
+    // }
+    // mQuerying = true;
+    // // getLoaderManager().initLoader(1, null, this);
+    //
+    // //一時的
+    // if (mFragment != null && mFragment instanceof FragmentInterface) {
+    // ((FragmentInterface) mFragment).onResultQuery(mYkfLinerDetail,
+    // mYkfLinerDetail.getText());
+    // }
+    // // 終了
+    // if (mFragment != null && mFragment instanceof FragmentInterface) {
+    // ((FragmentInterface) mFragment).onFinishQuery();
+    // }
+    // }
+    //
+    // // 以下、呼ばれない
+    // @Override
+    // public Loader<Document> onCreateLoader(int id, Bundle args) {
+    // String url = UrlSelector.geDetailtUrl(getApplicationContext(),
+    // mYkfLinerDetail.company, mYkfLinerDetail.port);
+    // StatusAsyncTaskLoader appLoader = new
+    // StatusAsyncTaskLoader(getApplication(), url);
+    //
+    // // loaderの開始
+    // appLoader.forceLoad();
+    //
+    // return appLoader;
+    // }
+    //
+    // @Override
+    // public void onLoadFinished(Loader<Document> loader, Document document) {
+    // if (document == null) {
+    // // エラーを通知
+    // if (mFragment != null && mFragment instanceof FragmentInterface) {
+    // ((FragmentInterface) mFragment).onFailedQuery();
+    // }
+    // return;
+    // }
+    // String result = null;
+    // try {
+    // // 安栄のHTMLパース呼び出し
+    // result = AnneiDetailParser.pars(document);
+    // // 結果を通知
+    // if (mFragment != null && mFragment instanceof FragmentInterface) {
+    // ((FragmentInterface) mFragment).onResultQuery(mYkfLinerDetail, result);
+    // }
+    // // 終了
+    // if (mFragment != null && mFragment instanceof FragmentInterface) {
+    // ((FragmentInterface) mFragment).onFinishQuery();
+    // }
+    // } catch (Exception e) {
+    // Log.d("StatusDetailActivity", "e:" + e);
+    // Timber.d("エラー発生！！");
+    // Timber.d(e.getMessage());
+    // Timber.d(e.getLocalizedMessage());
+    // if (mFragment != null && mFragment instanceof FragmentInterface) {
+    // ((FragmentInterface) mFragment).onFailedQuery();
+    // }
+    // } finally {
+    // mQuerying = false;
+    // }
+    // }
+    //
+    // @Override
+    // public void onLoaderReset(Loader<Document> loader) {
+    //
+    // }
 
     /**
      * @param view 電話で問い合わせクリック
