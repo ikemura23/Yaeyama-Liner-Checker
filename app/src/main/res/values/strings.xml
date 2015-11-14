@@ -49,4 +49,15 @@
 
     <string name="form_address">https://docs.google.com/forms/d/1JXzrILj5OPWVlv1QcJbROSuqFyri9s8rgc7dZR-Ate0/viewform?usp=send_form</string>
 
+    <!--時刻表-->
+    <string name="time_table_title">時刻表</string>
+    <string name="time_table_port_ishigaki">石垣発</string>
+    <string name="time_table_port_taketomi">竹富発</string>
+    <string name="time_table_port_kuroshima">黒島発</string>
+    <string name="time_table_port_kohama">小浜発</string>
+    <string name="time_table_port_uehara">西表(上原)発</string>
+    <string name="time_table_port_oohara">西表(大原)発</string>
+    <string name="time_table_port_hateruma">波照間発</string>
+    
+
 </resources>
