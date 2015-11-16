@@ -13,7 +13,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:textSize">20dp</item>
-        <item name="android:padding">7dp</item>
+        <item name="android:padding">4dp</item>
         <item name="android:layout_margin">1dp</item>
     </style>
 
