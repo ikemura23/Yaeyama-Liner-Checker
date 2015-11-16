@@ -5,6 +5,7 @@
     <string name="title_activity_top">八重山離島船チェッカー</string>
     <string name="title_activity_status_list">の運航状況一覧</string>
     <string name="title_activity_status_detail">運航状況の詳細</string>
+    <string name="title_activity_timetable">時刻表</string>
     <string name="title_activity_other">その他</string>
 
     <string name="top_description">観光会社を選んでください</string>
@@ -58,6 +59,6 @@
     <string name="time_table_port_uehara">西表(上原)発</string>
     <string name="time_table_port_oohara">西表(大原)発</string>
     <string name="time_table_port_hateruma">波照間発</string>
-    
+
 
 </resources>

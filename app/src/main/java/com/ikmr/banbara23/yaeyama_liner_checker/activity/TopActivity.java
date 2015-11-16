@@ -11,6 +11,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
+import com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableActivity;
 
 public class TopActivity extends BaseActivity {
 
@@ -79,6 +80,16 @@ public class TopActivity extends BaseActivity {
     public void ykfClick(View view) {
         Intent intent = new Intent(this, StatusListActivity.class);
         intent.putExtra(StatusListActivity.PARAM_COMPANY, Company.YKF);
+        startActivity(intent);
+    }
+
+    /**
+     * 時刻表クリック
+     *
+     * @param view
+     */
+    public void timeTableClick(View view) {
+        Intent intent = new Intent(this, TimeTableActivity.class);
         startActivity(intent);
     }
 
