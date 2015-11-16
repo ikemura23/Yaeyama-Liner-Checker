@@ -20,6 +20,6 @@ public class TimeTableHatomaView extends LinearLayout {
 
     public TimeTableHatomaView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        View layout = LayoutInflater.from(context).inflate(R.layout.view_time_table_hateruma, this);
+        View layout = LayoutInflater.from(context).inflate(R.layout.view_time_table_hatoma, this);
     }
 }
