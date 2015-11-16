@@ -13,6 +13,26 @@
         android:entries="@array/timetable_spinner_values"
         android:spinnerMode="dropdown"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/light_grey"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <TextView
+            style="@style/time_table_text"
+            android:layout_weight="1"
+            android:text="@string/time_table_port_ishigaki"
+            android:textStyle="bold"/>
+
+        <TextView
+            style="@style/time_table_text"
+            android:layout_weight="1"
+            android:text="@string/time_table_port_taketomi"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
