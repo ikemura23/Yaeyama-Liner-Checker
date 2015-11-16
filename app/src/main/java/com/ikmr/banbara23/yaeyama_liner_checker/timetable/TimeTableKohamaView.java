@@ -12,14 +12,14 @@ import com.ikmr.banbara23.yaeyama_liner_checker.R;
 /**
  * 時刻表 竹富
  */
-public class TimeTableKroshimaView extends LinearLayout {
+public class TimeTableKohamaView extends LinearLayout {
 
-    public TimeTableKroshimaView(Context context) {
+    public TimeTableKohamaView(Context context) {
         super(context);
     }
 
-    public TimeTableKroshimaView(Context context, AttributeSet attrs) {
+    public TimeTableKohamaView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        View layout = LayoutInflater.from(context).inflate(R.layout.view_time_table_kroshima, this);
+        View layout = LayoutInflater.from(context).inflate(R.layout.view_time_table_kohama, this);
     }
 }
