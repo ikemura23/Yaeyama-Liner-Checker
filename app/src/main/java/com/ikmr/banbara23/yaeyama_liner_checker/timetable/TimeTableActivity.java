@@ -40,7 +40,6 @@ public class TimeTableActivity extends BaseActivity implements AdapterView.OnIte
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putLong("timetable_spinner", mSpinner.getSelectedItemId());
-        outState.putSerializable("port_view_list", mPortViewList);
     }
 
     @Override
@@ -48,11 +47,9 @@ public class TimeTableActivity extends BaseActivity implements AdapterView.OnIte
         super.onRestoreInstanceState(savedInstanceState);
         try {
             mSpinner.setSelection(savedInstanceState.getInt("timetable_spinner"));
-            if (savedInstanceState.get("port_view_list") == ArrayList<View>) {
-                mPortViewList = (ArrayList<View>) savedInstanceState.get("port_view_list");
-            }
-        }catch (Exception e) {
-            //処理なし
+            createPortArray();
+        } catch (Exception e) {
+            // 処理なし
         }
     }
 
