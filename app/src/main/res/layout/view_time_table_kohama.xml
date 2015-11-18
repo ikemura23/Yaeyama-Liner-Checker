@@ -323,7 +323,7 @@
         tools:visibility="gone">
 
         <TextView
-            style="@style/time_table_anei_icon_text"/>
+            style="@style/time_table_ykf_icon_text"/>
 
         <LinearLayout
             android:layout_width="match_parent"
