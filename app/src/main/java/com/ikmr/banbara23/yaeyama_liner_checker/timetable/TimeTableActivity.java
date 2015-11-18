@@ -37,6 +37,26 @@ public class TimeTableActivity extends BaseActivity implements AdapterView.OnIte
     }
 
     @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putLong("timetable_spinner", mSpinner.getSelectedItemId());
+        outState.putSerializable("port_view_list", mPortViewList);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        try {
+            mSpinner.setSelection(savedInstanceState.getInt("timetable_spinner"));
+            if (savedInstanceState.get("port_view_list") == ArrayList<View>) {
+                mPortViewList = (ArrayList<View>) savedInstanceState.get("port_view_list");
+            }
+        }catch (Exception e) {
+            //処理なし
+        }
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
@@ -98,5 +118,20 @@ public class TimeTableActivity extends BaseActivity implements AdapterView.OnIte
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+    private TextView getRitouText() {
+        if (mRitouText == null) {
+            mRitouText = (TextView) findViewById(R.id.activity_timetable_ritou);
+        }
+        return mRitouText;
+    }
+
+    private Spinner getSpinner() {
+        if (mSpinner == null) {
+            mSpinner = (Spinner) findViewById(R.id.activity_timetable_spinner);
+            mSpinner.setOnItemSelectedListener(this);
+        }
+        return mSpinner;
     }
 }
