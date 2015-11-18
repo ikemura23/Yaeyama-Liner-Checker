@@ -20,7 +20,6 @@ import java.util.ArrayList;
 public class TimeTableActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
 
     Spinner mSpinner;
-    boolean mfirstSpinnerSelectedFlag = false;
     ArrayList<View> mPortViewList;
     TextView mRitouText;
 
@@ -39,14 +38,15 @@ public class TimeTableActivity extends BaseActivity implements AdapterView.OnIte
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putLong("timetable_spinner", mSpinner.getSelectedItemId());
+        outState.putInt("timetable_spinner", mSpinner.getSelectedItemPosition());
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         try {
-            mSpinner.setSelection(savedInstanceState.getInt("timetable_spinner"));
+            int index = savedInstanceState.getInt("timetable_spinner");
+            getSpinner().setSelection(index);
             createPortArray();
         } catch (Exception e) {
             // 処理なし
@@ -84,13 +84,9 @@ public class TimeTableActivity extends BaseActivity implements AdapterView.OnIte
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        // if (!mfirstSpinnerSelectedFlag) {
-        // mfirstSpinnerSelectedFlag = true;
-        // return;
-        // }
         // 選択した港を画面表示
         String selectedItem = (String) parent.getItemAtPosition(position);
-        mRitouText.setText(selectedItem + "発");
+        getRitouText().setText(selectedItem + "発");
 
         // View切り替え
         changePortView(position);
