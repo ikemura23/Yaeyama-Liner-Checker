@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <Spinner
+        android:id="@+id/activity_timetable_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_margin="8dp"
+        android:entries="@array/timetable_spinner_values"
+        android:spinnerMode="dropdown"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/light_grey"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <TextView
+            android:id="@+id/activity_timetable_ishigaki"
+            style="@style/time_table_text"
+            android:layout_weight="1"
+            android:text="@string/time_table_port_ishigaki"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/activity_timetable_ritou"
+            style="@style/time_table_text"
+            android:layout_weight="1"
+            android:text="@string/time_table_port_taketomi"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!--竹富-->
+            <com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableTaketomiView
+                android:id="@+id/activity_timetable_taketomi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+
+            <!--小浜-->
+            <com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableKohamaView
+                android:id="@+id/activity_timetable_kohama"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+
+            <!--黒島-->
+            <com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableKroshimaView
+                android:id="@+id/activity_timetable_kuroshima"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+
+            <!--上原-->
+            <com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableUeharaView
+                android:id="@+id/activity_timetable_uehara"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+
+            <!--大原-->
+            <com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableOoharaView
+                android:id="@+id/activity_timetable_oohara"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+
+            <!--波照間-->
+            <com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableHaterumaView
+                android:id="@+id/activity_timetable_hateruma"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+
+            <!--鳩間-->
+            <com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableHatomaView
+                android:id="@+id/activity_timetable_hatoma"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -20,6 +20,9 @@ import java.util.ArrayList;
 public class AnneiListParser {
 
     public static Result pars(Document doc) {
+        if (doc == null) {
+            return null;
+        }
         Result result = new Result();
         ArrayList<Liner> mLiners = new ArrayList<>();
 

@@ -8,4 +8,37 @@
         <item name="colorPrimary">@color/primary</item>
     </style>
 
+    <style name="time_table_text">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:layout_margin">1dp</item>
+    </style>
+
+    <!--時刻表の安栄アイコン-->
+    <style name="time_table_anei_icon_text">
+        <item name="android:layout_gravity">center_horizontal|center</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:padding">1dp</item>
+        <item name="android:text">安栄</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/red</item>
+    </style>
+
+    <!--時刻表の八重山観光フェリーアイコン-->
+    <style name="time_table_ykf_icon_text">
+        <item name="android:layout_gravity">center_horizontal|center</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">12dp</item>
+        <item name="android:padding">1dp</item>
+        <item name="android:text">八重山\n観光フ</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/medium_blue</item>
+    </style>
+
 </resources>

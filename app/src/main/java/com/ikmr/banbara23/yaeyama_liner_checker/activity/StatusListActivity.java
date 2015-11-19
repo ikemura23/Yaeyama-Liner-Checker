@@ -59,13 +59,27 @@ public class StatusListActivity extends BaseActivity implements
         // 広告
         loadAd();
         // フラグメント
-        if (savedInstanceState == null) {
-            mFragment = StatusListFragment.NewInstance(mCompany);
-            getFragmentManager().beginTransaction()
-                    .add(R.id.container, mFragment)
-                    .commit();
+        if (savedInstanceState != null) {
+            mCompany = (Company) savedInstanceState.get(PARAM_COMPANY);
         }
-        mLoading = new Loading(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (mFragment == null) {
+            createFragment();
+        }
+    }
+
+    /**
+     * フラグメント作成
+     */
+    private void createFragment() {
+        mFragment = StatusListFragment.NewInstance(mCompany);
+        getFragmentManager().beginTransaction()
+                .replace(R.id.container, mFragment)
+                .commit();
     }
 
     /**
@@ -120,6 +134,18 @@ public class StatusListActivity extends BaseActivity implements
     }
 
     @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable(PARAM_COMPANY, mCompany);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        mCompany = (Company) savedInstanceState.get(PARAM_COMPANY);
+    }
+
+    @Override
     public void startQuery() {
         // 一覧の取得開始
         createList();
@@ -167,13 +193,20 @@ public class StatusListActivity extends BaseActivity implements
 
     }
 
+    public Loading getLoading() {
+        if (mLoading == null) {
+            mLoading = new Loading(this);
+        }
+        return mLoading;
+    }
+
     @Override
     public void preExecute() {
-         if (mFragment != null && mFragment instanceof ListFragmentInterface)
-         {
-         ((ListFragmentInterface) mFragment).onStartQuery();
-         }
-        mLoading.show();
+        if (mFragment != null && mFragment instanceof ListFragmentInterface)
+        {
+            ((ListFragmentInterface) mFragment).onStartQuery();
+        }
+        getLoading().show();
         mQuerying = true;
     }
 
@@ -204,7 +237,7 @@ public class StatusListActivity extends BaseActivity implements
                 ((ListFragmentInterface) mFragment).onFailedQuery();
             }
         } finally {
-            mLoading.close();
+            getLoading().close();
             mQuerying = false;
         }
     }
