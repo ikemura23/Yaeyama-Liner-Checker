@@ -30,3 +30,8 @@
 
 -keep class com.androidquery.** { *; }
 -dontwarn com.androidquery.**
+
+# Butter Knife
+-dontwarn butterknife.internal.**
+-keep class **$$ViewInjector { *; }
+-keepnames class * { @butterknife.InjectView *;}

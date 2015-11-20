@@ -28,6 +28,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.parser.AnneiDetailParser;
 
 import org.jsoup.nodes.Document;
 
+import butterknife.ButterKnife;
 import timber.log.Timber;
 
 /**
@@ -49,6 +50,7 @@ public class StatusDetailActivity extends BaseActivity implements LoaderManager.
         setContentView(R.layout.activity_status_detail);
         mLiner = getIntent().getParcelableExtra(StatusDetailActivity.class.getName());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ButterKnife.bind(this);
 
         setTitleString();
         loadAd();

@@ -14,23 +14,28 @@ import com.ikmr.banbara23.yaeyama_liner_checker.activity.BaseActivity;
 
 import java.util.ArrayList;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 /**
- * Created by banbara23 on 15/11/16.
+ * 時刻表 Activity
  */
 public class TimeTableActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
 
-    Spinner mSpinner;
     ArrayList<View> mPortViewList;
+
+    @Bind(R.id.activity_timetable_ritou)
     TextView mRitouText;
+
+    @Bind(R.id.activity_timetable_spinner)
+    Spinner mSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timetable);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        mRitouText = (TextView) findViewById(R.id.activity_timetable_ritou);
-        mSpinner = (Spinner) findViewById(R.id.activity_timetable_spinner);
+        ButterKnife.bind(this);
         mSpinner.setOnItemSelectedListener(this);
         createPortArray();
     }
