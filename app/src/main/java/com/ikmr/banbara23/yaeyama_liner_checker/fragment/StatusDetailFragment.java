@@ -21,7 +21,8 @@ import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailView;
 public class StatusDetailFragment extends BaseFragment implements FragmentInterface {
 
     StatusDetailView mStatusDetailView;
-//    ProgressWheel mProgressWheel;
+
+    // ProgressWheel mProgressWheel;
 
     public static StatusDetailFragment NewInstance(Liner liner) {
         StatusDetailFragment fragment = new StatusDetailFragment();
@@ -45,7 +46,8 @@ public class StatusDetailFragment extends BaseFragment implements FragmentInterf
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_status_detail, container, false);
         mStatusDetailView = (StatusDetailView) view.findViewById(R.id.fragment_status_detail_view);
-//        mProgressWheel = (ProgressWheel) view.findViewById(R.id.fragment_detail_material_progress_bar);
+        // mProgressWheel = (ProgressWheel)
+        // view.findViewById(R.id.fragment_detail_material_progress_bar);
 
         // 電話ボタン
         view.findViewById(R.id.view_action_box_tel).setOnClickListener(new View.OnClickListener() {
@@ -79,7 +81,7 @@ public class StatusDetailFragment extends BaseFragment implements FragmentInterf
      * 読込中の表示開始
      */
     private void showProgress() {
-//        mProgressWheel.setVisibility(View.VISIBLE);
+        // mProgressWheel.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -105,7 +107,7 @@ public class StatusDetailFragment extends BaseFragment implements FragmentInterf
 
     @Override
     public void onFinishQuery() {
-//        mProgressWheel.setVisibility(View.GONE);
+        // mProgressWheel.setVisibility(View.GONE);
     }
 
     private void startTel() {
@@ -140,14 +142,14 @@ public class StatusDetailFragment extends BaseFragment implements FragmentInterf
         String hpUrl;
         switch (getParam().getCompany()) {
             case ANNEI:
-                hpUrl = getActivity().getApplicationContext().getString(R.string.hp_annei);
+                hpUrl = getAneiPortUrl();
                 break;
 
             case YKF:
                 hpUrl = getActivity().getApplicationContext().getString(R.string.hp_ykf);
                 break;
             default:
-                hpUrl = null;
+                hpUrl = getActivity().getApplicationContext().getString(R.string.hp_annei);
         }
         if (hpUrl == null) {
             return;
@@ -161,5 +163,31 @@ public class StatusDetailFragment extends BaseFragment implements FragmentInterf
             // 何もしない
         }
 
+    }
+
+    /***
+     * 安栄の港別のURLを返す
+     * 
+     * @return URL
+     */
+    private String getAneiPortUrl() {
+        switch (getParam().getPort()) {
+            case TAKETOMI:
+                return getActivity().getApplicationContext().getString(R.string.url_annei_taketomi);
+            case KOHAMA:
+                return getActivity().getApplicationContext().getString(R.string.url_annei_kohama);
+            case OOHARA:
+                return getActivity().getApplicationContext().getString(R.string.url_annei_oohara);
+            case UEHARA:
+                return getActivity().getApplicationContext().getString(R.string.url_annei_uehara);
+            case KUROSHIMA:
+                return getActivity().getApplicationContext().getString(R.string.url_annei_kuroshima);
+            case HATOMA:
+                return getActivity().getApplicationContext().getString(R.string.url_annei_hatoma);
+            case HATERUMA:
+                return getActivity().getApplicationContext().getString(R.string.url_annei_hateruma);
+            default:
+                return getActivity().getApplicationContext().getString(R.string.hp_annei);
+        }
     }
 }

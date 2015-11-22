@@ -9,8 +9,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -62,12 +60,16 @@ public class StatusDetailActivity extends BaseActivity implements LoaderManager.
     @Override
     protected void onResume() {
         super.onResume();
-        if (mLoading == null) {
-            mLoading = new Loading(this);
-        }
         if (mFragment == null) {
             createFragment();
         }
+    }
+
+    private Loading getLoading() {
+        if (mLoading == null) {
+            mLoading = new Loading(this);
+        }
+        return mLoading;
     }
 
     @Override
@@ -217,23 +219,25 @@ public class StatusDetailActivity extends BaseActivity implements LoaderManager.
 
     }
 
-    /**
-     * @param view 電話で問い合わせクリック
-     */
-    public void onTellClicked(View view) {
-        Toast.makeText(getApplicationContext(), "電話で問い合わせクリック", Toast.LENGTH_SHORT);
-    }
-
-    /**
-     * @param view サイトで確認クリック
-     */
-    public void onWebClicked(View view) {
-        Toast.makeText(getApplicationContext(), "サイトで確認クリック", Toast.LENGTH_SHORT);
-    }
+    // /**
+    // * @param view 電話で問い合わせクリック
+    // */
+    // public void onTellClicked(View view) {
+    // Toast.makeText(getApplicationContext(), "電話で問い合わせクリック",
+    // Toast.LENGTH_SHORT);
+    // }
+    //
+    // /**
+    // * @param view サイトで確認クリック
+    // */
+    // public void onWebClicked(View view) {
+    // Toast.makeText(getApplicationContext(), "サイトで確認クリック",
+    // Toast.LENGTH_SHORT);
+    // }
 
     @Override
     public void preExecute() {
-        mLoading.show();
+        getLoading().show();
         mQuerying = true;
     }
 
@@ -270,7 +274,7 @@ public class StatusDetailActivity extends BaseActivity implements LoaderManager.
             }
         } finally {
             mQuerying = false;
-            mLoading.close();
+            getLoading().close();
         }
     }
 }
