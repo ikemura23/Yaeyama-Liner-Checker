@@ -10,4 +10,5 @@
     <color name="light_grey">#d3d3d3</color>
     <color name="red">#ff0000</color>
     <color name="medium_blue">#0000cd</color>
+    <color name="activity_top_annei_button">#AA82B1FF</color>
 </resources>

@@ -1,66 +1,128 @@
 <RelativeLayout xmlns:ads="http://schemas.android.com/apk/res-auto"
                 xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:ripple="http://schemas.android.com/apk/res-auto"
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingTop="@dimen/activity_vertical_margin"
                 tools:context="com.ikmr.banbara23.yaeyama_liner_checker.activity.TopActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/top_description"
-        android:textSize="15sp"/>
-
-    <Button
-        android:id="@+id/annei_button"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView"
-        android:layout_marginTop="10dp"
-        android:onClick="anneiClick"
-        android:text="安栄観光"
-        android:textSize="18sp"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/ykf_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/annei_button"
-        android:layout_marginTop="10dp"
-        android:onClick="ykfClick"
-        android:text="八重山観光フェリー"
-        android:textSize="18sp"/>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_gravity="left|center_vertical"
+            android:background="@color/light_grey"/>
 
-    <Button
-        android:id="@+id/timetable_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/ykf_button"
-        android:layout_marginTop="10dp"
-        android:onClick="timeTableClick"
-        android:text="時刻表"
-        android:textSize="18sp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:orientation="vertical"
+            android:paddingBottom="20dp"
+            android:paddingTop="10dp">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/timetable_button"
-        android:layout_marginTop="10dp"
-        android:onClick="otherClick"
-        android:text="その他"
-        android:textSize="18sp"/>
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_weight="1"
+                android:text="運航情報"
+                android:textSize="15sp"/>
+
+            <com.andexert.library.RippleView
+                rv_centered="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="10dp"
+                ripple:rv_rippleDuration="400">
+
+                <Button
+                    android:id="@+id/annei_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/top_button_shape"
+                    android:onClick="anneiClick"
+                    android:text="安栄観光"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="18sp"/>
+            </com.andexert.library.RippleView>
+
+            <com.andexert.library.RippleView
+                rv_centered="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="20dp">
+
+                <Button
+                    android:id="@+id/ykf_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/top_button_shape"
+                    android:onClick="ykfClick"
+                    android:text="八重山観光フェリー"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="18sp"/>
+            </com.andexert.library.RippleView>
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_gravity="left|center_vertical"
+            android:layout_marginBottom="10dp"
+            android:background="@color/light_grey"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <com.andexert.library.RippleView
+                rv_centered="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/timetable_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/top_button_shape"
+                    android:onClick="timeTableClick"
+                    android:text="時刻表"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="18sp"/>
+            </com.andexert.library.RippleView>
+
+            <com.andexert.library.RippleView
+                rv_centered="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/top_button_shape"
+                    android:onClick="otherClick"
+                    android:text="アプリ情報"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="18sp"/>
+            </com.andexert.library.RippleView>
+        </LinearLayout>
+    </LinearLayout>
 
     <!--広告-->
     <com.google.android.gms.ads.AdView
