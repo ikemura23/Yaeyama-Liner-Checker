@@ -7,7 +7,7 @@
             <!-- ボタンの色 -->
             <solid android:color="@color/activity_top_annei_button"/>
             <!-- ボタンの枠線 -->
-            <stroke android:width="1dp" android:color="#fffdfdfd"/>
+            <!--<stroke android:width="1dp" android:color="#fffdfdfd"/>-->
             <!-- ボタンの角の半径 -->
             <corners android:radius="8dp"/>
             <!-- ボタン内の余白 -->
