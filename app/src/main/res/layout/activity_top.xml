@@ -8,31 +8,24 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:orientation="vertical">
 
-        <!--<FrameLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="1dp"-->
-        <!--android:layout_gravity="left|center_vertical"-->
-        <!--android:background="@color/light_grey"/>-->
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="運航状況を確認する"
+            android:textSize="15sp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:background="#66d3d3d3"
-            android:orientation="vertical"
-            android:padding="15dp">
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_weight="1"
-                android:text="運航情報"
-                android:textSize="15sp"/>
+            android:layout_marginBottom="20dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
 
             <!--<com.balysv.materialripple.MaterialRippleLayout-->
             <!--android:id="@+id/ripple"-->
@@ -45,8 +38,9 @@
             <Button
                 android:id="@+id/annei_button"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="80dp"
                 android:layout_marginTop="10dp"
+                android:layout_weight="1"
                 android:background="@drawable/top_button_shape"
                 android:onClick="anneiClick"
                 android:text="安栄観光"
@@ -61,15 +55,18 @@
             <!--android:layout_marginLeft="5dp"-->
             <!--android:layout_marginRight="5dp"-->
             <!--android:layout_marginTop="20dp">-->
+            <Space
+                android:layout_width="14dp"
+                android:layout_height="0dp"/>
 
             <Button
                 android:id="@+id/ykf_button"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_height="80dp"
+                android:layout_weight="1"
                 android:background="@drawable/top_button_shape"
                 android:onClick="ykfClick"
-                android:text="八重山観光フェリー"
+                android:text="八重山観光\nフェリー"
                 android:textColor="@color/secondary_text"
                 android:textSize="18sp"/>
             <!--</com.andexert.library.RippleView>-->
@@ -82,12 +79,12 @@
         <!--android:layout_marginBottom="10dp"-->
         <!--android:background="@color/light_grey"/>-->
 
+        <include layout="@layout/view_time_table_line_yoko"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:orientation="vertical">
 
             <!--<com.andexert.library.RippleView-->
@@ -95,10 +92,11 @@
             <!--android:layout_width="match_parent"-->
             <!--android:layout_height="wrap_content">-->
 
+
             <Button
                 android:id="@+id/timetable_button"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:background="@drawable/top_button_shape"
                 android:onClick="timeTableClick"
                 android:text="時刻表"
@@ -114,7 +112,7 @@
 
             <Button
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/top_button_shape"
                 android:onClick="otherClick"
