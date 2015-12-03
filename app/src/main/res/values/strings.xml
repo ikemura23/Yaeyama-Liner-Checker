@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Yaeyama-Liner-Checker</string>
+    <string name="app_name">八重山離島船チェッカー</string>
     <!--アプリ情報-->
     <string name="action_settings">Settings</string>
     <string name="title_activity_top">八重山離島船チェッカー</string>
