@@ -36,7 +36,7 @@ public class OtherActivity extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_list, menu);
+        getMenuInflater().inflate(R.menu.menu_top, menu);
         return true;
     }
 
