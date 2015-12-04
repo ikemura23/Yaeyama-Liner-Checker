@@ -69,7 +69,7 @@
         android:layout_below="@+id/timetable_button"
         android:layout_marginTop="10dp"
         android:onClick="otherClick"
-        android:text="その他"
+        android:text="@string/title_activity_other"
         android:textSize="18sp"/>
 
     <!--広告-->
