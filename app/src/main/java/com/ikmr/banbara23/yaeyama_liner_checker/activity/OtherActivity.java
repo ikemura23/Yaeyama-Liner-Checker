@@ -78,4 +78,19 @@ public class OtherActivity extends BaseActivity {
         }
     }
 
+    /**
+     * 評価ボタン押下
+     *
+     * @param view
+     */
+    public void playStoreClick(View view) {
+
+        Intent googlePlayIntent = new Intent(Intent.ACTION_VIEW);
+        googlePlayIntent.setData(Uri.parse("market://details?id=com.banbara.yaeyama.liner.checker"));
+        try {
+            startActivity(googlePlayIntent);
+        } catch (Exception e) {
+            // 何もしない
+        }
+    }
 }
