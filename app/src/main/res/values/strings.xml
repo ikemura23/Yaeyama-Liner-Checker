@@ -29,8 +29,8 @@
     <string name="url_dream_list">http://www.ishigaki-dream.co.jp/data.cgi?no=78</string>
 
     <!--広告-->
-    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
-    <!--<string name="banner_ad_unit_id">ca-app-pub-3362500010746452/4785171723</string>-->
+    <!--<string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>-->
+    <string name="banner_ad_unit_id">ca-app-pub-3362500010746452/4785171723</string>
 
     <string name="transition_top_annei">transition_top_annei</string>
 
