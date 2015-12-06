@@ -13,8 +13,8 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.ikmr.banbara23.yaeyama_liner_checker.Loading;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
-import com.ikmr.banbara23.yaeyama_liner_checker.StatusAsync;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAdapter;
+import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAsync;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
@@ -22,10 +22,6 @@ import com.ikmr.banbara23.yaeyama_liner_checker.entity.YkfLinerDetail;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.ListFragmentInterface;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.QueryInterface;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusListFragment;
-import com.ikmr.banbara23.yaeyama_liner_checker.parser.AnneiListParser;
-import com.ikmr.banbara23.yaeyama_liner_checker.parser.YkfParser;
-
-import org.jsoup.nodes.Document;
 
 import timber.log.Timber;
 
@@ -33,7 +29,7 @@ import timber.log.Timber;
  * ステータス一覧Activity
  */
 public class StatusListActivity extends BaseActivity implements
-        StatusListAdapter.ListItemClickListener, QueryInterface, StatusAsync.AsyncTaskCallback {
+        StatusListAdapter.ListItemClickListener, QueryInterface, StatusListAsync.StatusListAsyncCallback {
 
     final static String PARAM_COMPANY = "company";
     // 観光会社
@@ -89,8 +85,6 @@ public class StatusListActivity extends BaseActivity implements
         if (mCompany == null) {
             return;
         }
-        // String title = mCompany.getCompanyName() +
-        // getString(R.string.title_activity_status_list);
         String title = mCompany.getCompanyName();
         setTitle(title);
     }
@@ -155,8 +149,6 @@ public class StatusListActivity extends BaseActivity implements
      * 一覧の取得開始
      */
     private void createList() {
-        // Toast.makeText(this, "createList", Toast.LENGTH_SHORT).show();
-
         String url;
         if (mCompany == Company.ANNEI) {
             url = getApplicationContext().getString(R.string.url_annei_list);
@@ -164,7 +156,7 @@ public class StatusListActivity extends BaseActivity implements
             url = getApplicationContext().getString(R.string.url_ykf_list);
         }
 
-        new StatusAsync(this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, url);
+        new StatusListAsync(this, mCompany).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, url);
     }
 
     /**
@@ -210,16 +202,15 @@ public class StatusListActivity extends BaseActivity implements
         mQuerying = true;
     }
 
+    /**
+     * 後処理
+     * 
+     * @param result パース結果
+     */
     @Override
-    public void postExecute(Document doc) {
+    public void postExecute(Result result) {
+        mResult = result;
         try {
-            if (mCompany == Company.ANNEI) {
-                // 安栄のHTMLパース呼び出し
-                mResult = AnneiListParser.pars(doc);
-            } else {
-                // 八重山観光フェリーのHTMLパース呼び出し
-                mResult = YkfParser.pars(doc);
-            }
             // 結果を通知
             if (mFragment != null && mFragment instanceof ListFragmentInterface) {
                 ((ListFragmentInterface) mFragment).onResultQuery(mResult);

@@ -2,7 +2,11 @@
 package com.ikmr.banbara23.yaeyama_liner_checker;
 
 import android.os.AsyncTask;
-import android.util.Log;
+
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
+import com.ikmr.banbara23.yaeyama_liner_checker.parser.AnneiListParser;
+import com.ikmr.banbara23.yaeyama_liner_checker.parser.YkfParser;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -10,21 +14,28 @@ import org.jsoup.nodes.Document;
 import java.io.IOException;
 
 public class StatusListAsync extends AsyncTask<String, Integer, Document> {
-    // Activiyへのコールバック用interface
-    public interface AsyncTaskCallback {
+
+    Company mCompany;
+
+    // Jsoup接続タイムアウト
+    private final static int CONNECTION_TIME_OUT = 10000;
+
+    // コールバック用interface
+    public interface StatusListAsyncCallback {
         void preExecute();
 
-        void postExecute(Document result);
+        void postExecute(Result result);
 
         // void progressUpdate(int progress);
 
         // void cancel();
     }
 
-    private AsyncTaskCallback callback = null;;
+    private StatusListAsyncCallback callback = null;;
 
-    public StatusListAsync(AsyncTaskCallback _callback) {
+    public StatusListAsync(StatusListAsyncCallback _callback, Company company) {
         this.callback = _callback;
+        mCompany = company;
     }
 
     @Override
@@ -40,26 +51,27 @@ public class StatusListAsync extends AsyncTask<String, Integer, Document> {
     // }
 
     @Override
-    protected void onPostExecute(Document result) {
-        super.onPostExecute(result);
+    protected void onPostExecute(Document document) {
+        super.onPostExecute(document);
+        Result result;
+        if (mCompany == Company.ANNEI) {
+            // 安栄のHTMLパース呼び出し
+            result = AnneiListParser.pars(document);
+        } else {
+            // 八重山観光フェリーのHTMLパース呼び出し
+            result = YkfParser.pars(document);
+        }
         if (callback != null) {
             callback.postExecute(result);
         }
     }
 
-    // @Override
-    // protected void onProgressUpdate(Integer... values) {
-    // super.onProgressUpdate(values);
-    // callback.progressUpdate(values[0]);
-    // }
-
     @Override
     protected Document doInBackground(String... params) {
         Document doc = null;
-        Log.d("StatusAsyncTaskLoader", "loadInBackground");
         try {
             // HTML取得 タイムアウトは10秒
-            doc = Jsoup.connect(params[0]).timeout(10000).get();
+            doc = Jsoup.connect(params[0]).timeout(CONNECTION_TIME_OUT).get();
         } catch (IOException e) {
             e.printStackTrace();
         }
