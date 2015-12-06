@@ -2,8 +2,6 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.activity;
 
 import android.app.Fragment;
-import android.app.LoaderManager;
-import android.content.Loader;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,7 +13,6 @@ import com.google.android.gms.ads.AdView;
 import com.ikmr.banbara23.yaeyama_liner_checker.Loading;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusAsync;
-import com.ikmr.banbara23.yaeyama_liner_checker.StatusAsyncTaskLoader;
 import com.ikmr.banbara23.yaeyama_liner_checker.StringUtils;
 import com.ikmr.banbara23.yaeyama_liner_checker.UrlSelector;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
@@ -32,7 +29,7 @@ import timber.log.Timber;
 /**
  * ステータス詳細のActivity
  */
-public class StatusDetailActivity extends BaseActivity implements LoaderManager.LoaderCallbacks<Document>, QueryInterface, StatusAsync.AsyncTaskCallback {
+public class StatusDetailActivity extends BaseActivity implements  QueryInterface, StatusAsync.AsyncTaskCallback {
 
     Liner mLiner;
     Fragment mFragment;
@@ -170,72 +167,6 @@ public class StatusDetailActivity extends BaseActivity implements LoaderManager.
     }
 
     @Override
-    public Loader<Document> onCreateLoader(int id, Bundle args) {
-        String url = UrlSelector.getDetailUrl(getApplicationContext(), mLiner.company, mLiner.port);
-        StatusAsyncTaskLoader appLoader = new StatusAsyncTaskLoader(getApplication(), url);
-
-        // loaderの開始
-        appLoader.forceLoad();
-
-        return appLoader;
-    }
-
-    @Override
-    public void onLoadFinished(Loader<Document> loader, Document document) {
-        if (document == null) {
-            // エラーを通知
-            if (mFragment != null && mFragment instanceof FragmentInterface) {
-                ((FragmentInterface) mFragment).onFailedQuery();
-            }
-            return;
-        }
-        String result = null;
-        try {
-            // 安栄のHTMLパース呼び出し
-            result = AnneiDetailParser.pars(document);
-            // 結果を通知
-            if (mFragment != null && mFragment instanceof FragmentInterface) {
-                ((FragmentInterface) mFragment).onResultQuery(mLiner, result);
-            }
-            // 終了
-            if (mFragment != null && mFragment instanceof FragmentInterface) {
-                ((FragmentInterface) mFragment).onFinishQuery();
-            }
-        } catch (Exception e) {
-            Log.d("StatusDetailActivity", "e:" + e);
-            Timber.d("エラー発生！！");
-            Timber.d(e.getMessage());
-            Timber.d(e.getLocalizedMessage());
-            if (mFragment != null && mFragment instanceof FragmentInterface) {
-                ((FragmentInterface) mFragment).onFailedQuery();
-            }
-        } finally {
-            mQuerying = false;
-        }
-    }
-
-    @Override
-    public void onLoaderReset(Loader<Document> loader) {
-
-    }
-
-    // /**
-    // * @param view 電話で問い合わせクリック
-    // */
-    // public void onTellClicked(View view) {
-    // Toast.makeText(getApplicationContext(), "電話で問い合わせクリック",
-    // Toast.LENGTH_SHORT);
-    // }
-    //
-    // /**
-    // * @param view サイトで確認クリック
-    // */
-    // public void onWebClicked(View view) {
-    // Toast.makeText(getApplicationContext(), "サイトで確認クリック",
-    // Toast.LENGTH_SHORT);
-    // }
-
-    @Override
     public void preExecute() {
         getLoading().show();
         mQuerying = true;
@@ -243,16 +174,8 @@ public class StatusDetailActivity extends BaseActivity implements LoaderManager.
 
     @Override
     public void postExecute(Document document) {
-        // if (document == null) {
-        // // エラーを通知
-        // if (mFragment != null && mFragment instanceof FragmentInterface) {
-        // ((FragmentInterface) mFragment).onFailedQuery();
-        // }
-        // mLoading.close();
-        // mQuerying = false;
-        // return;
-        // }
-        String result = null;
+
+        String result;
         try {
             // 安栄のHTMLパース呼び出し
             result = AnneiDetailParser.pars(document);
