@@ -161,7 +161,6 @@ public class StatusDetailActivity extends BaseActivity implements  QueryInterfac
             ((FragmentInterface) mFragment).onStartQuery();
         }
         mQuerying = true;
-        // getLoaderManager().initLoader(1, null, this);
         String url = UrlSelector.getDetailUrl(getApplicationContext(), mLiner.company, mLiner.port);
         new StatusAsync(this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, url);
     }
