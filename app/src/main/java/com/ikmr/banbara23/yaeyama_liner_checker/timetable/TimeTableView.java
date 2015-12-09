@@ -10,16 +10,16 @@ import android.widget.LinearLayout;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 
 /**
- * 時刻表 竹富
+ * 時刻表
  */
-public class TimeTableKroshimaView extends LinearLayout {
+public class TimeTableView extends LinearLayout {
 
-    public TimeTableKroshimaView(Context context) {
+    public TimeTableView(Context context) {
         super(context);
     }
 
-    public TimeTableKroshimaView(Context context, AttributeSet attrs) {
+    public TimeTableView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        View layout = LayoutInflater.from(context).inflate(R.layout.view_time_table_kuroshima, this);
+        View layout = LayoutInflater.from(context).inflate(R.layout.view_time_table_hateruma, this);
     }
 }
