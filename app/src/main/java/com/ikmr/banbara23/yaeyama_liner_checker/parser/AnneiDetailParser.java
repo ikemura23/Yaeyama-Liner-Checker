@@ -11,7 +11,6 @@ import org.jsoup.select.Elements;
 public class AnneiDetailParser {
 
     public static String pars(Document doc) {
-//        Result result = new Result();
 
         // <div id="liner"> 取得
         Elements text = doc.getElementsByClass("text");

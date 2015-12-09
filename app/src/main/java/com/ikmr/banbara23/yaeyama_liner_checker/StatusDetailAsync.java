@@ -4,27 +4,32 @@ package com.ikmr.banbara23.yaeyama_liner_checker;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
+import com.ikmr.banbara23.yaeyama_liner_checker.parser.AnneiDetailParser;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 import java.io.IOException;
 
-public class StatusAsync extends AsyncTask<String, Integer, Document> {
-    // Activiyへのコールバック用interface
-    public interface AsyncTaskCallback {
+public class StatusDetailAsync extends AsyncTask<String, Integer, Document> {
+    // Activityへのコールバック用interface
+    public interface DetailAsyncCallback {
         void preExecute();
 
-        void postExecute(Document result);
+        void postExecute(String result);
 
         // void progressUpdate(int progress);
 
         // void cancel();
     }
 
-    private AsyncTaskCallback callback = null;;
+    private DetailAsyncCallback callback = null;;
+    private Company mCompany;
 
-    public StatusAsync(AsyncTaskCallback _callback) {
+    public StatusDetailAsync(DetailAsyncCallback _callback, Company company) {
         this.callback = _callback;
+        mCompany = company;
     }
 
     @Override
@@ -40,11 +45,16 @@ public class StatusAsync extends AsyncTask<String, Integer, Document> {
     // }
 
     @Override
-    protected void onPostExecute(Document result) {
-        super.onPostExecute(result);
-        if (callback != null) {
-            callback.postExecute(result);
+    protected void onPostExecute(Document document) {
+        super.onPostExecute(document);
+        if (callback == null) {
+            return;
         }
+        if (document == null) {
+            callback.postExecute(null);
+        }
+        String result = AnneiDetailParser.pars(document);
+        callback.postExecute(result);
     }
 
     // @Override

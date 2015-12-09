@@ -12,16 +12,13 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.ikmr.banbara23.yaeyama_liner_checker.Loading;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
-import com.ikmr.banbara23.yaeyama_liner_checker.StatusAsync;
+import com.ikmr.banbara23.yaeyama_liner_checker.StatusDetailAsync;
 import com.ikmr.banbara23.yaeyama_liner_checker.StringUtils;
 import com.ikmr.banbara23.yaeyama_liner_checker.UrlSelector;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.FragmentInterface;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.QueryInterface;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusDetailFragment;
-import com.ikmr.banbara23.yaeyama_liner_checker.parser.AnneiDetailParser;
-
-import org.jsoup.nodes.Document;
 
 import butterknife.ButterKnife;
 import timber.log.Timber;
@@ -29,7 +26,7 @@ import timber.log.Timber;
 /**
  * ステータス詳細のActivity
  */
-public class StatusDetailActivity extends BaseActivity implements  QueryInterface, StatusAsync.AsyncTaskCallback {
+public class StatusDetailActivity extends BaseActivity implements QueryInterface, StatusDetailAsync.DetailAsyncCallback {
 
     Liner mLiner;
     Fragment mFragment;
@@ -162,7 +159,7 @@ public class StatusDetailActivity extends BaseActivity implements  QueryInterfac
         }
         mQuerying = true;
         String url = UrlSelector.getDetailUrl(getApplicationContext(), mLiner.company, mLiner.port);
-        new StatusAsync(this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, url);
+        new StatusDetailAsync(this, mLiner.getCompany()).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, url);
     }
 
     @Override
@@ -172,15 +169,13 @@ public class StatusDetailActivity extends BaseActivity implements  QueryInterfac
     }
 
     @Override
-    public void postExecute(Document document) {
+    public void postExecute(String valueString) {
 
-        String result;
         try {
             // 安栄のHTMLパース呼び出し
-            result = AnneiDetailParser.pars(document);
             // 結果を通知
             if (mFragment != null && mFragment instanceof FragmentInterface) {
-                ((FragmentInterface) mFragment).onResultQuery(mLiner, result);
+                ((FragmentInterface) mFragment).onResultQuery(mLiner, valueString);
             }
             // 終了
             if (mFragment != null && mFragment instanceof FragmentInterface) {
