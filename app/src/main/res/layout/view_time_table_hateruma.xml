@@ -10,6 +10,7 @@
     <!--時刻表-->
     <!--時刻表 １列目-->
     <FrameLayout
+        android:id="@+id/hateruma_row1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -41,6 +42,7 @@
 
     <!--時刻表 ２列目-->
     <FrameLayout
+        android:id="@+id/hateruma_row2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -71,6 +73,7 @@
 
     <!--時刻表 ３列目-->
     <FrameLayout
+        android:id="@+id/hateruma_row3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
