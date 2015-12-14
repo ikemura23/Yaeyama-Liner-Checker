@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 
 /**
  * 時刻表 竹富
@@ -33,5 +34,6 @@ public class TimeTableHaterumaView extends LinearLayout {
     public TimeTableHaterumaView(Context context, AttributeSet attrs) {
         super(context, attrs);
         View layout = LayoutInflater.from(context).inflate(R.layout.view_time_table_hateruma, this);
+        ButterKnife.bind(this, layout);
     }
 }
