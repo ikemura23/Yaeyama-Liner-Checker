@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
-import com.ikmr.banbara23.yaeyama_liner_checker.ViewUtils;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 
 import java.util.List;
@@ -52,6 +51,28 @@ public class TimeTableKohamaView extends TimeTableBaseView {
         ButterKnife.bind(this, layout);
     }
 
+    /***
+     * 非表示一括切り替え用
+     */
+    private static final ButterKnife.Action<View> DISABLE = new ButterKnife.Action<View>() {
+        @Override
+        public void apply(View view, int index) {
+            // view.setEnabled(false);
+            view.setVisibility(GONE);
+        }
+    };
+
+    /***
+     * 表示一括切り替え用
+     */
+    private static final ButterKnife.Setter<View, Boolean> ENABLED = new ButterKnife.Setter<View, Boolean>() {
+        @Override
+        public void set(View view, Boolean value, int index) {
+            // view.setEnabled(value);
+            view.setVisibility(VISIBLE);
+        }
+    };
+
     /**
      * 安栄 or 八重山観光フェリーのみの時刻表に切り替える
      * 
@@ -59,13 +80,18 @@ public class TimeTableKohamaView extends TimeTableBaseView {
      */
     @Override
     public void changeViews(Company company) {
+
         if (company == Company.ANNEI) {
-            ViewUtils.setVisivilityViews(ykfViews, GONE);
-            ViewUtils.setVisivilityViews(aneiViews, VISIBLE);
+            // ViewUtils.setVisivilityViews(ykfViews, GONE);
+            // ViewUtils.setVisivilityViews(aneiViews, VISIBLE);
+            ButterKnife.apply(aneiViews, ENABLED, false);
+            ButterKnife.apply(ykfViews, DISABLE);
         }
         else {
-            ViewUtils.setVisivilityViews(aneiViews, GONE);
-            ViewUtils.setVisivilityViews(ykfViews, VISIBLE);
+            // ViewUtils.setVisivilityViews(aneiViews, GONE);
+            // ViewUtils.setVisivilityViews(ykfViews, VISIBLE);
+            ButterKnife.apply(aneiViews, DISABLE);
+            ButterKnife.apply(ykfViews, ENABLED, false);
         }
     }
 }

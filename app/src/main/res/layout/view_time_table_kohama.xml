@@ -12,7 +12,8 @@
     <FrameLayout
         android:id="@+id/kuroshima_ykf_row1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:visibility="gone">
 
         <TextView
             style="@style/time_table_ykf_icon_text"/>
@@ -44,7 +45,8 @@
     <FrameLayout
         android:id="@+id/kuroshima_anei_row2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:visibility="gone">
 
         <TextView
             style="@style/time_table_anei_icon_text"/>
@@ -75,7 +77,8 @@
     <FrameLayout
         android:id="@+id/kuroshima_ykf_row3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:visibility="gone">
 
         <TextView
             style="@style/time_table_ykf_icon_text"/>
@@ -106,7 +109,8 @@
     <FrameLayout
         android:id="@+id/kuroshima_anei_row4"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:visibility="gone">
 
         <TextView
             style="@style/time_table_anei_icon_text"/>
@@ -137,7 +141,8 @@
     <FrameLayout
         android:id="@+id/kuroshima_ykf_row5"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:visibility="gone">
 
         <TextView
             style="@style/time_table_ykf_icon_text"/>
@@ -168,7 +173,8 @@
     <FrameLayout
         android:id="@+id/kuroshima_anei_row6"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:visibility="gone">
 
         <TextView
             style="@style/time_table_anei_icon_text"/>
@@ -199,7 +205,8 @@
     <FrameLayout
         android:id="@+id/kuroshima_ykf_row7"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:visibility="gone">
 
         <TextView
             style="@style/time_table_ykf_icon_text"/>
@@ -230,7 +237,8 @@
     <FrameLayout
         android:id="@+id/kuroshima_anei_row8"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:visibility="gone">
 
         <TextView
             style="@style/time_table_anei_icon_text"/>
@@ -261,7 +269,8 @@
     <FrameLayout
         android:id="@+id/kuroshima_ykf_row9"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:visibility="gone">
 
         <TextView
             style="@style/time_table_ykf_icon_text"/>
@@ -292,7 +301,8 @@
     <FrameLayout
         android:id="@+id/kuroshima_anei_row10"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:visibility="gone">
 
         <TextView
             style="@style/time_table_anei_icon_text"/>
@@ -323,7 +333,8 @@
     <FrameLayout
         android:id="@+id/kuroshima_ykf_row11"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:visibility="gone">
 
         <TextView
             style="@style/time_table_ykf_icon_text"/>
@@ -354,7 +365,8 @@
     <FrameLayout
         android:id="@+id/kuroshima_ykf_row12"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:visibility="gone">
 
         <TextView
             style="@style/time_table_ykf_icon_text"/>
