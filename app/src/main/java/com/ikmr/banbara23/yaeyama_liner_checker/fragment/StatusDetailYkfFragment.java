@@ -43,7 +43,7 @@ public class StatusDetailYkfFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_status_detail_ykf, container, false);
-        mStatusDetailView = (StatusDetailView) view.findViewById(R.id.fragment_status_detail_view);
+        mStatusDetailView = (StatusDetailView) view.findViewById(R.id.fragment_ykf_status_detail_view);
 
         // 電話ボタン
         view.findViewById(R.id.view_action_box_tel).setOnClickListener(new View.OnClickListener() {

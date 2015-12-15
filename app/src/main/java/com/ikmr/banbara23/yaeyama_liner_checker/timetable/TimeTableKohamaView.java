@@ -58,7 +58,7 @@ public class TimeTableKohamaView extends LinearLayout {
      * 
      * @param company
      */
-    private void changeViews(Company company) {
+    public void changeViews(Company company) {
         if (company == Company.ANNEI) {
             ViewUtils.setVisivilityViews(ykfViews, GONE);
             ViewUtils.setVisivilityViews(aneiViews, VISIBLE);

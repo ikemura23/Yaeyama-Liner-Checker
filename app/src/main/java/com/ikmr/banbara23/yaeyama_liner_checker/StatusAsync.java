@@ -10,6 +10,9 @@ import org.jsoup.nodes.Document;
 import java.io.IOException;
 
 public class StatusAsync extends AsyncTask<String, Integer, Document> {
+
+    private static final int CONNECTION_TIME_OUT = 20000;
+
     // Activiyへのコールバック用interface
     public interface AsyncTaskCallback {
         void preExecute();
@@ -59,7 +62,7 @@ public class StatusAsync extends AsyncTask<String, Integer, Document> {
         Log.d("StatusAsyncTaskLoader", "loadInBackground");
         try {
             // HTML取得 タイムアウトは10秒
-            doc = Jsoup.connect(params[0]).timeout(10000).get();
+            doc = Jsoup.connect(params[0]).timeout(CONNECTION_TIME_OUT).get();
         } catch (IOException e) {
             e.printStackTrace();
         }

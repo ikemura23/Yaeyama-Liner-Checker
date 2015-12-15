@@ -16,13 +16,23 @@
             android:layout_height="match_parent"
             android:layout_weight="1">
 
-            <com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailView
-                android:id="@+id/fragment_status_detail_view"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:visibility="gone"
-                tools:visibility="visible"/>
+                android:orientation="vertical">
 
+                <com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailView
+                    android:id="@+id/fragment_status_detail_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    tools:visibility="visible"/>
+
+                <com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableView
+                    android:id="@+id/fragment_time_table_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </LinearLayout>
         </ScrollView>
 
         <include
@@ -36,15 +46,15 @@
 
     <!--プログレス-->
     <!--<com.pnikosis.materialishprogress.ProgressWheel-->
-        <!--android:id="@+id/fragment_detail_material_progress_bar"-->
-        <!--android:layout_width="80dp"-->
-        <!--android:layout_height="80dp"-->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--android:layout_centerVertical="true"-->
-        <!--android:layout_gravity="center"-->
-        <!--tools:visibility="gone"-->
-        <!--wheel:matProg_barColor="#5588FF"-->
-        <!--wheel:matProg_progressIndeterminate="true"-->
-        <!--wheel:matProg_rimColor="#FFCFC9C9"/>-->
+    <!--android:id="@+id/fragment_detail_material_progress_bar"-->
+    <!--android:layout_width="80dp"-->
+    <!--android:layout_height="80dp"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:layout_gravity="center"-->
+    <!--tools:visibility="gone"-->
+    <!--wheel:matProg_barColor="#5588FF"-->
+    <!--wheel:matProg_progressIndeterminate="true"-->
+    <!--wheel:matProg_rimColor="#FFCFC9C9"/>-->
 
 </FrameLayout>

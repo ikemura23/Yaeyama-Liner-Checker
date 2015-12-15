@@ -13,7 +13,11 @@ import android.view.ViewGroup;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
+import com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableView;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailView;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 /**
  * 詳細のフラグメント
@@ -22,8 +26,10 @@ public class StatusDetailFragment extends BaseFragment implements FragmentInterf
 
     StatusDetailView mStatusDetailView;
 
-    // ProgressWheel mProgressWheel;
+    @Bind(R.id.fragment_time_table_view)
+    TimeTableView mTimeTableView;
 
+    // ProgressWheel mProgressWheel;
     public static StatusDetailFragment NewInstance(Liner liner) {
         StatusDetailFragment fragment = new StatusDetailFragment();
         Bundle bundle = new Bundle();
@@ -48,6 +54,8 @@ public class StatusDetailFragment extends BaseFragment implements FragmentInterf
         mStatusDetailView = (StatusDetailView) view.findViewById(R.id.fragment_status_detail_view);
         // mProgressWheel = (ProgressWheel)
         // view.findViewById(R.id.fragment_detail_material_progress_bar);
+
+        ButterKnife.bind(this, view);
 
         // 電話ボタン
         view.findViewById(R.id.view_action_box_tel).setOnClickListener(new View.OnClickListener() {
@@ -98,6 +106,8 @@ public class StatusDetailFragment extends BaseFragment implements FragmentInterf
     public void onResultQuery(Liner liner, String value) {
         mStatusDetailView.setVisibility(View.VISIBLE);
         mStatusDetailView.bind(liner, value);
+
+        mTimeTableView.switchView(liner.getCompany(), liner.getPort());
     }
 
     @Override
