@@ -10,10 +10,9 @@
     <!--時刻表-->
     <!--時刻表 １列目-->
     <FrameLayout
-        android:id="@+id/kuroshima_ykf_row1"
+        android:id="@+id/kohama_ykf_row1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone">
+        android:layout_height="wrap_content">
 
         <TextView
             style="@style/time_table_ykf_icon_text"/>
@@ -43,10 +42,9 @@
 
     <!--時刻表 ２列目-->
     <FrameLayout
-        android:id="@+id/kuroshima_anei_row2"
+        android:id="@+id/kohama_anei_row2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone">
+        android:layout_height="wrap_content">
 
         <TextView
             style="@style/time_table_anei_icon_text"/>
@@ -75,10 +73,9 @@
 
     <!--時刻表 ３列目-->
     <FrameLayout
-        android:id="@+id/kuroshima_ykf_row3"
+        android:id="@+id/kohama_ykf_row3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone">
+        android:layout_height="wrap_content">
 
         <TextView
             style="@style/time_table_ykf_icon_text"/>
@@ -107,10 +104,9 @@
 
     <!--時刻表 4列目-->
     <FrameLayout
-        android:id="@+id/kuroshima_anei_row4"
+        android:id="@+id/kohama_anei_row4"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone">
+        android:layout_height="wrap_content">
 
         <TextView
             style="@style/time_table_anei_icon_text"/>
@@ -139,10 +135,9 @@
 
     <!--時刻表 5列目-->
     <FrameLayout
-        android:id="@+id/kuroshima_ykf_row5"
+        android:id="@+id/kohama_ykf_row5"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone">
+        android:layout_height="wrap_content">
 
         <TextView
             style="@style/time_table_ykf_icon_text"/>
@@ -171,10 +166,9 @@
 
     <!--時刻表 6列目-->
     <FrameLayout
-        android:id="@+id/kuroshima_anei_row6"
+        android:id="@+id/kohama_anei_row6"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone">
+        android:layout_height="wrap_content">
 
         <TextView
             style="@style/time_table_anei_icon_text"/>
@@ -203,10 +197,9 @@
 
     <!--時刻表 7列目-->
     <FrameLayout
-        android:id="@+id/kuroshima_ykf_row7"
+        android:id="@+id/kohama_ykf_row7"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone">
+        android:layout_height="wrap_content">
 
         <TextView
             style="@style/time_table_ykf_icon_text"/>
@@ -235,10 +228,9 @@
 
     <!--時刻表 8列目-->
     <FrameLayout
-        android:id="@+id/kuroshima_anei_row8"
+        android:id="@+id/kohama_anei_row8"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone">
+        android:layout_height="wrap_content">
 
         <TextView
             style="@style/time_table_anei_icon_text"/>
@@ -267,10 +259,9 @@
 
     <!--時刻表 9列目-->
     <FrameLayout
-        android:id="@+id/kuroshima_ykf_row9"
+        android:id="@+id/kohama_ykf_row9"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone">
+        android:layout_height="wrap_content">
 
         <TextView
             style="@style/time_table_ykf_icon_text"/>
@@ -299,10 +290,9 @@
 
     <!--時刻表 10列目-->
     <FrameLayout
-        android:id="@+id/kuroshima_anei_row10"
+        android:id="@+id/kohama_anei_row10"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone">
+        android:layout_height="wrap_content">
 
         <TextView
             style="@style/time_table_anei_icon_text"/>
@@ -331,10 +321,9 @@
 
     <!--時刻表 11列目-->
     <FrameLayout
-        android:id="@+id/kuroshima_ykf_row11"
+        android:id="@+id/kohama_ykf_row11"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone">
+        android:layout_height="wrap_content">
 
         <TextView
             style="@style/time_table_ykf_icon_text"/>
@@ -363,10 +352,9 @@
 
     <!--時刻表 12列目-->
     <FrameLayout
-        android:id="@+id/kuroshima_ykf_row12"
+        android:id="@+id/kohama_ykf_row12"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone">
+        android:layout_height="wrap_content">
 
         <TextView
             style="@style/time_table_ykf_icon_text"/>

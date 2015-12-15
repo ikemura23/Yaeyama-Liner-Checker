@@ -21,23 +21,23 @@ public class TimeTableKohamaView extends TimeTableBaseView {
 
     // 安栄
     @Bind({
-            R.id.kuroshima_anei_row2,
-            R.id.kuroshima_anei_row4,
-            R.id.kuroshima_anei_row6,
-            R.id.kuroshima_anei_row8,
-            R.id.kuroshima_anei_row10
+            R.id.kohama_anei_row2,
+            R.id.kohama_anei_row4,
+            R.id.kohama_anei_row6,
+            R.id.kohama_anei_row8,
+            R.id.kohama_anei_row10
     })
     List<View> aneiViews;
 
     // 八重山観光フェリー
     @Bind({
-            R.id.kuroshima_ykf_row1,
-            R.id.kuroshima_ykf_row3,
-            R.id.kuroshima_ykf_row5,
-            R.id.kuroshima_ykf_row7,
-            R.id.kuroshima_ykf_row9,
-            R.id.kuroshima_ykf_row11,
-            R.id.kuroshima_ykf_row12,
+            R.id.kohama_ykf_row1,
+            R.id.kohama_ykf_row3,
+            R.id.kohama_ykf_row5,
+            R.id.kohama_ykf_row7,
+            R.id.kohama_ykf_row9,
+            R.id.kohama_ykf_row11,
+            R.id.kohama_ykf_row12,
     })
     List<View> ykfViews;
 

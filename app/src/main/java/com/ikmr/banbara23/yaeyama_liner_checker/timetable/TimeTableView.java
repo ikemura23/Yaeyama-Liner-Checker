@@ -52,7 +52,7 @@ public class TimeTableView extends LinearLayout {
         if (mTimeTableKohamaView != null) {
             mTimeTableKohamaView.changeViews(company);
         }
-        for (int i = 0; i > timeViews.size(); i++) {
+        for (int i = 0; i < timeViews.size(); i++) {
             if (timeViews.keyAt(i) == port) {
                 timeViews.get(port).setVisibility(VISIBLE);
                 ((TimeTableBaseView) timeViews.get(port)).changeViews(company);

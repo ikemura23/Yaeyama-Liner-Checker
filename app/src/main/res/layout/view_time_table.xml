@@ -9,7 +9,8 @@
     <com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableKohamaView
         android:id="@+id/view_time_table_kohama"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
 
     <FrameLayout
         android:id="@+id/view_time_table_taketomi"
