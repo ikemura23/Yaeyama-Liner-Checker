@@ -5,6 +5,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -21,7 +22,7 @@ import butterknife.ButterKnife;
 /**
  * 時刻表
  */
-public class TimeTableView extends LinearLayout {
+public class TimeTableView extends FrameLayout {
 
     // 時刻表の各港を格納する配列
     HashMap<Port, View> timeViews = new HashMap<>();
