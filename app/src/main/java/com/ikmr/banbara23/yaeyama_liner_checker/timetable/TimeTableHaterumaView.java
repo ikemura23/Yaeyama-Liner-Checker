@@ -39,6 +39,6 @@ public class TimeTableHaterumaView extends TimeTableBaseView {
 
     @Override
     public void switchViews(Company company) {
-
+        // 安栄しかないので、切り替え無し
     }
 }
