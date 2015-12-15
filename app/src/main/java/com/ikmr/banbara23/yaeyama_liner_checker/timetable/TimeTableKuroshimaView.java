@@ -12,13 +12,13 @@ import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 /**
  * 時刻表 竹富
  */
-public class TimeTableKroshimaView extends TimeTableBaseView {
+public class TimeTableKuroshimaView extends TimeTableBaseView {
 
-    public TimeTableKroshimaView(Context context) {
+    public TimeTableKuroshimaView(Context context) {
         super(context);
     }
 
-    public TimeTableKroshimaView(Context context, AttributeSet attrs) {
+    public TimeTableKuroshimaView(Context context, AttributeSet attrs) {
         super(context, attrs);
         View layout = LayoutInflater.from(context).inflate(R.layout.view_time_table_kuroshima, this);
     }
