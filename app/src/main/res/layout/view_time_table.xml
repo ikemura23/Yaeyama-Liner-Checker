@@ -6,7 +6,6 @@
     android:orientation="vertical">
 
     <!--竹富-->
-
     <com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableKohamaView
         android:id="@+id/view_time_table_kohama"
         android:layout_width="match_parent"

@@ -5,7 +5,6 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.LinearLayout;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.ViewUtils;
@@ -19,7 +18,7 @@ import butterknife.ButterKnife;
 /**
  * 時刻表 竹富
  */
-public class TimeTableKohamaView extends LinearLayout {
+public class TimeTableKohamaView extends TimeTableBaseView {
 
     // 安栄
     @Bind({
@@ -58,6 +57,7 @@ public class TimeTableKohamaView extends LinearLayout {
      * 
      * @param company
      */
+    @Override
     public void changeViews(Company company) {
         if (company == Company.ANNEI) {
             ViewUtils.setVisivilityViews(ykfViews, GONE);

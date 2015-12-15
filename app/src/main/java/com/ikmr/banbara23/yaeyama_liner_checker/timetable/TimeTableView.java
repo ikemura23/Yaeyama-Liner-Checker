@@ -4,7 +4,6 @@ package com.ikmr.banbara23.yaeyama_liner_checker.timetable;
 import android.content.Context;
 import android.support.v4.util.ArrayMap;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -50,13 +49,13 @@ public class TimeTableView extends LinearLayout {
      * @param port
      */
     public void switchView(Company company, Port port) {
-        if (mTimeTableKohamaView == null) {
-            Log.d("TimeTableView", "Null");
+        if (mTimeTableKohamaView != null) {
+            mTimeTableKohamaView.changeViews(company);
         }
         for (int i = 0; i > timeViews.size(); i++) {
             if (timeViews.keyAt(i) == port) {
                 timeViews.get(port).setVisibility(VISIBLE);
-                ((TimeTableKohamaView) timeViews.get(port)).changeViews(company);
+                ((TimeTableBaseView) timeViews.get(port)).changeViews(company);
             }
             else {
                 timeViews.get(port).setVisibility(GONE);
