@@ -7,9 +7,9 @@
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-    <!--時刻表-->
-    <!--時刻表 １列目-->
+    <!--1列目-->
     <FrameLayout
+        android:id="@+id/oohara_ykf_row1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -38,7 +38,9 @@
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
 
+    <!--2列目-->
     <FrameLayout
+        android:id="@+id/oohara_ykf_row2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -67,7 +69,9 @@
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
 
+    <!--3列目-->
     <FrameLayout
+        android:id="@+id/oohara_annei_row3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -96,8 +100,9 @@
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-    <!--時刻表 ３列目-->
+    <!--4列目-->
     <FrameLayout
+        android:id="@+id/oohara_ykf_row4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -126,8 +131,9 @@
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-    <!--時刻表 4列目-->
+    <!--5列目-->
     <FrameLayout
+        android:id="@+id/oohara_anei_row5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -156,8 +162,9 @@
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-    <!--時刻表 5列目-->
+    <!--6列目-->
     <FrameLayout
+        android:id="@+id/oohara_anei_row6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -186,8 +193,9 @@
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-    <!--時刻表 6列目-->
+    <!--7列目-->
     <FrameLayout
+        android:id="@+id/oohara_ykf_row7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -216,7 +224,9 @@
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
 
+    <!--8列目-->
     <FrameLayout
+        android:id="@+id/oohara_anei_row8"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -245,7 +255,9 @@
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
 
+    <!--9列目-->
     <FrameLayout
+        android:id="@+id/oohara_ykf_row9"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -274,7 +286,9 @@
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
 
+    <!--10列目-->
     <FrameLayout
+        android:id="@+id/oohara_ykf_row10"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -303,7 +317,9 @@
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
 
+    <!--11列目-->
     <FrameLayout
+        android:id="@+id/oohara_anei_row11"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -332,7 +348,9 @@
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
 
+    <!--12列目-->
     <FrameLayout
+        android:id="@+id/oohara_ykf_row12"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
