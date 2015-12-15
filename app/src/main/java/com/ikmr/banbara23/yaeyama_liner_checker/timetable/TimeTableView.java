@@ -6,6 +6,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
@@ -22,8 +23,18 @@ import butterknife.ButterKnife;
  */
 public class TimeTableView extends LinearLayout {
 
+    // 時刻表の各港を格納する配列
     HashMap<Port, View> timeViews = new HashMap<>();
 
+    // 時刻表ヘッダー
+    @Bind(R.id.view_timetable_header)
+    LinearLayout mViewTimetableHeader;
+    @Bind(R.id.view_timetable_header_ishigaki)
+    TextView mViewTimetableHeaderIshigaki;
+    @Bind(R.id.view_timetable_header_ritou)
+    TextView mViewTimetableHeaderRitou;
+
+    // 時刻表
     @Bind(R.id.view_time_table_taketomi)
     TimeTableTaketomiView mViewTimeTableTaketomi;
     @Bind(R.id.view_time_table_uehara)
@@ -73,6 +84,8 @@ public class TimeTableView extends LinearLayout {
         if (timeViews == null || timeViews.isEmpty()) {
             return;
         }
+        mViewTimetableHeader.setVisibility(VISIBLE);
+        mViewTimetableHeaderRitou.setText(port.getPortSimple());
 
         for (Map.Entry<Port, View> timeView : timeViews.entrySet()) {
             // 港が一致したら観光会社の時刻表を表示、違えば時刻表ごと非表示
