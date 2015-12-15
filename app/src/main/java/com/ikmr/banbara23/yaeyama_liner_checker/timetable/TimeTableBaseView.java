@@ -15,7 +15,7 @@ import butterknife.ButterKnife;
 /**
  * 時刻表の継承元View
  */
-public class TimeTableBaseView extends LinearLayout {
+public abstract class TimeTableBaseView extends LinearLayout {
     public TimeTableBaseView(Context context) {
         super(context);
     }
@@ -24,9 +24,7 @@ public class TimeTableBaseView extends LinearLayout {
         super(context, attrs);
     }
 
-    public void switchViews(Company company) {
-
-    }
+    public abstract void switchViews(Company company);
 
     /**
      * 子ビューの時刻表を観光会社別に一斉切り替え

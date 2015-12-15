@@ -3,102 +3,63 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
     <!--竹富-->
-    <com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableKohamaView
-        android:id="@+id/view_time_table_kohama"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"/>
-
-    <FrameLayout
+    <com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableTaketomiView
         android:id="@+id/view_time_table_taketomi"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone"
-        >
-
-        <include
-            layout="@layout/view_time_table_taketomi"
-            />
-    </FrameLayout>
+        />
 
     <!--上原-->
-    <FrameLayout
+    <com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableUeharaView
         android:id="@+id/view_time_table_uehara"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone"
-        >
-
-        <include
-            layout="@layout/view_time_table_uehara"
-            />
-    </FrameLayout>
+        />
 
     <!--大原-->
-    <FrameLayout
+    <com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableOoharaView
         android:id="@+id/view_time_table_oohara"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone"
-        >
-
-        <include
-            layout="@layout/view_time_table_oohara"
-            />
-    </FrameLayout>
+        />
 
     <!--小浜-->
-    <FrameLayout
+    <com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableKohamaView
+        android:id="@+id/view_time_table_kohama"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone"
-        >
-
-        <include
-            layout="@layout/view_time_table_kohama"
-            />
-    </FrameLayout>
+        />
 
     <!--黒島-->
-    <FrameLayout
+    <com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableKuroshimaView
         android:id="@+id/view_time_table_kurhoshima"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone"
-        >
-
-        <include
-            layout="@layout/view_time_table_kuroshima"
-            />
-    </FrameLayout>
+        />
 
     <!--波照間-->
-    <FrameLayout
+    <com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableHaterumaView
         android:id="@+id/view_time_table_hateruma"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone"
-        >
-
-        <include
-            layout="@layout/view_time_table_hateruma"
-            />
-    </FrameLayout>
+        />
 
     <!--鳩間-->
-    <FrameLayout
+    <com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableHatomaView
         android:id="@+id/view_time_table_hatoma"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone"
-        >
-
-        <include
-            layout="@layout/view_time_table_hatoma"
-            />
-    </FrameLayout>
+        />
 
 </LinearLayout>
