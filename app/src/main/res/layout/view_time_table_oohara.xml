@@ -80,7 +80,7 @@
 
     <!--3列目-->
     <FrameLayout
-        android:id="@+id/oohara_annei_row3"
+        android:id="@+id/oohara_anei_row3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
