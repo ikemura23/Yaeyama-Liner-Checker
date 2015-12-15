@@ -10,8 +10,10 @@
     <!--時刻表-->
     <!--時刻表 １列目-->
     <FrameLayout
+        android:id="@+id/kuroshima_ykf_row1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:visibility="gone">
 
         <TextView
             style="@style/time_table_ykf_icon_text"/>
@@ -38,11 +40,12 @@
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-
     <!--時刻表 ２列目-->
     <FrameLayout
+        android:id="@+id/kuroshima_anei_row2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:visibility="gone">
 
         <TextView
             style="@style/time_table_anei_icon_text"/>
@@ -71,8 +74,10 @@
 
     <!--時刻表 ３列目-->
     <FrameLayout
+        android:id="@+id/kuroshima_ykf_row3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:visibility="gone">
 
         <TextView
             style="@style/time_table_ykf_icon_text"/>
@@ -101,8 +106,10 @@
 
     <!--時刻表 4列目-->
     <FrameLayout
+        android:id="@+id/kuroshima_ykf_row4"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:visibility="gone">
 
         <TextView
             style="@style/time_table_ykf_icon_text"/>
@@ -131,8 +138,10 @@
 
     <!--時刻表 5列目-->
     <FrameLayout
+        android:id="@+id/kuroshima_anei_row5"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:visibility="gone">
 
         <TextView
             style="@style/time_table_anei_icon_text"/>
