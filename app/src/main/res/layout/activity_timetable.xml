@@ -59,7 +59,7 @@
                 android:visibility="gone"/>
 
             <!--黒島-->
-            <com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableKroshimaView
+            <com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableKuroshimaView
                 android:id="@+id/activity_timetable_kuroshima"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

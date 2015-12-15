@@ -17,35 +17,38 @@ import butterknife.ButterKnife;
 /**
  * 時刻表 竹富
  */
-public class TimeTableUeharaView extends TimeTableBaseView {
+public class TimeTableKuroshimaView extends TimeTableBaseView {
 
     // 安栄
     @Bind({
-            R.id.uehara_anei_row1,
-            R.id.uehara_anei_row2,
-            R.id.uehara_anei_row4,
-            R.id.uehara_anei_row5,
-            R.id.uehara_anei_row7
+            R.id.kuroshima_anei_row2,
+            R.id.kuroshima_anei_row5,
     })
     List<View> aneiViews;
 
     // 八重山観光フェリー
     @Bind({
-            R.id.uehara_ykf_row3,
-            R.id.uehara_ykf_row6
+            R.id.kuroshima_ykf_row1,
+            R.id.kuroshima_ykf_row3,
+            R.id.kuroshima_ykf_row4,
     })
     List<View> ykfViews;
 
-    public TimeTableUeharaView(Context context) {
+    public TimeTableKuroshimaView(Context context) {
         super(context);
     }
 
-    public TimeTableUeharaView(Context context, AttributeSet attrs) {
+    public TimeTableKuroshimaView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        View layout = LayoutInflater.from(context).inflate(R.layout.view_time_table_uehara, this);
+        View layout = LayoutInflater.from(context).inflate(R.layout.view_time_table_kuroshima, this);
         ButterKnife.bind(this, layout);
     }
 
+    /**
+     * 安栄 or 八重山観光フェリーのみの時刻表に切り替える
+     *
+     * @param company
+     */
     @Override
     public void switchViews(Company company) {
         switcCompany(company, aneiViews, ykfViews);

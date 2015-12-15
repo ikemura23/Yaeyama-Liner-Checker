@@ -1,18 +1,21 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker;
 
+import java.io.IOException;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
 import android.os.AsyncTask;
 import android.util.Log;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.parser.AnneiDetailParser;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-
-import java.io.IOException;
-
 public class StatusDetailAsync extends AsyncTask<String, Integer, Document> {
+
+    static final int CONNECTION_TIME_OUT = 20000;
+
     // Activityへのコールバック用interface
     public interface DetailAsyncCallback {
         void preExecute();
@@ -69,7 +72,7 @@ public class StatusDetailAsync extends AsyncTask<String, Integer, Document> {
         Log.d("StatusAsyncTaskLoader", "loadInBackground");
         try {
             // HTML取得 タイムアウトは10秒
-            doc = Jsoup.connect(params[0]).timeout(10000).get();
+            doc = Jsoup.connect(params[0]).timeout(CONNECTION_TIME_OUT).get();
         } catch (IOException e) {
             e.printStackTrace();
         }

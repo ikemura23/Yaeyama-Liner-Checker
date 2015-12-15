@@ -3,15 +3,17 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-    <!--時刻表-->
-    <!--時刻表 １列目-->
+    <!--1列目-->
     <FrameLayout
+        android:id="@+id/oohara_ykf_row1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 
         <TextView
             style="@style/time_table_ykf_icon_text"/>
@@ -20,17 +22,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="2">
+            android:weightSum="2"
+            >
 
             <TextView
                 style="@style/time_table_text"
                 android:layout_weight="1"
-                android:text="07:10"/>
+                android:text="07:10"
+                />
 
             <TextView
                 style="@style/time_table_text"
                 android:layout_weight="1"
-                android:text="07:50"/>
+                android:text="07:50"
+                />
         </LinearLayout>
 
         <include layout="@layout/view_time_table_line_yoko"/>
@@ -38,9 +43,12 @@
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
 
+    <!--2列目-->
     <FrameLayout
+        android:id="@+id/oohara_ykf_row2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 
         <TextView
             style="@style/time_table_ykf_icon_text"/>
@@ -49,17 +57,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="2">
+            android:weightSum="2"
+            >
 
             <TextView
                 style="@style/time_table_text"
                 android:layout_weight="1"
-                android:text="08:00"/>
+                android:text="08:00"
+                />
 
             <TextView
                 style="@style/time_table_text"
                 android:layout_weight="1"
-                android:text="08:45"/>
+                android:text="08:45"
+                />
         </LinearLayout>
 
         <include layout="@layout/view_time_table_line_yoko"/>
@@ -67,9 +78,12 @@
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
 
+    <!--3列目-->
     <FrameLayout
+        android:id="@+id/oohara_anei_row3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 
         <TextView
             style="@style/time_table_anei_icon_text"/>
@@ -78,17 +92,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="2">
+            android:weightSum="2"
+            >
 
             <TextView
                 style="@style/time_table_text"
                 android:layout_weight="1"
-                android:text="08:30"/>
+                android:text="08:30"
+                />
 
             <TextView
                 style="@style/time_table_text"
                 android:layout_weight="1"
-                android:text="-"/>
+                android:text="-"
+                />
         </LinearLayout>
 
         <include layout="@layout/view_time_table_line_yoko"/>
@@ -96,10 +113,12 @@
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-    <!--時刻表 ３列目-->
+    <!--4列目-->
     <FrameLayout
+        android:id="@+id/oohara_ykf_row4"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 
         <TextView
             style="@style/time_table_ykf_icon_text"/>
@@ -108,17 +127,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="2">
+            android:weightSum="2"
+            >
 
             <TextView
                 style="@style/time_table_text"
                 android:layout_weight="1"
-                android:text="08:40"/>
+                android:text="08:40"
+                />
 
             <TextView
                 style="@style/time_table_text"
                 android:layout_weight="1"
-                android:text="09:30"/>
+                android:text="09:30"
+                />
         </LinearLayout>
 
         <include layout="@layout/view_time_table_line_yoko"/>
@@ -126,10 +148,12 @@
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-    <!--時刻表 4列目-->
+    <!--5列目-->
     <FrameLayout
+        android:id="@+id/oohara_anei_row5"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 
         <TextView
             style="@style/time_table_anei_icon_text"/>
@@ -138,17 +162,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="2">
+            android:weightSum="2"
+            >
 
             <TextView
                 style="@style/time_table_text"
                 android:layout_weight="1"
-                android:text="09:40"/>
+                android:text="09:40"
+                />
 
             <TextView
                 style="@style/time_table_text"
                 android:layout_weight="1"
-                android:text="10:30"/>
+                android:text="10:30"
+                />
         </LinearLayout>
 
         <include layout="@layout/view_time_table_line_yoko"/>
@@ -156,10 +183,12 @@
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-    <!--時刻表 5列目-->
+    <!--6列目-->
     <FrameLayout
+        android:id="@+id/oohara_anei_row6"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 
         <TextView
             style="@style/time_table_anei_icon_text"/>
@@ -168,17 +197,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="2">
+            android:weightSum="2"
+            >
 
             <TextView
                 style="@style/time_table_text"
                 android:layout_weight="1"
-                android:text="11:00"/>
+                android:text="11:00"
+                />
 
             <TextView
                 style="@style/time_table_text"
                 android:layout_weight="1"
-                android:text="12:30"/>
+                android:text="12:30"
+                />
         </LinearLayout>
 
         <include layout="@layout/view_time_table_line_yoko"/>
@@ -186,10 +218,12 @@
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-    <!--時刻表 6列目-->
+    <!--7列目-->
     <FrameLayout
+        android:id="@+id/oohara_ykf_row7"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 
         <TextView
             style="@style/time_table_ykf_icon_text"/>
@@ -198,17 +232,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="2">
+            android:weightSum="2"
+            >
 
             <TextView
                 style="@style/time_table_text"
                 android:layout_weight="1"
-                android:text="12:00"/>
+                android:text="12:00"
+                />
 
             <TextView
                 style="@style/time_table_text"
                 android:layout_weight="1"
-                android:text="-"/>
+                android:text="-"
+                />
         </LinearLayout>
 
         <include layout="@layout/view_time_table_line_yoko"/>
@@ -216,9 +253,12 @@
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
 
+    <!--8列目-->
     <FrameLayout
+        android:id="@+id/oohara_anei_row8"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 
         <TextView
             style="@style/time_table_anei_icon_text"/>
@@ -227,17 +267,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="2">
+            android:weightSum="2"
+            >
 
             <TextView
                 style="@style/time_table_text"
                 android:layout_weight="1"
-                android:text="13:00"/>
+                android:text="13:00"
+                />
 
             <TextView
                 style="@style/time_table_text"
                 android:layout_weight="1"
-                android:text="14:00"/>
+                android:text="14:00"
+                />
         </LinearLayout>
 
         <include layout="@layout/view_time_table_line_yoko"/>
@@ -245,9 +288,12 @@
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
 
+    <!--9列目-->
     <FrameLayout
+        android:id="@+id/oohara_ykf_row9"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 
         <TextView
             style="@style/time_table_ykf_icon_text"/>
@@ -256,17 +302,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="2">
+            android:weightSum="2"
+            >
 
             <TextView
                 style="@style/time_table_text"
                 android:layout_weight="1"
-                android:text="-"/>
+                android:text="-"
+                />
 
             <TextView
                 style="@style/time_table_text"
                 android:layout_weight="1"
-                android:text="14:30"/>
+                android:text="14:30"
+                />
         </LinearLayout>
 
         <include layout="@layout/view_time_table_line_yoko"/>
@@ -274,9 +323,12 @@
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
 
+    <!--10列目-->
     <FrameLayout
+        android:id="@+id/oohara_ykf_row10"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 
         <TextView
             style="@style/time_table_ykf_icon_text"/>
@@ -285,17 +337,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="2">
+            android:weightSum="2"
+            >
 
             <TextView
                 style="@style/time_table_text"
                 android:layout_weight="1"
-                android:text="14:40"/>
+                android:text="14:40"
+                />
 
             <TextView
                 style="@style/time_table_text"
                 android:layout_weight="1"
-                android:text="15:30"/>
+                android:text="15:30"
+                />
         </LinearLayout>
 
         <include layout="@layout/view_time_table_line_yoko"/>
@@ -303,9 +358,12 @@
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
 
+    <!--11列目-->
     <FrameLayout
+        android:id="@+id/oohara_anei_row11"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 
         <TextView
             style="@style/time_table_anei_icon_text"/>
@@ -314,17 +372,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="2">
+            android:weightSum="2"
+            >
 
             <TextView
                 style="@style/time_table_text"
                 android:layout_weight="1"
-                android:text="16:10"/>
+                android:text="16:10"
+                />
 
             <TextView
                 style="@style/time_table_text"
                 android:layout_weight="1"
-                android:text="17:00"/>
+                android:text="17:00"
+                />
         </LinearLayout>
 
         <include layout="@layout/view_time_table_line_yoko"/>
@@ -332,9 +393,12 @@
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
 
+    <!--12列目-->
     <FrameLayout
+        android:id="@+id/oohara_ykf_row12"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 
         <TextView
             style="@style/time_table_ykf_icon_text"/>
@@ -343,17 +407,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="2">
+            android:weightSum="2"
+            >
 
             <TextView
                 style="@style/time_table_text"
                 android:layout_weight="1"
-                android:text="16:40"/>
+                android:text="16:40"
+                />
 
             <TextView
                 style="@style/time_table_text"
                 android:layout_weight="1"
-                android:text="17:30"/>
+                android:text="17:30"
+                />
         </LinearLayout>
 
         <include layout="@layout/view_time_table_line_yoko"/>
