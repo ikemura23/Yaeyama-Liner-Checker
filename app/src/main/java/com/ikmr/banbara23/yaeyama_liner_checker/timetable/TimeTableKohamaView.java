@@ -28,7 +28,7 @@ public class TimeTableKohamaView extends TimeTableBaseView {
             R.id.kuroshima_anei_row8,
             R.id.kuroshima_anei_row10
     })
-    List<View> ykfViews;
+    List<View> aneiViews;
 
     // 八重山観光フェリー
     @Bind({
@@ -40,7 +40,7 @@ public class TimeTableKohamaView extends TimeTableBaseView {
             R.id.kuroshima_ykf_row11,
             R.id.kuroshima_ykf_row12,
     })
-    List<View> aneiViews;
+    List<View> ykfViews;
 
     public TimeTableKohamaView(Context context) {
         super(context);
