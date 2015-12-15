@@ -5,14 +5,14 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.LinearLayout;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 
 /**
  * 時刻表 竹富
  */
-public class TimeTableTaketomiView extends LinearLayout {
+public class TimeTableTaketomiView extends TimeTableBaseView {
 
     public TimeTableTaketomiView(Context context) {
         super(context);
@@ -21,5 +21,10 @@ public class TimeTableTaketomiView extends LinearLayout {
     public TimeTableTaketomiView(Context context, AttributeSet attrs) {
         super(context, attrs);
         View layout = LayoutInflater.from(context).inflate(R.layout.view_time_table_taketomi, this);
+    }
+
+    @Override
+    public void changeViews(Company company) {
+
     }
 }

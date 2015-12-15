@@ -7,12 +7,15 @@ import android.widget.LinearLayout;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 
+import butterknife.ButterKnife;
+
 /**
  * 時刻表の継承元View
  */
 public abstract class TimeTableBaseView extends LinearLayout {
     public TimeTableBaseView(Context context) {
         super(context);
+        ButterKnife.bind(this);
     }
 
     public TimeTableBaseView(Context context, AttributeSet attrs) {
