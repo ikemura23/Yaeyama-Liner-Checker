@@ -24,7 +24,7 @@ public class TimeTableTaketomiView extends TimeTableBaseView {
     }
 
     @Override
-    public void changeViews(Company company) {
+    public void switchViews(Company company) {
 
     }
 }
