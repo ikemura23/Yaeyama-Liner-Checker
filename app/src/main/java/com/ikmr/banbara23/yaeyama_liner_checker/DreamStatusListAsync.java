@@ -2,7 +2,6 @@
 package com.ikmr.banbara23.yaeyama_liner_checker;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.StatusListResult;
 import com.ikmr.banbara23.yaeyama_liner_checker.parser.DreamListParser;
@@ -12,7 +11,13 @@ import org.jsoup.nodes.Document;
 
 import java.io.IOException;
 
+import butterknife.BindString;
+
 public class DreamStatusListAsync extends AsyncTask<String, Integer, Document> {
+
+    // 取得URL
+    @BindString(R.string.url_dream_list)
+    String URL;
 
     // Activityへのコールバック用interface
     public interface DreamStatusListAsyncCallback {
@@ -66,10 +71,9 @@ public class DreamStatusListAsync extends AsyncTask<String, Integer, Document> {
     @Override
     protected Document doInBackground(String... params) {
         Document doc = null;
-        Log.d("StatusAsyncTaskLoader", "loadInBackground");
         try {
             // HTML取得
-            doc = Jsoup.connect(params[0]).timeout(Consts.CONNECTION_TIME_OUT).get();
+            doc = Jsoup.connect(URL).timeout(Consts.CONNECTION_TIME_OUT).get();
         } catch (IOException e) {
             e.printStackTrace();
         }
