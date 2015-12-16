@@ -8,7 +8,7 @@
     <string name="title_activity_timetable">時刻表</string>
     <string name="title_activity_other">アプリ情報</string>
 
-    <string name="top_description">観光会社を選んでください</string>
+    <string name="top_description">運航状況</string>
 
     <!--URL-->
     <!--安栄-->
@@ -61,5 +61,12 @@
     <string name="time_table_port_oohara">西表(大原)発</string>
     <string name="time_table_port_hateruma">波照間発</string>
 
+    <string name="company_name_annei">安栄観光</string>
+    <string name="company_name_ykf">八重山観光フェリー</string>
+    <string name="company_name_dream">石垣島ドリーム観光</string>
+
+    <string name="company_simple_name_annei">安栄</string>
+    <string name="company_simple_name_ykf">八重山観光フ</string>
+    <string name="company_simple_name_dream">ドリーム観光</string>
 
 </resources>

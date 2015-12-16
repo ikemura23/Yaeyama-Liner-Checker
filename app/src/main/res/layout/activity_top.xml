@@ -6,14 +6,16 @@
                 android:paddingLeft="@dimen/activity_horizontal_margin"
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingTop="@dimen/activity_vertical_margin"
-                tools:context="com.ikmr.banbara23.yaeyama_liner_checker.activity.TopActivity">
+                tools:context="com.ikmr.banbara23.yaeyama_liner_checker.activity.TopActivity"
+    >
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/top_description"
-        android:textSize="15sp"/>
+        android:textSize="15sp"
+        />
 
     <Button
         android:id="@+id/annei_button"
@@ -24,8 +26,9 @@
         android:layout_below="@+id/textView"
         android:layout_marginTop="10dp"
         android:onClick="anneiClick"
-        android:text="安栄観光"
-        android:textSize="18sp"/>
+        android:text="@string/company_name_annei"
+        android:textSize="18sp"
+        />
 
     <Button
         android:id="@+id/ykf_button"
@@ -36,19 +39,34 @@
         android:layout_below="@+id/annei_button"
         android:layout_marginTop="10dp"
         android:onClick="ykfClick"
-        android:text="八重山観光フェリー"
-        android:textSize="18sp"/>
+        android:text="@string/company_name_ykf"
+        android:textSize="18sp"
+        />
+
+    <Button
+        android:id="@+id/dream_button"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/ykf_button"
+        android:layout_marginTop="10dp"
+        android:onClick="ykfClick"
+        android:text="@string/company_name_dream"
+        android:textSize="18sp"
+        />
 
     <FrameLayout
         android:id="@+id/line_yoko"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_below="@+id/ykf_button"
+        android:layout_below="@+id/dream_button"
         android:layout_marginBottom="20dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="20dp"
-        android:background="@color/light_grey"/>
+        android:background="@color/light_grey"
+        />
 
     <Button
         android:id="@+id/timetable_button"
@@ -59,7 +77,8 @@
         android:layout_below="@+id/line_yoko"
         android:onClick="timeTableClick"
         android:text="時刻表"
-        android:textSize="18sp"/>
+        android:textSize="18sp"
+        />
 
     <Button
         android:layout_width="match_parent"
@@ -70,7 +89,8 @@
         android:layout_marginTop="10dp"
         android:onClick="otherClick"
         android:text="@string/title_activity_other"
-        android:textSize="18sp"/>
+        android:textSize="18sp"
+        />
 
     <!--広告-->
     <com.google.android.gms.ads.AdView
@@ -80,6 +100,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         ads:adSize="BANNER"
-        ads:adUnitId="@string/banner_ad_unit_id">
+        ads:adUnitId="@string/banner_ad_unit_id"
+        >
     </com.google.android.gms.ads.AdView>
 </RelativeLayout>
