@@ -12,11 +12,8 @@
         android:id="@+id/taketomi_anei_row1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:visibility="gone"
+        tools:visibility="visible"
         >
-
-        <TextView
-            style="@style/time_table_anei_icon_text"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -46,11 +43,8 @@
         android:id="@+id/taketomi_ykf_row2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:visibility="gone"
+        tools:visibility="visible"
         >
-
-        <TextView
-            style="@style/time_table_ykf_icon_text"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -80,11 +74,11 @@
         android:id="@+id/taketomi_anei_row3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:visibility="gone"
+        tools:visibility="visible"
         >
 
         <TextView
-            style="@style/time_table_anei_icon_text"/>
+            style="@style/time_table_dream_text"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -114,11 +108,8 @@
         android:id="@+id/taketomi_ykf_row4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:visibility="gone"
+        tools:visibility="visible"
         >
-
-        <TextView
-            style="@style/time_table_ykf_icon_text"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -148,11 +139,8 @@
         android:id="@+id/taketomi_anei_row5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:visibility="gone"
+        tools:visibility="visible"
         >
-
-        <TextView
-            style="@style/time_table_anei_icon_text"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -182,11 +170,8 @@
         android:id="@+id/taketomi_ykf_row6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:visibility="gone"
+        tools:visibility="visible"
         >
-
-        <TextView
-            style="@style/time_table_ykf_icon_text"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -216,11 +201,8 @@
         android:id="@+id/taketomi_anei_row7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:visibility="gone"
+        tools:visibility="visible"
         >
-
-        <TextView
-            style="@style/time_table_anei_icon_text"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -250,11 +232,8 @@
         android:id="@+id/taketomi_ykf_row8"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:visibility="gone"
+        tools:visibility="visible"
         >
-
-        <TextView
-            style="@style/time_table_ykf_icon_text"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -284,11 +263,8 @@
         android:id="@+id/taketomi_anei_row9"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:visibility="gone"
+        tools:visibility="visible"
         >
-
-        <TextView
-            style="@style/time_table_anei_icon_text"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -318,11 +294,8 @@
         android:id="@+id/taketomi_ykf_row10"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:visibility="gone"
+        tools:visibility="visible"
         >
-
-        <TextView
-            style="@style/time_table_ykf_icon_text"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -352,11 +325,8 @@
         android:id="@+id/taketomi_anei_row11"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:visibility="gone"
+        tools:visibility="visible"
         >
-
-        <TextView
-            style="@style/time_table_anei_icon_text"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -386,11 +356,8 @@
         android:id="@+id/taketomi_anei_row12"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:visibility="gone"
+        tools:visibility="visible"
         >
-
-        <TextView
-            style="@style/time_table_anei_icon_text"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -415,210 +382,13 @@
         <include layout="@layout/view_time_table_line_yoko"/>
     </FrameLayout>
 
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~１３列目~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <FrameLayout
-        android:id="@+id/taketomi_ykf_row13"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:visibility="visible"
-        >
-
-        <TextView
-            style="@style/time_table_ykf_icon_text"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2"
-            >
-
-            <TextView
-                style="@style/time_table_text"
-                android:layout_weight="1"
-                android:text="15:00"
-                />
-
-            <TextView
-                style="@style/time_table_text"
-                android:layout_weight="1"
-                android:text="15:15"
-                />
-        </LinearLayout>
-
-        <include layout="@layout/view_time_table_line_yoko"/>
-    </FrameLayout>
-
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~１４列目~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <FrameLayout
-        android:id="@+id/taketomi_ykf_row14"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:visibility="visible"
-        >
-
-        <TextView
-            style="@style/time_table_ykf_icon_text"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2"
-            >
-
-            <TextView
-                style="@style/time_table_text"
-                android:layout_weight="1"
-                android:text="15:30"
-                />
-
-            <TextView
-                style="@style/time_table_text"
-                android:layout_weight="1"
-                android:text="15:45"
-                />
-        </LinearLayout>
-
-        <include layout="@layout/view_time_table_line_yoko"/>
-    </FrameLayout>
-
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~１５列目~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <FrameLayout
-        android:id="@+id/taketomi_anei_row15"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:visibility="visible"
-        >
-
-        <TextView
-            style="@style/time_table_anei_icon_text"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2"
-            >
-
-            <TextView
-                style="@style/time_table_text"
-                android:layout_weight="1"
-                android:text="16:00"
-                />
-
-            <TextView
-                style="@style/time_table_text"
-                android:layout_weight="1"
-                android:text="16:15"
-                />
-        </LinearLayout>
-
-        <include layout="@layout/view_time_table_line_yoko"/>
-    </FrameLayout>
-
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~１６列目~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <FrameLayout
-        android:id="@+id/taketomi_ykf_row16"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:visibility="visible"
-        >
-
-        <TextView
-            style="@style/time_table_ykf_icon_text"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2"
-            >
-
-            <TextView
-                style="@style/time_table_text"
-                android:layout_weight="1"
-                android:text="16:30"
-                />
-
-            <TextView
-                style="@style/time_table_text"
-                android:layout_weight="1"
-                android:text="16:45"
-                />
-        </LinearLayout>
-
-        <include layout="@layout/view_time_table_line_yoko"/>
-    </FrameLayout>
-
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~１７列目~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <FrameLayout
-        android:id="@+id/taketomi_anei_row17"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:visibility="visible"
-        >
-
-        <TextView
-            style="@style/time_table_anei_icon_text"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2"
-            >
-
-            <TextView
-                style="@style/time_table_text"
-                android:layout_weight="1"
-                android:text="17:00"
-                />
-
-            <TextView
-                style="@style/time_table_text"
-                android:layout_weight="1"
-                android:text="17:15"
-                />
-        </LinearLayout>
-
-        <include layout="@layout/view_time_table_line_yoko"/>
-    </FrameLayout>
-
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~１８列目~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <FrameLayout
-        android:id="@+id/taketomi_ykf_row18"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:visibility="visible"
-        >
-
-        <TextView
-            style="@style/time_table_ykf_icon_text"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2"
-            >
-
-            <TextView
-                style="@style/time_table_text"
-                android:layout_weight="1"
-                android:text="17:30"
-                />
-
-            <TextView
-                style="@style/time_table_text"
-                android:layout_weight="1"
-                android:text="17:45"
-                />
-        </LinearLayout>
-
-        <include layout="@layout/view_time_table_line_yoko"/>
-    </FrameLayout>
-
     <include layout="@layout/view_time_table_line_yoko"/>
 
+    <!--カーフェリー説明-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="※高速カーフェリー 火曜・金曜のみ運航"
+        android:textColor="@color/orange"
+        />
 </LinearLayout>
