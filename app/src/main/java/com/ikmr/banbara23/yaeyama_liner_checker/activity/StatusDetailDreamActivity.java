@@ -18,9 +18,8 @@ import com.ikmr.banbara23.yaeyama_liner_checker.UrlSelector;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.FragmentInterface;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.QueryInterface;
-import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusDetailFragment;
+import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusDetailDreamFragment;
 
-import butterknife.ButterKnife;
 import timber.log.Timber;
 
 /**
@@ -42,7 +41,6 @@ public class StatusDetailDreamActivity extends BaseActivity implements QueryInte
         setContentView(R.layout.activity_status_detail);
         mLiner = getIntent().getParcelableExtra(StatusDetailDreamActivity.class.getName());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        ButterKnife.bind(this);
 
         setTitleString();
         loadAd();
@@ -82,7 +80,7 @@ public class StatusDetailDreamActivity extends BaseActivity implements QueryInte
      * フラグメント作成
      */
     private void createFragment() {
-        mFragment = StatusDetailFragment.NewInstance(mLiner);
+        mFragment = StatusDetailDreamFragment.NewInstance(mLiner);
         getFragmentManager().beginTransaction()
                 .replace(R.id.container, mFragment)
                 .commit();

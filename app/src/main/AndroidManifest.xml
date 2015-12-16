@@ -40,6 +40,10 @@
             android:name=".activity.OtherActivity"
             android:label="@string/title_activity_other">
         </activity>
+        <activity
+            android:name=".activity.StatusDetailDreamActivity"
+            android:label="@string/title_activity_other">
+        </activity>
         <!--Include the AdActivity configChanges and theme. -->
         <activity
             android:name="com.google.android.gms.ads.AdActivity"
