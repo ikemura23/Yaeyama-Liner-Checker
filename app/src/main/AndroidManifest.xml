@@ -42,7 +42,7 @@
         </activity>
         <activity
             android:name=".activity.StatusDetailDreamActivity"
-            android:label="@string/title_activity_other">
+            android:label="@string/title_activity_status_detail">
         </activity>
         <!--Include the AdActivity configChanges and theme. -->
         <activity

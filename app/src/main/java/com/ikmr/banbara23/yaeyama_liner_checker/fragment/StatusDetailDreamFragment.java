@@ -1,7 +1,6 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker.fragment;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,35 +9,23 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
-import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
-import com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableView;
+import com.ikmr.banbara23.yaeyama_liner_checker.StringUtils;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.YkfLinerDetail;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailView;
-
-import butterknife.Bind;
-import butterknife.ButterKnife;
 
 /**
  * 詳細のフラグメント
  */
-public class StatusDetailDreamFragment extends BaseFragment implements FragmentInterface {
+public class StatusDetailDreamFragment extends BaseFragment {
 
-    @Bind(R.id.fragment_status_detail_content_layout)
-    LinearLayout mFragmentStatusDetailContentLayout;
-
-    @Bind(R.id.fragment_status_detail_view)
     StatusDetailView mStatusDetailView;
 
-    @Bind(R.id.fragment_time_table_view)
-    TimeTableView mTimeTableView;
-
-    // ProgressWheel mProgressWheel;
-    public static StatusDetailDreamFragment NewInstance(Liner liner) {
+    public static StatusDetailDreamFragment NewInstance(YkfLinerDetail ykfLinerDetail) {
         StatusDetailDreamFragment fragment = new StatusDetailDreamFragment();
         Bundle bundle = new Bundle();
-        bundle.putParcelable(StatusDetailDreamFragment.class.getName(), liner);
+        bundle.putParcelable(StatusDetailDreamFragment.class.getName(), ykfLinerDetail);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -48,24 +35,21 @@ public class StatusDetailDreamFragment extends BaseFragment implements FragmentI
      *
      * @return
      */
-    private Liner getParam() {
+    private YkfLinerDetail getParam() {
         return getArguments().getParcelable(StatusDetailDreamFragment.class.getName());
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_status_detail, container, false);
-        // mProgressWheel = (ProgressWheel)
-        // view.findViewById(R.id.fragment_detail_material_progress_bar);
-
-        ButterKnife.bind(this, view);
+        View view = inflater.inflate(R.layout.fragment_status_detail_ykf, container, false);
+        mStatusDetailView = (StatusDetailView) view.findViewById(R.id.fragment_ykf_status_detail_view);
 
         // 電話ボタン
         view.findViewById(R.id.view_action_box_tel).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startTel();
+                startTell();
             }
         });
         // サイト
@@ -79,60 +63,33 @@ public class StatusDetailDreamFragment extends BaseFragment implements FragmentI
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        ButterKnife.unbind(this);
+    public void onResume() {
+        super.onResume();
+        mStatusDetailView.bind(getParam().getLiner(), createValueText());
     }
 
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        Activity activity = getActivity();
-        if (activity != null && activity instanceof QueryInterface) {
-            // API通信処理の開始準備の完了
-            ((QueryInterface) activity).startQuery();
-            showProgress();
+    private String createValueText() {
+        if (getParam() == null) {
+            return "";
         }
+        StringBuilder sb = new StringBuilder();
+//        if (StringUtils.isNotEmpty(getParam().getUpdateTime())) {
+//            sb.append(getParam().getUpdateTime());
+//            sb.append("\n");
+//        }
+        if (StringUtils.isNotEmpty(getParam().getTitle())) {
+            sb.append(getParam().getTitle());
+            sb.append("\n");
+        }
+        if (StringUtils.isNotEmpty(getParam().getLiner().getText())) {
+            sb.append(getParam().getLiner().getText());
+        }
+        return sb.toString();
     }
 
-    /**
-     * 読込中の表示開始
-     */
-    private void showProgress() {
-        // mProgressWheel.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public void onResetQuery() {
-
-    }
-
-    @Override
-    public void onStartQuery() {
-
-    }
-
-    @Override
-    public void onResultQuery(Liner liner, String value) {
-
-        mFragmentStatusDetailContentLayout.setVisibility(View.VISIBLE);
-        mStatusDetailView.bind(liner, value);
-        mTimeTableView.switchView(liner.getCompany(), liner.getPort());
-    }
-
-    @Override
-    public void onFailedQuery() {
-
-    }
-
-    @Override
-    public void onFinishQuery() {
-        // mProgressWheel.setVisibility(View.GONE);
-    }
-
-    private void startTel() {
+    private void startTell() {
         String tell;
-        switch (getParam().getCompany()) {
+        switch (getParam().getLiner().getCompany()) {
             case ANNEI:
                 tell = getActivity().getApplicationContext().getString(R.string.tel_annei);
                 break;
@@ -153,23 +110,23 @@ public class StatusDetailDreamFragment extends BaseFragment implements FragmentI
 
             startActivity(intent);
         } catch (Exception e) {
-            Log.d("StatusDetailFragment", e.getMessage());
+            Log.d("StatusDetailYkfFragment", "e:" + e.getMessage());
             // 何もしない
         }
     }
 
     private void startWeb() {
         String hpUrl;
-        switch (getParam().getCompany()) {
+        switch (getParam().getLiner().getCompany()) {
             case ANNEI:
-                hpUrl = getAneiPortUrl();
+                hpUrl = getActivity().getApplicationContext().getString(R.string.hp_annei);
                 break;
 
             case YKF:
                 hpUrl = getActivity().getApplicationContext().getString(R.string.hp_ykf);
                 break;
             default:
-                hpUrl = getActivity().getApplicationContext().getString(R.string.hp_annei);
+                hpUrl = null;
         }
         if (hpUrl == null) {
             return;
@@ -183,31 +140,5 @@ public class StatusDetailDreamFragment extends BaseFragment implements FragmentI
             // 何もしない
         }
 
-    }
-
-    /***
-     * 安栄の港別のURLを返す
-     * 
-     * @return URL
-     */
-    private String getAneiPortUrl() {
-        switch (getParam().getPort()) {
-            case TAKETOMI:
-                return getActivity().getApplicationContext().getString(R.string.url_annei_taketomi);
-            case KOHAMA:
-                return getActivity().getApplicationContext().getString(R.string.url_annei_kohama);
-            case OOHARA:
-                return getActivity().getApplicationContext().getString(R.string.url_annei_oohara);
-            case UEHARA:
-                return getActivity().getApplicationContext().getString(R.string.url_annei_uehara);
-            case KUROSHIMA:
-                return getActivity().getApplicationContext().getString(R.string.url_annei_kuroshima);
-            case HATOMA:
-                return getActivity().getApplicationContext().getString(R.string.url_annei_hatoma);
-            case HATERUMA:
-                return getActivity().getApplicationContext().getString(R.string.url_annei_hateruma);
-            default:
-                return getActivity().getApplicationContext().getString(R.string.hp_annei);
-        }
     }
 }
