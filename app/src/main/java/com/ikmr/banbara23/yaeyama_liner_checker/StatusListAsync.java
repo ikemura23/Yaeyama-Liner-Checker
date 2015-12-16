@@ -5,7 +5,9 @@ import android.os.AsyncTask;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.StatusListResult;
 import com.ikmr.banbara23.yaeyama_liner_checker.parser.AnneiListParser;
+import com.ikmr.banbara23.yaeyama_liner_checker.parser.DreamListParser;
 import com.ikmr.banbara23.yaeyama_liner_checker.parser.YkfParser;
 
 import org.jsoup.Jsoup;
@@ -16,9 +18,6 @@ import java.io.IOException;
 public class StatusListAsync extends AsyncTask<String, Integer, Document> {
 
     Company mCompany;
-
-    // Jsoup接続タイムアウト
-    private final static int CONNECTION_TIME_OUT = 10000;
 
     // コールバック用interface
     public interface StatusListAsyncCallback {
@@ -53,14 +52,33 @@ public class StatusListAsync extends AsyncTask<String, Integer, Document> {
     @Override
     protected void onPostExecute(Document document) {
         super.onPostExecute(document);
-        Result result;
-        if (mCompany == Company.ANNEI) {
-            // 安栄のHTMLパース呼び出し
-            result = AnneiListParser.pars(document);
-        } else {
-            // 八重山観光フェリーのHTMLパース呼び出し
-            result = YkfParser.pars(document);
+        Result result = null;
+        StatusListResult listResult;
+        switch (mCompany) {
+            case ANNEI:
+                // 安栄のHTMLパース呼び出し
+                result = AnneiListParser.pars(document);
+                break;
+            case YKF:
+                // 八重山観光フェリーのHTMLパース呼び出し
+                result = YkfParser.pars(document);
+                break;
+            case DREAM:
+                // 八重山観光フェリーのHTMLパース呼び出し
+                listResult = DreamListParser.pars(document);
+                break;
+            default:
+                return;
         }
+
+        // if (mCompany == Company.ANNEI) {
+        // // 安栄のHTMLパース呼び出し
+        // result = AnneiListParser.pars(document);
+        // } else {
+        // // 八重山観光フェリーのHTMLパース呼び出し
+        // result = YkfParser.pars(document);
+        // }
+
         if (callback != null) {
             callback.postExecute(result);
         }
@@ -71,7 +89,7 @@ public class StatusListAsync extends AsyncTask<String, Integer, Document> {
         Document doc = null;
         try {
             // HTML取得 タイムアウトは10秒
-            doc = Jsoup.connect(params[0]).timeout(CONNECTION_TIME_OUT).get();
+            doc = Jsoup.connect(params[0]).timeout(Consts.CONNECTION_TIME_OUT).get();
         } catch (IOException e) {
             e.printStackTrace();
         }

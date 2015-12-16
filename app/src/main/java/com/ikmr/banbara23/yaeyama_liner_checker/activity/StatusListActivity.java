@@ -150,12 +150,19 @@ public class StatusListActivity extends BaseActivity implements
      */
     private void createList() {
         String url;
-        if (mCompany == Company.ANNEI) {
-            url = getApplicationContext().getString(R.string.url_annei_list);
-        } else {
-            url = getApplicationContext().getString(R.string.url_ykf_list);
+        switch (mCompany) {
+            case ANNEI:
+                url = getApplicationContext().getString(R.string.url_annei_list);
+                break;
+            case YKF:
+                url = getApplicationContext().getString(R.string.url_ykf_list);
+                break;
+            case DREAM:
+                url = getApplicationContext().getString(R.string.url_dream_list);
+                break;
+            default:
+                return;
         }
-
         new StatusListAsync(this, mCompany).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, url);
     }
 
