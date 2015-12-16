@@ -9,18 +9,34 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StringUtils;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.YkfLinerDetail;
+import com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableView;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailView;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 /**
  * 詳細のフラグメント
  */
 public class StatusDetailYkfFragment extends BaseFragment {
 
+    @Bind(R.id.fragment_ykf_status_detail_view)
     StatusDetailView mStatusDetailView;
+    @Bind(R.id.fragment_time_table_view)
+    TimeTableView mTimeTableView;
+    @Bind(R.id.fragment_status_detail_content_layout)
+    LinearLayout mFragmentStatusDetailContentLayout;
+    @Bind(R.id.view_action_box_tel)
+    Button mViewActionBoxTel;
+    @Bind(R.id.view_action_box_web)
+    Button mViewActionBoxWeb;
 
     public static StatusDetailYkfFragment NewInstance(YkfLinerDetail ykfLinerDetail) {
         StatusDetailYkfFragment fragment = new StatusDetailYkfFragment();
@@ -44,6 +60,7 @@ public class StatusDetailYkfFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_status_detail_ykf, container, false);
         mStatusDetailView = (StatusDetailView) view.findViewById(R.id.fragment_ykf_status_detail_view);
+        ButterKnife.bind(this, view);
 
         // 電話ボタン
         view.findViewById(R.id.view_action_box_tel).setOnClickListener(new View.OnClickListener() {
@@ -65,7 +82,15 @@ public class StatusDetailYkfFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
+        mFragmentStatusDetailContentLayout.setVisibility(View.VISIBLE);
         mStatusDetailView.bind(getParam().getLiner(), createValueText());
+        mTimeTableView.switchView(Company.YKF, getParam().getPort());
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.unbind(this);
     }
 
     private String createValueText() {
@@ -73,10 +98,10 @@ public class StatusDetailYkfFragment extends BaseFragment {
             return "";
         }
         StringBuilder sb = new StringBuilder();
-//        if (StringUtils.isNotEmpty(getParam().getUpdateTime())) {
-//            sb.append(getParam().getUpdateTime());
-//            sb.append("\n");
-//        }
+        // if (StringUtils.isNotEmpty(getParam().getUpdateTime())) {
+        // sb.append(getParam().getUpdateTime());
+        // sb.append("\n");
+        // }
         if (StringUtils.isNotEmpty(getParam().getTitle())) {
             sb.append(getParam().getTitle());
             sb.append("\n");

@@ -1,3 +1,4 @@
+
 package com.ikmr.banbara23.yaeyama_liner_checker.entity;
 
 import android.os.Parcel;
@@ -11,14 +12,16 @@ public class YkfLinerDetail implements Parcelable {
     String mTitle;
     String mUpdateTime;
     Liner mLiner;
+    Port mPort;
 
     public YkfLinerDetail() {
     }
 
-    public YkfLinerDetail(Parcel in) {
+    protected YkfLinerDetail(Parcel in) {
         mTitle = in.readString();
         mUpdateTime = in.readString();
         mLiner = (Liner) in.readValue(Liner.class.getClassLoader());
+        mPort = (Port) in.readValue(Port.class.getClassLoader());
     }
 
     @Override
@@ -31,6 +34,7 @@ public class YkfLinerDetail implements Parcelable {
         dest.writeString(mTitle);
         dest.writeString(mUpdateTime);
         dest.writeValue(mLiner);
+        dest.writeValue(mPort);
     }
 
     @SuppressWarnings("unused")
@@ -68,5 +72,13 @@ public class YkfLinerDetail implements Parcelable {
 
     public void setLiner(Liner liner) {
         mLiner = liner;
+    }
+
+    public Port getPort() {
+        return mPort;
+    }
+
+    public void setPort(Port port) {
+        mPort = port;
     }
 }
