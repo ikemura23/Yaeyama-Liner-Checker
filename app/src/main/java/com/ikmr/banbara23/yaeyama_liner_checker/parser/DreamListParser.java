@@ -3,24 +3,28 @@ package com.ikmr.banbara23.yaeyama_liner_checker.parser;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Status;
-import com.ikmr.banbara23.yaeyama_liner_checker.entity.StatusListResult;
 
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 
 /**
  * 安栄HTMLのパース処理
  */
 public class DreamListParser {
 
-    public static StatusListResult pars(Document doc) {
+    public static Result pars(Document doc) {
 
-        StatusListResult statusListResult = new StatusListResult();
+        Result result = new Result();
+        // StatusListResult statusListResult = new StatusListResult();
         // <div id="liner"> 取得
+        if (doc == null) {
+            return null;
+        }
         Elements tables = doc.getElementsByTag("table");
         if (isEmptyElements(tables)) {
             return null;
@@ -32,9 +36,30 @@ public class DreamListParser {
         if (isEmptyElements(tr)) {
             return null;
         }
+        result.setUpdateTime(getUpdateTime(tr));
 
-        HashMap<Port, Liner> mLiners = new HashMap<>();
+        // HashMap<Port, Liner> mLiners = new HashMap<>();
+        ArrayList<Liner> mLiners = new ArrayList<>();
 
+        ArrayList<Port> array = getPortArray();
+        for (Port port : array)
+            mLiners.add(getDivPort(port, tr));
+
+        result.setLiners(mLiners);
+
+        return result;
+    }
+
+    /**
+     * 港を元に運航状況を作る
+     * 
+     * @param port
+     * @param tr
+     * @return
+     */
+    private static Liner getDivPort(Port port, Elements tr) {
+        Liner liner = new Liner();
+        liner.setPort(port);
         for (Element tag : tr) {
             Elements td = tag.getElementsByTag("td");
             if (isEmptyElements(td)) {
@@ -42,17 +67,17 @@ public class DreamListParser {
             }
             // tdタグが１つならテーブルのタイトル行、２つなら港別の運航状況
             if (td.size() == 1) {
-                statusListResult.setUpdateTime(getUpdateTime(td.text()));
+                continue;
             }
-            else {
-                Port port = getPort(td.get(0));
-                Liner liner = createLiner(td.get(1), port);
-                mLiners.put(port, liner);
+            String portName = td.get(0).text();
+            String comment = td.get(1).text();
+            if (portName.contains(port.getPortSimple())) {
+                liner.setText(comment);
+                liner.setStatus(getStatus(comment));
             }
         }
-        statusListResult.setLiners(mLiners);
 
-        return statusListResult;
+        return liner;
     }
 
     /**
@@ -118,34 +143,33 @@ public class DreamListParser {
      * 更新時刻を取得<br>
      * 本日の運航状況　2015年12月16日（水）07:00更新 という値で取れる
      * 
-     * @param text 編集前の更新時刻
+     * @param tr trタグ
      * @return 更新時刻
      */
-    private static String getUpdateTime(String text) {
-        return text.replace("本日の運航状況　", "");
+    private static String getUpdateTime(Elements tr) {
+        String updateTime = null;
+        for (Element tag : tr) {
+            Elements td = tag.getElementsByTag("td");
+            if (isEmptyElements(td)) {
+                continue;
+            }
+            // tdタグが１つならテーブルのタイトル行、２つなら港別の運航状況
+            if (td.size() == 1) {
+                updateTime = td.text().replace("本日の運航状況　", "");
+            }
+        }
+        return updateTime;
     }
 
-    // /**
-    // * 更新日時の取得
-    // *
-    // * @param text クラス
-    // * @return 更新日時
-    // */
-    // private static String getValue(Elements text) {
-    // StringBuilder sb = new StringBuilder();
-    // if (text == null) {
-    // return "";
-    // }
-    // for (Element element : text.get(0).children()) {
-    // // String elementTxt = element.text();
-    // // if
-    // // (StringUtils.isNotEmpty(StringUtils.replaceAllSpace(element.text())))
-    // // {
-    // // sb.append(elementTxt);
-    // // }
-    // sb.append(element.text());
-    // sb.append("\n");
-    // }
-    // return sb.toString();
-    // }
+    private static ArrayList<Port> getPortArray() {
+        ArrayList<Port> list = new ArrayList<>();
+        list.add(Port.TAKETOMI);
+        list.add(Port.KOHAMA);
+        list.add(Port.KUROSHIMA);
+        list.add(Port.OOHARA);
+        list.add(Port.HATOMA_UEHARA);
+        list.add(Port.PREMIUM_DREAM);
+        list.add(Port.SUPER_DREAM);
+        return list;
+    }
 }

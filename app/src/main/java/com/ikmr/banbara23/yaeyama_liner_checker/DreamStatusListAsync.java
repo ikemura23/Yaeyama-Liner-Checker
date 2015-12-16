@@ -3,7 +3,7 @@ package com.ikmr.banbara23.yaeyama_liner_checker;
 
 import android.os.AsyncTask;
 
-import com.ikmr.banbara23.yaeyama_liner_checker.entity.StatusListResult;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 import com.ikmr.banbara23.yaeyama_liner_checker.parser.DreamListParser;
 
 import org.jsoup.Jsoup;
@@ -23,7 +23,7 @@ public class DreamStatusListAsync extends AsyncTask<String, Integer, Document> {
     public interface DreamStatusListAsyncCallback {
         void preExecute();
 
-        void postExecute(StatusListResult statusListResult);
+        void postExecute(Result result);
 
         // void progressUpdate(int progress);
 
@@ -58,8 +58,8 @@ public class DreamStatusListAsync extends AsyncTask<String, Integer, Document> {
             callback.postExecute(null);
         }
 
-        StatusListResult statusListResult = DreamListParser.pars(document);
-        callback.postExecute(statusListResult);
+        Result result = DreamListParser.pars(document);
+        callback.postExecute(result);
     }
 
     // @Override

@@ -65,7 +65,7 @@ public class StatusListAsync extends AsyncTask<String, Integer, Document> {
                 break;
             case DREAM:
                 // 八重山観光フェリーのHTMLパース呼び出し
-                listResult = DreamListParser.pars(document);
+                result = DreamListParser.pars(document);
                 break;
             default:
                 return;
