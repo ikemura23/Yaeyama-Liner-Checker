@@ -4,17 +4,17 @@ package com.ikmr.banbara23.yaeyama_liner_checker.entity;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
- * Created by banbara23 on 15/09/21.
+ * 運航一覧のhtmlをパースした結果を格納するクラス
  */
 public class StatusListResult implements Parcelable {
 
     private Company mCompany;
     private String mUpdateTime;
-    private String mTitle;
-    ArrayList<Liner> mLiners = new ArrayList<>();
+    private String mComment;
+    HashMap<Port, Liner> mLiners = new HashMap<>();
 
     public StatusListResult() {
     }
@@ -22,13 +22,8 @@ public class StatusListResult implements Parcelable {
     protected StatusListResult(Parcel in) {
         mCompany = (Company) in.readValue(Company.class.getClassLoader());
         mUpdateTime = in.readString();
-        mTitle = in.readString();
-        if (in.readByte() == 0x01) {
-            mLiners = new ArrayList<Liner>();
-            in.readList(mLiners, Liner.class.getClassLoader());
-        } else {
-            mLiners = null;
-        }
+        mComment = in.readString();
+        mLiners = (HashMap) in.readValue(HashMap.class.getClassLoader());
     }
 
     @Override
@@ -40,17 +35,12 @@ public class StatusListResult implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeValue(mCompany);
         dest.writeString(mUpdateTime);
-        dest.writeString(mTitle);
-        if (mLiners == null) {
-            dest.writeByte((byte) (0x00));
-        } else {
-            dest.writeByte((byte) (0x01));
-            dest.writeList(mLiners);
-        }
+        dest.writeString(mComment);
+        dest.writeValue(mLiners);
     }
 
     @SuppressWarnings("unused")
-    public static final Creator<StatusListResult> CREATOR = new Creator<StatusListResult>() {
+    public static final Parcelable.Creator<StatusListResult> CREATOR = new Parcelable.Creator<StatusListResult>() {
         @Override
         public StatusListResult createFromParcel(Parcel in) {
             return new StatusListResult(in);
@@ -78,19 +68,19 @@ public class StatusListResult implements Parcelable {
         mUpdateTime = updateTime;
     }
 
-    public String getTitle() {
-        return mTitle;
+    public String getComment() {
+        return mComment;
     }
 
-    public void setTitle(String title) {
-        mTitle = title;
+    public void setComment(String comment) {
+        mComment = comment;
     }
 
-    public ArrayList<Liner> getLiners() {
+    public HashMap<Port, Liner> getLiners() {
         return mLiners;
     }
 
-    public void setLiners(ArrayList<Liner> liners) {
+    public void setLiners(HashMap<Port, Liner> liners) {
         mLiners = liners;
     }
 }
