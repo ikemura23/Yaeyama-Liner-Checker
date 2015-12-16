@@ -216,6 +216,9 @@ public class StatusListActivity extends BaseActivity implements
      */
     @Override
     public void postExecute(Result result) {
+        if (!mQuerying)
+            return;
+
         mResult = result;
         try {
             // 結果を通知

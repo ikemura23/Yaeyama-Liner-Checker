@@ -170,6 +170,8 @@ public class StatusDetailActivity extends BaseActivity implements QueryInterface
 
     @Override
     public void postExecute(String valueString) {
+        if (!mQuerying)
+            return;
 
         try {
             // 安栄のHTMLパース呼び出し

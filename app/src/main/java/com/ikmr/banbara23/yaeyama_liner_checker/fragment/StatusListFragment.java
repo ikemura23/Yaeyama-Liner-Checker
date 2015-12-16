@@ -147,6 +147,7 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
     private void setTitle(String title) {
         if (TextUtils.isEmpty(title)) {
             mTitleText.setVisibility(View.GONE);
+            return;
         }
 
         String replaceTitle = StringUtils.replacePunctuation(StringUtils.replaceSpaceJ(title));
