@@ -10,9 +10,10 @@
     >
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/activity_top_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:text="@string/top_description"
         android:textSize="15sp"
         />
@@ -23,8 +24,7 @@
         android:layout_height="60dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView"
-        android:layout_marginTop="10dp"
+        android:layout_below="@+id/activity_top_description"
         android:onClick="anneiClick"
         android:text="@string/company_name_annei"
         android:textSize="18sp"
@@ -56,16 +56,17 @@
         android:textSize="18sp"
         />
 
-    <FrameLayout
-        android:id="@+id/line_yoko"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
+    <TextView
+        android:id="@+id/activity_top_other"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/dream_button"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="20dp"
-        android:background="@color/light_grey"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/top_other"
+        android:textSize="15sp"
         />
 
     <Button
@@ -74,7 +75,7 @@
         android:layout_height="60dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/line_yoko"
+        android:layout_below="@+id/activity_top_other"
         android:onClick="timeTableClick"
         android:text="時刻表"
         android:textSize="18sp"

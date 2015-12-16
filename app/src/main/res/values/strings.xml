@@ -8,7 +8,8 @@
     <string name="title_activity_timetable">時刻表</string>
     <string name="title_activity_other">アプリ情報</string>
 
-    <string name="top_description">運航状況</string>
+    <string name="top_description">運航状況を表示</string>
+    <string name="top_other">その他</string>
 
     <!--URL-->
     <!--安栄-->
