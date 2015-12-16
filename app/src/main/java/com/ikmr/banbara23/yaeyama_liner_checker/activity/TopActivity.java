@@ -84,6 +84,17 @@ public class TopActivity extends BaseActivity {
     }
 
     /**
+     * 八重山観光フェリークリック
+     *
+     * @param view
+     */
+    public void dreamClick(View view) {
+        Intent intent = new Intent(this, StatusListActivity.class);
+        intent.putExtra(StatusListActivity.PARAM_COMPANY, Company.DREAM);
+        startActivity(intent);
+    }
+
+    /**
      * 時刻表クリック
      *
      * @param view
