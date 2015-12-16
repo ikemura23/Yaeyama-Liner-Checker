@@ -175,21 +175,62 @@ public class StatusListActivity extends BaseActivity implements
     public void onItemClick(Liner liner) {
         liner.setCompany(mCompany);
 
-        if (mCompany == Company.ANNEI) {
-            Intent intent = new Intent(this, StatusDetailActivity.class);
-            intent.putExtra(StatusDetailActivity.class.getName(), liner);
-            startActivity(intent);
-        } else {
-            YkfLinerDetail ykfLinerDetail = new YkfLinerDetail();
-            ykfLinerDetail.setLiner(liner);
-            ykfLinerDetail.setUpdateTime(mResult.getUpdateTime());
-            ykfLinerDetail.setTitle(mResult.getTitle());
-
-            Intent intent = new Intent(this, StatusDetailYkfActivity.class);
-            intent.putExtra(StatusDetailYkfActivity.class.getName(), ykfLinerDetail);
-            startActivity(intent);
+        switch (mCompany) {
+            case ANNEI:
+                startStatusDetailActivity(liner);
+                break;
+            case YKF:
+                startStatusDetailYkfActivity(liner);
+                break;
+            case DREAM:
+                startStatusDetailDreamActivity(liner);
+                break;
+            default:
+                break;
         }
+    }
 
+    /**
+     * 安栄の詳細画面に遷移
+     * 
+     * @param liner 運航状況
+     */
+    private void startStatusDetailActivity(Liner liner) {
+        Intent intent = new Intent(this, StatusDetailActivity.class);
+        intent.putExtra(StatusDetailActivity.class.getName(), liner);
+        startActivity(intent);
+    }
+
+    /**
+     * 八重山観光フェリーの詳細に遷移
+     * 
+     * @param liner
+     */
+    private void startStatusDetailYkfActivity(Liner liner) {
+        YkfLinerDetail ykfLinerDetail = new YkfLinerDetail();
+        ykfLinerDetail.setLiner(liner);
+        ykfLinerDetail.setUpdateTime(mResult.getUpdateTime());
+        ykfLinerDetail.setTitle(mResult.getTitle());
+
+        Intent intent = new Intent(this, StatusDetailYkfActivity.class);
+        intent.putExtra(StatusDetailYkfActivity.class.getName(), ykfLinerDetail);
+        startActivity(intent);
+    }
+
+    /**
+     * ドリーム観光の詳細に遷移
+     * 
+     * @param liner
+     */
+    private void startStatusDetailDreamActivity(Liner liner) {
+        YkfLinerDetail ykfLinerDetail = new YkfLinerDetail();
+        ykfLinerDetail.setLiner(liner);
+        ykfLinerDetail.setUpdateTime(mResult.getUpdateTime());
+        ykfLinerDetail.setTitle(mResult.getTitle());
+
+        Intent intent = new Intent(this, StatusDetailYkfActivity.class);
+        intent.putExtra(StatusDetailYkfActivity.class.getName(), ykfLinerDetail);
+        startActivity(intent);
     }
 
     public Loading getLoading() {
