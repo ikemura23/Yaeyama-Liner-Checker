@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
@@ -24,6 +25,10 @@ import butterknife.ButterKnife;
  */
 public class StatusDetailFragment extends BaseFragment implements FragmentInterface {
 
+    @Bind(R.id.fragment_status_detail_content_layout)
+    LinearLayout mFragmentStatusDetailContentLayout;
+
+    @Bind(R.id.fragment_status_detail_view)
     StatusDetailView mStatusDetailView;
 
     @Bind(R.id.fragment_time_table_view)
@@ -51,7 +56,6 @@ public class StatusDetailFragment extends BaseFragment implements FragmentInterf
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_status_detail, container, false);
-        mStatusDetailView = (StatusDetailView) view.findViewById(R.id.fragment_status_detail_view);
         // mProgressWheel = (ProgressWheel)
         // view.findViewById(R.id.fragment_detail_material_progress_bar);
 
@@ -72,6 +76,12 @@ public class StatusDetailFragment extends BaseFragment implements FragmentInterf
             }
         });
         return view;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.unbind(this);
     }
 
     @Override
@@ -104,9 +114,9 @@ public class StatusDetailFragment extends BaseFragment implements FragmentInterf
 
     @Override
     public void onResultQuery(Liner liner, String value) {
-        mStatusDetailView.setVisibility(View.VISIBLE);
-        mStatusDetailView.bind(liner, value);
 
+        mFragmentStatusDetailContentLayout.setVisibility(View.VISIBLE);
+        mStatusDetailView.bind(liner, value);
         mTimeTableView.switchView(liner.getCompany(), liner.getPort());
     }
 
