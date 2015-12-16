@@ -9,18 +9,39 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StringUtils;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.YkfLinerDetail;
+import com.ikmr.banbara23.yaeyama_liner_checker.timetable.dream.DreamTimeTableView;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailView;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 /**
- * 詳細のフラグメント
+ * ドリーム観光の詳細画面フラグメント
  */
 public class StatusDetailDreamFragment extends BaseFragment {
 
+    @Bind(R.id.fragment_dream_status_detail_view)
     StatusDetailView mStatusDetailView;
+    @Bind(R.id.fragment_dream_time_table_view)
+    DreamTimeTableView mFragmentDreamTimeTableView;
+    @Bind(R.id.fragment_dream_status_detail_content_layout)
+    LinearLayout mFragmentDreamStatusDetailContentLayout;
+
+    @OnClick(R.id.view_action_box_tel)
+    void tellClick(View view) {
+        startTell();
+    }
+
+    @OnClick(R.id.view_action_box_web)
+    void webClick(View view) {
+        startWeb();
+    }
 
     public static StatusDetailDreamFragment NewInstance(YkfLinerDetail ykfLinerDetail) {
         StatusDetailDreamFragment fragment = new StatusDetailDreamFragment();
@@ -42,30 +63,23 @@ public class StatusDetailDreamFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_status_detail_ykf, container, false);
-        mStatusDetailView = (StatusDetailView) view.findViewById(R.id.fragment_ykf_status_detail_view);
-
-        // 電話ボタン
-        view.findViewById(R.id.view_action_box_tel).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startTell();
-            }
-        });
-        // サイト
-        view.findViewById(R.id.view_action_box_web).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startWeb();
-            }
-        });
+        View view = inflater.inflate(R.layout.fragment_status_detail_dream, container, false);
+        ButterKnife.bind(this, view);
         return view;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        mFragmentDreamStatusDetailContentLayout.setVisibility(View.VISIBLE);
         mStatusDetailView.bind(getParam().getLiner(), createValueText());
+        mFragmentDreamTimeTableView.switchView(getParam().getPort());
     }
 
     private String createValueText() {
@@ -73,10 +87,10 @@ public class StatusDetailDreamFragment extends BaseFragment {
             return "";
         }
         StringBuilder sb = new StringBuilder();
-//        if (StringUtils.isNotEmpty(getParam().getUpdateTime())) {
-//            sb.append(getParam().getUpdateTime());
-//            sb.append("\n");
-//        }
+        // if (StringUtils.isNotEmpty(getParam().getUpdateTime())) {
+        // sb.append(getParam().getUpdateTime());
+        // sb.append("\n");
+        // }
         if (StringUtils.isNotEmpty(getParam().getTitle())) {
             sb.append(getParam().getTitle());
             sb.append("\n");
@@ -140,5 +154,11 @@ public class StatusDetailDreamFragment extends BaseFragment {
             // 何もしない
         }
 
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.unbind(this);
     }
 }

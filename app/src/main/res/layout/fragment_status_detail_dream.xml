@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:orientation="vertical"
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1"
+        tools:visibility="visible"
+        >
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            >
+
+            <LinearLayout
+                android:id="@+id/fragment_dream_status_detail_content_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="gone"
+                >
+
+                <!--運航状況の説明-->
+                <com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailView
+                    android:id="@+id/fragment_dream_status_detail_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
+
+                <!--時刻表-->
+                <com.ikmr.banbara23.yaeyama_liner_checker.timetable.dream.DreamTimeTableView
+                    android:id="@+id/fragment_dream_time_table_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
+            </LinearLayout>
+        </ScrollView>
+
+        <include
+            layout="@layout/view_action_box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            tools:visibility="visible"
+            />
+    </LinearLayout>
+    <!--プログレス-->
+    <!--<com.pnikosis.materialishprogress.ProgressWheel-->
+    <!--android:id="@+id/fragment_detail_material_progress_bar"-->
+    <!--android:layout_width="80dp"-->
+    <!--android:layout_height="80dp"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:layout_gravity="center"-->
+    <!--tools:visibility="gone"-->
+    <!--wheel:matProg_barColor="#5588FF"-->
+    <!--wheel:matProg_progressIndeterminate="true"-->
+    <!--wheel:matProg_rimColor="#FFCFC9C9"/>-->
+
+</FrameLayout>
