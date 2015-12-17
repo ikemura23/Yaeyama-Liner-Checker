@@ -6,19 +6,13 @@
     android:orientation="vertical"
     >
 
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
-
-    <!--時刻表-->
-    <!--時刻表 １列目-->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~１列目~~~~~~~~~~~~~~~~~~~~~~~ -->
     <FrameLayout
         android:id="@+id/kohama_ykf_row1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
 
-        <TextView
-            style="@style/time_table_ykf_icon_text"/>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -29,32 +23,27 @@
             <TextView
                 style="@style/time_table_text"
                 android:layout_weight="1"
-                android:text="07:10"
+                android:text="08:05"
                 />
 
             <TextView
                 style="@style/time_table_text"
                 android:layout_weight="1"
-                android:text="07:40"
+                android:text="08:40"
                 />
         </LinearLayout>
 
         <include layout="@layout/view_time_table_line_yoko"/>
     </FrameLayout>
 
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~２列目~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-
-    <!--時刻表 ２列目-->
     <FrameLayout
         android:id="@+id/kohama_anei_row2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
 
-        <TextView
-            style="@style/time_table_anei_icon_text"/>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -65,31 +54,27 @@
             <TextView
                 style="@style/time_table_text"
                 android:layout_weight="1"
-                android:text="07:55"
+                android:text="09:40"
                 />
 
             <TextView
                 style="@style/time_table_text"
                 android:layout_weight="1"
-                android:text="08:30"
+                android:text="10:15"
                 />
         </LinearLayout>
 
         <include layout="@layout/view_time_table_line_yoko"/>
     </FrameLayout>
 
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~３列目~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-    <!--時刻表 ３列目-->
     <FrameLayout
         android:id="@+id/kohama_ykf_row3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
 
-        <TextView
-            style="@style/time_table_ykf_icon_text"/>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -100,31 +85,27 @@
             <TextView
                 style="@style/time_table_text"
                 android:layout_weight="1"
-                android:text="08:15"
+                android:text="10:50"
                 />
 
             <TextView
                 style="@style/time_table_text"
                 android:layout_weight="1"
-                android:text="-"
+                android:text="11:25"
                 />
         </LinearLayout>
 
         <include layout="@layout/view_time_table_line_yoko"/>
     </FrameLayout>
 
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~4列目~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-    <!--時刻表 4列目-->
     <FrameLayout
         android:id="@+id/kohama_anei_row4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
 
-        <TextView
-            style="@style/time_table_anei_icon_text"/>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -135,31 +116,28 @@
             <TextView
                 style="@style/time_table_text"
                 android:layout_weight="1"
-                android:text="09:10"
+                android:background="@color/time_table_car_ferry"
+                android:text="12:50"
                 />
 
             <TextView
                 style="@style/time_table_text"
                 android:layout_weight="1"
-                android:text="09:50"
+                android:text="13:10"
                 />
         </LinearLayout>
 
         <include layout="@layout/view_time_table_line_yoko"/>
     </FrameLayout>
 
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~5列目~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-    <!--時刻表 5列目-->
     <FrameLayout
         android:id="@+id/kohama_ykf_row5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
 
-        <TextView
-            style="@style/time_table_ykf_icon_text"/>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -170,30 +148,26 @@
             <TextView
                 style="@style/time_table_text"
                 android:layout_weight="1"
-                android:text="10:30"
+                android:text="13:40"
                 />
 
             <TextView
                 style="@style/time_table_text"
                 android:layout_weight="1"
-                android:text="11:10"
+                android:text="14:15"
                 />
         </LinearLayout>
 
         <include layout="@layout/view_time_table_line_yoko"/>
     </FrameLayout>
 
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~6列目~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-    <!--時刻表 6列目-->
     <FrameLayout
         android:id="@+id/kohama_anei_row6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
-
-        <TextView
-            style="@style/time_table_anei_icon_text"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -205,13 +179,13 @@
             <TextView
                 style="@style/time_table_text"
                 android:layout_weight="1"
-                android:text="11:30"
+                android:text="-"
                 />
 
             <TextView
                 style="@style/time_table_text"
                 android:layout_weight="1"
-                android:text="12:10"
+                android:text="14:30"
                 />
         </LinearLayout>
 
@@ -227,9 +201,6 @@
         android:layout_height="wrap_content"
         >
 
-        <TextView
-            style="@style/time_table_ykf_icon_text"/>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -240,13 +211,13 @@
             <TextView
                 style="@style/time_table_text"
                 android:layout_weight="1"
-                android:text="12:50"
+                android:text="14:40"
                 />
 
             <TextView
                 style="@style/time_table_text"
                 android:layout_weight="1"
-                android:text="13:30"
+                android:text="15:20 (竹)"
                 />
         </LinearLayout>
 
@@ -262,9 +233,6 @@
         android:layout_height="wrap_content"
         >
 
-        <TextView
-            style="@style/time_table_anei_icon_text"/>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -275,13 +243,13 @@
             <TextView
                 style="@style/time_table_text"
                 android:layout_weight="1"
-                android:text="14:00"
+                android:text="15:20"
                 />
 
             <TextView
                 style="@style/time_table_text"
                 android:layout_weight="1"
-                android:text="14:40"
+                android:text="16:40"
                 />
         </LinearLayout>
 
@@ -297,9 +265,6 @@
         android:layout_height="wrap_content"
         >
 
-        <TextView
-            style="@style/time_table_ykf_icon_text"/>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -310,118 +275,13 @@
             <TextView
                 style="@style/time_table_text"
                 android:layout_weight="1"
-                android:text="15:00"
+                android:text="16:35"
                 />
 
             <TextView
                 style="@style/time_table_text"
                 android:layout_weight="1"
-                android:text="15:45"
-                />
-        </LinearLayout>
-
-        <include layout="@layout/view_time_table_line_yoko"/>
-    </FrameLayout>
-
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
-
-    <!--時刻表 10列目-->
-    <FrameLayout
-        android:id="@+id/kohama_anei_row10"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-
-        <TextView
-            style="@style/time_table_anei_icon_text"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2"
-            >
-
-            <TextView
-                style="@style/time_table_text"
-                android:layout_weight="1"
-                android:text="16:00"
-                />
-
-            <TextView
-                style="@style/time_table_text"
-                android:layout_weight="1"
-                android:text="16:40"
-                />
-        </LinearLayout>
-
-        <include layout="@layout/view_time_table_line_yoko"/>
-    </FrameLayout>
-
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
-
-    <!--時刻表 11列目-->
-    <FrameLayout
-        android:id="@+id/kohama_ykf_row11"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-
-        <TextView
-            style="@style/time_table_ykf_icon_text"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2"
-            >
-
-            <TextView
-                style="@style/time_table_text"
-                android:layout_weight="1"
-                android:text="-"
-                />
-
-            <TextView
-                style="@style/time_table_text"
-                android:layout_weight="1"
-                android:text="17:15"
-                />
-        </LinearLayout>
-
-        <include layout="@layout/view_time_table_line_yoko"/>
-    </FrameLayout>
-
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
-
-    <!--時刻表 12列目-->
-    <FrameLayout
-        android:id="@+id/kohama_ykf_row12"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-
-        <TextView
-            style="@style/time_table_ykf_icon_text"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2"
-            >
-
-            <TextView
-                style="@style/time_table_text"
-                android:layout_weight="1"
-                android:text="17:15"
-                />
-
-            <TextView
-                style="@style/time_table_text"
-                android:layout_weight="1"
-                android:text="17:45"
+                android:text="17:20"
                 />
         </LinearLayout>
 
@@ -429,6 +289,24 @@
     </FrameLayout>
 
     <include layout="@layout/view_time_table_line_yoko"/>
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
 
+    <!--カーフェリー説明-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="■"
+        android:textColor="@color/orange"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="高速カーフェリー 火曜・金曜のみ運航"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="(竹) 竹富経由"
+        />
 </LinearLayout>
