@@ -23,12 +23,12 @@
             android:weightSum="2">
 
             <TextView
-                style="@style/time_table_text"
+                style="@style/time_table_header_text"
                 android:layout_weight="1"
                 android:text="09:30"/>
 
             <TextView
-                style="@style/time_table_text"
+                style="@style/time_table_header_text"
                 android:layout_weight="1"
                 android:text="10:45"/>
         </LinearLayout>
@@ -54,12 +54,12 @@
             android:weightSum="2">
 
             <TextView
-                style="@style/time_table_text"
+                style="@style/time_table_header_text"
                 android:layout_weight="1"
                 android:text="15:30"/>
 
             <TextView
-                style="@style/time_table_text"
+                style="@style/time_table_header_text"
                 android:layout_weight="1"
                 android:text="16:15"/>
         </LinearLayout>

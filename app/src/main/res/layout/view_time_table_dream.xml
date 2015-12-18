@@ -16,33 +16,6 @@
         android:orientation="vertical"
         >
 
-        <!--ヘッダー-->
-        <LinearLayout
-            android:id="@+id/view_dream_timetable_header"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/light_grey"
-            android:orientation="horizontal"
-            android:weightSum="2"
-            >
-
-            <TextView
-                android:id="@+id/view_dream_timetable_header_ishigaki"
-                style="@style/time_table_text"
-                android:layout_weight="1"
-                android:text="@string/time_table_port_ishigaki"
-                android:textStyle="bold"
-                />
-
-            <TextView
-                android:id="@+id/view_dream_timetable_header_ritou"
-                style="@style/time_table_text"
-                android:layout_weight="1"
-                android:text="@string/time_table_port_taketomi"
-                android:textStyle="bold"
-                />
-        </LinearLayout>
-
         <!--竹富-->
         <com.ikmr.banbara23.yaeyama_liner_checker.timetable.dream.DreamTimeTableTaketomiView
             android:id="@+id/view_dream_time_table_taketomi"
@@ -71,23 +44,16 @@
         <com.ikmr.banbara23.yaeyama_liner_checker.timetable.dream.DreamTimeTableKuroshimaView
             android:id="@+id/view_dream_time_table_kurhoshima"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
             />
 
-        <!--&lt;!&ndash;波照間&ndash;&gt;-->
-        <!--<com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableHaterumaView-->
-        <!--android:id="@+id/view_time_table_hateruma"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:visibility="gone"-->
-        <!--/>-->
+        <!--上原/鳩間-->
+        <com.ikmr.banbara23.yaeyama_liner_checker.timetable.dream.DreamTimeTableUeharaView
+            android:id="@+id/view_dream_time_table_uehara"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
 
-        <!--&lt;!&ndash;鳩間&ndash;&gt;-->
-        <!--<com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableHatomaView-->
-        <!--android:id="@+id/view_time_table_hatoma"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:visibility="gone"-->
-        <!--/>-->
     </LinearLayout>
 </android.support.v7.widget.CardView>

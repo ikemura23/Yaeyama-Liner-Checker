@@ -8,7 +8,8 @@
         <item name="colorPrimary">@color/primary</item>
     </style>
 
-    <style name="time_table_text">
+    <!--時刻表のヘッダー-->
+    <style name="time_table_header_text">
         <item name="android:gravity">center</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>

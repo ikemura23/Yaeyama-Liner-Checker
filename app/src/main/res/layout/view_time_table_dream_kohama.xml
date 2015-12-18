@@ -6,6 +6,30 @@
     android:orientation="vertical"
     >
 
+    <!--ヘッダー-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/light_grey"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+
+        <TextView
+            style="@style/time_table_header_text"
+            android:layout_weight="1"
+            android:text="@string/time_table_port_ishigaki"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            style="@style/time_table_header_text"
+            android:layout_weight="1"
+            android:text="@string/time_table_port_kohama"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
+
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~１列目~~~~~~~~~~~~~~~~~~~~~~~ -->
     <FrameLayout
         android:id="@+id/kohama_ykf_row1"
@@ -21,13 +45,13 @@
             >
 
             <TextView
-                style="@style/time_table_text"
+                style="@style/time_table_header_text"
                 android:layout_weight="1"
                 android:text="08:05"
                 />
 
             <TextView
-                style="@style/time_table_text"
+                style="@style/time_table_header_text"
                 android:layout_weight="1"
                 android:text="08:40"
                 />
@@ -52,13 +76,13 @@
             >
 
             <TextView
-                style="@style/time_table_text"
+                style="@style/time_table_header_text"
                 android:layout_weight="1"
                 android:text="09:40"
                 />
 
             <TextView
-                style="@style/time_table_text"
+                style="@style/time_table_header_text"
                 android:layout_weight="1"
                 android:text="10:15"
                 />
@@ -83,13 +107,13 @@
             >
 
             <TextView
-                style="@style/time_table_text"
+                style="@style/time_table_header_text"
                 android:layout_weight="1"
                 android:text="10:50"
                 />
 
             <TextView
-                style="@style/time_table_text"
+                style="@style/time_table_header_text"
                 android:layout_weight="1"
                 android:text="11:25"
                 />
@@ -114,14 +138,14 @@
             >
 
             <TextView
-                style="@style/time_table_text"
+                style="@style/time_table_header_text"
                 android:layout_weight="1"
                 android:background="@color/time_table_car_ferry"
                 android:text="12:50"
                 />
 
             <TextView
-                style="@style/time_table_text"
+                style="@style/time_table_header_text"
                 android:layout_weight="1"
                 android:text="13:10"
                 />
@@ -146,13 +170,13 @@
             >
 
             <TextView
-                style="@style/time_table_text"
+                style="@style/time_table_header_text"
                 android:layout_weight="1"
                 android:text="13:40"
                 />
 
             <TextView
-                style="@style/time_table_text"
+                style="@style/time_table_header_text"
                 android:layout_weight="1"
                 android:text="14:15"
                 />
@@ -177,13 +201,13 @@
             >
 
             <TextView
-                style="@style/time_table_text"
+                style="@style/time_table_header_text"
                 android:layout_weight="1"
                 android:text="-"
                 />
 
             <TextView
-                style="@style/time_table_text"
+                style="@style/time_table_header_text"
                 android:layout_weight="1"
                 android:text="14:30"
                 />
@@ -209,13 +233,13 @@
             >
 
             <TextView
-                style="@style/time_table_text"
+                style="@style/time_table_header_text"
                 android:layout_weight="1"
                 android:text="14:40"
                 />
 
             <TextView
-                style="@style/time_table_text"
+                style="@style/time_table_header_text"
                 android:layout_weight="1"
                 android:text="15:20 (竹)"
                 />
@@ -241,13 +265,13 @@
             >
 
             <TextView
-                style="@style/time_table_text"
+                style="@style/time_table_header_text"
                 android:layout_weight="1"
                 android:text="15:20"
                 />
 
             <TextView
-                style="@style/time_table_text"
+                style="@style/time_table_header_text"
                 android:layout_weight="1"
                 android:text="16:40"
                 />
@@ -273,13 +297,13 @@
             >
 
             <TextView
-                style="@style/time_table_text"
+                style="@style/time_table_header_text"
                 android:layout_weight="1"
                 android:text="16:35"
                 />
 
             <TextView
-                style="@style/time_table_text"
+                style="@style/time_table_header_text"
                 android:layout_weight="1"
                 android:text="17:20"
                 />

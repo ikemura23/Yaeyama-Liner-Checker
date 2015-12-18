@@ -18,7 +18,7 @@
 
         <TextView
             android:id="@+id/view_dream_timetable_header_ishigaki"
-            style="@style/time_table_text"
+            style="@style/time_table_header_text"
             android:layout_weight="1"
             android:text="@string/time_table_port_ishigaki"
             android:textStyle="bold"
@@ -26,7 +26,7 @@
 
         <TextView
             android:id="@+id/view_dream_timetable_header_ritou"
-            style="@style/time_table_text"
+            style="@style/time_table_header_text"
             android:layout_weight="1"
             android:text="鳩間着"
             android:textStyle="bold"
@@ -48,13 +48,13 @@
             >
 
             <TextView
-                style="@style/time_table_text"
+                style="@style/time_table_header_text"
                 android:layout_weight="1"
                 android:text="08:00"
                 />
 
             <TextView
-                style="@style/time_table_text"
+                style="@style/time_table_header_text"
                 android:layout_weight="1"
                 android:text="08:55"
                 />
@@ -74,14 +74,14 @@
         >
 
         <TextView
-            style="@style/time_table_text"
+            style="@style/time_table_header_text"
             android:layout_weight="1"
             android:text="鳩間発"
             android:textStyle="bold"
             />
 
         <TextView
-            style="@style/time_table_text"
+            style="@style/time_table_header_text"
             android:layout_weight="1"
             android:text="上原着"
             android:textStyle="bold"
@@ -102,13 +102,13 @@
             >
 
             <TextView
-                style="@style/time_table_text"
+                style="@style/time_table_header_text"
                 android:layout_weight="1"
                 android:text="09:30"
                 />
 
             <TextView
-                style="@style/time_table_text"
+                style="@style/time_table_header_text"
                 android:layout_weight="1"
                 android:text="09:45"
                 />
@@ -128,14 +128,14 @@
         >
 
         <TextView
-            style="@style/time_table_text"
+            style="@style/time_table_header_text"
             android:layout_weight="1"
             android:text="上原発"
             android:textStyle="bold"
             />
 
         <TextView
-            style="@style/time_table_text"
+            style="@style/time_table_header_text"
             android:layout_weight="1"
             android:text="鳩間着"
             android:textStyle="bold"
@@ -156,13 +156,13 @@
             >
 
             <TextView
-                style="@style/time_table_text"
+                style="@style/time_table_header_text"
                 android:layout_weight="1"
                 android:text="10:20"
                 />
 
             <TextView
-                style="@style/time_table_text"
+                style="@style/time_table_header_text"
                 android:layout_weight="1"
                 android:text="10:35"
                 />
@@ -182,14 +182,14 @@
         >
 
         <TextView
-            style="@style/time_table_text"
+            style="@style/time_table_header_text"
             android:layout_weight="1"
             android:text="鳩間発"
             android:textStyle="bold"
             />
 
         <TextView
-            style="@style/time_table_text"
+            style="@style/time_table_header_text"
             android:layout_weight="1"
             android:text="石垣着"
             android:textStyle="bold"
@@ -210,13 +210,13 @@
             >
 
             <TextView
-                style="@style/time_table_text"
+                style="@style/time_table_header_text"
                 android:layout_weight="1"
                 android:text="10:50"
                 />
 
             <TextView
-                style="@style/time_table_text"
+                style="@style/time_table_header_text"
                 android:layout_weight="1"
                 android:text="11:45"
                 />
