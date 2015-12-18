@@ -10,19 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
-import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
-import com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableBaseView;
-import com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableHaterumaView;
-import com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableHatomaView;
-import com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableKohamaView;
-import com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableKuroshimaView;
-import com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableOoharaView;
-import com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableTaketomiView;
-import com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableUeharaView;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -32,32 +20,25 @@ import butterknife.ButterKnife;
  */
 public class YkfTimeTableView extends FrameLayout {
 
-    // 時刻表の各港を格納する配列
-    HashMap<Port, View> timeViews = new HashMap<>();
-
-    // 時刻表ヘッダー
-    @Bind(R.id.view_timetable_header)
-    LinearLayout mViewTimetableHeader;
-    @Bind(R.id.view_timetable_header_ishigaki)
+    @Bind(R.id.view_timetable_ykf_header_ishigaki)
     TextView mViewTimetableHeaderIshigaki;
-    @Bind(R.id.view_timetable_header_ritou)
+    @Bind(R.id.view_timetable_header_ykf_ritou)
     TextView mViewTimetableHeaderRitou;
+    @Bind(R.id.view_timetable_header_ykf)
+    LinearLayout mViewTimetableHeader;
 
-    // 時刻表
-    @Bind(R.id.view_time_table_taketomi)
-    TimeTableTaketomiView mViewTimeTableTaketomi;
-    @Bind(R.id.view_time_table_uehara)
-    TimeTableUeharaView mViewTimeTableUehara;
-    @Bind(R.id.view_time_table_oohara)
-    TimeTableOoharaView mViewTimeTableOohara;
-    @Bind(R.id.view_time_table_kohama)
-    TimeTableKohamaView mViewTimeTableKohama;
-    @Bind(R.id.view_time_table_kurhoshima)
-    TimeTableKuroshimaView mViewTimeTableKurhoshima;
-    @Bind(R.id.view_time_table_hateruma)
-    TimeTableHaterumaView mViewTimeTableHateruma;
-    @Bind(R.id.view_time_table_hatoma)
-    TimeTableHatomaView mViewTimeTableHatoma;
+    @Bind(R.id.view_time_table_ykf_taketomi)
+    YkfTimeTableTaketomiView mYkfTimeTableTaketomiView;
+    @Bind(R.id.view_time_table_ykf_uehara)
+    YkfTimeTableUeharaView mYkfTimeTableUeharaView;
+    @Bind(R.id.view_time_table_ykf_oohara)
+    YkfTimeTableOoharaView mYkfTimeTableOoharaView;
+    @Bind(R.id.view_time_table_ykf_kohama)
+    YkfTimeTableKohamaView mYkfTimeTableKohamaView;
+    @Bind(R.id.view_time_table_ykf_kurhoshima)
+    YkfTimeTableKuroshimaView mYkfTimeTableKuroshimaView;
+    @Bind(R.id.view_time_table_ykf_hatoma)
+    YkfTimeTableHatomaView mYkfTimeTableHatomaView;
 
     public YkfTimeTableView(Context context) {
         super(context);
@@ -65,47 +46,44 @@ public class YkfTimeTableView extends FrameLayout {
 
     public YkfTimeTableView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        View layout = LayoutInflater.from(context).inflate(R.layout.view_time_table, this);
+        View layout = LayoutInflater.from(context).inflate(R.layout.view_time_table_ykf, this);
         ButterKnife.bind(this, layout);
 
-        timeViews.put(Port.HATERUMA, mViewTimeTableHateruma);
-        timeViews.put(Port.HATOMA, mViewTimeTableHatoma);
-        timeViews.put(Port.KOHAMA, mViewTimeTableKohama);
-        timeViews.put(Port.KUROSHIMA, mViewTimeTableKurhoshima);
-        timeViews.put(Port.OOHARA, mViewTimeTableOohara);
-        timeViews.put(Port.TAKETOMI, mViewTimeTableTaketomi);
-        timeViews.put(Port.UEHARA, mViewTimeTableUehara);
     }
 
     /**
      * 会社で表示を切り替え
      * 
-     * @param company
-     * @param port
+     * @param port 港
      */
-    public void switchView(Company company, Port port) {
-        if (company == null) {
-            return;
-        }
+    public void switchPortView(Port port) {
         if (port == null) {
-            return;
-        }
-        if (timeViews == null || timeViews.isEmpty()) {
             return;
         }
         mViewTimetableHeader.setVisibility(VISIBLE);
         mViewTimetableHeaderRitou.setText(port.getPortSimple());
 
-        for (Map.Entry<Port, View> timeView : timeViews.entrySet()) {
-            // 港が一致したら観光会社の時刻表を表示、違えば時刻表ごと非表示
-            if (timeView.getKey() == port) {
-                TimeTableBaseView timeTableView = (TimeTableBaseView) timeView.getValue();
-                timeTableView.setVisibility(VISIBLE);
-                timeTableView.switchViews(company);
-            }
-            else {
-                timeView.getValue().setVisibility(GONE);
-            }
+        switch (port) {
+            case TAKETOMI:
+                mYkfTimeTableTaketomiView.setVisibility(VISIBLE);
+                break;
+            case KOHAMA:
+                mYkfTimeTableKohamaView.setVisibility(VISIBLE);
+                break;
+            case OOHARA:
+                mYkfTimeTableOoharaView.setVisibility(VISIBLE);
+                break;
+            case KUROSHIMA:
+                mYkfTimeTableKuroshimaView.setVisibility(VISIBLE);
+                break;
+            case UEHARA:
+                mYkfTimeTableUeharaView.setVisibility(VISIBLE);
+                break;
+            case HATOMA:
+                mYkfTimeTableHatomaView.setVisibility(VISIBLE);
+                break;
+            default:
+                break;
         }
     }
 }

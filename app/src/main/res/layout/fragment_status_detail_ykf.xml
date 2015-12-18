@@ -38,7 +38,7 @@
                     />
 
                 <!--時刻表-->
-                <com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableView
+                <com.ikmr.banbara23.yaeyama_liner_checker.timetable.ykf.YkfTimeTableView
                     android:id="@+id/fragment_time_table_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

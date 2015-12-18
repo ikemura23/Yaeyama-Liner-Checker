@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,9 +13,8 @@ import android.widget.LinearLayout;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StringUtils;
-import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.YkfLinerDetail;
-import com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableView;
+import com.ikmr.banbara23.yaeyama_liner_checker.timetable.ykf.YkfTimeTableView;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailView;
 
 import butterknife.Bind;
@@ -30,7 +28,7 @@ public class StatusDetailYkfFragment extends BaseFragment {
     @Bind(R.id.fragment_ykf_status_detail_view)
     StatusDetailView mStatusDetailView;
     @Bind(R.id.fragment_time_table_view)
-    TimeTableView mTimeTableView;
+    YkfTimeTableView mYkfTimeTableView;
     @Bind(R.id.fragment_status_detail_content_layout)
     LinearLayout mFragmentStatusDetailContentLayout;
     @Bind(R.id.view_action_box_tel)
@@ -84,7 +82,7 @@ public class StatusDetailYkfFragment extends BaseFragment {
         super.onResume();
         mFragmentStatusDetailContentLayout.setVisibility(View.VISIBLE);
         mStatusDetailView.bind(getParam().getLiner(), createValueText());
-        mTimeTableView.switchView(Company.YKF, getParam().getPort());
+        mYkfTimeTableView.switchPortView(getParam().getPort());
     }
 
     @Override
@@ -113,50 +111,19 @@ public class StatusDetailYkfFragment extends BaseFragment {
     }
 
     private void startTell() {
-        String tell;
-        switch (getParam().getLiner().getCompany()) {
-            case ANNEI:
-                tell = getActivity().getApplicationContext().getString(R.string.tel_annei);
-                break;
-
-            case YKF:
-                tell = getActivity().getApplicationContext().getString(R.string.tel_ykf);
-                break;
-            default:
-                tell = null;
-        }
-        if (tell == null) {
-            return;
-        }
+        String tell = getActivity().getApplicationContext().getString(R.string.tel_ykf);
+        Intent intent = new Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse("tel:" + tell));
         try {
-            Intent intent = new Intent(
-                    Intent.ACTION_VIEW,
-                    Uri.parse("tel:" + tell));
-
             startActivity(intent);
         } catch (Exception e) {
-            Log.d("StatusDetailYkfFragment", "e:" + e.getMessage());
             // 何もしない
         }
     }
 
     private void startWeb() {
-        String hpUrl;
-        switch (getParam().getLiner().getCompany()) {
-            case ANNEI:
-                hpUrl = getActivity().getApplicationContext().getString(R.string.hp_annei);
-                break;
-
-            case YKF:
-                hpUrl = getActivity().getApplicationContext().getString(R.string.hp_ykf);
-                break;
-            default:
-                hpUrl = null;
-        }
-        if (hpUrl == null) {
-            return;
-        }
-
+        String hpUrl = getActivity().getApplicationContext().getString(R.string.hp_annei);
         Uri uri = Uri.parse(hpUrl);
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         try {
