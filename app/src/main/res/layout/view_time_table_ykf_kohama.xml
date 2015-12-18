@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <!--ヘッダー-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/light_grey"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+
+        <TextView
+            style="@style/time_table_header_text"
+            android:layout_weight="1"
+            android:text="@string/time_table_port_ishigaki"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            style="@style/time_table_header_text"
+            android:layout_weight="1"
+            android:text="@string/time_table_port_kohama"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~１列目~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <FrameLayout
+        android:id="@+id/kohama_ykf_row1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            >
+
+            <TextView
+                style="@style/time_table_header_text"
+                android:layout_weight="1"
+                android:text="08:05"
+                />
+
+            <TextView
+                style="@style/time_table_header_text"
+                android:layout_weight="1"
+                android:text="08:40"
+                />
+        </LinearLayout>
+
+        <include layout="@layout/view_time_table_line_yoko"/>
+    </FrameLayout>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~２列目~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+    <FrameLayout
+        android:id="@+id/kohama_anei_row2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            >
+
+            <TextView
+                style="@style/time_table_header_text"
+                android:layout_weight="1"
+                android:text="09:40"
+                />
+
+            <TextView
+                style="@style/time_table_header_text"
+                android:layout_weight="1"
+                android:text="10:15"
+                />
+        </LinearLayout>
+
+        <include layout="@layout/view_time_table_line_yoko"/>
+    </FrameLayout>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~３列目~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+    <FrameLayout
+        android:id="@+id/kohama_ykf_row3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            >
+
+            <TextView
+                style="@style/time_table_header_text"
+                android:layout_weight="1"
+                android:text="10:50"
+                />
+
+            <TextView
+                style="@style/time_table_header_text"
+                android:layout_weight="1"
+                android:text="11:25"
+                />
+        </LinearLayout>
+
+        <include layout="@layout/view_time_table_line_yoko"/>
+    </FrameLayout>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~4列目~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+    <FrameLayout
+        android:id="@+id/kohama_anei_row4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            >
+
+            <TextView
+                style="@style/time_table_header_text"
+                android:layout_weight="1"
+                android:background="@color/time_table_car_ferry"
+                android:text="12:50"
+                />
+
+            <TextView
+                style="@style/time_table_header_text"
+                android:layout_weight="1"
+                android:text="13:10"
+                />
+        </LinearLayout>
+
+        <include layout="@layout/view_time_table_line_yoko"/>
+    </FrameLayout>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~5列目~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+    <FrameLayout
+        android:id="@+id/kohama_ykf_row5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            >
+
+            <TextView
+                style="@style/time_table_header_text"
+                android:layout_weight="1"
+                android:text="13:40"
+                />
+
+            <TextView
+                style="@style/time_table_header_text"
+                android:layout_weight="1"
+                android:text="14:15"
+                />
+        </LinearLayout>
+
+        <include layout="@layout/view_time_table_line_yoko"/>
+    </FrameLayout>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~6列目~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+    <FrameLayout
+        android:id="@+id/kohama_anei_row6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            >
+
+            <TextView
+                style="@style/time_table_header_text"
+                android:layout_weight="1"
+                android:text="-"
+                />
+
+            <TextView
+                style="@style/time_table_header_text"
+                android:layout_weight="1"
+                android:text="14:30"
+                />
+        </LinearLayout>
+
+        <include layout="@layout/view_time_table_line_yoko"/>
+    </FrameLayout>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+    <!--時刻表 7列目-->
+    <FrameLayout
+        android:id="@+id/kohama_ykf_row7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            >
+
+            <TextView
+                style="@style/time_table_header_text"
+                android:layout_weight="1"
+                android:text="14:40"
+                />
+
+            <TextView
+                style="@style/time_table_header_text"
+                android:layout_weight="1"
+                android:text="15:20 (竹)"
+                />
+        </LinearLayout>
+
+        <include layout="@layout/view_time_table_line_yoko"/>
+    </FrameLayout>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+    <!--時刻表 8列目-->
+    <FrameLayout
+        android:id="@+id/kohama_anei_row8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            >
+
+            <TextView
+                style="@style/time_table_header_text"
+                android:layout_weight="1"
+                android:text="15:20"
+                />
+
+            <TextView
+                style="@style/time_table_header_text"
+                android:layout_weight="1"
+                android:text="16:40"
+                />
+        </LinearLayout>
+
+        <include layout="@layout/view_time_table_line_yoko"/>
+    </FrameLayout>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+    <!--時刻表 9列目-->
+    <FrameLayout
+        android:id="@+id/kohama_ykf_row9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            >
+
+            <TextView
+                style="@style/time_table_header_text"
+                android:layout_weight="1"
+                android:text="16:35"
+                />
+
+            <TextView
+                style="@style/time_table_header_text"
+                android:layout_weight="1"
+                android:text="17:20"
+                />
+        </LinearLayout>
+
+        <include layout="@layout/view_time_table_line_yoko"/>
+    </FrameLayout>
+
+    <include layout="@layout/view_time_table_line_yoko"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        >
+        <!--カーフェリー説明-->
+        <TextView
+            android:id="@+id/description_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="■"
+            android:textColor="@color/time_table_car_ferry"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="5dp"
+            android:layout_toEndOf="@+id/description_color"
+            android:layout_toRightOf="@+id/description_color"
+            android:text="高速ｶｰﾌｪﾘｰ 月火木土運航"
+            />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:text="(竹) 竹富経由"
+        />
+</LinearLayout>

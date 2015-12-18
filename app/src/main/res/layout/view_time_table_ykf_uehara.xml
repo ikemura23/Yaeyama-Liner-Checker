@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <!--ヘッダー-->
+    <LinearLayout
+        android:id="@+id/view_dream_timetable_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/light_grey"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+
+        <TextView
+            android:id="@+id/view_dream_timetable_header_ishigaki"
+            style="@style/time_table_header_text"
+            android:layout_weight="1"
+            android:text="@string/time_table_port_ishigaki"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/view_dream_timetable_header_ritou"
+            style="@style/time_table_header_text"
+            android:layout_weight="1"
+            android:text="鳩間着"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~１列目 安栄~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <FrameLayout
+        android:id="@+id/uehara_anei_row1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            >
+
+            <TextView
+                style="@style/time_table_header_text"
+                android:layout_weight="1"
+                android:text="08:00"
+                />
+
+            <TextView
+                style="@style/time_table_header_text"
+                android:layout_weight="1"
+                android:text="08:55"
+                />
+        </LinearLayout>
+
+        <include layout="@layout/view_time_table_line_yoko"/>
+    </FrameLayout>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~２列目 安栄~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!--ヘッダー-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/light_grey"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+
+        <TextView
+            style="@style/time_table_header_text"
+            android:layout_weight="1"
+            android:text="鳩間発"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            style="@style/time_table_header_text"
+            android:layout_weight="1"
+            android:text="上原着"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/uehara_anei_row2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            >
+
+            <TextView
+                style="@style/time_table_header_text"
+                android:layout_weight="1"
+                android:text="09:30"
+                />
+
+            <TextView
+                style="@style/time_table_header_text"
+                android:layout_weight="1"
+                android:text="09:45"
+                />
+        </LinearLayout>
+
+        <include layout="@layout/view_time_table_line_yoko"/>
+    </FrameLayout>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~3列目 八重山観光フェリー~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!--ヘッダー-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/light_grey"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+
+        <TextView
+            style="@style/time_table_header_text"
+            android:layout_weight="1"
+            android:text="上原発"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            style="@style/time_table_header_text"
+            android:layout_weight="1"
+            android:text="鳩間着"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/uehara_ykf_row3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            >
+
+            <TextView
+                style="@style/time_table_header_text"
+                android:layout_weight="1"
+                android:text="10:20"
+                />
+
+            <TextView
+                style="@style/time_table_header_text"
+                android:layout_weight="1"
+                android:text="10:35"
+                />
+        </LinearLayout>
+
+        <include layout="@layout/view_time_table_line_yoko"/>
+    </FrameLayout>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~ 4列目 安栄 ~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!--ヘッダー-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/light_grey"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+
+        <TextView
+            style="@style/time_table_header_text"
+            android:layout_weight="1"
+            android:text="鳩間発"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            style="@style/time_table_header_text"
+            android:layout_weight="1"
+            android:text="石垣着"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/uehara_anei_row4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            >
+
+            <TextView
+                style="@style/time_table_header_text"
+                android:layout_weight="1"
+                android:text="10:50"
+                />
+
+            <TextView
+                style="@style/time_table_header_text"
+                android:layout_weight="1"
+                android:text="11:45"
+                />
+        </LinearLayout>
+
+        <include layout="@layout/view_time_table_line_yoko"/>
+    </FrameLayout>
+
+    <include layout="@layout/view_time_table_line_yoko"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:text="高速ｶｰﾌｪﾘｰ 月 木 土運航"
+        />
+</LinearLayout>
