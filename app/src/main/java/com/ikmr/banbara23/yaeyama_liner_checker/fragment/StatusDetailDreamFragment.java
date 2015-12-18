@@ -80,6 +80,7 @@ public class StatusDetailDreamFragment extends BaseFragment {
         mFragmentDreamStatusDetailContentLayout.setVisibility(View.VISIBLE);
         mStatusDetailView.bind(getParam().getLiner(), createValueText());
         if (isTimeTableShow()) {
+            mDreamTimeTableView.setVisibility(View.VISIBLE);
             mDreamTimeTableView.switchPortView(getParam().getPort());
         }
     }
