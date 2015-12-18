@@ -47,9 +47,16 @@
         <com.ikmr.banbara23.yaeyama_liner_checker.timetable.dream.DreamTimeTableTaketomiView
             android:id="@+id/view_dream_time_table_taketomi"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
             />
 
+        <!--小浜-->
+        <com.ikmr.banbara23.yaeyama_liner_checker.timetable.dream.DreamTimeTableKohamaView
+            android:id="@+id/view_dream_time_table_kohama"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
         <!--&lt;!&ndash;上原&ndash;&gt;-->
         <!--<com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableUeharaView-->
         <!--android:id="@+id/view_time_table_uehara"-->
