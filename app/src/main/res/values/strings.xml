@@ -58,8 +58,8 @@
     <string name="time_table_port_taketomi">竹富発</string>
     <string name="time_table_port_kuroshima">黒島発</string>
     <string name="time_table_port_kohama">小浜発</string>
-    <string name="time_table_port_uehara">西表(上原)発</string>
-    <string name="time_table_port_oohara">西表(大原)発</string>
+    <string name="time_table_port_uehara">上原(西表)発</string>
+    <string name="time_table_port_oohara">大原(西表)発</string>
     <string name="time_table_port_hateruma">波照間発</string>
 
     <string name="company_name_annei">安栄観光</string>

@@ -29,7 +29,7 @@ public class StatusDetailDreamFragment extends BaseFragment {
     @Bind(R.id.fragment_dream_status_detail_view)
     StatusDetailView mStatusDetailView;
     @Bind(R.id.fragment_dream_time_table_view)
-    DreamTimeTableView mFragmentDreamTimeTableView;
+    DreamTimeTableView mDreamTimeTableView;
     @Bind(R.id.fragment_dream_status_detail_content_layout)
     LinearLayout mFragmentDreamStatusDetailContentLayout;
 
@@ -79,7 +79,7 @@ public class StatusDetailDreamFragment extends BaseFragment {
         super.onResume();
         mFragmentDreamStatusDetailContentLayout.setVisibility(View.VISIBLE);
         mStatusDetailView.bind(getParam().getLiner(), createValueText());
-        mFragmentDreamTimeTableView.switchView(getParam().getPort());
+        mDreamTimeTableView.switchPortView(getParam().getPort());
     }
 
     private String createValueText() {

@@ -228,6 +228,7 @@ public class StatusListActivity extends BaseActivity implements
         ykfLinerDetail.setLiner(liner);
         ykfLinerDetail.setUpdateTime(mResult.getUpdateTime());
         ykfLinerDetail.setTitle(mResult.getTitle());
+        ykfLinerDetail.setPort(liner.getPort());
 
         Intent intent = new Intent(this, StatusDetailDreamActivity.class);
         intent.putExtra(StatusDetailDreamActivity.class.getName(), ykfLinerDetail);
