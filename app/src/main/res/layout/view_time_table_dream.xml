@@ -56,38 +56,23 @@
             android:id="@+id/view_dream_time_table_kohama"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             />
-        <!--&lt;!&ndash;上原&ndash;&gt;-->
-        <!--<com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableUeharaView-->
-        <!--android:id="@+id/view_time_table_uehara"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:visibility="gone"-->
-        <!--/>-->
 
-        <!--&lt;!&ndash;大原&ndash;&gt;-->
-        <!--<com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableOoharaView-->
-        <!--android:id="@+id/view_time_table_oohara"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:visibility="gone"-->
-        <!--/>-->
+        <!--大原-->
+        <com.ikmr.banbara23.yaeyama_liner_checker.timetable.dream.DreamTimeTableOoharaView
+            android:id="@+id/view_dream_time_table_oohara"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            />
 
-        <!--&lt;!&ndash;小浜&ndash;&gt;-->
-        <!--<com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableKohamaView-->
-        <!--android:id="@+id/view_time_table_kohama"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:visibility="gone"-->
-        <!--/>-->
-
-        <!--&lt;!&ndash;黒島&ndash;&gt;-->
-        <!--<com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableKuroshimaView-->
-        <!--android:id="@+id/view_time_table_kurhoshima"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:visibility="gone"-->
-        <!--/>-->
+        <!--黒島-->
+        <com.ikmr.banbara23.yaeyama_liner_checker.timetable.dream.DreamTimeTableKuroshimaView
+            android:id="@+id/view_dream_time_table_kurhoshima"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
 
         <!--&lt;!&ndash;波照間&ndash;&gt;-->
         <!--<com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableHaterumaView-->

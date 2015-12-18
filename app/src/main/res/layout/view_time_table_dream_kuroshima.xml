@@ -108,6 +108,8 @@
         <include layout="@layout/view_time_table_line_yoko"/>
     </FrameLayout>
 
+    <include layout="@layout/view_time_table_line_yoko"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
