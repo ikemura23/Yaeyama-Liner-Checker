@@ -8,7 +8,6 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
@@ -19,6 +18,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * 詳細のフラグメント
@@ -31,10 +31,16 @@ public class StatusDetailYkfFragment extends BaseFragment {
     YkfTimeTableView mYkfTimeTableView;
     @Bind(R.id.fragment_status_detail_content_layout)
     LinearLayout mFragmentStatusDetailContentLayout;
-    @Bind(R.id.view_action_box_tel)
-    Button mViewActionBoxTel;
-    @Bind(R.id.view_action_box_web)
-    Button mViewActionBoxWeb;
+
+    @OnClick(R.id.view_action_box_tel)
+    void tellClick(View view) {
+        startTell();
+    }
+
+    @OnClick(R.id.view_action_box_web)
+    void webClick(View view) {
+        startWeb();
+    }
 
     public static StatusDetailYkfFragment NewInstance(YkfLinerDetail ykfLinerDetail) {
         StatusDetailYkfFragment fragment = new StatusDetailYkfFragment();
@@ -59,21 +65,6 @@ public class StatusDetailYkfFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_status_detail_ykf, container, false);
         mStatusDetailView = (StatusDetailView) view.findViewById(R.id.fragment_ykf_status_detail_view);
         ButterKnife.bind(this, view);
-
-        // 電話ボタン
-        view.findViewById(R.id.view_action_box_tel).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startTell();
-            }
-        });
-        // サイト
-        view.findViewById(R.id.view_action_box_web).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startWeb();
-            }
-        });
         return view;
     }
 
@@ -91,6 +82,11 @@ public class StatusDetailYkfFragment extends BaseFragment {
         ButterKnife.unbind(this);
     }
 
+    /**
+     * コメント作成
+     * 
+     * @return
+     */
     private String createValueText() {
         if (getParam() == null) {
             return "";
@@ -110,6 +106,9 @@ public class StatusDetailYkfFragment extends BaseFragment {
         return sb.toString();
     }
 
+    /**
+     * 外部電話アプリ起動
+     */
     private void startTell() {
         String tell = getActivity().getApplicationContext().getString(R.string.tel_ykf);
         Intent intent = new Intent(
@@ -122,6 +121,9 @@ public class StatusDetailYkfFragment extends BaseFragment {
         }
     }
 
+    /**
+     * 外部ブラウザ起動
+     */
     private void startWeb() {
         String hpUrl = getActivity().getApplicationContext().getString(R.string.hp_annei);
         Uri uri = Uri.parse(hpUrl);
