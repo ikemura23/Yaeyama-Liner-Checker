@@ -44,11 +44,42 @@
             android:weightSum="2"
             >
 
-            <TextView
-                style="@style/time_table_header_text"
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_weight="1"
-                android:text="09:30"
-                />
+                >
+
+                <TextView
+                    android:id="@+id/view_time_table_ykf_hatoma_row_1_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="1dp"
+                    android:text="09:30"
+                    android:textSize="20dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="4dp"
+                    android:layout_toEndOf="@+id/view_time_table_ykf_hatoma_row_1_1"
+                    android:layout_toRightOf="@+id/view_time_table_ykf_hatoma_row_1_1"
+                    android:background="@drawable/corner_round"
+                    android:paddingBottom="2dp"
+                    android:paddingLeft="4dp"
+                    android:paddingRight="4dp"
+                    android:paddingTop="2dp"
+                    android:text="上"
+                    android:textColor="#ffffff"
+                    android:textSize="14dp"
+                    />
+
+            </RelativeLayout>
 
             <TextView
                 style="@style/time_table_header_text"
@@ -102,28 +133,29 @@
         >
         <!--カーフェリー説明-->
         <TextView
-            android:id="@+id/description_color"
+            android:id="@+id/view_time_table_description_ykf_hatoma"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="■"
-            android:textColor="@color/time_table_car_ferry"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="4dp"
+            android:background="@drawable/corner_round"
+            android:paddingBottom="2dp"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:paddingTop="2dp"
+            android:text="上"
+            android:textColor="#ffffff"
+            android:textSize="14dp"
             />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="5dp"
-            android:layout_toEndOf="@+id/description_color"
-            android:layout_toRightOf="@+id/description_color"
-            android:text="高速ｶｰﾌｪﾘｰ 月火木土運航"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="4dp"
+            android:layout_toRightOf="@+id/view_time_table_description_ykf_hatoma"
+            android:text="上原港経由"
             />
     </RelativeLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:text="(竹) 竹富経由"
-        />
 </LinearLayout>
