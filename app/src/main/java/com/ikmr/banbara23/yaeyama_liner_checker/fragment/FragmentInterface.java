@@ -2,6 +2,7 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.fragment;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
 
 /**
  * 一覧系画面の Fragment 共通のインタフェース
@@ -11,7 +12,7 @@ public interface FragmentInterface {
     void onResetQuery();
 
     /** 検索開始時 */
-    void onStartQuery();
+    void onStartQuery(Port port);
 
     /** API結果取得時 */
     void onResultQuery(Liner liner, String value);

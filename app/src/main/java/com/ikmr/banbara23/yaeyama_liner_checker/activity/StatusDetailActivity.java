@@ -10,7 +10,6 @@ import android.view.MenuItem;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.ikmr.banbara23.yaeyama_liner_checker.Loading;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusDetailAsync;
 import com.ikmr.banbara23.yaeyama_liner_checker.StringUtils;
@@ -30,7 +29,7 @@ public class StatusDetailActivity extends BaseActivity implements QueryInterface
 
     Liner mLiner;
     Fragment mFragment;
-    Loading mLoading;
+    // Loading mLoading;
     /**
      * クエリ起動中かどうか
      */
@@ -59,12 +58,12 @@ public class StatusDetailActivity extends BaseActivity implements QueryInterface
         }
     }
 
-    private Loading getLoading() {
-        if (mLoading == null) {
-            mLoading = new Loading(this);
-        }
-        return mLoading;
-    }
+    // private Loading getLoading() {
+    // if (mLoading == null) {
+    // mLoading = new Loading(this);
+    // }
+    // return mLoading;
+    // }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -154,17 +153,15 @@ public class StatusDetailActivity extends BaseActivity implements QueryInterface
      * 詳細の作成開始
      */
     private void createDetail() {
-        if (mFragment != null && mFragment instanceof FragmentInterface) {
-            ((FragmentInterface) mFragment).onStartQuery();
-        }
-        mQuerying = true;
         String url = UrlSelector.getDetailUrl(getApplicationContext(), mLiner.company, mLiner.port);
         new StatusDetailAsync(this, mLiner.getCompany()).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, url);
     }
 
     @Override
     public void preExecute() {
-        getLoading().show();
+        if (mFragment != null && mFragment instanceof FragmentInterface) {
+            ((FragmentInterface) mFragment).onStartQuery(mLiner.getPort());
+        }
         mQuerying = true;
     }
 
@@ -179,10 +176,7 @@ public class StatusDetailActivity extends BaseActivity implements QueryInterface
             if (mFragment != null && mFragment instanceof FragmentInterface) {
                 ((FragmentInterface) mFragment).onResultQuery(mLiner, valueString);
             }
-            // 終了
-            if (mFragment != null && mFragment instanceof FragmentInterface) {
-                ((FragmentInterface) mFragment).onFinishQuery();
-            }
+
         } catch (Exception e) {
             Log.d("StatusDetailActivity", "e:" + e);
             Timber.d("エラー発生！！");
@@ -193,7 +187,10 @@ public class StatusDetailActivity extends BaseActivity implements QueryInterface
             }
         } finally {
             mQuerying = false;
-            getLoading().close();
+            // 終了
+            if (mFragment != null && mFragment instanceof FragmentInterface) {
+                ((FragmentInterface) mFragment).onFinishQuery();
+            }
         }
     }
 }

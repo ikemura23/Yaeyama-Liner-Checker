@@ -11,9 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
 import com.ikmr.banbara23.yaeyama_liner_checker.timetable.annei.AnneiTimeTableView;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailView;
 
@@ -33,6 +35,9 @@ public class StatusDetailFragment extends BaseFragment implements FragmentInterf
 
     @Bind(R.id.fragment_time_table_annei_view)
     AnneiTimeTableView mAnneiTimeTableView;
+
+    @Bind(R.id.fragment_status_detail_progressbar)
+    ProgressBar mProgressBar;
 
     // ProgressWheel mProgressWheel;
     public static StatusDetailFragment NewInstance(Liner liner) {
@@ -91,7 +96,6 @@ public class StatusDetailFragment extends BaseFragment implements FragmentInterf
         if (activity != null && activity instanceof QueryInterface) {
             // API通信処理の開始準備の完了
             ((QueryInterface) activity).startQuery();
-            showProgress();
         }
     }
 
@@ -99,6 +103,7 @@ public class StatusDetailFragment extends BaseFragment implements FragmentInterf
      * 読込中の表示開始
      */
     private void showProgress() {
+
         // mProgressWheel.setVisibility(View.VISIBLE);
     }
 
@@ -108,25 +113,27 @@ public class StatusDetailFragment extends BaseFragment implements FragmentInterf
     }
 
     @Override
-    public void onStartQuery() {
-
+    public void onStartQuery(Port port) {
+        mProgressBar.setVisibility(View.VISIBLE);
+        mAnneiTimeTableView.setVisibility(View.VISIBLE);
+        mAnneiTimeTableView.switchPortView(port);
     }
 
     @Override
     public void onResultQuery(Liner liner, String value) {
-
-        mFragmentStatusDetailContentLayout.setVisibility(View.VISIBLE);
+        // mFragmentStatusDetailContentLayout.setVisibility(View.VISIBLE);
         mStatusDetailView.bind(liner, value);
-        mAnneiTimeTableView.switchPortView(liner.getPort());
     }
 
     @Override
     public void onFailedQuery() {
-
+        mProgressBar.setVisibility(View.GONE);
     }
 
     @Override
     public void onFinishQuery() {
+        mProgressBar.setVisibility(View.GONE);
+        mStatusDetailView.setVisibility(View.VISIBLE);
         // mProgressWheel.setVisibility(View.GONE);
     }
 
