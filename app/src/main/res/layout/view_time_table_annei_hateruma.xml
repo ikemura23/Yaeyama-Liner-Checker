@@ -6,6 +6,28 @@
     android:orientation="vertical"
     >
 
+    <!--ヘッダー-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/light_grey"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+
+        <TextView
+            style="@style/time_table_header_text"
+            android:layout_weight="1"
+            android:text="@string/time_table_port_ishigaki"
+            />
+
+        <TextView
+            style="@style/time_table_header_text"
+            android:layout_weight="1"
+            android:text="@string/time_table_port_hateruma"
+            />
+    </LinearLayout>
+
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~１列目~~~~~~~~~~~~~~~~~~~~~~~ -->
     <FrameLayout
         android:id="@+id/hateruma_row1"
@@ -64,13 +86,41 @@
                 >
 
                 <TextView
-                    android:id="@+id/view_time_table_ykf_uehara_text2"
+                    android:id="@+id/view_time_table_ykf_uehara_text1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
                     android:layout_margin="1dp"
                     android:text="15:30"
+                    android:textSize="20dp"
+                    />
+
+                <TextView
+                    style="@style/time_table_caution_text"
+                    android:layout_toEndOf="@+id/view_time_table_ykf_uehara_text1"
+                    android:layout_toRightOf="@+id/view_time_table_ykf_uehara_text1"
+                    android:background="@drawable/corner_round"
+                    android:text="不鳩"
+                    />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                >
+
+                <TextView
+                    android:id="@+id/view_time_table_ykf_uehara_text2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="1dp"
+                    android:text="13:10"
                     android:textSize="20dp"
                     />
 
@@ -83,12 +133,6 @@
                     />
 
             </RelativeLayout>
-
-            <TextView
-                style="@style/time_table_header_text"
-                android:layout_weight="1"
-                android:text="13:10"
-                />
         </LinearLayout>
 
         <include layout="@layout/view_time_table_line_yoko"/>
@@ -148,7 +192,8 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="8dp"
             android:layout_toRightOf="@+id/time_table_caution_text"
-            android:text="鳩間島経由"
+            android:text="不定期にて大原港経由の場合があり"
+            android:textSize="12dp"
             />
     </RelativeLayout>
 

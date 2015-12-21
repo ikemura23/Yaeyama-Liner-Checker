@@ -3,39 +3,63 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
+
+    <!--ヘッダー-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/light_grey"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+
+        <TextView
+            style="@style/time_table_header_text"
+            android:layout_weight="1"
+            android:text="@string/time_table_port_ishigaki"
+            />
+
+        <TextView
+            style="@style/time_table_header_text"
+            android:layout_weight="1"
+            android:text="@string/time_table_port_kuroshima"
+            />
+
+    </LinearLayout>
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
 
     <!--時刻表-->
     <!--時刻表 １列目-->
     <!--<FrameLayout-->
-        <!--android:id="@+id/kuroshima_ykf_row1"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:visibility="visible">-->
+    <!--android:id="@+id/kuroshima_ykf_row1"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:visibility="visible">-->
 
-        <!--<TextView-->
-            <!--style="@style/time_table_ykf_icon_text"/>-->
+    <!--<TextView-->
+    <!--style="@style/time_table_ykf_icon_text"/>-->
 
-        <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:orientation="horizontal"-->
-            <!--android:weightSum="2">-->
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:weightSum="2">-->
 
-            <!--<TextView-->
-                <!--style="@style/time_table_header_text"-->
-                <!--android:layout_weight="1"-->
-                <!--android:text="08:00"/>-->
+    <!--<TextView-->
+    <!--style="@style/time_table_header_text"-->
+    <!--android:layout_weight="1"-->
+    <!--android:text="08:00"/>-->
 
-            <!--<TextView-->
-                <!--style="@style/time_table_header_text"-->
-                <!--android:layout_weight="1"-->
-                <!--android:text="08:35"/>-->
-        <!--</LinearLayout>-->
+    <!--<TextView-->
+    <!--style="@style/time_table_header_text"-->
+    <!--android:layout_weight="1"-->
+    <!--android:text="08:35"/>-->
+    <!--</LinearLayout>-->
 
-        <!--<include layout="@layout/view_time_table_line_yoko"/>-->
+    <!--<include layout="@layout/view_time_table_line_yoko"/>-->
     <!--</FrameLayout>-->
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -45,7 +69,8 @@
         android:id="@+id/kuroshima_anei_row2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="visible">
+        android:visibility="visible"
+        >
 
         <!--<TextView-->
         <!--style="@style/time_table_anei_icon_text"/>-->
@@ -54,17 +79,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="2">
+            android:weightSum="2"
+            >
 
             <TextView
                 style="@style/time_table_header_text"
                 android:layout_weight="1"
-                android:text="09:30"/>
+                android:text="09:30"
+                />
 
             <TextView
                 style="@style/time_table_header_text"
                 android:layout_weight="1"
-                android:text="10:05"/>
+                android:text="10:05"
+                />
         </LinearLayout>
 
         <include layout="@layout/view_time_table_line_yoko"/>
@@ -74,64 +102,64 @@
 
     <!--時刻表 ３列目-->
     <!--<FrameLayout-->
-        <!--android:id="@+id/kuroshima_ykf_row3"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:visibility="visible">-->
+    <!--android:id="@+id/kuroshima_ykf_row3"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:visibility="visible">-->
 
-        <!--<TextView-->
-            <!--style="@style/time_table_ykf_icon_text"/>-->
+    <!--<TextView-->
+    <!--style="@style/time_table_ykf_icon_text"/>-->
 
-        <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:orientation="horizontal"-->
-            <!--android:weightSum="2">-->
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:weightSum="2">-->
 
-            <!--<TextView-->
-                <!--style="@style/time_table_header_text"-->
-                <!--android:layout_weight="1"-->
-                <!--android:text="13:00"/>-->
+    <!--<TextView-->
+    <!--style="@style/time_table_header_text"-->
+    <!--android:layout_weight="1"-->
+    <!--android:text="13:00"/>-->
 
-            <!--<TextView-->
-                <!--style="@style/time_table_header_text"-->
-                <!--android:layout_weight="1"-->
-                <!--android:text="13:40"/>-->
-        <!--</LinearLayout>-->
+    <!--<TextView-->
+    <!--style="@style/time_table_header_text"-->
+    <!--android:layout_weight="1"-->
+    <!--android:text="13:40"/>-->
+    <!--</LinearLayout>-->
 
-        <!--<include layout="@layout/view_time_table_line_yoko"/>-->
+    <!--<include layout="@layout/view_time_table_line_yoko"/>-->
     <!--</FrameLayout>-->
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
 
     <!--時刻表 4列目-->
     <!--<FrameLayout-->
-        <!--android:id="@+id/kuroshima_ykf_row4"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:visibility="visible">-->
+    <!--android:id="@+id/kuroshima_ykf_row4"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:visibility="visible">-->
 
-        <!--<TextView-->
-            <!--style="@style/time_table_ykf_icon_text"/>-->
+    <!--<TextView-->
+    <!--style="@style/time_table_ykf_icon_text"/>-->
 
-        <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:orientation="horizontal"-->
-            <!--android:weightSum="2">-->
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:weightSum="2">-->
 
-            <!--<TextView-->
-                <!--style="@style/time_table_header_text"-->
-                <!--android:layout_weight="1"-->
-                <!--android:text="15:20"/>-->
+    <!--<TextView-->
+    <!--style="@style/time_table_header_text"-->
+    <!--android:layout_weight="1"-->
+    <!--android:text="15:20"/>-->
 
-            <!--<TextView-->
-                <!--style="@style/time_table_header_text"-->
-                <!--android:layout_weight="1"-->
-                <!--android:text="16:40"/>-->
-        <!--</LinearLayout>-->
+    <!--<TextView-->
+    <!--style="@style/time_table_header_text"-->
+    <!--android:layout_weight="1"-->
+    <!--android:text="16:40"/>-->
+    <!--</LinearLayout>-->
 
-        <!--<include layout="@layout/view_time_table_line_yoko"/>-->
+    <!--<include layout="@layout/view_time_table_line_yoko"/>-->
     <!--</FrameLayout>-->
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -141,32 +169,36 @@
         android:id="@+id/kuroshima_anei_row5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="visible">
+        android:visibility="visible"
+        >
 
         <!--<TextView-->
-            <!--style="@style/time_table_anei_icon_text"/>-->
+        <!--style="@style/time_table_anei_icon_text"/>-->
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="2">
+            android:weightSum="2"
+            >
 
             <TextView
                 style="@style/time_table_header_text"
                 android:layout_weight="1"
-                android:text="17:00"/>
+                android:text="17:00"
+                />
 
             <TextView
                 style="@style/time_table_header_text"
                 android:layout_weight="1"
-                android:text="17:35"/>
+                android:text="17:35"
+                />
         </LinearLayout>
 
         <include layout="@layout/view_time_table_line_yoko"/>
     </FrameLayout>
 
-    <include layout="@layout/view_time_table_line_yoko"/>
+    <!--<include layout="@layout/view_time_table_line_yoko"/>-->
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
 
 </LinearLayout>

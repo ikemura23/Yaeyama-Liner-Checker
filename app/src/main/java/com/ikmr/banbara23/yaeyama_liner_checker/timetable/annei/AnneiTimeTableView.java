@@ -6,8 +6,6 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
@@ -19,11 +17,6 @@ import butterknife.ButterKnife;
  * 時刻表
  */
 public class AnneiTimeTableView extends FrameLayout {
-
-    @Bind(R.id.view_timetable_header_annei_ritou)
-    TextView mViewTimetableHeaderAnneiRitou;
-    @Bind(R.id.view_timetable_root_annei)
-    LinearLayout mViewTimetableRootAnnei;
 
     @Bind(R.id.view_time_table_annei_taketomi)
     AnneiTimeTableTaketomiView mAnneiTimeTableTaketomiView;
@@ -48,7 +41,6 @@ public class AnneiTimeTableView extends FrameLayout {
         super(context, attrs);
         View layout = LayoutInflater.from(context).inflate(R.layout.view_time_table_annei, this);
         ButterKnife.bind(this, layout);
-
     }
 
     /**
@@ -60,8 +52,6 @@ public class AnneiTimeTableView extends FrameLayout {
         if (port == null) {
             return;
         }
-        mViewTimetableRootAnnei.setVisibility(VISIBLE);
-        mViewTimetableHeaderAnneiRitou.setText(port.getPortSimple());
 
         switch (port) {
             case TAKETOMI:

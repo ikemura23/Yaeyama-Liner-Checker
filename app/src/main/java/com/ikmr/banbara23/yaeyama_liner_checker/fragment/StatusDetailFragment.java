@@ -14,7 +14,7 @@ import android.widget.LinearLayout;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
-import com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableView;
+import com.ikmr.banbara23.yaeyama_liner_checker.timetable.annei.AnneiTimeTableView;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailView;
 
 import butterknife.Bind;
@@ -31,8 +31,8 @@ public class StatusDetailFragment extends BaseFragment implements FragmentInterf
     @Bind(R.id.fragment_status_detail_view)
     StatusDetailView mStatusDetailView;
 
-    @Bind(R.id.fragment_time_table_view)
-    TimeTableView mTimeTableView;
+    @Bind(R.id.fragment_time_table_annei_view)
+    AnneiTimeTableView mAnneiTimeTableView;
 
     // ProgressWheel mProgressWheel;
     public static StatusDetailFragment NewInstance(Liner liner) {
@@ -117,7 +117,7 @@ public class StatusDetailFragment extends BaseFragment implements FragmentInterf
 
         mFragmentStatusDetailContentLayout.setVisibility(View.VISIBLE);
         mStatusDetailView.bind(liner, value);
-        mTimeTableView.switchView(liner.getCompany(), liner.getPort());
+        mAnneiTimeTableView.switchPortView(liner.getPort());
     }
 
     @Override

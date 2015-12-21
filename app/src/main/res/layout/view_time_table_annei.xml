@@ -16,33 +16,6 @@
         android:orientation="vertical"
         >
 
-        <!--ヘッダー-->
-        <LinearLayout
-            android:id="@+id/view_timetable_header_annei"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/light_grey"
-            android:orientation="horizontal"
-            android:weightSum="2"
-            >
-
-            <TextView
-                android:id="@+id/view_timetable_annei_header_ishigaki"
-                style="@style/time_table_header_text"
-                android:layout_weight="1"
-                android:text="@string/time_table_port_ishigaki"
-                android:textStyle="bold"
-                />
-
-            <TextView
-                android:id="@+id/view_timetable_header_annei_ritou"
-                style="@style/time_table_header_text"
-                android:layout_weight="1"
-                android:text="@string/time_table_port_taketomi"
-                android:textStyle="bold"
-                />
-        </LinearLayout>
-
         <!--竹富-->
         <com.ikmr.banbara23.yaeyama_liner_checker.timetable.annei.AnneiTimeTableTaketomiView
             android:id="@+id/view_time_table_annei_taketomi"
