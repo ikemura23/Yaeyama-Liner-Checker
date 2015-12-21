@@ -101,7 +101,7 @@
                     android:layout_toEndOf="@+id/view_time_table_ykf_uehara_text1"
                     android:layout_toRightOf="@+id/view_time_table_ykf_uehara_text1"
                     android:background="@drawable/corner_round"
-                    android:text="不鳩"
+                    android:text="不大"
                     />
 
             </RelativeLayout>
@@ -129,7 +129,7 @@
                     android:layout_toEndOf="@+id/view_time_table_ykf_uehara_text2"
                     android:layout_toRightOf="@+id/view_time_table_ykf_uehara_text2"
                     android:background="@drawable/corner_round"
-                    android:text="不鳩"
+                    android:text="不大"
                     />
 
             </RelativeLayout>
@@ -183,7 +183,7 @@
             android:id="@+id/time_table_caution_text"
             style="@style/time_table_caution_text"
             android:background="@drawable/corner_round"
-            android:text="不鳩"
+            android:text="不大"
             />
 
         <TextView
