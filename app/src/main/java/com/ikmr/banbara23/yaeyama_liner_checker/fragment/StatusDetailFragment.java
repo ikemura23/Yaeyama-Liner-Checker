@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
@@ -21,6 +22,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * 詳細のフラグメント
@@ -38,6 +40,18 @@ public class StatusDetailFragment extends BaseFragment implements FragmentInterf
 
     @Bind(R.id.fragment_status_detail_progressbar)
     ProgressBar mProgressBar;
+
+    @Bind(R.id.fragment_status_detail_reload_button)
+    Button mFragmentStatusDetailErrorButton;
+
+    @OnClick(R.id.fragment_status_detail_reload_button)
+    void reloadButtonClick(View view) {
+        Activity activity = getActivity();
+        if (activity != null && activity instanceof QueryInterface) {
+            // API通信処理の開始準備の完了
+            ((QueryInterface) activity).startQuery();
+        }
+    }
 
     // ProgressWheel mProgressWheel;
     public static StatusDetailFragment NewInstance(Liner liner) {
@@ -99,21 +113,9 @@ public class StatusDetailFragment extends BaseFragment implements FragmentInterf
         }
     }
 
-    /**
-     * 読込中の表示開始
-     */
-    private void showProgress() {
-
-        // mProgressWheel.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public void onResetQuery() {
-
-    }
-
     @Override
     public void onStartQuery(Port port) {
+        mFragmentStatusDetailErrorButton.setVisibility(View.GONE);
         mProgressBar.setVisibility(View.VISIBLE);
         mAnneiTimeTableView.setVisibility(View.VISIBLE);
         mAnneiTimeTableView.switchPortView(port);
@@ -121,20 +123,19 @@ public class StatusDetailFragment extends BaseFragment implements FragmentInterf
 
     @Override
     public void onResultQuery(Liner liner, String value) {
-        // mFragmentStatusDetailContentLayout.setVisibility(View.VISIBLE);
+        mStatusDetailView.setVisibility(View.VISIBLE);
         mStatusDetailView.bind(liner, value);
     }
 
     @Override
     public void onFailedQuery() {
         mProgressBar.setVisibility(View.GONE);
+        mFragmentStatusDetailErrorButton.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void onFinishQuery() {
         mProgressBar.setVisibility(View.GONE);
-        mStatusDetailView.setVisibility(View.VISIBLE);
-        // mProgressWheel.setVisibility(View.GONE);
     }
 
     private void startTel() {
@@ -194,7 +195,7 @@ public class StatusDetailFragment extends BaseFragment implements FragmentInterf
 
     /***
      * 安栄の港別のURLを返す
-     * 
+     *
      * @return URL
      */
     private String getAneiPortUrl() {

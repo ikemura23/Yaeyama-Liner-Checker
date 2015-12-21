@@ -4,7 +4,6 @@ package com.ikmr.banbara23.yaeyama_liner_checker.activity;
 import android.app.Fragment;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -20,7 +19,6 @@ import com.ikmr.banbara23.yaeyama_liner_checker.fragment.QueryInterface;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusDetailFragment;
 
 import butterknife.ButterKnife;
-import timber.log.Timber;
 
 /**
  * ステータス詳細のActivity
@@ -171,26 +169,27 @@ public class StatusDetailActivity extends BaseActivity implements QueryInterface
             return;
 
         try {
-            // 安栄のHTMLパース呼び出し
-            // 結果を通知
+            if (StringUtils.isEmpty(valueString)) {
+                failedProcess();
+                return;
+            }
             if (mFragment != null && mFragment instanceof FragmentInterface) {
                 ((FragmentInterface) mFragment).onResultQuery(mLiner, valueString);
             }
-
         } catch (Exception e) {
-            Log.d("StatusDetailActivity", "e:" + e);
-            Timber.d("エラー発生！！");
-            Timber.d(e.getMessage());
-            Timber.d(e.getLocalizedMessage());
-            if (mFragment != null && mFragment instanceof FragmentInterface) {
-                ((FragmentInterface) mFragment).onFailedQuery();
-            }
+            failedProcess();
         } finally {
             mQuerying = false;
             // 終了
             if (mFragment != null && mFragment instanceof FragmentInterface) {
                 ((FragmentInterface) mFragment).onFinishQuery();
             }
+        }
+    }
+
+    private void failedProcess() {
+        if (mFragment != null && mFragment instanceof FragmentInterface) {
+            ((FragmentInterface) mFragment).onFailedQuery();
         }
     }
 }

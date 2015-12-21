@@ -9,7 +9,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
  */
 public interface FragmentInterface {
     /** 初回検索時 */
-    void onResetQuery();
+//    void onResetQuery();
 
     /** 検索開始時 */
     void onStartQuery(Port port);
