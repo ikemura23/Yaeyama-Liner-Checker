@@ -1,16 +1,16 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker;
 
-import java.io.IOException;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-
 import android.os.AsyncTask;
 import android.util.Log;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.parser.AnneiDetailParser;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
+import java.io.IOException;
 
 public class StatusDetailAsync extends AsyncTask<String, Integer, Document> {
 
@@ -50,7 +50,8 @@ public class StatusDetailAsync extends AsyncTask<String, Integer, Document> {
     @Override
     protected void onPostExecute(Document document) {
         super.onPostExecute(document);
-        if (callback == null) {
+        if (document == null) {
+            callback.postExecute(null);
             return;
         }
         if (document == null) {

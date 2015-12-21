@@ -57,6 +57,9 @@ public class DreamStatusListAsync extends AsyncTask<String, Integer, Document> {
         if (document == null) {
             callback.postExecute(null);
         }
+        if (document == null) {
+            callback.postExecute(null);
+        }
 
         Result result = DreamListParser.pars(document);
         callback.postExecute(result);

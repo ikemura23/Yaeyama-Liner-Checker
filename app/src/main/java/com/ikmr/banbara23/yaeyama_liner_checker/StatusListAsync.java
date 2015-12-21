@@ -5,7 +5,6 @@ import android.os.AsyncTask;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
-import com.ikmr.banbara23.yaeyama_liner_checker.entity.StatusListResult;
 import com.ikmr.banbara23.yaeyama_liner_checker.parser.AnneiListParser;
 import com.ikmr.banbara23.yaeyama_liner_checker.parser.DreamListParser;
 import com.ikmr.banbara23.yaeyama_liner_checker.parser.YkfParser;
@@ -52,8 +51,10 @@ public class StatusListAsync extends AsyncTask<String, Integer, Document> {
     @Override
     protected void onPostExecute(Document document) {
         super.onPostExecute(document);
-        Result result = null;
-        StatusListResult listResult;
+        if (document == null) {
+            callback.postExecute(null);
+        }
+        Result result;
         switch (mCompany) {
             case ANNEI:
                 // 安栄のHTMLパース呼び出し
