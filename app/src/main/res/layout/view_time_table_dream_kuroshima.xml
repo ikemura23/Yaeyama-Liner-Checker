@@ -19,14 +19,12 @@
             style="@style/time_table_header_text"
             android:layout_weight="1"
             android:text="@string/time_table_port_ishigaki"
-            android:textStyle="bold"
             />
 
         <TextView
             style="@style/time_table_header_text"
             android:layout_weight="1"
             android:text="@string/time_table_port_kuroshima"
-            android:textStyle="bold"
             />
     </LinearLayout>
 
@@ -78,19 +76,61 @@
             android:weightSum="2"
             >
 
-            <TextView
-                style="@style/time_table_header_text"
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_weight="1"
-                android:background="@color/time_table_car_ferry"
-                android:text="10:30"
-                />
+                >
 
-            <TextView
-                style="@style/time_table_header_text"
+                <TextView
+                    android:id="@+id/view_time_table_dream_kuroshima_text1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="1dp"
+                    android:text="10:30"
+                    android:textSize="20dp"
+                    />
+
+                <TextView
+                    style="@style/time_table_caution_text"
+                    android:layout_toEndOf="@+id/view_time_table_dream_kuroshima_text1"
+                    android:layout_toRightOf="@+id/view_time_table_dream_kuroshima_text1"
+                    android:background="@drawable/corner_round"
+                    android:text="F1"
+                    />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_weight="1"
-                android:background="@color/time_table_car_ferry"
-                android:text="11:30"
-                />
+                >
+
+                <TextView
+                    android:id="@+id/view_time_table_dream_kuroshima_text2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="1dp"
+                    android:text="11:30"
+                    android:textSize="20dp"
+                    />
+
+                <TextView
+                    style="@style/time_table_caution_text"
+                    android:layout_toEndOf="@+id/view_time_table_dream_kuroshima_text2"
+                    android:layout_toRightOf="@+id/view_time_table_dream_kuroshima_text2"
+                    android:background="@drawable/corner_round"
+                    android:text="F2"
+                    />
+
+            </RelativeLayout>
         </LinearLayout>
 
         <include layout="@layout/view_time_table_line_yoko"/>
@@ -131,18 +171,44 @@
 
     <include layout="@layout/view_time_table_line_yoko"/>
 
-    <TextView
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:text="火･金曜日は、石垣発10:30"
-        />
+        android:layout_margin="8dp"
+        >
 
-    <TextView
+        <TextView
+            android:id="@+id/view_time_table_description_dream_kuroshima1"
+            style="@style/time_table_caution_text"
+            android:background="@drawable/corner_round"
+            android:text="F1"
+            />
+
+        <TextView
+            style="@style/time_table_caution_description_text"
+            android:layout_toRightOf="@+id/view_time_table_description_dream_kuroshima1"
+            android:text="火･金曜日は、石垣発10:30"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:text="黒島発11:30の便は高速ｶｰﾌｪﾘｰ運航"
-        />
+        android:layout_margin="8dp"
+        >
+
+        <TextView
+            android:id="@+id/view_time_table_description_dream_kuroshima2"
+            style="@style/time_table_caution_text"
+            android:background="@drawable/corner_round"
+            android:text="F2"
+            />
+
+        <TextView
+            style="@style/time_table_caution_description_text"
+            android:layout_toRightOf="@+id/view_time_table_description_dream_kuroshima2"
+            android:text="黒島発11:30の便は高速ｶｰﾌｪﾘｰ運航"
+            />
+    </RelativeLayout>
 
 </LinearLayout>

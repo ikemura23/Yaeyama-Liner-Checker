@@ -6,6 +6,28 @@
     android:orientation="vertical"
     >
 
+    <!--ヘッダー-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/light_grey"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+
+        <TextView
+            style="@style/time_table_header_text"
+            android:layout_weight="1"
+            android:text="@string/time_table_port_ishigaki"
+            />
+
+        <TextView
+            style="@style/time_table_header_text"
+            android:layout_weight="1"
+            android:text="@string/time_table_port_hatoma"
+            />
+    </LinearLayout>
+
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~１列目 安栄~~~~~~~~~~~~~~~~~~~~~~~ -->
     <!--<FrameLayout-->
     <!--android:id="@+id/uehara_anei_row1"-->
@@ -103,7 +125,7 @@
                 >
 
                 <TextView
-                    android:id="@+id/view_time_table_ykf_uehara1"
+                    android:id="@+id/view_time_table_ykf_uehara_text1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
@@ -114,20 +136,11 @@
                     />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="4dp"
-                    android:layout_toEndOf="@+id/view_time_table_ykf_uehara1"
-                    android:layout_toRightOf="@+id/view_time_table_ykf_uehara1"
+                    style="@style/time_table_caution_text"
+                    android:layout_toEndOf="@+id/view_time_table_ykf_uehara_text1"
+                    android:layout_toRightOf="@+id/view_time_table_ykf_uehara_text1"
                     android:background="@drawable/corner_round"
-                    android:paddingBottom="2dp"
-                    android:paddingLeft="4dp"
-                    android:paddingRight="4dp"
-                    android:paddingTop="2dp"
                     android:text="鳩"
-                    android:textColor="#ffffff"
-                    android:textSize="14dp"
                     />
 
             </RelativeLayout>
@@ -238,20 +251,11 @@
                     />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="4dp"
+                    style="@style/time_table_caution_text"
                     android:layout_toEndOf="@+id/view_time_table_ykf_uehara_text2"
                     android:layout_toRightOf="@+id/view_time_table_ykf_uehara_text2"
                     android:background="@drawable/corner_round"
-                    android:paddingBottom="2dp"
-                    android:paddingLeft="4dp"
-                    android:paddingRight="4dp"
-                    android:paddingTop="2dp"
                     android:text="鳩"
-                    android:textColor="#ffffff"
-                    android:textSize="14dp"
                     />
 
             </RelativeLayout>
@@ -304,32 +308,21 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="4dp"
+        android:layout_margin="8dp"
         >
-        <!--カーフェリー説明-->
+
         <TextView
-            android:id="@+id/view_time_table_description_ykf_hatoma"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="4dp"
+            android:id="@+id/view_time_table_description_dream_oohara3"
+            style="@style/time_table_caution_text"
             android:background="@drawable/corner_round"
-            android:paddingBottom="2dp"
-            android:paddingLeft="4dp"
-            android:paddingRight="4dp"
-            android:paddingTop="2dp"
             android:text="鳩"
-            android:textColor="#ffffff"
-            android:textSize="14dp"
             />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="4dp"
-            android:layout_toRightOf="@+id/view_time_table_description_ykf_hatoma"
-            android:text="鳩間島経由"
+            style="@style/time_table_caution_description_text"
+            android:layout_toRightOf="@+id/view_time_table_description_dream_oohara3"
+            android:text="鳩間経由"
             />
     </RelativeLayout>
+
 </LinearLayout>

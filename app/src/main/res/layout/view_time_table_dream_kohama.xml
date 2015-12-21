@@ -19,14 +19,12 @@
             style="@style/time_table_header_text"
             android:layout_weight="1"
             android:text="@string/time_table_port_ishigaki"
-            android:textStyle="bold"
             />
 
         <TextView
             style="@style/time_table_header_text"
             android:layout_weight="1"
             android:text="@string/time_table_port_kohama"
-            android:textStyle="bold"
             />
     </LinearLayout>
 
@@ -137,12 +135,33 @@
             android:weightSum="2"
             >
 
-            <TextView
-                style="@style/time_table_header_text"
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_weight="1"
-                android:background="@color/time_table_car_ferry"
-                android:text="12:50"
-                />
+                >
+
+                <TextView
+                    android:id="@+id/view_time_table_ykf_uehara_text2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="1dp"
+                    android:text="12:50"
+                    android:textSize="20dp"
+                    />
+
+                <TextView
+                    style="@style/time_table_caution_text"
+                    android:layout_toEndOf="@+id/view_time_table_ykf_uehara_text2"
+                    android:layout_toRightOf="@+id/view_time_table_ykf_uehara_text2"
+                    android:background="@drawable/corner_round"
+                    android:text="Ｆ"
+                    />
+
+            </RelativeLayout>
 
             <TextView
                 style="@style/time_table_header_text"
@@ -238,11 +257,33 @@
                 android:text="14:40"
                 />
 
-            <TextView
-                style="@style/time_table_header_text"
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_weight="1"
-                android:text="15:20 (竹)"
-                />
+                >
+
+                <TextView
+                    android:id="@+id/view_time_table_dream_kohama_text2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="1dp"
+                    android:text="15:20"
+                    android:textSize="20dp"
+                    />
+
+                <TextView
+                    style="@style/time_table_caution_text"
+                    android:layout_toEndOf="@+id/view_time_table_dream_kohama_text2"
+                    android:layout_toRightOf="@+id/view_time_table_dream_kohama_text2"
+                    android:background="@drawable/corner_round"
+                    android:text="竹"
+                    />
+
+            </RelativeLayout>
         </LinearLayout>
 
         <include layout="@layout/view_time_table_line_yoko"/>
@@ -314,35 +355,44 @@
 
     <include layout="@layout/view_time_table_line_yoko"/>
 
+    <!--カーフェリー説明-->
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="4dp"
+        android:layout_margin="8dp"
         >
-        <!--カーフェリー説明-->
+
         <TextView
-            android:id="@+id/description_color"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="■"
-            android:textColor="@color/time_table_car_ferry"
+            android:id="@+id/view_time_table_description_dream_kohama1"
+            style="@style/time_table_caution_text"
+            android:background="@drawable/corner_round"
+            android:text="Ｆ"
             />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="5dp"
-            android:layout_toEndOf="@+id/description_color"
-            android:layout_toRightOf="@+id/description_color"
+            style="@style/time_table_caution_description_text"
+            android:layout_toRightOf="@+id/view_time_table_description_dream_kohama1"
             android:text="高速ｶｰﾌｪﾘｰ 月火木土運航"
             />
     </RelativeLayout>
 
-    <TextView
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:text="(竹) 竹富経由"
-        />
+        android:layout_margin="8dp"
+        >
+
+        <TextView
+            android:id="@+id/view_time_table_description_dream_kohama2"
+            style="@style/time_table_caution_text"
+            android:background="@drawable/corner_round"
+            android:text="竹"
+            />
+
+        <TextView
+            style="@style/time_table_caution_description_text"
+            android:layout_toRightOf="@+id/view_time_table_description_dream_kohama2"
+            android:text="竹富経由"
+            />
+    </RelativeLayout>
 </LinearLayout>

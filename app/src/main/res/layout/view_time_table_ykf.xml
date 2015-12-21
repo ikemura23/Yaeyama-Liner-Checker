@@ -16,34 +16,6 @@
         android:orientation="vertical"
         >
 
-        <!--ヘッダー-->
-        <LinearLayout
-            android:id="@+id/view_timetable_header_ykf"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/light_grey"
-            android:orientation="horizontal"
-            android:visibility="gone"
-            android:weightSum="2"
-            >
-
-            <TextView
-                android:id="@+id/view_timetable_ykf_header_ishigaki"
-                style="@style/time_table_header_text"
-                android:layout_weight="1"
-                android:text="@string/time_table_port_ishigaki"
-                android:textStyle="bold"
-                />
-
-            <TextView
-                android:id="@+id/view_timetable_header_ykf_ritou"
-                style="@style/time_table_header_text"
-                android:layout_weight="1"
-                android:text="@string/time_table_port_taketomi"
-                android:textStyle="bold"
-                />
-        </LinearLayout>
-
         <!--竹富-->
         <com.ikmr.banbara23.yaeyama_liner_checker.timetable.ykf.YkfTimeTableTaketomiView
             android:id="@+id/view_time_table_ykf_taketomi"

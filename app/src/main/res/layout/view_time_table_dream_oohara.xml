@@ -19,14 +19,12 @@
             style="@style/time_table_header_text"
             android:layout_weight="1"
             android:text="@string/time_table_port_ishigaki"
-            android:textStyle="bold"
             />
 
         <TextView
             style="@style/time_table_header_text"
             android:layout_weight="1"
             android:text="@string/time_table_port_oohara"
-            android:textStyle="bold"
             />
     </LinearLayout>
 
@@ -84,11 +82,33 @@
                 android:text="09:45"
                 />
 
-            <TextView
-                style="@style/time_table_header_text"
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_weight="1"
-                android:text="12:30(小)"
-                />
+                >
+
+                <TextView
+                    android:id="@+id/view_time_table_dream_oohara_text1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="1dp"
+                    android:text="12:30"
+                    android:textSize="20dp"
+                    />
+
+                <TextView
+                    style="@style/time_table_caution_text"
+                    android:layout_toEndOf="@+id/view_time_table_dream_oohara_text1"
+                    android:layout_toRightOf="@+id/view_time_table_dream_oohara_text1"
+                    android:background="@drawable/corner_round"
+                    android:text="小"
+                    />
+
+            </RelativeLayout>
         </LinearLayout>
 
         <include layout="@layout/view_time_table_line_yoko"/>
@@ -116,11 +136,33 @@
                 android:text="12:30"
                 />
 
-            <TextView
-                style="@style/time_table_header_text"
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_weight="1"
-                android:text="13:25(竹)"
-                />
+                >
+
+                <TextView
+                    android:id="@+id/view_time_table_dream_oohara_text2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="1dp"
+                    android:text="13:25"
+                    android:textSize="20dp"
+                    />
+
+                <TextView
+                    style="@style/time_table_caution_text"
+                    android:layout_toEndOf="@+id/view_time_table_dream_oohara_text2"
+                    android:layout_toRightOf="@+id/view_time_table_dream_oohara_text2"
+                    android:background="@drawable/corner_round"
+                    android:text="竹"
+                    />
+
+            </RelativeLayout>
         </LinearLayout>
 
         <include layout="@layout/view_time_table_line_yoko"/>
@@ -174,19 +216,61 @@
             android:weightSum="2"
             >
 
-            <TextView
-                style="@style/time_table_header_text"
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_weight="1"
-                android:background="@color/time_table_car_ferry"
-                android:text="15:40"
-                />
+                >
 
-            <TextView
-                style="@style/time_table_header_text"
+                <TextView
+                    android:id="@+id/view_time_table_dream_oohara_text3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="1dp"
+                    android:text="15:40"
+                    android:textSize="20dp"
+                    />
+
+                <TextView
+                    style="@style/time_table_caution_text"
+                    android:layout_toEndOf="@+id/view_time_table_dream_oohara_text3"
+                    android:layout_toRightOf="@+id/view_time_table_dream_oohara_text3"
+                    android:background="@drawable/corner_round"
+                    android:text="Ｆ"
+                    />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_weight="1"
-                android:background="@color/time_table_car_ferry"
-                android:text="17:00"
-                />
+                >
+
+                <TextView
+                    android:id="@+id/view_time_table_dream_oohara_text4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="1dp"
+                    android:text="17:00"
+                    android:textSize="20dp"
+                    />
+
+                <TextView
+                    style="@style/time_table_caution_text"
+                    android:layout_toEndOf="@+id/view_time_table_dream_oohara_text4"
+                    android:layout_toRightOf="@+id/view_time_table_dream_oohara_text4"
+                    android:background="@drawable/corner_round"
+                    android:text="Ｆ"
+                    />
+
+            </RelativeLayout>
         </LinearLayout>
 
         <include layout="@layout/view_time_table_line_yoko"/>
@@ -227,42 +311,63 @@
     <include layout="@layout/view_time_table_line_yoko"/>
 
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="4dp"
+        android:layout_margin="8dp"
         >
-        <!--カーフェリー説明-->
+
         <TextView
-            android:id="@+id/description_color"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="■"
-            android:textColor="@color/time_table_car_ferry"
+            android:id="@+id/view_time_table_description_dream_oohara1"
+            style="@style/time_table_caution_text"
+            android:background="@drawable/corner_round"
+            android:text="Ｆ"
             />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="5dp"
-            android:layout_toEndOf="@+id/description_color"
-            android:layout_toRightOf="@+id/description_color"
+            style="@style/time_table_caution_description_text"
+            android:layout_toRightOf="@+id/view_time_table_description_dream_oohara1"
             android:text="高速ｶｰﾌｪﾘｰ 月 木 土運航"
             />
     </RelativeLayout>
 
-    <TextView
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:text="(竹) 竹富経由"
-        />
+        android:layout_margin="8dp"
+        >
 
-    <TextView
+        <TextView
+            android:id="@+id/view_time_table_description_dream_oohara2"
+            style="@style/time_table_caution_text"
+            android:background="@drawable/corner_round"
+            android:text="竹"
+            />
+
+        <TextView
+            style="@style/time_table_caution_description_text"
+            android:layout_toRightOf="@+id/view_time_table_description_dream_oohara2"
+            android:text="竹富経由"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:text="(小) 小浜経由"
-        />
+        android:layout_margin="8dp"
+        >
+
+        <TextView
+            android:id="@+id/view_time_table_description_dream_oohara3"
+            style="@style/time_table_caution_text"
+            android:background="@drawable/corner_round"
+            android:text="小"
+            />
+
+        <TextView
+            style="@style/time_table_caution_description_text"
+            android:layout_toRightOf="@+id/view_time_table_description_dream_oohara3"
+            android:text="小浜経由"
+            />
+    </RelativeLayout>
 
 </LinearLayout>
