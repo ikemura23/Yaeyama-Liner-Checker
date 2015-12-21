@@ -1,6 +1,7 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker.fragment;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StringUtils;
@@ -31,6 +33,17 @@ public class StatusDetailYkfFragment extends BaseFragment {
     YkfTimeTableView mYkfTimeTableView;
     @Bind(R.id.fragment_status_detail_content_layout)
     LinearLayout mFragmentStatusDetailContentLayout;
+    @Bind(R.id.fragment_status_detail_progressbar)
+    ProgressBar mProgressBar;
+
+    @OnClick(R.id.fragment_status_detail_reload_button)
+    void reloadClick(View view) {
+        Activity activity = getActivity();
+        if (activity != null && activity instanceof QueryInterface) {
+            // API通信処理の開始準備の完了
+            ((QueryInterface) activity).startQuery();
+        }
+    }
 
     @OnClick(R.id.view_action_box_tel)
     void tellClick(View view) {
