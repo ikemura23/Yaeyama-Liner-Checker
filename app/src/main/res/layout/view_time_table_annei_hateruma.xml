@@ -13,8 +13,8 @@
         android:layout_height="wrap_content"
         >
 
-        <TextView
-            style="@style/time_table_anei_icon_text"/>
+        <!--<TextView-->
+        <!--style="@style/time_table_anei_icon_text"/>-->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -46,8 +46,8 @@
         android:layout_height="wrap_content"
         >
 
-        <TextView
-            style="@style/time_table_anei_icon_text"/>
+        <!--<TextView-->
+        <!--style="@style/time_table_anei_icon_text"/>-->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -56,11 +56,33 @@
             android:weightSum="2"
             >
 
-            <TextView
-                style="@style/time_table_header_text"
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_weight="1"
-                android:text="11:50"
-                />
+                >
+
+                <TextView
+                    android:id="@+id/view_time_table_ykf_uehara_text2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="1dp"
+                    android:text="15:30"
+                    android:textSize="20dp"
+                    />
+
+                <TextView
+                    style="@style/time_table_caution_text"
+                    android:layout_toEndOf="@+id/view_time_table_ykf_uehara_text2"
+                    android:layout_toRightOf="@+id/view_time_table_ykf_uehara_text2"
+                    android:background="@drawable/corner_round"
+                    android:text="不鳩"
+                    />
+
+            </RelativeLayout>
 
             <TextView
                 style="@style/time_table_header_text"
@@ -79,8 +101,8 @@
         android:layout_height="wrap_content"
         >
 
-        <TextView
-            style="@style/time_table_anei_icon_text"/>
+        <!--<TextView-->
+        <!--style="@style/time_table_anei_icon_text"/>-->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -106,5 +128,28 @@
     </FrameLayout>
 
     <include layout="@layout/view_time_table_line_yoko"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        >
+        <!--カーフェリー説明-->
+        <TextView
+            android:id="@+id/time_table_caution_text"
+            style="@style/time_table_caution_text"
+            android:background="@drawable/corner_round"
+            android:text="不鳩"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@+id/time_table_caution_text"
+            android:text="鳩間島経由"
+            />
+    </RelativeLayout>
 
 </LinearLayout>

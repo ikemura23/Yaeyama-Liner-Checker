@@ -12,4 +12,5 @@
     <color name="medium_blue">#0000cd</color>
     <color name="orange">#FF530D</color>
     <color name="time_table_car_ferry">#FFDF9D</color>
+    <color name="white">#FFFFFF</color>
 </resources>
