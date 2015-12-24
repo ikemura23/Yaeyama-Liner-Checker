@@ -30,7 +30,7 @@
                 >
 
                 <!--運航状況の説明-->
-                <com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailView
+                <com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailTextView
                     android:id="@+id/fragment_ykf_status_detail_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

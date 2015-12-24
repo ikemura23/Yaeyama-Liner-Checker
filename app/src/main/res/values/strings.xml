@@ -71,4 +71,8 @@
     <string name="company_simple_name_ykf">八重山観光フ</string>
     <string name="company_simple_name_dream">ドリーム観光</string>
 
+    <string name="status_normal">○</string>
+    <string name="status_cation">△</string>
+    <string name="status_cancel">×</string>
+
 </resources>

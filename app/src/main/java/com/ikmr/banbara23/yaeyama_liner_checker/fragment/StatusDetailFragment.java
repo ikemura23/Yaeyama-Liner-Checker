@@ -11,13 +11,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
 import com.ikmr.banbara23.yaeyama_liner_checker.timetable.annei.AnneiTimeTableView;
-import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailView;
+import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailTextView;
+import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailTopView;
 import com.pnikosis.materialishprogress.ProgressWheel;
 
 import butterknife.Bind;
@@ -29,11 +29,8 @@ import butterknife.OnClick;
  */
 public class StatusDetailFragment extends BaseFragment implements FragmentInterface {
 
-    @Bind(R.id.fragment_status_detail_content_layout)
-    LinearLayout mFragmentStatusDetailContentLayout;
-
-    @Bind(R.id.fragment_status_detail_view)
-    StatusDetailView mStatusDetailView;
+    @Bind(R.id.fragment_status_detail_text_view)
+    StatusDetailTextView mStatusDetailTextView;
 
     @Bind(R.id.fragment_time_table_annei_view)
     AnneiTimeTableView mAnneiTimeTableView;
@@ -43,6 +40,9 @@ public class StatusDetailFragment extends BaseFragment implements FragmentInterf
 
     @Bind(R.id.fragment_status_detail_reload_button)
     Button mFragmentStatusDetailErrorButton;
+
+    @Bind(R.id.fragment_status_detail_top_view)
+    StatusDetailTopView mStatusDetailTopView;
 
     @OnClick(R.id.fragment_status_detail_reload_button)
     void reloadButtonClick(View view) {
@@ -117,14 +117,18 @@ public class StatusDetailFragment extends BaseFragment implements FragmentInterf
     public void onStartQuery(Port port) {
         mFragmentStatusDetailErrorButton.setVisibility(View.GONE);
         mProgressBar.setVisibility(View.VISIBLE);
+        mStatusDetailTopView.setVisibility(View.GONE);
         mAnneiTimeTableView.setVisibility(View.VISIBLE);
         mAnneiTimeTableView.switchPortView(port);
     }
 
     @Override
     public void onResultQuery(Liner liner, String value) {
-        mStatusDetailView.setVisibility(View.VISIBLE);
-        mStatusDetailView.bind(liner, value);
+        mStatusDetailTopView.setVisibility(View.VISIBLE);
+        mStatusDetailTopView.bind(liner);
+
+        mStatusDetailTextView.setVisibility(View.VISIBLE);
+        mStatusDetailTextView.bind(value);
     }
 
     @Override

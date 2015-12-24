@@ -15,7 +15,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.StringUtils;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.YkfLinerDetail;
 import com.ikmr.banbara23.yaeyama_liner_checker.timetable.dream.DreamTimeTableView;
-import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailView;
+import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailTextView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -26,8 +26,8 @@ import butterknife.OnClick;
  */
 public class StatusDetailDreamFragment extends BaseFragment {
 
-    @Bind(R.id.fragment_dream_status_detail_view)
-    StatusDetailView mStatusDetailView;
+    @Bind(R.id.fragment_dream_status_detail_text_view)
+    StatusDetailTextView mStatusDetailTextView;
     @Bind(R.id.fragment_dream_time_table_view)
     DreamTimeTableView mDreamTimeTableView;
     @Bind(R.id.fragment_dream_status_detail_content_layout)
@@ -78,7 +78,7 @@ public class StatusDetailDreamFragment extends BaseFragment {
     public void onResume() {
         super.onResume();
         mFragmentDreamStatusDetailContentLayout.setVisibility(View.VISIBLE);
-        mStatusDetailView.bind(getParam().getLiner(), createValueText());
+//        mStatusDetailTextView.bind(getParam().getLiner(), createValueText());
         if (isTimeTableShow()) {
             mDreamTimeTableView.setVisibility(View.VISIBLE);
             mDreamTimeTableView.switchPortView(getParam().getPort());

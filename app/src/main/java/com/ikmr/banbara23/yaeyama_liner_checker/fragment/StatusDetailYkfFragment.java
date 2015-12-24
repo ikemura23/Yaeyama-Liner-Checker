@@ -14,7 +14,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StringUtils;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.YkfLinerDetail;
 import com.ikmr.banbara23.yaeyama_liner_checker.timetable.ykf.YkfTimeTableView;
-import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailView;
+import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailTextView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -26,7 +26,7 @@ import butterknife.OnClick;
 public class StatusDetailYkfFragment extends BaseFragment {
 
     @Bind(R.id.fragment_ykf_status_detail_view)
-    StatusDetailView mStatusDetailView;
+    StatusDetailTextView mStatusDetailTextView;
     @Bind(R.id.fragment_time_table_view)
     YkfTimeTableView mYkfTimeTableView;
     @Bind(R.id.fragment_status_detail_content_layout)
@@ -63,7 +63,7 @@ public class StatusDetailYkfFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_status_detail_ykf, container, false);
-        mStatusDetailView = (StatusDetailView) view.findViewById(R.id.fragment_ykf_status_detail_view);
+        mStatusDetailTextView = (StatusDetailTextView) view.findViewById(R.id.fragment_ykf_status_detail_view);
         ButterKnife.bind(this, view);
         return view;
     }
@@ -72,7 +72,6 @@ public class StatusDetailYkfFragment extends BaseFragment {
     public void onResume() {
         super.onResume();
         mFragmentStatusDetailContentLayout.setVisibility(View.VISIBLE);
-        mStatusDetailView.bind(getParam().getLiner(), createValueText());
         mYkfTimeTableView.switchPortView(getParam().getPort());
     }
 

@@ -22,7 +22,6 @@
             >
 
             <LinearLayout
-                android:id="@+id/fragment_status_detail_content_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -52,109 +51,88 @@
                     android:visibility="gone"
                     />
 
-                <android.support.v7.widget.CardView
+                <!--<android.support.v7.widget.CardView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_marginLeft="4dp"-->
+                    <!--android:layout_marginRight="4dp"-->
+                    <!--android:layout_marginTop="4dp"-->
+                    <!--android:padding="4dp"-->
+                    <!--card_view:cardCornerRadius="3dp"-->
+                    <!-->-->
+
+                    <!--<RelativeLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:layout_gravity="center"-->
+                        <!-->-->
+
+                        <!--<TextView-->
+                            <!--android:id="@+id/view_status_detail_top_status"-->
+                            <!--android:layout_width="40dp"-->
+                            <!--android:layout_height="40dp"-->
+                            <!--android:layout_margin="8dp"-->
+                            <!--android:text="○"-->
+                            <!--android:textColor="#4169e1"-->
+                            <!--android:textSize="30dp"-->
+                            <!--android:textStyle="bold"-->
+                            <!--/>-->
+
+                        <!--<TextView-->
+                            <!--android:id="@+id/view_status_detail_top_port"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_alignParentTop="true"-->
+                            <!--android:layout_gravity="center_vertical"-->
+                            <!--android:layout_marginTop="4dp"-->
+                            <!--android:layout_toEndOf="@+id/view_status_detail_top_status"-->
+                            <!--android:layout_toRightOf="@+id/view_status_detail_top_status"-->
+                            <!--android:textColor="@color/background_material_dark"-->
+                            <!--android:textSize="16sp"-->
+                            <!--tools:text="大原(西表)"-->
+                            <!--/>-->
+
+                        <!--<TextView-->
+                            <!--android:id="@+id/view_status_detail_top_update_text"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_alignEnd="@+id/view_status_detail_top_port"-->
+                            <!--android:layout_alignRight="@+id/view_status_detail_top_port"-->
+                            <!--android:layout_alignTop="@+id/view_status_detail_top_status"-->
+                            <!--android:layout_marginRight="4dp"-->
+                            <!--android:textSize="10sp"-->
+                            <!--android:textStyle="bold"-->
+                            <!--tools:text="2015年12月24日 06:00時点"-->
+                            <!--/>-->
+
+                        <!--<TextView-->
+                            <!--android:id="@+id/view_status_detail_top_text"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="match_parent"-->
+                            <!--android:layout_alignLeft="@+id/view_status_detail_top_port"-->
+                            <!--android:layout_alignStart="@+id/view_status_detail_top_port"-->
+                            <!--android:layout_below="@+id/view_status_detail_top_port"-->
+                            <!--android:layout_gravity="center_vertical"-->
+                            <!--android:layout_marginBottom="4dp"-->
+                            <!--android:layout_marginTop="4dp"-->
+                            <!--android:ellipsize="end"-->
+                            <!--android:textColor="@color/background_material_dark"-->
+                            <!--android:textSize="16sp"-->
+                            <!--tools:text="通常運航"-->
+                            <!--/>-->
+                    <!--</RelativeLayout>-->
+                <!--</android.support.v7.widget.CardView>-->
+
+                <!--ステータス-->
+                <com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailTopView
+                    android:id="@+id/fragment_status_detail_top_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="4dp"
-                    android:layout_marginRight="4dp"
-                    android:layout_marginTop="4dp"
-                    android:padding="4dp"
-                    card_view:cardCornerRadius="3dp"
-                    >
+                    />
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        >
-
-                        <TextView
-                            android:id="@+id/view_status_list_status"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_margin="8dp"
-                            android:text="○"
-                            android:textColor="#4169e1"
-                            android:textSize="30dp"
-                            android:textStyle="bold"
-                            />
-
-                        <TextView
-                            android:id="@+id/view_status_list_port_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentTop="true"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginTop="4dp"
-                            android:layout_toEndOf="@+id/view_status_list_status"
-                            android:layout_toRightOf="@+id/view_status_list_status"
-                            android:text="大原(西表)"
-                            android:textColor="@color/background_material_dark"
-                            android:textSize="16sp"
-                            />
-
-
-                        <TextView
-                            android:id="@+id/view_status_list_status_cation_text"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignRight="@+id/view_status_list_port_text"
-                            android:layout_gravity="center"
-                            android:text="△"
-                            android:textColor="#ffa500"
-                            android:textSize="25dp"
-                            android:textStyle="bold"
-                            android:visibility="gone"
-                            />
-
-                        <TextView
-                            android:id="@+id/view_status_list_status_cancel_text"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignRight="@+id/view_status_list_port_text"
-                            android:layout_gravity="center"
-                            android:text="×"
-                            android:textColor="#ff0000"
-                            android:textSize="25dp"
-                            android:textStyle="bold"
-                            android:visibility="gone"
-                            />
-
-                        <TextView
-                            android:id="@+id/view_status_list_status_normal_text"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignEnd="@+id/view_status_list_port_text"
-                            android:layout_alignRight="@+id/view_status_list_port_text"
-                            android:layout_alignTop="@+id/view_status_list_status"
-                            android:layout_marginRight="4dp"
-                            android:text="2015年12月24日 06:00時点"
-                            android:textSize="10sp"
-                            android:textStyle="bold"
-                            />
-
-                        <TextView
-                            android:id="@+id/view_status_list_comment_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_alignLeft="@+id/view_status_list_port_text"
-                            android:layout_alignStart="@+id/view_status_list_port_text"
-                            android:layout_below="@+id/view_status_list_port_text"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginBottom="4dp"
-                            android:layout_marginTop="4dp"
-                            android:ellipsize="end"
-                            android:maxLines="1"
-                            android:text="正常運航正常運航正常運航正常運航正常運航正常運航正常運航正常運航正常運航正常運航正常運航正常運航正常運航正常運航正常運航正常運航"
-                            android:textColor="@color/background_material_dark"
-                            android:textSize="16sp"
-                            />
-                    </RelativeLayout>
-
-                </android.support.v7.widget.CardView>
                 <!--運航状況の説明-->
-                <com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailView
-                    android:id="@+id/fragment_status_detail_view"
+                <com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailTextView
+                    android:id="@+id/fragment_status_detail_text_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:visibility="gone"
@@ -180,18 +158,5 @@
             tools:visibility="visible"
             />
     </LinearLayout>
-
-    <!--プログレス-->
-    <!--<com.pnikosis.materialishprogress.ProgressWheel-->
-    <!--android:id="@+id/fragment_detail_material_progress_bar"-->
-    <!--android:layout_width="80dp"-->
-    <!--android:layout_height="80dp"-->
-    <!--android:layout_centerHorizontal="true"-->
-    <!--android:layout_centerVertical="true"-->
-    <!--android:layout_gravity="center"-->
-    <!--tools:visibility="gone"-->
-    <!--wheel:matProg_barColor="#5588FF"-->
-    <!--wheel:matProg_progressIndeterminate="true"-->
-    <!--wheel:matProg_rimColor="#FFCFC9C9"/>-->
 
 </FrameLayout>
