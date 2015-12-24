@@ -248,7 +248,7 @@ public class StatusListActivity extends BaseActivity implements
         {
             ((ListFragmentInterface) mFragment).onStartQuery();
         }
-        getLoading().show();
+//        getLoading().show();
         mQuerying = true;
     }
 
@@ -281,7 +281,7 @@ public class StatusListActivity extends BaseActivity implements
                 ((ListFragmentInterface) mFragment).onFailedQuery();
             }
         } finally {
-            getLoading().close();
+//            getLoading().close();
             mQuerying = false;
         }
     }
