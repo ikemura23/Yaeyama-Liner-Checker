@@ -12,13 +12,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
 import com.ikmr.banbara23.yaeyama_liner_checker.timetable.annei.AnneiTimeTableView;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailView;
+import com.pnikosis.materialishprogress.ProgressWheel;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -39,7 +39,7 @@ public class StatusDetailFragment extends BaseFragment implements FragmentInterf
     AnneiTimeTableView mAnneiTimeTableView;
 
     @Bind(R.id.fragment_status_detail_progressbar)
-    ProgressBar mProgressBar;
+    ProgressWheel mProgressBar;
 
     @Bind(R.id.fragment_status_detail_reload_button)
     Button mFragmentStatusDetailErrorButton;
