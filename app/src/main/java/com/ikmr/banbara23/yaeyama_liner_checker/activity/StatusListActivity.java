@@ -196,8 +196,8 @@ public class StatusListActivity extends BaseActivity implements
      * @param liner 運航状況
      */
     private void startStatusDetailActivity(Liner liner) {
-        Intent intent = new Intent(this, StatusDetailActivity.class);
-        intent.putExtra(StatusDetailActivity.class.getName(), liner);
+        Intent intent = new Intent(this, StatusDetailAnneiActivity.class);
+        intent.putExtra(StatusDetailAnneiActivity.class.getName(), liner);
         startActivity(intent);
     }
 

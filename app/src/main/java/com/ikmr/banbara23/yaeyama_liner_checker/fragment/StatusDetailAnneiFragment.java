@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +26,7 @@ import butterknife.OnClick;
 /**
  * 詳細のフラグメント
  */
-public class StatusDetailFragment extends BaseFragment implements FragmentInterface {
+public class StatusDetailAnneiFragment extends BaseFragment implements FragmentInterface {
 
     @Bind(R.id.fragment_status_detail_text_view)
     StatusDetailTextView mStatusDetailTextView;
@@ -54,10 +53,10 @@ public class StatusDetailFragment extends BaseFragment implements FragmentInterf
     }
 
     // ProgressWheel mProgressWheel;
-    public static StatusDetailFragment NewInstance(Liner liner) {
-        StatusDetailFragment fragment = new StatusDetailFragment();
+    public static StatusDetailAnneiFragment NewInstance(Liner liner) {
+        StatusDetailAnneiFragment fragment = new StatusDetailAnneiFragment();
         Bundle bundle = new Bundle();
-        bundle.putParcelable(StatusDetailFragment.class.getName(), liner);
+        bundle.putParcelable(StatusDetailAnneiFragment.class.getName(), liner);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -68,13 +67,13 @@ public class StatusDetailFragment extends BaseFragment implements FragmentInterf
      * @return
      */
     private Liner getParam() {
-        return getArguments().getParcelable(StatusDetailFragment.class.getName());
+        return getArguments().getParcelable(StatusDetailAnneiFragment.class.getName());
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_status_detail, container, false);
+        View view = inflater.inflate(R.layout.fragment_status_detail_annei, container, false);
         // mProgressWheel = (ProgressWheel)
         // view.findViewById(R.id.fragment_detail_material_progress_bar);
 
@@ -165,7 +164,6 @@ public class StatusDetailFragment extends BaseFragment implements FragmentInterf
 
             startActivity(intent);
         } catch (Exception e) {
-            Log.d("StatusDetailFragment", e.getMessage());
             // 何もしない
         }
     }

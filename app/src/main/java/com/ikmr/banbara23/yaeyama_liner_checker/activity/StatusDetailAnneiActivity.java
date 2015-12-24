@@ -16,14 +16,14 @@ import com.ikmr.banbara23.yaeyama_liner_checker.UrlSelector;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.FragmentInterface;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.QueryInterface;
-import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusDetailFragment;
+import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusDetailAnneiFragment;
 
 import butterknife.ButterKnife;
 
 /**
  * ステータス詳細のActivity
  */
-public class StatusDetailActivity extends BaseActivity implements QueryInterface, StatusDetailAsync.DetailAsyncCallback {
+public class StatusDetailAnneiActivity extends BaseActivity implements QueryInterface, StatusDetailAsync.DetailAsyncCallback {
 
     Liner mLiner;
     Fragment mFragment;
@@ -37,7 +37,7 @@ public class StatusDetailActivity extends BaseActivity implements QueryInterface
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_status_detail);
-        mLiner = getIntent().getParcelableExtra(StatusDetailActivity.class.getName());
+        mLiner = getIntent().getParcelableExtra(StatusDetailAnneiActivity.class.getName());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ButterKnife.bind(this);
 
@@ -79,7 +79,7 @@ public class StatusDetailActivity extends BaseActivity implements QueryInterface
      * フラグメント作成
      */
     private void createFragment() {
-        mFragment = StatusDetailFragment.NewInstance(mLiner);
+        mFragment = StatusDetailAnneiFragment.NewInstance(mLiner);
         getFragmentManager().beginTransaction()
                 .replace(R.id.container, mFragment)
                 .commit();
