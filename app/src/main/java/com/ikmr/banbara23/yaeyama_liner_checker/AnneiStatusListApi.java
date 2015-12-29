@@ -9,27 +9,45 @@ import org.jsoup.nodes.Document;
 
 import java.io.IOException;
 
+import butterknife.BindString;
 import rx.Observable;
 import rx.Subscriber;
+import rx.functions.Func1;
 
 /**
- * Created by banbara23 on 15/12/25.
+ * 安栄一覧の取得
  */
 public class AnneiStatusListApi {
-    public static Observable<String> request() {
-        return Observable.create(new Observable.OnSubscribe<String>() {
-            @Override
-            public void call(Subscriber<? super String> subscriber) {
 
-                Document document = null;
-                try {
-                    document = Jsoup.connect("http://www.aneikankou.co.jp/").timeout(Consts.CONNECTION_TIME_OUT).get();
-                } catch (IOException e) {
-                    // e.printStackTrace();
-                }
-                Result result = AnneiListParser.pars(document);
-                subscriber.onCompleted();
-            }
-        });
+    // 一覧URL
+    @BindString(R.string.url_annei_list)
+    static String ANNEI_URL;
+
+    /**
+     * RxAndroidを利用
+     * 
+     * @return Observable<Result>
+     */
+    public static Observable<Result> request() {
+        return Observable
+                .create(new Observable.OnSubscribe<Document>() {
+                    @Override
+                    public void call(Subscriber<? super Document> subscriber) {
+                        Document document;
+                        try {
+                            document = Jsoup.connect(ANNEI_URL).timeout(Consts.CONNECTION_TIME_OUT).get();
+                            subscriber.onNext(document);
+                            subscriber.onCompleted();
+                        } catch (IOException e) {
+                            subscriber.onError(e);
+                        }
+                    }
+                })
+                .map(new Func1<Document, Result>() {
+                    @Override
+                    public Result call(Document document) {
+                        return AnneiListParser.pars(document);
+                    }
+                });
     }
 }

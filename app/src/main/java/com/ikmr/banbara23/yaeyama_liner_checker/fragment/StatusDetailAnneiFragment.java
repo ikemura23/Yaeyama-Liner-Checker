@@ -12,29 +12,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.ikmr.banbara23.yaeyama_liner_checker.Consts;
+import com.ikmr.banbara23.yaeyama_liner_checker.AnneiStatusListApi;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
-import com.ikmr.banbara23.yaeyama_liner_checker.parser.AnneiListParser;
 import com.ikmr.banbara23.yaeyama_liner_checker.timetable.annei.AnneiTimeTableView;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailTextView;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailTopView;
 import com.pnikosis.materialishprogress.ProgressWheel;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-
-import java.io.IOException;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
@@ -149,26 +141,7 @@ public class StatusDetailAnneiFragment extends BaseFragment implements FragmentI
      */
     private void getAnneiList() {
         mCompositeSubscription.add(
-                Observable
-                        .create(new Observable.OnSubscribe<Document>() {
-                            @Override
-                            public void call(Subscriber<? super Document> subscriber) {
-                                Document document;
-                                try {
-                                    document = Jsoup.connect("http://www.aneikankou.co.jp/").timeout(Consts.CONNECTION_TIME_OUT).get();
-                                    subscriber.onNext(document);
-                                    subscriber.onCompleted();
-                                } catch (IOException e) {
-                                    subscriber.onError(e);
-                                }
-                            }
-                        })
-                        .map(new Func1<Document, Result>() {
-                            @Override
-                            public Result call(Document document) {
-                                return AnneiListParser.pars(document);
-                            }
-                        })
+                AnneiStatusListApi.request()
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeOn(Schedulers.newThread())
                         .subscribe(new Subscriber<Result>() {
