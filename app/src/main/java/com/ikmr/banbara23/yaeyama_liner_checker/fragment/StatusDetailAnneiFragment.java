@@ -33,7 +33,7 @@ import rx.subscriptions.CompositeSubscription;
 /**
  * 詳細のフラグメント
  */
-public class StatusDetailAnneiFragment extends BaseFragment implements FragmentInterface {
+public class StatusDetailAnneiFragment extends BaseFragment {
 
     // ButterKnife Bind --------------------------------------------
     @Bind(R.id.fragment_status_detail_text_view)
@@ -183,7 +183,7 @@ public class StatusDetailAnneiFragment extends BaseFragment implements FragmentI
                 );
     }
 
-    @Override
+    // @Override
     public void onStartQuery(Port port) {
         mFragmentStatusDetailErrorButton.setVisibility(View.GONE);
         mProgressBar.setVisibility(View.VISIBLE);
@@ -192,7 +192,7 @@ public class StatusDetailAnneiFragment extends BaseFragment implements FragmentI
         mAnneiTimeTableView.switchPortView(port);
     }
 
-    @Override
+    // @Override
     public void onResultQuery(Liner liner, String value) {
         mStatusDetailTopView.setVisibility(View.VISIBLE);
         mStatusDetailTopView.bind(liner);
@@ -201,13 +201,13 @@ public class StatusDetailAnneiFragment extends BaseFragment implements FragmentI
         mStatusDetailTextView.bind(value);
     }
 
-    @Override
+    // @Override
     public void onFailedQuery() {
         mProgressBar.setVisibility(View.GONE);
         mFragmentStatusDetailErrorButton.setVisibility(View.VISIBLE);
     }
 
-    @Override
+    // @Override
     public void onFinishQuery() {
         mProgressBar.setVisibility(View.GONE);
     }
