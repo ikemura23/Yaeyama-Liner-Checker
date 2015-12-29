@@ -2,7 +2,6 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.activity;
 
 import android.app.Fragment;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,11 +9,8 @@ import android.view.MenuItem;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
-import com.ikmr.banbara23.yaeyama_liner_checker.StatusDetailAsync;
 import com.ikmr.banbara23.yaeyama_liner_checker.StringUtils;
-import com.ikmr.banbara23.yaeyama_liner_checker.UrlSelector;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
-import com.ikmr.banbara23.yaeyama_liner_checker.fragment.FragmentInterface;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.QueryInterface;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusDetailAnneiFragment;
 
@@ -23,7 +19,7 @@ import butterknife.ButterKnife;
 /**
  * ステータス詳細のActivity
  */
-public class StatusDetailAnneiActivity extends BaseActivity implements QueryInterface, StatusDetailAsync.DetailAsyncCallback {
+public class StatusDetailAnneiActivity extends BaseActivity implements QueryInterface {
 
     Liner mLiner;
     Fragment mFragment;
@@ -100,7 +96,7 @@ public class StatusDetailAnneiActivity extends BaseActivity implements QueryInte
                 break;
             case R.id.action_reload:
                 if (!mQuerying) {
-                    createDetail();
+                    createFragment();
                 }
                 break;
         }
@@ -142,54 +138,57 @@ public class StatusDetailAnneiActivity extends BaseActivity implements QueryInte
     /**
      * Fragmentの準備が完了
      */
-    @Override
+    // @Override
     public void startQuery() {
-        createDetail();
+        // createDetail();
     }
 
-    /**
-     * 詳細の作成開始
-     */
-    private void createDetail() {
-        String url = UrlSelector.getDetailUrl(getApplicationContext(), mLiner.company, mLiner.port);
-        new StatusDetailAsync(this, mLiner.getCompany()).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, url);
-    }
+    // /**
+    // * 詳細の作成開始
+    // */
+    // private void createDetail() {
+    // String url = UrlSelector.getDetailUrl(getApplicationContext(),
+    // mLiner.company, mLiner.port);
+    // new StatusDetailAsync(this,
+    // mLiner.getCompany()).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,
+    // url);
+    // }
 
-    @Override
-    public void preExecute() {
-        if (mFragment != null && mFragment instanceof FragmentInterface) {
-            ((FragmentInterface) mFragment).onStartQuery(mLiner.getPort());
-        }
-        mQuerying = true;
-    }
-
-    @Override
-    public void postExecute(String valueString) {
-        if (!mQuerying)
-            return;
-
-        try {
-            if (StringUtils.isEmpty(valueString)) {
-                failedProcess();
-                return;
-            }
-            if (mFragment != null && mFragment instanceof FragmentInterface) {
-                ((FragmentInterface) mFragment).onResultQuery(mLiner, valueString);
-            }
-        } catch (Exception e) {
-            failedProcess();
-        } finally {
-            mQuerying = false;
-            // 終了
-            if (mFragment != null && mFragment instanceof FragmentInterface) {
-                ((FragmentInterface) mFragment).onFinishQuery();
-            }
-        }
-    }
-
-    private void failedProcess() {
-        if (mFragment != null && mFragment instanceof FragmentInterface) {
-            ((FragmentInterface) mFragment).onFailedQuery();
-        }
-    }
+    // @Override
+    // public void preExecute() {
+    // if (mFragment != null && mFragment instanceof FragmentInterface) {
+    // ((FragmentInterface) mFragment).onStartQuery(mLiner.getPort());
+    // }
+    // mQuerying = true;
+    // }
+    //
+    // @Override
+    // public void postExecute(String valueString) {
+    // if (!mQuerying)
+    // return;
+    //
+    // try {
+    // if (StringUtils.isEmpty(valueString)) {
+    // failedProcess();
+    // return;
+    // }
+    // if (mFragment != null && mFragment instanceof FragmentInterface) {
+    // ((FragmentInterface) mFragment).onResultQuery(mLiner, valueString);
+    // }
+    // } catch (Exception e) {
+    // failedProcess();
+    // } finally {
+    // mQuerying = false;
+    // // 終了
+    // if (mFragment != null && mFragment instanceof FragmentInterface) {
+    // ((FragmentInterface) mFragment).onFinishQuery();
+    // }
+    // }
+    // }
+    //
+    // private void failedProcess() {
+    // if (mFragment != null && mFragment instanceof FragmentInterface) {
+    // ((FragmentInterface) mFragment).onFailedQuery();
+    // }
+    // }
 }
