@@ -6,28 +6,44 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.ikmr.banbara23.yaeyama_liner_checker.Consts;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
+import com.ikmr.banbara23.yaeyama_liner_checker.parser.AnneiListParser;
 import com.ikmr.banbara23.yaeyama_liner_checker.timetable.annei.AnneiTimeTableView;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailTextView;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailTopView;
 import com.pnikosis.materialishprogress.ProgressWheel;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
+import java.io.IOException;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import rx.Observable;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Func1;
+import rx.schedulers.Schedulers;
+import rx.subscriptions.CompositeSubscription;
 
 /**
  * 詳細のフラグメント
  */
 public class StatusDetailAnneiFragment extends BaseFragment implements FragmentInterface {
 
+    // ButterKnife Bind --------------------------------------------
     @Bind(R.id.fragment_status_detail_text_view)
     StatusDetailTextView mStatusDetailTextView;
 
@@ -52,13 +68,21 @@ public class StatusDetailAnneiFragment extends BaseFragment implements FragmentI
         }
     }
 
-    // ProgressWheel mProgressWheel;
+    private CompositeSubscription mCompositeSubscription = new CompositeSubscription();
+
     public static StatusDetailAnneiFragment NewInstance(Liner liner) {
         StatusDetailAnneiFragment fragment = new StatusDetailAnneiFragment();
         Bundle bundle = new Bundle();
         bundle.putParcelable(StatusDetailAnneiFragment.class.getName(), liner);
         fragment.setArguments(bundle);
         return fragment;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getAnneiList();
+        getAnneiDetail();
     }
 
     /**
@@ -100,6 +124,7 @@ public class StatusDetailAnneiFragment extends BaseFragment implements FragmentI
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
+        mCompositeSubscription.unsubscribe();
     }
 
     @Override
@@ -110,6 +135,60 @@ public class StatusDetailAnneiFragment extends BaseFragment implements FragmentI
             // API通信処理の開始準備の完了
             ((QueryInterface) activity).startQuery();
         }
+    }
+
+    /**
+     * 安栄のTOPの一覧を取得
+     */
+    private void getAnneiDetail() {
+
+    }
+
+    /**
+     * 安栄の港の詳細を取得
+     */
+    private void getAnneiList() {
+        mCompositeSubscription.add(
+                Observable
+                        .create(new Observable.OnSubscribe<Document>() {
+                            @Override
+                            public void call(Subscriber<? super Document> subscriber) {
+                                Document document;
+                                try {
+                                    document = Jsoup.connect("http://www.aneikankou.co.jp/").timeout(Consts.CONNECTION_TIME_OUT).get();
+                                    subscriber.onNext(document);
+                                    subscriber.onCompleted();
+                                } catch (IOException e) {
+                                    subscriber.onError(e);
+                                }
+                            }
+                        })
+                        .map(new Func1<Document, Result>() {
+                            @Override
+                            public Result call(Document document) {
+                                return AnneiListParser.pars(document);
+                            }
+                        })
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeOn(Schedulers.newThread())
+                        .subscribe(new Subscriber<Result>() {
+                            @Override
+                            public void onCompleted() {
+                                // 完了
+                            }
+
+                            @Override
+                            public void onError(Throwable e) {
+                                // 失敗
+                                Log.d("StatusDetailAnneiFragme", "失敗");
+                            }
+
+                            @Override
+                            public void onNext(Result result) {
+                                Log.d("StatusDetailAnneiFragme", "result:" + result);
+                            }
+                        })
+                );
     }
 
     @Override
