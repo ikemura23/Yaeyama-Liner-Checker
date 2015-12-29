@@ -60,6 +60,9 @@ public class StatusDetailAnneiFragment extends BaseFragment {
         }
     }
 
+    private boolean listQuerying = false;
+    private boolean detailQuerying = false;
+
     private CompositeSubscription mCompositeSubscription = new CompositeSubscription();
 
     public static StatusDetailAnneiFragment NewInstance(Liner liner) {
@@ -75,15 +78,6 @@ public class StatusDetailAnneiFragment extends BaseFragment {
         super.onResume();
         getAnneiList();
         getAnneiDetail();
-    }
-
-    /**
-     * パラメータ取得
-     *
-     * @return
-     */
-    private Liner getParam() {
-        return getArguments().getParcelable(StatusDetailAnneiFragment.class.getName());
     }
 
     @Nullable
@@ -119,14 +113,17 @@ public class StatusDetailAnneiFragment extends BaseFragment {
         mCompositeSubscription.unsubscribe();
     }
 
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        Activity activity = getActivity();
-        if (activity != null && activity instanceof QueryInterface) {
-            // API通信処理の開始準備の完了
-            ((QueryInterface) activity).startQuery();
-        }
+    /**
+     * パラメータ取得
+     *
+     * @return
+     */
+    private Liner getParam() {
+        return getArguments().getParcelable(StatusDetailAnneiFragment.class.getName());
+    }
+
+    private Port getPort() {
+        return getParam().getPort();
     }
 
     /**
@@ -184,12 +181,20 @@ public class StatusDetailAnneiFragment extends BaseFragment {
     }
 
     // @Override
-    public void onStartQuery(Port port) {
+    public void startQuery() {
         mFragmentStatusDetailErrorButton.setVisibility(View.GONE);
         mProgressBar.setVisibility(View.VISIBLE);
         mStatusDetailTopView.setVisibility(View.GONE);
         mAnneiTimeTableView.setVisibility(View.VISIBLE);
-        mAnneiTimeTableView.switchPortView(port);
+        mAnneiTimeTableView.switchPortView(getPort());
+
+        if (getActivity() != null && getActivity() instanceof FragmentApiQueryInterface) {
+            // API通信処理の開始準備の完了
+            ((FragmentApiQueryInterface) getActivity()).startQuery();
+        }
+
+        getAnneiDetail();
+        getAnneiList();
     }
 
     // @Override
@@ -202,14 +207,20 @@ public class StatusDetailAnneiFragment extends BaseFragment {
     }
 
     // @Override
-    public void onFailedQuery() {
+    public void failedQuery() {
         mProgressBar.setVisibility(View.GONE);
         mFragmentStatusDetailErrorButton.setVisibility(View.VISIBLE);
     }
 
     // @Override
-    public void onFinishQuery() {
-        mProgressBar.setVisibility(View.GONE);
+    public void finishQuery() {
+        if (listQuerying || detailQuerying) {
+            return;
+        }
+        if (getActivity() != null && getActivity() instanceof FragmentApiQueryInterface) {
+            // API通信処理の開始準備の完了
+            ((FragmentApiQueryInterface) getActivity()).finishQuery();
+        }
     }
 
     private void startTel() {
