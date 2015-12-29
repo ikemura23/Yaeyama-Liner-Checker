@@ -11,7 +11,7 @@ import com.google.android.gms.ads.AdView;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StringUtils;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
-import com.ikmr.banbara23.yaeyama_liner_checker.fragment.QueryInterface;
+import com.ikmr.banbara23.yaeyama_liner_checker.fragment.ApiQueryInterface;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusDetailAnneiFragment;
 
 import butterknife.ButterKnife;
@@ -19,7 +19,7 @@ import butterknife.ButterKnife;
 /**
  * ステータス詳細のActivity
  */
-public class StatusDetailAnneiActivity extends BaseActivity implements QueryInterface {
+public class StatusDetailAnneiActivity extends BaseActivity implements ApiQueryInterface {
 
     Liner mLiner;
     Fragment mFragment;
@@ -27,7 +27,7 @@ public class StatusDetailAnneiActivity extends BaseActivity implements QueryInte
     /**
      * クエリ起動中かどうか
      */
-    private boolean mQuerying;
+    private boolean mQuerying = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +95,7 @@ public class StatusDetailAnneiActivity extends BaseActivity implements QueryInte
                 finish();
                 break;
             case R.id.action_reload:
+                // mQuerying=trueならFragmentが通信中
                 if (!mQuerying) {
                     createFragment();
                 }
@@ -140,7 +141,12 @@ public class StatusDetailAnneiActivity extends BaseActivity implements QueryInte
      */
     // @Override
     public void startQuery() {
-        // createDetail();
+        mQuerying = true;
+    }
+
+    @Override
+    public void finishQuery() {
+        mQuerying = false;
     }
 
     // /**
