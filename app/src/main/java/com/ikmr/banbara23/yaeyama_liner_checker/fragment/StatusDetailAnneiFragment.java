@@ -6,14 +6,14 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.ikmr.banbara23.yaeyama_liner_checker.AnneiStatusListApi;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
+import com.ikmr.banbara23.yaeyama_liner_checker.api.AnneiStatusDetailApi;
+import com.ikmr.banbara23.yaeyama_liner_checker.api.AnneiStatusListApi;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
@@ -133,7 +133,27 @@ public class StatusDetailAnneiFragment extends BaseFragment implements FragmentI
      * 安栄のTOPの一覧を取得
      */
     private void getAnneiDetail() {
+        mCompositeSubscription.add(
+                AnneiStatusDetailApi.request(getParam().getPort())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeOn(Schedulers.newThread())
+                        .subscribe(new Subscriber<String>() {
+                            @Override
+                            public void onCompleted() {
+                                // 完了
+                            }
 
+                            @Override
+                            public void onError(Throwable e) {
+                                // 失敗
+                            }
+
+                            @Override
+                            public void onNext(String s) {
+                                // 値うけとる
+                            }
+                        })
+                );
     }
 
     /**
@@ -153,12 +173,11 @@ public class StatusDetailAnneiFragment extends BaseFragment implements FragmentI
                             @Override
                             public void onError(Throwable e) {
                                 // 失敗
-                                Log.d("StatusDetailAnneiFragme", "失敗");
                             }
 
                             @Override
                             public void onNext(Result result) {
-                                Log.d("StatusDetailAnneiFragme", "result:" + result);
+                                // 値うけとる
                             }
                         })
                 );
