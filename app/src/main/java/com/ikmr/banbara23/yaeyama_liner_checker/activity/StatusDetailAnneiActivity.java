@@ -11,7 +11,7 @@ import com.google.android.gms.ads.AdView;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StringUtils;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
-import com.ikmr.banbara23.yaeyama_liner_checker.fragment.ApiQueryInterface;
+import com.ikmr.banbara23.yaeyama_liner_checker.fragment.FragmentApiQueryInterface;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusDetailAnneiFragment;
 
 import butterknife.ButterKnife;
@@ -19,7 +19,7 @@ import butterknife.ButterKnife;
 /**
  * ステータス詳細のActivity
  */
-public class StatusDetailAnneiActivity extends BaseActivity implements ApiQueryInterface {
+public class StatusDetailAnneiActivity extends BaseActivity implements FragmentApiQueryInterface {
 
     Liner mLiner;
     Fragment mFragment;
