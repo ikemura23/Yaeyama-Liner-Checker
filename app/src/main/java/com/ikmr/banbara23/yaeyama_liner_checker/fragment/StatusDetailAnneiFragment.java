@@ -22,6 +22,8 @@ import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailTextView;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailTopView;
 import com.pnikosis.materialishprogress.ProgressWheel;
 
+import java.util.ArrayList;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -76,8 +78,7 @@ public class StatusDetailAnneiFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        getAnneiList();
-        getAnneiDetail();
+        startQuery();
     }
 
     @Nullable
@@ -127,6 +128,29 @@ public class StatusDetailAnneiFragment extends BaseFragment {
     }
 
     /**
+     * 取得の開始
+     */
+    public void startQuery() {
+        mFragmentStatusDetailErrorButton.setVisibility(View.GONE);
+        mProgressBar.setVisibility(View.VISIBLE);
+        mStatusDetailTopView.setVisibility(View.GONE);
+        mAnneiTimeTableView.setVisibility(View.VISIBLE);
+        mAnneiTimeTableView.switchPortView(getPort());
+
+        if (getActivity() != null && getActivity() instanceof FragmentApiQueryInterface) {
+            // API通信処理の開始準備の完了
+            ((FragmentApiQueryInterface) getActivity()).startQuery();
+        }
+
+        // 処理フラグをON
+        listQuerying = true;
+        detailQuerying = true;
+
+        getAnneiDetail();
+        getAnneiList();
+    }
+
+    /**
      * 安栄のTOPの一覧を取得
      */
     private void getAnneiDetail() {
@@ -138,16 +162,20 @@ public class StatusDetailAnneiFragment extends BaseFragment {
                             @Override
                             public void onCompleted() {
                                 // 完了
+                                detailQuerying = false;
+                                finishQuery();
                             }
 
                             @Override
                             public void onError(Throwable e) {
-                                // 失敗
+                                //
+                                detailQuerying = false;
                             }
 
                             @Override
                             public void onNext(String s) {
                                 // 値うけとる
+                                onResultDetailQuery(s);
                             }
                         })
                 );
@@ -165,54 +193,72 @@ public class StatusDetailAnneiFragment extends BaseFragment {
                             @Override
                             public void onCompleted() {
                                 // 完了
+                                listQuerying = false;
+                                finishQuery();
                             }
 
                             @Override
                             public void onError(Throwable e) {
                                 // 失敗
+                                listQuerying = false;
+                                failedQuery();
                             }
 
                             @Override
                             public void onNext(Result result) {
                                 // 値うけとる
+                                onResultListQuery(result);
                             }
                         })
                 );
     }
 
-    // @Override
-    public void startQuery() {
-        mFragmentStatusDetailErrorButton.setVisibility(View.GONE);
-        mProgressBar.setVisibility(View.VISIBLE);
-        mStatusDetailTopView.setVisibility(View.GONE);
-        mAnneiTimeTableView.setVisibility(View.VISIBLE);
-        mAnneiTimeTableView.switchPortView(getPort());
-
-        if (getActivity() != null && getActivity() instanceof FragmentApiQueryInterface) {
-            // API通信処理の開始準備の完了
-            ((FragmentApiQueryInterface) getActivity()).startQuery();
+    /**
+     * 一覧を取得した
+     *
+     * @param result
+     */
+    private void onResultListQuery(Result result) {
+        if (result == null || result.getLiners().isEmpty() || result.getLiners().size() == 0) {
+            return;
         }
 
-        getAnneiDetail();
-        getAnneiList();
-    }
+        Liner liner = getMyPort(result.getLiners());
 
-    // @Override
-    public void onResultQuery(Liner liner, String value) {
         mStatusDetailTopView.setVisibility(View.VISIBLE);
         mStatusDetailTopView.bind(liner);
-
-        mStatusDetailTextView.setVisibility(View.VISIBLE);
-        mStatusDetailTextView.bind(value);
     }
 
-    // @Override
+    private Liner getMyPort(ArrayList<Liner> liners) {
+        for (Liner liner : liners) {
+            if (getPort() == liner.getPort()) {
+                return liner;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * 詳細を取得した
+     *
+     * @param comment
+     */
+    private void onResultDetailQuery(String comment) {
+        mStatusDetailTextView.setVisibility(View.VISIBLE);
+        mStatusDetailTextView.bind(comment);
+    }
+
+    /**
+     * 取得失敗
+     */
     public void failedQuery() {
         mProgressBar.setVisibility(View.GONE);
         mFragmentStatusDetailErrorButton.setVisibility(View.VISIBLE);
     }
 
-    // @Override
+    /**
+     * 取得完了
+     */
     public void finishQuery() {
         if (listQuerying || detailQuerying) {
             return;
