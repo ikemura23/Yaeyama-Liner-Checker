@@ -36,11 +36,11 @@ import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
 /**
- * 詳細のフラグメント
+ * 安栄の詳細フラグメント
  */
 public class StatusDetailAnneiFragment extends BaseFragment {
 
-    // ButterKnife Bind --------------------------------------------
+    // ButterKnife Bind View --------------------------------------------
     @Bind(R.id.fragment_status_detail_text_view)
     StatusDetailTextView mStatusDetailTextView;
 
@@ -56,6 +56,8 @@ public class StatusDetailAnneiFragment extends BaseFragment {
     @Bind(R.id.fragment_status_detail_top_view)
     StatusDetailTopView mStatusDetailTopView;
 
+    // ButterKnife OnClick --------------------------------------------
+    // リロード押下
     @OnClick(R.id.fragment_status_detail_reload_button)
     void reloadButtonClick(View view) {
         Activity activity = getActivity();
@@ -65,10 +67,27 @@ public class StatusDetailAnneiFragment extends BaseFragment {
         }
     }
 
+    // 電話する押下
+    @OnClick(R.id.view_action_box_tel)
+    void telClick(View view) {
+        startTel();
+    }
+
+    // サイトを見る押下
+    @OnClick(R.id.view_action_box_tel)
+    void webClick(View view) {
+        startWeb();
+    }
+
+    // ButterKnife BindString --------------------------------------------
     // 一覧URL
     @BindString(R.string.url_annei_list)
     String ANNEI_LIST_URL;
 
+    @BindString(R.string.tel_annei)
+    String TEL_ANNEI;
+
+    // プライベート変数 --------------------------------------------
     private boolean listQuerying = false;
     private boolean detailQuerying = false;
 
@@ -92,25 +111,7 @@ public class StatusDetailAnneiFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_status_detail_annei, container, false);
-        // mProgressWheel = (ProgressWheel)
-        // view.findViewById(R.id.fragment_detail_material_progress_bar);
-
         ButterKnife.bind(this, view);
-
-        // 電話ボタン
-        view.findViewById(R.id.view_action_box_tel).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startTel();
-            }
-        });
-        // サイト
-        view.findViewById(R.id.view_action_box_web).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startWeb();
-            }
-        });
         return view;
     }
 
@@ -280,26 +281,14 @@ public class StatusDetailAnneiFragment extends BaseFragment {
         }
     }
 
+    /**
+     * 外部電話アプリを起動
+     */
     private void startTel() {
-        String tell;
-        switch (getParam().getCompany()) {
-            case ANNEI:
-                tell = getActivity().getApplicationContext().getString(R.string.tel_annei);
-                break;
-
-            case YKF:
-                tell = getActivity().getApplicationContext().getString(R.string.tel_ykf);
-                break;
-            default:
-                tell = null;
-        }
-        if (tell == null) {
-            return;
-        }
         try {
             Intent intent = new Intent(
                     Intent.ACTION_VIEW,
-                    Uri.parse("tel:" + tell));
+                    Uri.parse("tel:" + TEL_ANNEI));
 
             startActivity(intent);
         } catch (Exception e) {
@@ -307,24 +296,11 @@ public class StatusDetailAnneiFragment extends BaseFragment {
         }
     }
 
+    /**
+     * 外部ブラウザを起動
+     */
     private void startWeb() {
-        String hpUrl;
-        switch (getParam().getCompany()) {
-            case ANNEI:
-                hpUrl = getAneiPortUrl();
-                break;
-
-            case YKF:
-                hpUrl = getActivity().getApplicationContext().getString(R.string.hp_ykf);
-                break;
-            default:
-                hpUrl = getActivity().getApplicationContext().getString(R.string.hp_annei);
-        }
-        if (hpUrl == null) {
-            return;
-        }
-
-        Uri uri = Uri.parse(hpUrl);
+        Uri uri = Uri.parse(getAneiPortUrl());
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         try {
             startActivity(intent);
