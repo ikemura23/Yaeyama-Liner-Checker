@@ -6,12 +6,14 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
+import com.ikmr.banbara23.yaeyama_liner_checker.UrlSelector;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.AnneiStatusDetailApi;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.AnneiStatusListApi;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
@@ -25,6 +27,7 @@ import com.pnikosis.materialishprogress.ProgressWheel;
 import java.util.ArrayList;
 
 import butterknife.Bind;
+import butterknife.BindString;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import rx.Subscriber;
@@ -61,6 +64,10 @@ public class StatusDetailAnneiFragment extends BaseFragment {
             ((QueryInterface) activity).startQuery();
         }
     }
+
+    // 一覧URL
+    @BindString(R.string.url_annei_list)
+    String ANNEI_LIST_URL;
 
     private boolean listQuerying = false;
     private boolean detailQuerying = false;
@@ -154,8 +161,9 @@ public class StatusDetailAnneiFragment extends BaseFragment {
      * 安栄のTOPの一覧を取得
      */
     private void getAnneiDetail() {
+        String url = UrlSelector.getAnneiDetailUrl(getActivity().getApplicationContext(), getPort());
         mCompositeSubscription.add(
-                AnneiStatusDetailApi.request(getParam().getPort())
+                AnneiStatusDetailApi.request(url)
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeOn(Schedulers.newThread())
                         .subscribe(new Subscriber<String>() {
@@ -176,6 +184,7 @@ public class StatusDetailAnneiFragment extends BaseFragment {
                             public void onNext(String s) {
                                 // 値うけとる
                                 onResultDetailQuery(s);
+                                Log.d("StatusDetailAnneiFragme", s);
                             }
                         })
                 );
@@ -186,7 +195,7 @@ public class StatusDetailAnneiFragment extends BaseFragment {
      */
     private void getAnneiList() {
         mCompositeSubscription.add(
-                AnneiStatusListApi.request()
+                AnneiStatusListApi.request(ANNEI_LIST_URL)
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeOn(Schedulers.newThread())
                         .subscribe(new Subscriber<Result>() {
@@ -208,6 +217,7 @@ public class StatusDetailAnneiFragment extends BaseFragment {
                             public void onNext(Result result) {
                                 // 値うけとる
                                 onResultListQuery(result);
+                                Log.d("StatusDetailAnneiFragme", "result:" + result);
                             }
                         })
                 );
@@ -263,6 +273,7 @@ public class StatusDetailAnneiFragment extends BaseFragment {
         if (listQuerying || detailQuerying) {
             return;
         }
+        mProgressBar.setVisibility(View.GONE);
         if (getActivity() != null && getActivity() instanceof FragmentApiQueryInterface) {
             // API通信処理の開始準備の完了
             ((FragmentApiQueryInterface) getActivity()).finishQuery();

@@ -1,8 +1,8 @@
+
 package com.ikmr.banbara23.yaeyama_liner_checker;
 
 import android.content.Context;
 
-import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
 
 /**
@@ -10,18 +10,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
  */
 public class UrlSelector {
 
-    public static String getDetailUrl(Context context, Company company, Port port) {
-        switch (company) {
-            case ANNEI:
-                return getAnneiUrl(context, port);
-            case YKF:
-                return getYkfUrl(context, port);
-            default:
-                return null;
-        }
-    }
-
-    private static String getAnneiUrl(Context context, Port port) {
+    public static String getAnneiDetailUrl(Context context, Port port) {
 
         switch (port) {
             case HATERUMA:
@@ -42,16 +31,4 @@ public class UrlSelector {
                 return null;
         }
     }
-
-
-    private static String getYkfUrl(Context context, Port port) {
-
-        switch (port) {
-            case HATERUMA:
-                return context.getString(R.string.url_ykf_facebook);
-            default:
-                return null;
-        }
-    }
 }
-

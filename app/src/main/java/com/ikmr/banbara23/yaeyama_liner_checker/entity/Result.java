@@ -93,4 +93,14 @@ public class Result implements Parcelable {
     public void setLiners(ArrayList<Liner> liners) {
         mLiners = liners;
     }
+
+    @Override
+    public String toString() {
+        return "Result{" +
+                "mCompany=" + mCompany +
+                ", mUpdateTime='" + mUpdateTime + '\'' +
+                ", mTitle='" + mTitle + '\'' +
+                ", mLiners=" + mLiners +
+                '}';
+    }
 }

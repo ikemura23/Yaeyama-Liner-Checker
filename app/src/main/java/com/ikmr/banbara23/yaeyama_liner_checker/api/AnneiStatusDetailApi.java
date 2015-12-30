@@ -2,8 +2,6 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.api;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.Consts;
-import com.ikmr.banbara23.yaeyama_liner_checker.PortUrlUtil;
-import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
 import com.ikmr.banbara23.yaeyama_liner_checker.parser.AnneiDetailParser;
 
 import org.jsoup.Jsoup;
@@ -19,14 +17,14 @@ import rx.functions.Func1;
  * 指定した安栄の詳細を取得
  */
 public class AnneiStatusDetailApi {
-    public static Observable<String> request(final Port port) {
+    public static Observable<String> request(final String url) {
         return Observable
                 .create(new Observable.OnSubscribe<Document>() {
                     @Override
                     public void call(Subscriber<? super Document> subscriber) {
                         Document document;
                         try {
-                            document = Jsoup.connect(PortUrlUtil.getAneiPortUrl(port)).timeout(Consts.CONNECTION_TIME_OUT).get();
+                            document = Jsoup.connect(url).timeout(Consts.CONNECTION_TIME_OUT).get();
                             subscriber.onNext(document);
                             subscriber.onCompleted();
                         } catch (IOException e) {
