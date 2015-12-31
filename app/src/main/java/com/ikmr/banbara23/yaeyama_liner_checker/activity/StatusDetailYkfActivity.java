@@ -14,12 +14,13 @@ import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StringUtils;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.YkfLinerDetail;
+import com.ikmr.banbara23.yaeyama_liner_checker.fragment.FragmentApiQueryInterface;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusDetailYkfFragment;
 
 /**
  * ステータス詳細のActivity
  */
-public class StatusDetailYkfActivity extends BaseActivity {
+public class StatusDetailYkfActivity extends BaseActivity implements FragmentApiQueryInterface {
 
     YkfLinerDetail mYkfLinerDetail;
     Liner mLiner;
@@ -30,7 +31,8 @@ public class StatusDetailYkfActivity extends BaseActivity {
     /**
      * クエリ起動中かどうか
      */
-    // private boolean mQuerying;
+    private boolean mQuerying;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -148,5 +150,15 @@ public class StatusDetailYkfActivity extends BaseActivity {
      */
     public void onWebClicked(View view) {
         Toast.makeText(getApplicationContext(), "サイトで確認クリック", Toast.LENGTH_SHORT);
+    }
+
+    @Override
+    public void startQuery() {
+        mQuerying = true;
+    }
+
+    @Override
+    public void finishQuery() {
+        mQuerying = false;
     }
 }

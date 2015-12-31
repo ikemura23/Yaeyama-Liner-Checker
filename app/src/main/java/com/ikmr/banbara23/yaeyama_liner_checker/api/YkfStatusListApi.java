@@ -3,7 +3,7 @@ package com.ikmr.banbara23.yaeyama_liner_checker.api;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.Consts;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
-import com.ikmr.banbara23.yaeyama_liner_checker.parser.AnneiListParser;
+import com.ikmr.banbara23.yaeyama_liner_checker.parser.YkfParser;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -15,7 +15,7 @@ import rx.Subscriber;
 import rx.functions.Func1;
 
 /**
- * 安栄一覧の取得
+ * 八重山観光フェリー運航一覧の取得
  */
 public class YkfStatusListApi {
 
@@ -43,7 +43,7 @@ public class YkfStatusListApi {
                 .map(new Func1<Document, Result>() {
                     @Override
                     public Result call(Document document) {
-                        return AnneiListParser.pars(document);
+                        return YkfParser.pars(document);
                     }
                 });
     }
