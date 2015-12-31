@@ -10,25 +10,24 @@ import android.widget.TextView;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StringUtils;
-import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 
 /**
  * 詳細のカスタムビュー
  */
-public class StatusDetailView extends LinearLayout {
+public class StatusDetailTextView extends LinearLayout {
     TextView mValueText;
 
-    public StatusDetailView(Context context) {
+    public StatusDetailTextView(Context context) {
         super(context);
     }
 
-    public StatusDetailView(Context context, AttributeSet attrs) {
+    public StatusDetailTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        View layout = LayoutInflater.from(context).inflate(R.layout.view_status_detail, this);
+        View layout = LayoutInflater.from(context).inflate(R.layout.view_status_detail_text, this);
         mValueText = (TextView) layout.findViewById(R.id.view_status_detail_value);
     }
 
-    public void bind(Liner liner, String value) {
+    public void bind(String value) {
         setValue(value);
     }
 

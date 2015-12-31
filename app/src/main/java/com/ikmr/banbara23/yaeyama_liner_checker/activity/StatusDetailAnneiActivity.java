@@ -2,7 +2,6 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.activity;
 
 import android.app.Fragment;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,20 +9,17 @@ import android.view.MenuItem;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
-import com.ikmr.banbara23.yaeyama_liner_checker.StatusDetailAsync;
 import com.ikmr.banbara23.yaeyama_liner_checker.StringUtils;
-import com.ikmr.banbara23.yaeyama_liner_checker.UrlSelector;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
-import com.ikmr.banbara23.yaeyama_liner_checker.fragment.FragmentInterface;
-import com.ikmr.banbara23.yaeyama_liner_checker.fragment.QueryInterface;
-import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusDetailFragment;
+import com.ikmr.banbara23.yaeyama_liner_checker.fragment.FragmentApiQueryInterface;
+import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusDetailAnneiFragment;
 
 import butterknife.ButterKnife;
 
 /**
  * ステータス詳細のActivity
  */
-public class StatusDetailActivity extends BaseActivity implements QueryInterface, StatusDetailAsync.DetailAsyncCallback {
+public class StatusDetailAnneiActivity extends BaseActivity implements FragmentApiQueryInterface {
 
     Liner mLiner;
     Fragment mFragment;
@@ -31,13 +27,13 @@ public class StatusDetailActivity extends BaseActivity implements QueryInterface
     /**
      * クエリ起動中かどうか
      */
-    private boolean mQuerying;
+    private boolean mQuerying = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_status_detail);
-        mLiner = getIntent().getParcelableExtra(StatusDetailActivity.class.getName());
+        mLiner = getIntent().getParcelableExtra(StatusDetailAnneiActivity.class.getName());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ButterKnife.bind(this);
 
@@ -79,7 +75,7 @@ public class StatusDetailActivity extends BaseActivity implements QueryInterface
      * フラグメント作成
      */
     private void createFragment() {
-        mFragment = StatusDetailFragment.NewInstance(mLiner);
+        mFragment = StatusDetailAnneiFragment.NewInstance(mLiner);
         getFragmentManager().beginTransaction()
                 .replace(R.id.container, mFragment)
                 .commit();
@@ -99,8 +95,9 @@ public class StatusDetailActivity extends BaseActivity implements QueryInterface
                 finish();
                 break;
             case R.id.action_reload:
+                // mQuerying=trueならFragmentが通信中
                 if (!mQuerying) {
-                    createDetail();
+                    createFragment();
                 }
                 break;
         }
@@ -142,54 +139,13 @@ public class StatusDetailActivity extends BaseActivity implements QueryInterface
     /**
      * Fragmentの準備が完了
      */
-    @Override
+    // @Override
     public void startQuery() {
-        createDetail();
-    }
-
-    /**
-     * 詳細の作成開始
-     */
-    private void createDetail() {
-        String url = UrlSelector.getDetailUrl(getApplicationContext(), mLiner.company, mLiner.port);
-        new StatusDetailAsync(this, mLiner.getCompany()).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, url);
-    }
-
-    @Override
-    public void preExecute() {
-        if (mFragment != null && mFragment instanceof FragmentInterface) {
-            ((FragmentInterface) mFragment).onStartQuery(mLiner.getPort());
-        }
         mQuerying = true;
     }
 
     @Override
-    public void postExecute(String valueString) {
-        if (!mQuerying)
-            return;
-
-        try {
-            if (StringUtils.isEmpty(valueString)) {
-                failedProcess();
-                return;
-            }
-            if (mFragment != null && mFragment instanceof FragmentInterface) {
-                ((FragmentInterface) mFragment).onResultQuery(mLiner, valueString);
-            }
-        } catch (Exception e) {
-            failedProcess();
-        } finally {
-            mQuerying = false;
-            // 終了
-            if (mFragment != null && mFragment instanceof FragmentInterface) {
-                ((FragmentInterface) mFragment).onFinishQuery();
-            }
-        }
-    }
-
-    private void failedProcess() {
-        if (mFragment != null && mFragment instanceof FragmentInterface) {
-            ((FragmentInterface) mFragment).onFailedQuery();
-        }
+    public void finishQuery() {
+        mQuerying = false;
     }
 }

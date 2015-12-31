@@ -10,7 +10,6 @@
         android:layout_height="wrap_content"
         android:layout_margin="3dp"
         android:layout_weight="1"
-        android:onClick="onTellClicked"
         android:text="電話で問い合わせ"/>
 
     <Button
@@ -19,6 +18,5 @@
         android:layout_height="wrap_content"
         android:layout_margin="3dp"
         android:layout_weight="1"
-        android:onClick="onWebClicked"
         android:text="サイトで確認"/>
 </LinearLayout>

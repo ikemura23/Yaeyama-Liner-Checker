@@ -4,13 +4,10 @@ package com.ikmr.banbara23.yaeyama_liner_checker.fragment;
 import android.app.Activity;
 import android.app.ListFragment;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,16 +17,17 @@ import com.ikmr.banbara23.yaeyama_liner_checker.StringUtils;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 
+import butterknife.ButterKnife;
+
 /**
  * ステータスリストのFragment
  */
 public class StatusListFragment extends ListFragment implements ListFragmentInterface {
     StatusListAdapter mListAdapter;
-    ListView mListView;
     TextView mTitleText;
     TextView mUpdateText;
-    FrameLayout mHeaderCardLayout;
-    // ProgressWheel mProgressWheel;
+    View mHeaderCardLayout;
+    View mProgressBar;
 
     final static String PARAM_COMPANY = "company";
 
@@ -47,12 +45,10 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_status_list, container, false);
-        mListView = (ListView) view.findViewById(android.R.id.list);
-        // mProgressWheel = (ProgressWheel)
-        // view.findViewById(R.id.fragment_list_material_progress_bar);
-        mHeaderCardLayout = (CardView) view.findViewById(R.id.fragment_status_list_header_card_view);
+        mHeaderCardLayout = view.findViewById(R.id.fragment_status_list_header_card_view);
         mTitleText = (TextView) view.findViewById(R.id.fragment_status_list_toolbar_title_text);
         mUpdateText = (TextView) view.findViewById(R.id.fragment_status_list_toolbar_update_text);
+        ButterKnife.bind(this, view);
         return view;
     }
 
@@ -61,29 +57,9 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
         super.onActivityCreated(savedInstanceState);
         Activity activity = getActivity();
         if (activity != null && activity instanceof QueryInterface) {
-            // リストアダプターの生成
-            mListAdapter = new StatusListAdapter(getActivity().getApplicationContext(), getActivity());
-            setListAdapter(mListAdapter);
             // API通信処理の開始準備の完了
             ((QueryInterface) activity).startQuery();
-            showProgress();
         }
-    }
-
-    /**
-     * 読込中の表示開始
-     */
-    private void showProgress() {
-        mHeaderCardLayout.setVisibility(View.GONE);
-        // mProgressWheel.setVisibility(View.VISIBLE);
-    }
-
-    /**
-     * 読込中の表示完了
-     */
-    private void hideProgress() {
-        mHeaderCardLayout.setVisibility(View.VISIBLE);
-        // mProgressWheel.setVisibility(View.GONE);
     }
 
     /**
@@ -99,9 +75,16 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
      */
     @Override
     public void onStartQuery() {
-        showProgress();
-        mListAdapter.clear();
-        mListAdapter.notifyDataSetChanged();
+        initViews();
+    }
+
+    private void initViews() {
+        mProgressBar = View.inflate(getActivity(),
+                R.layout.view_progressbar, null);
+        getListView().addFooterView(mProgressBar, null, false);
+
+        mListAdapter = new StatusListAdapter(getActivity().getApplicationContext(), getActivity());
+        setListAdapter(mListAdapter);
     }
 
     /**
@@ -159,7 +142,6 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
      */
     @Override
     public void onFailedQuery() {
-        // mProgressWheel.setVisibility(View.GONE);
         Toast.makeText(getActivity().getApplicationContext(), "エラーが発生しました", Toast.LENGTH_SHORT)
                 .show();
     }
@@ -169,6 +151,7 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
      */
     @Override
     public void onFinishQuery() {
-        hideProgress();
+        mHeaderCardLayout.setVisibility(View.VISIBLE);
+        getListView().removeFooterView(mProgressBar);
     }
 }

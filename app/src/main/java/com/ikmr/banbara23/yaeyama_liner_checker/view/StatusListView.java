@@ -32,11 +32,11 @@ public class StatusListView extends FrameLayout {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        mPortText = (TextView) findViewById(R.id.view_status_list_port_text);
-        mStatus_normal = (TextView) findViewById(R.id.view_status_list_status_normal_text);
+        mPortText = (TextView) findViewById(R.id.view_status_detail_top_port);
+        mStatus_normal = (TextView) findViewById(R.id.view_status_detail_top_update_text);
         mStatus_cancel = (TextView) findViewById(R.id.view_status_list_status_cancel_text);
         mStatus_cation = (TextView) findViewById(R.id.view_status_list_status_cation_text);
-        mCommentText = (TextView) findViewById(R.id.view_status_list_comment_text);
+        mCommentText = (TextView) findViewById(R.id.view_status_detail_top_text);
     }
 
     /**

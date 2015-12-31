@@ -29,7 +29,7 @@
             android:label="@string/title_activity_status_list">
         </activity>
         <activity
-            android:name=".activity.StatusDetailActivity"
+            android:name=".activity.StatusDetailAnneiActivity"
             android:label="@string/title_activity_status_detail">
         </activity>
         <activity
