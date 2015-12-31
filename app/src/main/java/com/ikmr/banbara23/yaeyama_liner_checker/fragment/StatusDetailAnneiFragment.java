@@ -6,14 +6,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.ikmr.banbara23.yaeyama_liner_checker.PortUtil;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
-import com.ikmr.banbara23.yaeyama_liner_checker.UrlSelector;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.AnneiStatusDetailApi;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.AnneiStatusListApi;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
@@ -23,8 +22,6 @@ import com.ikmr.banbara23.yaeyama_liner_checker.timetable.annei.AnneiTimeTableVi
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailTextView;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailTopView;
 import com.pnikosis.materialishprogress.ProgressWheel;
-
-import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.BindString;
@@ -70,13 +67,13 @@ public class StatusDetailAnneiFragment extends BaseFragment {
     // 電話する押下
     @OnClick(R.id.view_action_box_tel)
     void telClick(View view) {
-        startTel();
+        startWeb();
     }
 
     // サイトを見る押下
-    @OnClick(R.id.view_action_box_tel)
+    @OnClick(R.id.view_action_box_web)
     void webClick(View view) {
-        startWeb();
+        startTel();
     }
 
     // ButterKnife BindString --------------------------------------------
@@ -162,7 +159,7 @@ public class StatusDetailAnneiFragment extends BaseFragment {
      * 安栄のTOPの一覧を取得
      */
     private void getAnneiDetail() {
-        String url = UrlSelector.getAnneiDetailUrl(getActivity().getApplicationContext(), getPort());
+        String url = PortUtil.getAnneiDetailUrl(getActivity().getApplicationContext(), getPort());
         mCompositeSubscription.add(
                 AnneiStatusDetailApi.request(url)
                         .observeOn(AndroidSchedulers.mainThread())
@@ -185,7 +182,6 @@ public class StatusDetailAnneiFragment extends BaseFragment {
                             public void onNext(String s) {
                                 // 値うけとる
                                 onResultDetailQuery(s);
-                                Log.d("StatusDetailAnneiFragme", s);
                             }
                         })
                 );
@@ -218,7 +214,6 @@ public class StatusDetailAnneiFragment extends BaseFragment {
                             public void onNext(Result result) {
                                 // 値うけとる
                                 onResultListQuery(result);
-                                Log.d("StatusDetailAnneiFragme", "result:" + result);
                             }
                         })
                 );
@@ -234,19 +229,10 @@ public class StatusDetailAnneiFragment extends BaseFragment {
             return;
         }
 
-        Liner liner = getMyPort(result.getLiners());
+        Liner liner = PortUtil.getMyPort(result.getLiners(), getPort());
 
         mStatusDetailTopView.setVisibility(View.VISIBLE);
         mStatusDetailTopView.bind(liner);
-    }
-
-    private Liner getMyPort(ArrayList<Liner> liners) {
-        for (Liner liner : liners) {
-            if (getPort() == liner.getPort()) {
-                return liner;
-            }
-        }
-        return null;
     }
 
     /**
@@ -300,7 +286,8 @@ public class StatusDetailAnneiFragment extends BaseFragment {
      * 外部ブラウザを起動
      */
     private void startWeb() {
-        Uri uri = Uri.parse(getAneiPortUrl());
+        String urlString = PortUtil.getAnneiDetailUrl(getActivity().getApplicationContext(), getPort());
+        Uri uri = Uri.parse(urlString);
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         try {
             startActivity(intent);
@@ -308,31 +295,5 @@ public class StatusDetailAnneiFragment extends BaseFragment {
             // 何もしない
         }
 
-    }
-
-    /***
-     * 安栄の港別のURLを返す
-     *
-     * @return URL
-     */
-    private String getAneiPortUrl() {
-        switch (getParam().getPort()) {
-            case TAKETOMI:
-                return getActivity().getApplicationContext().getString(R.string.url_annei_taketomi);
-            case KOHAMA:
-                return getActivity().getApplicationContext().getString(R.string.url_annei_kohama);
-            case OOHARA:
-                return getActivity().getApplicationContext().getString(R.string.url_annei_oohara);
-            case UEHARA:
-                return getActivity().getApplicationContext().getString(R.string.url_annei_uehara);
-            case KUROSHIMA:
-                return getActivity().getApplicationContext().getString(R.string.url_annei_kuroshima);
-            case HATOMA:
-                return getActivity().getApplicationContext().getString(R.string.url_annei_hatoma);
-            case HATERUMA:
-                return getActivity().getApplicationContext().getString(R.string.url_annei_hateruma);
-            default:
-                return getActivity().getApplicationContext().getString(R.string.hp_annei);
-        }
     }
 }
