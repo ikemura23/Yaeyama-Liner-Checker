@@ -43,6 +43,10 @@
     <string name="tel_ykf">0980825010</string>
     <!--八重山観光フェリーのHP-->
     <string name="hp_ykf">http://www.yaeyama.co.jp/pg104.html</string>
+    <!--ドリーム観光の電話番号-->
+    <string name="tel_dream">0980843178</string>
+    <!--ドリーム観光のHP-->
+    <string name="hp_dream">http://www.ishigaki-dream.co.jp/data.cgi?no=78</string>
 
     <!--その他-->
     <string name="other_info">当アプリは個人が作成したアプリであり、安栄観光様・八重山観光フェリー様の公式アプリではありません。\n当アプリについての安栄観光様・八重山観光フェリー様へのお問い合わせは、ご遠慮頂くようお願い申し上げます。</string>

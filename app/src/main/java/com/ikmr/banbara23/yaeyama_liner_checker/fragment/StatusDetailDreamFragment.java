@@ -9,44 +9,52 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
-import com.ikmr.banbara23.yaeyama_liner_checker.Consts;
+import com.ikmr.banbara23.yaeyama_liner_checker.PortUtil;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StringUtils;
+import com.ikmr.banbara23.yaeyama_liner_checker.api.DreamStatusListApi;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.YkfLinerDetail;
-import com.ikmr.banbara23.yaeyama_liner_checker.parser.AnneiListParser;
 import com.ikmr.banbara23.yaeyama_liner_checker.timetable.dream.DreamTimeTableView;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailTextView;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-
-import java.io.IOException;
+import com.pnikosis.materialishprogress.ProgressWheel;
 
 import butterknife.Bind;
+import butterknife.BindString;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Func1;
 import rx.schedulers.Schedulers;
+import rx.subscriptions.CompositeSubscription;
 
 /**
  * ドリーム観光の詳細画面フラグメント
  */
 public class StatusDetailDreamFragment extends BaseFragment {
 
+    // ButterKnife Bind View --------------------------------------------
     @Bind(R.id.fragment_dream_status_detail_text_view)
     StatusDetailTextView mStatusDetailTextView;
+
     @Bind(R.id.fragment_dream_time_table_view)
     DreamTimeTableView mDreamTimeTableView;
+
     @Bind(R.id.fragment_dream_status_detail_content_layout)
     LinearLayout mFragmentDreamStatusDetailContentLayout;
 
+    @Bind(R.id.fragment_dream_status_detail_progressbar)
+    ProgressWheel mProgressBar;
+
+    @Bind(R.id.fragment_dream_status_detail_reload_button)
+    Button mReloadButton;
+
+    // ButterKnife OnClick --------------------------------------------
     @OnClick(R.id.view_action_box_tel)
     void tellClick(View view) {
         startTell();
@@ -57,21 +65,25 @@ public class StatusDetailDreamFragment extends BaseFragment {
         startWeb();
     }
 
+    // ButterKnife BindString --------------------------------------------
+    @BindString(R.string.url_dream_list)
+    String URL_DREAM_LIST;
+
+    @BindString(R.string.tel_dream)
+    String TEL_DREAM;
+
+    @BindString(R.string.hp_dream)
+    String HP_DREAM;
+
+    // プライベート変数 --------------------------------------------
+    private CompositeSubscription mCompositeSubscription = new CompositeSubscription();
+
     public static StatusDetailDreamFragment NewInstance(YkfLinerDetail ykfLinerDetail) {
         StatusDetailDreamFragment fragment = new StatusDetailDreamFragment();
         Bundle bundle = new Bundle();
         bundle.putParcelable(StatusDetailDreamFragment.class.getName(), ykfLinerDetail);
         fragment.setArguments(bundle);
         return fragment;
-    }
-
-    /**
-     * パラメータ取得
-     *
-     * @return
-     */
-    private YkfLinerDetail getParam() {
-        return getArguments().getParcelable(StatusDetailDreamFragment.class.getName());
     }
 
     @Nullable
@@ -83,88 +95,25 @@ public class StatusDetailDreamFragment extends BaseFragment {
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
-        ButterKnife.unbind(this);
+    public void onResume() {
+        super.onResume();
+        startQuery();
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        mFragmentDreamStatusDetailContentLayout.setVisibility(View.VISIBLE);
-        // mStatusDetailTextView.bind(getParam().getLiner(), createValueText());
-        if (isTimeTableShow()) {
-            mDreamTimeTableView.setVisibility(View.VISIBLE);
-            mDreamTimeTableView.switchPortView(getParam().getPort());
-        }
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.unbind(this);
+        mCompositeSubscription.unsubscribe();
     }
 
-    private void callApi() {
-        Observable
-                .create(new Observable.OnSubscribe<Document>() {
-                    @Override
-                    public void call(Subscriber<? super Document> subscriber) {
-                        // Request request = new Request.Builder()
-                        // .url("http://rakuishi.com/index.xml")
-                        // .get()
-                        // .build();
-                        // OkHttpClient okHttpClient = new OkHttpClient();
-                        // try {
-                        // Response response =
-                        // okHttpClient.newCall(request).execute();
-                        // subscriber.onNext(response);
-                        // subscriber.onCompleted();
-                        // } catch (IOException e) {
-                        // subscriber.onError(e);
-                        // }
-                        Document document;
-                        try {
-                            document = Jsoup.connect("http://www.aneikankou.co.jp/").timeout(Consts.CONNECTION_TIME_OUT).get();
-                            subscriber.onNext(document);
-                            subscriber.onCompleted();
-                        } catch (IOException e) {
-                            subscriber.onError(e);
-                        }
-                    }
-                })
-                .map(new Func1<Document, Result>() {
-                    @Override
-                    public Result call(Document document) {
-                        // Serializer serializer = new Persister();
-                        // try {
-                        // return serializer.read(Feed.class,
-                        // response.body().string());
-                        // } catch (Exception e) {
-                        // throw new OnErrorFailedException(e);
-                        // }
-                        return AnneiListParser.pars(document);
-                    }
-                })
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.newThread())
-                .subscribe(new Subscriber<Result>() {
-                    @Override
-                    public void onCompleted() {
-                        // 完了
-                        // mEmptyView.setVisibility(View.GONE);
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        // 失敗
-                        // ToastUtils.showLongMessage(getActivity(),
-                        // e.getMessage());
-                        // mEmptyView.setVisibility(View.GONE);
-                    }
-
-                    @Override
-                    public void onNext(Result result) {
-                        // 成功
-                        Log.d("StatusDetailDreamFragme", "result:" + result);
-                        // mListView.setAdapter(new FeedAdapter(getActivity(),
-                        // feed.getList()));
-                    }
-                });
+    /**
+     * パラメータ取得
+     *
+     * @return
+     */
+    private YkfLinerDetail getParam() {
+        return getArguments().getParcelable(StatusDetailDreamFragment.class.getName());
     }
 
     /**
@@ -199,25 +148,10 @@ public class StatusDetailDreamFragment extends BaseFragment {
      * 外部電話アプリ起動
      */
     private void startTell() {
-        String tell;
-        switch (getParam().getLiner().getCompany()) {
-            case ANNEI:
-                tell = getActivity().getApplicationContext().getString(R.string.tel_annei);
-                break;
-
-            case YKF:
-                tell = getActivity().getApplicationContext().getString(R.string.tel_ykf);
-                break;
-            default:
-                tell = null;
-        }
-        if (tell == null) {
-            return;
-        }
         try {
             Intent intent = new Intent(
                     Intent.ACTION_VIEW,
-                    Uri.parse("tel:" + tell));
+                    Uri.parse("tel:" + TEL_DREAM));
 
             startActivity(intent);
         } catch (Exception e) {
@@ -229,23 +163,7 @@ public class StatusDetailDreamFragment extends BaseFragment {
      * 外部ブラウザアプリ起動
      */
     private void startWeb() {
-        String hpUrl;
-        switch (getParam().getLiner().getCompany()) {
-            case ANNEI:
-                hpUrl = getActivity().getApplicationContext().getString(R.string.hp_annei);
-                break;
-
-            case YKF:
-                hpUrl = getActivity().getApplicationContext().getString(R.string.hp_ykf);
-                break;
-            default:
-                hpUrl = null;
-        }
-        if (hpUrl == null) {
-            return;
-        }
-
-        Uri uri = Uri.parse(hpUrl);
+        Uri uri = Uri.parse(HP_DREAM);
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         try {
             startActivity(intent);
@@ -255,9 +173,73 @@ public class StatusDetailDreamFragment extends BaseFragment {
 
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        ButterKnife.unbind(this);
+    /**
+     * ステータス取得処理の開始
+     */
+    public void startQuery() {
+        mProgressBar.setVisibility(View.VISIBLE);
+        getDreamList();
+    }
+
+    /**
+     * 八重山観光フェリーAPIを呼び出す
+     */
+    private void getDreamList() {
+
+        mCompositeSubscription.add(
+                DreamStatusListApi.request(URL_DREAM_LIST)
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeOn(Schedulers.newThread())
+                        .subscribe(new Subscriber<Result>() {
+                            @Override
+                            public void onCompleted() {
+                                // 完了
+                                finishQuery();
+                            }
+
+                            @Override
+                            public void onError(Throwable e) {
+                                // 失敗
+                                failedQuery();
+                            }
+
+                            @Override
+                            public void onNext(Result result) {
+                                // 値うけとる
+                                onResultListQuery(result);
+                            }
+                        })
+                );
+    }
+
+    /**
+     * 一覧を取得した
+     *
+     * @param result
+     */
+    private void onResultListQuery(Result result) {
+        Liner liner = PortUtil.getMyPort(result.getLiners(), getParam().getPort());
+        // TODO: 15/12/31 ステータスを反映
+        Log.d("StatusDetailYkfFragment", "liner:" + liner);
+    }
+
+    /**
+     * 取得失敗
+     */
+    public void failedQuery() {
+        mReloadButton.setVisibility(View.VISIBLE);
+    }
+
+    /**
+     * 取得完了
+     */
+    public void finishQuery() {
+        mProgressBar.setVisibility(View.GONE);
+        mFragmentDreamStatusDetailContentLayout.setVisibility(View.VISIBLE);
+
+        if (isTimeTableShow()) {
+            mDreamTimeTableView.setVisibility(View.VISIBLE);
+            mDreamTimeTableView.switchPortView(getParam().getPort());
+        }
     }
 }
