@@ -6,19 +6,22 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 
+import com.ikmr.banbara23.yaeyama_liner_checker.PortUtil;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
-import com.ikmr.banbara23.yaeyama_liner_checker.api.AnneiStatusListApi;
+import com.ikmr.banbara23.yaeyama_liner_checker.api.YkfStatusListApi;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.YkfLinerDetail;
 import com.ikmr.banbara23.yaeyama_liner_checker.timetable.ykf.YkfTimeTableView;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailTextView;
+import com.pnikosis.materialishprogress.ProgressWheel;
 
 import butterknife.Bind;
 import butterknife.BindString;
@@ -36,17 +39,20 @@ public class StatusDetailYkfFragment extends BaseFragment {
 
     @Bind(R.id.fragment_ykf_status_detail_view)
     StatusDetailTextView mStatusDetailTextView;
+
     @Bind(R.id.fragment_time_table_view)
     YkfTimeTableView mYkfTimeTableView;
+
     @Bind(R.id.fragment_status_detail_content_layout)
     LinearLayout mFragmentStatusDetailContentLayout;
-    @Bind(R.id.fragment_status_detail_progressbar)
-    ProgressBar mProgressBar;
 
-    @Bind(R.id.fragment_status_detail_reload_button)
+    @Bind(R.id.fragment_ykf_status_detail_progressbar)
+    ProgressWheel mProgressBar;
+
+    @Bind(R.id.fragment_ykf_status_detail_reload_button)
     Button mReloadButton;
 
-    @OnClick(R.id.fragment_status_detail_reload_button)
+    @OnClick(R.id.fragment_ykf_status_detail_reload_button)
     void reloadClick(View view) {
         Activity activity = getActivity();
         if (activity != null && activity instanceof QueryInterface) {
@@ -91,7 +97,6 @@ public class StatusDetailYkfFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_status_detail_ykf, container, false);
-        mStatusDetailTextView = (StatusDetailTextView) view.findViewById(R.id.fragment_ykf_status_detail_view);
         ButterKnife.bind(this, view);
         return view;
     }
@@ -100,8 +105,6 @@ public class StatusDetailYkfFragment extends BaseFragment {
     public void onResume() {
         super.onResume();
         startQuery();
-        // mFragmentStatusDetailContentLayout.setVisibility(View.VISIBLE);
-        // mYkfTimeTableView.switchPortView(getParam().getPort());
     }
 
     @Override
@@ -179,7 +182,7 @@ public class StatusDetailYkfFragment extends BaseFragment {
     private void getYkfList() {
 
         mCompositeSubscription.add(
-                AnneiStatusListApi.request(URL_YKF_LIST)
+                YkfStatusListApi.request(URL_YKF_LIST)
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeOn(Schedulers.newThread())
                         .subscribe(new Subscriber<Result>() {
@@ -210,7 +213,9 @@ public class StatusDetailYkfFragment extends BaseFragment {
      * @param result
      */
     private void onResultListQuery(Result result) {
+        Liner liner = PortUtil.getMyPort(result.getLiners(), getParam().getPort());
         // TODO: 15/12/31 ステータスを反映
+        Log.d("StatusDetailYkfFragment", "liner:" + liner);
     }
 
     /**
@@ -224,6 +229,7 @@ public class StatusDetailYkfFragment extends BaseFragment {
      * 取得完了
      */
     public void finishQuery() {
+        mProgressBar.setVisibility(View.GONE);
         mFragmentStatusDetailContentLayout.setVisibility(View.VISIBLE);
         mYkfTimeTableView.switchPortView(getParam().getPort());
     }
