@@ -124,6 +124,9 @@ public class DreamListParser {
         else if (text.equals("欠航")) {
             return Status.CANCEL;
         }
+        else if (text.equals("運休")) {
+            return Status.SUSPEND;
+        }
         else {
             return Status.CAUTION;
         }
