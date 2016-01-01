@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--下段-->
+<LinearLayout
+    android:id="@+id/view_status_detail_top_status_comment_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:orientation="horizontal"
+    android:paddingBottom="8dp"
+    android:weightSum="2"
+    >
+    <!--距離-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        >
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="6dp"
+            card_view:cardCornerRadius="3dp"
+            >
+
+            <TextView
+                android:id="@+id/view_status_detail_top_distance_comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:ellipsize="end"
+                android:textColor="@color/background_material_dark"
+                android:textSize="16sp"
+                tools:text="ブラウザで表示"
+                />
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+
+    <!--所要時間-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="6dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        >
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="6dp"
+            card_view:cardCornerRadius="3dp"
+            >
+
+            <TextView
+                android:id="@+id/view_status_detail_top_time_comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/background_material_dark"
+                android:textSize="16sp"
+                tools:text="電話"
+                />
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+
+</LinearLayout>
