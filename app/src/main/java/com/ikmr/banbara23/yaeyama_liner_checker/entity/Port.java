@@ -12,7 +12,7 @@ public enum Port {
     KUROSHIMA("黒島", "黒島"),
     KOHAMA("小浜", "小浜"),
     TAKETOMI("竹富", "竹富"),
-    HATOMA_UEHARA("鳩間・上原", "鳩間島経由西表島上原"),
+    HATOMA_UEHARA("鳩間・上原", "鳩間島経由西表島・上原"),
     PREMIUM_DREAM("プレミアムドリーム", "プレミアムドリーム"),
     SUPER_DREAM("スーパードリーム", "スーパードリーム");
 

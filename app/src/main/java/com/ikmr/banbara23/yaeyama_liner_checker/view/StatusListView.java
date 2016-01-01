@@ -19,6 +19,7 @@ public class StatusListView extends FrameLayout {
     TextView mStatus_normal;
     TextView mStatus_cancel;
     TextView mStatus_cation;
+    TextView mStatus_suspend;
     TextView mCommentText;
 
     public StatusListView(Context context) {
@@ -36,12 +37,13 @@ public class StatusListView extends FrameLayout {
         mStatus_normal = (TextView) findViewById(R.id.view_status_detail_top_update_text);
         mStatus_cancel = (TextView) findViewById(R.id.view_status_list_status_cancel_text);
         mStatus_cation = (TextView) findViewById(R.id.view_status_list_status_cation_text);
+        mStatus_suspend = (TextView) findViewById(R.id.view_status_list_status_suspend_text);
         mCommentText = (TextView) findViewById(R.id.view_status_detail_top_text);
     }
 
     /**
      * ビューに値を表示
-     * 
+     *
      * @param liner
      */
     public void bind(Liner liner) {
@@ -52,7 +54,7 @@ public class StatusListView extends FrameLayout {
 
     /**
      * 港
-     * 
+     *
      * @param port
      */
     private void setPort(Port port) {
@@ -74,6 +76,7 @@ public class StatusListView extends FrameLayout {
         mStatus_normal.setVisibility(GONE);
         mStatus_cancel.setVisibility(GONE);
         mStatus_cation.setVisibility(GONE);
+        mStatus_suspend.setVisibility(GONE);
 
         switch (status) {
             case NORMAL:
@@ -84,6 +87,9 @@ public class StatusListView extends FrameLayout {
                 break;
             case CAUTION:
                 mStatus_cation.setVisibility(VISIBLE);
+                break;
+            case SUSPEND:
+                mStatus_suspend.setVisibility(VISIBLE);
                 break;
         }
     }
