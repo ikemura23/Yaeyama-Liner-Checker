@@ -39,13 +39,17 @@ public class StatusDetailTopView extends LinearLayout {
     String cation;
     @BindString(R.string.status_cancel)
     String cancel;
+    @BindString(R.string.status_cancel)
+    String suspend;
 
     @BindColor(R.color.status_normal)
-    int colorNomal;
+    int colorNormal;
     @BindColor(R.color.status_cation)
-    int coloCation;
+    int colorCation;
     @BindColor(R.color.status_cancel)
-    int coloCancel;
+    int colorCancel;
+    @BindColor(R.color.dark_grey)
+    int colorSuspend;
 
     public StatusDetailTopView(Context context) {
         super(context);
@@ -96,16 +100,19 @@ public class StatusDetailTopView extends LinearLayout {
         switch (status) {
             case NORMAL:
                 mStatusIcon.setText(normal);
-                mStatusIcon.setTextColor(colorNomal);
+                mStatusIcon.setTextColor(colorNormal);
                 break;
             case CANCEL:
                 mStatusIcon.setText(cation);
-                mStatusIcon.setTextColor(coloCation);
+                mStatusIcon.setTextColor(colorCation);
                 break;
             case CAUTION:
                 mStatusIcon.setText(cancel);
-                mStatusIcon.setTextColor(coloCancel);
+                mStatusIcon.setTextColor(colorCancel);
                 break;
+            case SUSPEND:
+                mStatusIcon.setText(suspend);
+                mStatusIcon.setTextColor(colorSuspend);
         }
     }
 
