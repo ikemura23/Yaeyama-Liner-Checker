@@ -40,7 +40,7 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             >
 
@@ -54,15 +54,24 @@
                 <com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailTopView
                     android:id="@+id/fragment_status_detail_top_view"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     />
 
-                <!--運航状況の説明-->
+                <!--時間と距離-->
                 <com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailDistanceAndTimeView
+                    android:id="@+id/fragment_status_detail_distance_time_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     />
 
+                <!--料金-->
+                <com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailPriceView
+                    android:id="@+id/fragment_status_detail_price_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+                <!--時刻表-->
                 <com.ikmr.banbara23.yaeyama_liner_checker.timetable.annei.AnneiTimeTableView
                     android:id="@+id/fragment_time_table_annei_view"
                     android:layout_width="match_parent"
