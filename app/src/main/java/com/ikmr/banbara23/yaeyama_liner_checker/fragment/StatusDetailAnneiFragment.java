@@ -232,7 +232,7 @@ public class StatusDetailAnneiFragment extends BaseFragment {
         Liner liner = PortUtil.getMyPort(result.getLiners(), getPort());
 
         mStatusDetailTopView.setVisibility(View.VISIBLE);
-        mStatusDetailTopView.bind(liner);
+        mStatusDetailTopView.bindStatus(liner);
     }
 
     /**

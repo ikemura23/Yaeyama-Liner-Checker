@@ -5,13 +5,13 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StringUtils;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
-import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Status;
 
 import butterknife.Bind;
@@ -22,17 +22,25 @@ import butterknife.ButterKnife;
 /**
  * 詳細トップのカスタムビュー
  */
-public class StatusDetailTopView extends LinearLayout {
+public class StatusDetailTopView extends FrameLayout {
 
+    // Bind View ---------------------------------------
     @Bind(R.id.view_status_detail_top_status)
     TextView mStatusIcon;
-    @Bind(R.id.view_status_detail_top_port)
-    TextView mPortText;
-    @Bind(R.id.view_status_detail_top_update_text)
-    TextView mUpdateText;
+
     @Bind(R.id.view_status_detail_top_text)
     TextView mStatusText;
 
+    @Bind(R.id.view_status_detail_top_status_comment_layout)
+    LinearLayout mViewStatusDetailTopStatusCommentLayout;
+
+    @Bind(R.id.view_status_detail_top_update_text)
+    TextView mUpdateText;
+
+    @Bind(R.id.view_status_detail_top_comment)
+    TextView mCommentText;
+
+    // BindString ---------------------------------------
     @BindString(R.string.status_normal)
     String normal;
     @BindString(R.string.status_cation)
@@ -42,6 +50,7 @@ public class StatusDetailTopView extends LinearLayout {
     @BindString(R.string.status_cancel)
     String suspend;
 
+    // BindColor ---------------------------------------
     @BindColor(R.color.status_normal)
     int colorNormal;
     @BindColor(R.color.status_cation)
@@ -66,25 +75,12 @@ public class StatusDetailTopView extends LinearLayout {
      * 
      * @param liner 運航情報
      */
-    public void bind(Liner liner) {
+    public void bindStatus(Liner liner) {
         if (liner == null) {
             return;
         }
         setStatusIcon(liner.getStatus());
-        setPort(liner.getPort());
         setStatusText(liner.getText());
-    }
-
-    /**
-     * 港
-     *
-     * @param port
-     */
-    private void setPort(Port port) {
-        if (port == null) {
-            return;
-        }
-        mPortText.setText(port.getValue());
     }
 
     /**
@@ -123,4 +119,29 @@ public class StatusDetailTopView extends LinearLayout {
         mStatusText.setText(StringUtils.trimAll(value));
     }
 
+    /**
+     * 更新日時
+     * 
+     * @param update
+     */
+    private void setUpdateText(String update) {
+        if (update == null) {
+            mUpdateText.setVisibility(GONE);
+            return;
+        }
+        mUpdateText.setText(update.trim());
+    }
+
+    /**
+     * コメント
+     * 
+     * @param comment
+     */
+    private void setCommentText(String comment) {
+        if (comment == null) {
+            mCommentText.setVisibility(GONE);
+            return;
+        }
+        mCommentText.setText(comment.trim());
+    }
 }

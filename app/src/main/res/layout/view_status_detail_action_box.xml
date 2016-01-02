@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--下段-->
 <LinearLayout
-    android:id="@+id/view_status_detail_top_status_comment_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
