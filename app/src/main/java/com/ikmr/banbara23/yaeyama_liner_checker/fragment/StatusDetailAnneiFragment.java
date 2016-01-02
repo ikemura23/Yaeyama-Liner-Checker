@@ -19,7 +19,6 @@ import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 import com.ikmr.banbara23.yaeyama_liner_checker.timetable.annei.AnneiTimeTableView;
-import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailTextView;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailTopView;
 import com.pnikosis.materialishprogress.ProgressWheel;
 
@@ -38,11 +37,6 @@ import rx.subscriptions.CompositeSubscription;
 public class StatusDetailAnneiFragment extends BaseFragment {
 
     // ButterKnife Bind View --------------------------------------------
-    @Bind(R.id.fragment_status_detail_text_view)
-    StatusDetailTextView mStatusDetailTextView;
-
-    @Bind(R.id.fragment_time_table_annei_view)
-    AnneiTimeTableView mAnneiTimeTableView;
 
     @Bind(R.id.fragment_status_detail_progressbar)
     ProgressWheel mProgressBar;
@@ -52,6 +46,9 @@ public class StatusDetailAnneiFragment extends BaseFragment {
 
     @Bind(R.id.fragment_status_detail_top_view)
     StatusDetailTopView mStatusDetailTopView;
+
+    @Bind(R.id.fragment_time_table_annei_view)
+    AnneiTimeTableView mAnneiTimeTableView;
 
     // ButterKnife OnClick --------------------------------------------
     // リロード押下
@@ -241,8 +238,8 @@ public class StatusDetailAnneiFragment extends BaseFragment {
      * @param comment
      */
     private void onResultDetailQuery(String comment) {
-        mStatusDetailTextView.setVisibility(View.VISIBLE);
-        mStatusDetailTextView.bind(comment);
+        // mStatusDetailTextView.setVisibility(View.VISIBLE);
+        // mStatusDetailTextView.bind(comment);
     }
 
     /**
