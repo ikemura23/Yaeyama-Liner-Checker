@@ -137,7 +137,7 @@ public class StatusDetailTopView extends FrameLayout {
      * 
      * @param comment
      */
-    private void setCommentText(String comment) {
+    public void setCommentText(String comment) {
         if (comment == null) {
             mCommentText.setVisibility(GONE);
             return;

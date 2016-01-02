@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.PortUtil;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
@@ -19,6 +21,8 @@ import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 import com.ikmr.banbara23.yaeyama_liner_checker.timetable.annei.AnneiTimeTableView;
+import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailDistanceAndTimeView;
+import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailPriceView;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailTopView;
 import com.pnikosis.materialishprogress.ProgressWheel;
 
@@ -49,6 +53,21 @@ public class StatusDetailAnneiFragment extends BaseFragment {
 
     @Bind(R.id.fragment_time_table_annei_view)
     AnneiTimeTableView mAnneiTimeTableView;
+
+    @Bind(R.id.fragment_status_detail_distance_time_view)
+    StatusDetailDistanceAndTimeView mDistanceTimeView;
+
+    @Bind(R.id.fragment_status_detail_price_view)
+    StatusDetailPriceView mPriceView;
+
+    @Bind(R.id.view_status_detail_top_distance_comment)
+    TextView mViewStatusDetailTopDistanceComment;
+
+    @Bind(R.id.view_status_detail_top_time_comment)
+    TextView mViewStatusDetailTopTimeComment;
+
+    @Bind(R.id.fragment_status_detail_value_layout)
+    LinearLayout mFragmentStatusDetailValueLayout;
 
     // ButterKnife OnClick --------------------------------------------
     // リロード押下
@@ -223,6 +242,7 @@ public class StatusDetailAnneiFragment extends BaseFragment {
      */
     private void onResultListQuery(Result result) {
         if (result == null || result.getLiners().isEmpty() || result.getLiners().size() == 0) {
+            failedQuery();
             return;
         }
 
@@ -230,6 +250,11 @@ public class StatusDetailAnneiFragment extends BaseFragment {
 
         mStatusDetailTopView.setVisibility(View.VISIBLE);
         mStatusDetailTopView.bindStatus(liner);
+        mDistanceTimeView.setDistanceText(getAnneiDistance());
+        mDistanceTimeView.setTimeText(getAnneiTime());
+        mPriceView.setPriceAdultText(getAnneiAdultPrice());
+        mPriceView.setPriceChildText(getAnneiChildPrice());
+        mPriceView.setPriceHandicappedText(getHandicappedPrice());
     }
 
     /**
@@ -238,8 +263,56 @@ public class StatusDetailAnneiFragment extends BaseFragment {
      * @param comment
      */
     private void onResultDetailQuery(String comment) {
-        // mStatusDetailTextView.setVisibility(View.VISIBLE);
-        // mStatusDetailTextView.bind(comment);
+        if (comment == null) {
+            mStatusDetailTopView.setVisibility(View.GONE);
+            return;
+        }
+        mStatusDetailTopView.setCommentText(comment);
+    }
+
+    /**
+     * 走行距離
+     * 
+     * @return 距離
+     */
+    private String getAnneiDistance() {
+        return null;
+    }
+
+    /**
+     * 走行時間
+     * 
+     * @return 走行時間
+     */
+    private String getAnneiTime() {
+        return null;
+    }
+
+    /**
+     * 料金・大人
+     * 
+     * @return 料金・大人
+     */
+    private String getAnneiAdultPrice() {
+        return null;
+    }
+
+    /**
+     * 料金・子供
+     * 
+     * @return 料金・子供
+     */
+    private String getAnneiChildPrice() {
+        return null;
+    }
+
+    /**
+     * 料金・障害者
+     * 
+     * @return 料金・障害者
+     */
+    private String getHandicappedPrice() {
+        return null;
     }
 
     /**
