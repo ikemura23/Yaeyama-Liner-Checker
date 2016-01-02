@@ -8,15 +8,15 @@
     card_view:cardCornerRadius="3dp"
     >
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:orientation="vertical"
         >
 
         <!--ヘッダー-->
         <LinearLayout
-            android:id="@+id/view_status_detail_top_status_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -25,7 +25,6 @@
 
             <!--ヘッダー文字-->
             <TextView
-                android:id="@+id/view_status_detail_top_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -45,10 +44,8 @@
 
         <!--内容-->
         <LinearLayout
-            android:id="@+id/view_status_detail_top_status_comment_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/view_status_detail_top_status_layout"
             android:layout_marginTop="8dp"
             android:orientation="horizontal"
             android:paddingBottom="8dp"
@@ -75,7 +72,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/view_status_detail_adult"
+                    android:id="@+id/view_status_detail_price_adult"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -107,7 +104,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/view_status_detail_top_child"
+                    android:id="@+id/view_status_detail_top_price_child"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -140,7 +137,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/view_status_detail_handicapped"
+                    android:id="@+id/view_status_detail_price_handicapped"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -154,6 +151,6 @@
             </LinearLayout>
 
         </LinearLayout>
-    </RelativeLayout>
+    </LinearLayout>
 
 </android.support.v7.widget.CardView>
