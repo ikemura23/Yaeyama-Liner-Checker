@@ -79,4 +79,47 @@
     <string name="status_cation">△</string>
     <string name="status_cancel">×</string>
 
+    <!--安栄の詳細情報-->
+    <!--竹富-->
+    <string name="annei_taketomi_distance">6.5km</string>
+    <string name="annei_taketomi_time">約10ｰ15分</string>
+    <string name="annei_taketomi_price_adult">片道 600円\n往復 1,150円</string>
+    <string name="annei_taketomi_price_child">片道 310円\n往復 590円</string>
+    <string name="annei_taketomi_price_handicapped">片道 310円</string>
+    <!--小浜-->
+    <string name="annei_kohama_distance">約17.7km</string>
+    <string name="annei_kohama_time">約25‐30分</string>
+    <string name="annei_kohama_price_adult">片道 1,060円\n往復 2,020円</string>
+    <string name="annei_kohama_price_child">片道 540円\n往復 1,020円</string>
+    <string name="annei_kohama_price_handicapped">片道 540円</string>
+    <!--黒島-->
+    <string name="annei_kuroshima_distance">約18.5km</string>
+    <string name="annei_kuroshima_time">約25‐30分</string>
+    <string name="annei_kuroshima_price_adult">片道 1,150円\n往復 2,190円</string>
+    <string name="annei_kuroshima_price_child">片道 580円\n往復 1,100円</string>
+    <string name="annei_kuroshima_price_handicapped">片道 580円</string>
+    <!--大原-->
+    <string name="annei_oohara_distance">約18.5km</string>
+    <string name="annei_oohara_time">約25‐30分</string>
+    <string name="annei_oohara_price_adult">片道 1,570円\n往復 2,980円</string>
+    <string name="annei_oohara_price_child">片道 790円\n往復 1,500円</string>
+    <string name="annei_oohara_price_handicapped">片道 790円</string>
+    <!--上原-->
+    <string name="annei_uehara_distance">約37.2km</string>
+    <string name="annei_uehara_time">約40‐45分</string>
+    <string name="annei_uehara_price_adult">片道 2,060円\n往復 3,910円</string>
+    <string name="annei_uehara_price_child">片道 1,030円\n往復 1,960円</string>
+    <string name="annei_uehara_price_handicapped">片道 1,030円</string>
+    <!--波照間-->
+    <string name="annei_hateruma_distance">約56km</string>
+    <string name="annei_hateruma_time">約60‐70分</string>
+    <string name="annei_hateruma_price_adult">片道 3,090円\n往復 5,870円</string>
+    <string name="annei_hateruma_price_child">片道 1,540円\n往復 2,930円</string>
+    <string name="annei_hateruma_price_handicapped">片道 1,550円</string>
+    <!--鳩間-->
+    <string name="annei_hatoma_distance">約km</string>
+    <string name="annei_hatoma_time">約40‐70分</string>
+    <string name="annei_hatoma_price_adult">片道 2,060円\n往復 3,910円</string>
+    <string name="annei_hatoma_price_child">片道 1,030円\往復 1,960円</string>
+    <string name="annei_hatoma_price_handicapped">片道 1,030円</string>
 </resources>
