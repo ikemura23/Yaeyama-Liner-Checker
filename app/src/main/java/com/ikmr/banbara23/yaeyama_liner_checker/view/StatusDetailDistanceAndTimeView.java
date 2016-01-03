@@ -6,6 +6,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
@@ -24,6 +25,9 @@ public class StatusDetailDistanceAndTimeView extends FrameLayout {
     @Bind(R.id.view_status_detail_top_time_text)
     TextView mTimeText;
 
+    @Bind(R.id.view_status_detail_top_distance_layout)
+    LinearLayout mDistanceLayout;
+
     public StatusDetailDistanceAndTimeView(Context context) {
         super(context);
     }
@@ -34,14 +38,24 @@ public class StatusDetailDistanceAndTimeView extends FrameLayout {
         ButterKnife.bind(this, layout);
     }
 
+    /**
+     * 走行距離
+     * 
+     * @param text
+     */
     public void setDistanceText(String text) {
         if (text == null) {
-            mDistanceText.setVisibility(GONE);
+            mDistanceLayout.setVisibility(GONE);
             return;
         }
         mDistanceText.setText(text);
     }
 
+    /**
+     * 走行時間
+     * 
+     * @param text
+     */
     public void setTimeText(String text) {
         if (text == null) {
             mTimeText.setVisibility(GONE);
