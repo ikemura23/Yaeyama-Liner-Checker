@@ -71,7 +71,7 @@
                 />
 
             <!--料金-->
-            <com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailPriceView
+            <com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailPriceHandicappedView
                 android:id="@+id/fragment_status_detail_price_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

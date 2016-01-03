@@ -16,7 +16,7 @@ import butterknife.ButterKnife;
 /**
  * 料金のカスタムビュー
  */
-public class StatusDetailPriceView extends FrameLayout {
+public class StatusDetailPriceHandicappedView extends FrameLayout {
 
     @Bind(R.id.view_status_detail_price_adult)
     TextView mPriceAdultText;
@@ -25,13 +25,13 @@ public class StatusDetailPriceView extends FrameLayout {
     @Bind(R.id.view_status_detail_price_handicapped)
     TextView mPriceHandicappedText;
 
-    public StatusDetailPriceView(Context context) {
+    public StatusDetailPriceHandicappedView(Context context) {
         super(context);
     }
 
-    public StatusDetailPriceView(Context context, AttributeSet attrs) {
+    public StatusDetailPriceHandicappedView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        View layout = LayoutInflater.from(context).inflate(R.layout.view_status_detail_price, this);
+        View layout = LayoutInflater.from(context).inflate(R.layout.view_status_detail_price_handicapped, this);
         ButterKnife.bind(this, layout);
     }
 

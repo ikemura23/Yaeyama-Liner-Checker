@@ -22,7 +22,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 import com.ikmr.banbara23.yaeyama_liner_checker.timetable.annei.AnneiTimeTableView;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailDistanceAndTimeView;
-import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailPriceView;
+import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailPriceHandicappedView;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailTopView;
 import com.pnikosis.materialishprogress.ProgressWheel;
 
@@ -58,7 +58,7 @@ public class StatusDetailAnneiFragment extends BaseFragment {
     StatusDetailDistanceAndTimeView mDistanceTimeView;
 
     @Bind(R.id.fragment_status_detail_price_view)
-    StatusDetailPriceView mPriceView;
+    StatusDetailPriceHandicappedView mPriceView;
 
     @Bind(R.id.view_status_detail_top_distance_comment)
     TextView mViewStatusDetailTopDistanceComment;
