@@ -19,8 +19,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_margin="@dimen/status_detail_view_inner_space"
+            android:orientation="horizontal"
             android:weightSum="2"
             >
 
@@ -28,7 +28,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="6dp"
+                android:layout_marginEnd="6dp"
                 android:layout_weight="1"
                 android:orientation="vertical"
                 >
@@ -57,9 +57,10 @@
 
             <!--所要時間-->
             <LinearLayout
+                android:id="@+id/view_status_detail_top_distance_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="6dp"
+                android:layout_marginStart="6dp"
                 android:layout_weight="1"
                 android:orientation="vertical"
                 >
