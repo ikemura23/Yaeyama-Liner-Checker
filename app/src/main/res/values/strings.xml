@@ -122,4 +122,29 @@
     <string name="annei_hatoma_price_adult">片道 2,060円\n往復 3,910円</string>
     <string name="annei_hatoma_price_child">片道 1,030円\往復 1,960円</string>
     <string name="annei_hatoma_price_handicapped">片道 1,030円</string>
+
+    <!--竹富-->
+    <string name="ykf_taketomi_time">約10分</string>
+    <string name="ykf_taketomi_price_adult">片道 600円\n往復 1,150円</string>
+    <string name="ykf_taketomi_price_child">片道 310円\n往復 590円</string>
+    <!--小浜-->
+    <string name="ykf_kohama_time">約25分</string>
+    <string name="ykf_kohama_price_adult">片道 1,060円\n往復 2,020円</string>
+    <string name="ykf_kohama_price_child">片道 540円\n往復 1,020円</string>
+    <!--黒島-->
+    <string name="ykf_kuroshima_time">約30分</string>
+    <string name="ykf_kuroshima_price_adult">片道 1,150円\n往復 2,190円</string>
+    <string name="ykf_kuroshima_price_child">片道 580円\n往復 1,100円</string>
+    <!--大原-->
+    <string name="ykf_oohara_time">35分</string>
+    <string name="ykf_oohara_price_adult">片道 1,570円\n往復 2,980円</string>
+    <string name="ykf_oohara_price_child">片道 790円\n往復 1,500円</string>
+    <!--上原-->
+    <string name="ykf_uehara_time">約40分</string>
+    <string name="ykf_uehara_price_adult">片道 2,060円\n往復 3,910円</string>
+    <string name="ykf_uehara_price_child">片道 1,030円\n往復 1,960円</string>
+    <!--鳩間-->
+    <string name="ykf_hatoma_time">約40分</string>
+    <string name="ykf_hatoma_price_adult">片道 2,060円\n往復 3,910円</string>
+    <string name="ykf_hatoma_price_child">片道 1,030円\往復 1,960円</string>
 </resources>
