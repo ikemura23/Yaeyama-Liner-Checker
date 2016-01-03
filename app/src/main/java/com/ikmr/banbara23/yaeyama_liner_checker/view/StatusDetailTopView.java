@@ -124,7 +124,7 @@ public class StatusDetailTopView extends FrameLayout {
      * 
      * @param update
      */
-    private void setUpdateText(String update) {
+    public void setUpdateText(String update) {
         if (update == null) {
             mUpdateText.setVisibility(GONE);
             return;

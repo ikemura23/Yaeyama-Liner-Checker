@@ -5,9 +5,8 @@
     xmlns:wheel="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="4dp"
     android:orientation="vertical"
-    android:weightSum="1"
-    tools:visibility="visible"
     >
 
     <!--プログレスバー-->
@@ -15,7 +14,6 @@
         android:id="@+id/fragment_status_detail_progressbar"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
         android:layout_margin="24dp"
         tools:visibility="gone"
@@ -51,13 +49,15 @@
                 android:id="@+id/fragment_status_detail_top_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
                 />
 
             <!--時刻表-->
             <com.ikmr.banbara23.yaeyama_liner_checker.timetable.annei.AnneiTimeTableView
                 android:id="@+id/fragment_time_table_annei_view"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
                 android:visibility="gone"
                 tools:visibility="visible"
                 />
@@ -67,6 +67,7 @@
                 android:id="@+id/fragment_status_detail_distance_time_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
                 />
 
             <!--料金-->
@@ -74,10 +75,12 @@
                 android:id="@+id/fragment_status_detail_price_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
                 />
 
             <!--ブラウザで見る、電話ボタン-->
-            <include layout="@layout/view_status_detail_action_box"/>
+            <include
+                layout="@layout/view_status_detail_action_box"/>
 
             <!--広告-->
             <include layout="@layout/view_card_ad_view"/>

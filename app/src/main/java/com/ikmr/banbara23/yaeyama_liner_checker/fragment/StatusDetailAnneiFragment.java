@@ -80,17 +80,17 @@ public class StatusDetailAnneiFragment extends BaseFragment {
         }
     }
 
-    // 電話する押下
-    @OnClick(R.id.view_action_box_tel)
-    void telClick(View view) {
-        startWeb();
-    }
-
-    // サイトを見る押下
-    @OnClick(R.id.view_action_box_web)
-    void webClick(View view) {
-        startTel();
-    }
+    // // 電話する押下
+    // @OnClick(R.id.view_action_box_tel)
+    // void telClick(View view) {
+    // startWeb();
+    // }
+    //
+    // // サイトを見る押下
+    // @OnClick(R.id.view_action_box_web)
+    // void webClick(View view) {
+    // startTel();
+    // }
 
     // ButterKnife BindString --------------------------------------------
     // 一覧URL
@@ -250,8 +250,11 @@ public class StatusDetailAnneiFragment extends BaseFragment {
 
         mStatusDetailTopView.setVisibility(View.VISIBLE);
         mStatusDetailTopView.bindStatus(liner);
+        mStatusDetailTopView.setUpdateText(result.getUpdateTime());
+
         mDistanceTimeView.setDistanceText(getAnneiDistance());
         mDistanceTimeView.setTimeText(getAnneiTime());
+
         mPriceView.setPriceAdultText(getAnneiAdultPrice());
         mPriceView.setPriceChildText(getAnneiChildPrice());
         mPriceView.setPriceHandicappedText(getHandicappedPrice());

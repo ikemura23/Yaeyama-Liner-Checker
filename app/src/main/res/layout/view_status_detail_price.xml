@@ -5,6 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/status_detail_view_outer_space"
+    android:layout_marginRight="@dimen/status_detail_view_outer_space"
     card_view:cardCornerRadius="3dp"
     >
 
@@ -12,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_margin="@dimen/status_detail_view_inner_space"
         android:orientation="vertical"
         >
 
@@ -19,7 +22,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:orientation="vertical"
             >
 
@@ -30,9 +32,8 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginBottom="8dp"
                 android:ellipsize="end"
-                android:textColor="@color/background_material_dark"
+                android:text="料金"
                 android:textSize="16sp"
-                tools:text="料金"
                 />
 
             <FrameLayout
@@ -66,9 +67,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:ellipsize="end"
-                    android:textColor="@color/background_material_dark"
+                    android:text="大人"
                     android:textSize="16sp"
-                    tools:text="大人"
                     />
 
                 <TextView
@@ -78,7 +78,6 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginTop="8dp"
                     android:ellipsize="end"
-                    android:textColor="@color/background_material_dark"
                     android:textSize="16sp"
                     tools:text="片道 3,090円\n往復 5,870円"
                     />
@@ -98,9 +97,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:ellipsize="end"
-                    android:textColor="@color/background_material_dark"
+                    android:text="子ども"
                     android:textSize="16sp"
-                    tools:text="子ども"
                     />
 
                 <TextView
@@ -110,7 +108,6 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginTop="8dp"
                     android:ellipsize="end"
-                    android:textColor="@color/background_material_dark"
                     android:textSize="16sp"
                     tools:text="片道 1,540円\n往復 2,930円"
                     />
@@ -131,9 +128,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:ellipsize="end"
-                    android:textColor="@color/background_material_dark"
+                    android:text="障害者"
                     android:textSize="16sp"
-                    tools:text="障害者"
                     />
 
                 <TextView
@@ -143,7 +139,6 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginTop="8dp"
                     android:ellipsize="end"
-                    android:textColor="@color/background_material_dark"
                     android:textSize="16sp"
                     tools:text="片道 1,550円"
                     />
