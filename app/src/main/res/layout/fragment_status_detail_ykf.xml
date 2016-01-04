@@ -20,9 +20,9 @@
             android:id="@+id/fragment_ykf_status_detail_progressbar"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_centerHorizontal="true"
             android:layout_gravity="center_horizontal"
             android:layout_margin="24dp"
+            tools:visibility="gone"
             wheel:matProg_barColor="#5588FF"
             wheel:matProg_progressIndeterminate="true"
             />
@@ -40,42 +40,70 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             >
 
             <LinearLayout
-                android:id="@+id/fragment_status_detail_content_layout"
+                android:id="@+id/fragment_status_detail_ykf_content_layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:paddingTop="16dp"
                 android:visibility="gone"
+                tools:visibility="visible"
                 >
 
-                <!--運航状況の説明-->
-                <com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailTextView
-                    android:id="@+id/fragment_ykf_status_detail_view"
+                <!--運航状況ステータス-->
+                <com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailTopView
+                    android:id="@+id/fragment_status_detail_ykf_top_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
                     />
+
+                <!--&lt;!&ndash;運航状況の説明&ndash;&gt;-->
+                <!--<com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailTextView-->
+                <!--android:id="@+id/fragment_ykf_status_detail_view"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--/>-->
 
                 <!--時刻表-->
                 <com.ikmr.banbara23.yaeyama_liner_checker.timetable.ykf.YkfTimeTableView
                     android:id="@+id/fragment_time_table_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    />
+
+                <!--時間と距離-->
+                <com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailDistanceAndTimeView
+                    android:id="@+id/fragment_status_detail_ykf_distance_time_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    />
+
+                <!--料金-->
+                <com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailPriceView
+                    android:id="@+id/fragment_status_detail_ykf_price_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+                <!--ブラウザで見る、電話ボタン-->
+                <include
+                    layout="@layout/view_status_detail_action_box"/>
+
+                <!--広告-->
+                <com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailAdView
+                    android:id="@+id/fragment_status_detail_ykf_ad_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     />
             </LinearLayout>
         </ScrollView>
 
-        <include
-            layout="@layout/view_action_box"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_weight="1"
-            tools:visibility="visible"
-            />
     </LinearLayout>
 
 </FrameLayout>

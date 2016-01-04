@@ -30,10 +30,10 @@
             >
 
             <TextView
-                android:id="@+id/view_status_detail_top_distance_comment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:drawablePadding="8dp"
                 android:drawableStart="@drawable/ic_web_grey600_18dp"
                 android:ellipsize="end"
                 android:paddingLeft="16dp"
@@ -53,7 +53,6 @@
             >
 
             <TextView
-                android:id="@+id/view_status_detail_top_time_comment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"

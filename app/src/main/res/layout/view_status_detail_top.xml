@@ -57,6 +57,7 @@
             android:id="@+id/view_status_detail_top_status_comment_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:orientation="vertical"
@@ -89,6 +90,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginTop="4dp"
                 android:maxLines="5"
+                android:visibility="gone"
                 tools:text="通常運航通"
                 />
 
@@ -97,9 +99,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="4dp"
                 android:layout_marginTop="4dp"
                 android:text="もっと見る"
+                android:visibility="gone"
                 />
         </LinearLayout>
     </LinearLayout>

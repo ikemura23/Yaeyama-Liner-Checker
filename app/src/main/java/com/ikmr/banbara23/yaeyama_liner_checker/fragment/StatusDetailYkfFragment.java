@@ -2,25 +2,28 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.fragment;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import com.ikmr.banbara23.yaeyama_liner_checker.util.PortUtil;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.YkfStatusListApi;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Price;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.YkfLinerDetail;
 import com.ikmr.banbara23.yaeyama_liner_checker.timetable.ykf.YkfTimeTableView;
-import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailTextView;
+import com.ikmr.banbara23.yaeyama_liner_checker.util.PortUtil;
+import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailDistanceAndTimeView;
+import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailPriceView;
+import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailTopView;
 import com.pnikosis.materialishprogress.ProgressWheel;
 
 import butterknife.Bind;
@@ -37,17 +40,23 @@ import rx.subscriptions.CompositeSubscription;
  */
 public class StatusDetailYkfFragment extends BaseFragment {
 
-    @Bind(R.id.fragment_ykf_status_detail_view)
-    StatusDetailTextView mStatusDetailTextView;
+    @Bind(R.id.fragment_status_detail_ykf_top_view)
+    StatusDetailTopView mStatusDetailTopView;
 
     @Bind(R.id.fragment_time_table_view)
     YkfTimeTableView mYkfTimeTableView;
 
-    @Bind(R.id.fragment_status_detail_content_layout)
+    @Bind(R.id.fragment_status_detail_ykf_content_layout)
     LinearLayout mFragmentStatusDetailContentLayout;
 
     @Bind(R.id.fragment_ykf_status_detail_progressbar)
     ProgressWheel mProgressBar;
+
+    @Bind(R.id.fragment_status_detail_ykf_distance_time_view)
+    StatusDetailDistanceAndTimeView mStatusDetailDistanceAndTimeView;
+
+    @Bind(R.id.fragment_status_detail_ykf_price_view)
+    StatusDetailPriceView mStatusDetailPriceView;
 
     @Bind(R.id.fragment_ykf_status_detail_reload_button)
     Button mReloadButton;
@@ -61,14 +70,24 @@ public class StatusDetailYkfFragment extends BaseFragment {
         }
     }
 
-    @OnClick(R.id.view_action_box_tel)
-    void tellClick(View view) {
-        startTell();
+    /**
+     * 電話する押下
+     *
+     * @param view
+     */
+    @OnClick(R.id.view_status_detail_web_layout)
+    void telClick(View view) {
+        startWeb();
     }
 
-    @OnClick(R.id.view_action_box_web)
+    /**
+     * サイトを見る押下
+     *
+     * @param view
+     */
+    @OnClick(R.id.view_status_detail_tell_layout)
     void webClick(View view) {
-        startWeb();
+        startTell();
     }
 
     @BindString(R.string.url_ykf_list)
@@ -165,7 +184,6 @@ public class StatusDetailYkfFragment extends BaseFragment {
         } catch (Exception e) {
             // 何もしない
         }
-
     }
 
     /**
@@ -174,6 +192,21 @@ public class StatusDetailYkfFragment extends BaseFragment {
     public void startQuery() {
         mProgressBar.setVisibility(View.VISIBLE);
         getYkfList();
+        mStatusDetailDistanceAndTimeView.setDistanceText(null);
+        mStatusDetailDistanceAndTimeView.setTimeText(getTime());
+        mStatusDetailPriceView.setPrice(getPrice());
+    }
+
+    private String getTime() {
+        return PortUtil.getYkfTime(getContext(), getParam().getPort());
+    }
+
+    private Price getPrice() {
+        return PortUtil.getYkfPrice(getContext(), getParam().getPort());
+    }
+
+    public Context getContext() {
+        return getActivity().getApplicationContext();
     }
 
     /**
@@ -214,8 +247,7 @@ public class StatusDetailYkfFragment extends BaseFragment {
      */
     private void onResultListQuery(Result result) {
         Liner liner = PortUtil.getMyPort(result.getLiners(), getParam().getPort());
-        // TODO: 15/12/31 ステータスを反映
-        Log.d("StatusDetailYkfFragment", "liner:" + liner);
+        mStatusDetailTopView.bindStatus(liner);
     }
 
     /**

@@ -62,12 +62,6 @@ public class StatusDetailAnneiFragment extends BaseFragment {
     @Bind(R.id.fragment_status_detail_price_view)
     StatusDetailPriceHandicappedView mPriceView;
 
-    @Bind(R.id.view_status_detail_top_distance_comment)
-    TextView mViewStatusDetailTopDistanceComment;
-
-    @Bind(R.id.view_status_detail_top_time_comment)
-    TextView mViewStatusDetailTopTimeComment;
-
     @Bind(R.id.fragment_status_detail_value_layout)
     LinearLayout mFragmentStatusDetailValueLayout;
 

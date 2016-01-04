@@ -9,6 +9,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Price;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -31,6 +32,11 @@ public class StatusDetailPriceView extends FrameLayout {
         super(context, attrs);
         View layout = LayoutInflater.from(context).inflate(R.layout.view_status_detail_price, this);
         ButterKnife.bind(this, layout);
+    }
+
+    public void setPrice(Price price) {
+        setPriceAdultText(price.getAdult());
+        setPriceChildText(price.getChild());
     }
 
     public void setPriceAdultText(String text) {

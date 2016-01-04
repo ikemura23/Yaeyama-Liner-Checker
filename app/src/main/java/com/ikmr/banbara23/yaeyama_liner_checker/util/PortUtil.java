@@ -214,4 +214,69 @@ public class PortUtil {
                 return null;
         }
     }
+
+    public static String getYkfTime(Context context, Port port) {
+        switch (port) {
+            case UEHARA:
+                return context.getString(R.string.ykf_uehara_time);
+            case OOHARA:
+                return context.getString(R.string.ykf_oohara_time);
+            case HATOMA:
+                return context.getString(R.string.ykf_hatoma_time);
+            case KUROSHIMA:
+                return context.getString(R.string.ykf_kuroshima_time);
+            case KOHAMA:
+                return context.getString(R.string.ykf_kohama_time);
+            case TAKETOMI:
+                return context.getString(R.string.ykf_taketomi_time);
+            default:
+                return null;
+        }
+    }
+
+    public static Price getYkfPrice(Context context, Port port) {
+        Price price = new Price();
+        price.setAdult(getYkfPriceAdult(context, port));
+        price.setChild(getYkfPriceChild(context, port));
+        price.setHandicapped(null);
+        return price;
+    }
+
+    public static String getYkfPriceAdult(Context context, Port port) {
+        switch (port) {
+            case UEHARA:
+                return context.getString(R.string.ykf_uehara_price_adult);
+            case OOHARA:
+                return context.getString(R.string.ykf_oohara_price_adult);
+            case HATOMA:
+                return context.getString(R.string.ykf_hatoma_price_adult);
+            case KUROSHIMA:
+                return context.getString(R.string.ykf_kuroshima_price_adult);
+            case KOHAMA:
+                return context.getString(R.string.ykf_kohama_price_adult);
+            case TAKETOMI:
+                return context.getString(R.string.ykf_taketomi_price_adult);
+            default:
+                return null;
+        }
+    }
+
+    public static String getYkfPriceChild(Context context, Port port) {
+        switch (port) {
+            case UEHARA:
+                return context.getString(R.string.ykf_uehara_price_child);
+            case OOHARA:
+                return context.getString(R.string.ykf_oohara_price_adult);
+            case HATOMA:
+                return context.getString(R.string.ykf_hatoma_price_adult);
+            case KUROSHIMA:
+                return context.getString(R.string.ykf_kuroshima_price_adult);
+            case KOHAMA:
+                return context.getString(R.string.ykf_kohama_price_adult);
+            case TAKETOMI:
+                return context.getString(R.string.ykf_taketomi_price_adult);
+            default:
+                return null;
+        }
+    }
 }

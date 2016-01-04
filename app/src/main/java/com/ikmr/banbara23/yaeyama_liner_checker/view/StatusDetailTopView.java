@@ -5,14 +5,14 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
-import com.ikmr.banbara23.yaeyama_liner_checker.util.StringUtils;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Status;
+import com.ikmr.banbara23.yaeyama_liner_checker.util.StringUtils;
 
 import butterknife.Bind;
 import butterknife.BindColor;
@@ -30,9 +30,6 @@ public class StatusDetailTopView extends FrameLayout {
 
     @Bind(R.id.view_status_detail_top_text)
     TextView mStatusText;
-
-    @Bind(R.id.view_status_detail_top_status_comment_layout)
-    LinearLayout mViewStatusDetailTopStatusCommentLayout;
 
     @Bind(R.id.view_status_detail_top_update_text)
     TextView mUpdateText;
@@ -59,6 +56,9 @@ public class StatusDetailTopView extends FrameLayout {
     int colorCancel;
     @BindColor(R.color.dark_grey)
     int colorSuspend;
+
+    @Bind(R.id.view_status_detail_top_comment_more_button)
+    Button mMoreButton;
 
     public StatusDetailTopView(Context context) {
         super(context);
@@ -142,6 +142,8 @@ public class StatusDetailTopView extends FrameLayout {
             mCommentText.setVisibility(GONE);
             return;
         }
+        mMoreButton.setVisibility(VISIBLE);
+        mCommentText.setVisibility(VISIBLE);
         mCommentText.setText(comment.trim());
     }
 }
