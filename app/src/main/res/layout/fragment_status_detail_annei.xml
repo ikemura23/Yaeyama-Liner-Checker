@@ -83,7 +83,11 @@
                 layout="@layout/view_status_detail_action_box"/>
 
             <!--広告-->
-            <include layout="@layout/view_card_ad_view"/>
+            <com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailAdView
+                android:id="@+id/fragment_status_detail_annei_ad_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
 
         </LinearLayout>
     </ScrollView>

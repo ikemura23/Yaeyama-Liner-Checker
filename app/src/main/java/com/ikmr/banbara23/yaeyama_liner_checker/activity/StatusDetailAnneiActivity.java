@@ -6,13 +6,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
-import com.ikmr.banbara23.yaeyama_liner_checker.util.StringUtils;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.FragmentApiQueryInterface;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusDetailAnneiFragment;
+import com.ikmr.banbara23.yaeyama_liner_checker.util.StringUtils;
 
 import butterknife.ButterKnife;
 
@@ -38,7 +36,6 @@ public class StatusDetailAnneiActivity extends BaseActivity implements FragmentA
         ButterKnife.bind(this);
 
         setTitleString();
-        loadAd();
         if (savedInstanceState != null) {
             mLiner = (Liner) savedInstanceState.get(Liner.class.getCanonicalName());
         }
@@ -119,21 +116,6 @@ public class StatusDetailAnneiActivity extends BaseActivity implements FragmentA
         }
 
         setTitle(mLiner.getPort().getPort() + "航路");
-    }
-
-    /**
-     * 広告読み込み
-     */
-    protected void loadAd() {
-        AdView adView = (AdView) findViewById(R.id.adView);
-        if (adView == null) {
-            return;
-        }
-        try {
-            AdRequest adRequest = new AdRequest.Builder().build();
-            adView.loadAd(adRequest);
-        } catch (Exception e) {
-        }
     }
 
     /**
