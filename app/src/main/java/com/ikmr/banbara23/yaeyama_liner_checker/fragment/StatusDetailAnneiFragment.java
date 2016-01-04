@@ -2,6 +2,7 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.fragment;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,14 +14,15 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.ikmr.banbara23.yaeyama_liner_checker.util.PortUtil;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.AnneiStatusDetailApi;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.AnneiStatusListApi;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Price;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 import com.ikmr.banbara23.yaeyama_liner_checker.timetable.annei.AnneiTimeTableView;
+import com.ikmr.banbara23.yaeyama_liner_checker.util.PortUtil;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailDistanceAndTimeView;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailPriceHandicappedView;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailTopView;
@@ -286,9 +288,7 @@ public class StatusDetailAnneiFragment extends BaseFragment {
         mDistanceTimeView.setDistanceText(getAnneiDistance());
         mDistanceTimeView.setTimeText(getAnneiTime());
 
-        mPriceView.setPriceAdultText(getAnneiAdultPrice());
-        mPriceView.setPriceChildText(getAnneiChildPrice());
-        mPriceView.setPriceHandicappedText(getHandicappedPrice());
+        mPriceView.setPrice(getPrice());
     }
 
     /**
@@ -328,26 +328,8 @@ public class StatusDetailAnneiFragment extends BaseFragment {
      * 
      * @return 料金・大人
      */
-    private String getAnneiAdultPrice() {
-        return null;
-    }
-
-    /**
-     * 料金・子供
-     * 
-     * @return 料金・子供
-     */
-    private String getAnneiChildPrice() {
-        return null;
-    }
-
-    /**
-     * 料金・障害者
-     * 
-     * @return 料金・障害者
-     */
-    private String getHandicappedPrice() {
-        return null;
+    public Price getPrice() {
+        return PortUtil.getAnneiPrice(getContext(), getPort());
     }
 
     /**
@@ -391,7 +373,7 @@ public class StatusDetailAnneiFragment extends BaseFragment {
      * 外部ブラウザを起動
      */
     private void startWeb() {
-        String urlString = PortUtil.getAnneiDetailUrl(getActivity().getApplicationContext(), getPort());
+        String urlString = PortUtil.getAnneiDetailUrl(getContext(), getPort());
         Uri uri = Uri.parse(urlString);
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         try {
@@ -399,6 +381,9 @@ public class StatusDetailAnneiFragment extends BaseFragment {
         } catch (Exception e) {
             // 何もしない
         }
+    }
 
+    public Context getContext() {
+        return getActivity().getApplicationContext();
     }
 }

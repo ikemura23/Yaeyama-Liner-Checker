@@ -9,6 +9,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Price;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -35,7 +36,21 @@ public class StatusDetailPriceHandicappedView extends FrameLayout {
         ButterKnife.bind(this, layout);
     }
 
-    public void setPriceAdultText(String text) {
+    /**
+     * 料金を設定
+     * 
+     * @param price
+     */
+    public void setPrice(Price price) {
+        if (price == null) {
+            return;
+        }
+        setPriceAdultText(price.getAdult());
+        setPriceChildText(price.getChild());
+        setPriceHandicappedText(price.getHandicapped());
+    }
+
+    private void setPriceAdultText(String text) {
         if (text == null) {
             mPriceAdultText.setVisibility(GONE);
             return;
@@ -43,7 +58,7 @@ public class StatusDetailPriceHandicappedView extends FrameLayout {
         mPriceAdultText.setText(text);
     }
 
-    public void setPriceChildText(String text) {
+    private void setPriceChildText(String text) {
         if (text == null) {
             mPriceChildText.setVisibility(GONE);
             return;
@@ -51,7 +66,7 @@ public class StatusDetailPriceHandicappedView extends FrameLayout {
         mPriceChildText.setText(text);
     }
 
-    public void setPriceHandicappedText(String text) {
+    private void setPriceHandicappedText(String text) {
         if (text == null) {
             mPriceHandicappedText.setVisibility(GONE);
             return;
