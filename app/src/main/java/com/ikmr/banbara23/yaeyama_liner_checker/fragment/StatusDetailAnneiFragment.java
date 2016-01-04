@@ -311,7 +311,7 @@ public class StatusDetailAnneiFragment extends BaseFragment {
      * @return 距離
      */
     private String getAnneiDistance() {
-        return null;
+        return PortUtil.getAnneiDistance(getContext(), getPort());
     }
 
     /**
@@ -320,7 +320,7 @@ public class StatusDetailAnneiFragment extends BaseFragment {
      * @return 走行時間
      */
     private String getAnneiTime() {
-        return null;
+        return PortUtil.getAnneiTime(getContext(), getPort());
     }
 
     /**
