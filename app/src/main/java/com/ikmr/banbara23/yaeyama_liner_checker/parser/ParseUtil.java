@@ -1,7 +1,7 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker.parser;
 
-import com.ikmr.banbara23.yaeyama_liner_checker.StringUtils;
+import com.ikmr.banbara23.yaeyama_liner_checker.util.StringUtils;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
 
 /**

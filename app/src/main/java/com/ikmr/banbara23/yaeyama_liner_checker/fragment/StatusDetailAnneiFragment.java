@@ -13,7 +13,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.ikmr.banbara23.yaeyama_liner_checker.PortUtil;
+import com.ikmr.banbara23.yaeyama_liner_checker.util.PortUtil;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.AnneiStatusDetailApi;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.AnneiStatusListApi;

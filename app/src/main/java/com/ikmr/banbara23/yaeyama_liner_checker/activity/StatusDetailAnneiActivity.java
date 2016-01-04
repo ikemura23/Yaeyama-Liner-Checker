@@ -9,7 +9,7 @@ import android.view.MenuItem;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
-import com.ikmr.banbara23.yaeyama_liner_checker.StringUtils;
+import com.ikmr.banbara23.yaeyama_liner_checker.util.StringUtils;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.FragmentApiQueryInterface;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusDetailAnneiFragment;

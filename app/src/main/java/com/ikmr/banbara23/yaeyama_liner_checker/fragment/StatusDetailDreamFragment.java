@@ -12,9 +12,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import com.ikmr.banbara23.yaeyama_liner_checker.PortUtil;
+import com.ikmr.banbara23.yaeyama_liner_checker.util.PortUtil;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
-import com.ikmr.banbara23.yaeyama_liner_checker.StringUtils;
+import com.ikmr.banbara23.yaeyama_liner_checker.util.StringUtils;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.DreamStatusListApi;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;

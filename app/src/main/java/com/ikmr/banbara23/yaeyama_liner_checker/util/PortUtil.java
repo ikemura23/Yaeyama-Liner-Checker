@@ -1,8 +1,9 @@
 
-package com.ikmr.banbara23.yaeyama_liner_checker;
+package com.ikmr.banbara23.yaeyama_liner_checker.util;
 
 import android.content.Context;
 
+import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
 
