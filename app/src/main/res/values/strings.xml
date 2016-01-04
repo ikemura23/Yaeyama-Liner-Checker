@@ -10,6 +10,7 @@
 
     <string name="top_description">運航状況を表示</string>
     <string name="top_other">その他</string>
+    <string name="detail_dialog_title">本日の運航状況</string>
 
     <!--URL-->
     <!--安栄-->

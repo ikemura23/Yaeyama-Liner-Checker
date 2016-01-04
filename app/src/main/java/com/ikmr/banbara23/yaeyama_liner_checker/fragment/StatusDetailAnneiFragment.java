@@ -30,6 +30,7 @@ import butterknife.Bind;
 import butterknife.BindString;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import de.mrapp.android.dialog.MaterialDialog;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -41,7 +42,6 @@ import rx.subscriptions.CompositeSubscription;
 public class StatusDetailAnneiFragment extends BaseFragment {
 
     // ButterKnife Bind View --------------------------------------------
-
     @Bind(R.id.fragment_status_detail_progressbar)
     ProgressWheel mProgressBar;
 
@@ -70,7 +70,28 @@ public class StatusDetailAnneiFragment extends BaseFragment {
     LinearLayout mFragmentStatusDetailValueLayout;
 
     // ButterKnife OnClick --------------------------------------------
-    // リロード押下
+    /**
+     * もっと見るボタン押下
+     *
+     * @param view
+     */
+    @OnClick(R.id.view_status_detail_top_comment_more_button)
+    void MoreButtonClick(View view) {
+        View dialogView = View.inflate(getActivity(), R.layout.dialog_status_detail_comment, null);
+        ((TextView) dialogView.findViewById(R.id.dialog_status_detail_comment_text)).setText(dialogMessage);
+        MaterialDialog.Builder dialogBuilder = new MaterialDialog.Builder(getActivity());
+        dialogBuilder.setTitle(R.string.detail_dialog_title);
+        dialogBuilder.setPositiveButton(android.R.string.ok, null);
+        dialogBuilder.setView(dialogView);
+        MaterialDialog dialog = dialogBuilder.create();
+        dialog.show();
+    }
+
+    /**
+     * エラー時の再読み込みボタン押下
+     * 
+     * @param view
+     */
     @OnClick(R.id.fragment_status_detail_reload_button)
     void reloadButtonClick(View view) {
         Activity activity = getActivity();
@@ -80,29 +101,39 @@ public class StatusDetailAnneiFragment extends BaseFragment {
         }
     }
 
-    // // 電話する押下
-    // @OnClick(R.id.view_action_box_tel)
-    // void telClick(View view) {
-    // startWeb();
-    // }
-    //
-    // // サイトを見る押下
-    // @OnClick(R.id.view_action_box_web)
-    // void webClick(View view) {
-    // startTel();
-    // }
+    /**
+     * 電話する押下
+     * 
+     * @param view
+     */
+    @OnClick(R.id.view_status_detail_web_layout)
+    void telClick(View view) {
+        startWeb();
+    }
+
+    /**
+     * サイトを見る押下
+     * 
+     * @param view
+     */
+    @OnClick(R.id.view_status_detail_tell_layout)
+    void webClick(View view) {
+        startTel();
+    }
 
     // ButterKnife BindString --------------------------------------------
     // 一覧URL
     @BindString(R.string.url_annei_list)
     String ANNEI_LIST_URL;
 
+    // 電話番号
     @BindString(R.string.tel_annei)
     String TEL_ANNEI;
 
     // プライベート変数 --------------------------------------------
     private boolean listQuerying = false;
     private boolean detailQuerying = false;
+    private String dialogMessage;
 
     private CompositeSubscription mCompositeSubscription = new CompositeSubscription();
 
@@ -271,6 +302,7 @@ public class StatusDetailAnneiFragment extends BaseFragment {
             return;
         }
         mStatusDetailTopView.setCommentText(comment);
+        dialogMessage = comment;
     }
 
     /**

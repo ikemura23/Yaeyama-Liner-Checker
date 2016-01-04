@@ -86,14 +86,13 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginTop="4dp"
                 android:maxLines="5"
-                tools:text="通常運航通常運航通常運航通常運航通常運航通常運航通常運航通常運航通常運航通常運航通常運航通常運航通常運航通常運航通常運航通常運航通常運航通常運航通常運航通常運航通常運航通常運航通常運航通常運航"
+                tools:text="通常運航通"
                 />
 
             <Button
+                android:id="@+id/view_status_detail_top_comment_more_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/view_status_detail_top_comment"
-                android:layout_centerHorizontal="true"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="4dp"
                 android:layout_marginTop="4dp"

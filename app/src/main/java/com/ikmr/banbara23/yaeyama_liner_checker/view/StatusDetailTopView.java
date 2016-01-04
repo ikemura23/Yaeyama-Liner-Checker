@@ -40,7 +40,7 @@ public class StatusDetailTopView extends FrameLayout {
     @Bind(R.id.view_status_detail_top_comment)
     TextView mCommentText;
 
-    // BindString ---------------------------------------
+    // Bind String ---------------------------------------
     @BindString(R.string.status_normal)
     String normal;
     @BindString(R.string.status_cation)
