@@ -5,17 +5,15 @@ import android.app.Fragment;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
-import com.ikmr.banbara23.yaeyama_liner_checker.util.StringUtils;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.YkfLinerDetail;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.FragmentApiQueryInterface;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusDetailYkfFragment;
+import com.ikmr.banbara23.yaeyama_liner_checker.util.StringUtils;
 
 /**
  * ステータス詳細のActivity
@@ -25,13 +23,12 @@ public class StatusDetailYkfActivity extends BaseActivity implements FragmentApi
     YkfLinerDetail mYkfLinerDetail;
     Liner mLiner;
 
-    // 観光会社
     Fragment mFragment;
 
     /**
      * クエリ起動中かどうか
      */
-    private boolean mQuerying;
+    private boolean mQuerying = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,25 +128,13 @@ public class StatusDetailYkfActivity extends BaseActivity implements FragmentApi
                 finish();
                 break;
             case R.id.action_reload:
-                Toast.makeText(this, "更新処理", Toast.LENGTH_SHORT).show();
+                if (!mQuerying) {
+                    createFragment();
+                }
                 break;
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    /**
-     * @param view 電話で問い合わせクリック
-     */
-    public void onTellClicked(View view) {
-        Toast.makeText(getApplicationContext(), "電話で問い合わせクリック", Toast.LENGTH_SHORT);
-    }
-
-    /**
-     * @param view サイトで確認クリック
-     */
-    public void onWebClicked(View view) {
-        Toast.makeText(getApplicationContext(), "サイトで確認クリック", Toast.LENGTH_SHORT);
     }
 
     @Override
