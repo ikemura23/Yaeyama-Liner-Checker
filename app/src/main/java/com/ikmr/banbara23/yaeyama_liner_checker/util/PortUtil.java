@@ -10,7 +10,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
 import java.util.ArrayList;
 
 /**
- * Created by banbara23 on 15/10/10.
+ * 港のutilクラス
  */
 public class PortUtil {
 
@@ -57,5 +57,89 @@ public class PortUtil {
             }
         }
         return null;
+    }
+
+    /**
+     * 安栄の大人料金を返す
+     * 
+     * @param context
+     * @param port 港
+     * @return 料金
+     */
+    public String getAnneiAdultPrice(Context context, Port port) {
+        switch (port) {
+            case HATERUMA:
+                return context.getString(R.string.annei_hateruma_price_adult);
+            case UEHARA:
+                return context.getString(R.string.annei_uehara_price_adult);
+            case OOHARA:
+                return context.getString(R.string.annei_oohara_price_adult);
+            case HATOMA:
+                return context.getString(R.string.annei_hatoma_price_adult);
+            case KUROSHIMA:
+                return context.getString(R.string.annei_kuroshima_price_adult);
+            case KOHAMA:
+                return context.getString(R.string.annei_kohama_price_adult);
+            case TAKETOMI:
+                return context.getString(R.string.annei_taketomi_price_adult);
+            default:
+                return null;
+        }
+    }
+
+    /**
+     * 安栄の子供料金を返す
+     *
+     * @param context
+     * @param port 港
+     * @return 料金
+     */
+    public String getAnneiChildPrice(Context context, Port port) {
+        switch (port) {
+            case HATERUMA:
+                return context.getString(R.string.annei_hateruma_price_child);
+            case UEHARA:
+                return context.getString(R.string.annei_uehara_price_child);
+            case OOHARA:
+                return context.getString(R.string.annei_oohara_price_child);
+            case HATOMA:
+                return context.getString(R.string.annei_hatoma_price_child);
+            case KUROSHIMA:
+                return context.getString(R.string.annei_kuroshima_price_child);
+            case KOHAMA:
+                return context.getString(R.string.annei_kohama_price_child);
+            case TAKETOMI:
+                return context.getString(R.string.annei_taketomi_price_child);
+            default:
+                return null;
+        }
+    }
+
+    /**
+     * 安栄の障害者料金を返す
+     *
+     * @param context
+     * @param port 港
+     * @return 料金
+     */
+    public String getAnneiHandicappedPrice(Context context, Port port) {
+        switch (port) {
+            case HATERUMA:
+                return context.getString(R.string.annei_hateruma_price_handicapped);
+            case UEHARA:
+                return context.getString(R.string.annei_uehara_price_handicapped);
+            case OOHARA:
+                return context.getString(R.string.annei_oohara_price_handicapped);
+            case HATOMA:
+                return context.getString(R.string.annei_hatoma_price_handicapped);
+            case KUROSHIMA:
+                return context.getString(R.string.annei_kuroshima_price_handicapped);
+            case KOHAMA:
+                return context.getString(R.string.annei_kohama_price_handicapped);
+            case TAKETOMI:
+                return context.getString(R.string.annei_taketomi_price_handicapped);
+            default:
+                return null;
+        }
     }
 }
