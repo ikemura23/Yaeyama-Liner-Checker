@@ -6,6 +6,7 @@ import android.content.Context;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Price;
 
 import java.util.ArrayList;
 
@@ -60,13 +61,28 @@ public class PortUtil {
     }
 
     /**
+     * 安栄の料金を返す
+     * 
+     * @param context
+     * @param port
+     * @return
+     */
+    public static Price getAnneiPrice(Context context, Port port) {
+        Price price = new Price();
+        price.setAdult(getAnneiAdultPrice(context, port));
+        price.setChild(getAnneiChildPrice(context, port));
+        price.setHandicapped(getAnneiChildPrice(context, port));
+        return price;
+    }
+
+    /**
      * 安栄の大人料金を返す
      * 
      * @param context
      * @param port 港
      * @return 料金
      */
-    public String getAnneiAdultPrice(Context context, Port port) {
+    public static String getAnneiAdultPrice(Context context, Port port) {
         switch (port) {
             case HATERUMA:
                 return context.getString(R.string.annei_hateruma_price_adult);
@@ -94,7 +110,7 @@ public class PortUtil {
      * @param port 港
      * @return 料金
      */
-    public String getAnneiChildPrice(Context context, Port port) {
+    public static String getAnneiChildPrice(Context context, Port port) {
         switch (port) {
             case HATERUMA:
                 return context.getString(R.string.annei_hateruma_price_child);
@@ -122,7 +138,7 @@ public class PortUtil {
      * @param port 港
      * @return 料金
      */
-    public String getAnneiHandicappedPrice(Context context, Port port) {
+    public static String getAnneiHandicappedPrice(Context context, Port port) {
         switch (port) {
             case HATERUMA:
                 return context.getString(R.string.annei_hateruma_price_handicapped);
