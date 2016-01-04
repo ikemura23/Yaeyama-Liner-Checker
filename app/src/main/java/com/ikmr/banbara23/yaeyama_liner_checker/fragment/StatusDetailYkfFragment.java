@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -194,6 +195,7 @@ public class StatusDetailYkfFragment extends BaseFragment {
         getYkfList();
         mStatusDetailDistanceAndTimeView.setDistanceText(null);
         mStatusDetailDistanceAndTimeView.setTimeText(getTime());
+        Log.d("StatusDetailYkfFragment", getTime());
         mStatusDetailPriceView.setPrice(getPrice());
     }
 
@@ -248,6 +250,7 @@ public class StatusDetailYkfFragment extends BaseFragment {
     private void onResultListQuery(Result result) {
         Liner liner = PortUtil.getMyPort(result.getLiners(), getParam().getPort());
         mStatusDetailTopView.bindStatus(liner);
+        mStatusDetailTopView.setUpdateText(result.getUpdateTime());
     }
 
     /**
