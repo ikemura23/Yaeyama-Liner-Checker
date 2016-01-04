@@ -9,6 +9,7 @@
     android:layout_marginRight="@dimen/status_detail_view_outer_space"
     android:layout_marginTop="@dimen/status_detail_view_outer_space"
     card_view:cardCornerRadius="3dp"
+    card_view:cardElevation="2dp"
     >
 
     <LinearLayout
