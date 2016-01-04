@@ -158,4 +158,60 @@ public class PortUtil {
                 return null;
         }
     }
+
+    /**
+     * 安栄の走行距離を返す
+     *
+     * @param context コンテキスト
+     * @param port 港
+     * @return 時間
+     */
+    public static String getAnneiDistance(Context context, Port port) {
+        switch (port) {
+            case HATERUMA:
+                return context.getString(R.string.annei_hateruma_distance);
+            case UEHARA:
+                return context.getString(R.string.annei_uehara_distance);
+            case OOHARA:
+                return context.getString(R.string.annei_oohara_distance);
+            case HATOMA:
+                return context.getString(R.string.annei_hatoma_distance);
+            case KUROSHIMA:
+                return context.getString(R.string.annei_kuroshima_distance);
+            case KOHAMA:
+                return context.getString(R.string.annei_kohama_distance);
+            case TAKETOMI:
+                return context.getString(R.string.annei_taketomi_distance);
+            default:
+                return null;
+        }
+    }
+
+    /**
+     * 安栄の走行距離を返す
+     *
+     * @param context コンテキスト
+     * @param port 港
+     * @return 時間
+     */
+    public static String getAnneiTime(Context context, Port port) {
+        switch (port) {
+            case HATERUMA:
+                return context.getString(R.string.annei_hateruma_time);
+            case UEHARA:
+                return context.getString(R.string.annei_uehara_time);
+            case OOHARA:
+                return context.getString(R.string.annei_oohara_time);
+            case HATOMA:
+                return context.getString(R.string.annei_hatoma_time);
+            case KUROSHIMA:
+                return context.getString(R.string.annei_kuroshima_time);
+            case KOHAMA:
+                return context.getString(R.string.annei_kohama_time);
+            case TAKETOMI:
+                return context.getString(R.string.annei_taketomi_time);
+            default:
+                return null;
+        }
+    }
 }
