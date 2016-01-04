@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
     android:layout_marginLeft="@dimen/status_detail_view_outer_space"
     android:layout_marginRight="@dimen/status_detail_view_outer_space"
     card_view:cardCornerRadius="3dp"
