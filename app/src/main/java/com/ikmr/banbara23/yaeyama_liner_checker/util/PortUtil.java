@@ -71,7 +71,7 @@ public class PortUtil {
         Price price = new Price();
         price.setAdult(getAnneiAdultPrice(context, port));
         price.setChild(getAnneiChildPrice(context, port));
-        price.setHandicapped(getAnneiChildPrice(context, port));
+        price.setHandicapped(getAnneiHandicappedPrice(context, port));
         return price;
     }
 
