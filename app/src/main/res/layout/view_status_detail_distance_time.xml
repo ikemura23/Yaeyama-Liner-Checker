@@ -41,7 +41,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="走行時間"
+                    android:text="距離"
                     android:textSize="16sp"
                     />
 
@@ -71,7 +71,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="距離"
+                    android:text="走行時間"
                     android:textSize="16sp"
                     />
 

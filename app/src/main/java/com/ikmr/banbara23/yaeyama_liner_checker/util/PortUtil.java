@@ -234,6 +234,23 @@ public class PortUtil {
         }
     }
 
+    public static String getDreamTime(Context context, Port port) {
+        switch (port) {
+            case HATOMA_UEHARA:
+                return context.getString(R.string.dream_uehara_time);
+            case OOHARA:
+                return context.getString(R.string.dream_oohara_time);
+            case KUROSHIMA:
+                return context.getString(R.string.dream_kuroshima_time);
+            case KOHAMA:
+                return context.getString(R.string.dream_kohama_time);
+            case TAKETOMI:
+                return context.getString(R.string.dream_taketomi_time);
+            default:
+                return null;
+        }
+    }
+
     public static Price getYkfPrice(Context context, Port port) {
         Price price = new Price();
         price.setAdult(getYkfPriceAdult(context, port));
@@ -278,5 +295,9 @@ public class PortUtil {
             default:
                 return null;
         }
+    }
+
+    public static Price getDreamPrice(Context context, Port port) {
+        return null;
     }
 }

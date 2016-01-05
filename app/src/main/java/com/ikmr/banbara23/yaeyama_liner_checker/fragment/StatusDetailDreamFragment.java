@@ -1,6 +1,7 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -195,18 +196,22 @@ public class StatusDetailDreamFragment extends BaseFragment {
     public void startQuery() {
         mProgressBar.setVisibility(View.VISIBLE);
         getDreamList();
-        
+
         mStatusDetailDistanceAndTimeView.setDistanceText(null);
         mStatusDetailDistanceAndTimeView.setTimeText(getTime());
         mStatusDetailPriceView.setPrice(getPrice());
     }
 
+    public Context getContext() {
+        return getActivity().getApplicationContext();
+    }
+
     private Price getPrice() {
-        return null;
+        return PortUtil.getDreamPrice(getContext(), getParam().getPort());
     }
 
     private String getTime() {
-        return null;
+        return PortUtil.getDreamTime(getContext(), getParam().getPort());
     }
 
     /**

@@ -35,6 +35,9 @@ public class StatusDetailPriceView extends FrameLayout {
     }
 
     public void setPrice(Price price) {
+        if (price == null) {
+            return;
+        }
         setPriceAdultText(price.getAdult());
         setPriceChildText(price.getChild());
     }
