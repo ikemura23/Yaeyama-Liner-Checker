@@ -5,23 +5,25 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import com.ikmr.banbara23.yaeyama_liner_checker.util.PortUtil;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
-import com.ikmr.banbara23.yaeyama_liner_checker.util.StringUtils;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.DreamStatusListApi;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Price;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.YkfLinerDetail;
 import com.ikmr.banbara23.yaeyama_liner_checker.timetable.dream.DreamTimeTableView;
-import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailTextView;
+import com.ikmr.banbara23.yaeyama_liner_checker.util.PortUtil;
+import com.ikmr.banbara23.yaeyama_liner_checker.util.StringUtils;
+import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailDistanceAndTimeView;
+import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailPriceView;
+import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailTopView;
 import com.pnikosis.materialishprogress.ProgressWheel;
 
 import butterknife.Bind;
@@ -39,8 +41,8 @@ import rx.subscriptions.CompositeSubscription;
 public class StatusDetailDreamFragment extends BaseFragment {
 
     // ButterKnife Bind View --------------------------------------------
-    @Bind(R.id.fragment_dream_status_detail_text_view)
-    StatusDetailTextView mStatusDetailTextView;
+    @Bind(R.id.fragment_status_detail_dream_top_view)
+    StatusDetailTopView mStatusDetailTopView;
 
     @Bind(R.id.fragment_dream_time_table_view)
     DreamTimeTableView mDreamTimeTableView;
@@ -54,15 +56,29 @@ public class StatusDetailDreamFragment extends BaseFragment {
     @Bind(R.id.fragment_dream_status_detail_reload_button)
     Button mReloadButton;
 
+    @Bind(R.id.fragment_status_detail_dream_distance_time_view)
+    StatusDetailDistanceAndTimeView mStatusDetailDistanceAndTimeView;
+
+    @Bind(R.id.fragment_status_detail_dream_price_view)
+    StatusDetailPriceView mStatusDetailPriceView;
+
+    // @Bind(R.id.fragment_status_detail_dream_ad_view)
+    // StatusDetailAdView mFragmentStatusDetailDreamAdView;
+
     // ButterKnife OnClick --------------------------------------------
-    @OnClick(R.id.view_action_box_tel)
+    @OnClick(R.id.view_status_detail_tell_layout)
     void tellClick(View view) {
         startTell();
     }
 
-    @OnClick(R.id.view_action_box_web)
+    @OnClick(R.id.view_status_detail_web_layout)
     void webClick(View view) {
         startWeb();
+    }
+
+    @OnClick(R.id.fragment_dream_status_detail_reload_button)
+    void errorReloadClick(View view) {
+        // TODO: 16/01/05 エラー再読み込みボタン押下
     }
 
     // ButterKnife BindString --------------------------------------------
@@ -179,6 +195,18 @@ public class StatusDetailDreamFragment extends BaseFragment {
     public void startQuery() {
         mProgressBar.setVisibility(View.VISIBLE);
         getDreamList();
+        
+        mStatusDetailDistanceAndTimeView.setDistanceText(null);
+        mStatusDetailDistanceAndTimeView.setTimeText(getTime());
+        mStatusDetailPriceView.setPrice(getPrice());
+    }
+
+    private Price getPrice() {
+        return null;
+    }
+
+    private String getTime() {
+        return null;
     }
 
     /**
@@ -219,8 +247,7 @@ public class StatusDetailDreamFragment extends BaseFragment {
      */
     private void onResultListQuery(Result result) {
         Liner liner = PortUtil.getMyPort(result.getLiners(), getParam().getPort());
-        // TODO: 15/12/31 ステータスを反映
-        Log.d("StatusDetailYkfFragment", "liner:" + liner);
+        mStatusDetailTopView.bindStatus(liner);
     }
 
     /**

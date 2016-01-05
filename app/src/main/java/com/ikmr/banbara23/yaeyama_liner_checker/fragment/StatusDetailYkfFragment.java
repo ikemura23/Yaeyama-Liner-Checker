@@ -195,7 +195,6 @@ public class StatusDetailYkfFragment extends BaseFragment {
         getYkfList();
         mStatusDetailDistanceAndTimeView.setDistanceText(null);
         mStatusDetailDistanceAndTimeView.setTimeText(getTime());
-        Log.d("StatusDetailYkfFragment", getTime());
         mStatusDetailPriceView.setPrice(getPrice());
     }
 
