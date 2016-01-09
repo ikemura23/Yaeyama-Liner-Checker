@@ -24,16 +24,18 @@
             android:id="@+id/view_status_detail_top_status_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/status_detail_view_inner_space"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginEnd="@dimen/status_detail_view_outer_space"
+            android:layout_marginStart="@dimen/status_detail_view_outer_space"
+            android:layout_marginTop="4dp"
             android:orientation="horizontal"
             >
 
             <!--ステータスアイコン-->
             <TextView
                 android:id="@+id/view_status_detail_top_status"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:textColor="@color/status_normal"
                 android:textSize="30sp"
                 android:textStyle="bold"
@@ -46,8 +48,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:ellipsize="end"
-                android:textSize="24sp"
+                android:layout_marginStart="10dp"
+                android:textSize="20sp"
                 tools:text="通常運航"
                 />
         </LinearLayout>

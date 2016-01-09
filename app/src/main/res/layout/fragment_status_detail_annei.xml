@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:wheel="http://schemas.android.com/apk/res-auto"
@@ -36,13 +36,13 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="16dp"
         >
 
         <LinearLayout
             android:id="@+id/fragment_status_detail_value_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:orientation="vertical"
             >
 
@@ -96,4 +96,4 @@
         </LinearLayout>
     </ScrollView>
 
-</LinearLayout>
+</FrameLayout>
