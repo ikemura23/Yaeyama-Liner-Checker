@@ -49,7 +49,7 @@
 
         <!--高速船-->
         <LinearLayout
-            android:id="@+id/view_status_detail_price_dream_liner"
+            android:id="@+id/view_status_detail_price_dream_liner_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -90,7 +90,7 @@
                         />
 
                     <TextView
-                        android:id="@+id/view_status_detail_price_dream_liner_adult"
+                        android:id="@+id/view_status_detail_price_dream_liner_adult_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
@@ -118,7 +118,7 @@
                         />
 
                     <TextView
-                        android:id="@+id/view_status_detail_top_price_dream_liner_child"
+                        android:id="@+id/view_status_detail_top_price_dream_liner_child_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
@@ -134,7 +134,7 @@
 
         <!--フェリー-->
         <LinearLayout
-            android:id="@+id/view_status_detail_price_dream_ferry"
+            android:id="@+id/view_status_detail_price_dream_ferry_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -177,7 +177,7 @@
                         />
 
                     <TextView
-                        android:id="@+id/view_status_detail_price_ferry_adult"
+                        android:id="@+id/view_status_detail_price_ferry_adult_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
@@ -205,7 +205,7 @@
                         />
 
                     <TextView
-                        android:id="@+id/view_status_detail_top_price_ferry_child"
+                        android:id="@+id/view_status_detail_top_price_ferry_child_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"

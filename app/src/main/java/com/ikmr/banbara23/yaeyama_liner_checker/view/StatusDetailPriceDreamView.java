@@ -20,18 +20,18 @@ import butterknife.ButterKnife;
  */
 public class StatusDetailPriceDreamView extends FrameLayout {
 
-    @Bind(R.id.view_status_detail_price_dream_liner)
+    @Bind(R.id.view_status_detail_price_dream_liner_layout)
     LinearLayout mPriceDreamLinerLayout;
-    @Bind(R.id.view_status_detail_price_dream_liner_adult)
+    @Bind(R.id.view_status_detail_price_dream_liner_adult_text)
     TextView mPriceDreamLinerAdultText;
-    @Bind(R.id.view_status_detail_top_price_dream_liner_child)
+    @Bind(R.id.view_status_detail_top_price_dream_liner_child_text)
     TextView mPriceDreamLinerChildText;
 
-    @Bind(R.id.view_status_detail_price_dream_ferry)
+    @Bind(R.id.view_status_detail_price_dream_ferry_layout)
     LinearLayout mPriceDreamFerryLayout;
-    @Bind(R.id.view_status_detail_price_ferry_adult)
+    @Bind(R.id.view_status_detail_price_ferry_adult_text)
     TextView mPriceFerryAdultText;
-    @Bind(R.id.view_status_detail_top_price_ferry_child)
+    @Bind(R.id.view_status_detail_top_price_ferry_child_text)
     TextView mPriceFerryChildText;
 
     public StatusDetailPriceDreamView(Context context) {
@@ -44,20 +44,12 @@ public class StatusDetailPriceDreamView extends FrameLayout {
         ButterKnife.bind(this, layout);
     }
 
-    public void setPrice(Price price) {
-        if (price == null) {
-            return;
-        }
-        setLinerPrice(price);
-        setFerryPrice(price);
-    }
-
     /**
      * 高速船
      *
      * @param price 高速船の値段
      */
-    private void setLinerPrice(Price price) {
+    public void setLinerPrice(Price price) {
         if (price == null) {
             mPriceDreamLinerLayout.setVisibility(GONE);
             return;
@@ -71,7 +63,7 @@ public class StatusDetailPriceDreamView extends FrameLayout {
      *
      * @param price フェリーの値段
      */
-    private void setFerryPrice(Price price) {
+    public void setFerryPrice(Price price) {
         if (price == null) {
             mPriceDreamFerryLayout.setVisibility(GONE);
             return;
