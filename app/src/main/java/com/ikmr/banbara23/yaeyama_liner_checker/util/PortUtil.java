@@ -313,11 +313,33 @@ public class PortUtil {
     }
 
     private static String getDreamLinerPriceAdult(Context context, Port port) {
-        return null;
+        switch (port) {
+            case TAKETOMI:
+                return context.getString(R.string.dream_taketomi_price_adult);
+            case KOHAMA:
+                return context.getString(R.string.dream_kohama_price_adult);
+            case KUROSHIMA:
+                return context.getString(R.string.dream_kuroshima_price_adult);
+            case OOHARA:
+                return context.getString(R.string.dream_oohara_price_adult);
+            default:
+                return null;
+        }
     }
 
     private static String getDreamLinerPriceChile(Context context, Port port) {
-        return null;
+        switch (port) {
+            case TAKETOMI:
+                return context.getString(R.string.dream_taketomi_price_child);
+            case KOHAMA:
+                return context.getString(R.string.dream_kohama_price_child);
+            case KUROSHIMA:
+                return context.getString(R.string.dream_kuroshima_price_child);
+            case OOHARA:
+                return context.getString(R.string.dream_oohara_price_child);
+            default:
+                return null;
+        }
     }
 
     /**
@@ -329,17 +351,43 @@ public class PortUtil {
      */
     public static Price getDreamFerryPrice(Context context, Port port) {
         Price price = new Price();
-        price.setAdult(getDreamLinerPriceAdult(context, port));
-        price.setChild(getDreamLinerPriceChile(context, port));
+        price.setAdult(getDreamFerryPriceAdult(context, port));
+        price.setChild(getDreamFerryPriceChile(context, port));
         price.setHandicapped(null);
         return price;
     }
 
     private static String getDreamFerryPriceAdult(Context context, Port port) {
-        return null;
+        switch (port) {
+            case TAKETOMI:
+                return context.getString(R.string.dream_taketomi_price_adult_ferry);
+            case KOHAMA:
+                return context.getString(R.string.dream_kohama_price_adult_ferry);
+            case KUROSHIMA:
+                return context.getString(R.string.dream_kuroshima_price_adult_ferry);
+            case OOHARA:
+                return context.getString(R.string.dream_oohara_price_adult_ferry);
+            case HATOMA_UEHARA:
+                return context.getString(R.string.dream_uehara_price_adult_ferry);
+            default:
+                return null;
+        }
     }
 
     private static String getDreamFerryPriceChile(Context context, Port port) {
-        return null;
+        switch (port) {
+            case TAKETOMI:
+                return context.getString(R.string.dream_taketomi_price_child_ferry);
+            case KOHAMA:
+                return context.getString(R.string.dream_kohama_price_child_ferry);
+            case KUROSHIMA:
+                return context.getString(R.string.dream_kuroshima_price_child_ferry);
+            case OOHARA:
+                return context.getString(R.string.dream_oohara_price_child_ferry);
+            case HATOMA_UEHARA:
+                return context.getString(R.string.dream_uehara_price_child_ferry);
+            default:
+                return null;
+        }
     }
 }
