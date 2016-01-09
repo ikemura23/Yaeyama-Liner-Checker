@@ -23,7 +23,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.timetable.dream.DreamTimeTableVi
 import com.ikmr.banbara23.yaeyama_liner_checker.util.PortUtil;
 import com.ikmr.banbara23.yaeyama_liner_checker.util.StringUtils;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailDistanceAndTimeView;
-import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailPriceView;
+import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailPriceDreamView;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailTopView;
 import com.pnikosis.materialishprogress.ProgressWheel;
 
@@ -61,7 +61,7 @@ public class StatusDetailDreamFragment extends BaseFragment {
     StatusDetailDistanceAndTimeView mStatusDetailDistanceAndTimeView;
 
     @Bind(R.id.fragment_status_detail_dream_price_view)
-    StatusDetailPriceView mStatusDetailPriceView;
+    StatusDetailPriceDreamView mStatusDetailPriceDreamView;
 
     // @Bind(R.id.fragment_status_detail_dream_ad_view)
     // StatusDetailAdView mFragmentStatusDetailDreamAdView;
@@ -199,15 +199,20 @@ public class StatusDetailDreamFragment extends BaseFragment {
 
         mStatusDetailDistanceAndTimeView.setDistanceText(null);
         mStatusDetailDistanceAndTimeView.setTimeText(getTime());
-        mStatusDetailPriceView.setPrice(getPrice());
+        mStatusDetailPriceDreamView.setLinerPrice(getLinerPrice());
+        mStatusDetailPriceDreamView.setFerryPrice(getFerryPrice());
     }
 
     public Context getContext() {
         return getActivity().getApplicationContext();
     }
 
-    private Price getPrice() {
-        return PortUtil.getDreamPrice(getContext(), getParam().getPort());
+    private Price getLinerPrice() {
+        return PortUtil.getDreamLinerPrice(getContext(), getParam().getPort());
+    }
+
+    private Price getFerryPrice() {
+        return PortUtil.getDreamFerryPrice(getContext(), getParam().getPort());
     }
 
     private String getTime() {

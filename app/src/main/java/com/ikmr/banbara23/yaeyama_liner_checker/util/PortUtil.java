@@ -297,7 +297,49 @@ public class PortUtil {
         }
     }
 
-    public static Price getDreamPrice(Context context, Port port) {
+    /**
+     * ドリーム 高速船 料金
+     * 
+     * @param context
+     * @param port
+     * @return
+     */
+    public static Price getDreamLinerPrice(Context context, Port port) {
+        Price price = new Price();
+        price.setAdult(getDreamLinerPriceAdult(context, port));
+        price.setChild(getDreamLinerPriceChile(context, port));
+        price.setHandicapped(null);
+        return price;
+    }
+
+    private static String getDreamLinerPriceAdult(Context context, Port port) {
+        return null;
+    }
+
+    private static String getDreamLinerPriceChile(Context context, Port port) {
+        return null;
+    }
+
+    /**
+     * ドリーム フェリー 料金
+     * 
+     * @param context
+     * @param port
+     * @return
+     */
+    public static Price getDreamFerryPrice(Context context, Port port) {
+        Price price = new Price();
+        price.setAdult(getDreamLinerPriceAdult(context, port));
+        price.setChild(getDreamLinerPriceChile(context, port));
+        price.setHandicapped(null);
+        return price;
+    }
+
+    private static String getDreamFerryPriceAdult(Context context, Port port) {
+        return null;
+    }
+
+    private static String getDreamFerryPriceChile(Context context, Port port) {
         return null;
     }
 }
