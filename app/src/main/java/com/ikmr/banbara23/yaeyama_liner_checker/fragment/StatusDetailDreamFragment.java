@@ -115,6 +115,7 @@ public class StatusDetailDreamFragment extends BaseFragment {
     public void onResume() {
         super.onResume();
         startQuery();
+        initViews();
     }
 
     @Override
@@ -122,6 +123,40 @@ public class StatusDetailDreamFragment extends BaseFragment {
         super.onDestroyView();
         ButterKnife.unbind(this);
         mCompositeSubscription.unsubscribe();
+    }
+
+    /**
+     * 各Viewの初期設定
+     */
+    private void initViews() {
+
+        mStatusDetailDistanceAndTimeView.setDistanceText(null);
+        mStatusDetailDistanceAndTimeView.setTimeText(getTime());
+        mStatusDetailPriceDreamView.setLinerPrice(getLinerPrice());
+        mStatusDetailPriceDreamView.setFerryPrice(getFerryPrice());
+
+        // プレミアムドリーム・スーパードリームは時刻表がないので、時刻表Viewを表示しない
+        if (isTimeTableShow()) {
+            mDreamTimeTableView.setVisibility(View.VISIBLE);
+            mDreamTimeTableView.switchPortView(getParam().getPort());
+        }
+
+        switch (getParam().getPort()) {
+            case TAKETOMI:
+                break;
+            case KOHAMA:
+                break;
+            case HATOMA_UEHARA:
+                break;
+            case OOHARA:
+                break;
+            case HATOMA:
+                break;
+            case KUROSHIMA:
+                break;
+            default:
+                return;
+        }
     }
 
     /**
@@ -196,11 +231,6 @@ public class StatusDetailDreamFragment extends BaseFragment {
     public void startQuery() {
         mProgressBar.setVisibility(View.VISIBLE);
         getDreamList();
-
-        mStatusDetailDistanceAndTimeView.setDistanceText(null);
-        mStatusDetailDistanceAndTimeView.setTimeText(getTime());
-        mStatusDetailPriceDreamView.setLinerPrice(getLinerPrice());
-        mStatusDetailPriceDreamView.setFerryPrice(getFerryPrice());
     }
 
     public Context getContext() {
@@ -273,10 +303,5 @@ public class StatusDetailDreamFragment extends BaseFragment {
     public void finishQuery() {
         mProgressBar.setVisibility(View.GONE);
         mFragmentDreamStatusDetailContentLayout.setVisibility(View.VISIBLE);
-
-        if (isTimeTableShow()) {
-            mDreamTimeTableView.setVisibility(View.VISIBLE);
-            mDreamTimeTableView.switchPortView(getParam().getPort());
-        }
     }
 }
