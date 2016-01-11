@@ -162,14 +162,15 @@ public class StatusDetailDreamFragment extends BaseFragment {
                 mStatusDetailPriceDreamView.setVisibility(View.VISIBLE);
                 mStatusDetailPriceDreamView.setLinerPrice(getLinerPrice());
                 mStatusDetailPriceDreamView.setFerryPrice(getFerryPrice());
+
+                mStatusDetailDistanceAndTimeView.setDistanceText(null);
+                mStatusDetailDistanceAndTimeView.setTimeText(getTime());
                 return;
         }
 
-        if (mStatusDetailDistanceAndTimeView.getVisibility() == View.VISIBLE) {
-            // 走行時間と距離、ドリームは距離を公開していないのでnullを入れて非表示にする
-            mStatusDetailDistanceAndTimeView.setDistanceText(null);
-            mStatusDetailDistanceAndTimeView.setTimeText(getTime());
-        }
+        // 走行時間と距離、ドリームは距離を公開していないのでnullを入れて非表示にする
+        mStatusDetailDistanceAndTimeView.setDistanceText(null);
+        mStatusDetailDistanceAndTimeView.setTimeText(getTime());
     }
 
     /**
@@ -299,6 +300,7 @@ public class StatusDetailDreamFragment extends BaseFragment {
      * @param result
      */
     private void onResultListQuery(Result result) {
+        mStatusDetailTopView.setUpdateText(result.getUpdateTime());
         Liner liner = PortUtil.getMyPort(result.getLiners(), getParam().getPort());
         mStatusDetailTopView.bindStatus(liner);
     }
