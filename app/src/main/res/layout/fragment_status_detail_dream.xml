@@ -79,11 +79,29 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
+                    tools:visibility="gone"
                     />
 
                 <!--料金-->
                 <com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailPriceDreamView
                     android:id="@+id/fragment_status_detail_dream_price_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:visibility="gone"
+                    />
+
+                <!--料金 大原-->
+                <com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailPriceDreamOoharaView
+                    android:id="@+id/fragment_status_detail_dream_price_oohara_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    />
+
+                <!--料金 小浜-->
+                <com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailPriceDreamKohamaView
+                    android:id="@+id/fragment_status_detail_dream_price_kohama_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
