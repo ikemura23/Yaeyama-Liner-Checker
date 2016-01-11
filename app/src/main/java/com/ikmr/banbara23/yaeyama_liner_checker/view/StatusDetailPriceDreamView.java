@@ -82,6 +82,6 @@ public class StatusDetailPriceDreamView extends FrameLayout {
         if (textView == null || value == null) {
             return;
         }
-        mPriceDreamLinerAdultText.setText(value);
+        textView.setText(value);
     }
 }

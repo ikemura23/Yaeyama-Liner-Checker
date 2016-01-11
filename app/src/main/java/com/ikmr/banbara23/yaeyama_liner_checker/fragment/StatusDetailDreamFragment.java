@@ -23,6 +23,8 @@ import com.ikmr.banbara23.yaeyama_liner_checker.timetable.dream.DreamTimeTableVi
 import com.ikmr.banbara23.yaeyama_liner_checker.util.PortUtil;
 import com.ikmr.banbara23.yaeyama_liner_checker.util.StringUtils;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailDistanceAndTimeView;
+import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailPriceDreamKohamaView;
+import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailPriceDreamOoharaView;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailPriceDreamView;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailTopView;
 import com.pnikosis.materialishprogress.ProgressWheel;
@@ -62,6 +64,12 @@ public class StatusDetailDreamFragment extends BaseFragment {
 
     @Bind(R.id.fragment_status_detail_dream_price_view)
     StatusDetailPriceDreamView mStatusDetailPriceDreamView;
+
+    @Bind(R.id.fragment_status_detail_dream_price_oohara_view)
+    StatusDetailPriceDreamOoharaView mStatusDetailPriceDreamOoharaView;
+
+    @Bind(R.id.fragment_status_detail_dream_price_kohama_view)
+    StatusDetailPriceDreamKohamaView mStatusDetailPriceDreamKohamaView;
 
     // @Bind(R.id.fragment_status_detail_dream_ad_view)
     // StatusDetailAdView mFragmentStatusDetailDreamAdView;
@@ -130,32 +138,37 @@ public class StatusDetailDreamFragment extends BaseFragment {
      */
     private void initViews() {
 
-        mStatusDetailDistanceAndTimeView.setDistanceText(null);
-        mStatusDetailDistanceAndTimeView.setTimeText(getTime());
-        mStatusDetailPriceDreamView.setLinerPrice(getLinerPrice());
-        mStatusDetailPriceDreamView.setFerryPrice(getFerryPrice());
-
-        // プレミアムドリーム・スーパードリームは時刻表がないので、時刻表Viewを表示しない
+        // プレミアムドリーム・スーパードリームは時刻表がないので表示しない
         if (isTimeTableShow()) {
             mDreamTimeTableView.setVisibility(View.VISIBLE);
             mDreamTimeTableView.switchPortView(getParam().getPort());
         }
 
+        // 値段の設定、大原と小浜は値段のレイアウトが違う
         switch (getParam().getPort()) {
-            case TAKETOMI:
-                break;
             case KOHAMA:
-                break;
-            case HATOMA_UEHARA:
+                mStatusDetailPriceDreamKohamaView.setVisibility(View.VISIBLE);
                 break;
             case OOHARA:
+                mStatusDetailPriceDreamOoharaView.setVisibility(View.VISIBLE);
                 break;
-            case HATOMA:
+            case SUPER_DREAM:
+                mStatusDetailDistanceAndTimeView.setVisibility(View.GONE);
                 break;
-            case KUROSHIMA:
+            case PREMIUM_DREAM:
+                mStatusDetailDistanceAndTimeView.setVisibility(View.GONE);
                 break;
             default:
+                mStatusDetailPriceDreamView.setVisibility(View.VISIBLE);
+                mStatusDetailPriceDreamView.setLinerPrice(getLinerPrice());
+                mStatusDetailPriceDreamView.setFerryPrice(getFerryPrice());
                 return;
+        }
+
+        if (mStatusDetailDistanceAndTimeView.getVisibility() == View.VISIBLE) {
+            // 走行時間と距離、ドリームは距離を公開していないのでnullを入れて非表示にする
+            mStatusDetailDistanceAndTimeView.setDistanceText(null);
+            mStatusDetailDistanceAndTimeView.setTimeText(getTime());
         }
     }
 
