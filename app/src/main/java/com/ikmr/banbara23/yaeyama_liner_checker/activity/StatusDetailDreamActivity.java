@@ -5,27 +5,27 @@ import android.app.Fragment;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
-import com.ikmr.banbara23.yaeyama_liner_checker.util.StringUtils;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.YkfLinerDetail;
+import com.ikmr.banbara23.yaeyama_liner_checker.fragment.FragmentApiQueryInterface;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusDetailDreamFragment;
+import com.ikmr.banbara23.yaeyama_liner_checker.util.StringUtils;
 
 /**
  * ステータス詳細のActivity
  */
-public class StatusDetailDreamActivity extends BaseActivity {
+public class StatusDetailDreamActivity extends BaseActivity implements FragmentApiQueryInterface {
 
     YkfLinerDetail mYkfLinerDetail;
     Liner mLiner;
 
-    // 観光会社
     Fragment mFragment;
+
+    private boolean mQuerying = false;
 
     /**
      * クエリ起動中かどうか
@@ -129,24 +129,22 @@ public class StatusDetailDreamActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.action_reload:
-                Toast.makeText(this, "更新処理", Toast.LENGTH_SHORT).show();
+                if (!mQuerying) {
+                    createFragment();
+                }
                 break;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * @param view 電話で問い合わせクリック
-     */
-    public void onTellClicked(View view) {
-        Toast.makeText(getApplicationContext(), "電話で問い合わせクリック", Toast.LENGTH_SHORT);
+    @Override
+    public void startQuery() {
+        mQuerying = true;
     }
 
-    /**
-     * @param view サイトで確認クリック
-     */
-    public void onWebClicked(View view) {
-        Toast.makeText(getApplicationContext(), "サイトで確認クリック", Toast.LENGTH_SHORT);
+    @Override
+    public void finishQuery() {
+        mQuerying = false;
     }
 }
