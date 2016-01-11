@@ -40,10 +40,13 @@ public class StatusDetailTopView extends FrameLayout {
     // Bind String ---------------------------------------
     @BindString(R.string.status_normal)
     String normal;
+
     @BindString(R.string.status_cation)
     String cation;
+
     @BindString(R.string.status_cancel)
     String cancel;
+
     @BindString(R.string.status_cancel)
     String suspend;
 
@@ -99,12 +102,12 @@ public class StatusDetailTopView extends FrameLayout {
                 mStatusIcon.setTextColor(colorNormal);
                 break;
             case CANCEL:
-                mStatusIcon.setText(cation);
-                mStatusIcon.setTextColor(colorCation);
-                break;
-            case CAUTION:
                 mStatusIcon.setText(cancel);
                 mStatusIcon.setTextColor(colorCancel);
+                break;
+            case CAUTION:
+                mStatusIcon.setText(cation);
+                mStatusIcon.setTextColor(colorCation);
                 break;
             case SUSPEND:
                 mStatusIcon.setText(suspend);
