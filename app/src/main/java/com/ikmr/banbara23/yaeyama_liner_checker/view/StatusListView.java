@@ -11,16 +11,43 @@ import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Status;
 
+import butterknife.BindColor;
+import butterknife.BindString;
+
 /**
  * ステータスリストのカスタムビュー
  */
 public class StatusListView extends FrameLayout {
+
+    // @Bind(R.id.view_status_list_status_icon_text)
+    TextView mStatusIconText;
+    // @Bind(R.id.view_status_list_port_text)
     TextView mPortText;
-    TextView mStatus_normal;
-    TextView mStatus_cancel;
-    TextView mStatus_cation;
-    TextView mStatus_suspend;
-    TextView mCommentText;
+    // @Bind(R.id.view_status_list_description_text)
+    TextView mDescriptionText;
+
+    // Bind String ---------------------------------------
+    @BindString(R.string.status_normal)
+    String normal;
+
+    @BindString(R.string.status_cation)
+    String cation;
+
+    @BindString(R.string.status_cancel)
+    String cancel;
+
+    @BindString(R.string.status_cancel)
+    String suspend;
+
+    // BindColor ---------------------------------------
+    @BindColor(R.color.status_normal)
+    int colorNormal;
+    @BindColor(R.color.status_cation)
+    int colorCation;
+    @BindColor(R.color.status_cancel)
+    int colorCancel;
+    @BindColor(R.color.dark_grey)
+    int colorSuspend;
 
     public StatusListView(Context context) {
         super(context);
@@ -33,12 +60,9 @@ public class StatusListView extends FrameLayout {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        mPortText = (TextView) findViewById(R.id.view_status_detail_top_port);
-        mStatus_normal = (TextView) findViewById(R.id.view_status_detail_top_update_text);
-        mStatus_cancel = (TextView) findViewById(R.id.view_status_list_status_cancel_text);
-        mStatus_cation = (TextView) findViewById(R.id.view_status_list_status_cation_text);
-        mStatus_suspend = (TextView) findViewById(R.id.view_status_list_status_suspend_text);
-        mCommentText = (TextView) findViewById(R.id.view_status_detail_top_text);
+        mPortText = (TextView) findViewById(R.id.view_status_list_port_text);
+        mStatusIconText = (TextView) findViewById(R.id.view_status_list_status_icon_text);
+        mDescriptionText = (TextView) findViewById(R.id.view_status_list_description_text);
     }
 
     /**
@@ -49,7 +73,7 @@ public class StatusListView extends FrameLayout {
     public void bind(Liner liner) {
         setPort(liner.getPort());
         setStatus(liner.getStatus());
-        setComment(liner.getText());
+        setDescription(liner.getText());
     }
 
     /**
@@ -73,24 +97,23 @@ public class StatusListView extends FrameLayout {
         if (status == null) {
             return;
         }
-        mStatus_normal.setVisibility(GONE);
-        mStatus_cancel.setVisibility(GONE);
-        mStatus_cation.setVisibility(GONE);
-        mStatus_suspend.setVisibility(GONE);
 
         switch (status) {
             case NORMAL:
-                mStatus_normal.setVisibility(VISIBLE);
+                mStatusIconText.setText(getContext().getString(R.string.status_normal));
+                mStatusIconText.setTextColor(getContext().getColor(R.color.status_normal));
                 break;
             case CANCEL:
-                mStatus_cancel.setVisibility(VISIBLE);
+                mStatusIconText.setText(cancel);
+                mStatusIconText.setTextColor(colorCancel);
                 break;
             case CAUTION:
-                mStatus_cation.setVisibility(VISIBLE);
+                mStatusIconText.setText(cation);
+                mStatusIconText.setTextColor(colorCation);
                 break;
             case SUSPEND:
-                mStatus_suspend.setVisibility(VISIBLE);
-                break;
+                mStatusIconText.setText(suspend);
+                mStatusIconText.setTextColor(colorSuspend);
         }
     }
 
@@ -99,11 +122,11 @@ public class StatusListView extends FrameLayout {
      *
      * @param text
      */
-    private void setComment(String text) {
+    private void setDescription(String text) {
         if (text == null) {
-            mCommentText.setText("エラー");
+            mDescriptionText.setVisibility(GONE);
             return;
         }
-        mCommentText.setText(text);
+        mDescriptionText.setText(text);
     }
 }
