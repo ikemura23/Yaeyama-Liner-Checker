@@ -13,7 +13,6 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.ikmr.banbara23.yaeyama_liner_checker.Loading;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
-import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAdapter;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAsync;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
@@ -28,8 +27,7 @@ import timber.log.Timber;
 /**
  * ステータス一覧Activity
  */
-public class StatusListActivity extends BaseActivity implements
-        StatusListAdapter.ListItemClickListener, QueryInterface, StatusListAsync.StatusListAsyncCallback {
+public class StatusListActivity extends BaseActivity implements QueryInterface, StatusListAsync.StatusListAsyncCallback {
 
     final static String PARAM_COMPANY = "company";
     // 観光会社
@@ -171,7 +169,7 @@ public class StatusListActivity extends BaseActivity implements
      *
      * @param liner
      */
-    @Override
+    // @Override
     public void onItemClick(Liner liner) {
         liner.setCompany(mCompany);
 
@@ -248,7 +246,7 @@ public class StatusListActivity extends BaseActivity implements
         {
             ((ListFragmentInterface) mFragment).onStartQuery();
         }
-//        getLoading().show();
+        // getLoading().show();
         mQuerying = true;
     }
 
@@ -281,7 +279,7 @@ public class StatusListActivity extends BaseActivity implements
                 ((ListFragmentInterface) mFragment).onFailedQuery();
             }
         } finally {
-//            getLoading().close();
+            // getLoading().close();
             mQuerying = false;
         }
     }

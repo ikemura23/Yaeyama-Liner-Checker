@@ -6,24 +6,25 @@ import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import butterknife.Bind;
+import butterknife.BindColor;
+import butterknife.BindString;
+
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Status;
-
-import butterknife.BindColor;
-import butterknife.BindString;
 
 /**
  * ステータスリストのカスタムビュー
  */
 public class StatusListView extends FrameLayout {
 
-    // @Bind(R.id.view_status_list_status_icon_text)
+     @Bind(R.id.view_status_list_status_icon_text)
     TextView mStatusIconText;
-    // @Bind(R.id.view_status_list_port_text)
+     @Bind(R.id.view_status_list_port_text)
     TextView mPortText;
-    // @Bind(R.id.view_status_list_description_text)
+     @Bind(R.id.view_status_list_description_text)
     TextView mDescriptionText;
 
     // Bind String ---------------------------------------
