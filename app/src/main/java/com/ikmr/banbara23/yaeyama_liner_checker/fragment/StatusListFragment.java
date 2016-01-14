@@ -180,7 +180,7 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
             return;
         }
 
-        Liner liner = (Liner) getListAdapter().getItem(position + 1);
+        Liner liner = (Liner) getListAdapter().getItem(position - 1);
         liner.setCompany(company);
         switch (company) {
             case ANNEI:
