@@ -19,7 +19,7 @@
         android:layout_marginBottom="5dp"
         android:lineSpacingExtra="2dp"
         android:textColor="@color/secondary_text"
-        android:textSize="14sp"
+        android:textSize="16sp"
         tools:text="title"
         />
 
@@ -29,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/text_description"
-        android:textSize="14sp"
+        android:textSize="16sp"
         tools:text="yyyy/MM/dd hh:mm:ss更新"
         />
 </LinearLayout>
