@@ -2,7 +2,6 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.activity;
 
 import android.app.Fragment;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,13 +10,10 @@ import android.view.MenuItem;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.ikmr.banbara23.yaeyama_liner_checker.Loading;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAsync;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
-import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
-import com.ikmr.banbara23.yaeyama_liner_checker.entity.YkfLinerDetail;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.ListFragmentInterface;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.QueryInterface;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusListFragment;
@@ -39,13 +35,13 @@ public class StatusListActivity extends BaseActivity implements QueryInterface, 
     private Fragment mFragment;
     private Result mResult;
 
-    Loading mLoading;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_status_list);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         mCompany = (Company) getIntent().getSerializableExtra(PARAM_COMPANY);
         // タイトル
@@ -164,89 +160,12 @@ public class StatusListActivity extends BaseActivity implements QueryInterface, 
         new StatusListAsync(this, mCompany).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, url);
     }
 
-    /**
-     * リストのセルビュークリック処理
-     *
-     * @param liner
-     */
-    // @Override
-    public void onItemClick(Liner liner) {
-        liner.setCompany(mCompany);
-
-        switch (mCompany) {
-            case ANNEI:
-                startStatusDetailActivity(liner);
-                break;
-            case YKF:
-                startStatusDetailYkfActivity(liner);
-                break;
-            case DREAM:
-                startStatusDetailDreamActivity(liner);
-                break;
-            default:
-                break;
-        }
-    }
-
-    /**
-     * 安栄の詳細画面に遷移
-     * 
-     * @param liner 運航状況
-     */
-    private void startStatusDetailActivity(Liner liner) {
-        Intent intent = new Intent(this, StatusDetailAnneiActivity.class);
-        intent.putExtra(StatusDetailAnneiActivity.class.getName(), liner);
-        startActivity(intent);
-    }
-
-    /**
-     * 八重山観光フェリーの詳細に遷移
-     * 
-     * @param liner
-     */
-    private void startStatusDetailYkfActivity(Liner liner) {
-        YkfLinerDetail ykfLinerDetail = new YkfLinerDetail();
-        ykfLinerDetail.setLiner(liner);
-        ykfLinerDetail.setUpdateTime(mResult.getUpdateTime());
-        ykfLinerDetail.setTitle(mResult.getTitle());
-        ykfLinerDetail.setPort(liner.getPort());
-
-        Intent intent = new Intent(this, StatusDetailYkfActivity.class);
-        intent.putExtra(StatusDetailYkfActivity.class.getName(), ykfLinerDetail);
-        startActivity(intent);
-    }
-
-    /**
-     * ドリーム観光の詳細に遷移
-     * 
-     * @param liner
-     */
-    private void startStatusDetailDreamActivity(Liner liner) {
-        YkfLinerDetail ykfLinerDetail = new YkfLinerDetail();
-        ykfLinerDetail.setLiner(liner);
-        ykfLinerDetail.setUpdateTime(mResult.getUpdateTime());
-        ykfLinerDetail.setTitle(mResult.getTitle());
-        ykfLinerDetail.setPort(liner.getPort());
-
-        Intent intent = new Intent(this, StatusDetailDreamActivity.class);
-        intent.putExtra(StatusDetailDreamActivity.class.getName(), ykfLinerDetail);
-        startActivity(intent);
-    }
-
-    public Loading getLoading() {
-        if (mLoading == null) {
-            mLoading = new Loading(this);
-        }
-        return mLoading;
-    }
-
     @Override
     public void preExecute() {
         if (mFragment != null && mFragment instanceof ListFragmentInterface)
         {
             ((ListFragmentInterface) mFragment).onStartQuery();
         }
-        // getLoading().show();
         mQuerying = true;
     }
 
@@ -279,7 +198,6 @@ public class StatusListActivity extends BaseActivity implements QueryInterface, 
                 ((ListFragmentInterface) mFragment).onFailedQuery();
             }
         } finally {
-            // getLoading().close();
             mQuerying = false;
         }
     }

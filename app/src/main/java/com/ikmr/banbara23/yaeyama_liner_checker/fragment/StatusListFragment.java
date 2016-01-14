@@ -3,6 +3,7 @@ package com.ikmr.banbara23.yaeyama_liner_checker.fragment;
 
 import android.app.Activity;
 import android.app.ListFragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -14,9 +15,13 @@ import android.widget.Toast;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAdapter;
+import com.ikmr.banbara23.yaeyama_liner_checker.activity.StatusDetailAnneiActivity;
+import com.ikmr.banbara23.yaeyama_liner_checker.activity.StatusDetailDreamActivity;
+import com.ikmr.banbara23.yaeyama_liner_checker.activity.StatusDetailYkfActivity;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.YkfLinerDetail;
 import com.ikmr.banbara23.yaeyama_liner_checker.util.StringUtils;
 
 import butterknife.ButterKnife;
@@ -39,7 +44,26 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
+        Company company = (Company) getArguments().get(PARAM_COMPANY);
+        if (company == null) {
+            return;
+        }
+
         Liner liner = (Liner) getListAdapter().getItem(position);
+        liner.setCompany(company);
+        switch (company) {
+            case ANNEI:
+                startStatusDetailActivity(liner);
+                break;
+            case YKF:
+                startStatusDetailYkfActivity(liner);
+                break;
+            case DREAM:
+                startStatusDetailDreamActivity(liner);
+                break;
+            default:
+                break;
+        }
     }
 
     public static StatusListFragment NewInstance(Company company) {
@@ -161,5 +185,50 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
     public void onFinishQuery() {
         mHeaderCardLayout.setVisibility(View.VISIBLE);
         getListView().removeFooterView(mProgressBar);
+    }
+
+    /**
+     * 安栄の詳細画面に遷移
+     *
+     * @param liner 運航状況
+     */
+    private void startStatusDetailActivity(Liner liner) {
+        Intent intent = new Intent(getActivity(), StatusDetailAnneiActivity.class);
+        intent.putExtra(StatusDetailAnneiActivity.class.getName(), liner);
+        startActivity(intent);
+    }
+
+    /**
+     * 八重山観光フェリーの詳細に遷移
+     *
+     * @param liner
+     */
+    private void startStatusDetailYkfActivity(Liner liner) {
+        YkfLinerDetail ykfLinerDetail = new YkfLinerDetail();
+        ykfLinerDetail.setLiner(liner);
+        // ykfLinerDetail.setUpdateTime(mResult.getUpdateTime());
+        // ykfLinerDetail.setTitle(mResult.getTitle());
+        ykfLinerDetail.setPort(liner.getPort());
+
+        Intent intent = new Intent(getActivity(), StatusDetailYkfActivity.class);
+        intent.putExtra(StatusDetailYkfActivity.class.getName(), ykfLinerDetail);
+        startActivity(intent);
+    }
+
+    /**
+     * ドリーム観光の詳細に遷移
+     *
+     * @param liner
+     */
+    private void startStatusDetailDreamActivity(Liner liner) {
+        YkfLinerDetail ykfLinerDetail = new YkfLinerDetail();
+        ykfLinerDetail.setLiner(liner);
+        // ykfLinerDetail.setUpdateTime(mResult.getUpdateTime());
+        // ykfLinerDetail.setTitle(mResult.getTitle());
+        ykfLinerDetail.setPort(liner.getPort());
+
+        Intent intent = new Intent(getActivity(), StatusDetailDreamActivity.class);
+        intent.putExtra(StatusDetailDreamActivity.class.getName(), ykfLinerDetail);
+        startActivity(intent);
     }
 }
