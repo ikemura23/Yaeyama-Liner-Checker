@@ -41,31 +41,6 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
     public StatusListFragment() {
     }
 
-    @Override
-    public void onListItemClick(ListView l, View v, int position, long id) {
-        super.onListItemClick(l, v, position, id);
-        Company company = (Company) getArguments().get(PARAM_COMPANY);
-        if (company == null) {
-            return;
-        }
-
-        Liner liner = (Liner) getListAdapter().getItem(position);
-        liner.setCompany(company);
-        switch (company) {
-            case ANNEI:
-                startStatusDetailActivity(liner);
-                break;
-            case YKF:
-                startStatusDetailYkfActivity(liner);
-                break;
-            case DREAM:
-                startStatusDetailDreamActivity(liner);
-                break;
-            default:
-                break;
-        }
-    }
-
     public static StatusListFragment NewInstance(Company company) {
         StatusListFragment fragment = new StatusListFragment();
         Bundle bundle = new Bundle();
@@ -185,6 +160,31 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
     public void onFinishQuery() {
         mHeaderCardLayout.setVisibility(View.VISIBLE);
         getListView().removeFooterView(mProgressBar);
+    }
+
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
+        Company company = (Company) getArguments().get(PARAM_COMPANY);
+        if (company == null) {
+            return;
+        }
+
+        Liner liner = (Liner) getListAdapter().getItem(position);
+        liner.setCompany(company);
+        switch (company) {
+            case ANNEI:
+                startStatusDetailActivity(liner);
+                break;
+            case YKF:
+                startStatusDetailYkfActivity(liner);
+                break;
+            case DREAM:
+                startStatusDetailDreamActivity(liner);
+                break;
+            default:
+                break;
+        }
     }
 
     /**
