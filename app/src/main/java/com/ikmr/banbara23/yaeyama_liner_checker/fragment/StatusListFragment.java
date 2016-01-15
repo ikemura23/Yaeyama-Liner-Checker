@@ -13,6 +13,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import butterknife.ButterKnife;
+
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAdapter;
 import com.ikmr.banbara23.yaeyama_liner_checker.activity.StatusDetailAnneiActivity;
@@ -23,8 +25,6 @@ import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.YkfLinerDetail;
 import com.ikmr.banbara23.yaeyama_liner_checker.util.StringUtils;
-
-import butterknife.ButterKnife;
 
 /**
  * ステータスリストのFragment
@@ -100,7 +100,7 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
         mProgressBar = View.inflate(getActivity(), R.layout.view_progressbar, null);
         getListView().addFooterView(mProgressBar, null, false);
 
-        mListAdapter = new StatusListAdapter(getActivity().getApplicationContext(), getActivity());
+        mListAdapter = new StatusListAdapter(getActivity().getApplicationContext());
         setListAdapter(mListAdapter);
     }
 

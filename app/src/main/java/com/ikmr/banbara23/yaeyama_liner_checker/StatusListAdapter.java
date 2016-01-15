@@ -1,7 +1,6 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,19 +20,12 @@ import butterknife.ButterKnife;
  */
 public class StatusListAdapter extends ArrayAdapter<Liner> {
 
-    // ListItemClickListener mListItemClickListener;
-
-    public StatusListAdapter(Context context, Activity activity) {
+    public StatusListAdapter(Context context) {
         super(context, R.layout.fragment_status_list_view);
-
-        // colorNormal = context.getResources().getColor(R.color.status_normal);
-
-        // mListItemClickListener = (ListItemClickListener) activity;
     }
 
     @Override
     public View getView(final int position, View view, ViewGroup parent) {
-        // StatusListView statusListView;
         ViewHolder viewHolder;
         if (view != null) {
             viewHolder = (ViewHolder) view.getTag();
@@ -66,30 +58,8 @@ public class StatusListAdapter extends ArrayAdapter<Liner> {
                 viewHolder.statusIconText.setTextColor(viewHolder.colorSuspend);
         }
         viewHolder.descriptionText.setText(liner.getText());
-
-        // if (convertView == null) {
-        // LayoutInflater inflater = LayoutInflater.from(getContext());
-        // statusListView = (StatusListView) inflater.inflate(
-        // R.layout.fragment_status_list_view, parent, false);
-        // } else {
-        // statusListView = (StatusListView) convertView;
-        // }
-        // statusListView.bind(getItem(position));
-        // statusListView.setOnClickListener(new View.OnClickListener() {
-        // @Override
-        // public void onClick(View v) {
-        // mListItemClickListener.onItemClick(getItem(position));
-        // }
-        // });
         return view;
     }
-
-    // /**
-    // * 通知用
-    // */
-    // public interface ListItemClickListener {
-    // void onItemClick(Liner liner);
-    // }
 
     static class ViewHolder {
 
