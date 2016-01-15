@@ -390,4 +390,31 @@ public class PortUtil {
                 return null;
         }
     }
+
+    public static String getRouteName(Context context, Port port) {
+        switch (port) {
+            case TAKETOMI:
+                return context.getString(R.string.route_taketomi);
+            case KOHAMA:
+                return context.getString(R.string.route_kohama);
+            case KUROSHIMA:
+                return context.getString(R.string.route_kuroshima);
+            case OOHARA:
+                return context.getString(R.string.route_oohara);
+            case UEHARA:
+                return context.getString(R.string.route_uehara);
+            case HATERUMA:
+                return context.getString(R.string.route_hateruma);
+            case HATOMA:
+                return context.getString(R.string.route_hatoma);
+            case HATOMA_UEHARA:
+                return context.getString(R.string.route_uehara_hatoma);
+            case SUPER_DREAM:
+                return port.getPort();
+            case PREMIUM_DREAM:
+                return port.getPort();
+            default:
+                return null;
+        }
+    }
 }

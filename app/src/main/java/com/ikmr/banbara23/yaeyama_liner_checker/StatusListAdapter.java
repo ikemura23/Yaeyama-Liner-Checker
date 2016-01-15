@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
+import com.ikmr.banbara23.yaeyama_liner_checker.util.PortUtil;
 
 import butterknife.Bind;
 import butterknife.BindColor;
@@ -20,8 +21,11 @@ import butterknife.ButterKnife;
  */
 public class StatusListAdapter extends ArrayAdapter<Liner> {
 
+    Context mContext;
+
     public StatusListAdapter(Context context) {
         super(context, R.layout.fragment_status_list_view);
+        mContext = context;
     }
 
     @Override
@@ -38,7 +42,7 @@ public class StatusListAdapter extends ArrayAdapter<Liner> {
         }
         Liner liner = getItem(position);
         // 港
-        viewHolder.portText.setText(liner.getPort().getValue());
+        viewHolder.portText.setText(PortUtil.getRouteName(mContext, liner.getPort()));
         // ステータス
         switch (liner.getStatus()) {
             case NORMAL:

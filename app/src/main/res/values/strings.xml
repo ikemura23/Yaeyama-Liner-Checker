@@ -68,13 +68,14 @@
     <string name="time_table_port_hateruma">波照間発</string>
     <string name="time_table_port_hatoma">鳩間発</string>
 
-    <string name="detail_port_taketomi">石垣島 - 竹富島</string>
-    <string name="detail_port_kuroshima">石垣島 - 黒島島</string>
-    <string name="detail_port_kohama">石垣島 - 小浜島</string>
-    <string name="detail_port_uehara">石垣島 - 上原(西表島)</string>
-    <string name="detail_port_oohara">石垣島 - 大原(西表島)</string>
-    <string name="detail_port_hateruma">石垣島 - 波照間島</string>
-    <string name="detail_port_hatoma">石垣島 - 鳩間島</string>
+    <string name="route_taketomi">石垣島 - 竹富島</string>
+    <string name="route_kuroshima">石垣島 - 黒島島</string>
+    <string name="route_kohama">石垣島 - 小浜島</string>
+    <string name="route_uehara">石垣島 - 上原(西表島)</string>
+    <string name="route_uehara_hatoma">石垣島 - 鳩間島経由上原(西表島)</string>
+    <string name="route_oohara">石垣島 - 大原(西表島)</string>
+    <string name="route_hateruma">石垣島 - 波照間島</string>
+    <string name="route_hatoma">石垣島 - 鳩間島</string>
 
     <string name="company_name_annei">安栄観光</string>
     <string name="company_name_ykf">八重山観光フェリー</string>
