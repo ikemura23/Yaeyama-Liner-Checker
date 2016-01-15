@@ -2,7 +2,7 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.entity;
 
 /**
- * Created by banbara23 on 15/09/21.
+ * 運航ルートのEnumクラス
  */
 public enum Port {
     HATERUMA("波照間", "波照間"),
@@ -36,20 +36,12 @@ public enum Port {
         return port;
     }
 
-    public void setPort(String port) {
-        this.port = port;
-    }
-
     public String getPort() {
         return port;
     }
 
     public String getPortSimple() {
         return portSimple;
-    }
-
-    public void setPortSimple(String portSimple) {
-        this.portSimple = portSimple;
     }
 
 }
