@@ -16,10 +16,11 @@
         android:id="@+id/fragment_status_list_toolbar_title_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginStart="8dp"
         android:lineSpacingExtra="2dp"
         android:textColor="@color/secondary_text"
-        android:textSize="16sp"
+        android:textSize="14sp"
         tools:text="title"
         />
 
@@ -28,8 +29,9 @@
         android:id="@+id/fragment_status_list_toolbar_update_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:textColor="@color/text_description"
-        android:textSize="16sp"
+        android:textSize="14sp"
         tools:text="yyyy/MM/dd hh:mm:ss更新"
         />
 </LinearLayout>
