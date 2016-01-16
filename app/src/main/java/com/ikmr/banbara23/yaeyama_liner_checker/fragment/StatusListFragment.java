@@ -55,12 +55,14 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
         View view = inflater.inflate(R.layout.fragment_status_list, container, false);
         mProgressWheel = (ProgressWheel) view.findViewById(R.id.fragment_status_list_progressbar);
         ButterKnife.bind(this, view);
+        initViews();
         return view;
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        getListView().addHeaderView(mHeaderView, null, false);
         Activity activity = getActivity();
         if (activity != null && activity instanceof QueryInterface) {
             // API通信処理の開始準備の完了
@@ -81,21 +83,17 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
      */
     @Override
     public void onStartQuery() {
-        initViews();
+        mProgressWheel.setVisibility(View.VISIBLE);
+        mHeaderView.setVisibility(View.GONE);
+        mListAdapter.clear();
+        setListAdapter(mListAdapter);
     }
 
     private void initViews() {
-
         mHeaderView = View.inflate(getActivity(), R.layout.fragment_status_list_header_view, null);
-        mHeaderView.setVisibility(View.GONE);
         mTitleText = (TextView) mHeaderView.findViewById(R.id.fragment_status_list_toolbar_title_text);
         mUpdateText = (TextView) mHeaderView.findViewById(R.id.fragment_status_list_toolbar_update_text);
-        getListView().removeHeaderView(mHeaderView);
-        getListView().addHeaderView(mHeaderView, null, false);
-        mProgressWheel.setVisibility(View.VISIBLE);
-
         mListAdapter = new StatusListAdapter(getActivity().getApplicationContext());
-        setListAdapter(mListAdapter);
     }
 
     /**
