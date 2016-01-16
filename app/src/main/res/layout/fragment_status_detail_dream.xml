@@ -66,6 +66,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="4dp"
+                    android:visibility="gone"
                     />
 
                 <!--時間と距離-->
@@ -83,6 +84,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
+                    android:visibility="gone"
                     />
 
                 <!--料金 大原-->

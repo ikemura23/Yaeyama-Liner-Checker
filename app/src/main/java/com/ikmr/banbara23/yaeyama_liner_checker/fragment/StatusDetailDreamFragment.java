@@ -113,13 +113,13 @@ public class StatusDetailDreamFragment extends BaseDetailFragment {
         View view = inflater.inflate(R.layout.fragment_status_detail_dream, container, false);
         ButterKnife.bind(this, view);
         mAdView = ButterKnife.findById(view, R.id.adView);
-        initViews();
         return view;
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        initViews();
         startQuery();
     }
 
