@@ -13,8 +13,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import butterknife.ButterKnife;
-
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAdapter;
 import com.ikmr.banbara23.yaeyama_liner_checker.activity.StatusDetailAnneiActivity;
@@ -25,6 +23,9 @@ import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.YkfLinerDetail;
 import com.ikmr.banbara23.yaeyama_liner_checker.util.StringUtils;
+import com.pnikosis.materialishprogress.ProgressWheel;
+
+import butterknife.ButterKnife;
 
 /**
  * ステータスリストのFragment
@@ -34,7 +35,7 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
     TextView mTitleText;
     TextView mUpdateText;
     View mHeaderView;
-    View mProgressBar;
+    ProgressWheel mProgressWheel;
 
     final static String PARAM_COMPANY = "company";
 
@@ -52,12 +53,7 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_status_list, container, false);
-        // mHeaderView =
-        // view.findViewById(R.id.fragment_status_list_header_card_view);
-        // mTitleText = (TextView)
-        // view.findViewById(R.id.fragment_status_list_toolbar_title_text);
-        // mUpdateText = (TextView)
-        // view.findViewById(R.id.fragment_status_list_toolbar_update_text);
+        mProgressWheel = (ProgressWheel) view.findViewById(R.id.fragment_status_list_progressbar);
         ButterKnife.bind(this, view);
         return view;
     }
@@ -96,9 +92,7 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
         mUpdateText = (TextView) mHeaderView.findViewById(R.id.fragment_status_list_toolbar_update_text);
         getListView().removeHeaderView(mHeaderView);
         getListView().addHeaderView(mHeaderView, null, false);
-
-        mProgressBar = View.inflate(getActivity(), R.layout.view_progressbar, null);
-        getListView().addFooterView(mProgressBar, null, false);
+        mProgressWheel.setVisibility(View.VISIBLE);
 
         mListAdapter = new StatusListAdapter(getActivity().getApplicationContext());
         setListAdapter(mListAdapter);
@@ -169,7 +163,7 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
     @Override
     public void onFinishQuery() {
         mHeaderView.setVisibility(View.VISIBLE);
-        getListView().removeFooterView(mProgressBar);
+        mProgressWheel.setVisibility(View.GONE);
     }
 
     @Override
@@ -216,8 +210,6 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
     private void startStatusDetailYkfActivity(Liner liner) {
         YkfLinerDetail ykfLinerDetail = new YkfLinerDetail();
         ykfLinerDetail.setLiner(liner);
-        // ykfLinerDetail.setUpdateTime(mResult.getUpdateTime());
-        // ykfLinerDetail.setTitle(mResult.getTitle());
         ykfLinerDetail.setPort(liner.getPort());
 
         Intent intent = new Intent(getActivity(), StatusDetailYkfActivity.class);
@@ -233,8 +225,6 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
     private void startStatusDetailDreamActivity(Liner liner) {
         YkfLinerDetail ykfLinerDetail = new YkfLinerDetail();
         ykfLinerDetail.setLiner(liner);
-        // ykfLinerDetail.setUpdateTime(mResult.getUpdateTime());
-        // ykfLinerDetail.setTitle(mResult.getTitle());
         ykfLinerDetail.setPort(liner.getPort());
 
         Intent intent = new Intent(getActivity(), StatusDetailDreamActivity.class);
