@@ -85,16 +85,9 @@
                 layout="@layout/view_status_detail_action_box"/>
 
             <!--広告-->
-            <!--<com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailAdView-->
-            <!--android:id="@+id/fragment_status_detail_annei_ad_view"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:descendantFocusability="blocksDescendants"-->
-            <!--/>-->
             <com.google.android.gms.ads.AdView
                 android:id="@+id/adView"
                 xmlns:ads="http://schemas.android.com/apk/res-auto"
-                xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/status_detail_view_outer_space"

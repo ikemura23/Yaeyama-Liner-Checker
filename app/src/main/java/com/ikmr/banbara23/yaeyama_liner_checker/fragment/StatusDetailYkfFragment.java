@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,7 +38,7 @@ import rx.subscriptions.CompositeSubscription;
 /**
  * 詳細のフラグメント
  */
-public class StatusDetailYkfFragment extends BaseFragment {
+public class StatusDetailYkfFragment extends BaseDetailFragment {
 
     @Bind(R.id.fragment_status_detail_ykf_top_view)
     StatusDetailTopView mStatusDetailTopView;
@@ -118,6 +117,7 @@ public class StatusDetailYkfFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_status_detail_ykf, container, false);
         ButterKnife.bind(this, view);
+        mAdView = ButterKnife.findById(view, R.id.adView);
         return view;
     }
 
@@ -133,30 +133,6 @@ public class StatusDetailYkfFragment extends BaseFragment {
         ButterKnife.unbind(this);
         mCompositeSubscription.unsubscribe();
     }
-
-    // /**
-    // * コメント作成
-    // *
-    // * @return
-    // */
-    // private String createValueText() {
-    // if (getParam() == null) {
-    // return "";
-    // }
-    // StringBuilder sb = new StringBuilder();
-    // // if (StringUtils.isNotEmpty(getParam().getUpdateTime())) {
-    // // sb.append(getParam().getUpdateTime());
-    // // sb.append("\n");
-    // // }
-    // if (StringUtils.isNotEmpty(getParam().getTitle())) {
-    // sb.append(getParam().getTitle());
-    // sb.append("\n");
-    // }
-    // if (StringUtils.isNotEmpty(getParam().getLiner().getText())) {
-    // sb.append(getParam().getLiner().getText());
-    // }
-    // return sb.toString();
-    // }
 
     /**
      * 外部電話アプリ起動

@@ -21,7 +21,6 @@ import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.YkfLinerDetail;
 import com.ikmr.banbara23.yaeyama_liner_checker.timetable.dream.DreamTimeTableView;
 import com.ikmr.banbara23.yaeyama_liner_checker.util.PortUtil;
-import com.ikmr.banbara23.yaeyama_liner_checker.util.StringUtils;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailDistanceAndTimeView;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailPriceDreamKohamaView;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailPriceDreamOoharaView;
@@ -41,7 +40,7 @@ import rx.subscriptions.CompositeSubscription;
 /**
  * ドリーム観光の詳細画面フラグメント
  */
-public class StatusDetailDreamFragment extends BaseFragment {
+public class StatusDetailDreamFragment extends BaseDetailFragment {
 
     // ButterKnife Bind View --------------------------------------------
     @Bind(R.id.fragment_status_detail_dream_top_view)
@@ -70,9 +69,6 @@ public class StatusDetailDreamFragment extends BaseFragment {
 
     @Bind(R.id.fragment_status_detail_dream_price_kohama_view)
     StatusDetailPriceDreamKohamaView mStatusDetailPriceDreamKohamaView;
-
-    // @Bind(R.id.fragment_status_detail_dream_ad_view)
-    // StatusDetailAdView mFragmentStatusDetailDreamAdView;
 
     // ButterKnife OnClick --------------------------------------------
     @OnClick(R.id.view_status_detail_tell_layout)
@@ -116,6 +112,7 @@ public class StatusDetailDreamFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_status_detail_dream, container, false);
         ButterKnife.bind(this, view);
+        mAdView = ButterKnife.findById(view, R.id.adView);
         return view;
     }
 
@@ -189,25 +186,6 @@ public class StatusDetailDreamFragment extends BaseFragment {
      */
     private boolean isTimeTableShow() {
         return getParam().getPort() != Port.PREMIUM_DREAM && getParam().getPort() != Port.SUPER_DREAM;
-    }
-
-    private String createValueText() {
-        if (getParam() == null) {
-            return "";
-        }
-        StringBuilder sb = new StringBuilder();
-        // if (StringUtils.isNotEmpty(getParam().getUpdateTime())) {
-        // sb.append(getParam().getUpdateTime());
-        // sb.append("\n");
-        // }
-        if (StringUtils.isNotEmpty(getParam().getTitle())) {
-            sb.append(getParam().getTitle());
-            sb.append("\n");
-        }
-        if (StringUtils.isNotEmpty(getParam().getLiner().getText())) {
-            sb.append(getParam().getLiner().getText());
-        }
-        return sb.toString();
     }
 
     /**
