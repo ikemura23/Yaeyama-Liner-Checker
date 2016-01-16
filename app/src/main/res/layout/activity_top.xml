@@ -1,12 +1,13 @@
-<RelativeLayout xmlns:ads="http://schemas.android.com/apk/res-auto"
-                xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/activity_vertical_margin"
-                tools:context="com.ikmr.banbara23.yaeyama_liner_checker.activity.TopActivity"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context="com.ikmr.banbara23.yaeyama_liner_checker.activity.TopActivity"
     >
 
     <TextView
@@ -14,83 +15,130 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:text="@string/top_description"
+        android:text="運航情報を見る"
         android:textSize="15sp"
         />
 
-    <Button
-        android:id="@+id/annei_button"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/activity_top_description"
-        android:onClick="anneiClick"
-        android:text="@string/company_name_annei"
-        android:textSize="18sp"
-        />
-
-    <Button
-        android:id="@+id/ykf_button"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/annei_button"
-        android:layout_marginTop="10dp"
-        android:onClick="ykfClick"
-        android:text="@string/company_name_ykf"
-        android:textSize="18sp"
-        />
-
-    <Button
-        android:id="@+id/dream_button"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/ykf_button"
-        android:layout_marginTop="10dp"
-        android:onClick="dreamClick"
-        android:text="@string/company_name_dream"
-        android:textSize="18sp"
-        />
-
-    <TextView
-        android:id="@+id/activity_top_other"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/dream_button"
-        android:layout_marginBottom="8dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        >
+
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:id="@+id/top_activity_annei"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:mrl_rippleColor="#ff6666"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="安栄観光"
+                android:textColor="@color/secondary_text"
+                android:textSize="15sp"
+                />
+        </com.balysv.materialripple.MaterialRippleLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/background"
+            />
+
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:id="@+id/top_activity_ykf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:mrl_rippleColor="#87ceeb"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="八重山観光フェリー"
+                android:textColor="@color/secondary_text"
+                android:textSize="15sp"
+                />
+        </com.balysv.materialripple.MaterialRippleLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/background"
+            />
+
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:id="@+id/top_activity_dream"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:mrl_rippleColor="#ff9900"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="ドリーム観光"
+                android:textColor="@color/secondary_text"
+                android:textSize="15sp"
+                />
+        </com.balysv.materialripple.MaterialRippleLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/top_other"
-        android:textSize="15sp"
-        />
+        android:background="@color/white"
+        android:orientation="vertical"
+        >
 
-    <Button
-        android:id="@+id/timetable_button"
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:id="@+id/top_activity_timetable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:mrl_rippleColor="#778899"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="時刻表"
+                android:textColor="@color/secondary_text"
+                android:textSize="15sp"
+                />
+        </com.balysv.materialripple.MaterialRippleLayout>
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/activity_top_other"
-        android:onClick="timeTableClick"
-        android:text="時刻表"
-        android:textSize="18sp"
-        />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        >
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/timetable_button"
-        android:layout_marginTop="10dp"
-        android:onClick="otherClick"
-        android:text="@string/title_activity_other"
-        android:textSize="18sp"
-        />
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:id="@+id/top_activity_app"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:mrl_rippleColor="#778899"
+            >
 
-</RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="アプリ情報"
+                android:textColor="@color/secondary_text"
+                android:textSize="15sp"
+                />
+        </com.balysv.materialripple.MaterialRippleLayout>
+    </LinearLayout>
+</LinearLayout>
