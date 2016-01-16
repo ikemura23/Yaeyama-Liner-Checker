@@ -118,6 +118,7 @@ public class StatusDetailYkfFragment extends BaseDetailFragment {
         View view = inflater.inflate(R.layout.fragment_status_detail_ykf, container, false);
         ButterKnife.bind(this, view);
         mAdView = ButterKnife.findById(view, R.id.adView);
+        initViews();
         return view;
     }
 
@@ -163,15 +164,19 @@ public class StatusDetailYkfFragment extends BaseDetailFragment {
         }
     }
 
+    private void initViews() {
+        mStatusDetailDistanceAndTimeView.setDistanceText(null);
+        mStatusDetailDistanceAndTimeView.setTimeText(getTime());
+        mStatusDetailPriceView.setPrice(getPrice());
+    }
+
     /**
      * ステータス取得処理の開始
      */
     public void startQuery() {
         mProgressBar.setVisibility(View.VISIBLE);
+        mFragmentStatusDetailContentLayout.setVisibility(View.GONE);
         getYkfList();
-        mStatusDetailDistanceAndTimeView.setDistanceText(null);
-        mStatusDetailDistanceAndTimeView.setTimeText(getTime());
-        mStatusDetailPriceView.setPrice(getPrice());
     }
 
     private String getTime() {

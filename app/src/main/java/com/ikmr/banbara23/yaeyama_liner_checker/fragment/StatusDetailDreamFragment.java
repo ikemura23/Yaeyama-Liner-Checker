@@ -113,6 +113,7 @@ public class StatusDetailDreamFragment extends BaseDetailFragment {
         View view = inflater.inflate(R.layout.fragment_status_detail_dream, container, false);
         ButterKnife.bind(this, view);
         mAdView = ButterKnife.findById(view, R.id.adView);
+        initViews();
         return view;
     }
 
@@ -120,7 +121,6 @@ public class StatusDetailDreamFragment extends BaseDetailFragment {
     public void onResume() {
         super.onResume();
         startQuery();
-        initViews();
     }
 
     @Override
@@ -222,6 +222,7 @@ public class StatusDetailDreamFragment extends BaseDetailFragment {
      */
     public void startQuery() {
         mProgressBar.setVisibility(View.VISIBLE);
+        mFragmentDreamStatusDetailContentLayout.setVisibility(View.GONE);
         getDreamList();
     }
 

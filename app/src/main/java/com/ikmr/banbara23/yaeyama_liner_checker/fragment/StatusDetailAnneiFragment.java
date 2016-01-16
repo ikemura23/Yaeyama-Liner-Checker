@@ -179,10 +179,9 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
      * 取得の開始
      */
     public void startQuery() {
+        mFragmentStatusDetailValueLayout.setVisibility(View.GONE);
         mFragmentStatusDetailErrorButton.setVisibility(View.GONE);
         mProgressBar.setVisibility(View.VISIBLE);
-        mStatusDetailTopView.setVisibility(View.GONE);
-        mAnneiTimeTableView.setVisibility(View.VISIBLE);
         mAnneiTimeTableView.switchPortView(getPort());
 
         if (getActivity() != null && getActivity() instanceof FragmentApiQueryInterface) {
@@ -342,6 +341,7 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
             return;
         }
         mProgressBar.setVisibility(View.GONE);
+        mFragmentStatusDetailValueLayout.setVisibility(View.VISIBLE);
         if (getActivity() != null && getActivity() instanceof FragmentApiQueryInterface) {
             // API通信処理の開始準備の完了
             ((FragmentApiQueryInterface) getActivity()).finishQuery();
