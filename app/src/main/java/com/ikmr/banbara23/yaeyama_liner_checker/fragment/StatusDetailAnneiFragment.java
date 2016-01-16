@@ -2,7 +2,6 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.fragment;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,8 +13,6 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.AnneiStatusDetailApi;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.AnneiStatusListApi;
@@ -43,7 +40,7 @@ import rx.subscriptions.CompositeSubscription;
 /**
  * 安栄の詳細フラグメント
  */
-public class StatusDetailAnneiFragment extends BaseFragment {
+public class StatusDetailAnneiFragment extends BaseDetailFragment {
 
     // ButterKnife Bind View --------------------------------------------
     @Bind(R.id.fragment_status_detail_progressbar)
@@ -66,9 +63,6 @@ public class StatusDetailAnneiFragment extends BaseFragment {
 
     @Bind(R.id.fragment_status_detail_value_layout)
     LinearLayout mFragmentStatusDetailValueLayout;
-
-    @Bind(R.id.adView)
-    AdView mAdView;
 
     // ButterKnife OnClick --------------------------------------------
     /**
@@ -150,7 +144,6 @@ public class StatusDetailAnneiFragment extends BaseFragment {
     public void onResume() {
         super.onResume();
         startQuery();
-        mAdView.resume();
     }
 
     @Nullable
@@ -158,7 +151,7 @@ public class StatusDetailAnneiFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_status_detail_annei, container, false);
         ButterKnife.bind(this, view);
-        loadAd();
+        mAdView = ButterKnife.findById(view, R.id.adView);
         return view;
     }
 
@@ -167,13 +160,6 @@ public class StatusDetailAnneiFragment extends BaseFragment {
         super.onDestroyView();
         ButterKnife.unbind(this);
         mCompositeSubscription.unsubscribe();
-        mAdView.destroy();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        mAdView.pause();
     }
 
     /**
@@ -389,20 +375,5 @@ public class StatusDetailAnneiFragment extends BaseFragment {
         } catch (Exception e) {
             // 何もしない
         }
-    }
-
-    public Context getContext() {
-        return getActivity().getApplicationContext();
-    }
-
-    /**
-     * 広告読み込み
-     */
-    protected void loadAd() {
-        if (mAdView == null) {
-            return;
-        }
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
     }
 }
