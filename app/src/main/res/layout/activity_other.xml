@@ -2,16 +2,19 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             android:padding="10dp">
+             android:padding="16dp"
+    >
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            >
 
             <TextView
                 android:layout_width="wrap_content"
@@ -19,34 +22,14 @@
                 android:layout_marginBottom="8dp"
                 android:text="注意事項"
                 android:textSize="16dp"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/other_info"/>
-
-            <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginBottom="8dp"-->
-            <!--android:layout_marginTop="16dp"-->
-            <!--android:text="当アプリへの問い合わせ"-->
-            <!--android:textSize="16dp"-->
-            <!--android:textStyle="bold"/>-->
-            <!-- -->
-            <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginBottom="8dp"-->
-            <!--android:text="メールでのご意見はこちらからお願いします。"/>-->
-            <!--<Button-->
-            <!--android:id="@+id/other_mail_button"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginBottom="8dp"-->
-            <!--android:onClick="mailClick"-->
-            <!--android:text="メールで問い合わせる"/>-->
+                android:text="@string/other_info"
+                />
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -54,7 +37,8 @@
                 android:layout_below="@+id/ykf_button"
                 android:layout_marginBottom="16dp"
                 android:layout_marginTop="16dp"
-                android:background="@color/light_grey"/>
+                android:background="@color/light_grey"
+                />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -62,20 +46,23 @@
                 android:layout_marginBottom="8dp"
                 android:text="アプリへのご意見・ご感想"
                 android:textSize="16dp"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="当アプリのご利用ありがとうございます。アプリへのご意見・感想があれば下記ボタンからお願いします。\n(ブラウザアプリに切り替わります)"/>
+                android:text="当アプリのご利用ありがとうございます。アプリへのご意見・感想があれば下記ボタンからお願いします。\n(ブラウザアプリが起動します)"
+                />
 
             <Button
                 android:id="@+id/other_form_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="formClick"
-                android:text="ご意見箱"/>
+                android:text="ご意見箱"
+                />
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -83,7 +70,8 @@
                 android:layout_below="@+id/ykf_button"
                 android:layout_marginBottom="16dp"
                 android:layout_marginTop="16dp"
-                android:background="@color/light_grey"/>
+                android:background="@color/light_grey"
+                />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -91,13 +79,15 @@
                 android:layout_marginBottom="8dp"
                 android:text="アプリを評価する"
                 android:textSize="16dp"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="開発の励みになるので評価をお願いします。"/>
+                android:text="開発の励みになるので評価をお願いします。"
+                />
 
 
             <Button
@@ -105,7 +95,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="playStoreClick"
-                android:text="評価"/>
+                android:text="評価"
+                />
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -113,7 +104,8 @@
                 android:layout_below="@+id/ykf_button"
                 android:layout_marginBottom="16dp"
                 android:layout_marginTop="16dp"
-                android:background="@color/light_grey"/>
+                android:background="@color/light_grey"
+                />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -121,13 +113,15 @@
                 android:layout_marginBottom="8dp"
                 android:text="アプリバージョン"
                 android:textSize="16dp"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="1.1.1"/>
+                android:text="2.0.0"
+                />
         </LinearLayout>
     </ScrollView>
 </FrameLayout>
