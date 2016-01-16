@@ -21,7 +21,6 @@ public class StatusDetailAnneiActivity extends BaseActivity implements FragmentA
 
     Liner mLiner;
     Fragment mFragment;
-    // Loading mLoading;
     /**
      * クエリ起動中かどうか
      */
@@ -48,13 +47,6 @@ public class StatusDetailAnneiActivity extends BaseActivity implements FragmentA
             createFragment();
         }
     }
-
-    // private Loading getLoading() {
-    // if (mLoading == null) {
-    // mLoading = new Loading(this);
-    // }
-    // return mLoading;
-    // }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
