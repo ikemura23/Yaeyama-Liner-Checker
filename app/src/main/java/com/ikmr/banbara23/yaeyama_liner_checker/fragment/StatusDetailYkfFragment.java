@@ -36,7 +36,7 @@ import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
 /**
- * 詳細のフラグメント
+ * ykf詳細のフラグメント
  */
 public class StatusDetailYkfFragment extends BaseDetailFragment {
 
@@ -71,23 +71,23 @@ public class StatusDetailYkfFragment extends BaseDetailFragment {
     }
 
     /**
-     * 電話する押下
-     *
-     * @param view
-     */
-    @OnClick(R.id.view_status_detail_web_layout)
-    void telClick(View view) {
-        startWeb();
-    }
-
-    /**
-     * サイトを見る押下
+     * ブラウザで表示 押下
      *
      * @param view
      */
     @OnClick(R.id.view_status_detail_tell_layout)
-    void webClick(View view) {
+    void telClick(View view) {
         startTell();
+    }
+
+    /**
+     * 電話 押下
+     *
+     * @param view
+     */
+    @OnClick(R.id.view_status_detail_web_layout)
+    void webClick(View view) {
+        startWeb();
     }
 
     @BindString(R.string.url_ykf_list)
@@ -154,7 +154,7 @@ public class StatusDetailYkfFragment extends BaseDetailFragment {
      * 外部ブラウザ起動
      */
     private void startWeb() {
-        String hpUrl = getActivity().getApplicationContext().getString(R.string.hp_annei);
+        String hpUrl = getActivity().getApplicationContext().getString(R.string.hp_ykf);
         Uri uri = Uri.parse(hpUrl);
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         try {
