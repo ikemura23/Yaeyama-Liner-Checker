@@ -52,7 +52,7 @@ public class OtherActivity extends BaseActivity {
         String mailAddress = getString(R.string.mail_address);
         intent.setData(Uri.parse("mailto:" + mailAddress));
 
-        String subject = getString(R.string.title_activity_top) + getString(R.string.EXTRA_SUBJECT);
+        String subject = getString(R.string.app_name) + getString(R.string.EXTRA_SUBJECT);
         intent.putExtra(Intent.EXTRA_SUBJECT, subject);
 
         try {

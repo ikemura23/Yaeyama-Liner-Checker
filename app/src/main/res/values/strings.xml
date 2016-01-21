@@ -1,8 +1,7 @@
 <resources>
-    <string name="app_name">八重山離島船チェッカー</string>
+    <string name="app_name">やいまふに</string>
     <!--アプリ情報-->
     <string name="action_settings">Settings</string>
-    <string name="title_activity_top">八重山離島船チェッカー</string>
     <string name="title_activity_status_list">の運航状況一覧</string>
     <string name="title_activity_status_detail">運航状況の詳細</string>
     <string name="title_activity_timetable">時刻表</string>
