@@ -2,6 +2,7 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.view;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,7 +51,7 @@ public class StatusDetailPriceDreamView extends FrameLayout {
      * @param price 高速船の値段
      */
     public void setLinerPrice(Price price) {
-        if (price == null) {
+        if (price == null || (TextUtils.isEmpty(price.getAdult()) && TextUtils.isEmpty(price.getChild()))) {
             mPriceDreamLinerLayout.setVisibility(GONE);
             return;
         }
