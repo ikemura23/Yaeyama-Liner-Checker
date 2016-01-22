@@ -32,4 +32,5 @@ dependencies {
     compile 'io.reactivex:rxjava:1.1.0'
     compile 'com.github.michael-rapp:android-material-dialog:3.0.2'
     compile 'com.balysv:material-ripple:1.0.2'
+    compile('de.psdev.licensesdialog:licensesdialog:1.8.0')
 }
