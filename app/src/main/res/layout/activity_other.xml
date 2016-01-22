@@ -53,7 +53,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="当アプリのご利用ありがとうございます。アプリへのご意見・感想があれば下記ボタンからお願いします。\n(ブラウザアプリが起動します)"
+                android:text="当アプリのご利用ありがとうございます。\nご意見・感想があれば下記ボタンからお願いします。"
                 />
 
             <Button
@@ -86,7 +86,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="開発の励みになるので評価をお願いします。"
+                android:text="開発の励みになるため評価をお願いします。"
                 />
 
 
@@ -146,7 +146,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="2.0.1"
+                android:text="2.0.2"
                 />
         </LinearLayout>
     </ScrollView>
