@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import com.crashlytics.android.Crashlytics;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.DreamStatusListApi;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
@@ -288,6 +289,7 @@ public class StatusDetailDreamFragment extends BaseDetailFragment {
      * 取得失敗
      */
     public void failedQuery() {
+        Crashlytics.logException(new Exception("Dream Status Detail Api Failed"));
         mReloadButton.setVisibility(View.VISIBLE);
     }
 
