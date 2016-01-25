@@ -6,6 +6,7 @@
         <item name="colorPrimaryDark">@color/primary_dark</item>
         <!--アクションバー-->
         <item name="colorPrimary">@color/primary</item>
+        <item name="colorAccent">#FFC107</item>
     </style>
 
     <!--時刻表のヘッダー-->

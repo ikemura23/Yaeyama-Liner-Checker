@@ -4,12 +4,12 @@ package com.ikmr.banbara23.yaeyama_liner_checker.activity;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.PagerAdapter;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 
 /**
  * 一覧タブActivity
@@ -19,18 +19,18 @@ public class StatusListTabActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_tab);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.activity_list_tab_toolbar);
-//        setSupportActionBar(toolbar);
-
+        // Toolbar toolbar = (Toolbar)
+        // findViewById(R.id.activity_list_tab_toolbar);
+        // setSupportActionBar(toolbar);
+        Company company = (Company) getIntent().getSerializableExtra(StatusListTabActivity.class.getCanonicalName());
         TabLayout tabLayout = (TabLayout) findViewById(R.id.activity_list_tab_layout);
-        tabLayout.addTab(tabLayout.newTab().setText("Tab 1"));
-        tabLayout.addTab(tabLayout.newTab().setText("Tab 2"));
-        tabLayout.addTab(tabLayout.newTab().setText("Tab 3"));
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.company_name_annei)));
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.company_name_ykf)));
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.company_name_dream)));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
-        final PagerAdapter adapter = new PagerAdapter
-                (getSupportFragmentManager(), tabLayout.getTabCount());
+        final PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -49,6 +49,19 @@ public class StatusListTabActivity extends BaseActivity {
 
             }
         });
+        int initCurrentItem = 0;
+        switch (company) {
+            case ANNEI:
+                initCurrentItem = 0;
+                break;
+            case YKF:
+                initCurrentItem = 1;
+                break;
+            case DREAM:
+                initCurrentItem = 2;
+                break;
+        }
+        viewPager.setCurrentItem(initCurrentItem);
     }
 
     @Override
@@ -59,7 +72,6 @@ public class StatusListTabActivity extends BaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
         switch (item.getItemId()) {
             case android.R.id.home:
                 finish();

@@ -2,7 +2,7 @@
     <string name="app_name">やいまふに</string>
     <!--アプリ情報-->
     <string name="action_settings">Settings</string>
-    <string name="title_activity_status_list">の運航状況一覧</string>
+    <string name="title_activity_status_list">運航状況一覧</string>
     <string name="title_activity_status_detail">運航状況の詳細</string>
     <string name="title_activity_timetable">時刻表</string>
     <string name="title_activity_other">アプリ情報</string>
@@ -77,8 +77,8 @@
     <string name="route_hatoma">石垣島 - 鳩間島</string>
 
     <string name="company_name_annei">安栄観光</string>
-    <string name="company_name_ykf">八重山観光フェリー</string>
-    <string name="company_name_dream">石垣島ドリーム観光</string>
+    <string name="company_name_ykf">八重山観光\nフェリー</string>
+    <string name="company_name_dream">ドリーム観光</string>
 
     <string name="company_simple_name_annei">安栄</string>
     <string name="company_simple_name_ykf">八重山観光フ</string>

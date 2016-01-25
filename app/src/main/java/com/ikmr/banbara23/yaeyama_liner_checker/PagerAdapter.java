@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
-import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusListFragment;
+import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusListTabFragment;
 
 /**
  * PagerAdapter
@@ -35,7 +35,7 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
             default:
                 company = null;
         }
-        return StatusListFragment.NewInstance(company);
+        return StatusListTabFragment.NewInstance(company);
     }
 
     @Override

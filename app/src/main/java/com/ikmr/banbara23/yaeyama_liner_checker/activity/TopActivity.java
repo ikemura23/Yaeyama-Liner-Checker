@@ -21,31 +21,46 @@ public class TopActivity extends BaseActivity {
 
     @OnClick(R.id.top_activity_annei)
     void anneiClick(View view) {
-        Intent intent = new Intent(this, StatusListTabActivity.class);
-        // intent.putExtra(StatusListActivity.PARAM_COMPANY, Company.ANNEI);
-        startActivity(intent);
+        startStatusListTabActivity(Company.ANNEI);
     }
 
     @OnClick(R.id.top_activity_ykf)
     void ykfClick(View view) {
-        Intent intent = new Intent(this, StatusListActivity.class);
-        intent.putExtra(StatusListActivity.PARAM_COMPANY, Company.YKF);
-        startActivity(intent);
+        startStatusListTabActivity(Company.YKF);
     }
 
     @OnClick(R.id.top_activity_dream)
     void dreamClick(View view) {
-        Intent intent = new Intent(this, StatusListActivity.class);
-        intent.putExtra(StatusListActivity.PARAM_COMPANY, Company.DREAM);
+        startStatusListTabActivity(Company.DREAM);
+    }
+
+    /**
+     * 一覧タブ画面に遷移
+     * 
+     * @param company
+     */
+    private void startStatusListTabActivity(Company company) {
+        Intent intent = new Intent(this, StatusListTabActivity.class);
+        intent.putExtra(StatusListTabActivity.class.getCanonicalName(), company);
         startActivity(intent);
     }
 
+    /**
+     * 時刻表のタップ
+     * 
+     * @param view
+     */
     @OnClick(R.id.top_activity_timetable)
     void timeTableClick(View view) {
         Intent intent = new Intent(this, TimeTableActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * アプリ情報をタップ
+     * 
+     * @param view
+     */
     @OnClick(R.id.top_activity_app)
     void otherClick(View view) {
         Intent intent = new Intent(this, OtherActivity.class);
