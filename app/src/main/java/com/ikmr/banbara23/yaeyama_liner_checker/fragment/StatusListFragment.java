@@ -39,9 +39,6 @@ public class StatusListFragment extends ListFragment implements ListFragmentInte
 
     final static String PARAM_COMPANY = "company";
 
-    public StatusListFragment() {
-    }
-
     public static StatusListFragment NewInstance(Company company) {
         StatusListFragment fragment = new StatusListFragment();
         Bundle bundle = new Bundle();

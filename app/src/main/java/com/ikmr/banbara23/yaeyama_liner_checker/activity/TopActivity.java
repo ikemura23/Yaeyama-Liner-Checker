@@ -21,8 +21,8 @@ public class TopActivity extends BaseActivity {
 
     @OnClick(R.id.top_activity_annei)
     void anneiClick(View view) {
-        Intent intent = new Intent(this, StatusListActivity.class);
-        intent.putExtra(StatusListActivity.PARAM_COMPANY, Company.ANNEI);
+        Intent intent = new Intent(this, StatusListTabActivity.class);
+        // intent.putExtra(StatusListActivity.PARAM_COMPANY, Company.ANNEI);
         startActivity(intent);
     }
 
