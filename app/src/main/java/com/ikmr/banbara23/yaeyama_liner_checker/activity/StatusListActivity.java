@@ -1,9 +1,9 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker.activity;
 
-import android.app.Fragment;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -63,7 +63,7 @@ public class StatusListActivity extends BaseActivity implements QueryInterface, 
      */
     private void createFragment() {
         mFragment = StatusListFragment.NewInstance(mCompany);
-        getFragmentManager().beginTransaction()
+        getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, mFragment)
                 .commit();
     }
