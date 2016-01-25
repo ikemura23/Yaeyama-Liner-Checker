@@ -30,11 +30,17 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            applicationIdSuffix 'debug'
+        }
     }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile('com.crashlytics.sdk.android:crashlytics:2.5.5@aar') {
+        transitive = true;
+    }
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.jakewharton.timber:timber:3.1.0'
     compile 'com.google.android.gms:play-services-ads:8.4.0'
@@ -46,8 +52,5 @@ dependencies {
     compile 'io.reactivex:rxjava:1.1.0'
     compile 'com.github.michael-rapp:android-material-dialog:3.0.2'
     compile 'com.balysv:material-ripple:1.0.2'
-    compile('de.psdev.licensesdialog:licensesdialog:1.8.0')
-    compile('com.crashlytics.sdk.android:crashlytics:2.5.5@aar') {
-        transitive = true;
-    }
+    compile 'de.psdev.licensesdialog:licensesdialog:1.8.0'
 }
