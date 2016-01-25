@@ -19,6 +19,9 @@ public class StatusListTabActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_tab);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
         // Toolbar toolbar = (Toolbar)
         // findViewById(R.id.activity_list_tab_toolbar);
         // setSupportActionBar(toolbar);

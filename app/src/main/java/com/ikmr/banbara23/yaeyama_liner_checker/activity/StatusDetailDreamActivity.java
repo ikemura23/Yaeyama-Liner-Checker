@@ -37,7 +37,9 @@ public class StatusDetailDreamActivity extends BaseActivity implements FragmentA
         setContentView(R.layout.activity_status_detail);
         mYkfLinerDetail = getIntent().getParcelableExtra(StatusDetailDreamActivity.class.getName());
         mLiner = mYkfLinerDetail.getLiner();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         // タイトル
         setTitleString();
