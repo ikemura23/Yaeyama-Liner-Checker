@@ -46,6 +46,7 @@
             android:layout_marginStart="8dp"
             android:layout_toEndOf="@+id/view_status_list_status_layout"
             android:layout_toRightOf="@+id/view_status_list_status_layout"
+            android:paddingTop="2dp"
             android:textColor="@color/secondary_text"
             android:textSize="14sp"
             tools:text="竹富"
