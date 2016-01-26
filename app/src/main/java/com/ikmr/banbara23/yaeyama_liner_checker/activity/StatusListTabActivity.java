@@ -16,9 +16,6 @@ import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
  */
 public class StatusListTabActivity extends BaseActivity {
 
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
-
     private static final int TAB_FIRST = 0;
     private static final int TAB_SECOND = 1;
     private static final int TAB_THREAD = 2;
@@ -59,13 +56,13 @@ public class StatusListTabActivity extends BaseActivity {
      * @param currentPosition 選択したタブ位置
      */
     private void createTab(int currentPosition) {
-        tabLayout = (TabLayout) findViewById(R.id.activity_list_tab_layout);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.activity_list_tab_layout);
         tabLayout.removeAllTabs();
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.company_name_annei)));
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.company_name_ykf)));
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.company_name_dream)));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-        viewPager = (ViewPager) findViewById(R.id.pager);
+        final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
         final PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
