@@ -15,6 +15,15 @@ import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
  * 一覧タブActivity
  */
 public class StatusListTabActivity extends BaseActivity {
+
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
+
+    private static final int TAB_FIRST = 0;
+    private static final int TAB_SECOND = 1;
+    private static final int TAB_THREAD = 2;
+    private int selectedCurrentItem = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,13 +35,37 @@ public class StatusListTabActivity extends BaseActivity {
         // findViewById(R.id.activity_list_tab_toolbar);
         // setSupportActionBar(toolbar);
         Company company = (Company) getIntent().getSerializableExtra(StatusListTabActivity.class.getCanonicalName());
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.activity_list_tab_layout);
+        int currentPosition;
+        switch (company) {
+            case ANNEI:
+                currentPosition = TAB_FIRST;
+                break;
+            case YKF:
+                currentPosition = TAB_SECOND;
+                break;
+            case DREAM:
+                currentPosition = TAB_THREAD;
+                break;
+            default:
+                currentPosition = 0;
+        }
+
+        createTab(currentPosition);
+    }
+
+    /**
+     * タブの作成
+     * 
+     * @param currentPosition 選択したタブ位置
+     */
+    private void createTab(int currentPosition) {
+        tabLayout = (TabLayout) findViewById(R.id.activity_list_tab_layout);
+        tabLayout.removeAllTabs();
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.company_name_annei)));
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.company_name_ykf)));
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.company_name_dream)));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
+        viewPager = (ViewPager) findViewById(R.id.pager);
         final PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
@@ -40,6 +73,7 @@ public class StatusListTabActivity extends BaseActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
+                selectedCurrentItem = tab.getPosition();
             }
 
             @Override
@@ -52,19 +86,9 @@ public class StatusListTabActivity extends BaseActivity {
 
             }
         });
-        int initCurrentItem = 0;
-        switch (company) {
-            case ANNEI:
-                initCurrentItem = 0;
-                break;
-            case YKF:
-                initCurrentItem = 1;
-                break;
-            case DREAM:
-                initCurrentItem = 2;
-                break;
-        }
-        viewPager.setCurrentItem(initCurrentItem);
+
+        // tabLayout.getTabAt(currentPosition).select();
+        viewPager.setCurrentItem(currentPosition);
     }
 
     @Override
@@ -80,9 +104,7 @@ public class StatusListTabActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.action_reload:
-                // if (!mQuerying) {
-                // createList();
-                // }
+                createTab(selectedCurrentItem);
                 break;
         }
 
