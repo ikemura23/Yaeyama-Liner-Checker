@@ -7,13 +7,15 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.TextView;
 
+import com.ikmr.banbara23.yaeyama_liner_checker.BuildConfig;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import de.psdev.licensesdialog.LicensesDialog;
 import de.psdev.licensesdialog.licenses.ApacheSoftwareLicense20;
-import de.psdev.licensesdialog.licenses.GnuLesserGeneralPublicLicense21;
 import de.psdev.licensesdialog.model.Notice;
 import de.psdev.licensesdialog.model.Notices;
 
@@ -22,6 +24,9 @@ import de.psdev.licensesdialog.model.Notices;
  */
 public class OtherActivity extends BaseActivity {
 
+    @Bind(R.id.activity_other_version_name)
+    TextView mVersionNameText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +34,8 @@ public class OtherActivity extends BaseActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+        ButterKnife.bind(this);
+        mVersionNameText.setText(BuildConfig.VERSION_NAME);
     }
 
     @Override
@@ -48,27 +55,28 @@ public class OtherActivity extends BaseActivity {
         return true;
     }
 
-    /**
-     * メール問い合わせボタン押下
-     *
-     * @param view
-     */
-    public void mailClick(View view) {
-
-        Intent intent = new Intent();
-        intent.setAction(Intent.ACTION_SENDTO);
-        String mailAddress = getString(R.string.mail_address);
-        intent.setData(Uri.parse("mailto:" + mailAddress));
-
-        String subject = getString(R.string.app_name) + getString(R.string.EXTRA_SUBJECT);
-        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
-
-        try {
-            startActivity(intent);
-        } catch (Exception e) {
-            Toast.makeText(this, "メール起動でエラーが発生しました", Toast.LENGTH_SHORT).show();
-        }
-    }
+    // /**
+    // * メール問い合わせボタン押下
+    // *
+    // * @param view
+    // */
+    // public void mailClick(View view) {
+    //
+    // Intent intent = new Intent();
+    // intent.setAction(Intent.ACTION_SENDTO);
+    // String mailAddress = getString(R.string.mail_address);
+    // intent.setData(Uri.parse("mailto:" + mailAddress));
+    //
+    // String subject = getString(R.string.app_name) +
+    // getString(R.string.EXTRA_SUBJECT);
+    // intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+    //
+    // try {
+    // startActivity(intent);
+    // } catch (Exception e) {
+    // Toast.makeText(this, "メール起動でエラーが発生しました", Toast.LENGTH_SHORT).show();
+    // }
+    // }
 
     /**
      * アンケートボタン押下
@@ -115,7 +123,6 @@ public class OtherActivity extends BaseActivity {
         notices.addNotice(new Notice("RxJava", "https://github.com/ReactiveX/RxJava", "Copyright 2013 Netflix, Inc.", new ApacheSoftwareLicense20()));
         notices.addNotice(new Notice("AndroidMaterialDialog", "https://github.com/michael-rapp/AndroidMaterialDialog", "Copyright 2013 Netflix, Inc.", new ApacheSoftwareLicense20()));
         notices.addNotice(new Notice("Material Ripple Layout", "https://github.com/balysv/material-ripple", "Copyright 2015 Balys Valentukevicius", new ApacheSoftwareLicense20()));
-        notices.addNotice(new Notice("licensesdialog", "https://github.com/PSDev/LicensesDialog", "Copyright 2013 Philip Schiffer", new GnuLesserGeneralPublicLicense21()));
         new LicensesDialog.Builder(this)
                 .setNotices(notices)
                 .setIncludeOwnLicense(true)
