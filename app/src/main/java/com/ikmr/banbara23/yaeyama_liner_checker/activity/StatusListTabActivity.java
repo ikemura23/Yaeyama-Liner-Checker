@@ -3,6 +3,7 @@ package com.ikmr.banbara23.yaeyama_liner_checker.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,7 +20,6 @@ public class StatusListTabActivity extends BaseActivity {
     private static final int TAB_FIRST = 0;
     private static final int TAB_SECOND = 1;
     private static final int TAB_THREAD = 2;
-    private int selectedCurrentItem = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +70,6 @@ public class StatusListTabActivity extends BaseActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
-                selectedCurrentItem = tab.getPosition();
             }
 
             @Override
@@ -84,7 +83,6 @@ public class StatusListTabActivity extends BaseActivity {
             }
         });
 
-        // tabLayout.getTabAt(currentPosition).select();
         viewPager.setCurrentItem(currentPosition);
     }
 
@@ -101,10 +99,20 @@ public class StatusListTabActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.action_reload:
-                createTab(selectedCurrentItem);
+                updateCurrentFragment();
                 break;
         }
-
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * 現在表示中のフラグメントを更新
+     */
+    private void updateCurrentFragment() {
+        ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
+        Fragment fragment = ((PagerAdapter) viewPager.getAdapter()).findFragmentByPosition(viewPager, viewPager.getCurrentItem());
+        if (fragment != null) {
+            fragment.onResume();
+        }
     }
 }
