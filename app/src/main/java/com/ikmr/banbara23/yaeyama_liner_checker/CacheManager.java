@@ -1,5 +1,6 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker;
+import android.os.*;
 
 /**
  * キャッシュ管理マネージャー
@@ -18,4 +19,19 @@ public class CacheManager {
 		return true;	
 	}
 
+	public Parcelable get(String key) {
+		
+		return null;
+	}
+	
+	public void put(String key) {
+
+	}
+	
+	public boolean isPassSettingTime (){
+
+		return true;	
+	}
+	
+	
 }
