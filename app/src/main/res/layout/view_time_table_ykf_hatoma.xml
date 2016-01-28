@@ -103,11 +103,33 @@
                 android:text="15:30"
                 />
 
-            <TextView
-                style="@style/time_table_header_text"
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_weight="1"
-                android:text="16:15"
-                />
+                >
+
+                <TextView
+                    android:id="@+id/view_time_table_ykf_hatoma_text2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="1dp"
+                    android:text="16:15"
+                    android:textSize="20dp"
+                    />
+
+                <TextView
+                    style="@style/time_table_caution_text"
+                    android:layout_toEndOf="@+id/view_time_table_ykf_hatoma_text2"
+                    android:layout_toRightOf="@+id/view_time_table_ykf_hatoma_text2"
+                    android:background="@drawable/corner_round"
+                    android:text="上"
+                    />
+
+            </RelativeLayout>
         </LinearLayout>
 
         <include layout="@layout/view_time_table_line_yoko"/>

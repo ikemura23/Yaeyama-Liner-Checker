@@ -347,7 +347,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
                     android:layout_margin="1dp"
-                    android:text="09:30"
+                    android:text="14:30"
                     android:textSize="20dp"
                     />
 
