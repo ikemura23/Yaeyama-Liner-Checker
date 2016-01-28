@@ -12,5 +12,10 @@ public class CacheManager {
             sCacheManager = new CacheManager();
         return sCacheManager;
     }
+	
+	public boolean hasCashe(){
+		
+		return true;	
+	}
 
 }
