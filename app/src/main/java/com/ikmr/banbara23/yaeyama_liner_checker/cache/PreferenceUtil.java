@@ -1,5 +1,5 @@
 
-package com.ikmr.banbara23.yaeyama_liner_checker.util;
+package com.ikmr.banbara23.yaeyama_liner_checker.cache;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -25,6 +25,10 @@ final class PreferenceUtils {
 
     public static int loadInt(Context context, String key) {
         return getDefaultSharedPreferences(context).getInt(key, -1);
+    }
+
+    protected static String loadString(Context context, String key) {
+        return getDefaultSharedPreferences(context).getString(key, null);
     }
 
     public static void remove(Context context, String key) {
