@@ -14,7 +14,7 @@ public class CacheManager {
         return sCacheManager;
     }
 	
-	public boolean hasCashe(){
+	public boolean isNull(String key){
 		
 		return true;	
 	}
@@ -24,11 +24,11 @@ public class CacheManager {
 		return null;
 	}
 	
-	public void put(String key) {
+	public void put(String key, Object object) {
 
 	}
 	
-	public boolean isPassSettingTime (){
+	public boolean isExpiryDuration(){
 
 		return true;	
 	}
