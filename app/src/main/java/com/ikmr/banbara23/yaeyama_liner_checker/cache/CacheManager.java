@@ -3,6 +3,7 @@ package com.ikmr.banbara23.yaeyama_liner_checker.cache;
 
 import android.text.TextUtils;
 
+import com.crashlytics.android.Crashlytics;
 import com.ikmr.banbara23.yaeyama_liner_checker.Const;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
@@ -16,7 +17,7 @@ import timber.log.Timber;
  */
 public class CacheManager {
     private static CacheManager sCacheManager;
-    private static final String TAG = CacheManager.class.getSimpleName();
+    private static final long RESET = -1;
 
     public static CacheManager getInstance() {
         if (sCacheManager == null)
@@ -44,26 +45,31 @@ public class CacheManager {
      * @return true:切れてる false:切れてない
      */
     public boolean isExpiry(Company company) {
-        String key = getTimeStampKey(company);
-        if (key == null) {
-            Timber.d("keyがnullなんですけど");
+        try {
+            String key = getTimeStampKey(company);
+            if (key == null) {
+                Timber.d(company.getCompanyName() + ":keyがnullなんですけど");
+                return true;
+            }
+            if (invalidCache(key)) {
+                Timber.d(company.getCompanyName() + ":キャッシュタイムスタンプが0以下");
+                return true;
+            }
+            if (isNull(getResultCacheKey(company))) {
+                Timber.d(company.getCompanyName() + ":一覧キャッシュ値がnull");
+                return true;
+            }
+            long duration = getDuration(key);
+            Timber.d("duration:" + duration);
+            if (0 > duration || duration > 3) {
+                Timber.d(company.getCompanyName() + ":期限切れでキャッシュ無効");
+                return true;
+            }
+            Timber.d(company.getCompanyName() + ":キャッシュ有効");
+        } catch (Exception e) {
+            Crashlytics.logException(e);
             return true;
         }
-        if (invalidCache(key)) {
-            Timber.d("キャッシュタイムスタンプが0以下");
-            return true;
-        }
-        if (isNull(getResultCacheKey(company))) {
-            Timber.d("一覧キャッシュ値がnull");
-            return true;
-        }
-        long duration = getDuration(key);
-        Timber.d("duration:" + duration);
-        if (0 > duration || duration > 3) {
-            Timber.d("期限切れでキャッシュ無効");
-            return true;
-        }
-        Timber.d("キャッシュ有効");
         return false;
     }
 
@@ -71,24 +77,40 @@ public class CacheManager {
         return PreferenceUtils.loadLong(key) < 1;
     }
 
+    /**
+     * 現在時刻のタイムスタンプと保存済みのタイムスタンプの差分を計算して返す
+     * 
+     * @param key 観光会社の一覧用タイムスタンプ
+     * @return 差分(分)
+     */
     private long getDuration(String key) {
-        // DateFormat df = DateFormat.getDateTimeInstance(DateFormat.MEDIUM,
-        // DateFormat.MEDIUM, Locale.getDefault());
-        Date dateNow = new Date();
+        try {
+            Date dateNow = new Date();
 
-        // 日付をlong値に変換します。
-        long saveTimeStamp = PreferenceUtils.loadLong(key);
-        long nowTimeStamp = dateNow.getTime();
+            // 日付をlong値に変換します。
+            long saveTimeStamp = PreferenceUtils.loadLong(key);
+            long nowTimeStamp = dateNow.getTime();
 
-        Timber.d("saveTimeStamp:" + saveTimeStamp);
-        Timber.d("nowTimeStamp:" + nowTimeStamp);
+            Timber.d(key + " saveTimeStamp:" + saveTimeStamp);
+            Timber.d(key + " nowTimeStamp:" + nowTimeStamp);
 
-        // 差分の分を算出
-        return (nowTimeStamp - saveTimeStamp) / (1000 * 60);
+            // 差分の分を算出
+            return (nowTimeStamp - saveTimeStamp) / (1000 * 60);
+
+        } catch (Exception e) {
+            Crashlytics.logException(e);
+            return RESET;
+        }
     }
 
+    /**
+     * 引数の値をタイムスタンプとして保存
+     * 
+     * @param key 保存キー
+     * @param timestamp 保存タイムスタンプ値
+     */
     public void saveTimeStamp(String key, long timestamp) {
-        Timber.d("nowTimeStamp:" + getNowTimeStamp());
+        Timber.d(key + "nowTimeStamp:" + getNowTimeStamp());
         PreferenceUtils.saveLong(key, timestamp);
     }
 

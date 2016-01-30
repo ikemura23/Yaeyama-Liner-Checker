@@ -134,42 +134,6 @@ public class StatusListTabFragment extends ListFragment {
         finishQuery();
     }
 
-    // /**
-    // * タイムスタンプのキー取得
-    // *
-    // * @return key
-    // */
-    // private String getTimeStampKey() {
-    // switch (getParam()) {
-    // case ANNEI:
-    // return Const.TIMESTAMP_ANNEI_LIST_KEY;
-    // case YKF:
-    // return Const.TIMESTAMP_YKF_LIST_KEY;
-    // case DREAM:
-    // return Const.TIMESTAMP_DREAM_LIST_KEY;
-    // default:
-    // return null;
-    // }
-    // }
-    //
-    // /**
-    // * 一覧のキャッシュキー取得
-    // *
-    // * @return key
-    // */
-    // private String getCacheKey() {
-    // switch (getParam()) {
-    // case ANNEI:
-    // return Const.PREF_ANNEI_LIST_KEY;
-    // case YKF:
-    // return Const.PREF_YKF_LIST_KEY;
-    // case DREAM:
-    // return Const.PREF_DREAM_LIST_KEY;
-    // default:
-    // return null;
-    // }
-    // }
-
     /**
      * 一覧の取得処理開始
      */
@@ -205,7 +169,7 @@ public class StatusListTabFragment extends ListFragment {
                             @Override
                             public void onError(Throwable e) {
                                 // 失敗
-                                failedQuery();
+                                failedQuery(e);
                             }
 
                             @Override
@@ -247,7 +211,7 @@ public class StatusListTabFragment extends ListFragment {
                             @Override
                             public void onError(Throwable e) {
                                 // 失敗
-                                failedQuery();
+                                failedQuery(e);
                             }
 
                             @Override
@@ -279,7 +243,7 @@ public class StatusListTabFragment extends ListFragment {
                             @Override
                             public void onError(Throwable e) {
                                 // 失敗
-                                failedQuery();
+                                failedQuery(e);
                             }
 
                             @Override
@@ -328,7 +292,7 @@ public class StatusListTabFragment extends ListFragment {
 
     private void onResultListQuery(Result result) {
         if (result == null || result.getLiners().isEmpty() || result.getLiners().size() == 0) {
-            failedQuery();
+            failedQuery(new Exception(getParam().getCompanyName() + " Status List Null or Empty"));
             return;
         }
         mHeaderView.setVisibility(View.VISIBLE);
@@ -339,8 +303,8 @@ public class StatusListTabFragment extends ListFragment {
         mListAdapter.addAll(result.getLiners());
     }
 
-    public void failedQuery() {
-        Crashlytics.logException(new Exception("Status List Api Failed"));
+    public void failedQuery(Throwable e) {
+        Crashlytics.logException(e);
     }
 
     @Override
