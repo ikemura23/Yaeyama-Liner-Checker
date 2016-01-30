@@ -1,11 +1,6 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker.fragment;
 
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
-import rx.subscriptions.CompositeSubscription;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,10 +12,8 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import butterknife.BindString;
-import butterknife.ButterKnife;
-
 import com.crashlytics.android.Crashlytics;
+import com.ikmr.banbara23.yaeyama_liner_checker.Const;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAdapter;
 import com.ikmr.banbara23.yaeyama_liner_checker.activity.StatusDetailAnneiActivity;
@@ -29,12 +22,20 @@ import com.ikmr.banbara23.yaeyama_liner_checker.activity.StatusDetailYkfActivity
 import com.ikmr.banbara23.yaeyama_liner_checker.api.AnneiStatusListApi;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.DreamStatusListApi;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.YkfStatusListApi;
+import com.ikmr.banbara23.yaeyama_liner_checker.cache.CacheManager;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.YkfLinerDetail;
 import com.ikmr.banbara23.yaeyama_liner_checker.util.StringUtils;
 import com.pnikosis.materialishprogress.ProgressWheel;
+
+import butterknife.BindString;
+import butterknife.ButterKnife;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
+import rx.subscriptions.CompositeSubscription;
 
 /**
  * 一覧タブListFragment
@@ -135,6 +136,18 @@ public class StatusListTabFragment extends ListFragment {
     }
 
     private void getAnneiList() {
+        CacheManager cacheManager = CacheManager.getInstance();
+        if (cacheManager.isNull(Const.TIMESTAMP_ANNEI_LIST_KEY)) {
+            // キャッシュが空なので通信必要
+            startAnneiListQuery();
+            return;
+        }
+        // キャッシュ有効なので不要
+        Result result = (Result) cacheManager.get(Const.PREF_ANNEI_LIST_KEY);
+        onResultListQuery(result);
+    }
+
+    private void startAnneiListQuery() {
         mCompositeSubscription.add(
                 AnneiStatusListApi.request(URL_ANNEI_LIST)
                         .observeOn(AndroidSchedulers.mainThread())
@@ -156,9 +169,15 @@ public class StatusListTabFragment extends ListFragment {
                             public void onNext(Result result) {
                                 // 値うけとる
                                 onResultListQuery(result);
+                                saveResultToCache(result);
                             }
                         })
                 );
+    }
+
+    private void saveResultToCache(Result result) {
+        CacheManager.getInstance().saveAnneiListTimeStamp();
+        CacheManager.getInstance().saveAnneiList(result);
     }
 
     /**

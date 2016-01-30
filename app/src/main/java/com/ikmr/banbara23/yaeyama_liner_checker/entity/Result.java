@@ -6,9 +6,6 @@ import android.os.Parcelable;
 
 import java.util.ArrayList;
 
-/**
- * Created by banbara23 on 15/09/21.
- */
 public class Result implements Parcelable {
 
     private Company mCompany;

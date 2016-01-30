@@ -3,6 +3,7 @@ package com.ikmr.banbara23.yaeyama_liner_checker.cache;
 
 import android.os.Parcelable;
 
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 
@@ -23,9 +24,15 @@ public class JsonUtil {
         }
     }
 
-    public static String toJson(Parcelable parcelable) {
+    // public static String toJson(Parcelable parcelable) {
+    // Moshi moshi = new Moshi.Builder().build();
+    // JsonAdapter<Parcelable> jsonAdapter = moshi.adapter(Parcelable.class);
+    // return jsonAdapter.toJson(parcelable);
+    // }
+
+    public static String toJsonFromResult(Result result) {
         Moshi moshi = new Moshi.Builder().build();
-        JsonAdapter<Parcelable> jsonAdapter = moshi.adapter(Parcelable.class);
-        return jsonAdapter.toJson(parcelable);
+        JsonAdapter<Result> jsonAdapter = moshi.adapter(Result.class);
+        return jsonAdapter.toJson(result);
     }
 }

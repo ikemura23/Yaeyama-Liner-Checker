@@ -28,14 +28,14 @@ final class PreferenceUtils {
         editor.apply();
     }
 
-    public static void saveLong(Context context, String key, int value) {
-        SharedPreferences.Editor editor = getDefaultSharedPreferences(context).edit();
+    public static void saveLong(String key, long value) {
+        SharedPreferences.Editor editor = getDefaultSharedPreferences(getContext()).edit();
         editor.putLong(key, value);
         editor.apply();
     }
 
-    public static void saveString(Context context, String key, String value) {
-        SharedPreferences.Editor editor = getDefaultSharedPreferences(context).edit();
+    public static void saveString(String key, String value) {
+        SharedPreferences.Editor editor = getSharedPreferences().edit();
         editor.putString(key, value);
         editor.apply();
     }
@@ -44,8 +44,8 @@ final class PreferenceUtils {
         return getDefaultSharedPreferences(context).getInt(key, -1);
     }
 
-    protected static String loadString(Context context, String key) {
-        return getDefaultSharedPreferences(context).getString(key, null);
+    protected static String loadString(String key) {
+        return getSharedPreferences().getString(key, null);
     }
 
     protected static long loadLong(String key) {

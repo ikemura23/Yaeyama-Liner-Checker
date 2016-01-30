@@ -90,7 +90,7 @@ public class StatusListAsync extends AsyncTask<String, Integer, Document> {
         Document doc = null;
         try {
             // HTML取得 タイムアウトは10秒
-            doc = Jsoup.connect(params[0]).timeout(Consts.CONNECTION_TIME_OUT).get();
+            doc = Jsoup.connect(params[0]).timeout(Const.CONNECTION_TIME_OUT).get();
         } catch (IOException e) {
             e.printStackTrace();
         }

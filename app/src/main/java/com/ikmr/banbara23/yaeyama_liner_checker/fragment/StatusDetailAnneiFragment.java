@@ -1,11 +1,6 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker.fragment;
 
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
-import rx.subscriptions.CompositeSubscription;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -18,15 +13,12 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import butterknife.Bind;
-import butterknife.BindString;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 import com.crashlytics.android.Crashlytics;
+import com.ikmr.banbara23.yaeyama_liner_checker.Const;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.AnneiStatusDetailApi;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.AnneiStatusListApi;
+import com.ikmr.banbara23.yaeyama_liner_checker.cache.CacheManager;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Price;
@@ -38,7 +30,15 @@ import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailPriceHandicappe
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailTopView;
 import com.pnikosis.materialishprogress.ProgressWheel;
 
+import butterknife.Bind;
+import butterknife.BindString;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import de.mrapp.android.dialog.MaterialDialog;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
+import rx.subscriptions.CompositeSubscription;
 
 /**
  * 安栄の詳細フラグメント
@@ -236,6 +236,21 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
      * 安栄の港の詳細を取得
      */
     private void getAnneiList() {
+        CacheManager cacheManager = CacheManager.getInstance();
+        if (cacheManager.isNull(Const.TIMESTAMP_ANNEI_LIST_KEY)) {
+            // キャッシュが空なので通信必要
+            startAnneiListQuery();
+            return;
+        }
+        // キャッシュ有効なので不要
+        Result result = (Result) cacheManager.get(Const.PREF_ANNEI_LIST_KEY);
+        onResultListQuery(result);
+    }
+
+    /**
+     * 通信で安栄の一覧を取得
+     */
+    private void startAnneiListQuery() {
         mCompositeSubscription.add(
                 AnneiStatusListApi.request(ANNEI_LIST_URL)
                         .observeOn(AndroidSchedulers.mainThread())
@@ -259,6 +274,8 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
                             public void onNext(Result result) {
                                 // 値うけとる
                                 onResultListQuery(result);
+                                CacheManager.getInstance().saveAnneiListTimeStamp();
+                                CacheManager.getInstance().saveAnneiList(result);
                             }
                         })
                 );
