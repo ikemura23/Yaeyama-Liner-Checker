@@ -8,6 +8,8 @@ import android.preference.PreferenceManager;
 import com.ikmr.banbara23.yaeyama_liner_checker.ApplicationController;
 import com.ikmr.banbara23.yaeyama_liner_checker.Const;
 
+import timber.log.Timber;
+
 final class PreferenceUtils {
 
     private static SharedPreferences getDefaultSharedPreferences(final Context context) {
@@ -29,12 +31,14 @@ final class PreferenceUtils {
     }
 
     public static void saveLong(String key, long value) {
-        SharedPreferences.Editor editor = getDefaultSharedPreferences(getContext()).edit();
+        Timber.d("saveLong key:" + key + " value:" + value);
+        SharedPreferences.Editor editor = getSharedPreferences().edit();
         editor.putLong(key, value);
         editor.apply();
     }
 
     public static void saveString(String key, String value) {
+        Timber.d("saveString key:" + key + " value:" + value);
         SharedPreferences.Editor editor = getSharedPreferences().edit();
         editor.putString(key, value);
         editor.apply();
@@ -45,10 +49,12 @@ final class PreferenceUtils {
     }
 
     protected static String loadString(String key) {
+        Timber.d("loadString key:" + key + " value:" + getSharedPreferences().getString(key, null));
         return getSharedPreferences().getString(key, null);
     }
 
     protected static long loadLong(String key) {
+        Timber.d("loadLong key:" + key + " value:" + getSharedPreferences().getLong(key, 0));
         return getSharedPreferences().getLong(key, 0);
     }
 

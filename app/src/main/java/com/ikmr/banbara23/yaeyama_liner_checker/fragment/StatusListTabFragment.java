@@ -137,7 +137,7 @@ public class StatusListTabFragment extends ListFragment {
 
     private void getAnneiList() {
         CacheManager cacheManager = CacheManager.getInstance();
-        if (cacheManager.isNull(Const.TIMESTAMP_ANNEI_LIST_KEY)) {
+        if (cacheManager.isExpiry()) {
             // キャッシュが空なので通信必要
             startAnneiListQuery();
             return;
@@ -145,6 +145,7 @@ public class StatusListTabFragment extends ListFragment {
         // キャッシュ有効なので不要
         Result result = (Result) cacheManager.get(Const.PREF_ANNEI_LIST_KEY);
         onResultListQuery(result);
+        finishQuery();
     }
 
     private void startAnneiListQuery() {

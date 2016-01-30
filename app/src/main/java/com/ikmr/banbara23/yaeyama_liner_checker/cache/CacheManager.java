@@ -1,7 +1,6 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker.cache;
 
-import android.os.Parcelable;
 import android.text.TextUtils;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.Const;
@@ -9,11 +8,14 @@ import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 
 import java.util.Date;
 
+import timber.log.Timber;
+
 /**
  * キャッシュ管理マネージャー
  */
 public class CacheManager {
     private static CacheManager sCacheManager;
+    private static final String TAG = CacheManager.class.getSimpleName();
 
     public static CacheManager getInstance() {
         if (sCacheManager == null)
@@ -25,7 +27,7 @@ public class CacheManager {
         return TextUtils.isEmpty(PreferenceUtils.loadString(key));
     }
 
-    public Parcelable get(String key) {
+    public Result get(String key) {
         return JsonUtil.fromJson(PreferenceUtils.loadString(key));
     }
 
@@ -33,9 +35,32 @@ public class CacheManager {
         PreferenceUtils.saveString(key, JsonUtil.toJsonFromResult(result));
     }
 
+    /**
+     * キャッシュの有効期限が切れているか？
+     * 
+     * @return true:切れてる false:切れてない
+     */
     public boolean isExpiry() {
+        if (invalidCache()) {
+            Timber.d("キャッシュタイムスタンプが0以下");
+            return true;
+        }
+        if (isNull(Const.PREF_ANNEI_LIST_KEY)) {
+            Timber.d("キャッシュがnull");
+            return true;
+        }
         long duration = getDuration();
-        return true;
+        Timber.d("duration:" + duration);
+        if (0 > duration || duration > 3) {
+            Timber.d("キャッシュ無効");
+            return true;
+        }
+        Timber.d("キャッシュ有効");
+        return false;
+    }
+
+    private boolean invalidCache() {
+        return PreferenceUtils.loadLong(Const.TIMESTAMP_ANNEI_LIST_KEY) < 1;
     }
 
     private long loadAnneiListTimeStamp() {
@@ -48,14 +73,18 @@ public class CacheManager {
         Date dateNow = new Date();
 
         // 日付をlong値に変換します。
-        long timeStamp = loadAnneiListTimeStamp();
+        long saveTimeStamp = loadAnneiListTimeStamp();
         long nowTimeStamp = dateNow.getTime();
 
+        Timber.d("saveTimeStamp:" + saveTimeStamp);
+        Timber.d("nowTimeStamp:" + nowTimeStamp);
+
         // 差分の分を算出
-        return (timeStamp - nowTimeStamp) / (1000 * 60);
+        return (nowTimeStamp - saveTimeStamp) / (1000 * 60);
     }
 
     public void saveTimeStamp(String key, long timestamp) {
+        Timber.d("nowTimeStamp:" + getNowTimeStamp());
         PreferenceUtils.saveLong(key, timestamp);
     }
 
