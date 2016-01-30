@@ -14,11 +14,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.crashlytics.android.Crashlytics;
-import com.ikmr.banbara23.yaeyama_liner_checker.Const;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.AnneiStatusDetailApi;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.AnneiStatusListApi;
-import com.ikmr.banbara23.yaeyama_liner_checker.cache.CacheManager;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Price;
@@ -236,15 +234,17 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
      * 安栄の港の詳細を取得
      */
     private void getAnneiList() {
-        CacheManager cacheManager = CacheManager.getInstance();
-        if (cacheManager.isNull(Const.TIMESTAMP_ANNEI_LIST_KEY)) {
-            // キャッシュが空なので通信必要
-            startAnneiListQuery();
-            return;
-        }
-        // キャッシュ有効なので不要
-        Result result = (Result) cacheManager.get(Const.PREF_ANNEI_LIST_KEY);
-        onResultListQuery(result);
+        startAnneiListQuery();
+        // CacheManager cacheManager = CacheManager.getInstance();
+        // if (cacheManager.isNull(Const.TIMESTAMP_ANNEI_LIST_KEY)) {
+        // // キャッシュが空なので通信必要
+        // startAnneiListQuery();
+        // return;
+        // }
+        // // キャッシュ有効なので不要
+        // Result result = (Result)
+        // cacheManager.getResultCache(Const.PREF_ANNEI_LIST_KEY);
+        // onResultListQuery(result);
     }
 
     /**
@@ -274,8 +274,6 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
                             public void onNext(Result result) {
                                 // 値うけとる
                                 onResultListQuery(result);
-                                CacheManager.getInstance().saveAnneiListTimeStamp();
-                                CacheManager.getInstance().saveAnneiList(result);
                             }
                         })
                 );

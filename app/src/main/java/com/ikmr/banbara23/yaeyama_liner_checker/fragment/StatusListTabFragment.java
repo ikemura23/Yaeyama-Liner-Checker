@@ -13,7 +13,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.crashlytics.android.Crashlytics;
-import com.ikmr.banbara23.yaeyama_liner_checker.Const;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAdapter;
 import com.ikmr.banbara23.yaeyama_liner_checker.activity.StatusDetailAnneiActivity;
@@ -122,32 +121,75 @@ public class StatusListTabFragment extends ListFragment {
         mListAdapter.clear();
         setListAdapter(mListAdapter);
 
-        switch (getParam()) {
-            case ANNEI:
-                getAnneiList();
-                break;
-            case YKF:
-                getYkfList();
-                break;
-            case DREAM:
-                getDreamList();
-                break;
-        }
-    }
-
-    private void getAnneiList() {
+        // キャッシュ処理
         CacheManager cacheManager = CacheManager.getInstance();
-        if (cacheManager.isExpiry()) {
-            // キャッシュが空なので通信必要
-            startAnneiListQuery();
+        if (cacheManager.isExpiry(getParam())) {
+            // キャッシュが無効なので通信必要
+            startListQuery();
             return;
         }
         // キャッシュ有効なので不要
-        Result result = (Result) cacheManager.get(Const.PREF_ANNEI_LIST_KEY);
+        Result result = cacheManager.getResultCache(getParam());
         onResultListQuery(result);
         finishQuery();
     }
 
+    // /**
+    // * タイムスタンプのキー取得
+    // *
+    // * @return key
+    // */
+    // private String getTimeStampKey() {
+    // switch (getParam()) {
+    // case ANNEI:
+    // return Const.TIMESTAMP_ANNEI_LIST_KEY;
+    // case YKF:
+    // return Const.TIMESTAMP_YKF_LIST_KEY;
+    // case DREAM:
+    // return Const.TIMESTAMP_DREAM_LIST_KEY;
+    // default:
+    // return null;
+    // }
+    // }
+    //
+    // /**
+    // * 一覧のキャッシュキー取得
+    // *
+    // * @return key
+    // */
+    // private String getCacheKey() {
+    // switch (getParam()) {
+    // case ANNEI:
+    // return Const.PREF_ANNEI_LIST_KEY;
+    // case YKF:
+    // return Const.PREF_YKF_LIST_KEY;
+    // case DREAM:
+    // return Const.PREF_DREAM_LIST_KEY;
+    // default:
+    // return null;
+    // }
+    // }
+
+    /**
+     * 一覧の取得処理開始
+     */
+    private void startListQuery() {
+        switch (getParam()) {
+            case ANNEI:
+                startAnneiListQuery();
+                break;
+            case YKF:
+                startYkfListQuery();
+                break;
+            case DREAM:
+                startDreamListQuery();
+                break;
+        }
+    }
+
+    /**
+     * 安栄の通信処理開始
+     */
     private void startAnneiListQuery() {
         mCompositeSubscription.add(
                 AnneiStatusListApi.request(URL_ANNEI_LIST)
@@ -176,15 +218,20 @@ public class StatusListTabFragment extends ListFragment {
                 );
     }
 
+    /**
+     * 通信した結果をキャッシュに保存
+     * 
+     * @param result 通信値
+     */
     private void saveResultToCache(Result result) {
-        CacheManager.getInstance().saveAnneiListTimeStamp();
-        CacheManager.getInstance().saveAnneiList(result);
+        CacheManager.getInstance().saveNowTimeStamp(getParam());
+        CacheManager.getInstance().putResult(getParam(), result);
     }
 
     /**
      * 八重山観光フェリーAPIを呼び出す
      */
-    private void getYkfList() {
+    private void startYkfListQuery() {
 
         mCompositeSubscription.add(
                 YkfStatusListApi.request(URL_YKF_LIST)
@@ -207,6 +254,7 @@ public class StatusListTabFragment extends ListFragment {
                             public void onNext(Result result) {
                                 // 値うけとる
                                 onResultListQuery(result);
+                                saveResultToCache(result);
                             }
                         })
                 );
@@ -215,7 +263,7 @@ public class StatusListTabFragment extends ListFragment {
     /**
      * ドリームAPIを呼び出す
      */
-    private void getDreamList() {
+    private void startDreamListQuery() {
 
         mCompositeSubscription.add(
                 DreamStatusListApi.request(URL_DREAM_LIST)
@@ -238,30 +286,11 @@ public class StatusListTabFragment extends ListFragment {
                             public void onNext(Result result) {
                                 // 値うけとる
                                 onResultListQuery(result);
+                                saveResultToCache(result);
                             }
                         })
                 );
     }
-
-    public void onStartQuery() {
-        mProgressWheel.setVisibility(View.VISIBLE);
-        mHeaderView.setVisibility(View.GONE);
-        mListAdapter.clear();
-        setListAdapter(mListAdapter);
-    }
-
-    // private void bind(Result result) {
-    // mListAdapter.clear();
-    // if (result == null) {
-    // return;
-    // }
-    // mListAdapter.addAll(result.getLiners());
-    //
-    // // ヘッダー設定
-    // mHeaderView.setVisibility(View.VISIBLE);
-    // setTitle(result.getTitle());
-    // setUpdate(result.getUpdateTime());
-    // }
 
     /**
      * 更新時間
