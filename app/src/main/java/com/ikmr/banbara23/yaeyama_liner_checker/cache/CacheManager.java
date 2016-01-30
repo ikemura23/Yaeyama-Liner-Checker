@@ -26,12 +26,11 @@ public class CacheManager {
     }
 
     public Parcelable get(String key) {
-
-        return null;
+        return JsonUtil.fromJson(PreferenceUtils.loadString(mContext, key));
     }
 
-    public void put(String key, Object object) {
-
+    public void put(String key, Parcelable parcelable) {
+        PreferenceUtils.saveString(mContext, key, JsonUtil.toJson(parcelable));
     }
 
     public boolean isExpiryDuration() {

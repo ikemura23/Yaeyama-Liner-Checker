@@ -1,7 +1,8 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker.cache;
 
-import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
+import android.os.Parcelable;
+
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 
@@ -11,9 +12,9 @@ import java.io.IOException;
  * moshiでjsonを変換したり戻したり
  */
 public class JsonUtil {
-    public static Result fromJson(String json) {
+    public static Parcelable fromJson(String json) {
         Moshi moshi = new Moshi.Builder().build();
-        JsonAdapter<Result> jsonAdapter = moshi.adapter(Result.class);
+        JsonAdapter<Parcelable> jsonAdapter = moshi.adapter(Parcelable.class);
         try {
             return jsonAdapter.fromJson(json);
         } catch (IOException e) {
@@ -22,9 +23,9 @@ public class JsonUtil {
         }
     }
 
-    public static String toJson(Result result) {
+    public static String toJson(Parcelable parcelable) {
         Moshi moshi = new Moshi.Builder().build();
-        JsonAdapter<Result> jsonAdapter = moshi.adapter(Result.class);
-        return jsonAdapter.toJson(result);
+        JsonAdapter<Parcelable> jsonAdapter = moshi.adapter(Parcelable.class);
+        return jsonAdapter.toJson(parcelable);
     }
 }
