@@ -8,7 +8,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Price;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 港のutilクラス
@@ -51,7 +51,7 @@ public class PortUtil {
      * @param pot 希望する港
      * @return 欲しい港
      */
-    public static Liner getMyPort(ArrayList<Liner> liners, Port pot) {
+    public static Liner getMyPort(List<Liner> liners, Port pot) {
         for (Liner liner : liners) {
             if (pot == liner.getPort()) {
                 return liner;

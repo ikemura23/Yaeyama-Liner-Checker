@@ -32,7 +32,6 @@ public class JsonUtil {
 
     public static String toJsonFromResult(Result result) {
         Moshi moshi = new Moshi.Builder().build();
-        JsonAdapter<Result> jsonAdapter = moshi.adapter(Result.class);
-        return jsonAdapter.toJson(result);
+        return moshi.adapter(Result.class).toJson(result);
     }
 }

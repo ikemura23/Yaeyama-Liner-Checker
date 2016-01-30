@@ -2,13 +2,14 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.entity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Result {
 
     private Company mCompany;
     private String mUpdateTime;
     private String mTitle;
-    ArrayList<Liner> mLiners = new ArrayList<>();
+    private List<Liner> mLiners;
 
     public Result() {
     }
@@ -37,21 +38,11 @@ public class Result {
         mTitle = title;
     }
 
-    public ArrayList<Liner> getLiners() {
+    public List<Liner> getLiners() {
         return mLiners;
     }
 
     public void setLiners(ArrayList<Liner> liners) {
         mLiners = liners;
-    }
-
-    @Override
-    public String toString() {
-        return "Result{" +
-                "mCompany=" + mCompany +
-                ", mUpdateTime='" + mUpdateTime + '\'' +
-                ", mTitle='" + mTitle + '\'' +
-                ", mLiners=" + mLiners +
-                '}';
     }
 }
