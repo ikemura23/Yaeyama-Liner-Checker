@@ -5,15 +5,32 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import com.ikmr.banbara23.yaeyama_liner_checker.ApplicationController;
+import com.ikmr.banbara23.yaeyama_liner_checker.Const;
+
 final class PreferenceUtils {
 
     private static SharedPreferences getDefaultSharedPreferences(final Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context);
     }
 
+    private static Context getContext() {
+        return ApplicationController.getInstance().getApplicationContext();
+    }
+
+    private static SharedPreferences getSharedPreferences() {
+        return getContext().getSharedPreferences(Const.PREFERENCE_FILE_NAME, Context.MODE_PRIVATE);
+    }
+
     public static void saveInt(Context context, String key, int value) {
         SharedPreferences.Editor editor = getDefaultSharedPreferences(context).edit();
         editor.putInt(key, value);
+        editor.apply();
+    }
+
+    public static void saveLong(Context context, String key, int value) {
+        SharedPreferences.Editor editor = getDefaultSharedPreferences(context).edit();
+        editor.putLong(key, value);
         editor.apply();
     }
 
@@ -29,6 +46,10 @@ final class PreferenceUtils {
 
     protected static String loadString(Context context, String key) {
         return getDefaultSharedPreferences(context).getString(key, null);
+    }
+
+    protected static long loadLong(String key) {
+        return getSharedPreferences().getLong(key, 0);
     }
 
     public static void remove(Context context, String key) {
