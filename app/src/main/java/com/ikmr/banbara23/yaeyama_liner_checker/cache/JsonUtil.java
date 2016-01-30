@@ -11,7 +11,7 @@ import java.io.IOException;
  * moshiでjsonを変換したり戻したり
  */
 public class JsonUtil {
-    public static Object fromJson(String json) {
+    public static Result fromJson(String json) {
         Moshi moshi = new Moshi.Builder().build();
         JsonAdapter<Result> jsonAdapter = moshi.adapter(Result.class);
         try {
