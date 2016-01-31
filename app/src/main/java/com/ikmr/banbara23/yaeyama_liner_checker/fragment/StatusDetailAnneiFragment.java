@@ -17,6 +17,8 @@ import com.crashlytics.android.Crashlytics;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.AnneiStatusDetailApi;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.AnneiStatusListApi;
+import com.ikmr.banbara23.yaeyama_liner_checker.cache.CacheManager;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Price;
@@ -66,6 +68,7 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
     LinearLayout mFragmentStatusDetailValueLayout;
 
     // ButterKnife OnClick --------------------------------------------
+
     /**
      * もっと見るボタン押下
      *
@@ -85,7 +88,7 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
 
     /**
      * エラー時の再読み込みボタン押下
-     * 
+     *
      * @param view
      */
     @OnClick(R.id.fragment_status_detail_reload_button)
@@ -99,7 +102,7 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
 
     /**
      * 電話する押下
-     * 
+     *
      * @param view
      */
     @OnClick(R.id.view_status_detail_web_layout)
@@ -109,7 +112,7 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
 
     /**
      * サイトを見る押下
-     * 
+     *
      * @param view
      */
     @OnClick(R.id.view_status_detail_tell_layout)
@@ -194,14 +197,29 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
         listQuerying = true;
         detailQuerying = true;
 
-        getAnneiDetail();
-        getAnneiList();
+        startDetailQuery();
+        startListQuery();
+    }
+
+    private void startDetailQuery() {
+        // キャッシュ処理
+        CacheManager cacheManager = CacheManager.getInstance();
+        if (cacheManager.isExpiryDetailAnnei(getPort())) {
+            // キャッシュが無効なので通信必要
+            startAnneiDetailQuery();
+            return;
+        }
+        // キャッシュ有効なので不要
+        String comment = cacheManager.getDetailAnneiResultCache();
+        onResultDetailQuery(comment);
+        detailQuerying = false;
+        finishQuery();
     }
 
     /**
      * 安栄のTOPの一覧を取得
      */
-    private void getAnneiDetail() {
+    private void startAnneiDetailQuery() {
         String url = PortUtil.getAnneiDetailUrl(getActivity().getApplicationContext(), getPort());
         mCompositeSubscription.add(
                 AnneiStatusDetailApi.request(url)
@@ -225,26 +243,38 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
                             public void onNext(String s) {
                                 // 値うけとる
                                 onResultDetailQuery(s);
+                                saveResultDetailToCache(s);
                             }
                         })
-                );
+        );
+    }
+
+    /**
+     * 通信で取得した詳細をキャッシュに保存
+     *
+     * @param value 詳細
+     */
+    private void saveResultDetailToCache(String value) {
+        CacheManager.getInstance().saveNowDetailAnneiTimeStamp(getPort());
+        CacheManager.getInstance().putDetail(getPort(), value);
     }
 
     /**
      * 安栄の港の詳細を取得
      */
-    private void getAnneiList() {
-        startAnneiListQuery();
-        // CacheManager cacheManager = CacheManager.getInstance();
-        // if (cacheManager.isNull(Const.TIMESTAMP_ANNEI_LIST_KEY)) {
-        // // キャッシュが空なので通信必要
-        // startAnneiListQuery();
-        // return;
-        // }
-        // // キャッシュ有効なので不要
-        // Result result = (Result)
-        // cacheManager.getResultCache(Const.PREF_ANNEI_LIST_KEY);
-        // onResultListQuery(result);
+    private void startListQuery() {
+        // キャッシュ処理
+        CacheManager cacheManager = CacheManager.getInstance();
+        if (cacheManager.isExpiryList(Company.ANNEI)) {
+            // キャッシュが無効なので通信必要
+            startAnneiListQuery();
+            return;
+        }
+        // キャッシュ有効なので不要
+        Result result = cacheManager.getListResultCache(Company.ANNEI);
+        onResultListQuery(result);
+        listQuerying = false;
+        finishQuery();
     }
 
     /**
@@ -274,9 +304,20 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
                             public void onNext(Result result) {
                                 // 値うけとる
                                 onResultListQuery(result);
+                                saveResultListToCache(result);
                             }
                         })
-                );
+        );
+    }
+
+    /**
+     * 通信した結果をキャッシュに保存
+     *
+     * @param result 通信値
+     */
+    private void saveResultListToCache(Result result) {
+        CacheManager.getInstance().saveNowListTimeStamp(Company.ANNEI);
+        CacheManager.getInstance().putResult(Company.ANNEI, result);
     }
 
     /**
@@ -318,7 +359,7 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
 
     /**
      * 走行距離
-     * 
+     *
      * @return 距離
      */
     private String getAnneiDistance() {
@@ -327,7 +368,7 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
 
     /**
      * 走行時間
-     * 
+     *
      * @return 走行時間
      */
     private String getAnneiTime() {
@@ -336,7 +377,7 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
 
     /**
      * 料金・大人
-     * 
+     *
      * @return 料金・大人
      */
     public Price getPrice() {

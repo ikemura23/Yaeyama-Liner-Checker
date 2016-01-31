@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import com.crashlytics.android.Crashlytics;
 import com.ikmr.banbara23.yaeyama_liner_checker.Const;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 
 import java.util.Date;
@@ -29,14 +30,22 @@ public class CacheManager {
         return TextUtils.isEmpty(PreferenceUtils.loadString(key));
     }
 
-    public Result getResultCache(Company company) {
-        String key = getResultCacheKey(company);
+    public Result getListResultCache(Company company) {
+        String key = CacheHelper.getResultCacheKey(company);
         return JsonUtil.fromJson(PreferenceUtils.loadString(key));
     }
 
+    public String getDetailAnneiResultCache() {
+        return PreferenceUtils.loadString(Const.PREF_ANNEI_DETAIL_KEY);
+    }
+
     public void putResult(Company company, Result result) {
-        String key = getResultCacheKey(company);
+        String key = CacheHelper.getResultCacheKey(company);
         PreferenceUtils.saveString(key, JsonUtil.toJsonFromResult(result));
+    }
+
+    public void putDetail(Port port, String comment) {
+        PreferenceUtils.saveString(CacheHelper.getResultDetailCacheKey(port), comment);
     }
 
     /**
@@ -46,25 +55,26 @@ public class CacheManager {
      */
     public boolean isExpiryList(Company company) {
         try {
-            String key = getListTimeStampKey(company);
+            String key = CacheHelper.getListTimeStampKey(company);
             if (key == null) {
-                Timber.d(company.getCompanyName() + ":キャッシュ無効 keyがnullなんですけど!!");
+                Timber.d(company.getCompanyName() + ":一覧キャッシュ無効 keyがnullなんですけど!!");
                 return true;
             }
             if (invalidTimeStamp(key)) {
-                Timber.d(company.getCompanyName() + ":キャッシュ無効 タイムスタンプが0以下");
+                Timber.d(company.getCompanyName() + ":一覧キャッシュ無効 タイムスタンプが0以下");
                 return true;
             }
-            if (isNull(getResultCacheKey(company))) {
-                Timber.d(company.getCompanyName() + ":キャッシュ無効 一覧キャッシュ値がnull");
+            if (isNull(CacheHelper.getResultCacheKey(company))) {
+                Timber.d(company.getCompanyName() + ":一覧キャッシュ無効 キャッシュ値がnull");
                 return true;
             }
             long duration = getDuration(key);
-            Timber.d("duration:" + duration);
+            Timber.d("duration list:" + duration);
             if (0 > duration || duration > 3) {
-                Timber.d(company.getCompanyName() + ":キャッシュ無効 期限切れ");
+                Timber.d(company.getCompanyName() + ":一覧キャッシュ無効 期限切れ");
                 return true;
             }
+            Timber.d(company.getCompanyName() + ":一覧キャッシュ有効");
         } catch (Exception e) {
             Crashlytics.logException(e);
             return true;
@@ -76,24 +86,27 @@ public class CacheManager {
      * キャッシュの有効期限が切れているか？
      *
      * @return true:切れてる false:切れてない
+     * @param port
      */
-    public boolean isExpiryDetailAnnei() {
+    public boolean isExpiryDetailAnnei(Port port) {
         try {
-            String key = Const.TIMESTAMP_ANNEI_DETAIL_KEY;
-            if (invalidTimeStamp(key)) {
-                Timber.d(Company.ANNEI.getCompanyName() + ":キャッシュ無効 タイムスタンプが0以下");
+            String timeStampKey = CacheHelper.getResultDetailTimeStampKey(port);
+            if (invalidTimeStamp(timeStampKey)) {
+                Timber.d(Company.ANNEI.getCompanyName() + ":詳細キャッシュ無効 タイムスタンプが0以下 " + port.getPortSimple());
                 return true;
             }
-            if (isNull(Const.PREF_ANNEI_DETAIL_KEY)) {
-                Timber.d(Company.ANNEI.getCompanyName() + ":キャッシュ無効 一覧キャッシュ値がnull");
+            String valueKey = CacheHelper.getResultDetailCacheKey(port);
+            if (isNull(valueKey)) {
+                Timber.d(Company.ANNEI.getCompanyName() + ":詳細キャッシュ無効 一覧キャッシュ値がnull) " + port.getPortSimple());
                 return true;
             }
-            long duration = getDuration(key);
-            Timber.d("duration:" + duration);
+            long duration = getDuration(timeStampKey);
+            Timber.d("duration detail:" + duration);
             if (0 > duration || duration > 3) {
-                Timber.d(Company.ANNEI.getCompanyName() + ":キャッシュ無効 期限切れ");
+                Timber.d(Company.ANNEI.getCompanyName() + ":詳細キャッシュ無効 期限切れ " + port.getPortSimple());
                 return true;
             }
+            Timber.d(Company.ANNEI.getCompanyName() + ":詳細キャッシュ有効 " + port.getPortSimple());
         } catch (Exception e) {
             Crashlytics.logException(e);
             return true;
@@ -144,7 +157,7 @@ public class CacheManager {
      * @param timestamp 保存タイムスタンプ値
      */
     public void saveTimeStamp(String key, long timestamp) {
-        Timber.d(key + "nowTimeStamp:" + getNowTimeStamp());
+        Timber.d(key + " nowTimeStamp:" + getNowTimeStamp());
         PreferenceUtils.saveLong(key, timestamp);
     }
 
@@ -162,9 +175,13 @@ public class CacheManager {
      * 
      * @param param 観光会社
      */
-    public void saveNowTimeStamp(Company param) {
-        String key = getListTimeStampKey(param);
+    public void saveNowListTimeStamp(Company param) {
+        String key = CacheHelper.getListTimeStampKey(param);
         saveTimeStamp(key, getNowTimeStamp());
+    }
+
+    public void saveNowDetailAnneiTimeStamp(Port port) {
+        saveTimeStamp(CacheHelper.getResultDetailTimeStampKey(port), getNowTimeStamp());
     }
 
     /**
@@ -173,43 +190,8 @@ public class CacheManager {
      * @param param 観光会社
      */
     public void resetTimeStamp(Company param) {
-        String key = getListTimeStampKey(param);
+        String key = CacheHelper.getListTimeStampKey(param);
         saveTimeStamp(key, 0);
     }
 
-    /**
-     * 一覧のタイムスタンプのキー取得
-     *
-     * @return key 一覧のタイムスタンプkey
-     */
-    private String getListTimeStampKey(Company company) {
-        switch (company) {
-            case ANNEI:
-                return Const.TIMESTAMP_ANNEI_LIST_KEY;
-            case YKF:
-                return Const.TIMESTAMP_YKF_LIST_KEY;
-            case DREAM:
-                return Const.TIMESTAMP_DREAM_LIST_KEY;
-            default:
-                return null;
-        }
-    }
-
-    /**
-     * 一覧のキャッシュキー取得
-     *
-     * @return key
-     */
-    private String getResultCacheKey(Company company) {
-        switch (company) {
-            case ANNEI:
-                return Const.PREF_ANNEI_LIST_KEY;
-            case YKF:
-                return Const.PREF_YKF_LIST_KEY;
-            case DREAM:
-                return Const.PREF_DREAM_LIST_KEY;
-            default:
-                return null;
-        }
-    }
 }

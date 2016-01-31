@@ -128,7 +128,7 @@ public class StatusListTabFragment extends BaseListFragment {
             return;
         }
         // キャッシュ有効なので不要
-        Result result = cacheManager.getResultCache(getParam());
+        Result result = cacheManager.getListResultCache(getParam());
         onResultListQuery(result);
         finishQuery();
     }
@@ -187,7 +187,7 @@ public class StatusListTabFragment extends BaseListFragment {
      * @param result 通信値
      */
     private void saveResultToCache(Result result) {
-        CacheManager.getInstance().saveNowTimeStamp(getParam());
+        CacheManager.getInstance().saveNowListTimeStamp(getParam());
         CacheManager.getInstance().putResult(getParam(), result);
     }
 
