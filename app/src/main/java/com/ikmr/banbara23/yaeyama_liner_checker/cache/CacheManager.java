@@ -48,24 +48,23 @@ public class CacheManager {
         try {
             String key = getTimeStampKey(company);
             if (key == null) {
-                Timber.d(company.getCompanyName() + ":keyがnullなんですけど");
+                Timber.d(company.getCompanyName() + ":キャッシュ無効 keyがnullなんですけど!!");
                 return true;
             }
             if (invalidCache(key)) {
-                Timber.d(company.getCompanyName() + ":キャッシュタイムスタンプが0以下");
+                Timber.d(company.getCompanyName() + ":キャッシュ無効 タイムスタンプが0以下");
                 return true;
             }
             if (isNull(getResultCacheKey(company))) {
-                Timber.d(company.getCompanyName() + ":一覧キャッシュ値がnull");
+                Timber.d(company.getCompanyName() + ":キャッシュ無効 一覧キャッシュ値がnull");
                 return true;
             }
             long duration = getDuration(key);
             Timber.d("duration:" + duration);
             if (0 > duration || duration > 3) {
-                Timber.d(company.getCompanyName() + ":期限切れでキャッシュ無効");
+                Timber.d(company.getCompanyName() + ":キャッシュ無効 期限切れ");
                 return true;
             }
-            Timber.d(company.getCompanyName() + ":キャッシュ有効");
         } catch (Exception e) {
             Crashlytics.logException(e);
             return true;
@@ -126,6 +125,11 @@ public class CacheManager {
     public void saveNowTimeStamp(Company param) {
         String key = getTimeStampKey(param);
         saveTimeStamp(key, getNowTimeStamp());
+    }
+
+    public void resetTimeStamp(Company param) {
+        String key = getTimeStampKey(param);
+        saveTimeStamp(key, 0);
     }
 
     /**

@@ -4,7 +4,6 @@ package com.ikmr.banbara23.yaeyama_liner_checker.fragment;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.ListFragment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,7 +38,7 @@ import rx.subscriptions.CompositeSubscription;
 /**
  * 一覧タブListFragment
  */
-public class StatusListTabFragment extends ListFragment {
+public class StatusListTabFragment extends BaseListFragment {
 
     StatusListAdapter mListAdapter;
     TextView mTitleText;
@@ -371,5 +370,9 @@ public class StatusListTabFragment extends ListFragment {
         Intent intent = new Intent(getActivity(), StatusDetailDreamActivity.class);
         intent.putExtra(StatusDetailDreamActivity.class.getName(), ykfLinerDetail);
         startActivity(intent);
+    }
+
+    public void resetTimeStamp() {
+        CacheManager.getInstance().resetTimeStamp(getParam());
     }
 }

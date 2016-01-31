@@ -1,10 +1,10 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker.fragment;
 
-import android.app.Fragment;
 import android.content.Context;
+import android.support.v4.app.ListFragment;
 
-public class BaseFragment extends Fragment {
+public class BaseListFragment extends ListFragment {
     public Context getContext() {
         return getActivity().getApplicationContext();
     }

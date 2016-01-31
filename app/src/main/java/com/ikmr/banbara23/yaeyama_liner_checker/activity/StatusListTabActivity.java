@@ -3,7 +3,6 @@ package com.ikmr.banbara23.yaeyama_liner_checker.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,6 +10,7 @@ import android.view.MenuItem;
 import com.ikmr.banbara23.yaeyama_liner_checker.PagerAdapter;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
+import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusListTabFragment;
 
 /**
  * 一覧タブActivity
@@ -110,9 +110,10 @@ public class StatusListTabActivity extends BaseActivity {
      */
     private void updateCurrentFragment() {
         ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
-        Fragment fragment = ((PagerAdapter) viewPager.getAdapter()).findFragmentByPosition(viewPager, viewPager.getCurrentItem());
-        if (fragment != null) {
-            fragment.onResume();
+        StatusListTabFragment statusListTabFragment = (StatusListTabFragment) ((PagerAdapter) viewPager.getAdapter()).findFragmentByPosition(viewPager, viewPager.getCurrentItem());
+        if (statusListTabFragment != null) {
+            statusListTabFragment.resetTimeStamp();
+            statusListTabFragment.onResume();
         }
     }
 }
