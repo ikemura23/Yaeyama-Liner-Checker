@@ -44,14 +44,14 @@ public class CacheManager {
      * 
      * @return true:切れてる false:切れてない
      */
-    public boolean isExpiry(Company company) {
+    public boolean isExpiryList(Company company) {
         try {
-            String key = getTimeStampKey(company);
+            String key = getListTimeStampKey(company);
             if (key == null) {
                 Timber.d(company.getCompanyName() + ":キャッシュ無効 keyがnullなんですけど!!");
                 return true;
             }
-            if (invalidCache(key)) {
+            if (invalidTimeStamp(key)) {
                 Timber.d(company.getCompanyName() + ":キャッシュ無効 タイムスタンプが0以下");
                 return true;
             }
@@ -72,7 +72,42 @@ public class CacheManager {
         return false;
     }
 
-    private boolean invalidCache(String key) {
+    /**
+     * キャッシュの有効期限が切れているか？
+     *
+     * @return true:切れてる false:切れてない
+     */
+    public boolean isExpiryDetailAnnei() {
+        try {
+            String key = Const.TIMESTAMP_ANNEI_DETAIL_KEY;
+            if (invalidTimeStamp(key)) {
+                Timber.d(Company.ANNEI.getCompanyName() + ":キャッシュ無効 タイムスタンプが0以下");
+                return true;
+            }
+            if (isNull(Const.PREF_ANNEI_DETAIL_KEY)) {
+                Timber.d(Company.ANNEI.getCompanyName() + ":キャッシュ無効 一覧キャッシュ値がnull");
+                return true;
+            }
+            long duration = getDuration(key);
+            Timber.d("duration:" + duration);
+            if (0 > duration || duration > 3) {
+                Timber.d(Company.ANNEI.getCompanyName() + ":キャッシュ無効 期限切れ");
+                return true;
+            }
+        } catch (Exception e) {
+            Crashlytics.logException(e);
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * タイムスタンプが0以下で無効か？
+     * 
+     * @param key
+     * @return
+     */
+    private boolean invalidTimeStamp(String key) {
         return PreferenceUtils.loadLong(key) < 1;
     }
 
@@ -122,22 +157,32 @@ public class CacheManager {
         return new Date().getTime();
     }
 
+    /**
+     * 現在時刻のタイムスタンプを保存
+     * 
+     * @param param 観光会社
+     */
     public void saveNowTimeStamp(Company param) {
-        String key = getTimeStampKey(param);
+        String key = getListTimeStampKey(param);
         saveTimeStamp(key, getNowTimeStamp());
     }
 
+    /**
+     * タイムスタンプをリセット
+     * 
+     * @param param 観光会社
+     */
     public void resetTimeStamp(Company param) {
-        String key = getTimeStampKey(param);
+        String key = getListTimeStampKey(param);
         saveTimeStamp(key, 0);
     }
 
     /**
-     * タイムスタンプのキー取得
+     * 一覧のタイムスタンプのキー取得
      *
-     * @return key
+     * @return key 一覧のタイムスタンプkey
      */
-    private String getTimeStampKey(Company company) {
+    private String getListTimeStampKey(Company company) {
         switch (company) {
             case ANNEI:
                 return Const.TIMESTAMP_ANNEI_LIST_KEY;
