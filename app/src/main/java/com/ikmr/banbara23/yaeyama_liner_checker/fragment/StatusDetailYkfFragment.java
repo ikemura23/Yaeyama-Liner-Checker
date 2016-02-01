@@ -16,6 +16,8 @@ import android.widget.LinearLayout;
 import com.crashlytics.android.Crashlytics;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.YkfStatusListApi;
+import com.ikmr.banbara23.yaeyama_liner_checker.cache.CacheManager;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Price;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
@@ -177,12 +179,12 @@ public class StatusDetailYkfFragment extends BaseDetailFragment {
     public void startQuery() {
         mProgressBar.setVisibility(View.VISIBLE);
         mFragmentStatusDetailContentLayout.setVisibility(View.GONE);
-		
-		// キャッシュ処理
+
+        // キャッシュ処理
         CacheManager cacheManager = CacheManager.getInstance();
         if (cacheManager.isExpiryList(Company.YKF)) {
             // キャッシュが無効なので通信必要
-			startApiQuery();
+            startApiQuery();
             return;
         }
         // キャッシュ有効なので不要
