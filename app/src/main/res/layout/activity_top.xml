@@ -10,6 +10,7 @@
     tools:context="com.ikmr.banbara23.yaeyama_liner_checker.activity.TopActivity"
     >
 
+    <!--運航情報を見るラベル-->
     <TextView
         android:id="@+id/activity_top_description"
         android:layout_width="wrap_content"
@@ -19,6 +20,7 @@
         android:textSize="15sp"
         />
 
+    <!--運航情報-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -98,6 +100,7 @@
         android:orientation="vertical"
         >
 
+        <!--時刻表-->
         <com.balysv.materialripple.MaterialRippleLayout
             android:id="@+id/top_activity_timetable"
             android:layout_width="match_parent"
@@ -115,7 +118,9 @@
                 />
         </com.balysv.materialripple.MaterialRippleLayout>
     </LinearLayout>
+    <!--設定-->
 
+    <!--アプリ情報-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
