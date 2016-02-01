@@ -118,7 +118,34 @@
                 />
         </com.balysv.materialripple.MaterialRippleLayout>
     </LinearLayout>
+
     <!--設定-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        >
+
+        <!--時刻表-->
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:id="@+id/top_activity_setting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:mrl_rippleColor="#778899"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="設定"
+                android:textColor="@color/secondary_text"
+                android:textSize="15sp"
+                />
+        </com.balysv.materialripple.MaterialRippleLayout>
+    </LinearLayout>
 
     <!--アプリ情報-->
     <LinearLayout
