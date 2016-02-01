@@ -15,6 +15,8 @@ import android.widget.LinearLayout;
 import com.crashlytics.android.Crashlytics;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.DreamStatusListApi;
+import com.ikmr.banbara23.yaeyama_liner_checker.cache.CacheManager;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Price;
@@ -224,7 +226,18 @@ public class StatusDetailDreamFragment extends BaseDetailFragment {
     public void startQuery() {
         mProgressBar.setVisibility(View.VISIBLE);
         mFragmentDreamStatusDetailContentLayout.setVisibility(View.GONE);
-        getDreamList();
+
+        // キャッシュ処理
+        CacheManager cacheManager = CacheManager.getInstance();
+        if (cacheManager.isExpiryList(Company.DREAM)) {
+            // キャッシュが無効なので通信必要
+            startApiQuery();
+            return;
+        }
+        // キャッシュ有効なので不要
+        Result result = cacheManager.getListResultCache(Company.DREAM);
+        onResultListQuery(result);
+        finishQuery();
     }
 
     public Context getContext() {
@@ -246,7 +259,7 @@ public class StatusDetailDreamFragment extends BaseDetailFragment {
     /**
      * 八重山観光フェリーAPIを呼び出す
      */
-    private void getDreamList() {
+    private void startApiQuery() {
 
         mCompositeSubscription.add(
                 DreamStatusListApi.request(URL_DREAM_LIST)
