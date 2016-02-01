@@ -57,6 +57,10 @@
             android:name=".timetable.TimeTableActivity"
             android:label="@string/title_activity_timetable">
         </activity>
+        <activity
+            android:name=".activity.SettingActivity"
+            android:label="@string/title_activity_setting">
+        </activity>
 
         <meta-data
             android:name="io.fabric.ApiKey"

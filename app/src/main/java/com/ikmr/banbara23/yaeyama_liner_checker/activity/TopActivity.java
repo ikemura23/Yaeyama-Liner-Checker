@@ -34,6 +34,19 @@ public class TopActivity extends BaseActivity {
         startStatusListTabActivity(Company.DREAM);
     }
 
+    @OnClick(R.id.top_activity_setting)
+    void settinglick(View view) {
+        startSettingActivity();
+    }
+
+    /**
+     * 設定画面に遷移
+     */
+    private void startSettingActivity() {
+        Intent intent = new Intent(this, SettingActivity.class);
+        startActivity(intent);
+    }
+
     /**
      * 一覧タブ画面に遷移
      * 
