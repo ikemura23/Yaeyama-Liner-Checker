@@ -1,39 +1,15 @@
-<LinearLayout
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
     android:orientation="vertical"
-    android:padding="16dp"
-    tools:context="com.ikmr.banbara23.yaeyama_liner_checker.activity.TopActivity"
     >
 
-    <LinearLayout
+    <FrameLayout
+        android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@color/white"
-        android:orientation="vertical"
-        >
+        android:layout_height="match_parent"
+        />
 
-        <!--時刻表-->
-        <com.balysv.materialripple.MaterialRippleLayout
-            android:id="@+id/top_activity_setting_cache"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:mrl_rippleColor="#778899"
-            >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:text="キャッシュ値"
-                android:textColor="@color/secondary_text"
-                android:textSize="15sp"
-                />
-        </com.balysv.materialripple.MaterialRippleLayout>
-    </LinearLayout>
-</LinearLayout>
+</RelativeLayout>

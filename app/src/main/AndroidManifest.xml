@@ -58,7 +58,7 @@
             android:label="@string/title_activity_timetable">
         </activity>
         <activity
-            android:name=".activity.SettingActivity"
+            android:name=".activity.PreferenceActivity"
             android:label="@string/title_activity_setting">
         </activity>
 

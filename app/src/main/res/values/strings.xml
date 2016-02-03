@@ -197,4 +197,5 @@
     <string name="dream_uehara_price_adult_ferry">片道 1,420円</string>
     <string name="dream_uehara_price_child_ferry">片道 710円</string>
 
+    <string name="cache_preference">cache_preference</string>
 </resources>

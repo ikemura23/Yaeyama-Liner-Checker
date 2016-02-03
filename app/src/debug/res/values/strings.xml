@@ -11,6 +11,7 @@
     <string name="top_description">今日の運航状況を見る</string>
     <string name="top_other">その他</string>
     <string name="detail_dialog_title">本日の運航状況</string>
+    <string name="cache_dialog_title">キャッシュ値の設定</string>
 
     <!--URL-->
     <!--安栄-->
@@ -206,4 +207,5 @@
     <string name="dream_uehara_price_adult_ferry">片道 1,420円</string>
     <string name="dream_uehara_price_child_ferry">片道 710円</string>
 
+    <string name="cache_preference">cache_preference</string>
 </resources>

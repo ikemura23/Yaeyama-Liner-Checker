@@ -43,7 +43,7 @@ public class TopActivity extends BaseActivity {
      * 設定画面に遷移
      */
     private void startSettingActivity() {
-        Intent intent = new Intent(this, SettingActivity.class);
+        Intent intent = new Intent(this, PreferenceActivity.class);
         startActivity(intent);
     }
 

@@ -31,4 +31,12 @@
         <item>鳩間島</item>
         <item>波照間島</item>
     </string-array>
+
+    <!--ダイアログのキャッシュ選択肢-->
+    <string-array name="cache_list_items">
+        <item>無効</item>
+        <item>1</item>
+        <item>3</item>
+        <item>5</item>
+    </string-array>
 </resources>
