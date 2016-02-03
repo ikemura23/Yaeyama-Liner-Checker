@@ -122,7 +122,7 @@ public class StatusListTabFragment extends BaseListFragment {
 
         // キャッシュ処理
         CacheManager cacheManager = CacheManager.getInstance();
-        if (cacheManager.isExpiryList(getParam())) {
+        if (cacheManager.isPreferenceCacheDisable() || cacheManager.isExpiryList(getParam())) {
             // キャッシュが無効なので通信必要
             startListQuery();
             return;

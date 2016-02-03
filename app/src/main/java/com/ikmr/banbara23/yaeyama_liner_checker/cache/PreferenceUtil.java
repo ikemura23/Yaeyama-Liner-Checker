@@ -64,8 +64,8 @@ final class PreferenceUtils {
         editor.apply();
     }
 
-    public static boolean getBoolean(final Context context, final String key) {
-        return getDefaultSharedPreferences(context).getBoolean(key, false);
+    public static boolean getBoolean(final String key) {
+        return getSharedPreferences().getBoolean(key, false);
     }
 
     private PreferenceUtils() {

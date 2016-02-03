@@ -19,10 +19,9 @@ public class Const {
     public static final String TIMESTAMP_ANNEI_LIST_KEY = "TIMESTAMP_ANNEI_LIST_KEY";
     public static final String TIMESTAMP_YKF_LIST_KEY = "TIMESTAMP_YKF_LIST_KEY";
     public static final String TIMESTAMP_DREAM_LIST_KEY = "TIMESTAMP_DREAM_LIST_KEY";
-    public static final String TIMESTAMP_ANNEI_DETAIL_KEY = "TIMESTAMP_ANNEI_DETAIL_KEY";
 
     // 設定画面で設定するキャッシュ設定値
-    public static final String SETTING_CACHE_KEY = "SETTING_CACHE_KEY";
+    public static final String CACHE_CHECKBOX_PREFERENCE = "cache_checkbox_preference";
 
     // 詳細の値
     public static final String PREF_ANNEI_DETAIL_TAKETOMI_KEY = "PREF_ANNEI_DETAIL_TAKETOMI_KEY";
@@ -41,4 +40,6 @@ public class Const {
     public static final String TIMESTAMP_ANNEI_DETAIL_UEHARA_KEY = "TIMESTAMP_ANNEI_DETAIL_UEHARA_KEY";
     public static final String TIMESTAMP_ANNEI_DETAIL_HATOMA_KEY = "TIMESTAMP_ANNEI_DETAIL_HATOMA_KEY";
     public static final String TIMESTAMP_ANNEI_DETAIL_HATERUMA_KEY = "TIMESTAMP_ANNEI_DETAIL_HATERUMA_KEY";
+
+    public static final int SAVE_TIME = 1;
 }

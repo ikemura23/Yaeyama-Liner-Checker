@@ -102,7 +102,7 @@ public class CacheManager {
             }
             long duration = getDuration(timeStampKey);
             Timber.d("duration detail:" + duration);
-            if (0 > duration || duration > 3) {
+            if (0 > duration || duration > Const.SAVE_TIME) {
                 Timber.d(Company.ANNEI.getCompanyName() + ":詳細キャッシュ無効 期限切れ " + port.getPortSimple());
                 return true;
             }
@@ -194,4 +194,7 @@ public class CacheManager {
         saveTimeStamp(key, 0);
     }
 
+    public boolean isPreferenceCacheDisable() {
+        return PreferenceUtils.getBoolean(Const.CACHE_CHECKBOX_PREFERENCE);
+    }
 }

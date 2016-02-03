@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory
-        android:title="キャッシュ設定">
-        <SwitchPreference
-            android:defaultValue="true"
-            android:key="@string/cache_preference"
-            android:summary="表示した情報のみ1分間保存します"
-            android:title="運航情報キャッシュする"/>
-    </PreferenceCategory>
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="cache_checkbox_preference"
+        android:summary="表示した情報を1分だけ保存"
+        android:title="運航情報キャッシュ"/>
 </PreferenceScreen>
