@@ -40,5 +40,6 @@ public class Const {
     public static final String TIMESTAMP_ANNEI_DETAIL_HATOMA_KEY = "TIMESTAMP_ANNEI_DETAIL_HATOMA_KEY";
     public static final String TIMESTAMP_ANNEI_DETAIL_HATERUMA_KEY = "TIMESTAMP_ANNEI_DETAIL_HATERUMA_KEY";
 
-    public static final int SAVE_TIME = 1;
+    // キャッシュの保存時間(分)
+    public static final int SAVE_TIME = 3;
 }
