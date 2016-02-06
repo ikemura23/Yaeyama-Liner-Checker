@@ -28,21 +28,46 @@
         android:orientation="vertical"
         >
 
+        <!--安栄-->
         <com.balysv.materialripple.MaterialRippleLayout
             android:id="@+id/top_activity_annei"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             app:mrl_rippleColor="#ff6666"
             >
 
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:text="安栄観光"
-                android:textColor="@color/secondary_text"
-                android:textSize="15sp"
-                />
+                android:layout_gravity="center_vertical"
+                >
+
+                <FrameLayout
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/circle_annei"
+                    >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_web_grey600_18dp"
+                        />
+
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="8dp"
+                    android:text="安栄観光"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="15sp"
+                    />
+            </LinearLayout>
         </com.balysv.materialripple.MaterialRippleLayout>
 
         <FrameLayout
@@ -51,21 +76,46 @@
             android:background="@color/background"
             />
 
+        <!--八重山観光フェリー-->
         <com.balysv.materialripple.MaterialRippleLayout
             android:id="@+id/top_activity_ykf"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             app:mrl_rippleColor="#87ceeb"
             >
 
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:text="八重山観光フェリー"
-                android:textColor="@color/secondary_text"
-                android:textSize="15sp"
-                />
+                android:layout_gravity="center_vertical"
+                >
+
+                <FrameLayout
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/circle_ykf"
+                    >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_web_grey600_18dp"
+                        />
+
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="8dp"
+                    android:text="八重山観光フェリー"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="15sp"
+                    />
+            </LinearLayout>
         </com.balysv.materialripple.MaterialRippleLayout>
 
         <FrameLayout
@@ -74,24 +124,50 @@
             android:background="@color/background"
             />
 
+        <!--ドリーム観光-->
         <com.balysv.materialripple.MaterialRippleLayout
             android:id="@+id/top_activity_dream"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             app:mrl_rippleColor="#ff9900"
             >
 
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:text="ドリーム観光"
-                android:textColor="@color/secondary_text"
-                android:textSize="15sp"
-                />
+                android:layout_gravity="center_vertical"
+                >
+
+                <FrameLayout
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/circle_dream"
+                    >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_web_grey600_18dp"
+                        />
+
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="8dp"
+                    android:text="ドリーム観光"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="15sp"
+                    />
+            </LinearLayout>
         </com.balysv.materialripple.MaterialRippleLayout>
     </LinearLayout>
 
+    <!--時刻表-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -100,7 +176,6 @@
         android:orientation="vertical"
         >
 
-        <!--時刻表-->
         <com.balysv.materialripple.MaterialRippleLayout
             android:id="@+id/top_activity_timetable"
             android:layout_width="match_parent"
