@@ -226,10 +226,9 @@ public class StatusDetailDreamFragment extends BaseDetailFragment {
     public void startQuery() {
         mProgressBar.setVisibility(View.VISIBLE);
         mFragmentDreamStatusDetailContentLayout.setVisibility(View.GONE);
-
         // キャッシュ処理
         CacheManager cacheManager = CacheManager.getInstance();
-        if (cacheManager.isExpiryList(Company.DREAM)) {
+        if (cacheManager.isPreferenceCacheDisable() || cacheManager.isExpiryList(Company.DREAM)) {
             // キャッシュが無効なので通信必要
             startApiQuery();
             return;

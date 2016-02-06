@@ -182,7 +182,7 @@ public class StatusDetailYkfFragment extends BaseDetailFragment {
 
         // キャッシュ処理
         CacheManager cacheManager = CacheManager.getInstance();
-        if (cacheManager.isExpiryList(Company.YKF)) {
+        if (cacheManager.isPreferenceCacheDisable() || cacheManager.isExpiryList(Company.YKF)) {
             // キャッシュが無効なので通信必要
             startApiQuery();
             return;

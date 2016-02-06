@@ -2,6 +2,7 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.cache;
 
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.crashlytics.android.Crashlytics;
 import com.ikmr.banbara23.yaeyama_liner_checker.Const;
@@ -181,6 +182,7 @@ public class CacheManager {
     }
 
     public void saveNowDetailAnneiTimeStamp(Port port) {
+        Log.d("CacheManager", "getNowTimeStamp():" + getNowTimeStamp());
         saveTimeStamp(CacheHelper.getResultDetailTimeStampKey(port), getNowTimeStamp());
     }
 
@@ -194,7 +196,13 @@ public class CacheManager {
         saveTimeStamp(key, 0);
     }
 
+    /**
+     * キャッシュ設定が無効か？
+     * 
+     * @return
+     */
     public boolean isPreferenceCacheDisable() {
-        return PreferenceUtils.getBoolean(Const.CACHE_CHECKBOX_PREFERENCE);
+        Log.d("CacheManager", "キャッシュ無効？:" + !PreferenceUtils.getBoolean(Const.CACHE_CHECKBOX_PREFERENCE));
+        return !PreferenceUtils.getBoolean(Const.CACHE_CHECKBOX_PREFERENCE);
     }
 }

@@ -201,10 +201,13 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
         startListQuery();
     }
 
+    /**
+     * 取得処理の手前でキャッシュ取得か、通信するかの判定
+     */
     private void startDetailQuery() {
         // キャッシュ処理
         CacheManager cacheManager = CacheManager.getInstance();
-        if (cacheManager.isExpiryDetailAnnei(getPort())) {
+        if (cacheManager.isPreferenceCacheDisable() || cacheManager.isExpiryDetailAnnei(getPort())) {
             // キャッシュが無効なので通信必要
             startAnneiDetailQuery();
             return;
@@ -246,7 +249,7 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
                                 saveResultDetailToCache(s);
                             }
                         })
-        );
+                );
     }
 
     /**
@@ -307,7 +310,7 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
                                 saveResultListToCache(result);
                             }
                         })
-        );
+                );
     }
 
     /**

@@ -7,8 +7,7 @@ package com.ikmr.banbara23.yaeyama_liner_checker;
 public class Const {
     // 通信全般のタイムアウト 20秒
     public static final int CONNECTION_TIME_OUT = 20000;
-    // ファイル名
-    public static final String PREFERENCE_FILE_NAME = "PREFERENCE_FILE_NAME";
+
     // 一覧の値
     public static final String PREF_ANNEI_LIST_KEY = "PREF_ANNEI_LIST_KEY";
     public static final String PREF_YKF_LIST_KEY = "PREF_YKF_LIST_KEY";
