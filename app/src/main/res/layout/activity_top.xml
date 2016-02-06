@@ -43,20 +43,12 @@
                 >
 
                 <FrameLayout
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginStart="8dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="16dp"
                     android:background="@drawable/circle_annei"
-                    >
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_web_grey600_18dp"
-                        />
-
-                </FrameLayout>
+                    />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -91,20 +83,12 @@
                 >
 
                 <FrameLayout
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginStart="8dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="16dp"
                     android:background="@drawable/circle_ykf"
-                    >
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_web_grey600_18dp"
-                        />
-
-                </FrameLayout>
+                    />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -139,20 +123,12 @@
                 >
 
                 <FrameLayout
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginStart="8dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="16dp"
                     android:background="@drawable/circle_dream"
-                    >
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_web_grey600_18dp"
-                        />
-
-                </FrameLayout>
+                    />
 
                 <TextView
                     android:layout_width="wrap_content"
