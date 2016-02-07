@@ -5,6 +5,7 @@
     <string name="title_activity_status_list">運航状況一覧</string>
     <string name="title_activity_status_detail">運航状況の詳細</string>
     <string name="title_activity_timetable">時刻表</string>
+    <string name="title_activity_tab_timetable">時刻表</string>
     <string name="title_activity_setting">設定</string>
     <string name="title_activity_other">アプリ情報</string>
 
