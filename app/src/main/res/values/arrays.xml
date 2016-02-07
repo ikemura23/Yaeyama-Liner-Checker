@@ -32,6 +32,16 @@
         <item>波照間島</item>
     </string-array>
 
+    <string-array name="timetable_tab_spinner_values">
+        <item>竹富島</item>
+        <item>小浜島</item>
+        <item>黒島</item>
+        <item>西表島(大原)</item>
+        <item>西表島(上原)</item>
+        <item>鳩間島</item>
+        <item>波照間島</item>
+    </string-array>
+
     <!--ダイアログのキャッシュ選択肢-->
     <string-array name="cache_list_names">
         <item>1分</item>

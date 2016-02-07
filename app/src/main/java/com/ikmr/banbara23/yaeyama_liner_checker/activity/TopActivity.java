@@ -9,7 +9,7 @@ import android.view.View;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
-import com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableActivity;
+import com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableTabActivity;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -65,7 +65,7 @@ public class TopActivity extends BaseActivity {
      */
     @OnClick(R.id.top_activity_timetable)
     void timeTableClick(View view) {
-        Intent intent = new Intent(this, TimeTableActivity.class);
+        Intent intent = new Intent(this, TimeTableTabActivity.class);
         startActivity(intent);
     }
 
