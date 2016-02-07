@@ -198,4 +198,30 @@
         </com.balysv.materialripple.MaterialRippleLayout>
     </LinearLayout>
 
+    <!--アプリ情報-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        >
+
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:id="@+id/top_activity_app"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:mrl_rippleColor="#778899"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="アプリ情報"
+                android:textColor="@color/secondary_text"
+                android:textSize="15sp"
+                />
+        </com.balysv.materialripple.MaterialRippleLayout>
+    </LinearLayout>
 </LinearLayout>

@@ -69,6 +69,17 @@ public class TopActivity extends BaseActivity {
         startActivity(intent);
     }
 
+    /**
+     * アプリ情報をタップ
+     * 
+     * @param view
+     */
+    @OnClick(R.id.top_activity_app)
+    void otherClick(View view) {
+        Intent intent = new Intent(this, OtherActivity.class);
+        startActivity(intent);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
