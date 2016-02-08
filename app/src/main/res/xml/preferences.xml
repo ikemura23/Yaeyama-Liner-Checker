@@ -10,4 +10,5 @@
         android:key="info_preference"
         android:title="アプリ情報">
     </PreferenceScreen>
+
 </PreferenceScreen>

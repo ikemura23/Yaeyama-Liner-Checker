@@ -6,12 +6,14 @@
     <string name="title_activity_status_detail">運航状況の詳細</string>
     <string name="title_activity_timetable">時刻表</string>
     <string name="title_activity_tab_timetable">時刻表</string>
+    <string name="title_activity_setting">設定</string>
     <string name="title_activity_other">アプリ情報</string>
 
     <string name="top_description">今日の運航状況を見る</string>
     <string name="top_other">その他</string>
     <string name="detail_dialog_title">本日の運航状況</string>
-
+    <string name="cache_dialog_title">キャッシュ値の設定</string>
+    
     <!--URL-->
     <!--安栄-->
     <string name="url_annei_list">http://www.aneikankou.co.jp/</string>
