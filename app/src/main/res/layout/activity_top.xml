@@ -37,18 +37,25 @@
             >
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 >
 
                 <FrameLayout
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="16dp"
                     android:background="@drawable/circle_annei"
-                    />
+                    >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_directions_boat_white_24dp"
+                        />
+                </FrameLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -60,6 +67,7 @@
                     android:textSize="15sp"
                     />
             </LinearLayout>
+
         </com.balysv.materialripple.MaterialRippleLayout>
 
         <FrameLayout
@@ -77,18 +85,25 @@
             >
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 >
 
                 <FrameLayout
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="16dp"
                     android:background="@drawable/circle_ykf"
-                    />
+                    >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_directions_boat_white_24dp"
+                        />
+                </FrameLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -100,6 +115,7 @@
                     android:textSize="15sp"
                     />
             </LinearLayout>
+
         </com.balysv.materialripple.MaterialRippleLayout>
 
         <FrameLayout
@@ -117,18 +133,25 @@
             >
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 >
 
                 <FrameLayout
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="16dp"
                     android:background="@drawable/circle_dream"
-                    />
+                    >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_directions_boat_white_24dp"
+                        />
+                </FrameLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -140,6 +163,7 @@
                     android:textSize="15sp"
                     />
             </LinearLayout>
+
         </com.balysv.materialripple.MaterialRippleLayout>
     </LinearLayout>
 
