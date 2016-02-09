@@ -45,7 +45,7 @@
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
                     android:background="@drawable/circle_annei"
                     >
 
@@ -61,7 +61,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
                     android:text="安栄観光"
                     android:textColor="@color/secondary_text"
                     android:textSize="15sp"
@@ -93,7 +93,7 @@
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
                     android:background="@drawable/circle_ykf"
                     >
 
@@ -109,7 +109,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
                     android:text="八重山観光フェリー"
                     android:textColor="@color/secondary_text"
                     android:textSize="15sp"
@@ -141,7 +141,7 @@
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
                     android:background="@drawable/circle_dream"
                     >
 
@@ -157,7 +157,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
                     android:text="ドリーム観光"
                     android:textColor="@color/secondary_text"
                     android:textSize="15sp"

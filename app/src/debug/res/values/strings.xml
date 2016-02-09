@@ -19,17 +19,13 @@
     <string name="url_annei_taketomi">http://aneikankou.co.jp/liner/taketomijima.html</string>
     <string name="url_annei_kohama">http://www.aneikankou.co.jp/liner/kohamajima.html</string>
     <string name="url_annei_kuroshima">http://www.aneikankou.co.jp/liner/kuroshima.html</string>
-    <string name="url_annei_oohara">http://www.aneikankou.co.jp/liner/iriomotejima_oohara.html
-    </string>
-    <string name="url_annei_uehara">http://www.aneikankou.co.jp/liner/iriomotejima_uehara.html
-    </string>
+    <string name="url_annei_oohara">http://www.aneikankou.co.jp/liner/iriomotejima_oohara.html</string>
+    <string name="url_annei_uehara">http://www.aneikankou.co.jp/liner/iriomotejima_uehara.html</string>
     <string name="url_annei_hateruma">http://www.aneikankou.co.jp/liner/haterumajima.html</string>
     <string name="url_annei_hatoma">http://aneikankou.co.jp/liner/hatomajima.html</string>
 
     <!--八重山観光フェリー-->
-    <string name="url_ykf_list">
-        http://sync5-cnsl.digitalstage.jp/sync/docs.action?s=document%3A1s9n6naZmRe88T4iHVVZkHfyOgyci5qvWMkuaySZJFM0
-    </string>
+    <string name="url_ykf_list">http://sync5-cnsl.digitalstage.jp/sync/docs.action?s=document%3A1s9n6naZmRe88T4iHVVZkHfyOgyci5qvWMkuaySZJFM0</string>
     <string name="url_ykf_facebook">https://www.facebook.com/yaekan.ishigaki</string>
 
     <!--ドリーム観光-->
