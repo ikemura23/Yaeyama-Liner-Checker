@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="4dp"
-    android:layout_marginEnd="@dimen/status_detail_view_outer_space"
-    android:layout_marginStart="@dimen/status_detail_view_outer_space"
+    android:layout_marginLeft="@dimen/status_detail_view_outer_space"
+    android:layout_marginRight="@dimen/status_detail_view_outer_space"
     card_view:cardCornerRadius="3dp"
     card_view:cardElevation="2dp"
     >
@@ -16,8 +16,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingEnd="@dimen/status_detail_view_inner_space"
-        android:paddingStart="@dimen/status_detail_view_inner_space"
+        android:paddingLeft="@dimen/status_detail_view_inner_space"
+        android:paddingRight="@dimen/status_detail_view_inner_space"
         >
 
         <LinearLayout
@@ -25,8 +25,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
-            android:layout_marginEnd="@dimen/status_detail_view_outer_space"
-            android:layout_marginStart="@dimen/status_detail_view_outer_space"
+            android:layout_marginLeft="@dimen/status_detail_view_outer_space"
+            android:layout_marginRight="@dimen/status_detail_view_outer_space"
             android:layout_marginTop="4dp"
             android:orientation="horizontal"
             >
@@ -48,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
                 android:textSize="20sp"
                 tools:text="通常運航"
                 />
@@ -78,7 +78,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:textColor="@color/light_grey"
-                android:textSize="10sp"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 tools:text="2015年12月24日 06:00時点"
                 />
