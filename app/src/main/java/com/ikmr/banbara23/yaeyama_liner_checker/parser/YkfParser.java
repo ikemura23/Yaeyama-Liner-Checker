@@ -35,7 +35,7 @@ public class YkfParser {
         if (tr == null) {
             return null;
         }
-        ArrayList<Port> array = getAnneiPortArray();
+        ArrayList<Port> array = getYkfPortArray();
         for (Port port : array) {
             mLiners.add(getDivPort(port, tr));
         }
@@ -104,7 +104,7 @@ public class YkfParser {
             }
             if (element.child(0).text().contains(port.getPortSimple())) {
                 liner.setStatus(getStatus(element.child(1).text()));
-                liner.setText(element.child(2).text());
+                liner.setText(element.child(2).text().replace("\u00a0", "").trim());
                 return liner;
             }
         }
@@ -130,7 +130,7 @@ public class YkfParser {
         }
     }
 
-    private static ArrayList<Port> getAnneiPortArray() {
+    private static ArrayList<Port> getYkfPortArray() {
         ArrayList<Port> list = new ArrayList<>();
         list.add(Port.TAKETOMI);
         list.add(Port.KOHAMA);

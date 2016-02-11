@@ -11,8 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
-        android:layout_marginEnd="@dimen/status_detail_view_outer_space"
-        android:layout_marginStart="@dimen/status_detail_view_outer_space"
+        android:layout_marginLeft="@dimen/status_detail_view_outer_space"
+        android:layout_marginRight="@dimen/status_detail_view_outer_space"
         card_view:cardCornerRadius="3dp"
         >
 
@@ -21,8 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginEnd="@dimen/status_detail_view_inner_space"
-            android:layout_marginStart="@dimen/status_detail_view_inner_space"
+            android:layout_marginLeft="@dimen/status_detail_view_inner_space"
+            android:layout_marginRight="@dimen/status_detail_view_inner_space"
             android:orientation="vertical"
             android:padding="@dimen/status_detail_view_inner_space"
             >
@@ -73,7 +73,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
                         android:layout_weight="1"
                         android:orientation="vertical"
                         >
@@ -156,8 +156,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="6dp"
-                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="6dp"
                         android:layout_weight="1"
                         android:orientation="vertical"
                         >
@@ -216,8 +216,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
-        android:layout_marginEnd="@dimen/status_detail_view_outer_space"
-        android:layout_marginStart="@dimen/status_detail_view_outer_space"
+        android:layout_marginLeft="@dimen/status_detail_view_outer_space"
+        android:layout_marginRight="@dimen/status_detail_view_outer_space"
         android:layout_marginTop="4dp"
         card_view:cardCornerRadius="3dp"
         >
@@ -226,8 +226,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginEnd="@dimen/status_detail_view_inner_space"
-            android:layout_marginStart="@dimen/status_detail_view_inner_space"
+            android:layout_marginLeft="@dimen/status_detail_view_inner_space"
+            android:layout_marginRight="@dimen/status_detail_view_inner_space"
             android:orientation="vertical"
             android:padding="@dimen/status_detail_view_inner_space"
             >
@@ -278,7 +278,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
                         android:layout_weight="1"
                         android:orientation="vertical"
                         >
@@ -337,8 +337,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
-        android:layout_marginEnd="@dimen/status_detail_view_outer_space"
-        android:layout_marginStart="@dimen/status_detail_view_outer_space"
+        android:layout_marginLeft="@dimen/status_detail_view_outer_space"
+        android:layout_marginRight="@dimen/status_detail_view_outer_space"
         android:layout_marginTop="4dp"
         card_view:cardCornerRadius="3dp"
         >
@@ -347,8 +347,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginEnd="@dimen/status_detail_view_inner_space"
-            android:layout_marginStart="@dimen/status_detail_view_inner_space"
+            android:layout_marginLeft="@dimen/status_detail_view_inner_space"
+            android:layout_marginRight="@dimen/status_detail_view_inner_space"
             android:orientation="vertical"
             android:padding="@dimen/status_detail_view_inner_space"
             >
@@ -399,7 +399,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
                         android:layout_weight="1"
                         android:orientation="vertical"
                         >

@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="4dp"
-    android:layout_marginEnd="@dimen/status_detail_view_outer_space"
-    android:layout_marginStart="@dimen/status_detail_view_outer_space"
+    android:layout_marginLeft="@dimen/status_detail_view_outer_space"
+    android:layout_marginRight="@dimen/status_detail_view_outer_space"
     card_view:cardCornerRadius="3dp"
     >
 
@@ -15,8 +15,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingEnd="@dimen/status_detail_view_inner_space"
-        android:paddingStart="@dimen/status_detail_view_inner_space"
+        android:paddingLeft="@dimen/status_detail_view_inner_space"
+        android:paddingRight="@dimen/status_detail_view_inner_space"
         >
 
         <LinearLayout
@@ -32,7 +32,7 @@
                 android:id="@+id/view_status_detail_top_distance_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
                 android:layout_weight="1"
                 android:orientation="vertical"
                 >
