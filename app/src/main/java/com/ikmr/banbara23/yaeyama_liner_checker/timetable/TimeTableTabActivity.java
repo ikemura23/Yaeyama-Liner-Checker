@@ -7,7 +7,6 @@ import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.ikmr.banbara23.yaeyama_liner_checker.PagerAdapter;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.activity.BaseActivity;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
@@ -76,7 +75,7 @@ public class TimeTableTabActivity extends BaseActivity {
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.company_name_dream)));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
-        final PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+        final TimeTablePagerAdapter adapter = new TimeTablePagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {

@@ -3,6 +3,7 @@ package com.ikmr.banbara23.yaeyama_liner_checker.timetable;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +12,7 @@ import android.widget.AdapterView;
 import android.widget.Spinner;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
-import com.ikmr.banbara23.yaeyama_liner_checker.fragment.BaseFragment;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -19,7 +20,7 @@ import butterknife.ButterKnife;
 /**
  * 時刻表フラグメント
  */
-public class TimeTableFragment extends BaseFragment implements AdapterView.OnItemSelectedListener {
+public class TimeTableFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
     @Bind(R.id.activity_timetable_tab_spinner)
     Spinner mSpinner;
@@ -32,7 +33,7 @@ public class TimeTableFragment extends BaseFragment implements AdapterView.OnIte
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = super.onCreateView(inflater, container, savedInstanceState);
+        View view = inflater.inflate(R.layout.fragment_timetable, container, false);
         ButterKnife.bind(this, view);
         mSpinner.setOnItemSelectedListener(this);
         return view;
@@ -46,5 +47,13 @@ public class TimeTableFragment extends BaseFragment implements AdapterView.OnIte
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+    public static TimeTableFragment NewInstance(Company company) {
+        TimeTableFragment fragment = new TimeTableFragment();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(TimeTableFragment.class.getCanonicalName(), company);
+        fragment.setArguments(bundle);
+        return fragment;
     }
 }
