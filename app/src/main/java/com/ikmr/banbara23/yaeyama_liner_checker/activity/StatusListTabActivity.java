@@ -4,6 +4,7 @@ package com.ikmr.banbara23.yaeyama_liner_checker.activity;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.view.MenuItem;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.PagerAdapter;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
@@ -25,9 +26,7 @@ public class StatusListTabActivity extends BaseActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-        // Toolbar toolbar = (Toolbar)
-        // findViewById(R.id.activity_list_tab_toolbar);
-        // setSupportActionBar(toolbar);
+
         Company company = (Company) getIntent().getSerializableExtra(StatusListTabActivity.class.getCanonicalName());
         int currentPosition;
         switch (company) {
@@ -83,17 +82,13 @@ public class StatusListTabActivity extends BaseActivity {
         viewPager.setCurrentItem(currentPosition);
     }
 
-    /**
-     * 現在表示中のフラグメントを更新
-     */
-    // private void updateCurrentFragment() {
-    // ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
-    // StatusListTabFragment statusListTabFragment = (StatusListTabFragment)
-    // ((PagerAdapter) viewPager.getAdapter()).findFragmentByPosition(viewPager,
-    // viewPager.getCurrentItem());
-    // if (statusListTabFragment != null) {
-    // statusListTabFragment.resetTimeStamp();
-    // statusListTabFragment.onResume();
-    // }
-    // }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
