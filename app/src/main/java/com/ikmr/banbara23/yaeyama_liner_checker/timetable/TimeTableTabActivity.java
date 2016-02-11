@@ -29,6 +29,7 @@ public class TimeTableTabActivity extends BaseActivity {
         // getIntent().getSerializableExtra(StatusListTabActivity.class.getCanonicalName());
         Company company = Company.ANNEI;
         int currentPosition = 0;
+        // // TODO: 16/02/11 currentPosition をプレファレンスから取得
         // switch (company) {
         // case ANNEI:
         // currentPosition = TAB_FIRST;

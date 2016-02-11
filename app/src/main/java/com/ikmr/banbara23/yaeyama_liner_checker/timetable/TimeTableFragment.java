@@ -25,6 +25,14 @@ public class TimeTableFragment extends Fragment implements AdapterView.OnItemSel
     @Bind(R.id.activity_timetable_tab_spinner)
     Spinner mSpinner;
 
+    public static TimeTableFragment NewInstance(Company company) {
+        TimeTableFragment fragment = new TimeTableFragment();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(TimeTableFragment.class.getCanonicalName(), company);
+        fragment.setArguments(bundle);
+        return fragment;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,13 +55,5 @@ public class TimeTableFragment extends Fragment implements AdapterView.OnItemSel
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
-    }
-
-    public static TimeTableFragment NewInstance(Company company) {
-        TimeTableFragment fragment = new TimeTableFragment();
-        Bundle bundle = new Bundle();
-        bundle.putSerializable(TimeTableFragment.class.getCanonicalName(), company);
-        fragment.setArguments(bundle);
-        return fragment;
     }
 }
