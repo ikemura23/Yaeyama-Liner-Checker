@@ -6,25 +6,18 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Spinner;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.PagerAdapter;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.activity.BaseActivity;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
  * 時刻表タブ画面Activity
  */
-public class TimeTableTabActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
-
-    @Bind(R.id.activity_timetable_tab_spinner)
-    Spinner mSpinner;
+public class TimeTableTabActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +25,6 @@ public class TimeTableTabActivity extends BaseActivity implements AdapterView.On
         setContentView(R.layout.activity_timetable_tab);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ButterKnife.bind(this);
-        mSpinner.setOnItemSelectedListener(this);
 
         // Company company = (Company)
         // getIntent().getSerializableExtra(StatusListTabActivity.class.getCanonicalName());
@@ -70,16 +62,6 @@ public class TimeTableTabActivity extends BaseActivity implements AdapterView.On
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_top, menu);
         return true;
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
     }
 
     /**

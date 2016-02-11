@@ -5,27 +5,6 @@
               android:orientation="vertical"
     >
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/activituy_timetable_tab_tool_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        >
-
-        <Spinner
-            android:id="@+id/activity_timetable_tab_spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_margin="8dp"
-            android:background="@color/white"
-            android:entries="@array/timetable_spinner_values"
-            android:spinnerMode="dropdown"
-            />
-    </android.support.v7.widget.Toolbar>
-
     <android.support.design.widget.TabLayout
         android:id="@+id/activity_timetable_tab_layout"
         android:layout_width="match_parent"

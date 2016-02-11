@@ -4,5 +4,14 @@
               android:layout_height="match_parent"
               android:orientation="vertical"
     >
-
+    <Spinner
+        android:id="@+id/activity_timetable_tab_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_margin="8dp"
+        android:background="@color/white"
+        android:entries="@array/timetable_spinner_values"
+        android:spinnerMode="dropdown"
+        />
 </LinearLayout>
