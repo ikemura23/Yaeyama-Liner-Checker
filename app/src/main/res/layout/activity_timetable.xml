@@ -22,14 +22,14 @@
 
         <TextView
             android:id="@+id/activity_timetable_ishigaki"
-            style="@style/time_table_body_text"
+            style="@style/time_table_text.body"
             android:layout_weight="1"
             android:text="@string/time_table_port_ishigaki"
             android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/activity_timetable_ritou"
-            style="@style/time_table_body_text"
+            style="@style/time_table_text.body"
             android:layout_weight="1"
             android:text="@string/time_table_port_taketomi"
             android:textStyle="bold"/>

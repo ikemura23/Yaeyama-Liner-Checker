@@ -11,4 +11,5 @@
     <dimen name="status_detail_view_outer_space">8dp</dimen>
     <dimen name="status_detail_view_inner_space">8dp</dimen>
     <dimen name="timetable_row_height">30dp</dimen>
+    <dimen name="timetable_font_size">16sp</dimen>
 </resources>
