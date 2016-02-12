@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/white"
     android:orientation="vertical"
     >
 
@@ -17,13 +18,13 @@
         >
 
         <TextView
-            style="@style/time_table_text.body"
+            style="@style/time_table_text.header"
             android:layout_weight="1"
             android:text="@string/time_table_port_ishigaki"
             />
 
         <TextView
-            style="@style/time_table_text.body"
+            style="@style/time_table_text.header"
             android:layout_weight="1"
             android:text="@string/time_table_port_taketomi"
             />

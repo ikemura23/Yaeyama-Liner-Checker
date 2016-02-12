@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/white"
     android:orientation="vertical"
     >
 
@@ -16,100 +17,85 @@
         >
 
         <TextView
-            style="@style/time_table_text.body"
+            style="@style/time_table_text.header"
             android:layout_weight="1"
             android:text="@string/time_table_port_ishigaki"
             />
 
         <TextView
-            style="@style/time_table_text.body"
+            style="@style/time_table_text.header"
             android:layout_weight="1"
             android:text="@string/time_table_port_hatoma"
             />
     </LinearLayout>
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~１列目~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <FrameLayout
+
+    <LinearLayout
         android:id="@+id/kohama_ykf_row1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
         >
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2"
+            android:layout_gravity="center"
+            android:layout_weight="1"
             >
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                >
-
-                <TextView
-                    android:id="@+id/view_time_table_ykf_hatoma_row_1_1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_margin="1dp"
-                    android:text="09:30"
-                    android:textSize="20dp"
-                    />
-
-                <TextView
-                    style="@style/time_table_caution_text"
-                    android:layout_toEndOf="@+id/view_time_table_ykf_hatoma_row_1_1"
-                    android:layout_toRightOf="@+id/view_time_table_ykf_hatoma_row_1_1"
-                    android:background="@drawable/corner_round"
-                    android:text="上"
-                    />
-
-            </RelativeLayout>
+            <TextView
+                android:id="@+id/view_time_table_ykf_hatoma_row_1_1"
+                style="@style/time_table_text.body"
+                android:layout_width="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="09:30"
+                />
 
             <TextView
-                style="@style/time_table_text.body"
-                android:layout_weight="1"
-                android:text="10:45"
+                style="@style/time_table_caution_text"
+                android:layout_toEndOf="@+id/view_time_table_ykf_hatoma_row_1_1"
+                android:layout_toRightOf="@+id/view_time_table_ykf_hatoma_row_1_1"
+                android:background="@drawable/corner_round"
+                android:text="上"
                 />
-        </LinearLayout>
 
-        <include layout="@layout/view_time_table_line_yoko"/>
-    </FrameLayout>
+        </RelativeLayout>
+
+        <TextView
+            style="@style/time_table_text.body"
+            android:layout_weight="1"
+            android:text="10:45"
+            />
+    </LinearLayout>
+
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~２列目~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <include layout="@layout/view_time_table_line_yoko"/>
 
-    <FrameLayout
+    <LinearLayout
         android:id="@+id/kohama_anei_row2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
         >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2"
-            >
+        <TextView
+            style="@style/time_table_text.body"
+            android:layout_weight="1"
+            android:text="15:30"
+            />
 
-            <TextView
-                style="@style/time_table_text.body"
-                android:layout_weight="1"
-                android:text="15:30"
-                />
-
-            <TextView
-                style="@style/time_table_text.body"
-                android:layout_weight="1"
-                android:text="16:15"
-                />
-        </LinearLayout>
-
-        <include layout="@layout/view_time_table_line_yoko"/>
-    </FrameLayout>
+        <TextView
+            style="@style/time_table_text.body"
+            android:layout_weight="1"
+            android:text="16:15"
+            />
+    </LinearLayout>
 
     <include layout="@layout/view_time_table_line_yoko"/>
 
