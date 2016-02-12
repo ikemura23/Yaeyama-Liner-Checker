@@ -45,7 +45,7 @@
             android:text="08:30"
             />
 
-        <include layout="@layout/view_time_table_line_tate"/>
+        <!--<include layout="@layout/view_time_table_line_tate"/>-->
 
         <TextView
             style="@style/time_table_text.body"
@@ -93,7 +93,7 @@
 
         </RelativeLayout>
 
-        <include layout="@layout/view_time_table_line_tate"/>
+        <!--<include layout="@layout/view_time_table_line_tate"/>-->
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -141,7 +141,7 @@
             android:text="15:30"
             />
 
-        <include layout="@layout/view_time_table_line_tate"/>
+        <!--<include layout="@layout/view_time_table_line_tate"/>-->
 
         <TextView
             style="@style/time_table_text.body"
