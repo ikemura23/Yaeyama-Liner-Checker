@@ -10,12 +10,13 @@
     </style>
 
     <!--時刻表のヘッダー-->
-    <style name="time_table_header_text">
+    <style name="time_table_body_text">
+        <item name="android:background">@color/white</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:textSize">20dp</item>
-        <item name="android:padding">4dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:padding">8dp</item>
         <item name="android:layout_margin">1dp</item>
     </style>
 

@@ -16,13 +16,13 @@
         >
 
         <TextView
-            style="@style/time_table_header_text"
+            style="@style/time_table_body_text"
             android:layout_weight="1"
             android:text="@string/time_table_port_ishigaki"
             />
 
         <TextView
-            style="@style/time_table_header_text"
+            style="@style/time_table_body_text"
             android:layout_weight="1"
             android:text="@string/time_table_port_oohara"
             />
@@ -119,13 +119,13 @@
             >
 
             <TextView
-                style="@style/time_table_header_text"
+                style="@style/time_table_body_text"
                 android:layout_weight="1"
                 android:text="08:30"
                 />
 
             <TextView
-                style="@style/time_table_header_text"
+                style="@style/time_table_body_text"
                 android:layout_weight="1"
                 android:text="09:30"
                 />
@@ -189,13 +189,13 @@
             >
 
             <TextView
-                style="@style/time_table_header_text"
+                style="@style/time_table_body_text"
                 android:layout_weight="1"
                 android:text="09:40"
                 />
 
             <TextView
-                style="@style/time_table_header_text"
+                style="@style/time_table_body_text"
                 android:layout_weight="1"
                 android:text="10:30"
                 />
@@ -224,13 +224,13 @@
             >
 
             <TextView
-                style="@style/time_table_header_text"
+                style="@style/time_table_body_text"
                 android:layout_weight="1"
                 android:text="11:00"
                 />
 
             <TextView
-                style="@style/time_table_header_text"
+                style="@style/time_table_body_text"
                 android:layout_weight="1"
                 android:text="12:30"
                 />
@@ -294,7 +294,7 @@
             >
 
             <TextView
-                style="@style/time_table_header_text"
+                style="@style/time_table_body_text"
                 android:layout_weight="1"
                 android:text="13:00"
                 />
@@ -442,13 +442,13 @@
             >
 
             <TextView
-                style="@style/time_table_header_text"
+                style="@style/time_table_body_text"
                 android:layout_weight="1"
                 android:text="16:10"
                 />
 
             <TextView
-                style="@style/time_table_header_text"
+                style="@style/time_table_body_text"
                 android:layout_weight="1"
                 android:text="17:00"
                 />
