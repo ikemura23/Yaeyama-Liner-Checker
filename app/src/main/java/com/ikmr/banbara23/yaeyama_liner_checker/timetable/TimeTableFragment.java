@@ -99,7 +99,7 @@ public class TimeTableFragment extends Fragment implements AdapterView.OnItemSel
             case YKF:
                 return getResources().getStringArray(R.array.ykf_port_list);
             case DREAM:
-                return getResources().getStringArray(R.array.annei_port_list);
+                return getResources().getStringArray(R.array.dream_port_list);
         }
         return new String[0];
     }
@@ -112,7 +112,6 @@ public class TimeTableFragment extends Fragment implements AdapterView.OnItemSel
         }
         switch (company) {
             case ANNEI:
-                ;
                 mAnneiTimeTableView.switchPortView(getAnneiPort(position));
                 break;
             case YKF:

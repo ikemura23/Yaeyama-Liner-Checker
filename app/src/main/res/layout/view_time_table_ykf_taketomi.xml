@@ -29,6 +29,7 @@
     </LinearLayout>
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~１列目~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <include layout="@layout/view_time_table_line_yoko"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -225,7 +226,5 @@
             android:text="17:45"
             />
     </LinearLayout>
-
-    <include layout="@layout/view_time_table_line_yoko"/>
 
 </LinearLayout>

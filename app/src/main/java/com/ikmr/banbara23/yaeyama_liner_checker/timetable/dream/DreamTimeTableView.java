@@ -10,6 +10,8 @@ import android.widget.FrameLayout;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
 
+import java.util.List;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -28,6 +30,24 @@ public class DreamTimeTableView extends FrameLayout {
     DreamTimeTableKuroshimaView mViewDreamTimeTableKurhoshima;
     @Bind(R.id.view_dream_time_table_uehara)
     DreamTimeTableUeharaView mViewDreamTimeTableUehara;
+
+    @Bind({
+            R.id.view_dream_time_table_taketomi,
+            R.id.view_dream_time_table_kohama,
+            R.id.view_dream_time_table_kurhoshima,
+            R.id.view_dream_time_table_oohara,
+            R.id.view_dream_time_table_uehara
+    })
+    List<View> mViews;
+    /***
+     * 非表示一括切り替え用
+     */
+    protected static final ButterKnife.Action<View> DISABLE = new ButterKnife.Action<View>() {
+        @Override
+        public void apply(View view, int index) {
+            view.setVisibility(GONE);
+        }
+    };
 
     public DreamTimeTableView(Context context) {
         super(context);
@@ -49,6 +69,7 @@ public class DreamTimeTableView extends FrameLayout {
         if (port == null) {
             return;
         }
+        ButterKnife.apply(mViews, DISABLE);
         switch (port) {
             case TAKETOMI:
                 mViewDreamTimeTableTaketomi.setVisibility(VISIBLE);

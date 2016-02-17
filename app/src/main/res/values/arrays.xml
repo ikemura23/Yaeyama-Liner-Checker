@@ -22,17 +22,16 @@
         <item>竹富</item>
     </array>
 
-    <string-array name="timetable_spinner_values">
-        <item>竹富島</item>
-        <item>小浜島</item>
+    <!--八重山観光フェリー-->
+    <array name="dream_port_list">
+        <item>竹富</item>
+        <item>小浜</item>
         <item>黒島</item>
-        <item>西表島(大原)</item>
-        <item>西表島(上原)</item>
-        <item>鳩間島</item>
-        <item>波照間島</item>
-    </string-array>
+        <item>大原</item>
+        <item>鳩間島経由上原(西表島)</item>
+    </array>
 
-    <string-array name="timetable_tab_spinner_values">
+    <string-array name="timetable_spinner_values">
         <item>竹富島</item>
         <item>小浜島</item>
         <item>黒島</item>

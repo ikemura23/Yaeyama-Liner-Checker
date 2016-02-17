@@ -31,7 +31,7 @@
     </LinearLayout>
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
-
+    <include layout="@layout/view_time_table_line_yoko"/>
 
     <!--3列目-->
     <LinearLayout

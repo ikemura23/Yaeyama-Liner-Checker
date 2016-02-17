@@ -30,6 +30,8 @@
     </LinearLayout>
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~１列目 安栄~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <include layout="@layout/view_time_table_line_yoko"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -142,5 +144,4 @@
             />
     </LinearLayout>
 
-    <include layout="@layout/view_time_table_line_yoko"/>
 </LinearLayout>
