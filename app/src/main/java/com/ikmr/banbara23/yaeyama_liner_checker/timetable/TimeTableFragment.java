@@ -86,10 +86,9 @@ public class TimeTableFragment extends Fragment implements AdapterView.OnItemSel
         mSpinner.setOnItemSelectedListener(this);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 getActivity().getApplicationContext(),
-                android.R.layout.simple_spinner_item,
+                R.layout.spinner_item,
                 getPortList());
-        // adapter.addAll(getPortList());
-        // adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         mSpinner.setAdapter(adapter);
     }
 
