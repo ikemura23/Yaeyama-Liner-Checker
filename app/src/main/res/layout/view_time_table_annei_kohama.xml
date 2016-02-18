@@ -129,13 +129,11 @@
 
             <TextView
                 android:id="@+id/view_time_table_annei_kohama_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/time_table_text.body"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_margin="1dp"
                 android:text="14:40"
-                android:textSize="20dp"
                 />
 
             <TextView

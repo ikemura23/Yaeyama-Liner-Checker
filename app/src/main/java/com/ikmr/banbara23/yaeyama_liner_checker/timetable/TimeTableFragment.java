@@ -161,7 +161,7 @@ public class TimeTableFragment extends Fragment implements AdapterView.OnItemSel
             case 4:
                 return Port.UEHARA;
             case 5:
-                return Port.HATERUMA;
+                return Port.HATOMA;
             default:
                 return Port.TAKETOMI;
 
