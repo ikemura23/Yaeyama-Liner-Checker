@@ -9,7 +9,11 @@
     android:padding="16dp"
     tools:context="com.ikmr.banbara23.yaeyama_liner_checker.activity.TopActivity"
     >
-
+<ScrollView
+	android:layout_weight="match_parent"
+	android:layout_height="match_parent"
+	>
+	
     <!--運航情報を見るラベル-->
     <TextView
         android:id="@+id/activity_top_description"
@@ -221,5 +225,5 @@
                 />
         </com.balysv.materialripple.MaterialRippleLayout>
     </LinearLayout>
-
+</ScrollView>
 </LinearLayout>
