@@ -27,8 +27,9 @@ import butterknife.ButterKnife;
  */
 public class TimeTableFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
-    @Bind(R.id.activity_timetable_tab_spinner)
+    @Bind(R.id.fragment_timetable_tab_spinner)
     Spinner mSpinner;
+
     @Bind(R.id.fragment_timetable_annei_view)
     AnneiTimeTableView mAnneiTimeTableView;
 
@@ -83,9 +84,13 @@ public class TimeTableFragment extends Fragment implements AdapterView.OnItemSel
 
     private void createSpinner() {
         mSpinner.setOnItemSelectedListener(this);
-        ArrayAdapter<String> mAdapter = new ArrayAdapter<>(getActivity().getApplicationContext(), android.R.layout.simple_spinner_item);
-        mAdapter.addAll(getPortList());
-        mAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                getActivity().getApplicationContext(),
+                android.R.layout.simple_spinner_item,
+                getPortList());
+        // adapter.addAll(getPortList());
+        // adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mSpinner.setAdapter(adapter);
     }
 
     private String[] getPortList() {
