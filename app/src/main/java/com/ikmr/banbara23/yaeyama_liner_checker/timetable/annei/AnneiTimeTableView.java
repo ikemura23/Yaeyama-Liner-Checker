@@ -5,7 +5,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
@@ -18,7 +18,7 @@ import butterknife.ButterKnife;
 /**
  * 時刻表
  */
-public class AnneiTimeTableView extends FrameLayout {
+public class AnneiTimeTableView extends LinearLayout {
 
     @Bind(R.id.view_time_table_annei_taketomi)
     AnneiTimeTableTaketomiView mAnneiTimeTableTaketomiView;
