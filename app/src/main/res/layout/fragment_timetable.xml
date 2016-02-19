@@ -66,5 +66,4 @@
             <include layout="@layout/view_time_table_line_yoko"/>
         </LinearLayout>
     </ScrollView>
-
 </LinearLayout>
