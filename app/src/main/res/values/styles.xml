@@ -25,7 +25,6 @@
 
     <!--時刻表ボディ-->
     <style name="time_table_text.body" parent="time_table_text">
-        <item name="android:background">@color/white</item>
     </style>
 
     <!--時刻表の安栄アイコン-->
@@ -88,11 +87,15 @@
     </style>
 
     <!--詳細画面のCardView共通スタイル-->
-    <style name="detail_card">
+    <style name="detail_card" parent="CardView">
         <item name="android:layout_marginLeft">@dimen/status_detail_view_outer_space</item>
         <item name="android:layout_marginRight">@dimen/status_detail_view_outer_space</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_marginBottom">8dp</item>
+        <item name="contentPadding">12dp</item>
+        <item name="cardCornerRadius">3dp</item>
+        <item name="cardElevation">2dp</item>
+        <item name="cardUseCompatPadding">true</item>
     </style>
 </resources>
