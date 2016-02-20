@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="12dp"
                 android:textSize="20sp"
                 tools:text="通常運航"
                 />
@@ -56,10 +56,9 @@
                 android:id="@+id/view_status_detail_top_update_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:textColor="@color/light_grey"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/dark_grey"
                 android:textSize="12sp"
-                android:textStyle="bold"
                 tools:text="2015年12月24日 06:00時点"
                 />
 
@@ -69,21 +68,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="8dp"
                 android:maxLines="5"
                 android:visibility="gone"
                 tools:text="通常運航通"
                 />
 
-            <Button
+            <TextView
                 android:id="@+id/view_status_detail_top_comment_more_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"
                 android:text="もっと見る"
+                android:textColor="@color/status_normal"
                 android:visibility="gone"
                 />
+
         </LinearLayout>
     </LinearLayout>
 

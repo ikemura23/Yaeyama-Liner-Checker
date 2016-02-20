@@ -5,7 +5,6 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
@@ -61,7 +60,7 @@ public class StatusDetailTopView extends FrameLayout {
     int colorSuspend;
 
     @Bind(R.id.view_status_detail_top_comment_more_button)
-    Button mMoreButton;
+    TextView mMoreButton;
 
     public StatusDetailTopView(Context context) {
         super(context);
