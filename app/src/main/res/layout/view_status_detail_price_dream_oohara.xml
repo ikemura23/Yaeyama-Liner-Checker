@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     >
 
     <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:layout_marginLeft="@dimen/status_detail_view_outer_space"
-        android:layout_marginRight="@dimen/status_detail_view_outer_space"
-        card_view:cardCornerRadius="3dp"
+        style="@style/detail_card"
         >
 
 
@@ -213,13 +207,7 @@
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:layout_marginLeft="@dimen/status_detail_view_outer_space"
-        android:layout_marginRight="@dimen/status_detail_view_outer_space"
-        android:layout_marginTop="4dp"
-        card_view:cardCornerRadius="3dp"
+        style="@style/detail_card"
         >
 
         <LinearLayout
@@ -334,13 +322,7 @@
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:layout_marginLeft="@dimen/status_detail_view_outer_space"
-        android:layout_marginRight="@dimen/status_detail_view_outer_space"
-        android:layout_marginTop="4dp"
-        card_view:cardCornerRadius="3dp"
+        style="@style/detail_card"
         >
 
         <LinearLayout
