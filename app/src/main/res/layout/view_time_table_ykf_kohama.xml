@@ -275,7 +275,7 @@
                 android:layout_toEndOf="@+id/kohama_ykf_row13_text1"
                 android:layout_toRightOf="@+id/kohama_ykf_row13_text1"
                 android:background="@drawable/corner_round"
-                android:text="2~3月"
+                android:text="★"
                 />
         </RelativeLayout>
 
@@ -345,7 +345,7 @@
             android:id="@+id/view_time_table_description_ykf_kohama2"
             style="@style/time_table_caution_text"
             android:background="@drawable/corner_round"
-            android:text="2~3月"
+            android:text="★"
             />
 
         <TextView
