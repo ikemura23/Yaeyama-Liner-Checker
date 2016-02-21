@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.crashlytics.android.Crashlytics;
@@ -63,9 +62,6 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
 
     @Bind(R.id.fragment_status_detail_price_view)
     StatusDetailPriceHandicappedView mPriceView;
-
-    @Bind(R.id.fragment_status_detail_value_layout)
-    LinearLayout mFragmentStatusDetailValueLayout;
 
     // ButterKnife OnClick --------------------------------------------
 
@@ -183,7 +179,7 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
      * 取得の開始
      */
     public void startQuery() {
-        mFragmentStatusDetailValueLayout.setVisibility(View.GONE);
+        mStatusDetailTopView.setVisibility(View.GONE);
         mFragmentStatusDetailErrorButton.setVisibility(View.GONE);
         mProgressBar.setVisibility(View.VISIBLE);
         mAnneiTimeTableView.switchPortView(getPort());
@@ -336,7 +332,6 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
 
         Liner liner = PortUtil.getMyPort(result.getLiners(), getPort());
 
-        mStatusDetailTopView.setVisibility(View.VISIBLE);
         mStatusDetailTopView.bindStatus(liner);
         mStatusDetailTopView.setUpdateText(result.getUpdateTime());
 
@@ -404,7 +399,7 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
             return;
         }
         mProgressBar.setVisibility(View.GONE);
-        mFragmentStatusDetailValueLayout.setVisibility(View.VISIBLE);
+        mStatusDetailTopView.setVisibility(View.VISIBLE);
         if (getActivity() != null && getActivity() instanceof FragmentApiQueryInterface) {
             // API通信処理の開始準備の完了
             ((FragmentApiQueryInterface) getActivity()).finishQuery();

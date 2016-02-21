@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
 
 import com.crashlytics.android.Crashlytics;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
@@ -49,8 +48,8 @@ public class StatusDetailYkfFragment extends BaseDetailFragment {
     @Bind(R.id.fragment_time_table_view)
     YkfTimeTableView mYkfTimeTableView;
 
-    @Bind(R.id.fragment_status_detail_ykf_content_layout)
-    LinearLayout mFragmentStatusDetailContentLayout;
+    // @Bind(R.id.fragment_status_detail_ykf_content_layout)
+    // LinearLayout mFragmentStatusDetailContentLayout;
 
     @Bind(R.id.fragment_ykf_status_detail_progressbar)
     ProgressWheel mProgressBar;
@@ -171,6 +170,7 @@ public class StatusDetailYkfFragment extends BaseDetailFragment {
         mStatusDetailDistanceAndTimeView.setDistanceText(null);
         mStatusDetailDistanceAndTimeView.setTimeText(getTime());
         mStatusDetailPriceView.setPrice(getPrice());
+        mYkfTimeTableView.switchPortView(getParam().getPort());
     }
 
     /**
@@ -178,7 +178,7 @@ public class StatusDetailYkfFragment extends BaseDetailFragment {
      */
     public void startQuery() {
         mProgressBar.setVisibility(View.VISIBLE);
-        mFragmentStatusDetailContentLayout.setVisibility(View.GONE);
+        mStatusDetailTopView.setVisibility(View.GONE);
 
         // キャッシュ処理
         CacheManager cacheManager = CacheManager.getInstance();
@@ -260,7 +260,6 @@ public class StatusDetailYkfFragment extends BaseDetailFragment {
      */
     public void finishQuery() {
         mProgressBar.setVisibility(View.GONE);
-        mFragmentStatusDetailContentLayout.setVisibility(View.VISIBLE);
-        mYkfTimeTableView.switchPortView(getParam().getPort());
+        mStatusDetailTopView.setVisibility(View.VISIBLE);
     }
 }

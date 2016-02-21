@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
 
 import com.crashlytics.android.Crashlytics;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
@@ -55,9 +54,6 @@ public class StatusDetailDreamFragment extends BaseDetailFragment {
 
     @Bind(R.id.fragment_dream_time_table_view)
     DreamTimeTableView mDreamTimeTableView;
-
-    @Bind(R.id.fragment_dream_status_detail_content_layout)
-    LinearLayout mFragmentDreamStatusDetailContentLayout;
 
     @Bind(R.id.fragment_dream_status_detail_progressbar)
     ProgressWheel mProgressBar;
@@ -229,7 +225,7 @@ public class StatusDetailDreamFragment extends BaseDetailFragment {
      */
     public void startQuery() {
         mProgressBar.setVisibility(View.VISIBLE);
-        mFragmentDreamStatusDetailContentLayout.setVisibility(View.GONE);
+        mStatusDetailTopView.setVisibility(View.GONE);
         // キャッシュ処理
         CacheManager cacheManager = CacheManager.getInstance();
         if (cacheManager.isPreferenceCacheDisable() || cacheManager.isExpiryList(Company.DREAM)) {
@@ -314,6 +310,6 @@ public class StatusDetailDreamFragment extends BaseDetailFragment {
      */
     public void finishQuery() {
         mProgressBar.setVisibility(View.GONE);
-        mFragmentDreamStatusDetailContentLayout.setVisibility(View.VISIBLE);
+        mStatusDetailTopView.setVisibility(View.VISIBLE);
     }
 }
