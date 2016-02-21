@@ -52,12 +52,16 @@
     <string name="hp_dream">http://www.ishigaki-dream.co.jp/data.cgi?no=78</string>
 
     <!--その他-->
-    <string name="other_info">当アプリは個人が作成したアプリであり、安栄観光様・八重山観光フェリー様・ドリーム観光様の公式アプリではありません。\n当アプリについての安栄観光様・八重山観光フェリー様・ドリーム観光へのお問い合わせは、ご遠慮頂くようお願い申し上げます。</string>
+    <string name="other_info">
+        当アプリは個人が作成したアプリであり、安栄観光様・八重山観光フェリー様・ドリーム観光様の公式アプリではありません。\n当アプリについての安栄観光様・八重山観光フェリー様・ドリーム観光へのお問い合わせは、ご遠慮頂くようお願い申し上げます。
+    </string>
 
     <string name="mail_address">banbara.work@gmail.com</string>
     <string name="EXTRA_SUBJECT">へのご意見</string>
 
-    <string name="form_address">https://docs.google.com/forms/d/1JXzrILj5OPWVlv1QcJbROSuqFyri9s8rgc7dZR-Ate0/viewform?usp=send_form</string>
+    <string name="form_address">
+        https://docs.google.com/forms/d/1JXzrILj5OPWVlv1QcJbROSuqFyri9s8rgc7dZR-Ate0/viewform?usp=send_form
+    </string>
 
     <!--時刻表-->
     <string name="time_table_title">時刻表</string>
@@ -78,6 +82,10 @@
     <string name="route_oohara">石垣島 - 大原(西表島)</string>
     <string name="route_hateruma">石垣島 - 波照間島</string>
     <string name="route_hatoma">石垣島 - 鳩間島</string>
+
+    <string name="company_name_annei">安栄観光</string>
+    <string name="company_name_ykf">八重山観光\nフェリー</string>
+    <string name="company_name_dream">ドリーム観光</string>
 
     <string name="company_tab_name_annei">安栄観光</string>
     <string name="company_tab_name_ykf">八重山観光\nフェリー</string>
