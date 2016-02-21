@@ -8,18 +8,6 @@
     android:background="@color/background"
     >
 
-    <!--プログレスバー-->
-    <com.pnikosis.materialishprogress.ProgressWheel
-        android:id="@+id/fragment_status_detail_progressbar"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="24dp"
-        tools:visibility="gone"
-        wheel:matProg_barColor="#5588FF"
-        wheel:matProg_progressIndeterminate="true"
-        />
-
     <!--読み込みエラー時の再読み込みボタン-->
     <Button
         android:id="@+id/fragment_status_detail_reload_button"
@@ -37,18 +25,30 @@
         >
 
         <LinearLayout
-            android:id="@+id/fragment_status_detail_value_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:orientation="vertical"
             >
 
+            <!--プログレスバー-->
+            <com.pnikosis.materialishprogress.ProgressWheel
+                android:id="@+id/fragment_status_detail_progressbar"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="24dp"
+                tools:visibility="gone"
+                wheel:matProg_barColor="#5588FF"
+                wheel:matProg_progressIndeterminate="true"
+                />
+
             <!--ステータス-->
             <com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailTopView
                 android:id="@+id/fragment_status_detail_top_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 />
 
             <!--時刻表-->
