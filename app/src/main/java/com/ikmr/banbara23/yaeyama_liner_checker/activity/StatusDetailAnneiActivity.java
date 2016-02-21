@@ -33,7 +33,7 @@ public class StatusDetailAnneiActivity extends BaseActivity implements FragmentA
         mLiner = getIntent().getParcelableExtra(StatusDetailAnneiActivity.class.getName());
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setSubtitle(R.string.company_simple_name_annei);
+            getSupportActionBar().setSubtitle(R.string.company_name_annei);
         }
         ButterKnife.bind(this);
 

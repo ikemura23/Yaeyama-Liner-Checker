@@ -38,6 +38,7 @@ public class StatusDetailYkfActivity extends BaseActivity implements FragmentApi
         mLiner = mYkfLinerDetail.getLiner();
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setSubtitle(R.string.company_name_ykf);
         }
 
         // タイトル

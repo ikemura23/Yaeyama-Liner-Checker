@@ -71,9 +71,9 @@ public class TimeTableTabActivity extends BaseActivity {
      */
     private void createTab(int currentPosition) {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.activity_timetable_tab_layout);
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.company_name_annei)));
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.company_name_ykf)));
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.company_name_dream)));
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.company_tab_name_annei)));
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.company_tab_name_ykf)));
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.company_tab_name_dream)));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
         final TimeTablePagerAdapter adapter = new TimeTablePagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());

@@ -5,14 +5,14 @@ package com.ikmr.banbara23.yaeyama_liner_checker.entity;
  * 運航ルートのEnumクラス
  */
 public enum Port {
-    HATERUMA("波照間", "波照間"),
-    UEHARA("上原(西表)", "上原"),
-    OOHARA("大原(西表)", "大原"),
-    HATOMA("鳩間", "鳩間"),
+    HATERUMA("波照間島", "波照間"),
+    UEHARA("上原(西表島)", "上原"),
+    OOHARA("大原(西表島)", "大原"),
+    HATOMA("鳩間島", "鳩間"),
     KUROSHIMA("黒島", "黒島"),
-    KOHAMA("小浜", "小浜"),
-    TAKETOMI("竹富", "竹富"),
-    HATOMA_UEHARA("鳩間・上原", "鳩間島経由西表島・上原"),
+    KOHAMA("小浜島", "小浜"),
+    TAKETOMI("竹富島", "竹富"),
+    HATOMA_UEHARA("鳩間島・上原(西表島)", "鳩間島経由西表島・上原"),
     PREMIUM_DREAM("プレミアムドリーム", "プレミアムドリーム"),
     SUPER_DREAM("スーパードリーム", "スーパードリーム");
 
