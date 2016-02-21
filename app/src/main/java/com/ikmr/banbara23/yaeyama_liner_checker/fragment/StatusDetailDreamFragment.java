@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,6 +49,9 @@ public class StatusDetailDreamFragment extends BaseDetailFragment {
     // ButterKnife Bind View --------------------------------------------
     @Bind(R.id.fragment_status_detail_dream_top_view)
     StatusDetailTopView mStatusDetailTopView;
+
+    @Bind(R.id.fragment_dream_time_table_card)
+    CardView mDreamTimeCardView;
 
     @Bind(R.id.fragment_dream_time_table_view)
     DreamTimeTableView mDreamTimeTableView;
@@ -140,7 +144,7 @@ public class StatusDetailDreamFragment extends BaseDetailFragment {
 
         // プレミアムドリーム・スーパードリームは時刻表がないので表示しない
         if (isTimeTableShow()) {
-            mDreamTimeTableView.setVisibility(View.VISIBLE);
+            mDreamTimeCardView.setVisibility(View.VISIBLE);
             mDreamTimeTableView.switchPortView(getParam().getPort());
         }
 

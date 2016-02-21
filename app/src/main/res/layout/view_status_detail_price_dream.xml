@@ -1,24 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView
+    style="@style/detail_card"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="4dp"
-    android:layout_marginLeft="@dimen/status_detail_view_outer_space"
-    android:layout_marginRight="@dimen/status_detail_view_outer_space"
-    card_view:cardCornerRadius="3dp"
     >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginLeft="@dimen/status_detail_view_inner_space"
-        android:layout_marginRight="@dimen/status_detail_view_inner_space"
         android:orientation="vertical"
-        android:padding="@dimen/status_detail_view_inner_space"
         >
 
         <!--ヘッダー-->
@@ -33,18 +23,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
                 android:layout_marginBottom="8dp"
-                android:ellipsize="end"
                 android:text="料金"
                 android:textSize="16sp"
                 />
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/light_grey"
-                />
+            <include layout="@layout/view_time_table_line_yoko"/>
+
         </LinearLayout>
 
         <!--高速船-->
@@ -67,22 +52,21 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
-                android:orientation="horizontal"
-                android:weightSum="2"
+                android:orientation="vertical"
                 >
 
                 <!--大人-->
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="8dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:orientation="horizontal"
                     >
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="70dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:text="大人"
@@ -94,7 +78,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginTop="4dp"
                         android:ellipsize="end"
                         android:textSize="16sp"
                         tools:text="片道 3,090円\n往復 5,870円"
@@ -103,16 +86,17 @@
 
                 <!--子ども-->
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
                     >
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="70dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="16dp"
                         android:text="小人"
                         android:textSize="16sp"
                         />
@@ -122,14 +106,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginTop="8dp"
                         android:textSize="16sp"
                         tools:text="片道 1,540円\n往復 2,930円"
                         />
 
                 </LinearLayout>
+
             </LinearLayout>
 
+            <include layout="@layout/view_time_table_line_yoko"/>
         </LinearLayout>
 
         <!--フェリー-->
@@ -151,25 +136,22 @@
 
             <!--内容-->
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:orientation="horizontal"
-                android:weightSum="2"
+                android:orientation="vertical"
                 >
 
                 <!--大人-->
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="6dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
+                    android:layout_marginLeft="16dp"
+                    android:orientation="horizontal"
                     >
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="70dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:text="大人"
@@ -190,14 +172,15 @@
 
                 <!--子ども-->
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
                     >
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="70dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:text="小人"
@@ -209,11 +192,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginTop="8dp"
                         android:textSize="16sp"
                         tools:text="片道 1,540円"
                         />
-
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

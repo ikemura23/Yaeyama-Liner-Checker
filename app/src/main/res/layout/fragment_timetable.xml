@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:card_view="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_marginBottom="16dp"
+              android:orientation="vertical"
+    >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/timetable_header"
+        >
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            card_view:cardCornerRadius="3dp"
+            >
+
+            <Spinner
+                android:id="@+id/fragment_timetable_tab_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:spinnerMode="dropdown"
+                />
+        </android.support.v7.widget.CardView>
+    </FrameLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <!--安栄-->
+            <com.ikmr.banbara23.yaeyama_liner_checker.timetable.annei.AnneiTimeTableView
+                android:id="@+id/fragment_timetable_annei_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                />
+
+            <!--八重山観光フェリー-->
+            <com.ikmr.banbara23.yaeyama_liner_checker.timetable.ykf.YkfTimeTableView
+                android:id="@+id/fragment_timetable_ykf_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                />
+
+            <!--ドリーム観光-->
+            <com.ikmr.banbara23.yaeyama_liner_checker.timetable.dream.DreamTimeTableView
+                android:id="@+id/fragment_timetable_dream_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                />
+
+            <include layout="@layout/view_time_table_line_yoko"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -18,93 +18,84 @@
 
         <TextView
             android:id="@+id/view_dream_timetable_header_ishigaki"
-            style="@style/time_table_header_text"
+            style="@style/time_table_text.header"
             android:layout_weight="1"
             android:text="@string/time_table_port_ishigaki"
             />
 
         <TextView
             android:id="@+id/view_dream_timetable_header_ritou"
-            style="@style/time_table_header_text"
+            style="@style/time_table_text.header"
             android:layout_weight="1"
             android:text="鳩間着"
             />
     </LinearLayout>
 
+    <include layout="@layout/view_time_table_line_yoko"/>
+
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~１列目 安栄~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <FrameLayout
-        android:id="@+id/uehara_anei_row1"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
         >
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2"
+            android:layout_gravity="center"
+            android:layout_weight="1"
             >
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                >
+            <TextView
+                android:id="@+id/view_time_table_dream_uehara_text1"
+                style="@style/time_table_text.body"
+                android:layout_width="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="08:00"
+                />
 
-                <TextView
-                    android:id="@+id/view_time_table_dream_uehara_text1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_margin="1dp"
-                    android:text="08:00"
-                    android:textSize="20dp"
-                    />
+            <TextView
+                style="@style/time_table_caution_text"
+                android:layout_toEndOf="@+id/view_time_table_dream_uehara_text1"
+                android:layout_toRightOf="@+id/view_time_table_dream_uehara_text1"
+                android:background="@drawable/corner_round"
+                android:text="Ｆ"
+                />
 
-                <TextView
-                    style="@style/time_table_caution_text"
-                    android:layout_toEndOf="@+id/view_time_table_dream_uehara_text1"
-                    android:layout_toRightOf="@+id/view_time_table_dream_uehara_text1"
-                    android:background="@drawable/corner_round"
-                    android:text="Ｆ"
-                    />
+        </RelativeLayout>
 
-            </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            >
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                >
+            <TextView
+                android:id="@+id/view_time_table_dream_uehara_text2"
+                style="@style/time_table_text.body"
+                android:layout_width="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="08:55"
+                />
 
-                <TextView
-                    android:id="@+id/view_time_table_dream_uehara_text2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_margin="1dp"
-                    android:text="08:55"
-                    android:textSize="20dp"
-                    />
+            <TextView
+                style="@style/time_table_caution_text"
+                android:layout_toEndOf="@+id/view_time_table_dream_uehara_text2"
+                android:layout_toRightOf="@+id/view_time_table_dream_uehara_text2"
+                android:background="@drawable/corner_round"
+                android:text="Ｆ"
+                />
 
-                <TextView
-                    style="@style/time_table_caution_text"
-                    android:layout_toEndOf="@+id/view_time_table_dream_uehara_text2"
-                    android:layout_toRightOf="@+id/view_time_table_dream_uehara_text2"
-                    android:background="@drawable/corner_round"
-                    android:text="Ｆ"
-                    />
+        </RelativeLayout>
 
-            </RelativeLayout>
+    </LinearLayout>
 
-        </LinearLayout>
-
-        <include layout="@layout/view_time_table_line_yoko"/>
-    </FrameLayout>
+    <include layout="@layout/view_time_table_line_yoko"/>
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~２列目 安栄~~~~~~~~~~~~~~~~~~~~~~~ -->
     <!--ヘッダー-->
@@ -117,90 +108,81 @@
         >
 
         <TextView
-            style="@style/time_table_header_text"
+            style="@style/time_table_text.header"
             android:layout_weight="1"
             android:text="鳩間発"
             />
 
         <TextView
-            style="@style/time_table_header_text"
+            style="@style/time_table_text.header"
             android:layout_weight="1"
             android:text="上原着"
             />
     </LinearLayout>
 
-    <FrameLayout
-        android:id="@+id/uehara_anei_row2"
+    <include layout="@layout/view_time_table_line_yoko"/>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
         >
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2"
+            android:layout_gravity="center"
+            android:layout_weight="1"
             >
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                >
+            <TextView
+                android:id="@+id/view_time_table_dream_uehara_text3"
+                style="@style/time_table_text.body"
+                android:layout_width="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="09:30"
+                />
 
-                <TextView
-                    android:id="@+id/view_time_table_dream_uehara_text3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_margin="1dp"
-                    android:text="09:30"
-                    android:textSize="20dp"
-                    />
+            <TextView
+                style="@style/time_table_caution_text"
+                android:layout_toEndOf="@+id/view_time_table_dream_uehara_text3"
+                android:layout_toRightOf="@+id/view_time_table_dream_uehara_text3"
+                android:background="@drawable/corner_round"
+                android:text="Ｆ"
+                />
 
-                <TextView
-                    style="@style/time_table_caution_text"
-                    android:layout_toEndOf="@+id/view_time_table_dream_uehara_text3"
-                    android:layout_toRightOf="@+id/view_time_table_dream_uehara_text3"
-                    android:background="@drawable/corner_round"
-                    android:text="Ｆ"
-                    />
+        </RelativeLayout>
 
-            </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            >
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                >
+            <TextView
+                android:id="@+id/view_time_table_dream_uehara_text4"
+                style="@style/time_table_text.body"
+                android:layout_width="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="09:45"
+                />
 
-                <TextView
-                    android:id="@+id/view_time_table_dream_uehara_text4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_margin="1dp"
-                    android:text="09:45"
-                    android:textSize="20dp"
-                    />
+            <TextView
+                style="@style/time_table_caution_text"
+                android:layout_toEndOf="@+id/view_time_table_dream_uehara_text4"
+                android:layout_toRightOf="@+id/view_time_table_dream_uehara_text4"
+                android:background="@drawable/corner_round"
+                android:text="Ｆ"
+                />
 
-                <TextView
-                    style="@style/time_table_caution_text"
-                    android:layout_toEndOf="@+id/view_time_table_dream_uehara_text4"
-                    android:layout_toRightOf="@+id/view_time_table_dream_uehara_text4"
-                    android:background="@drawable/corner_round"
-                    android:text="Ｆ"
-                    />
+        </RelativeLayout>
+    </LinearLayout>
 
-            </RelativeLayout>
-        </LinearLayout>
-
-        <include layout="@layout/view_time_table_line_yoko"/>
-    </FrameLayout>
+    <include layout="@layout/view_time_table_line_yoko"/>
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~3列目 八重山観光フェリー~~~~~~~~~~~~~~~~~~~~~~~ -->
     <!--ヘッダー-->
@@ -213,90 +195,81 @@
         >
 
         <TextView
-            style="@style/time_table_header_text"
+            style="@style/time_table_text.header"
             android:layout_weight="1"
             android:text="上原発"
             />
 
         <TextView
-            style="@style/time_table_header_text"
+            style="@style/time_table_text.header"
             android:layout_weight="1"
             android:text="鳩間着"
             />
     </LinearLayout>
 
-    <FrameLayout
-        android:id="@+id/uehara_ykf_row3"
+    <include layout="@layout/view_time_table_line_yoko"/>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
         >
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2"
+            android:layout_gravity="center"
+            android:layout_weight="1"
             >
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                >
+            <TextView
+                android:id="@+id/view_time_table_dream_uehara_text5"
+                style="@style/time_table_text.body"
+                android:layout_width="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="10:20"
+                />
 
-                <TextView
-                    android:id="@+id/view_time_table_dream_uehara_text5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_margin="1dp"
-                    android:text="10:20"
-                    android:textSize="20dp"
-                    />
+            <TextView
+                style="@style/time_table_caution_text"
+                android:layout_toEndOf="@+id/view_time_table_dream_uehara_text5"
+                android:layout_toRightOf="@+id/view_time_table_dream_uehara_text5"
+                android:background="@drawable/corner_round"
+                android:text="Ｆ"
+                />
 
-                <TextView
-                    style="@style/time_table_caution_text"
-                    android:layout_toEndOf="@+id/view_time_table_dream_uehara_text5"
-                    android:layout_toRightOf="@+id/view_time_table_dream_uehara_text5"
-                    android:background="@drawable/corner_round"
-                    android:text="Ｆ"
-                    />
+        </RelativeLayout>
 
-            </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            >
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                >
+            <TextView
+                android:id="@+id/view_time_table_dream_uehara_text6"
+                style="@style/time_table_text.body"
+                android:layout_width="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="10:35"
+                />
 
-                <TextView
-                    android:id="@+id/view_time_table_dream_uehara_text6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_margin="1dp"
-                    android:text="10:35"
-                    android:textSize="20dp"
-                    />
+            <TextView
+                style="@style/time_table_caution_text"
+                android:layout_toEndOf="@+id/view_time_table_dream_uehara_text6"
+                android:layout_toRightOf="@+id/view_time_table_dream_uehara_text6"
+                android:background="@drawable/corner_round"
+                android:text="Ｆ"
+                />
 
-                <TextView
-                    style="@style/time_table_caution_text"
-                    android:layout_toEndOf="@+id/view_time_table_dream_uehara_text6"
-                    android:layout_toRightOf="@+id/view_time_table_dream_uehara_text6"
-                    android:background="@drawable/corner_round"
-                    android:text="Ｆ"
-                    />
+        </RelativeLayout>
+    </LinearLayout>
 
-            </RelativeLayout>
-        </LinearLayout>
-
-        <include layout="@layout/view_time_table_line_yoko"/>
-    </FrameLayout>
+    <include layout="@layout/view_time_table_line_yoko"/>
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~ 4列目 安栄 ~~~~~~~~~~~~~~~~~~~~~~~ -->
     <!--ヘッダー-->
@@ -309,90 +282,79 @@
         >
 
         <TextView
-            style="@style/time_table_header_text"
+            style="@style/time_table_text.header"
             android:layout_weight="1"
             android:text="鳩間発"
             />
 
         <TextView
-            style="@style/time_table_header_text"
+            style="@style/time_table_text.header"
             android:layout_weight="1"
             android:text="石垣着"
             />
     </LinearLayout>
 
-    <FrameLayout
-        android:id="@+id/uehara_anei_row4"
+    <include layout="@layout/view_time_table_line_yoko"/>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
         >
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2"
+            android:layout_gravity="center"
+            android:layout_weight="1"
             >
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                >
+            <TextView
+                android:id="@+id/view_time_table_dream_uehara_text7"
+                style="@style/time_table_text.body"
+                android:layout_width="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="10:50"
+                />
 
-                <TextView
-                    android:id="@+id/view_time_table_dream_uehara_text7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_margin="1dp"
-                    android:text="10:50"
-                    android:textSize="20dp"
-                    />
+            <TextView
+                style="@style/time_table_caution_text"
+                android:layout_toEndOf="@+id/view_time_table_dream_uehara_text7"
+                android:layout_toRightOf="@+id/view_time_table_dream_uehara_text7"
+                android:background="@drawable/corner_round"
+                android:text="Ｆ"
+                />
 
-                <TextView
-                    style="@style/time_table_caution_text"
-                    android:layout_toEndOf="@+id/view_time_table_dream_uehara_text7"
-                    android:layout_toRightOf="@+id/view_time_table_dream_uehara_text7"
-                    android:background="@drawable/corner_round"
-                    android:text="Ｆ"
-                    />
+        </RelativeLayout>
 
-            </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            >
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                >
+            <TextView
+                android:id="@+id/view_time_table_dream_uehara_text8"
+                style="@style/time_table_text.body"
+                android:layout_width="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="11:45"
+                />
 
-                <TextView
-                    android:id="@+id/view_time_table_dream_uehara_text8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_margin="1dp"
-                    android:text="11:45"
-                    android:textSize="20dp"
-                    />
+            <TextView
+                style="@style/time_table_caution_text"
+                android:layout_toEndOf="@+id/view_time_table_dream_uehara_text8"
+                android:layout_toRightOf="@+id/view_time_table_dream_uehara_text8"
+                android:background="@drawable/corner_round"
+                android:text="Ｆ"
+                />
 
-                <TextView
-                    style="@style/time_table_caution_text"
-                    android:layout_toEndOf="@+id/view_time_table_dream_uehara_text8"
-                    android:layout_toRightOf="@+id/view_time_table_dream_uehara_text8"
-                    android:background="@drawable/corner_round"
-                    android:text="Ｆ"
-                    />
-
-            </RelativeLayout>
-        </LinearLayout>
-
-        <include layout="@layout/view_time_table_line_yoko"/>
-    </FrameLayout>
+        </RelativeLayout>
+    </LinearLayout>
 
     <include layout="@layout/view_time_table_line_yoko"/>
 

@@ -1,29 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     >
 
     <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:layout_marginLeft="@dimen/status_detail_view_outer_space"
-        android:layout_marginRight="@dimen/status_detail_view_outer_space"
-        card_view:cardCornerRadius="3dp"
+        style="@style/detail_card"
         >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/status_detail_view_inner_space"
-            android:layout_marginRight="@dimen/status_detail_view_inner_space"
             android:orientation="vertical"
-            android:padding="@dimen/status_detail_view_inner_space"
             >
 
             <!--ヘッダー文字-->
@@ -37,198 +28,153 @@
                 android:textSize="16sp"
                 />
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginBottom="8dp"
-                android:background="@color/light_grey"
-                />
+            <include layout="@layout/view_time_table_line_yoko"/>
 
-            <!--高速船-->
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="8dp"
+                android:text="高速船"
+                android:textSize="16sp"
+                />
+            <!--高速船-->
+
+
+            <!--内容-->
+
+            <!--大人-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
                 >
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="大人"
+                    android:textSize="16sp"
+                    />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:text="高速船"
+                    android:text="@string/dream_kohama_price_adult"
+                    android:textSize="16sp"
+                    />
+            </LinearLayout>
+
+            <!--子ども-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="小人"
                     android:textSize="16sp"
                     />
 
-                <!--内容-->
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:orientation="horizontal"
-                    android:weightSum="2"
-                    >
-
-                    <!--大人-->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="8dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        >
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:text="大人"
-                            android:textSize="16sp"
-                            />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginTop="4dp"
-                            android:ellipsize="end"
-                            android:text="@string/dream_kohama_price_adult"
-                            android:textSize="16sp"
-                            />
-                    </LinearLayout>
-
-                    <!--子ども-->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        >
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:text="小人"
-                            android:textSize="16sp"
-                            />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginTop="8dp"
-                            android:text="@string/dream_kohama_price_child"
-                            android:textSize="16sp"
-                            />
-
-                    </LinearLayout>
-                </LinearLayout>
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/dream_kohama_price_child"
+                    android:textSize="16sp"
+                    />
 
             </LinearLayout>
 
+
             <!--フェリー-->
-            <LinearLayout
-                android:layout_width="match_parent"
+
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="8dp"
+                android:text="フェリー"
+                android:textSize="16sp"
+                />
+
+            <!--内容-->
+
+            <!--大人-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
                 >
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="大人"
+                    android:textSize="16sp"
+                    />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginTop="8dp"
-                    android:text="フェリー"
+                    android:ellipsize="end"
+                    android:text="@string/dream_kohama_price_adult_ferry"
+                    android:textSize="16sp"
+                    />
+            </LinearLayout>
+
+            <!--子ども-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:text="小人"
                     android:textSize="16sp"
                     />
 
-                <!--内容-->
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:orientation="horizontal"
-                    android:weightSum="2"
-                    >
+                    android:text="@string/dream_kohama_price_child_ferry"
+                    android:textSize="16sp"
+                    />
 
-                    <!--大人-->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginRight="6dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        >
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:text="大人"
-                            android:textSize="16sp"
-                            />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginTop="4dp"
-                            android:ellipsize="end"
-                            android:text="@string/dream_kohama_price_adult_ferry"
-                            android:textSize="16sp"
-                            />
-                    </LinearLayout>
-
-                    <!--子ども-->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        >
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:text="小人"
-                            android:textSize="16sp"
-                            />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginTop="8dp"
-                            android:text="@string/dream_kohama_price_child_ferry"
-                            android:textSize="16sp"
-                            />
-
-                    </LinearLayout>
-                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:layout_marginLeft="@dimen/status_detail_view_outer_space"
-        android:layout_marginRight="@dimen/status_detail_view_outer_space"
-        android:layout_marginTop="4dp"
-        card_view:cardCornerRadius="3dp"
+        style="@style/detail_card"
         >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/status_detail_view_inner_space"
-            android:layout_marginRight="@dimen/status_detail_view_inner_space"
             android:orientation="vertical"
-            android:padding="@dimen/status_detail_view_inner_space"
             >
 
             <!--ヘッダー文字-->
@@ -242,92 +188,74 @@
                 android:textSize="16sp"
                 />
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginBottom="8dp"
-                android:background="@color/light_grey"
-                />
+            <include layout="@layout/view_time_table_line_yoko"/>
 
             <!--高速船-->
-            <LinearLayout
-                android:layout_width="match_parent"
+
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="8dp"
+                android:text="高速船"
+                android:textSize="16sp"
+                />
+
+            <!--内容-->
+
+            <!--大人-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginLeft="16dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
                 >
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="大人"
+                    android:textSize="16sp"
+                    />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:text="高速船"
+                    android:layout_marginTop="4dp"
+                    android:ellipsize="end"
+                    android:text="@string/dream_kohama_taketomi_price_adult"
+                    android:textSize="16sp"
+                    />
+            </LinearLayout>
+
+            <!--子ども-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="小人"
                     android:textSize="16sp"
                     />
 
-                <!--内容-->
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:orientation="horizontal"
-                    android:weightSum="2"
-                    >
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/dream_kohama_taketomi_price_child"
+                    android:textSize="16sp"
+                    />
 
-                    <!--大人-->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="8dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        >
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:text="大人"
-                            android:textSize="16sp"
-                            />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginTop="4dp"
-                            android:ellipsize="end"
-                            android:text="@string/dream_kohama_taketomi_price_adult"
-                            android:textSize="16sp"
-                            />
-                    </LinearLayout>
-
-                    <!--子ども-->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        >
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:text="小人"
-                            android:textSize="16sp"
-                            />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginTop="8dp"
-                            android:text="@string/dream_kohama_taketomi_price_child"
-                            android:textSize="16sp"
-                            />
-
-                    </LinearLayout>
-                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </android.support.v7.widget.CardView>

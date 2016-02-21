@@ -61,6 +61,10 @@
             android:name=".activity.PreferenceActivity"
             android:label="@string/title_activity_setting">
         </activity>
+        <activity
+            android:name=".timetable.TimeTableTabActivity"
+            android:label="@string/title_activity_timetable">
+        </activity>
 
         <meta-data
             android:name="io.fabric.ApiKey"

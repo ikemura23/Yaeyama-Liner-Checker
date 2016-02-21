@@ -5,6 +5,7 @@
     <string name="title_activity_status_list">運航状況一覧</string>
     <string name="title_activity_status_detail">運航状況の詳細</string>
     <string name="title_activity_timetable">時刻表</string>
+    <string name="title_activity_tab_timetable">時刻表</string>
     <string name="title_activity_setting">設定</string>
     <string name="title_activity_other">アプリ情報</string>
 
@@ -70,7 +71,7 @@
     <string name="time_table_port_hatoma">鳩間発</string>
 
     <string name="route_taketomi">石垣島 - 竹富島</string>
-    <string name="route_kuroshima">石垣島 - 黒島島</string>
+    <string name="route_kuroshima">石垣島 - 黒島</string>
     <string name="route_kohama">石垣島 - 小浜島</string>
     <string name="route_uehara">石垣島 - 上原(西表島)</string>
     <string name="route_uehara_hatoma">石垣島 - 鳩間島経由上原(西表島)</string>
@@ -78,9 +79,9 @@
     <string name="route_hateruma">石垣島 - 波照間島</string>
     <string name="route_hatoma">石垣島 - 鳩間島</string>
 
-    <string name="company_name_annei">安栄観光</string>
-    <string name="company_name_ykf">八重山観光\nフェリー</string>
-    <string name="company_name_dream">ドリーム観光</string>
+    <string name="company_tab_name_annei">安栄観光</string>
+    <string name="company_tab_name_ykf">八重山観光\nフェリー</string>
+    <string name="company_tab_name_dream">ドリーム観光</string>
 
     <string name="company_simple_name_annei">安栄</string>
     <string name="company_simple_name_ykf">八重山観光フ</string>

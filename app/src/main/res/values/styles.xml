@@ -9,14 +9,22 @@
         <item name="colorAccent">#FFC107</item>
     </style>
 
-    <!--時刻表のヘッダー-->
-    <style name="time_table_header_text">
+    <!--時刻表ベース-->
+    <style name="time_table_text">
         <item name="android:gravity">center</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:textSize">20dp</item>
-        <item name="android:padding">4dp</item>
-        <item name="android:layout_margin">1dp</item>
+        <item name="android:textSize">@dimen/timetable_font_size</item>
+        <item name="android:padding">8dp</item>
+    </style>
+
+    <!--時刻表ヘッダー-->
+    <style name="time_table_text.header" parent="time_table_text">
+        <item name="android:background">@color/timetable_header</item>
+    </style>
+
+    <!--時刻表ボディ-->
+    <style name="time_table_text.body" parent="time_table_text">
     </style>
 
     <!--時刻表の安栄アイコン-->
@@ -58,7 +66,7 @@
 
     <!--時刻表の注意書き-->
     <style name="time_table_caution_text">
-        <item name="android:layout_marginLeft">8dp</item>
+        <item name="android:layout_marginLeft">2dp</item>
         <item name="android:layout_centerVertical">true</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
@@ -76,5 +84,18 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:textSize">12dp</item>
+    </style>
+
+    <!--詳細画面のCardView共通スタイル-->
+    <style name="detail_card" parent="CardView">
+        <item name="android:layout_marginLeft">@dimen/status_detail_view_outer_space</item>
+        <item name="android:layout_marginRight">@dimen/status_detail_view_outer_space</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="contentPadding">16dp</item>
+        <item name="cardCornerRadius">3dp</item>
+        <item name="cardElevation">2dp</item>
+        <item name="cardUseCompatPadding">true</item>
     </style>
 </resources>

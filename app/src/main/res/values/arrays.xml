@@ -2,24 +2,32 @@
 <resources>
     <!--安栄-->
     <array name="annei_port_list">
-        <item>波照間</item>
-        <item>上原</item>
-        <item>鳩間島</item>
-        <item>大原</item>
-        <item>黒島</item>
-        <item>小浜</item>
         <item>竹富</item>
+        <item>小浜</item>
+        <item>黒島</item>
+        <item>大原(西表島)</item>
+        <item>上原(西表島)</item>
+        <item>鳩間島</item>
+        <item>波照間</item>
     </array>
 
     <!--八重山観光フェリー-->
     <array name="ykf_port_list">
-        <item>波照間</item>
-        <item>上原</item>
-        <item>鳩間島</item>
-        <item>大原</item>
-        <item>黒島</item>
-        <item>小浜</item>
         <item>竹富</item>
+        <item>小浜</item>
+        <item>黒島</item>
+        <item>大原(西表島)</item>
+        <item>上原(西表島)</item>
+        <item>鳩間島</item>
+    </array>
+
+    <!--ドリーム観光-->
+    <array name="dream_port_list">
+        <item>竹富</item>
+        <item>小浜</item>
+        <item>黒島</item>
+        <item>大原</item>
+        <item>鳩間島経由上原(西表島)</item>
     </array>
 
     <string-array name="timetable_spinner_values">
