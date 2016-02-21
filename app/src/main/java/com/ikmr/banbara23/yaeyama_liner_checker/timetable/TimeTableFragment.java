@@ -12,6 +12,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
@@ -39,6 +41,9 @@ public class TimeTableFragment extends Fragment implements AdapterView.OnItemSel
     @Bind(R.id.fragment_timetable_dream_view)
     DreamTimeTableView mDreamTimeTableView;
 
+    @Bind(R.id.adView)
+    AdView mAdView;
+
     public static TimeTableFragment NewInstance(Company company) {
         TimeTableFragment fragment = new TimeTableFragment();
         Bundle bundle = new Bundle();
@@ -59,7 +64,6 @@ public class TimeTableFragment extends Fragment implements AdapterView.OnItemSel
         ButterKnife.bind(this, view);
         setCommpanyToView();
         createSpinner();
-
         return view;
     }
 
@@ -194,5 +198,39 @@ public class TimeTableFragment extends Fragment implements AdapterView.OnItemSel
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        if (mAdView == null) {
+            return;
+        }
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (mAdView != null) {
+            mAdView.resume();
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (mAdView != null) {
+            mAdView.pause();
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (mAdView != null) {
+            mAdView.destroy();
+        }
     }
 }
