@@ -25,10 +25,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.StatusListActivity"
-            android:label="@string/title_activity_status_list">
-        </activity>
-        <activity
             android:name=".activity.StatusListTabActivity"
             android:label="@string/title_activity_status_list">
         </activity>
@@ -53,10 +49,6 @@
             android:name="com.google.android.gms.ads.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:theme="@android:style/Theme.Translucent"/>
-        <activity
-            android:name=".timetable.TimeTableActivity"
-            android:label="@string/title_activity_timetable">
-        </activity>
         <activity
             android:name=".activity.PreferenceActivity"
             android:label="@string/title_activity_setting">
