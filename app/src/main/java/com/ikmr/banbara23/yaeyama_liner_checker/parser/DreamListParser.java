@@ -1,16 +1,16 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker.parser;
 
-import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
-import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
-import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
-import com.ikmr.banbara23.yaeyama_liner_checker.entity.Status;
+import java.util.ArrayList;
 
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.util.ArrayList;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Status;
 
 /**
  * 安栄HTMLのパース処理
@@ -20,7 +20,6 @@ public class DreamListParser {
     public static Result pars(Document doc) {
 
         Result result = new Result();
-        // StatusListResult statusListResult = new StatusListResult();
         // <div id="liner"> 取得
         if (doc == null) {
             return null;
@@ -38,7 +37,6 @@ public class DreamListParser {
         }
         result.setUpdateTime(getUpdateTime(tr));
 
-        // HashMap<Port, Liner> mLiners = new HashMap<>();
         ArrayList<Liner> mLiners = new ArrayList<>();
 
         ArrayList<Port> array = getPortArray();
