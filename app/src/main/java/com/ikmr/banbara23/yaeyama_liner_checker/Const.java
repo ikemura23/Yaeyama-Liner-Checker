@@ -5,8 +5,9 @@ package com.ikmr.banbara23.yaeyama_liner_checker;
  * 定数クラス
  */
 public class Const {
-    // 通信全般のタイムアウト 20秒
-    public static final int CONNECTION_TIME_OUT = 20000;
+    // 通信全般のタイムアウト 10秒, Jsoupのデフォルトは3秒
+    // http://jsoup.org/apidocs/org/jsoup/Connection.html
+    public static final int CONNECTION_TIME_OUT = 10000;
 
     // 一覧の値
     public static final String PREF_ANNEI_LIST_KEY = "PREF_ANNEI_LIST_KEY";
