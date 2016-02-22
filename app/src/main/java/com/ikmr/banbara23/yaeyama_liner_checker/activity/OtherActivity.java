@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.crashlytics.android.Crashlytics;
 import com.ikmr.banbara23.yaeyama_liner_checker.BuildConfig;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 
@@ -90,7 +91,7 @@ public class OtherActivity extends BaseActivity {
         try {
             startActivity(intent);
         } catch (Exception e) {
-            // 何もしない
+            Crashlytics.logException(e);
         }
     }
 
@@ -106,7 +107,7 @@ public class OtherActivity extends BaseActivity {
         try {
             startActivity(googlePlayIntent);
         } catch (Exception e) {
-            // 何もしない
+            Crashlytics.logException(e);
         }
     }
 

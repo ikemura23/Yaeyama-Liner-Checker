@@ -1,6 +1,11 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker.fragment;
 
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
+import rx.subscriptions.CompositeSubscription;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -11,6 +16,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import butterknife.Bind;
+import butterknife.BindString;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 import com.crashlytics.android.Crashlytics;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
@@ -29,15 +39,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailPriceHandicappe
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailTopView;
 import com.pnikosis.materialishprogress.ProgressWheel;
 
-import butterknife.Bind;
-import butterknife.BindString;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import de.mrapp.android.dialog.MaterialDialog;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
-import rx.subscriptions.CompositeSubscription;
 
 /**
  * 安栄の詳細フラグメント
@@ -419,7 +421,7 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
 
             startActivity(intent);
         } catch (Exception e) {
-            // 何もしない
+            Crashlytics.logException(e);
         }
     }
 
@@ -433,7 +435,7 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
         try {
             startActivity(intent);
         } catch (Exception e) {
-            // 何もしない
+            Crashlytics.logException(e);
         }
     }
 }

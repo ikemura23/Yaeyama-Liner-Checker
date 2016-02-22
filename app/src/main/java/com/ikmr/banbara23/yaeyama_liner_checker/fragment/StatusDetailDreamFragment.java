@@ -202,7 +202,7 @@ public class StatusDetailDreamFragment extends BaseDetailFragment {
 
             startActivity(intent);
         } catch (Exception e) {
-            // 何もしない
+            Crashlytics.logException(e);
         }
     }
 
@@ -215,9 +215,8 @@ public class StatusDetailDreamFragment extends BaseDetailFragment {
         try {
             startActivity(intent);
         } catch (Exception e) {
-            // 何もしない
+            Crashlytics.logException(e);
         }
-
     }
 
     /**

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
@@ -115,6 +116,7 @@ public class StatusDetailDreamActivity extends BaseActivity implements FragmentA
             AdRequest adRequest = new AdRequest.Builder().build();
             adView.loadAd(adRequest);
         } catch (Exception e) {
+            Crashlytics.logException(e);
         }
     }
 

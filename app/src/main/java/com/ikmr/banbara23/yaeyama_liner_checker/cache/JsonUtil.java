@@ -1,6 +1,7 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker.cache;
 
+import com.crashlytics.android.Crashlytics;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
@@ -17,7 +18,7 @@ public class JsonUtil {
         try {
             return jsonAdapter.fromJson(json);
         } catch (IOException e) {
-            e.printStackTrace();
+            Crashlytics.logException(e);
             return null;
         }
     }
