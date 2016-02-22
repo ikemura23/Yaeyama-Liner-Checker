@@ -291,7 +291,7 @@ public class StatusListTabFragment extends BaseListFragment {
 
     private void onResultListQuery(Result result) {
         if (result == null || result.getLiners().isEmpty() || result.getLiners().size() == 0) {
-            failedQuery(new Exception(getParam().getCompanyName() + " Status List Null or Empty"));
+            failedQuery(new Exception("Error : " + getParam().getCompanyName() + " Status list api result a Null or Empty"));
             return;
         }
         mHeaderView.setVisibility(View.VISIBLE);

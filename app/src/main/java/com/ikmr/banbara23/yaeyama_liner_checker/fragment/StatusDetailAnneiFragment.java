@@ -234,8 +234,8 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
 
                             @Override
                             public void onError(Throwable e) {
-                                //
                                 detailQuerying = false;
+                                Crashlytics.logException(e);
                             }
 
                             @Override
@@ -296,7 +296,7 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
                             public void onError(Throwable e) {
                                 // 失敗
                                 listQuerying = false;
-                                failedQuery();
+                                failedQuery(e);
                             }
 
                             @Override
@@ -326,7 +326,7 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
      */
     private void onResultListQuery(Result result) {
         if (result == null || result.getLiners().isEmpty() || result.getLiners().size() == 0) {
-            failedQuery();
+            failedQuery(new Exception("AnneiDetailApiQueryError : Annei status list api result a Null or Empty"));
             return;
         }
 
@@ -384,9 +384,11 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
 
     /**
      * 取得失敗
+     * 
+     * @param e
      */
-    public void failedQuery() {
-        Crashlytics.logException(new Exception("Annei Status Detail Api Failed"));
+    public void failedQuery(Throwable e) {
+        Crashlytics.logException(e);
         mProgressBar.setVisibility(View.GONE);
         mFragmentStatusDetailErrorButton.setVisibility(View.VISIBLE);
     }

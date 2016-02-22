@@ -274,7 +274,7 @@ public class StatusDetailDreamFragment extends BaseDetailFragment {
                             @Override
                             public void onError(Throwable e) {
                                 // 失敗
-                                failedQuery();
+                                failedQuery(e);
                             }
 
                             @Override
@@ -299,10 +299,12 @@ public class StatusDetailDreamFragment extends BaseDetailFragment {
 
     /**
      * 取得失敗
+     * 
+     * @param e
      */
-    public void failedQuery() {
-        Crashlytics.logException(new Exception("Dream Status Detail Api Failed"));
+    public void failedQuery(Throwable e) {
         mReloadButton.setVisibility(View.VISIBLE);
+        Crashlytics.logException(e);
     }
 
     /**
