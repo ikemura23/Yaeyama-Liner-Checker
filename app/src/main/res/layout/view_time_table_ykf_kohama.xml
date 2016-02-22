@@ -275,7 +275,7 @@
                 android:layout_toEndOf="@+id/kohama_ykf_row13_text1"
                 android:layout_toRightOf="@+id/kohama_ykf_row13_text1"
                 android:background="@drawable/corner_round"
-                android:text="★"
+                android:text="限定"
                 />
         </RelativeLayout>
 
@@ -300,7 +300,7 @@
                 android:layout_toEndOf="@+id/kohama_ykf_row13_text2"
                 android:layout_toRightOf="@+id/kohama_ykf_row13_text2"
                 android:background="@drawable/corner_round"
-                android:text="2~3月"
+                android:text="限定"
                 />
         </RelativeLayout>
     </LinearLayout>
@@ -345,7 +345,7 @@
             android:id="@+id/view_time_table_description_ykf_kohama2"
             style="@style/time_table_caution_text"
             android:background="@drawable/corner_round"
-            android:text="★"
+            android:text="限定"
             />
 
         <TextView
@@ -354,7 +354,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="8dp"
             android:layout_toRightOf="@+id/view_time_table_description_ykf_kohama2"
-            android:text="2〜3月運航"
+            android:text="2〜3月のみ限定運航"
             android:textSize="12dp"
             />
     </RelativeLayout>
