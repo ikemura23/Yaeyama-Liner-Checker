@@ -149,7 +149,6 @@
     <include layout="@layout/view_time_table_line_yoko"/>
 
     <LinearLayout
-        android:id="@+id/kohama_ykf_row1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
