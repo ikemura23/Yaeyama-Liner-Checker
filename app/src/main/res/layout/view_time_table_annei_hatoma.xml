@@ -78,7 +78,10 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
         >
 
         <!--カーフェリー説明-->
@@ -86,7 +89,7 @@
             android:id="@+id/view_time_table_description_ykf_hatoma"
             style="@style/time_table_caution_text"
             android:background="@drawable/corner_round"
-            android:text="上"
+            android:text="@string/time_table_note_uehara"
             />
 
         <TextView
@@ -95,7 +98,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="8dp"
             android:layout_toRightOf="@+id/view_time_table_description_ykf_hatoma"
-            android:text="鳩間→上原→石垣"
+            android:text="@string/time_table_note_ue_description"
             android:textSize="12dp"
             />
     </RelativeLayout>
@@ -104,9 +107,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
         android:layout_toRightOf="@+id/view_time_table_description_ykf_hatoma"
-        android:text="※鳩間島航路は上原航路の経由便の為、上原航路欠航時は運航なしです"
+        android:text="@string/time_table_note_ue_description2"
         android:textSize="12dp"
         />
 </LinearLayout>

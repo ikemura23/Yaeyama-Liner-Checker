@@ -175,14 +175,17 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
         >
         <!--カーフェリー説明-->
         <TextView
             android:id="@+id/time_table_caution_text"
             style="@style/time_table_caution_text"
             android:background="@drawable/corner_round"
-            android:text="大"
+            android:text="@string/time_table_note_oo"
             />
 
         <TextView
@@ -191,7 +194,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="8dp"
             android:layout_toRightOf="@+id/time_table_caution_text"
-            android:text="@string/time_table_note_oo_decription"
+            android:text="@string/time_table_note_oo_description"
             android:textSize="12dp"
             />
     </RelativeLayout>

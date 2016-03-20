@@ -366,7 +366,10 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
         >
 
         <!--カーフェリー説明-->
@@ -383,7 +386,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="8dp"
             android:layout_toRightOf="@+id/view_time_table_description_annei_taketomi"
-            android:text="@string/time_table_note_789_decription"
+            android:text="@string/time_table_note_789_description"
             android:textSize="12dp"
             />
     </RelativeLayout>
