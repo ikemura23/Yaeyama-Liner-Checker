@@ -103,7 +103,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_margin="1dp"
-                android:text="11:30"
+                android:text="11:50"
                 />
 
             <TextView
