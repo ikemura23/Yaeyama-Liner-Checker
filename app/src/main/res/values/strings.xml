@@ -226,9 +226,11 @@
         石垣発11:00・大原発12:30便の送迎バスは大原港にて約30分の待ち時間がございます。</string>
 
     <string name="time_table_note_oo">大</string>
-    <string name="time_table_note_oo_description">石垣発11:50・波照間発13:10便は不定期にて大原港経由の場合があります。\n経由した場合の所要時間は約80分です。</string>
+    <string name="time_table_note_oo_description">石垣発11:50・波照間発13:10便は不定期にて大原港経由の場合があります。
+        経由した場合の所要時間は約80分です。</string>
 
     <string name="time_table_note_uehara">上</string>
     <string name="time_table_note_ue_description">鳩間島経由</string>
+    <string name="time_table_note_ue_description2">※鳩間島航路は上原航路の経由便の為、上原航路欠航時は運航なしです</string>
 
 </resources>
