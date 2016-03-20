@@ -221,4 +221,7 @@
 
     <string name="time_table_note_hato">鳩</string>
     <string name="time_table_note_hato_decription">鳩間島経由</string>
+
+    <string name="time_table_oohara_buzz_description">上原航路欠航時、大原⇔上原方面への連結送迎バス（あんえいバス）があります。
+        石垣発11:00・大原発12:30便の送迎バスは大原港にて約30分の待ち時間がございます。</string>
 </resources>

@@ -32,7 +32,6 @@
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
     <include layout="@layout/view_time_table_line_yoko"/>
 
-    <!--3列目-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -57,7 +56,6 @@
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-    <!--5列目-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -82,7 +80,6 @@
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-    <!--6列目-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -141,7 +138,7 @@
                 android:layout_toEndOf="@+id/view_time_table_annei_oohara_text2"
                 android:layout_toRightOf="@+id/view_time_table_annei_oohara_text2"
                 android:background="@drawable/corner_round"
-                android:text="竹"
+                android:text="@string/time_table_note_take"
                 />
         </RelativeLayout>
     </LinearLayout>
@@ -150,7 +147,6 @@
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-    <!--11列目-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -161,13 +157,13 @@
         <TextView
             style="@style/time_table_text.body"
             android:layout_weight="1"
-            android:text="16:10"
+            android:text="15:30"
             />
 
         <TextView
             style="@style/time_table_text.body"
             android:layout_weight="1"
-            android:text="17:00"
+            android:text="16:30"
             />
     </LinearLayout>
 
@@ -185,13 +181,13 @@
             android:id="@+id/view_time_table_description_ykf_hatoma"
             style="@style/time_table_caution_text"
             android:background="@drawable/corner_round"
-            android:text="竹"
+            android:text="@string/time_table_note_take"
             />
 
         <TextView
             style="@style/time_table_caution_description_text"
             android:layout_toRightOf="@+id/view_time_table_description_ykf_hatoma"
-            android:text="竹富島経由不定期"
+            android:text="@string/time_table_note_take_irregular_decription"
             />
     </RelativeLayout>
 
@@ -200,7 +196,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_margin="16dp"
-        android:text="上原航路欠航時、大原⇔上原方面への連結送迎バス（あんえいバス）があります。\n石垣発11:00・大原発12:30便の送迎ﾊﾞｽは大原港にて約30分の待ち時間がございます。"
+        android:text="@string/time_table_oohara_buzz_description"
         />
 
     <!-- バス -->
@@ -210,6 +206,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="上原欠航時送迎あんえいバス時刻"
+        android:textStyle="bold"
         />
 
     <LinearLayout
@@ -246,13 +243,13 @@
         <TextView
             style="@style/time_table_text.body"
             android:layout_weight="1"
-            android:text="06:50"
+            android:text="06:40"
             />
 
         <TextView
             style="@style/time_table_text.body"
             android:layout_weight="1"
-            android:text="07:50"
+            android:text="07:40"
             />
     </LinearLayout>
 
@@ -378,13 +375,13 @@
         <TextView
             style="@style/time_table_text.body"
             android:layout_weight="1"
-            android:text="16:30"
+            android:text="17:20"
             />
 
         <TextView
             style="@style/time_table_text.body"
             android:layout_weight="1"
-            android:text="17:30"
+            android:text="18:20"
             />
     </LinearLayout>
 
