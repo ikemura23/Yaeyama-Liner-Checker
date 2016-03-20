@@ -29,9 +29,7 @@
 
     </LinearLayout>
 
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~１列目 安栄~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <include layout="@layout/view_time_table_line_yoko"/>
-
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,18 +37,142 @@
         android:weightSum="2"
         >
 
-        <TextView
-            style="@style/time_table_text.body"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="07:10"
-            />
+            >
 
-        <TextView
-            style="@style/time_table_text.body"
+            <TextView
+                android:id="@+id/view_time_table_annei_uehara_row_1_1"
+                style="@style/time_table_text.body"
+                android:layout_width="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="06:50"
+                />
+
+            <TextView
+                style="@style/time_table_caution_text"
+                android:layout_toEndOf="@+id/view_time_table_annei_uehara_row_1_1"
+                android:layout_toRightOf="@+id/view_time_table_annei_uehara_row_1_1"
+                android:background="@drawable/corner_round"
+                android:text="7~9月"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="08:00"
-            />
+            >
+
+            <TextView
+                android:id="@+id/view_time_table_annei_uehara_row_1_2"
+                style="@style/time_table_text.body"
+                android:layout_width="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="07:40"
+                />
+
+            <TextView
+                style="@style/time_table_caution_text"
+                android:layout_toEndOf="@+id/view_time_table_annei_uehara_row_1_2"
+                android:layout_toRightOf="@+id/view_time_table_annei_uehara_row_1_2"
+                android:background="@drawable/corner_round"
+                android:text="7~9月"
+                />
+
+        </RelativeLayout>
     </LinearLayout>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            >
+
+            <TextView
+                android:id="@+id/view_time_table_annei_uehara_row_2_1"
+                style="@style/time_table_text.body"
+                android:layout_width="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="07:00"
+                />
+
+            <TextView
+                style="@style/time_table_caution_text"
+                android:layout_toEndOf="@+id/view_time_table_annei_uehara_row_2_1"
+                android:layout_toRightOf="@+id/view_time_table_annei_uehara_row_2_1"
+                android:background="@drawable/corner_round"
+                android:text="4~6月"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            >
+
+            <TextView
+                android:id="@+id/view_time_table_annei_uehara_row_2_2"
+                style="@style/time_table_text.body"
+                android:layout_width="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="07:50"
+                />
+
+            <TextView
+                style="@style/time_table_caution_text"
+                android:layout_toEndOf="@+id/view_time_table_annei_uehara_row_2_2"
+                android:layout_toRightOf="@+id/view_time_table_annei_uehara_row_2_2"
+                android:background="@drawable/corner_round"
+                android:text="4~6月"
+                />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~１列目 安栄~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!--<include layout="@layout/view_time_table_line_yoko"/>-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:weightSum="2"-->
+    <!-->-->
+
+    <!--<TextView-->
+    <!--style="@style/time_table_text.body"-->
+    <!--android:layout_weight="1"-->
+    <!--android:text="07:00"-->
+    <!--/>-->
+
+    <!--<TextView-->
+    <!--style="@style/time_table_text.body"-->
+    <!--android:layout_weight="1"-->
+    <!--android:text="07:00"-->
+    <!--/>-->
+    <!--</LinearLayout>-->
 
     <include layout="@layout/view_time_table_line_yoko"/>
 
@@ -85,11 +207,31 @@
         android:weightSum="2"
         >
 
-        <TextView
-            style="@style/time_table_text.body"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="10:50"
-            />
+            >
+
+            <TextView
+                android:id="@+id/view_time_table_annei_uehara_row_3_1"
+                style="@style/time_table_text.body"
+                android:layout_width="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="10:50"
+                />
+
+            <TextView
+                style="@style/time_table_caution_text"
+                android:layout_toEndOf="@+id/view_time_table_annei_uehara_row_3_1"
+                android:layout_toRightOf="@+id/view_time_table_annei_uehara_row_3_1"
+                android:background="@drawable/corner_round"
+                android:text="鳩"
+                />
+
+        </RelativeLayout>
 
         <TextView
             style="@style/time_table_text.body"
@@ -123,6 +265,71 @@
     </LinearLayout>
 
     <include layout="@layout/view_time_table_line_yoko"/>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~ 5列目 安栄 ~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            >
+
+            <TextView
+                android:id="@+id/view_time_table_annei_uehara_row_4_1"
+                style="@style/time_table_text.body"
+                android:layout_width="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="14:20"
+                />
+
+            <TextView
+                style="@style/time_table_caution_text"
+                android:layout_toEndOf="@+id/view_time_table_annei_uehara_row_4_1"
+                android:layout_toRightOf="@+id/view_time_table_annei_uehara_row_4_1"
+                android:background="@drawable/corner_round"
+                android:text="7~9月"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            >
+
+            <TextView
+                android:id="@+id/view_time_table_annei_uehara_row_4_2"
+                style="@style/time_table_text.body"
+                android:layout_width="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="15:20"
+                />
+
+            <TextView
+                style="@style/time_table_caution_text"
+                android:layout_toEndOf="@+id/view_time_table_annei_uehara_row_4_2"
+                android:layout_toRightOf="@+id/view_time_table_annei_uehara_row_4_2"
+                android:background="@drawable/corner_round"
+                android:text="7~9月"
+                />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <include layout="@layout/view_time_table_line_yoko"/>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~ 5列目 安栄 ~~~~~~~~~~~~~~~~~~~~~~~ -->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -134,14 +341,120 @@
         <TextView
             style="@style/time_table_text.body"
             android:layout_weight="1"
-            android:text="16:40"
+            android:text="16:10"
             />
 
         <TextView
             style="@style/time_table_text.body"
             android:layout_weight="1"
-            android:text="17:40"
+            android:text="17:10"
             />
     </LinearLayout>
 
+    <include layout="@layout/view_time_table_line_yoko"/>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~ 安栄 ~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+
+        <TextView
+            style="@style/time_table_text.body"
+            android:layout_weight="1"
+            android:text="17:30"
+            />
+
+        <TextView
+            style="@style/time_table_text.body"
+            android:layout_weight="1"
+            android:text="18:20"
+            />
+    </LinearLayout>
+
+    <include layout="@layout/view_time_table_line_yoko"/>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~ 説明 ~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        >
+
+        <!--カーフェリー説明-->
+        <TextView
+            android:id="@+id/view_time_table_description_annei_uehara_1"
+            style="@style/time_table_caution_text"
+            android:background="@drawable/corner_round"
+            android:text="7~9月"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@+id/view_time_table_description_annei_uehara_1"
+            android:text="7・8・9月のみ運航"
+            android:textSize="12dp"
+            />
+    </RelativeLayout>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~ 安栄 ~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        >
+
+        <!--カーフェリー説明-->
+        <TextView
+            android:id="@+id/view_time_table_description_annei_uehara_2"
+            style="@style/time_table_caution_text"
+            android:background="@drawable/corner_round"
+            android:text="4~6月"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@+id/view_time_table_description_annei_uehara_2"
+            android:text="4・5・6月のみ運航"
+            android:textSize="12dp"
+            />
+    </RelativeLayout>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~ 安栄 ~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        >
+
+        <!--カーフェリー説明-->
+        <TextView
+            android:id="@+id/view_time_table_description_annei_uehara_3"
+            style="@style/time_table_caution_text"
+            android:background="@drawable/corner_round"
+            android:text="鳩"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@+id/view_time_table_description_annei_uehara_3"
+            android:text="鳩間経由"
+            android:textSize="12dp"
+            />
+    </RelativeLayout>
 </LinearLayout>
