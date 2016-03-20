@@ -58,7 +58,7 @@
                 android:layout_toEndOf="@+id/view_time_table_annei_uehara_row_1_1"
                 android:layout_toRightOf="@+id/view_time_table_annei_uehara_row_1_1"
                 android:background="@drawable/corner_round"
-                android:text="7~9月"
+                android:text="@string/time_table_note_789"
                 />
 
         </RelativeLayout>
@@ -84,7 +84,7 @@
                 android:layout_toEndOf="@+id/view_time_table_annei_uehara_row_1_2"
                 android:layout_toRightOf="@+id/view_time_table_annei_uehara_row_1_2"
                 android:background="@drawable/corner_round"
-                android:text="7~9月"
+                android:text="@string/time_table_note_789"
                 />
 
         </RelativeLayout>
@@ -119,7 +119,7 @@
                 android:layout_toEndOf="@+id/view_time_table_annei_uehara_row_2_1"
                 android:layout_toRightOf="@+id/view_time_table_annei_uehara_row_2_1"
                 android:background="@drawable/corner_round"
-                android:text="4~6月"
+                android:text="@string/time_table_note_456"
                 />
 
         </RelativeLayout>
@@ -145,7 +145,7 @@
                 android:layout_toEndOf="@+id/view_time_table_annei_uehara_row_2_2"
                 android:layout_toRightOf="@+id/view_time_table_annei_uehara_row_2_2"
                 android:background="@drawable/corner_round"
-                android:text="4~6月"
+                android:text="@string/time_table_note_456"
                 />
 
         </RelativeLayout>
@@ -228,7 +228,7 @@
                 android:layout_toEndOf="@+id/view_time_table_annei_uehara_row_3_1"
                 android:layout_toRightOf="@+id/view_time_table_annei_uehara_row_3_1"
                 android:background="@drawable/corner_round"
-                android:text="鳩"
+                android:text="@string/time_table_note_hato"
                 />
 
         </RelativeLayout>
@@ -295,7 +295,7 @@
                 android:layout_toEndOf="@+id/view_time_table_annei_uehara_row_4_1"
                 android:layout_toRightOf="@+id/view_time_table_annei_uehara_row_4_1"
                 android:background="@drawable/corner_round"
-                android:text="7~9月"
+                android:text="@string/time_table_note_789"
                 />
 
         </RelativeLayout>
@@ -321,7 +321,7 @@
                 android:layout_toEndOf="@+id/view_time_table_annei_uehara_row_4_2"
                 android:layout_toRightOf="@+id/view_time_table_annei_uehara_row_4_2"
                 android:background="@drawable/corner_round"
-                android:text="7~9月"
+                android:text="@string/time_table_note_789"
                 />
 
         </RelativeLayout>
@@ -399,7 +399,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="8dp"
             android:layout_toRightOf="@+id/view_time_table_description_annei_uehara_1"
-            android:text="7・8・9月のみ運航"
+            android:text="@string/time_table_note_789"
             android:textSize="12dp"
             />
     </RelativeLayout>
@@ -417,7 +417,7 @@
             android:id="@+id/view_time_table_description_annei_uehara_2"
             style="@style/time_table_caution_text"
             android:background="@drawable/corner_round"
-            android:text="4~6月"
+            android:text="@string/time_table_note_456"
             />
 
         <TextView
@@ -444,7 +444,7 @@
             android:id="@+id/view_time_table_description_annei_uehara_3"
             style="@style/time_table_caution_text"
             android:background="@drawable/corner_round"
-            android:text="鳩"
+            android:text="@string/time_table_note_hato"
             />
 
         <TextView

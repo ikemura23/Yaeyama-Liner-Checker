@@ -163,7 +163,7 @@
             >
 
             <TextView
-                android:id="@+id/view_time_table_ykf_hatoma_row_1_1"
+                android:id="@+id/view_time_table_annei_taketomi_1_1"
                 style="@style/time_table_text.body"
                 android:layout_width="wrap_content"
                 android:layout_alignParentTop="true"
@@ -173,10 +173,10 @@
 
             <TextView
                 style="@style/time_table_caution_text"
-                android:layout_toEndOf="@+id/view_time_table_ykf_hatoma_row_1_1"
-                android:layout_toRightOf="@+id/view_time_table_ykf_hatoma_row_1_1"
+                android:layout_toEndOf="@+id/view_time_table_annei_taketomi_1_1"
+                android:layout_toRightOf="@+id/view_time_table_annei_taketomi_1_1"
                 android:background="@drawable/corner_round"
-                android:text="夏"
+                android:text="@string/time_table_note_789"
                 />
 
         </RelativeLayout>
@@ -189,7 +189,7 @@
             >
 
             <TextView
-                android:id="@+id/view_time_table_ykf_hatoma_row_1_2"
+                android:id="@+id/view_time_table_annei_taketomi_1_2"
                 style="@style/time_table_text.body"
                 android:layout_width="wrap_content"
                 android:layout_alignParentTop="true"
@@ -199,10 +199,10 @@
 
             <TextView
                 style="@style/time_table_caution_text"
-                android:layout_toEndOf="@+id/view_time_table_ykf_hatoma_row_1_2"
-                android:layout_toRightOf="@+id/view_time_table_ykf_hatoma_row_1_2"
+                android:layout_toEndOf="@+id/view_time_table_annei_taketomi_1_2"
+                android:layout_toRightOf="@+id/view_time_table_annei_taketomi_1_2"
                 android:background="@drawable/corner_round"
-                android:text="夏"
+                android:text="@string/time_table_note_789"
                 />
 
         </RelativeLayout>
@@ -239,7 +239,7 @@
                 android:layout_toEndOf="@+id/view_time_table_ykf_hatoma_row_2_1"
                 android:layout_toRightOf="@+id/view_time_table_ykf_hatoma_row_2_1"
                 android:background="@drawable/corner_round"
-                android:text="夏"
+                android:text="@string/time_table_note_789"
                 />
 
         </RelativeLayout>
@@ -265,7 +265,7 @@
                 android:layout_toEndOf="@+id/view_time_table_ykf_hatoma_row_2_2"
                 android:layout_toRightOf="@+id/view_time_table_ykf_hatoma_row_2_2"
                 android:background="@drawable/corner_round"
-                android:text="夏"
+                android:text="@string/time_table_note_789"
                 />
 
         </RelativeLayout>
@@ -349,10 +349,10 @@
 
         <!--カーフェリー説明-->
         <TextView
-            android:id="@+id/view_time_table_description_ykf_hatoma"
+            android:id="@+id/view_time_table_description_annei_taketomi"
             style="@style/time_table_caution_text"
             android:background="@drawable/corner_round"
-            android:text="夏"
+            android:text="@string/time_table_note_789"
             />
 
         <TextView
@@ -360,8 +360,8 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="8dp"
-            android:layout_toRightOf="@+id/view_time_table_description_ykf_hatoma"
-            android:text="7・8・9月のみ運航"
+            android:layout_toRightOf="@+id/view_time_table_description_annei_taketomi"
+            android:text="@string/time_table_note_789_decription"
             android:textSize="12dp"
             />
     </RelativeLayout>

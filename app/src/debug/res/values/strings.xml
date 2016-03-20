@@ -208,4 +208,17 @@
     <string name="dream_uehara_price_adult_ferry">片道 1,420円</string>
     <string name="dream_uehara_price_child_ferry">片道 710円</string>
 
+    <!-- 時刻表 -->
+    <string name="time_table_note_789">7~9月</string>
+    <string name="time_table_note_789_decription">7・8・9月のみ運航</string>
+
+    <string name="time_table_note_456">4~6月</string>
+    <string name="time_table_note_456_decription">4・5・4月のみ運航</string>
+
+    <string name="time_table_note_take">竹</string>
+    <string name="time_table_note_take_decription">竹富島経由</string>
+    <string name="time_table_note_take_irregular_decription">竹富島経由不定期</string>
+
+    <string name="time_table_note_hato">鳩</string>
+    <string name="time_table_note_hato_decription">鳩間島経由</string>
 </resources>
