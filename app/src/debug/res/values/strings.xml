@@ -224,4 +224,8 @@
 
     <string name="time_table_oohara_buzz_description">上原航路欠航時、大原⇔上原方面への連結送迎バス（あんえいバス）があります。
         石垣発11:00・大原発12:30便の送迎バスは大原港にて約30分の待ち時間がございます。</string>
+
+    <string name="time_table_note_oo">大</string>
+    <string name="time_table_note_oo_decription">石垣発11:50・波照間発13:10便は不定期にて大原港経由の場合があります。
+経由した場合の所要時間は約80分です。</string>
 </resources>
