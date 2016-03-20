@@ -38,6 +38,12 @@
         android:weightSum="2"
         >
 
+        <TextView
+            style="@style/time_table_text.body"
+            android:layout_weight="1"
+            android:text="10:50"
+            />
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -46,59 +52,28 @@
             >
 
             <TextView
-                android:id="@+id/view_time_table_ykf_hatoma_row_1_1"
+                android:id="@+id/view_time_table_annei_hatoma"
                 style="@style/time_table_text.body"
                 android:layout_width="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:text="09:30"
+                android:text="11:35"
                 />
 
             <TextView
                 style="@style/time_table_caution_text"
-                android:layout_toEndOf="@+id/view_time_table_ykf_hatoma_row_1_1"
-                android:layout_toRightOf="@+id/view_time_table_ykf_hatoma_row_1_1"
+                android:layout_toEndOf="@+id/view_time_table_annei_hatoma"
+                android:layout_toRightOf="@+id/view_time_table_annei_hatoma"
                 android:background="@drawable/corner_round"
                 android:text="上"
                 />
 
         </RelativeLayout>
 
-        <TextView
-            style="@style/time_table_text.body"
-            android:layout_weight="1"
-            android:text="10:45"
-            />
+
     </LinearLayout>
 
-
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~２列目~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <include layout="@layout/view_time_table_line_yoko"/>
-
-    <LinearLayout
-        android:id="@+id/kohama_anei_row2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2"
-        >
-
-        <TextView
-            style="@style/time_table_text.body"
-            android:layout_weight="1"
-            android:text="15:30"
-            />
-
-        <TextView
-            style="@style/time_table_text.body"
-            android:layout_weight="1"
-            android:text="16:15"
-            />
-    </LinearLayout>
-
-    <include layout="@layout/view_time_table_line_yoko"/>
-
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~3列目~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -120,9 +95,18 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="8dp"
             android:layout_toRightOf="@+id/view_time_table_description_ykf_hatoma"
-            android:text="上原港経由"
+            android:text="鳩間→上原→石垣"
             android:textSize="12dp"
             />
     </RelativeLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="8dp"
+        android:layout_toRightOf="@+id/view_time_table_description_ykf_hatoma"
+        android:text="※鳩間島航路は上原航路の経由便の為、上原航路欠航時は運航なしです"
+        android:textSize="12dp"
+        />
 </LinearLayout>
