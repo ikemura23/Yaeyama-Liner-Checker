@@ -1,15 +1,16 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker.timetable;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 
 import com.google.android.gms.ads.AdRequest;
@@ -41,8 +42,13 @@ public class TimeTableFragment extends Fragment implements AdapterView.OnItemSel
     @Bind(R.id.fragment_timetable_dream_view)
     DreamTimeTableView mDreamTimeTableView;
 
+    @Bind(R.id.fragment_timetable_layout)
+    LinearLayout mTimeTableLayout;
+
     @Bind(R.id.adView)
     AdView mAdView;
+
+    View viewTaketomi;
 
     public static TimeTableFragment NewInstance(Company company) {
         TimeTableFragment fragment = new TimeTableFragment();
@@ -112,7 +118,6 @@ public class TimeTableFragment extends Fragment implements AdapterView.OnItemSel
         if (company == null) {
             return;
         }
-        Log.d("TimeTableFragment", "company:" + company);
         switch (company) {
             case ANNEI:
                 mAnneiTimeTableView.setVisibility(View.VISIBLE);
@@ -158,16 +163,42 @@ public class TimeTableFragment extends Fragment implements AdapterView.OnItemSel
         if (company == null) {
             return;
         }
+        int viewResourceId;
         switch (company) {
             case ANNEI:
-                mAnneiTimeTableView.switchPortView(getAnneiPort(position));
+                LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                viewResourceId = getAnneiTimeTableLayoutResourceId(position);
+                viewTaketomi = inflater.inflate(viewResourceId, null);
+                mTimeTableLayout.addView(viewTaketomi);
+                // mAnneiTimeTableView.switchPortView(getAnneiPort(position));
                 break;
             case YKF:
-                mYkfTimeTableView.switchPortView(getYkfPort(position));
+                // mYkfTimeTableView.switchPortView(getYkfPort(position));
                 break;
             case DREAM:
                 mDreamTimeTableView.switchPortView(getDreamPort(position));
                 break;
+        }
+    }
+
+    private int getAnneiTimeTableLayoutResourceId(int position) {
+        switch (position) {
+            case 0:
+                return R.layout.view_time_table_annei_taketomi;
+            case 1:
+                return R.layout.view_time_table_annei_kohama;
+            case 2:
+                return R.layout.view_time_table_annei_kuroshima;
+            case 3:
+                return R.layout.view_time_table_annei_oohara;
+            case 4:
+                return R.layout.view_time_table_annei_uehara;
+            case 5:
+                return R.layout.view_time_table_annei_hatoma;
+            case 6:
+                return R.layout.view_time_table_annei_hateruma;
+            default:
+                return R.layout.view_time_table_annei_taketomi;
         }
     }
 
