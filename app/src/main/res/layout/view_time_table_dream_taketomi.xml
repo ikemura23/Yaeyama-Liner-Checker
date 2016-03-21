@@ -105,7 +105,7 @@
                 android:layout_toEndOf="@+id/view_time_table_dream_taketomi_text1"
                 android:layout_toRightOf="@+id/view_time_table_dream_taketomi_text1"
                 android:background="@drawable/corner_round"
-                android:text="Ｆ"
+                android:text="@string/time_table_note_f"
                 />
 
         </RelativeLayout>
@@ -132,7 +132,7 @@
                 android:layout_toEndOf="@+id/view_time_table_dream_taketomi_text2"
                 android:layout_toRightOf="@+id/view_time_table_dream_taketomi_text2"
                 android:background="@drawable/corner_round"
-                android:text="Ｆ"
+                android:text="@string/time_table_note_f"
                 />
 
         </RelativeLayout>
@@ -351,14 +351,17 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
         >
 
         <TextView
             android:id="@+id/view_time_table_description_dream_oohara1"
             style="@style/time_table_caution_text"
             android:background="@drawable/corner_round"
-            android:text="Ｆ"
+            android:text="@string/time_table_note_f"
             />
 
         <TextView

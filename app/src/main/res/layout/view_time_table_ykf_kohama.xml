@@ -182,68 +182,6 @@
 
     <include layout="@layout/view_time_table_line_yoko"/>
 
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
-
-    <!--10月〜1月までの便-->
-    <!--<LinearLayout-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:orientation="horizontal"-->
-    <!--android:weightSum="2"-->
-    <!-->-->
-
-    <!--<RelativeLayout-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_gravity="center"-->
-    <!--android:layout_weight="1"-->
-    <!-->-->
-
-    <!--<TextView-->
-    <!--android:id="@+id/kohama_ykf_row12_text1"-->
-    <!--style="@style/time_table_text.body"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_alignParentTop="true"-->
-    <!--android:layout_centerHorizontal="true"-->
-    <!--android:layout_weight="1"-->
-    <!--android:text="17:15"-->
-    <!--/>-->
-
-    <!--<TextView-->
-    <!--style="@style/time_table_caution_text"-->
-    <!--android:layout_toEndOf="@+id/kohama_ykf_row12_text1"-->
-    <!--android:layout_toRightOf="@+id/kohama_ykf_row12_text1"-->
-    <!--android:background="@drawable/corner_round"-->
-    <!--android:text="~1月"-->
-    <!--/>-->
-    <!--</RelativeLayout>-->
-
-    <!--<RelativeLayout-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_gravity="center"-->
-    <!--android:layout_weight="1"-->
-    <!-->-->
-
-    <!--<TextView-->
-    <!--android:id="@+id/kohama_ykf_row12_text2"-->
-    <!--style="@style/time_table_text.body"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_alignParentTop="true"-->
-    <!--android:layout_centerHorizontal="true"-->
-    <!--android:text="17:45"-->
-    <!--/>-->
-
-    <!--<TextView-->
-    <!--style="@style/time_table_caution_text"-->
-    <!--android:layout_toEndOf="@+id/kohama_ykf_row12_text2"-->
-    <!--android:layout_toRightOf="@+id/kohama_ykf_row12_text2"-->
-    <!--android:background="@drawable/corner_round"-->
-    <!--android:text="~1月"-->
-    <!--/>-->
-    <!--</RelativeLayout>-->
-    <!--</LinearLayout>-->
-
     <!--<include layout="@layout/view_time_table_line_yoko"/>-->
 
     <LinearLayout
@@ -275,7 +213,7 @@
                 android:layout_toEndOf="@+id/kohama_ykf_row13_text1"
                 android:layout_toRightOf="@+id/kohama_ykf_row13_text1"
                 android:background="@drawable/corner_round"
-                android:text="限定"
+                android:text="2~3月"
                 />
         </RelativeLayout>
 
@@ -300,7 +238,7 @@
                 android:layout_toEndOf="@+id/kohama_ykf_row13_text2"
                 android:layout_toRightOf="@+id/kohama_ykf_row13_text2"
                 android:background="@drawable/corner_round"
-                android:text="限定"
+                android:text="2~3月"
                 />
         </RelativeLayout>
     </LinearLayout>
@@ -308,36 +246,13 @@
     <include layout="@layout/view_time_table_line_yoko"/>
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-    <!--説明-->
-    <!--<RelativeLayout-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_margin="8dp"-->
-    <!-->-->
-
-    <!--&lt;!&ndash;カーフェリー説明&ndash;&gt;-->
-    <!--<TextView-->
-    <!--android:id="@+id/view_time_table_description_ykf_kohama1"-->
-    <!--style="@style/time_table_caution_text"-->
-    <!--android:background="@drawable/corner_round"-->
-    <!--android:text="~1月"-->
-    <!--/>-->
-
-    <!--<TextView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_centerVertical="true"-->
-    <!--android:layout_marginLeft="8dp"-->
-    <!--android:layout_toRightOf="@+id/view_time_table_description_ykf_kohama1"-->
-    <!--android:text="10〜1月運航"-->
-    <!--android:textSize="12dp"-->
-    <!--/>-->
-    <!--</RelativeLayout>-->
-
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
         >
 
         <!--カーフェリー説明-->
@@ -345,7 +260,7 @@
             android:id="@+id/view_time_table_description_ykf_kohama2"
             style="@style/time_table_caution_text"
             android:background="@drawable/corner_round"
-            android:text="限定"
+            android:text="2~3月"
             />
 
         <TextView
