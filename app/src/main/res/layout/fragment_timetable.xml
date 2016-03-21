@@ -38,34 +38,41 @@
         >
 
         <LinearLayout
-            android:id="@+id/fragment_timetable_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             >
+
+            <LinearLayout
+                android:id="@+id/fragment_timetable_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                />
+
             <!--安栄-->
-            <com.ikmr.banbara23.yaeyama_liner_checker.timetable.annei.AnneiTimeTableView
-                android:id="@+id/fragment_timetable_annei_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                />
+            <!--<com.ikmr.banbara23.yaeyama_liner_checker.timetable.annei.AnneiTimeTableView-->
+            <!--android:id="@+id/fragment_timetable_annei_view"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:visibility="gone"-->
+            <!--/>-->
 
-            <!--八重山観光フェリー-->
-            <com.ikmr.banbara23.yaeyama_liner_checker.timetable.ykf.YkfTimeTableView
-                android:id="@+id/fragment_timetable_ykf_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                />
+            <!--&lt;!&ndash;八重山観光フェリー&ndash;&gt;-->
+            <!--<com.ikmr.banbara23.yaeyama_liner_checker.timetable.ykf.YkfTimeTableView-->
+            <!--android:id="@+id/fragment_timetable_ykf_view"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:visibility="gone"-->
+            <!--/>-->
 
-            <!--ドリーム観光-->
-            <com.ikmr.banbara23.yaeyama_liner_checker.timetable.dream.DreamTimeTableView
-                android:id="@+id/fragment_timetable_dream_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                />
+            <!--&lt;!&ndash;ドリーム観光&ndash;&gt;-->
+            <!--<com.ikmr.banbara23.yaeyama_liner_checker.timetable.dream.DreamTimeTableView-->
+            <!--android:id="@+id/fragment_timetable_dream_view"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:visibility="gone"-->
+            <!--/>-->
 
             <!--<include layout="@layout/view_time_table_line_yoko"/>-->
 

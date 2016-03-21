@@ -18,9 +18,6 @@ import com.google.android.gms.ads.AdView;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
-import com.ikmr.banbara23.yaeyama_liner_checker.timetable.annei.AnneiTimeTableView;
-import com.ikmr.banbara23.yaeyama_liner_checker.timetable.dream.DreamTimeTableView;
-import com.ikmr.banbara23.yaeyama_liner_checker.timetable.ykf.YkfTimeTableView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -33,14 +30,14 @@ public class TimeTableFragment extends Fragment implements AdapterView.OnItemSel
     @Bind(R.id.fragment_timetable_tab_spinner)
     Spinner mSpinner;
 
-    @Bind(R.id.fragment_timetable_annei_view)
-    AnneiTimeTableView mAnneiTimeTableView;
+    // @Bind(R.id.fragment_timetable_annei_view)
+    // AnneiTimeTableView mAnneiTimeTableView;
 
-    @Bind(R.id.fragment_timetable_ykf_view)
-    YkfTimeTableView mYkfTimeTableView;
-
-    @Bind(R.id.fragment_timetable_dream_view)
-    DreamTimeTableView mDreamTimeTableView;
+    // @Bind(R.id.fragment_timetable_ykf_view)
+    // YkfTimeTableView mYkfTimeTableView;
+    //
+    // @Bind(R.id.fragment_timetable_dream_view)
+    // DreamTimeTableView mDreamTimeTableView;
 
     @Bind(R.id.fragment_timetable_layout)
     LinearLayout mTimeTableLayout;
@@ -68,7 +65,7 @@ public class TimeTableFragment extends Fragment implements AdapterView.OnItemSel
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_timetable, container, false);
         ButterKnife.bind(this, view);
-        setCommpanyToView();
+        // setCommpanyToView();
         createSpinner();
         return view;
     }
@@ -113,23 +110,24 @@ public class TimeTableFragment extends Fragment implements AdapterView.OnItemSel
         }
     }
 
-    private void setCommpanyToView() {
-        Company company = (Company) getArguments().getSerializable(TimeTableFragment.class.getCanonicalName());
-        if (company == null) {
-            return;
-        }
-        switch (company) {
-            case ANNEI:
-                mAnneiTimeTableView.setVisibility(View.VISIBLE);
-                break;
-            case YKF:
-                mYkfTimeTableView.setVisibility(View.VISIBLE);
-                break;
-            case DREAM:
-                mDreamTimeTableView.setVisibility(View.VISIBLE);
-                break;
-        }
-    }
+    // private void setCommpanyToView() {
+    // Company company = (Company)
+    // getArguments().getSerializable(TimeTableFragment.class.getCanonicalName());
+    // if (company == null) {
+    // return;
+    // }
+    // switch (company) {
+    // case ANNEI:
+    // // mAnneiTimeTableView.setVisibility(View.VISIBLE);
+    // break;
+    // case YKF:
+    // mYkfTimeTableView.setVisibility(View.VISIBLE);
+    // break;
+    // case DREAM:
+    // mDreamTimeTableView.setVisibility(View.VISIBLE);
+    // break;
+    // }
+    // }
 
     private void createSpinner() {
         mSpinner.setOnItemSelectedListener(this);
@@ -163,22 +161,24 @@ public class TimeTableFragment extends Fragment implements AdapterView.OnItemSel
         if (company == null) {
             return;
         }
-        int viewResourceId;
+        mTimeTableLayout.removeAllViews();
+        int viewResourceId = 0;
         switch (company) {
             case ANNEI:
-                LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 viewResourceId = getAnneiTimeTableLayoutResourceId(position);
-                viewTaketomi = inflater.inflate(viewResourceId, null);
-                mTimeTableLayout.addView(viewTaketomi);
-                // mAnneiTimeTableView.switchPortView(getAnneiPort(position));
                 break;
             case YKF:
+                viewResourceId = getYkfTimeTableLayoutResourceId(position);
                 // mYkfTimeTableView.switchPortView(getYkfPort(position));
                 break;
             case DREAM:
-                mDreamTimeTableView.switchPortView(getDreamPort(position));
+                viewResourceId = getDreamTimeTableLayoutResourceId(position);
+                // mDreamTimeTableView.switchPortView(getDreamPort(position));
                 break;
         }
+        LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        viewTaketomi = inflater.inflate(viewResourceId, null);
+        mTimeTableLayout.addView(viewTaketomi);
     }
 
     private int getAnneiTimeTableLayoutResourceId(int position) {
@@ -199,6 +199,42 @@ public class TimeTableFragment extends Fragment implements AdapterView.OnItemSel
                 return R.layout.view_time_table_annei_hateruma;
             default:
                 return R.layout.view_time_table_annei_taketomi;
+        }
+    }
+
+    private int getYkfTimeTableLayoutResourceId(int position) {
+        switch (position) {
+            case 0:
+                return R.layout.view_time_table_ykf_taketomi;
+            case 1:
+                return R.layout.view_time_table_ykf_kohama;
+            case 2:
+                return R.layout.view_time_table_ykf_kuroshima;
+            case 3:
+                return R.layout.view_time_table_ykf_oohara;
+            case 4:
+                return R.layout.view_time_table_ykf_uehara;
+            case 5:
+                return R.layout.view_time_table_ykf_hatoma;
+            default:
+                return R.layout.view_time_table_ykf_taketomi;
+        }
+    }
+
+    private int getDreamTimeTableLayoutResourceId(int position) {
+        switch (position) {
+            case 0:
+                return R.layout.view_time_table_dream_taketomi;
+            case 1:
+                return R.layout.view_time_table_dream_kohama;
+            case 2:
+                return R.layout.view_time_table_dream_kuroshima;
+            case 3:
+                return R.layout.view_time_table_dream_oohara;
+            case 4:
+                return R.layout.view_time_table_dream_uehara;
+            default:
+                return R.layout.view_time_table_ykf_taketomi;
         }
     }
 
