@@ -17,7 +17,6 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
-import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -30,23 +29,18 @@ public class TimeTableFragment extends Fragment implements AdapterView.OnItemSel
     @Bind(R.id.fragment_timetable_tab_spinner)
     Spinner mSpinner;
 
-    // @Bind(R.id.fragment_timetable_annei_view)
-    // AnneiTimeTableView mAnneiTimeTableView;
-
-    // @Bind(R.id.fragment_timetable_ykf_view)
-    // YkfTimeTableView mYkfTimeTableView;
-    //
-    // @Bind(R.id.fragment_timetable_dream_view)
-    // DreamTimeTableView mDreamTimeTableView;
-
     @Bind(R.id.fragment_timetable_layout)
     LinearLayout mTimeTableLayout;
 
     @Bind(R.id.adView)
     AdView mAdView;
 
-    View viewTaketomi;
-
+    /**
+     * NewInstance
+     * 
+     * @param company 会社
+     * @return TimeTableFragment
+     */
     public static TimeTableFragment NewInstance(Company company) {
         TimeTableFragment fragment = new TimeTableFragment();
         Bundle bundle = new Bundle();
@@ -65,7 +59,6 @@ public class TimeTableFragment extends Fragment implements AdapterView.OnItemSel
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_timetable, container, false);
         ButterKnife.bind(this, view);
-        // setCommpanyToView();
         createSpinner();
         return view;
     }
@@ -110,25 +103,9 @@ public class TimeTableFragment extends Fragment implements AdapterView.OnItemSel
         }
     }
 
-    // private void setCommpanyToView() {
-    // Company company = (Company)
-    // getArguments().getSerializable(TimeTableFragment.class.getCanonicalName());
-    // if (company == null) {
-    // return;
-    // }
-    // switch (company) {
-    // case ANNEI:
-    // // mAnneiTimeTableView.setVisibility(View.VISIBLE);
-    // break;
-    // case YKF:
-    // mYkfTimeTableView.setVisibility(View.VISIBLE);
-    // break;
-    // case DREAM:
-    // mDreamTimeTableView.setVisibility(View.VISIBLE);
-    // break;
-    // }
-    // }
-
+    /**
+     * スピナー作成
+     */
     private void createSpinner() {
         mSpinner.setOnItemSelectedListener(this);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
@@ -139,6 +116,11 @@ public class TimeTableFragment extends Fragment implements AdapterView.OnItemSel
         mSpinner.setAdapter(adapter);
     }
 
+    /**
+     * スピナーの表示リスト作成
+     * 
+     * @return 港の配列
+     */
     private String[] getPortList() {
         Company company = (Company) getArguments().getSerializable(TimeTableFragment.class.getCanonicalName());
         if (company == null) {
@@ -155,6 +137,14 @@ public class TimeTableFragment extends Fragment implements AdapterView.OnItemSel
         return new String[0];
     }
 
+    /**
+     * スピナー選択
+     * 
+     * @param parent
+     * @param view
+     * @param position
+     * @param id
+     */
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         Company company = (Company) getArguments().getSerializable(TimeTableFragment.class.getCanonicalName());
@@ -169,18 +159,21 @@ public class TimeTableFragment extends Fragment implements AdapterView.OnItemSel
                 break;
             case YKF:
                 viewResourceId = getYkfTimeTableLayoutResourceId(position);
-                // mYkfTimeTableView.switchPortView(getYkfPort(position));
                 break;
             case DREAM:
                 viewResourceId = getDreamTimeTableLayoutResourceId(position);
-                // mDreamTimeTableView.switchPortView(getDreamPort(position));
                 break;
         }
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        viewTaketomi = inflater.inflate(viewResourceId, null);
-        mTimeTableLayout.addView(viewTaketomi);
+        inflater.inflate(viewResourceId, mTimeTableLayout);
     }
 
+    /**
+     * 表示するViewのResourceを返す
+     * 
+     * @param position スピナー選択値
+     * @return layoutのresource
+     */
     private int getAnneiTimeTableLayoutResourceId(int position) {
         switch (position) {
             case 0:
@@ -202,6 +195,12 @@ public class TimeTableFragment extends Fragment implements AdapterView.OnItemSel
         }
     }
 
+    /**
+     * 表示するViewのResourceを返す
+     *
+     * @param position スピナー選択値
+     * @return layoutのresource
+     */
     private int getYkfTimeTableLayoutResourceId(int position) {
         switch (position) {
             case 0:
@@ -221,6 +220,12 @@ public class TimeTableFragment extends Fragment implements AdapterView.OnItemSel
         }
     }
 
+    /**
+     * 表示するViewのResourceを返す
+     *
+     * @param position スピナー選択値
+     * @return layoutのresource
+     */
     private int getDreamTimeTableLayoutResourceId(int position) {
         switch (position) {
             case 0:
@@ -235,64 +240,6 @@ public class TimeTableFragment extends Fragment implements AdapterView.OnItemSel
                 return R.layout.view_time_table_dream_uehara;
             default:
                 return R.layout.view_time_table_ykf_taketomi;
-        }
-    }
-
-    private Port getAnneiPort(int position) {
-        switch (position) {
-            case 0:
-                return Port.TAKETOMI;
-            case 1:
-                return Port.KOHAMA;
-            case 2:
-                return Port.KUROSHIMA;
-            case 3:
-                return Port.OOHARA;
-            case 4:
-                return Port.UEHARA;
-            case 5:
-                return Port.HATOMA;
-            case 6:
-                return Port.HATERUMA;
-            default:
-                return Port.TAKETOMI;
-        }
-    }
-
-    private Port getYkfPort(int position) {
-        switch (position) {
-            case 0:
-                return Port.TAKETOMI;
-            case 1:
-                return Port.KOHAMA;
-            case 2:
-                return Port.KUROSHIMA;
-            case 3:
-                return Port.OOHARA;
-            case 4:
-                return Port.UEHARA;
-            case 5:
-                return Port.HATOMA;
-            default:
-                return Port.TAKETOMI;
-
-        }
-    }
-
-    private Port getDreamPort(int position) {
-        switch (position) {
-            case 0:
-                return Port.TAKETOMI;
-            case 1:
-                return Port.KOHAMA;
-            case 2:
-                return Port.KUROSHIMA;
-            case 3:
-                return Port.OOHARA;
-            case 4:
-                return Port.HATOMA_UEHARA;
-            default:
-                return Port.TAKETOMI;
         }
     }
 
