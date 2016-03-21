@@ -233,4 +233,8 @@
     <string name="time_table_note_ue_description">鳩間島経由</string>
     <string name="time_table_note_ue_description2">※鳩間島航路は上原航路の経由便の為、上原航路欠航時は運航なしです</string>
 
+    <string name="time_table_note_f">Ｆ</string>
+
+    <string name="time_table_note_kohama">小</string>
+
 </resources>
