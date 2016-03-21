@@ -67,6 +67,46 @@ public class TimeTableFragment extends Fragment implements AdapterView.OnItemSel
         return view;
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.unbind(this);
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        if (mAdView == null) {
+            return;
+        }
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (mAdView != null) {
+            mAdView.resume();
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (mAdView != null) {
+            mAdView.pause();
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (mAdView != null) {
+            mAdView.destroy();
+        }
+    }
+
     private void setCommpanyToView() {
         Company company = (Company) getArguments().getSerializable(TimeTableFragment.class.getCanonicalName());
         if (company == null) {
@@ -194,43 +234,4 @@ public class TimeTableFragment extends Fragment implements AdapterView.OnItemSel
 
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        ButterKnife.unbind(this);
-    }
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        if (mAdView == null) {
-            return;
-        }
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (mAdView != null) {
-            mAdView.resume();
-        }
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        if (mAdView != null) {
-            mAdView.pause();
-        }
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        if (mAdView != null) {
-            mAdView.destroy();
-        }
-    }
 }
