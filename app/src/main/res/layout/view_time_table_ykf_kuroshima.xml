@@ -87,13 +87,13 @@
         <TextView
             style="@style/time_table_text.body"
             android:layout_weight="1"
-            android:text="15:20"
+            android:text="17:30"
             />
 
         <TextView
             style="@style/time_table_text.body"
             android:layout_weight="1"
-            android:text="16:40"
+            android:text="18:10"
             />
     </LinearLayout>
 

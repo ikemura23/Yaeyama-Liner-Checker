@@ -28,6 +28,68 @@
             />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            >
+
+            <TextView
+                android:id="@+id/view_time_table_ykf_uehara_text1_1"
+                style="@style/time_table_text.body"
+                android:layout_width="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="07:40"
+                />
+
+            <TextView
+                style="@style/time_table_caution_text"
+                android:layout_toEndOf="@+id/view_time_table_ykf_uehara_text1_1"
+                android:layout_toRightOf="@+id/view_time_table_ykf_uehara_text1_1"
+                android:background="@drawable/corner_round"
+                android:text="@string/time_table_note_hato"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            >
+
+            <TextView
+                android:id="@+id/view_time_table_ykf_uehara_text1_2"
+                style="@style/time_table_text.body"
+                android:layout_width="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="08:30"
+                />
+
+            <TextView
+                style="@style/time_table_caution_text"
+                android:layout_toEndOf="@+id/view_time_table_ykf_uehara_text1_2"
+                android:layout_toRightOf="@+id/view_time_table_ykf_uehara_text1_2"
+                android:background="@drawable/corner_round"
+                android:text="@string/time_table_note_hato"
+                />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <include layout="@layout/view_time_table_line_yoko"/>
+
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~１列目 安栄~~~~~~~~~~~~~~~~~~~~~~~ -->
 
     <LinearLayout
@@ -51,7 +113,7 @@
             >
 
             <TextView
-                android:id="@+id/view_time_table_ykf_uehara_text1"
+                android:id="@+id/view_time_table_ykf_uehara_text2"
                 style="@style/time_table_text.body"
                 android:layout_width="wrap_content"
                 android:layout_alignParentTop="true"
@@ -61,8 +123,8 @@
 
             <TextView
                 style="@style/time_table_caution_text"
-                android:layout_toEndOf="@+id/view_time_table_ykf_uehara_text1"
-                android:layout_toRightOf="@+id/view_time_table_ykf_uehara_text1"
+                android:layout_toEndOf="@+id/view_time_table_ykf_uehara_text2"
+                android:layout_toRightOf="@+id/view_time_table_ykf_uehara_text2"
                 android:background="@drawable/corner_round"
                 android:text="@string/time_table_note_hato"
                 />
@@ -87,7 +149,7 @@
             >
 
             <TextView
-                android:id="@+id/view_time_table_ykf_uehara_text2"
+                android:id="@+id/view_time_table_ykf_uehara_text3"
                 style="@style/time_table_text.body"
                 android:layout_width="wrap_content"
                 android:layout_alignParentTop="true"
@@ -97,8 +159,8 @@
 
             <TextView
                 style="@style/time_table_caution_text"
-                android:layout_toEndOf="@+id/view_time_table_ykf_uehara_text2"
-                android:layout_toRightOf="@+id/view_time_table_ykf_uehara_text2"
+                android:layout_toEndOf="@+id/view_time_table_ykf_uehara_text3"
+                android:layout_toRightOf="@+id/view_time_table_ykf_uehara_text3"
                 android:background="@drawable/corner_round"
                 android:text="@string/time_table_note_hato"
                 />
