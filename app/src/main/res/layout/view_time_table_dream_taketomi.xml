@@ -110,6 +110,30 @@
 
         </RelativeLayout>
 
+        <TextView
+            style="@style/time_table_text.body"
+            android:layout_weight="1"
+            android:text="09:30"
+            />
+
+    </LinearLayout>
+
+    <include layout="@layout/view_time_table_line_yoko"/>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~４列目~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+
+        <TextView
+            style="@style/time_table_text.body"
+            android:layout_weight="1"
+            android:text="09:15"
+            />
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -139,7 +163,6 @@
     </LinearLayout>
 
     <include layout="@layout/view_time_table_line_yoko"/>
-
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~４列目~~~~~~~~~~~~~~~~~~~~~~~ -->
     <LinearLayout
         android:layout_width="match_parent"
@@ -151,18 +174,17 @@
         <TextView
             style="@style/time_table_text.body"
             android:layout_weight="1"
-            android:text="09:15"
+            android:text="10:15"
             />
 
         <TextView
             style="@style/time_table_text.body"
             android:layout_weight="1"
-            android:text="09:30"
+            android:text="10:30"
             />
     </LinearLayout>
 
     <include layout="@layout/view_time_table_line_yoko"/>
-
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~５列目~~~~~~~~~~~~~~~~~~~~~~~ -->
     <LinearLayout
         android:layout_width="match_parent"

@@ -258,7 +258,7 @@
         <TextView
             style="@style/time_table_text.body"
             android:layout_weight="1"
-            android:text="16:40"
+            android:text="16:00"
             />
     </LinearLayout>
 
