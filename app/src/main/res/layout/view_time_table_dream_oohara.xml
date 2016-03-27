@@ -273,7 +273,7 @@
         <TextView
             style="@style/time_table_caution_description_text"
             android:layout_toRightOf="@+id/view_time_table_description_dream_oohara1"
-            android:text="高速ｶｰﾌｪﾘｰ 月 木 土運航"
+            android:text="高速カーフェリー 月 木 土運航"
             />
     </RelativeLayout>
 
