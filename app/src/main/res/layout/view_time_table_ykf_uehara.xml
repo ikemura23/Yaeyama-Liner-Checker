@@ -56,7 +56,7 @@
                 android:layout_toEndOf="@+id/view_time_table_ykf_uehara_text1_1"
                 android:layout_toRightOf="@+id/view_time_table_ykf_uehara_text1_1"
                 android:background="@drawable/corner_round"
-                android:text="@string/time_table_note_hato"
+                android:text="@string/time_table_note_789"
                 />
 
         </RelativeLayout>
@@ -82,7 +82,7 @@
                 android:layout_toEndOf="@+id/view_time_table_ykf_uehara_text1_2"
                 android:layout_toRightOf="@+id/view_time_table_ykf_uehara_text1_2"
                 android:background="@drawable/corner_round"
-                android:text="@string/time_table_note_hato"
+                android:text="@string/time_table_note_789"
                 />
 
         </RelativeLayout>
@@ -186,7 +186,30 @@
         >
 
         <TextView
-            android:id="@+id/view_time_table_description_dream_oohara3"
+            android:id="@+id/view_time_table_ykf_uehara_text4"
+            style="@style/time_table_caution_text"
+            android:background="@drawable/corner_round"
+            android:text="@string/time_table_note_789"
+            />
+
+        <TextView
+            style="@style/time_table_caution_description_text"
+            android:layout_toRightOf="@+id/view_time_table_ykf_uehara_text4"
+            android:text="@string/time_table_note_789_description"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        >
+
+        <TextView
+            android:id="@+id/view_time_table_ykf_uehara_text5"
             style="@style/time_table_caution_text"
             android:background="@drawable/corner_round"
             android:text="@string/time_table_note_hato"
@@ -194,8 +217,8 @@
 
         <TextView
             style="@style/time_table_caution_description_text"
-            android:layout_toRightOf="@+id/view_time_table_description_dream_oohara3"
-            android:text="鳩間経由"
+            android:layout_toRightOf="@+id/view_time_table_ykf_uehara_text5"
+            android:text="@string/time_table_note_hato_description"
             />
     </RelativeLayout>
 
