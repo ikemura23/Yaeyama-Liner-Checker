@@ -162,7 +162,7 @@
         <TextView
             style="@style/time_table_caution_description_text"
             android:layout_toRightOf="@+id/view_time_table_description_dream_kuroshima1"
-            android:text="火･金曜のみカーフェリー、他は高速船"
+            android:text=" 火･金曜日は、石垣発10:30、黒島発11:30の便は高速カーフェリー運航"
             />
     </RelativeLayout>
 
