@@ -237,4 +237,11 @@
 
     <string name="time_table_note_kohama">小</string>
 
+    <string name="NCMB_application_key">99f9ad328e9a72cfc482902a8a8b61af7d24a1516ed79e2946aa47b74b61a117</string>
+    <string name="NCMB_client_key">ea1485bf126b16b0d5dbb3138e9d7c61643730dd96320750bf4f0c21cf474c03</string>
+    <string name="NCMB_annei_table">AnneiLiners</string>
+    <string name="NCMB_ykf_table">YkfLiners</string>
+    <string name="NCMB_dream_table">DreamLiners</string>
+    <string name="NCMB_get_column_name">result_json</string>
+    <string name="NCMB_sort_column_name">createDate</string>
 </resources>

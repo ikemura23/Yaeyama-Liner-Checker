@@ -1,14 +1,16 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker.api;
 
-import com.ikmr.banbara23.yaeyama_liner_checker.Const;
+import com.google.gson.Gson;
+import com.ikmr.banbara23.yaeyama_liner_checker.ApplicationController;
+import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
-import com.ikmr.banbara23.yaeyama_liner_checker.parser.AnneiListParser;
+import com.nifty.cloud.mb.core.NCMB;
+import com.nifty.cloud.mb.core.NCMBException;
+import com.nifty.cloud.mb.core.NCMBObject;
+import com.nifty.cloud.mb.core.NCMBQuery;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-
-import java.io.IOException;
+import java.util.List;
 
 import rx.Observable;
 import rx.Subscriber;
@@ -27,23 +29,57 @@ public class AnneiStatusListApi {
      */
     public static Observable<Result> request(final String url) {
         return Observable
-                .create(new Observable.OnSubscribe<Document>() {
+                .create(new Observable.OnSubscribe<String>() {
                     @Override
-                    public void call(Subscriber<? super Document> subscriber) {
-                        Document document;
+                    public void call(Subscriber<? super String> subscriber) {
+
+                        NCMB.initialize(ApplicationController.getInstance().getApplicationContext(),
+                                ApplicationController.getInstance().getApplicationContext().getString(R.string.NCMB_application_key),
+                                ApplicationController.getInstance().getApplicationContext().getString(R.string.NCMB_client_key));
+
+                        NCMBQuery<NCMBObject> query = new NCMBQuery<>(ApplicationController.getInstance().getApplicationContext().getString(R.string.NCMB_get_column_name));
+                        query.setLimit(1);
+                        query.addOrderByDescending(ApplicationController.getInstance().getApplicationContext().getString(R.string.NCMB_sort_column_name));
                         try {
-                            document = Jsoup.connect(url).timeout(Const.CONNECTION_TIME_OUT).get();
-                            subscriber.onNext(document);
-                            subscriber.onCompleted();
-                        } catch (IOException e) {
+                            List<NCMBObject> results = query.find();
+                            NCMBObject object = results.get(0);
+                            String json = object.getString(ApplicationController.getInstance().getApplicationContext().getString(R.string.NCMB_get_column_name));
+                            subscriber.onNext(json);
+                        } catch (NCMBException e) {
                             subscriber.onError(e);
                         }
+
+                        // query.findInBackground(new FindCallback<NCMBObject>()
+                        // {
+                        // @Override
+                        // public void done(List<NCMBObject> results,
+                        // NCMBException e) {
+                        // if (e != null) {
+                        // Log.d("TopActivity", "e:" + e);
+                        // // 検索失敗時の処理
+                        // } else {
+                        // Log.d("TopActivity", "results:" + results);
+                        // // 検索成功時の処理
+                        // }
+                        // }
+                        // });
+                        // Document document;
+                        // try {
+                        // document =
+                        // Jsoup.connect(url).timeout(Const.CONNECTION_TIME_OUT).get();
+                        // // subscriber.onNext(document);
+                        // subscriber.onCompleted();
+                        // } catch (IOException e) {
+                        // subscriber.onError(e);
+                        // }
                     }
                 })
-                .map(new Func1<Document, Result>() {
+                .map(new Func1<String, Result>() {
                     @Override
-                    public Result call(Document document) {
-                        return AnneiListParser.pars(document);
+                    public Result call(String json) {
+                        // Log.d("AnneiStatusListApi", "object:" + object);
+                        // Log.d("AnneiStatusListApi", resultJson);
+                        return new Gson().fromJson(json, Result.class);
                     }
                 });
     }

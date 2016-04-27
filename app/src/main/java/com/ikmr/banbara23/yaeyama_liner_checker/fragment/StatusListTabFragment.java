@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.entity.YkfLinerDetail;
 import com.ikmr.banbara23.yaeyama_liner_checker.util.StringUtils;
 import com.pnikosis.materialishprogress.ProgressWheel;
 
+import butterknife.Bind;
 import butterknife.BindString;
 import butterknife.ButterKnife;
 import rx.Subscriber;
@@ -44,7 +46,7 @@ public class StatusListTabFragment extends BaseListFragment {
     TextView mTitleText;
     TextView mUpdateText;
     View mHeaderView;
-    ProgressWheel mProgressWheel;
+    // ProgressWheel mProgressWheel;
     private CompositeSubscription mCompositeSubscription = new CompositeSubscription();
 
     // ButterKnife BindString --------------------------------------------
@@ -57,6 +59,9 @@ public class StatusListTabFragment extends BaseListFragment {
     @BindString(R.string.url_ykf_list)
     String URL_YKF_LIST;
 
+    @Bind(R.id.fragment_status_list_progressbar)
+    ProgressWheel mProgressWheel;
+
     public static StatusListTabFragment NewInstance(Company company) {
         StatusListTabFragment fragment = new StatusListTabFragment();
         Bundle bundle = new Bundle();
@@ -68,7 +73,8 @@ public class StatusListTabFragment extends BaseListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_status_list, container, false);
-        mProgressWheel = (ProgressWheel) view.findViewById(R.id.fragment_status_list_progressbar);
+        // mProgressWheel = (ProgressWheel)
+        // view.findViewById(R.id.fragment_status_list_progressbar);
         ButterKnife.bind(this, view);
         initViews();
         return view;
@@ -115,6 +121,7 @@ public class StatusListTabFragment extends BaseListFragment {
     }
 
     private void startQuery() {
+        Log.d("StatusListTabFragment", "startQuery");
         mProgressWheel.setVisibility(View.VISIBLE);
         mHeaderView.setVisibility(View.GONE);
         mListAdapter.clear();
@@ -124,10 +131,12 @@ public class StatusListTabFragment extends BaseListFragment {
         CacheManager cacheManager = CacheManager.getInstance();
         if (cacheManager.isPreferenceCacheDisable() || cacheManager.isExpiryList(getParam())) {
             // キャッシュが無効なので通信必要
+            Log.d("StatusListTabFragment", "キャッシュが無効");
             startListQuery();
             return;
         }
         // キャッシュ有効なので不要
+        Log.d("StatusListTabFragment", "キャッシュが有効");
         Result result = cacheManager.getListResultCache(getParam());
         onResultListQuery(result);
         finishQuery();
@@ -285,6 +294,7 @@ public class StatusListTabFragment extends BaseListFragment {
     }
 
     public void finishQuery() {
+        Log.d("StatusListTabFragment", "finishQuery");
         mHeaderView.setVisibility(View.VISIBLE);
         mProgressWheel.setVisibility(View.GONE);
     }
