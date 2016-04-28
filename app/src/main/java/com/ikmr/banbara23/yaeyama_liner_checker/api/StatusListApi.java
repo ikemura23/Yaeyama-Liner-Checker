@@ -61,30 +61,6 @@ public class StatusListApi {
                         } catch (Exception e) {
                             subscriber.onError(e);
                         }
-
-                        // query.findInBackground(new FindCallback<NCMBObject>()
-                        // {
-                        // @Override
-                        // public void done(List<NCMBObject> results,
-                        // NCMBException e) {
-                        // if (e != null) {
-                        // Log.d("TopActivity", "e:" + e);
-                        // // 検索失敗時の処理
-                        // } else {
-                        // Log.d("TopActivity", "results:" + results);
-                        // // 検索成功時の処理
-                        // }
-                        // }
-                        // });
-                        // Document document;
-                        // try {
-                        // document =
-                        // Jsoup.connect(url).timeout(Const.CONNECTION_TIME_OUT).get();
-                        // // subscriber.onNext(document);
-                        // subscriber.onCompleted();
-                        // } catch (IOException e) {
-                        // subscriber.onError(e);
-                        // }
                     }
                 })
                 .map(new Func1<String, Result>() {

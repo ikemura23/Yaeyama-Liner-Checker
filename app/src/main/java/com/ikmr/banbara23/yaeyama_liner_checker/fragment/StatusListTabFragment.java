@@ -18,10 +18,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAdapter;
 import com.ikmr.banbara23.yaeyama_liner_checker.activity.StatusDetailAnneiActivity;
 import com.ikmr.banbara23.yaeyama_liner_checker.activity.StatusDetailDreamActivity;
 import com.ikmr.banbara23.yaeyama_liner_checker.activity.StatusDetailYkfActivity;
-import com.ikmr.banbara23.yaeyama_liner_checker.api.AnneiStatusListApi;
-import com.ikmr.banbara23.yaeyama_liner_checker.api.DreamStatusListApi;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.StatusListApi;
-import com.ikmr.banbara23.yaeyama_liner_checker.api.YkfStatusListApi;
 import com.ikmr.banbara23.yaeyama_liner_checker.cache.CacheManager;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
@@ -132,12 +129,12 @@ public class StatusListTabFragment extends BaseListFragment {
         CacheManager cacheManager = CacheManager.getInstance();
         if (cacheManager.isPreferenceCacheDisable() || cacheManager.isExpiryList(getParam())) {
             // キャッシュが無効なので通信必要
-            Log.d("StatusListTabFragment", "キャッシュが無効");
+//            Log.d("StatusListTabFragment", "キャッシュが無効");
             startListQuery();
             return;
         }
         // キャッシュ有効なので不要
-        Log.d("StatusListTabFragment", "キャッシュが有効");
+//        Log.d("StatusListTabFragment", "キャッシュが有効");
         Result result = cacheManager.getListResultCache(getParam());
         onResultListQuery(result);
         finishQuery();
@@ -173,48 +170,6 @@ public class StatusListTabFragment extends BaseListFragment {
                             }
                         })
         );
-//        switch (getParam()) {
-//            case ANNEI:
-//                startAnneiListQuery();
-//                break;
-//            case YKF:
-//                startYkfListQuery();
-//                break;
-//            case DREAM:
-//                startDreamListQuery();
-//                break;
-//        }
-    }
-
-    /**
-     * 安栄の通信処理開始
-     */
-    private void startAnneiListQuery() {
-        mCompositeSubscription.add(
-                AnneiStatusListApi.request(URL_ANNEI_LIST)
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeOn(Schedulers.newThread())
-                        .subscribe(new Subscriber<Result>() {
-                            @Override
-                            public void onCompleted() {
-                                // 完了
-                                finishQuery();
-                            }
-
-                            @Override
-                            public void onError(Throwable e) {
-                                // 失敗
-                                failedQuery(e);
-                            }
-
-                            @Override
-                            public void onNext(Result result) {
-                                // 値うけとる
-                                onResultListQuery(result);
-                                saveResultToCache(result);
-                            }
-                        })
-        );
     }
 
     /**
@@ -225,70 +180,6 @@ public class StatusListTabFragment extends BaseListFragment {
     private void saveResultToCache(Result result) {
         CacheManager.getInstance().saveNowListTimeStamp(getParam());
         CacheManager.getInstance().putResult(getParam(), result);
-    }
-
-    /**
-     * 八重山観光フェリーAPIを呼び出す
-     */
-    private void startYkfListQuery() {
-
-        mCompositeSubscription.add(
-                YkfStatusListApi.request(URL_YKF_LIST)
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeOn(Schedulers.newThread())
-                        .subscribe(new Subscriber<Result>() {
-                            @Override
-                            public void onCompleted() {
-                                // 完了
-                                finishQuery();
-                            }
-
-                            @Override
-                            public void onError(Throwable e) {
-                                // 失敗
-                                failedQuery(e);
-                            }
-
-                            @Override
-                            public void onNext(Result result) {
-                                // 値うけとる
-                                onResultListQuery(result);
-                                saveResultToCache(result);
-                            }
-                        })
-        );
-    }
-
-    /**
-     * ドリームAPIを呼び出す
-     */
-    private void startDreamListQuery() {
-
-        mCompositeSubscription.add(
-                DreamStatusListApi.request(URL_DREAM_LIST)
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeOn(Schedulers.newThread())
-                        .subscribe(new Subscriber<Result>() {
-                            @Override
-                            public void onCompleted() {
-                                // 完了
-                                finishQuery();
-                            }
-
-                            @Override
-                            public void onError(Throwable e) {
-                                // 失敗
-                                failedQuery(e);
-                            }
-
-                            @Override
-                            public void onNext(Result result) {
-                                // 値うけとる
-                                onResultListQuery(result);
-                                saveResultToCache(result);
-                            }
-                        })
-        );
     }
 
     /**
