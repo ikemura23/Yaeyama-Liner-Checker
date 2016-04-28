@@ -2,7 +2,6 @@
 package com.ikmr.banbara23.yaeyama_liner_checker;
 
 import android.app.Application;
-import android.content.res.Resources;
 
 import com.crashlytics.android.Crashlytics;
 import com.crashlytics.android.core.CrashlyticsCore;
@@ -24,13 +23,10 @@ public class ApplicationController extends Application {
         if (mApplicationController == null) {
             mApplicationController = this;
         }
+        Base.initialize(this);
     }
 
     public static synchronized ApplicationController getInstance() {
         return mApplicationController;
-    }
-
-    public static Resources getResorces() {
-        return mApplicationController.getApplicationContext().getResources();
     }
 }

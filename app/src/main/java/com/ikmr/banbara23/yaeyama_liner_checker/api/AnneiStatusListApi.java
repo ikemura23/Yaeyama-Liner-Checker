@@ -2,7 +2,7 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.api;
 
 import com.google.gson.Gson;
-import com.ikmr.banbara23.yaeyama_liner_checker.ApplicationController;
+import com.ikmr.banbara23.yaeyama_liner_checker.Base;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 import com.nifty.cloud.mb.core.NCMB;
@@ -23,27 +23,26 @@ public class AnneiStatusListApi {
 
     /**
      * RxAndroidを利用
-     * 
-     * @return Observable<Result>
+     *
      * @param url
+     * @return Observable<Result>
      */
     public static Observable<Result> request(final String url) {
         return Observable
                 .create(new Observable.OnSubscribe<String>() {
                     @Override
                     public void call(Subscriber<? super String> subscriber) {
+                        NCMB.initialize(Base.getContext(),
+                                Base.getContext().getString(R.string.NCMB_application_key),
+                                Base.getContext().getString(R.string.NCMB_client_key));
 
-                        NCMB.initialize(ApplicationController.getInstance().getApplicationContext(),
-                                ApplicationController.getInstance().getApplicationContext().getString(R.string.NCMB_application_key),
-                                ApplicationController.getInstance().getApplicationContext().getString(R.string.NCMB_client_key));
-
-                        NCMBQuery<NCMBObject> query = new NCMBQuery<>(ApplicationController.getInstance().getApplicationContext().getString(R.string.NCMB_get_column_name));
+                        NCMBQuery<NCMBObject> query = new NCMBQuery<>(Base.getContext().getString(R.string.NCMB_get_column_name));
                         query.setLimit(1);
-                        query.addOrderByDescending(ApplicationController.getInstance().getApplicationContext().getString(R.string.NCMB_sort_column_name));
+                        query.addOrderByDescending(Base.getContext().getString(R.string.NCMB_sort_column_name));
                         try {
                             List<NCMBObject> results = query.find();
                             NCMBObject object = results.get(0);
-                            String json = object.getString(ApplicationController.getInstance().getApplicationContext().getString(R.string.NCMB_get_column_name));
+                            String json = object.getString(Base.getContext().getString(R.string.NCMB_get_column_name));
                             subscriber.onNext(json);
                         } catch (NCMBException e) {
                             subscriber.onError(e);
@@ -77,8 +76,6 @@ public class AnneiStatusListApi {
                 .map(new Func1<String, Result>() {
                     @Override
                     public Result call(String json) {
-                        // Log.d("AnneiStatusListApi", "object:" + object);
-                        // Log.d("AnneiStatusListApi", resultJson);
                         return new Gson().fromJson(json, Result.class);
                     }
                 });
