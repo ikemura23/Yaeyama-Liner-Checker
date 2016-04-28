@@ -5,7 +5,6 @@ import com.google.gson.Gson;
 import com.ikmr.banbara23.yaeyama_liner_checker.Base;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
-import com.nifty.cloud.mb.core.NCMB;
 import com.nifty.cloud.mb.core.NCMBException;
 import com.nifty.cloud.mb.core.NCMBObject;
 import com.nifty.cloud.mb.core.NCMBQuery;
@@ -32,10 +31,6 @@ public class AnneiStatusListApi {
                 .create(new Observable.OnSubscribe<String>() {
                     @Override
                     public void call(Subscriber<? super String> subscriber) {
-                        NCMB.initialize(Base.getContext(),
-                                Base.getContext().getString(R.string.NCMB_application_key),
-                                Base.getContext().getString(R.string.NCMB_client_key));
-
                         NCMBQuery<NCMBObject> query = new NCMBQuery<>(Base.getContext().getString(R.string.NCMB_annei_table));
                         query.setLimit(1);
                         query.addOrderByDescending(Base.getContext().getString(R.string.NCMB_sort_column_name));

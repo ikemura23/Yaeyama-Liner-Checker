@@ -5,6 +5,7 @@ import android.app.Application;
 
 import com.crashlytics.android.Crashlytics;
 import com.crashlytics.android.core.CrashlyticsCore;
+import com.nifty.cloud.mb.core.NCMB;
 
 import io.fabric.sdk.android.Fabric;
 import timber.log.Timber;
@@ -24,6 +25,9 @@ public class ApplicationController extends Application {
             mApplicationController = this;
         }
         Base.initialize(this);
+        NCMB.initialize(Base.getContext(),
+                Base.getContext().getString(R.string.NCMB_application_key),
+                Base.getContext().getString(R.string.NCMB_client_key));
     }
 
     public static synchronized ApplicationController getInstance() {
