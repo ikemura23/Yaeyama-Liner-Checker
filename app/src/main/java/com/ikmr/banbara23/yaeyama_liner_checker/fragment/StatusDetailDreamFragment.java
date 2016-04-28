@@ -14,7 +14,7 @@ import android.widget.Button;
 
 import com.crashlytics.android.Crashlytics;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
-import com.ikmr.banbara23.yaeyama_liner_checker.api.DreamStatusListApi;
+import com.ikmr.banbara23.yaeyama_liner_checker.api.StatusListApi;
 import com.ikmr.banbara23.yaeyama_liner_checker.cache.CacheManager;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
@@ -260,7 +260,7 @@ public class StatusDetailDreamFragment extends BaseDetailFragment {
     private void startApiQuery() {
 
         mCompositeSubscription.add(
-                DreamStatusListApi.request(URL_DREAM_LIST)
+                StatusListApi.request(Company.DREAM)
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeOn(Schedulers.newThread())
                         .subscribe(new Subscriber<Result>() {
@@ -282,7 +282,7 @@ public class StatusDetailDreamFragment extends BaseDetailFragment {
                                 onResultListQuery(result);
                             }
                         })
-                );
+        );
     }
 
     /**
@@ -298,7 +298,7 @@ public class StatusDetailDreamFragment extends BaseDetailFragment {
 
     /**
      * 取得失敗
-     * 
+     *
      * @param e
      */
     public void failedQuery(Throwable e) {

@@ -1,11 +1,6 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker.fragment;
 
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
-import rx.subscriptions.CompositeSubscription;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -17,15 +12,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import butterknife.Bind;
-import butterknife.BindString;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 import com.crashlytics.android.Crashlytics;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.AnneiStatusDetailApi;
-import com.ikmr.banbara23.yaeyama_liner_checker.api.AnneiStatusListApi;
+import com.ikmr.banbara23.yaeyama_liner_checker.api.StatusListApi;
 import com.ikmr.banbara23.yaeyama_liner_checker.cache.CacheManager;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
@@ -39,7 +29,15 @@ import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailPriceHandicappe
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailTopView;
 import com.pnikosis.materialishprogress.ProgressWheel;
 
+import butterknife.Bind;
+import butterknife.BindString;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import de.mrapp.android.dialog.MaterialDialog;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
+import rx.subscriptions.CompositeSubscription;
 
 /**
  * 安栄の詳細フラグメント
@@ -247,7 +245,7 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
                                 saveResultDetailToCache(s);
                             }
                         })
-                );
+        );
     }
 
     /**
@@ -283,7 +281,7 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
      */
     private void startAnneiListQuery() {
         mCompositeSubscription.add(
-                AnneiStatusListApi.request(ANNEI_LIST_URL)
+                StatusListApi.request(Company.ANNEI)
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeOn(Schedulers.newThread())
                         .subscribe(new Subscriber<Result>() {
@@ -308,7 +306,7 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
                                 saveResultListToCache(result);
                             }
                         })
-                );
+        );
     }
 
     /**
@@ -386,7 +384,7 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
 
     /**
      * 取得失敗
-     * 
+     *
      * @param e
      */
     public void failedQuery(Throwable e) {

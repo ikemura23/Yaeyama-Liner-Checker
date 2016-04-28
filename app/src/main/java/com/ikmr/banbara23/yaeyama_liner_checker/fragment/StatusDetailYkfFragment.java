@@ -14,7 +14,7 @@ import android.widget.Button;
 
 import com.crashlytics.android.Crashlytics;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
-import com.ikmr.banbara23.yaeyama_liner_checker.api.YkfStatusListApi;
+import com.ikmr.banbara23.yaeyama_liner_checker.api.StatusListApi;
 import com.ikmr.banbara23.yaeyama_liner_checker.cache.CacheManager;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
@@ -211,7 +211,7 @@ public class StatusDetailYkfFragment extends BaseDetailFragment {
     private void startApiQuery() {
 
         mCompositeSubscription.add(
-                YkfStatusListApi.request(URL_YKF_LIST)
+                StatusListApi.request(Company.YKF)
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeOn(Schedulers.newThread())
                         .subscribe(new Subscriber<Result>() {
@@ -233,7 +233,7 @@ public class StatusDetailYkfFragment extends BaseDetailFragment {
                                 onResultListQuery(result);
                             }
                         })
-                );
+        );
     }
 
     /**
@@ -249,7 +249,7 @@ public class StatusDetailYkfFragment extends BaseDetailFragment {
 
     /**
      * 取得失敗
-     * 
+     *
      * @param e
      */
     public void failedQuery(Throwable e) {
