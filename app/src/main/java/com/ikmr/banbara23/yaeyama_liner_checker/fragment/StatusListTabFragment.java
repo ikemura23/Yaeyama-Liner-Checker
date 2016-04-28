@@ -20,6 +20,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.activity.StatusDetailDreamActivi
 import com.ikmr.banbara23.yaeyama_liner_checker.activity.StatusDetailYkfActivity;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.AnneiStatusListApi;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.DreamStatusListApi;
+import com.ikmr.banbara23.yaeyama_liner_checker.api.StatusListApi;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.YkfStatusListApi;
 import com.ikmr.banbara23.yaeyama_liner_checker.cache.CacheManager;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
@@ -146,17 +147,43 @@ public class StatusListTabFragment extends BaseListFragment {
      * 一覧の取得処理開始
      */
     private void startListQuery() {
-        switch (getParam()) {
-            case ANNEI:
-                startAnneiListQuery();
-                break;
-            case YKF:
-                startYkfListQuery();
-                break;
-            case DREAM:
-                startDreamListQuery();
-                break;
-        }
+        Company company = getParam();
+        mCompositeSubscription.add(
+                StatusListApi.request(company)
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeOn(Schedulers.newThread())
+                        .subscribe(new Subscriber<Result>() {
+                            @Override
+                            public void onCompleted() {
+                                // 完了
+                                finishQuery();
+                            }
+
+                            @Override
+                            public void onError(Throwable e) {
+                                // 失敗
+                                failedQuery(e);
+                            }
+
+                            @Override
+                            public void onNext(Result result) {
+                                // 値うけとる
+                                onResultListQuery(result);
+                                saveResultToCache(result);
+                            }
+                        })
+        );
+//        switch (getParam()) {
+//            case ANNEI:
+//                startAnneiListQuery();
+//                break;
+//            case YKF:
+//                startYkfListQuery();
+//                break;
+//            case DREAM:
+//                startDreamListQuery();
+//                break;
+//        }
     }
 
     /**
