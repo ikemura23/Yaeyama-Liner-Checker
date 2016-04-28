@@ -187,12 +187,12 @@ public class StatusListTabFragment extends BaseListFragment {
                                 saveResultToCache(result);
                             }
                         })
-                );
+        );
     }
 
     /**
      * 通信した結果をキャッシュに保存
-     * 
+     *
      * @param result 通信値
      */
     private void saveResultToCache(Result result) {
@@ -229,7 +229,7 @@ public class StatusListTabFragment extends BaseListFragment {
                                 saveResultToCache(result);
                             }
                         })
-                );
+        );
     }
 
     /**
@@ -261,7 +261,7 @@ public class StatusListTabFragment extends BaseListFragment {
                                 saveResultToCache(result);
                             }
                         })
-                );
+        );
     }
 
     /**
@@ -294,7 +294,6 @@ public class StatusListTabFragment extends BaseListFragment {
     }
 
     public void finishQuery() {
-        Log.d("StatusListTabFragment", "finishQuery");
         mHeaderView.setVisibility(View.VISIBLE);
         mProgressWheel.setVisibility(View.GONE);
     }

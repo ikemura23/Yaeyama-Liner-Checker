@@ -36,15 +36,21 @@ public class AnneiStatusListApi {
                                 Base.getContext().getString(R.string.NCMB_application_key),
                                 Base.getContext().getString(R.string.NCMB_client_key));
 
-                        NCMBQuery<NCMBObject> query = new NCMBQuery<>(Base.getContext().getString(R.string.NCMB_get_column_name));
+                        NCMBQuery<NCMBObject> query = new NCMBQuery<>(Base.getContext().getString(R.string.NCMB_annei_table));
                         query.setLimit(1);
                         query.addOrderByDescending(Base.getContext().getString(R.string.NCMB_sort_column_name));
+                        List<NCMBObject> results = null;
                         try {
-                            List<NCMBObject> results = query.find();
+                            results = query.find();
+                        } catch (NCMBException e) {
+                            subscriber.onError(e);
+                        }
+                        try {
                             NCMBObject object = results.get(0);
                             String json = object.getString(Base.getContext().getString(R.string.NCMB_get_column_name));
                             subscriber.onNext(json);
-                        } catch (NCMBException e) {
+                            subscriber.onCompleted();
+                        } catch (Exception e) {
                             subscriber.onError(e);
                         }
 
