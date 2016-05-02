@@ -6,8 +6,9 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.ApplicationController;
+import com.ikmr.banbara23.yaeyama_liner_checker.Base;
 
-final class PreferenceUtils {
+public final class PreferenceUtils {
 
     private static SharedPreferences getDefaultSharedPreferences(final Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context);
@@ -17,7 +18,8 @@ final class PreferenceUtils {
         return ApplicationController.getInstance().getApplicationContext();
     }
 
-    public static void saveInt(Context context, String key, int value) {
+    public static void saveInt( String key, int value) {
+        Context context = Base.getContext();
         SharedPreferences.Editor editor = getDefaultSharedPreferences(context).edit();
         editor.putInt(key, value);
         editor.apply();
@@ -35,8 +37,8 @@ final class PreferenceUtils {
         editor.apply();
     }
 
-    public static int loadInt(Context context, String key) {
-        return getDefaultSharedPreferences(context).getInt(key, -1);
+    public static int loadInt(String key) {
+        return getDefaultSharedPreferences(Base.getContext()).getInt(key, 0);
     }
 
     protected static String loadString(String key) {
