@@ -9,7 +9,6 @@ import android.view.MenuItem;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.activity.BaseActivity;
-import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 
 import butterknife.ButterKnife;
 
@@ -25,26 +24,16 @@ public class TimeTableTabActivity extends BaseActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ButterKnife.bind(this);
 
-        // Company company = (Company)
-        // getIntent().getSerializableExtra(StatusListTabActivity.class.getCanonicalName());
-        Company company = Company.ANNEI;
-        int currentPosition = 0;
-        // // TODO: 16/02/11 currentPosition をプレファレンスから取得
-        // switch (company) {
-        // case ANNEI:
-        // currentPosition = TAB_FIRST;
-        // break;
-        // case YKF:
-        // currentPosition = TAB_SECOND;
-        // break;
-        // case DREAM:
-        // currentPosition = TAB_THREAD;
-        // break;
-        // default:
-        // currentPosition = 0;
-        // }
-
+        int currentPosition = TimeTablePositionHelper.getInitTabPosition();
         createTab(currentPosition);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.activity_timetable_tab_layout);
+        if (tabLayout == null) return;
+        TimeTablePositionHelper.setCurrentTabPosition(tabLayout.getSelectedTabPosition());
     }
 
     @Override
