@@ -37,7 +37,7 @@ public class TimeTableFragment extends Fragment implements AdapterView.OnItemSel
 
     /**
      * NewInstance
-     * 
+     *
      * @param company 会社
      * @return TimeTableFragment
      */
@@ -118,7 +118,7 @@ public class TimeTableFragment extends Fragment implements AdapterView.OnItemSel
 
     /**
      * スピナーの表示リスト作成
-     * 
+     *
      * @return 港の配列
      */
     private String[] getPortList() {
@@ -139,7 +139,7 @@ public class TimeTableFragment extends Fragment implements AdapterView.OnItemSel
 
     /**
      * スピナー選択
-     * 
+     *
      * @param parent
      * @param view
      * @param position
@@ -170,7 +170,7 @@ public class TimeTableFragment extends Fragment implements AdapterView.OnItemSel
 
     /**
      * 表示するViewのResourceを返す
-     * 
+     *
      * @param position スピナー選択値
      * @return layoutのresource
      */

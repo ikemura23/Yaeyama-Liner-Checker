@@ -18,7 +18,7 @@ public final class PreferenceUtils {
         return ApplicationController.getInstance().getApplicationContext();
     }
 
-    public static void saveInt( String key, int value) {
+    public static void saveInt(String key, int value) {
         Context context = Base.getContext();
         SharedPreferences.Editor editor = getDefaultSharedPreferences(context).edit();
         editor.putInt(key, value);
