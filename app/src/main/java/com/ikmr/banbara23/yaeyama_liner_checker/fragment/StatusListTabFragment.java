@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.crashlytics.android.Crashlytics;
+import com.google.gson.Gson;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAdapter;
 import com.ikmr.banbara23.yaeyama_liner_checker.activity.StatusDetailAnneiActivity;
@@ -20,6 +21,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.activity.StatusDetailDreamActivi
 import com.ikmr.banbara23.yaeyama_liner_checker.activity.StatusDetailYkfActivity;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.StatusListApi;
 import com.ikmr.banbara23.yaeyama_liner_checker.cache.CacheManager;
+import com.ikmr.banbara23.yaeyama_liner_checker.cache.JsonUtil;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
@@ -131,12 +133,21 @@ public class StatusListTabFragment extends BaseListFragment {
             // キャッシュが無効なので通信必要
 //            Log.d("StatusListTabFragment", "キャッシュが無効");
             startListQuery();
+//            startDebugListQuery();
             return;
         }
         // キャッシュ有効なので不要
 //        Log.d("StatusListTabFragment", "キャッシュが有効");
         Result result = cacheManager.getListResultCache(getParam());
         onResultListQuery(result);
+        finishQuery();
+    }
+
+    private void startDebugListQuery() {
+        String json = JsonUtil.getLocalResultJson(getParam());
+        Result result = new Gson().fromJson(json, Result.class);
+        onResultListQuery(result);
+        saveResultToCache(result);
         finishQuery();
     }
 
