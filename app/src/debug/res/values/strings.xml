@@ -238,7 +238,10 @@
     <string name="time_table_note_kohama">小</string>
 
     <string name="time_table_init_tab_value">TimeTableInitTabValue</string>
-    <string name="time_table_init_spinner_value">TimeTableInitSpinnerValue</string>
+    <!--<string name="time_table_init_spinner_value">TimeTableInitSpinnerValue</string>-->
+    <string name="time_table_annei_init_spinner_value">TimeTableAnneiInitSpinnerValue</string>
+    <string name="time_table_ykf_init_spinner_value">TimeTableYkfInitSpinnerValue</string>
+    <string name="time_table_dream_init_spinner_value">TimeTableDreamInitSpinnerValue</string>
 
     <string name="NCMB_application_key">99f9ad328e9a72cfc482902a8a8b61af7d24a1516ed79e2946aa47b74b61a117</string>
     <string name="NCMB_client_key">ea1485bf126b16b0d5dbb3138e9d7c61643730dd96320750bf4f0c21cf474c03</string>

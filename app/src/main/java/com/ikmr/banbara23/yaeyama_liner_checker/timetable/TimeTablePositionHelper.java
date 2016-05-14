@@ -1,8 +1,12 @@
+
 package com.ikmr.banbara23.yaeyama_liner_checker.timetable;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.Base;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.cache.PreferenceUtils;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
+
+import timber.log.Timber;
 
 /**
  * 時刻表のタブ位置、スピナー位置を記憶、呼び出すヘルパークラス
@@ -32,8 +36,21 @@ public class TimeTablePositionHelper {
      *
      * @return
      */
-    public static int getInitSpinnerPosition() {
-        return PreferenceUtils.loadInt(Base.getContext().getString(R.string.time_table_init_spinner_value));
+    public static int getInitSpinnerPosition(Company company) {
+        String key = null;
+        switch (company) {
+            case ANNEI:
+                key = Base.getContext().getString(R.string.time_table_annei_init_spinner_value);
+                break;
+            case YKF:
+                key = Base.getContext().getString(R.string.time_table_ykf_init_spinner_value);
+                break;
+            case DREAM:
+                key = Base.getContext().getString(R.string.time_table_dream_init_spinner_value);
+                break;
+        }
+        Timber.d("TimeTablePositionHelper", "getInitSpinnerPosition : " + company.getCompanyName() + " - " + PreferenceUtils.loadInt(key));
+        return PreferenceUtils.loadInt(key);
     }
 
     /**
@@ -41,7 +58,20 @@ public class TimeTablePositionHelper {
      *
      * @param currentPosition
      */
-    public static void setCurrentSpinnerPosition(int currentPosition) {
-        PreferenceUtils.saveInt(Base.getContext().getString(R.string.time_table_init_spinner_value), currentPosition);
+    public static void setCurrentSpinnerPosition(Company company, int currentPosition) {
+        String key = null;
+        switch (company) {
+            case ANNEI:
+                key = Base.getContext().getString(R.string.time_table_annei_init_spinner_value);
+                break;
+            case YKF:
+                key = Base.getContext().getString(R.string.time_table_ykf_init_spinner_value);
+                break;
+            case DREAM:
+                key = Base.getContext().getString(R.string.time_table_dream_init_spinner_value);
+                break;
+        }
+        Timber.d("TimeTablePositionHelper", "setCurrentSpinnerPosition : " + company.getCompanyName() + " - " + currentPosition);
+        PreferenceUtils.saveInt(key, currentPosition);
     }
 }

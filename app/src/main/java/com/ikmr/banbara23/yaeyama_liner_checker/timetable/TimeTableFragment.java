@@ -20,6 +20,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import timber.log.Timber;
 
 /**
  * 時刻表フラグメント
@@ -95,6 +96,18 @@ public class TimeTableFragment extends Fragment implements AdapterView.OnItemSel
         }
     }
 
+    private void saveSpinnerPosition() {
+        if (mSpinner != null) {
+            TimeTablePositionHelper.setCurrentSpinnerPosition(getParamCompany(), mSpinner.getSelectedItemPosition());
+        }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        saveSpinnerPosition();
+    }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -114,6 +127,13 @@ public class TimeTableFragment extends Fragment implements AdapterView.OnItemSel
                 getPortList());
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         mSpinner.setAdapter(adapter);
+        Company company = getParamCompany();
+        Timber.d("getInitSpinnerPosition:" + TimeTablePositionHelper.getInitSpinnerPosition(company));
+        mSpinner.setSelection(TimeTablePositionHelper.getInitSpinnerPosition(company));
+    }
+
+    private Company getParamCompany() {
+        return (Company) getArguments().getSerializable(TimeTableFragment.class.getCanonicalName());
     }
 
     /**
@@ -122,7 +142,7 @@ public class TimeTableFragment extends Fragment implements AdapterView.OnItemSel
      * @return 港の配列
      */
     private String[] getPortList() {
-        Company company = (Company) getArguments().getSerializable(TimeTableFragment.class.getCanonicalName());
+        Company company = getParamCompany();
         if (company == null) {
             return new String[0];
         }
