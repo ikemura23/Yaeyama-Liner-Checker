@@ -238,7 +238,6 @@
     <string name="time_table_note_kohama">小</string>
 
     <string name="time_table_init_tab_value">TimeTableInitTabValue</string>
-    <!--<string name="time_table_init_spinner_value">TimeTableInitSpinnerValue</string>-->
     <string name="time_table_annei_init_spinner_value">TimeTableAnneiInitSpinnerValue</string>
     <string name="time_table_ykf_init_spinner_value">TimeTableYkfInitSpinnerValue</string>
     <string name="time_table_dream_init_spinner_value">TimeTableDreamInitSpinnerValue</string>
