@@ -108,7 +108,7 @@ public class StatusListTabFragment extends BaseListFragment {
         mHeaderView = View.inflate(getActivity(), R.layout.fragment_status_list_header_view, null);
         mTitleText = (TextView) mHeaderView.findViewById(R.id.fragment_status_list_toolbar_title_text);
         mUpdateText = (TextView) mHeaderView.findViewById(R.id.fragment_status_list_toolbar_update_text);
-        mListAdapter = new StatusListAdapter(getActivity().getApplicationContext());
+        mListAdapter = new StatusListAdapter();
     }
 
     /**
