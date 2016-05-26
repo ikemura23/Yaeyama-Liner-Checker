@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +12,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.crashlytics.android.Crashlytics;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAdapter;
 import com.ikmr.banbara23.yaeyama_liner_checker.activity.StatusDetailAnneiActivity;
@@ -44,6 +45,8 @@ public class StatusListTabFragment extends BaseListFragment {
     TextView mTitleText;
     TextView mUpdateText;
     View mHeaderView;
+    private AdView mAdView;
+
     // ProgressWheel mProgressWheel;
     private CompositeSubscription mCompositeSubscription = new CompositeSubscription();
 
@@ -56,7 +59,6 @@ public class StatusListTabFragment extends BaseListFragment {
 
     @BindString(R.string.url_ykf_list)
     String URL_YKF_LIST;
-
     @Bind(R.id.fragment_status_list_progressbar)
     ProgressWheel mProgressWheel;
 
@@ -73,6 +75,7 @@ public class StatusListTabFragment extends BaseListFragment {
         View view = inflater.inflate(R.layout.fragment_status_list, container, false);
         // mProgressWheel = (ProgressWheel)
         // view.findViewById(R.id.fragment_status_list_progressbar);
+        mAdView = (AdView) view.findViewById(R.id.adView);
         ButterKnife.bind(this, view);
         initViews();
         return view;
@@ -82,6 +85,17 @@ public class StatusListTabFragment extends BaseListFragment {
     public void onResume() {
         super.onResume();
         startQuery();
+        if (mAdView != null) {
+            mAdView.resume();
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (mAdView != null) {
+            mAdView.pause();
+        }
     }
 
     @Override
@@ -89,6 +103,9 @@ public class StatusListTabFragment extends BaseListFragment {
         super.onDestroyView();
         ButterKnife.unbind(this);
         mCompositeSubscription.unsubscribe();
+        if (mAdView != null) {
+            mAdView.destroy();
+        }
     }
 
     @Override
@@ -107,6 +124,8 @@ public class StatusListTabFragment extends BaseListFragment {
         mTitleText = (TextView) mHeaderView.findViewById(R.id.fragment_status_list_toolbar_title_text);
         mUpdateText = (TextView) mHeaderView.findViewById(R.id.fragment_status_list_toolbar_update_text);
         mListAdapter = new StatusListAdapter();
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
     }
 
     /**
@@ -119,7 +138,6 @@ public class StatusListTabFragment extends BaseListFragment {
     }
 
     private void startQuery() {
-        Log.d("StatusListTabFragment", "startQuery");
         mProgressWheel.setVisibility(View.VISIBLE);
         mHeaderView.setVisibility(View.GONE);
         mListAdapter.clear();
@@ -129,13 +147,11 @@ public class StatusListTabFragment extends BaseListFragment {
         CacheManager cacheManager = CacheManager.getInstance();
         if (cacheManager.isPreferenceCacheDisable() || cacheManager.isExpiryList(getParam())) {
             // キャッシュが無効なので通信必要
-//            Log.d("StatusListTabFragment", "キャッシュが無効");
             startListQuery();
-//            startDebugListQuery();
+            // startDebugListQuery();
             return;
         }
         // キャッシュ有効なので不要
-//        Log.d("StatusListTabFragment", "キャッシュが有効");
         Result result = cacheManager.getListResultCache(getParam());
         onResultListQuery(result);
         finishQuery();
@@ -170,7 +186,7 @@ public class StatusListTabFragment extends BaseListFragment {
                                 saveResultToCache(result);
                             }
                         })
-        );
+                );
     }
 
     /**
