@@ -23,9 +23,6 @@ import butterknife.ButterKnife;
 public class StatusDetailTopView extends FrameLayout {
 
     // Bind View ---------------------------------------
-//    @Bind(R.id.view_status_detail_top_status)
-//    TextView mStatusIcon;
-
     @Bind(R.id.view_status_detail_top_image)
     ImageView mViewStatusDetailTopImage;
 

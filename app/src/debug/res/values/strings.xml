@@ -30,7 +30,7 @@
     <string name="url_ykf_facebook">https://www.facebook.com/yaekan.ishigaki</string>
 
     <!--ドリーム観光-->
-    <string name="url_dream_list">http://www.ishigaki-dream.co.jp/data.cgi?no=78</string>
+    <string name="url_dream_list">http://ishigaki-dream.co.jp/</string>
 
     <!--広告-->
     <!--<string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>-->
@@ -49,7 +49,7 @@
     <!--ドリーム観光の電話番号-->
     <string name="tel_dream">0980843178</string>
     <!--ドリーム観光のHP-->
-    <string name="hp_dream">http://www.ishigaki-dream.co.jp/data.cgi?no=78</string>
+    <string name="hp_dream">http://ishigaki-dream.co.jp/</string>
 
     <!--その他-->
     <string name="other_info">
@@ -249,8 +249,4 @@
     <string name="NCMB_dream_table">DreamLiners</string>
     <string name="NCMB_get_column_name">result_json</string>
     <string name="NCMB_sort_column_name">createDate</string>
-
-    <string name="annei_result_json">{"mLiners":[{"port":"TAKETOMI","status":"NORMAL","text":"通常運航"},{"port":"KOHAMA","status":"NORMAL","text":"通常運航"},{"port":"KUROSHIMA","status":"NORMAL","text":"通常運航"},{"port":"OOHARA","status":"NORMAL","text":"通常運航"},{"port":"UEHARA","status":"NORMAL","text":"通常運航"},{"port":"HATOMA","status":"NORMAL","text":"通常運航"},{"port":"HATERUMA","status":"NORMAL","text":"通常運航"}],"mTitle":"全航路、通常運航です。","mUpdateTime":"2016年05月01日　06:05時点"}</string>
-    <string name="ykf_result_json">{"mLiners":[{"port":"TAKETOMI","status":"NORMAL","text":"通常運航"},{"port":"KOHAMA","status":"NORMAL","text":"通常運航"},{"port":"KUROSHIMA","status":"NORMAL","text":"通常運航"},{"port":"OOHARA","status":"NORMAL","text":"通常運航"},{"port":"UEHARA","status":"NORMAL","text":"通常運航"},{"port":"HATOMA","status":"NORMAL","text":"通常運航"}],"mTitle":"","mUpdateTime":"Ｈ28/5/1 06：30現在"}</string>
-    <string name="dream_result_json">{"mLiners":[{"port":"TAKETOMI","status":"NORMAL","text":"通常運航"},{"port":"KOHAMA","status":"NORMAL","text":"通常運航"},{"port":"KUROSHIMA","status":"CAUTION","text":"通常運航 仲本海岸遊泳時間 9時~17時"},{"port":"OOHARA","status":"NORMAL","text":"通常運航"},{"port":"HATOMA_UEHARA","status":"SUSPEND","text":"運休日"},{"port":"PREMIUM_DREAM","status":"CAUTION","text":"石垣発大原行 08:15 竹富発石垣行　17:00"},{"port":"SUPER_DREAM","status":"CAUTION","text":"運休"}],"mUpdateTime":"本日の運行状況　2016年5月1日（日）　07:00更新"}</string>
 </resources>
