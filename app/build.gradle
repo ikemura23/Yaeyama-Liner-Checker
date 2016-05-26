@@ -22,8 +22,8 @@ android {
         applicationId "com.banbara.yaeyama.liner.checker"
         minSdkVersion 14
         targetSdkVersion 23
-        versionCode 15
-        versionName "2.2.0"
+        versionCode 16
+        versionName "2.3.0"
         vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
