@@ -36,19 +36,21 @@ public class StatusListAdapter extends ArrayAdapter<Liner> {
         // 港
         portText.setText(liner.getPort().getPort());
         // ステータス
+        int imageResource = 0;
         switch (liner.getStatus()) {
             case NORMAL:
-                statusIconImage.setImageResource(R.drawable.status_nomal);
+                imageResource = R.drawable.status_nomal;
                 break;
             case CANCEL:
-                statusIconImage.setImageResource(R.drawable.status_cancel);
+                imageResource = R.drawable.status_cancel;
                 break;
             case CAUTION:
-                statusIconImage.setImageResource(R.drawable.status_cation);
+                imageResource = R.drawable.status_cation;
                 break;
             case SUSPEND:
-                statusIconImage.setImageResource(R.drawable.status_cancel);
+                imageResource = R.drawable.status_cancel;
         }
+        statusIconImage.setImageResource(imageResource);
         descriptionText.setText(liner.getText());
         return view;
     }
