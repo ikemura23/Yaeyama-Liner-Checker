@@ -6,6 +6,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
@@ -14,8 +15,6 @@ import com.ikmr.banbara23.yaeyama_liner_checker.entity.Status;
 import com.ikmr.banbara23.yaeyama_liner_checker.util.StringUtils;
 
 import butterknife.Bind;
-import butterknife.BindColor;
-import butterknife.BindString;
 import butterknife.ButterKnife;
 
 /**
@@ -24,8 +23,11 @@ import butterknife.ButterKnife;
 public class StatusDetailTopView extends FrameLayout {
 
     // Bind View ---------------------------------------
-    @Bind(R.id.view_status_detail_top_status)
-    TextView mStatusIcon;
+//    @Bind(R.id.view_status_detail_top_status)
+//    TextView mStatusIcon;
+
+    @Bind(R.id.view_status_detail_top_image)
+    ImageView mViewStatusDetailTopImage;
 
     @Bind(R.id.view_status_detail_top_text)
     TextView mStatusText;
@@ -35,29 +37,6 @@ public class StatusDetailTopView extends FrameLayout {
 
     @Bind(R.id.view_status_detail_top_comment)
     TextView mCommentText;
-
-    // Bind String ---------------------------------------
-    @BindString(R.string.status_normal)
-    String normal;
-
-    @BindString(R.string.status_cation)
-    String cation;
-
-    @BindString(R.string.status_cancel)
-    String cancel;
-
-    @BindString(R.string.status_cancel)
-    String suspend;
-
-    // BindColor ---------------------------------------
-    @BindColor(R.color.status_normal)
-    int colorNormal;
-    @BindColor(R.color.status_cation)
-    int colorCation;
-    @BindColor(R.color.status_cancel)
-    int colorCancel;
-    @BindColor(R.color.dark_grey)
-    int colorSuspend;
 
     @Bind(R.id.view_status_detail_top_comment_more_button)
     TextView mMoreButton;
@@ -94,24 +73,21 @@ public class StatusDetailTopView extends FrameLayout {
         if (status == null) {
             return;
         }
-
+        int imageResource = 0;
         switch (status) {
             case NORMAL:
-                mStatusIcon.setText(normal);
-                mStatusIcon.setTextColor(colorNormal);
+                imageResource = R.drawable.status_nomal;
                 break;
             case CANCEL:
-                mStatusIcon.setText(cancel);
-                mStatusIcon.setTextColor(colorCancel);
+                imageResource = R.drawable.status_cancel;
                 break;
             case CAUTION:
-                mStatusIcon.setText(cation);
-                mStatusIcon.setTextColor(colorCation);
+                imageResource = R.drawable.status_cation;
                 break;
             case SUSPEND:
-                mStatusIcon.setText(suspend);
-                mStatusIcon.setTextColor(colorSuspend);
+                imageResource = R.drawable.status_cancel;
         }
+        mViewStatusDetailTopImage.setImageResource(imageResource);
     }
 
     private void setStatusText(String value) {

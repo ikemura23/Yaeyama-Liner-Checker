@@ -11,23 +11,28 @@
         android:orientation="vertical"
         >
 
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/view_status_detail_top_status_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:orientation="horizontal"
+            android:layout_marginBottom="8dp"
             >
 
             <!--ステータスアイコン-->
-            <TextView
-                android:id="@+id/view_status_detail_top_status"
+            <!--<TextView-->
+            <!--android:id="@+id/view_status_detail_top_status"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textColor="@color/status_normal"-->
+            <!--android:textSize="30sp"-->
+            <!--android:textStyle="bold"-->
+            <!--/>-->
+            <ImageView
+                android:id="@+id/view_status_detail_top_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/status_normal"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                tools:text="○"
+                android:layout_centerVertical="true"
+                android:src="@drawable/status_nomal"
                 />
 
             <!--ステータス文字-->
@@ -35,12 +40,14 @@
                 android:id="@+id/view_status_detail_top_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="12dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="16dp"
+                android:layout_toEndOf="@+id/view_status_detail_top_image"
+                android:layout_toRightOf="@+id/view_status_detail_top_image"
                 android:textSize="20sp"
                 tools:text="通常運航"
                 />
-        </LinearLayout>
+        </RelativeLayout>
 
         <LinearLayout
             android:id="@+id/view_status_detail_top_status_comment_layout"
