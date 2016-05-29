@@ -28,10 +28,14 @@ android {
     }
     buildTypes {
         release {
+            buildConfigField "String", "NCMB_APPLICATION_ID", "\"${project.property("NcmbApplicationKeyRelease")}\""
+            buildConfigField "String", "NCMB_CLIENT_KEY", "\"${project.property("NcmbClientKeyRelease")}\""
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
+            buildConfigField "String", "NCMB_APPLICATION_ID", "\"${project.property("NcmbApplicationKeyDebug")}\""
+            buildConfigField "String", "NCMB_CLIENT_KEY", "\"${project.property("NcmbClientKeydebug")}\""
             applicationIdSuffix 'debug'
         }
     }

@@ -26,8 +26,8 @@ public class ApplicationController extends Application {
         }
         Base.initialize(this);
         NCMB.initialize(Base.getContext(),
-                Base.getContext().getString(R.string.NCMB_application_key),
-                Base.getContext().getString(R.string.NCMB_client_key));
+                BuildConfig.NCMB_APPLICATION_ID,
+                BuildConfig.NCMB_CLIENT_KEY);
     }
 
     public static synchronized ApplicationController getInstance() {
