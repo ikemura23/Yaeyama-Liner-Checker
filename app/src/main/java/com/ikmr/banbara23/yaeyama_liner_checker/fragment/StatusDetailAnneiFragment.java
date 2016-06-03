@@ -55,9 +55,6 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
     @Bind(R.id.fragment_status_detail_top_view)
     StatusDetailTopView mStatusDetailTopView;
 
-    // @Bind(R.id.fragment_time_table_annei_view)
-    // AnneiTimeTableView mAnneiTimeTableView;
-
     @Bind(R.id.fragment_time_annei_table_timetable_view)
     CardView mTimeTableLayout;
 
@@ -216,7 +213,6 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
         mStatusDetailTopView.setVisibility(View.GONE);
         mFragmentStatusDetailErrorButton.setVisibility(View.GONE);
         mProgressBar.setVisibility(View.VISIBLE);
-        // mAnneiTimeTableView.switchPortView(getPort());
 
         if (getActivity() != null && getActivity() instanceof FragmentApiQueryInterface) {
             // API通信処理の開始準備の完了

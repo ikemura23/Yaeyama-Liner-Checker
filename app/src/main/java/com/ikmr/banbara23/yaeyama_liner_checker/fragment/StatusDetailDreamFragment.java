@@ -51,9 +51,6 @@ public class StatusDetailDreamFragment extends BaseDetailFragment {
     @Bind(R.id.fragment_dream_time_table_card)
     CardView mDreamTimeCardView;
 
-    // @Bind(R.id.fragment_dream_time_table_view)
-    // DreamTimeTableView mDreamTimeTableView;
-
     @Bind(R.id.fragment_dream_status_detail_progressbar)
     ProgressWheel mProgressBar;
 
@@ -141,7 +138,6 @@ public class StatusDetailDreamFragment extends BaseDetailFragment {
         if (isTimeTableShow()) {
             mDreamTimeCardView.setVisibility(View.VISIBLE);
             setTimeTableView();
-            // mDreamTimeTableView.switchPortView(getParam().getPort());
         }
 
         // 値段の設定、大原と小浜は値段のレイアウトが違う

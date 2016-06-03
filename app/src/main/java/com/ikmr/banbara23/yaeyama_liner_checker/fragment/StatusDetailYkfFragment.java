@@ -45,12 +45,6 @@ public class StatusDetailYkfFragment extends BaseDetailFragment {
     @Bind(R.id.fragment_status_detail_ykf_top_view)
     StatusDetailTopView mStatusDetailTopView;
 
-    // @Bind(R.id.fragment_time_table_view)
-    // YkfTimeTableView mYkfTimeTableView;
-
-    // @Bind(R.id.fragment_status_detail_ykf_content_layout)
-    // LinearLayout mFragmentStatusDetailContentLayout;
-
     @Bind(R.id.fragment_ykf_status_detail_progressbar)
     ProgressWheel mProgressBar;
 
@@ -173,7 +167,6 @@ public class StatusDetailYkfFragment extends BaseDetailFragment {
         mStatusDetailDistanceAndTimeView.setDistanceText(null);
         mStatusDetailDistanceAndTimeView.setTimeText(getTime());
         mStatusDetailPriceView.setPrice(getPrice());
-        // mYkfTimeTableView.switchPortView(getParam().getPort());
         setTimeTableView();
     }
 
