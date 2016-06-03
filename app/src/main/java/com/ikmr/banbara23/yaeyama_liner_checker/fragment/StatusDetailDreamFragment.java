@@ -22,7 +22,6 @@ import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Price;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.YkfLinerDetail;
-import com.ikmr.banbara23.yaeyama_liner_checker.timetable.dream.DreamTimeTableView;
 import com.ikmr.banbara23.yaeyama_liner_checker.util.PortUtil;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailDistanceAndTimeView;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailPriceDreamKohamaView;
@@ -52,8 +51,8 @@ public class StatusDetailDreamFragment extends BaseDetailFragment {
     @Bind(R.id.fragment_dream_time_table_card)
     CardView mDreamTimeCardView;
 
-    @Bind(R.id.fragment_dream_time_table_view)
-    DreamTimeTableView mDreamTimeTableView;
+    // @Bind(R.id.fragment_dream_time_table_view)
+    // DreamTimeTableView mDreamTimeTableView;
 
     @Bind(R.id.fragment_dream_status_detail_progressbar)
     ProgressWheel mProgressBar;
@@ -141,7 +140,8 @@ public class StatusDetailDreamFragment extends BaseDetailFragment {
         // プレミアムドリーム・スーパードリームは時刻表がないので表示しない
         if (isTimeTableShow()) {
             mDreamTimeCardView.setVisibility(View.VISIBLE);
-            mDreamTimeTableView.switchPortView(getParam().getPort());
+            setTimeTableView();
+            // mDreamTimeTableView.switchPortView(getParam().getPort());
         }
 
         // 値段の設定、大原と小浜は値段のレイアウトが違う
@@ -171,6 +171,31 @@ public class StatusDetailDreamFragment extends BaseDetailFragment {
         // 走行時間と距離、ドリームは距離を公開していないのでnullを入れて非表示にする
         mStatusDetailDistanceAndTimeView.setDistanceText(null);
         mStatusDetailDistanceAndTimeView.setTimeText(getTime());
+    }
+
+    private void setTimeTableView() {
+        mDreamTimeCardView.removeAllViews();
+        int viewResourceId = getTimeTableLayoutResourceId();
+        LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater.inflate(viewResourceId, mDreamTimeCardView);
+    }
+
+    private int getTimeTableLayoutResourceId() {
+
+        switch (getParam().getPort()) {
+            case TAKETOMI:
+                return R.layout.view_time_table_dream_taketomi;
+            case KOHAMA:
+                return R.layout.view_time_table_dream_kohama;
+            case KUROSHIMA:
+                return R.layout.view_time_table_dream_kuroshima;
+            case OOHARA:
+                return R.layout.view_time_table_dream_oohara;
+            case HATOMA_UEHARA:
+                return R.layout.view_time_table_dream_uehara;
+            default:
+                return R.layout.view_time_table_ykf_taketomi;
+        }
     }
 
     /**
@@ -282,7 +307,7 @@ public class StatusDetailDreamFragment extends BaseDetailFragment {
                                 onResultListQuery(result);
                             }
                         })
-        );
+                );
     }
 
     /**

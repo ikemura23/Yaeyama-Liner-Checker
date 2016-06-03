@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +22,6 @@ import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Price;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.YkfLinerDetail;
-import com.ikmr.banbara23.yaeyama_liner_checker.timetable.ykf.YkfTimeTableView;
 import com.ikmr.banbara23.yaeyama_liner_checker.util.PortUtil;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailDistanceAndTimeView;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailPriceView;
@@ -45,8 +45,8 @@ public class StatusDetailYkfFragment extends BaseDetailFragment {
     @Bind(R.id.fragment_status_detail_ykf_top_view)
     StatusDetailTopView mStatusDetailTopView;
 
-    @Bind(R.id.fragment_time_table_view)
-    YkfTimeTableView mYkfTimeTableView;
+    // @Bind(R.id.fragment_time_table_view)
+    // YkfTimeTableView mYkfTimeTableView;
 
     // @Bind(R.id.fragment_status_detail_ykf_content_layout)
     // LinearLayout mFragmentStatusDetailContentLayout;
@@ -62,6 +62,9 @@ public class StatusDetailYkfFragment extends BaseDetailFragment {
 
     @Bind(R.id.fragment_ykf_status_detail_reload_button)
     Button mReloadButton;
+
+    @Bind(R.id.fragment_time_ykf_table_timetable_view)
+    CardView mFragmentTimeYkfTableTimetableView;
 
     @OnClick(R.id.fragment_ykf_status_detail_reload_button)
     void reloadClick(View view) {
@@ -170,7 +173,35 @@ public class StatusDetailYkfFragment extends BaseDetailFragment {
         mStatusDetailDistanceAndTimeView.setDistanceText(null);
         mStatusDetailDistanceAndTimeView.setTimeText(getTime());
         mStatusDetailPriceView.setPrice(getPrice());
-        mYkfTimeTableView.switchPortView(getParam().getPort());
+        // mYkfTimeTableView.switchPortView(getParam().getPort());
+        setTimeTableView();
+    }
+
+    private void setTimeTableView() {
+        mFragmentTimeYkfTableTimetableView.removeAllViews();
+        int viewResourceId = getYkfTimeTableLayoutResourceId();
+        LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater.inflate(viewResourceId, mFragmentTimeYkfTableTimetableView);
+    }
+
+    private int getYkfTimeTableLayoutResourceId() {
+
+        switch (getParam().getPort()) {
+            case TAKETOMI:
+                return R.layout.view_time_table_ykf_taketomi;
+            case KOHAMA:
+                return R.layout.view_time_table_ykf_kohama;
+            case KUROSHIMA:
+                return R.layout.view_time_table_ykf_kuroshima;
+            case OOHARA:
+                return R.layout.view_time_table_ykf_oohara;
+            case UEHARA:
+                return R.layout.view_time_table_ykf_uehara;
+            case HATOMA:
+                return R.layout.view_time_table_ykf_hatoma;
+            default:
+                return R.layout.view_time_table_ykf_taketomi;
+        }
     }
 
     /**
@@ -233,7 +264,7 @@ public class StatusDetailYkfFragment extends BaseDetailFragment {
                                 onResultListQuery(result);
                             }
                         })
-        );
+                );
     }
 
     /**

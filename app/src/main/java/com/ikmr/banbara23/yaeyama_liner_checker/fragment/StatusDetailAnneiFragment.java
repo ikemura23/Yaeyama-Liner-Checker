@@ -2,10 +2,12 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.fragment;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +24,6 @@ import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Price;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
-import com.ikmr.banbara23.yaeyama_liner_checker.timetable.annei.AnneiTimeTableView;
 import com.ikmr.banbara23.yaeyama_liner_checker.util.PortUtil;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailDistanceAndTimeView;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailPriceHandicappedView;
@@ -54,8 +55,11 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
     @Bind(R.id.fragment_status_detail_top_view)
     StatusDetailTopView mStatusDetailTopView;
 
-    @Bind(R.id.fragment_time_table_annei_view)
-    AnneiTimeTableView mAnneiTimeTableView;
+    // @Bind(R.id.fragment_time_table_annei_view)
+    // AnneiTimeTableView mAnneiTimeTableView;
+
+    @Bind(R.id.fragment_time_annei_table_timetable_view)
+    CardView mTimeTableLayout;
 
     @Bind(R.id.fragment_status_detail_distance_time_view)
     StatusDetailDistanceAndTimeView mDistanceTimeView;
@@ -152,7 +156,37 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
         View view = inflater.inflate(R.layout.fragment_status_detail_annei, container, false);
         ButterKnife.bind(this, view);
         mAdView = ButterKnife.findById(view, R.id.adView);
+        setTimeTableView();
         return view;
+    }
+
+    private void setTimeTableView() {
+        mTimeTableLayout.removeAllViews();
+        int viewResourceId = getAnneiTimeTableLayoutResourceId();
+        LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater.inflate(viewResourceId, mTimeTableLayout);
+    }
+
+    private int getAnneiTimeTableLayoutResourceId() {
+
+        switch (getPort()) {
+            case TAKETOMI:
+                return R.layout.view_time_table_annei_taketomi;
+            case KOHAMA:
+                return R.layout.view_time_table_annei_kohama;
+            case KUROSHIMA:
+                return R.layout.view_time_table_annei_kuroshima;
+            case OOHARA:
+                return R.layout.view_time_table_annei_oohara;
+            case UEHARA:
+                return R.layout.view_time_table_annei_uehara;
+            case HATOMA:
+                return R.layout.view_time_table_annei_hatoma;
+            case HATERUMA:
+                return R.layout.view_time_table_annei_hateruma;
+            default:
+                return R.layout.view_time_table_annei_taketomi;
+        }
     }
 
     @Override
@@ -182,7 +216,7 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
         mStatusDetailTopView.setVisibility(View.GONE);
         mFragmentStatusDetailErrorButton.setVisibility(View.GONE);
         mProgressBar.setVisibility(View.VISIBLE);
-        mAnneiTimeTableView.switchPortView(getPort());
+        // mAnneiTimeTableView.switchPortView(getPort());
 
         if (getActivity() != null && getActivity() instanceof FragmentApiQueryInterface) {
             // API通信処理の開始準備の完了
@@ -245,7 +279,7 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
                                 saveResultDetailToCache(s);
                             }
                         })
-        );
+                );
     }
 
     /**
@@ -306,7 +340,7 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
                                 saveResultListToCache(result);
                             }
                         })
-        );
+                );
     }
 
     /**

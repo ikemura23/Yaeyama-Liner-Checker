@@ -61,15 +61,16 @@
 
                 <!--時刻表-->
                 <android.support.v7.widget.CardView
+                    android:id="@+id/fragment_time_ykf_table_timetable_view"
                     style="@style/detail_card"
                     >
 
-                    <com.ikmr.banbara23.yaeyama_liner_checker.timetable.ykf.YkfTimeTableView
-                        android:id="@+id/fragment_time_table_view"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        />
+                    <!--<com.ikmr.banbara23.yaeyama_liner_checker.timetable.ykf.YkfTimeTableView-->
+                        <!--android:id="@+id/fragment_time_table_view"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginBottom="4dp"-->
+                        <!--/>-->
 
                 </android.support.v7.widget.CardView>
 
