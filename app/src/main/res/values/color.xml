@@ -8,8 +8,8 @@
     <color name="secondary_text">#323232</color>
     <color name="light_grey">#d3d3d3</color>
 
-    <color name="text_description">#9f9f9f</color>
-    <color name="dark_grey">#a9a9a9</color>
+    <color name="text_description">#838282</color>
+    <color name="dark_grey">#9f9f9f</color>
     <color name="red">#ff0000</color>
     <color name="medium_blue">#0000cd</color>
     <color name="orange">#FF530D</color>
