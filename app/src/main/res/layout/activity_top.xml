@@ -8,20 +8,28 @@
     >
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="100dp"
         android:orientation="vertical"
-        android:padding="16dp"
         tools:context="com.ikmr.banbara23.yaeyama_liner_checker.activity.TopActivity"
         >
 
         <!--運航情報を見るラベル-->
         <TextView
             android:id="@+id/activity_top_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#E6855E"
+            android:drawableLeft="@drawable/ic_directions_boat_white_24dp"
+            android:drawablePadding="16dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="16dp"
             android:text="運航情報を見る"
+            android:textColor="@color/white"
             android:textSize="15sp"
             />
 
@@ -46,21 +54,21 @@
                     android:layout_height="match_parent"
                     >
 
-                    <FrameLayout
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="16dp"
-                        android:background="@drawable/circle_annei"
-                        >
+                    <!--<FrameLayout-->
+                    <!--android:layout_width="35dp"-->
+                    <!--android:layout_height="35dp"-->
+                    <!--android:layout_gravity="center_vertical"-->
+                    <!--android:layout_marginLeft="16dp"-->
+                    <!--android:background="@drawable/circle_annei"-->
+                    <!--&gt;-->
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:src="@drawable/ic_directions_boat_white_24dp"
-                            />
-                    </FrameLayout>
+                    <!--<ImageView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:src="@drawable/ic_directions_boat_white_24dp"-->
+                    <!--/>-->
+                    <!--</FrameLayout>-->
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -94,21 +102,21 @@
                     android:layout_height="match_parent"
                     >
 
-                    <FrameLayout
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="16dp"
-                        android:background="@drawable/circle_ykf"
-                        >
+                    <!--<FrameLayout-->
+                    <!--android:layout_width="35dp"-->
+                    <!--android:layout_height="35dp"-->
+                    <!--android:layout_gravity="center_vertical"-->
+                    <!--android:layout_marginLeft="16dp"-->
+                    <!--android:background="@drawable/circle_ykf"-->
+                    <!--&gt;-->
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:src="@drawable/ic_directions_boat_white_24dp"
-                            />
-                    </FrameLayout>
+                    <!--<ImageView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:src="@drawable/ic_directions_boat_white_24dp"-->
+                    <!--/>-->
+                    <!--</FrameLayout>-->
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -142,21 +150,21 @@
                     android:layout_height="match_parent"
                     >
 
-                    <FrameLayout
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="16dp"
-                        android:background="@drawable/circle_dream"
-                        >
+                    <!--<FrameLayout-->
+                    <!--android:layout_width="35dp"-->
+                    <!--android:layout_height="35dp"-->
+                    <!--android:layout_gravity="center_vertical"-->
+                    <!--android:layout_marginLeft="16dp"-->
+                    <!--android:background="@drawable/circle_dream"-->
+                    <!--&gt;-->
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:src="@drawable/ic_directions_boat_white_24dp"
-                            />
-                    </FrameLayout>
+                    <!--<ImageView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:src="@drawable/ic_directions_boat_white_24dp"-->
+                    <!--/>-->
+                    <!--</FrameLayout>-->
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -228,4 +236,11 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#007AB7"
+        />
 </RelativeLayout>

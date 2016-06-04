@@ -1,6 +1,7 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,7 +16,7 @@ import butterknife.OnClick;
 /**
  * トップActivity
  */
-public class TopActivity extends BaseActivity {
+public class TopActivity extends Activity {
 
     @OnClick(R.id.top_activity_annei)
     void anneiClick(View view) {
