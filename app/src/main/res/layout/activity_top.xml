@@ -32,6 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
                 app:cardBackgroundColor="#E6855E"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="2dp"
@@ -73,22 +74,6 @@
                         android:layout_height="match_parent"
                         >
 
-                        <!--<FrameLayout-->
-                        <!--android:layout_width="35dp"-->
-                        <!--android:layout_height="35dp"-->
-                        <!--android:layout_gravity="center_vertical"-->
-                        <!--android:layout_marginLeft="16dp"-->
-                        <!--android:background="@drawable/circle_annei"-->
-                        <!--&gt;-->
-
-                        <!--<ImageView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_gravity="center"-->
-                        <!--android:src="@drawable/ic_directions_boat_white_24dp"-->
-                        <!--/>-->
-                        <!--</FrameLayout>-->
-
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -123,22 +108,6 @@
                         android:layout_height="match_parent"
                         >
 
-                        <!--<FrameLayout-->
-                        <!--android:layout_width="35dp"-->
-                        <!--android:layout_height="35dp"-->
-                        <!--android:layout_gravity="center_vertical"-->
-                        <!--android:layout_marginLeft="16dp"-->
-                        <!--android:background="@drawable/circle_ykf"-->
-                        <!--&gt;-->
-
-                        <!--<ImageView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_gravity="center"-->
-                        <!--android:src="@drawable/ic_directions_boat_white_24dp"-->
-                        <!--/>-->
-                        <!--</FrameLayout>-->
-
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -172,22 +141,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         >
-
-                        <!--<FrameLayout-->
-                        <!--android:layout_width="35dp"-->
-                        <!--android:layout_height="35dp"-->
-                        <!--android:layout_gravity="center_vertical"-->
-                        <!--android:layout_marginLeft="16dp"-->
-                        <!--android:background="@drawable/circle_dream"-->
-                        <!--&gt;-->
-
-                        <!--<ImageView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_gravity="center"-->
-                        <!--android:src="@drawable/ic_directions_boat_white_24dp"-->
-                        <!--/>-->
-                        <!--</FrameLayout>-->
 
                         <TextView
                             android:layout_width="wrap_content"

@@ -7,60 +7,85 @@
     android:background="@drawable/top_background"
     >
 
-    <LinearLayout
+    <android.support.v7.widget.CardView
+        android:id="@+id/activity_top_liner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp"
-        tools:context="com.ikmr.banbara23.yaeyama_liner_checker.activity.TopActivity"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="30dp"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="2dp"
         >
 
-        <!--運航情報を見るラベル-->
-        <TextView
-            android:id="@+id/activity_top_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="運航情報を見る"
-            android:textSize="15sp"
-            />
-
-        <!--運航情報-->
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
             android:orientation="vertical"
+            tools:context="com.ikmr.banbara23.yaeyama_liner_checker.activity.TopActivity"
             >
 
-            <!--安栄-->
-            <com.balysv.materialripple.MaterialRippleLayout
-                android:id="@+id/top_activity_annei"
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                app:mrl_rippleColor="#ff6666"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                app:cardBackgroundColor="#E6855E"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="2dp"
                 >
 
-                <LinearLayout
+                <!--運航情報を見るラベル-->
+                <TextView
+                    android:id="@+id/activity_top_description"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="50dp"
+
+                    android:drawableLeft="@drawable/ic_directions_boat_white_24dp"
+                    android:drawablePadding="16dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="16dp"
+                    android:text="運航情報を見る"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    />
+            </android.support.v7.widget.CardView>
+            <!--運航情報-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:weightSum="3"
+                >
+
+                <!--安栄-->
+                <com.balysv.materialripple.MaterialRippleLayout
+                    android:id="@+id/top_activity_annei"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    app:mrl_rippleColor="#ff6666"
                     >
 
-                    <FrameLayout
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="16dp"
-                        android:background="@drawable/circle_annei"
-                        >
+                    <!--<FrameLayout-->
+                    <!--android:layout_width="35dp"-->
+                    <!--android:layout_height="35dp"-->
+                    <!--android:layout_gravity="center_vertical"-->
+                    <!--android:layout_marginLeft="16dp"-->
+                    <!--android:background="@drawable/circle_annei"-->
+                    <!--&gt;-->
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:src="@drawable/ic_directions_boat_white_24dp"
-                            />
-                    </FrameLayout>
+                    <!--<ImageView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:src="@drawable/ic_directions_boat_white_24dp"-->
+                    <!--/>-->
+                    <!--</FrameLayout>-->
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -71,44 +96,42 @@
                         android:textColor="@color/secondary_text"
                         android:textSize="15sp"
                         />
-                </LinearLayout>
 
-            </com.balysv.materialripple.MaterialRippleLayout>
+                </com.balysv.materialripple.MaterialRippleLayout>
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/background"
-                />
+                <!--<FrameLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1dp"-->
+                <!--android:layout_marginLeft="16dp"-->
+                <!--android:layout_marginRight="16dp"-->
+                <!--android:background="@color/background"-->
+                <!--/>-->
 
-            <!--八重山観光フェリー-->
-            <com.balysv.materialripple.MaterialRippleLayout
-                android:id="@+id/top_activity_ykf"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                app:mrl_rippleColor="#87ceeb"
-                >
-
-                <LinearLayout
+                <!--八重山観光フェリー-->
+                <com.balysv.materialripple.MaterialRippleLayout
+                    android:id="@+id/top_activity_ykf"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    app:mrl_rippleColor="#87ceeb"
                     >
 
-                    <FrameLayout
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="16dp"
-                        android:background="@drawable/circle_ykf"
-                        >
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:src="@drawable/ic_directions_boat_white_24dp"
-                            />
-                    </FrameLayout>
+                    <!--<FrameLayout-->
+                    <!--android:layout_width="35dp"-->
+                    <!--android:layout_height="35dp"-->
+                    <!--android:layout_gravity="center_vertical"-->
+                    <!--android:layout_marginLeft="16dp"-->
+                    <!--android:background="@drawable/circle_ykf"-->
+                    <!--&gt;-->
+
+                    <!--<ImageView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:src="@drawable/ic_directions_boat_white_24dp"-->
+                    <!--/>-->
+                    <!--</FrameLayout>-->
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -119,44 +142,46 @@
                         android:textColor="@color/secondary_text"
                         android:textSize="15sp"
                         />
-                </LinearLayout>
 
-            </com.balysv.materialripple.MaterialRippleLayout>
+                </com.balysv.materialripple.MaterialRippleLayout>
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/background"
-                />
+                <!--<FrameLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1dp"-->
+                <!--android:layout_marginLeft="16dp"-->
+                <!--android:layout_marginRight="16dp"-->
+                <!--android:background="@color/background"-->
+                <!--/>-->
 
-            <!--ドリーム観光-->
-            <com.balysv.materialripple.MaterialRippleLayout
-                android:id="@+id/top_activity_dream"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                app:mrl_rippleColor="#ff9900"
-                >
-
-                <LinearLayout
+                <!--ドリーム観光-->
+                <com.balysv.materialripple.MaterialRippleLayout
+                    android:id="@+id/top_activity_dream"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    app:mrl_rippleColor="#ff9900"
                     >
 
-                    <FrameLayout
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="16dp"
-                        android:background="@drawable/circle_dream"
-                        >
+                    <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--&gt;-->
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:src="@drawable/ic_directions_boat_white_24dp"
-                            />
-                    </FrameLayout>
+                    <!--<FrameLayout-->
+                    <!--android:layout_width="35dp"-->
+                    <!--android:layout_height="35dp"-->
+                    <!--android:layout_gravity="center_vertical"-->
+                    <!--android:layout_marginLeft="16dp"-->
+                    <!--android:background="@drawable/circle_dream"-->
+                    <!--&gt;-->
+
+                    <!--<ImageView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:src="@drawable/ic_directions_boat_white_24dp"-->
+                    <!--/>-->
+                    <!--</FrameLayout>-->
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -167,65 +192,81 @@
                         android:textColor="@color/secondary_text"
                         android:textSize="15sp"
                         />
-                </LinearLayout>
+                    <!--</LinearLayout>-->
 
-            </com.balysv.materialripple.MaterialRippleLayout>
+                </com.balysv.materialripple.MaterialRippleLayout>
+            </LinearLayout>
+
         </LinearLayout>
+    </android.support.v7.widget.CardView>
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activity_top_liner"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
         <!--時刻表-->
-        <LinearLayout
+        <android.support.v7.widget.CardView
+            android:id="@+id/top_activity_timetable"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@color/white"
-            android:orientation="vertical"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:longClickable="true"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp"
             >
 
-            <com.balysv.materialripple.MaterialRippleLayout
-                android:id="@+id/top_activity_timetable"
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:mrl_rippleColor="#778899"
-                >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:text="時刻表"
-                    android:textColor="@color/secondary_text"
-                    android:textSize="15sp"
-                    />
-            </com.balysv.materialripple.MaterialRippleLayout>
-        </LinearLayout>
+                android:layout_margin="16dp"
+                android:text="時刻表"
+                android:textColor="@color/secondary_text"
+                android:textSize="15sp"
+                />
+        </android.support.v7.widget.CardView>
 
         <!--設定-->
-        <LinearLayout
+        <android.support.v7.widget.CardView
+            android:id="@+id/top_activity_setting"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@color/white"
-            android:orientation="vertical"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:longClickable="true"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp"
             >
 
             <!--時刻表-->
-            <com.balysv.materialripple.MaterialRippleLayout
-                android:id="@+id/top_activity_setting"
-                android:layout_width="match_parent"
+
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:mrl_rippleColor="#778899"
-                >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:text="設定"
-                    android:textColor="@color/secondary_text"
-                    android:textSize="15sp"
-                    />
-            </com.balysv.materialripple.MaterialRippleLayout>
-        </LinearLayout>
-
+                android:layout_margin="16dp"
+                android:text="設定"
+                android:textColor="@color/secondary_text"
+                android:textSize="15sp"
+                />
+        </android.support.v7.widget.CardView>
     </LinearLayout>
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#007AB7"
+        />
 </RelativeLayout>
