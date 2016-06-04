@@ -8,12 +8,14 @@
     >
 
     <android.support.v7.widget.CardView
+        android:id="@+id/activity_top_liner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="100dp"
         android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
         app:cardCornerRadius="8dp"
         app:cardElevation="2dp"
         >
@@ -29,6 +31,7 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:clickable="true"
                 app:cardBackgroundColor="#E6855E"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="2dp"
@@ -200,64 +203,62 @@
                 </com.balysv.materialripple.MaterialRippleLayout>
             </LinearLayout>
 
-            <!--時刻表-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@color/white"
-                android:orientation="vertical"
-                android:visibility="gone"
-                >
-
-                <com.balysv.materialripple.MaterialRippleLayout
-                    android:id="@+id/top_activity_timetable"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:mrl_rippleColor="#778899"
-                    >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="16dp"
-                        android:text="時刻表"
-                        android:textColor="@color/secondary_text"
-                        android:textSize="15sp"
-                        />
-                </com.balysv.materialripple.MaterialRippleLayout>
-            </LinearLayout>
-
-            <!--設定-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@color/white"
-                android:orientation="vertical"
-                android:visibility="gone"
-                >
-
-                <!--時刻表-->
-                <com.balysv.materialripple.MaterialRippleLayout
-                    android:id="@+id/top_activity_setting"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:mrl_rippleColor="#778899"
-                    >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="16dp"
-                        android:text="設定"
-                        android:textColor="@color/secondary_text"
-                        android:textSize="15sp"
-                        />
-                </com.balysv.materialripple.MaterialRippleLayout>
-            </LinearLayout>
-
         </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+
+    <!--時刻表-->
+    <android.support.v7.widget.CardView
+        android:id="@+id/top_activity_timetable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activity_top_liner"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:longClickable="true"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="2dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="時刻表"
+            android:textColor="@color/secondary_text"
+            android:textSize="15sp"
+            />
+    </android.support.v7.widget.CardView>
+
+    <!--設定-->
+    <android.support.v7.widget.CardView
+        android:id="@+id/top_activity_setting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top_activity_timetable"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:longClickable="true"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="2dp"
+        >
+
+        <!--時刻表-->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="設定"
+            android:textColor="@color/secondary_text"
+            android:textSize="15sp"
+            />
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.Toolbar
