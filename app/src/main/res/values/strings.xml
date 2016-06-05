@@ -171,13 +171,13 @@
 
     <!--ドリームの詳細情報-->
     <!--竹富-->
-    <string name="dream_taketomi_time">約10分</string>
+    <string name="dream_taketomi_time">約10分〜15分</string>
     <string name="dream_taketomi_price_adult">片道 600円\n往復 1,140円</string>
     <string name="dream_taketomi_price_child">片道 300円\n往復 570円</string>
     <string name="dream_taketomi_price_adult_ferry">片道 440円</string>
     <string name="dream_taketomi_price_child_ferry">片道 220円</string>
     <!--小浜-->
-    <string name="dream_kohama_time">約25分</string>
+    <string name="dream_kohama_time">約25分〜30分</string>
     <string name="dream_kohama_price_adult">片道 1,060円\n往復 2,010円</string>
     <string name="dream_kohama_price_child">片道 530円\n往復 1,010円</string>
     <string name="dream_kohama_price_adult_ferry">片道 740円</string>
@@ -186,13 +186,13 @@
     <string name="dream_kohama_taketomi_price_adult">片道 1,030円\n往復 1,960円</string>
     <string name="dream_kohama_taketomi_price_child">片道 520円\n往復 980円</string>
     <!--黒島-->
-    <string name="dream_kuroshima_time">約30分</string>
+    <string name="dream_kuroshima_time">約30分〜35分</string>
     <string name="dream_kuroshima_price_adult">片道 1,150円\n往復 2,190円</string>
     <string name="dream_kuroshima_price_child">片道 580円\n往復 1,100円</string>
     <string name="dream_kuroshima_price_adult_ferry">片道 820円</string>
     <string name="dream_kuroshima_price_child_ferry">片道 410円</string>
     <!--大原-->
-    <string name="dream_oohara_time">35分</string>
+    <string name="dream_oohara_time">約35分〜45分</string>
     <string name="dream_oohara_price_adult">片道 1,570円\n往復 2,980円</string>
     <string name="dream_oohara_price_child">片道 790円\n往復 1,500円</string>
     <string name="dream_oohara_price_adult_ferry">片道 1,100円</string>
@@ -204,7 +204,7 @@
     <string name="dream_taketomi_oohara_price_adult">片道 1,460円</string>
     <string name="dream_taketomi_oohara_price_child">片道 730円</string>
     <!--上原/鳩間-->
-    <string name="dream_uehara_time">約55分</string>
+    <string name="dream_uehara_time">約55分〜60分</string>
     <string name="dream_uehara_price_adult_ferry">片道 1,420円</string>
     <string name="dream_uehara_price_child_ferry">片道 710円</string>
 
