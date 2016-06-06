@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "424567142350",
+    "firebase_url": "https://yaimafuni-4181c.firebaseio.com",
+    "project_id": "yaimafuni-4181c",
+    "storage_bucket": "yaimafuni-4181c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:424567142350:android:f94bcb0c4653f098",
+        "android_client_info": {
+          "package_name": "com.banbara.yaeyama.liner.checker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "424567142350-uklnicps16p7688akra461huqb2dcupb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5JQFMgRQ_j8kmXhToIJL7ZMpgOTABuzc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:424567142350:android:7e403459cdfb9e22",
+        "android_client_info": {
+          "package_name": "com.banbara.yaeyama.liner.checker.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "424567142350-uklnicps16p7688akra461huqb2dcupb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5JQFMgRQ_j8kmXhToIJL7ZMpgOTABuzc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
