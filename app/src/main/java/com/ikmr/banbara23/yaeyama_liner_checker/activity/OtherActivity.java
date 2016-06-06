@@ -1,10 +1,6 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker.activity;
 
-import com.crashlytics.android.Crashlytics;
-import com.ikmr.banbara23.yaeyama_liner_checker.BuildConfig;
-import com.ikmr.banbara23.yaeyama_liner_checker.R;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,6 +8,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+
+import com.crashlytics.android.Crashlytics;
+import com.ikmr.banbara23.yaeyama_liner_checker.BuildConfig;
+import com.ikmr.banbara23.yaeyama_liner_checker.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
