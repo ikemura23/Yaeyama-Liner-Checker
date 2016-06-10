@@ -35,9 +35,6 @@ public class StatusDetailTopView extends FrameLayout {
     @Bind(R.id.view_status_detail_top_comment)
     TextView mCommentText;
 
-    @Bind(R.id.view_status_detail_top_comment_more_button)
-    TextView mMoreButton;
-
     public StatusDetailTopView(Context context) {
         super(context);
     }
@@ -117,7 +114,6 @@ public class StatusDetailTopView extends FrameLayout {
             mCommentText.setVisibility(GONE);
             return;
         }
-        mMoreButton.setVisibility(VISIBLE);
         mCommentText.setVisibility(VISIBLE);
         mCommentText.setText(comment.trim());
     }

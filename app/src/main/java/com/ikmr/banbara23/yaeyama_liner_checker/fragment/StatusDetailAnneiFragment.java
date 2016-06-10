@@ -12,7 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.crashlytics.android.Crashlytics;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
@@ -34,7 +33,6 @@ import butterknife.Bind;
 import butterknife.BindString;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import de.mrapp.android.dialog.MaterialDialog;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -65,23 +63,6 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
     StatusDetailPriceHandicappedView mPriceView;
 
     // ButterKnife OnClick --------------------------------------------
-
-    /**
-     * もっと見るボタン押下
-     *
-     * @param view
-     */
-    @OnClick(R.id.view_status_detail_top_comment_more_button)
-    void MoreButtonClick(View view) {
-        View dialogView = View.inflate(getActivity(), R.layout.dialog_status_detail_comment, null);
-        ((TextView) dialogView.findViewById(R.id.dialog_status_detail_comment_text)).setText(dialogMessage);
-        MaterialDialog.Builder dialogBuilder = new MaterialDialog.Builder(getActivity());
-        dialogBuilder.setTitle(R.string.detail_dialog_title);
-        dialogBuilder.setPositiveButton(android.R.string.ok, null);
-        dialogBuilder.setView(dialogView);
-        MaterialDialog dialog = dialogBuilder.create();
-        dialog.show();
-    }
 
     /**
      * エラー時の再読み込みボタン押下

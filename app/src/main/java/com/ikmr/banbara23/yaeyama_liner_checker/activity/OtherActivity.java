@@ -122,10 +122,8 @@ public class OtherActivity extends BaseActivity {
         notices.addNotice(new Notice("Butter Knife", "https://github.com/JakeWharton/butterknife", "Copyright 2013 Jake Wharton", new ApacheSoftwareLicense20()));
         notices.addNotice(new Notice("RxJava", "https://github.com/ReactiveX/RxJava", "Copyright 2013 Netflix, Inc.", new ApacheSoftwareLicense20()));
         notices.addNotice(new Notice("RxAndroid", "https://github.com/ReactiveX/RxAndroid", "Copyright 2015 The RxAndroid authors", new ApacheSoftwareLicense20()));
-        notices.addNotice(new Notice("AndroidMaterialDialog", "https://github.com/michael-rapp/AndroidMaterialDialog", "Copyright 2013 Netflix, Inc.", new ApacheSoftwareLicense20()));
         notices.addNotice(new Notice("Material Ripple Layout", "https://github.com/balysv/material-ripple", "Copyright 2015 Balys Valentukevicius", new ApacheSoftwareLicense20()));
-        notices.addNotice(new Notice("moshi", "https://github.com/square/moshi", "Copyright 2015 Square, Inc.", new ApacheSoftwareLicense20()));
-        notices.addNotice(new Notice("timber", "https://github.com/JakeWharton/timber", "Copyright 2013 Jake Wharton", new ApacheSoftwareLicense20()));
+        notices.addNotice(new Notice("Timber", "https://github.com/JakeWharton/timber", "Copyright 2013 Jake Wharton", new ApacheSoftwareLicense20()));
         new LicensesDialog.Builder(this)
                 .setNotices(notices)
                 .setIncludeOwnLicense(true)
