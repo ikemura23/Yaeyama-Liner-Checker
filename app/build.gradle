@@ -60,4 +60,5 @@ dependencies {
     compile 'de.psdev.licensesdialog:licensesdialog:1.8.0'
     compile 'com.google.code.gson:gson:2.4'
     compile files('libs/NCMB.jar')
+    compile 'com.google.firebase:firebase-analytics:9.0.0'
 }
