@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -31,6 +32,7 @@ import com.pnikosis.materialishprogress.ProgressWheel;
 import butterknife.Bind;
 import butterknife.BindString;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -47,7 +49,6 @@ public class StatusListTabFragment extends BaseListFragment {
     View mHeaderView;
     private AdView mAdView;
 
-    // ProgressWheel mProgressWheel;
     private CompositeSubscription mCompositeSubscription = new CompositeSubscription();
 
     // ButterKnife BindString --------------------------------------------
@@ -61,6 +62,24 @@ public class StatusListTabFragment extends BaseListFragment {
     String URL_YKF_LIST;
     @Bind(R.id.fragment_status_list_progressbar)
     ProgressWheel mProgressWheel;
+
+    @Bind(R.id.fragment_status_list_empty_button)
+    Button emptyButton;
+
+    /**
+     * リロードタップ
+     * @param view リロードボタン
+     */
+    @OnClick(R.id.fragment_status_list_empty_button)
+    void emptyClick(View view) {
+        if (getActivity() != null) {
+            ((EmptyClickListener)getActivity()).emptyClick();
+        }
+    }
+
+    public interface EmptyClickListener {
+        void emptyClick();
+    }
 
     public static StatusListTabFragment NewInstance(Company company) {
         StatusListTabFragment fragment = new StatusListTabFragment();
@@ -142,7 +161,7 @@ public class StatusListTabFragment extends BaseListFragment {
         mHeaderView.setVisibility(View.GONE);
         mListAdapter.clear();
         setListAdapter(mListAdapter);
-
+        emptyButton.setVisibility(View.GONE);
         // キャッシュ処理
         CacheManager cacheManager = CacheManager.getInstance();
         if (cacheManager.isPreferenceCacheDisable() || cacheManager.isExpiryList(getParam())) {
@@ -247,6 +266,9 @@ public class StatusListTabFragment extends BaseListFragment {
     }
 
     public void failedQuery(Throwable e) {
+        mHeaderView.setVisibility(View.GONE);
+        mProgressWheel.setVisibility(View.GONE);
+        emptyButton.setVisibility(View.VISIBLE);
         Crashlytics.logException(e);
     }
 

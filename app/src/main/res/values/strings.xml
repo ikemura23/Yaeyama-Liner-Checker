@@ -249,4 +249,5 @@
     <string name="NCMB_dream_table">DreamLiners</string>
     <string name="NCMB_get_column_name">result_json</string>
     <string name="NCMB_sort_column_name">createDate</string>
+    <string name="empty_button_message">取得できませんでした\nタップしてリトライしてください</string>
 </resources>

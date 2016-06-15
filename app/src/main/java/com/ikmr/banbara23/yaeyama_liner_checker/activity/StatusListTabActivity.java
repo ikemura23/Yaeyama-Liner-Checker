@@ -5,19 +5,34 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.PagerAdapter;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
+import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusListTabFragment;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * 一覧タブActivity
  */
-public class StatusListTabActivity extends BaseActivity {
+public class StatusListTabActivity extends BaseActivity implements StatusListTabFragment.EmptyClickListener {
 
     private static final int TAB_FIRST = 0;
     private static final int TAB_SECOND = 1;
     private static final int TAB_THREAD = 2;
+
+
+    @Bind(R.id.activity_list_tab_layout)
+    TabLayout tabLayout;
+
+    @Bind(R.id.activity_list_tab_view_pager)
+    ViewPager viewPager;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,39 +41,40 @@ public class StatusListTabActivity extends BaseActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+        ButterKnife.bind(this);
+        createTab();
+    }
 
+    /**
+     * 前回開いていたタブ番号を取得
+     * @return タブ番号を取得
+     */
+    private int getCurrentPosition() {
         Company company = (Company) getIntent().getSerializableExtra(StatusListTabActivity.class.getCanonicalName());
-        int currentPosition;
         switch (company) {
             case ANNEI:
-                currentPosition = TAB_FIRST;
-                break;
+                return TAB_FIRST;
             case YKF:
-                currentPosition = TAB_SECOND;
-                break;
+                return TAB_SECOND;
             case DREAM:
-                currentPosition = TAB_THREAD;
-                break;
+                return TAB_THREAD;
             default:
-                currentPosition = 0;
+                return  0;
         }
-
-        createTab(currentPosition);
     }
 
     /**
      * タブの作成
-     * 
-     * @param currentPosition 選択したタブ位置
      */
-    private void createTab(int currentPosition) {
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.activity_list_tab_layout);
+    private void createTab() {
+        if (tabLayout == null)  return;
+        if (viewPager == null) return;
+
         tabLayout.removeAllTabs();
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.company_tab_name_annei)));
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.company_tab_name_ykf)));
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.company_tab_name_dream)));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
         final PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
@@ -78,8 +94,7 @@ public class StatusListTabActivity extends BaseActivity {
 
             }
         });
-
-        viewPager.setCurrentItem(currentPosition);
+        viewPager.setCurrentItem(getCurrentPosition());
     }
 
     @Override
@@ -90,5 +105,10 @@ public class StatusListTabActivity extends BaseActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void emptyClick() {
+        createTab();
     }
 }
