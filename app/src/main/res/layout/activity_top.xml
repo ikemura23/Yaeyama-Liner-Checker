@@ -173,6 +173,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:visibility="gone"
         android:background="#007AB7" />
 
     <ImageView
@@ -182,5 +183,6 @@
         android:layout_alignTop="@+id/activity_bottom_toolbar"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="-30dp"
+        android:visibility="gone"
         android:src="@drawable/ship" />
 </RelativeLayout>
