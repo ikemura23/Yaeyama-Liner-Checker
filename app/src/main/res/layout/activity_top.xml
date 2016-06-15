@@ -1,15 +1,17 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/top_background">
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/top_background"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_vertical"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
         <android.support.v7.widget.CardView
             android:id="@+id/activity_top_liner"
@@ -18,14 +20,16 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             app:cardCornerRadius="4dp"
-            app:cardElevation="2dp">
+            app:cardElevation="2dp"
+            >
 
             <LinearLayout
                 android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                tools:context="com.ikmr.banbara23.yaeyama_liner_checker.activity.TopActivity">
+                tools:context="com.ikmr.banbara23.yaeyama_liner_checker.activity.TopActivity"
+                >
 
                 <!--運航情報を見る-->
                 <android.support.v7.widget.CardView
@@ -33,7 +37,8 @@
                     android:layout_height="wrap_content"
                     app:cardBackgroundColor="#E6855E"
                     app:cardCornerRadius="4dp"
-                    app:cardElevation="2dp">
+                    app:cardElevation="2dp"
+                    >
 
                     <TextView
                         android:id="@+id/activity_top_description"
@@ -45,7 +50,8 @@
                         android:paddingLeft="16dp"
                         android:text="運航情報を見る"
                         android:textColor="@color/white"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        />
                 </android.support.v7.widget.CardView>
 
                 <!--運航情報-->
@@ -53,7 +59,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    >
 
                     <!--安栄-->
                     <Button
@@ -66,14 +73,16 @@
                         android:paddingLeft="16dp"
                         android:text="@string/company_name_annei"
                         android:textColor="@color/secondary_text"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        />
 
                     <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
-                        android:background="@color/background" />
+                        android:background="@color/background"
+                        />
 
                     <!--八重山観光フェリー-->
                     <Button
@@ -86,14 +95,16 @@
                         android:paddingLeft="16dp"
                         android:text="@string/company_name_ykf"
                         android:textColor="@color/secondary_text"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        />
 
                     <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
-                        android:background="@color/background" />
+                        android:background="@color/background"
+                        />
 
                     <!--ドリーム観光-->
                     <Button
@@ -106,7 +117,8 @@
                         android:paddingLeft="16dp"
                         android:text="@string/company_name_dream"
                         android:textColor="@color/secondary_text"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        />
                 </LinearLayout>
             </LinearLayout>
         </android.support.v7.widget.CardView>
@@ -125,7 +137,8 @@
             android:foreground="?android:attr/selectableItemBackground"
             android:longClickable="true"
             app:cardCornerRadius="4dp"
-            app:cardElevation="2dp">
+            app:cardElevation="2dp"
+            >
 
             <TextView
                 android:layout_width="wrap_content"
@@ -136,7 +149,8 @@
                 android:gravity="center_vertical"
                 android:text="時刻表"
                 android:textColor="@color/secondary_text"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                />
         </android.support.v7.widget.CardView>
 
         <!--設定-->
@@ -152,7 +166,8 @@
             android:foreground="?android:attr/selectableItemBackground"
             android:longClickable="true"
             app:cardCornerRadius="4dp"
-            app:cardElevation="2dp">
+            app:cardElevation="2dp"
+            >
 
             <!--時刻表-->
             <TextView
@@ -164,7 +179,8 @@
                 android:gravity="center_vertical"
                 android:text="設定"
                 android:textColor="@color/secondary_text"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                />
         </android.support.v7.widget.CardView>
     </LinearLayout>
 
@@ -173,8 +189,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:visibility="gone"
-        android:background="#007AB7" />
+        android:background="#007AB7"
+        />
 
     <ImageView
         android:id="@+id/activity_bottom_ship_image"
@@ -183,6 +199,6 @@
         android:layout_alignTop="@+id/activity_bottom_toolbar"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="-30dp"
-        android:visibility="gone"
-        android:src="@drawable/ship" />
+        android:src="@drawable/ship"
+        />
 </RelativeLayout>

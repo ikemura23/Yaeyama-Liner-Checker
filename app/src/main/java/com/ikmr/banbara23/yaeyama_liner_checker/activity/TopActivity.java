@@ -4,17 +4,14 @@ package com.ikmr.banbara23.yaeyama_liner_checker.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewTreeObserver;
-import android.widget.ImageView;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableTabActivity;
 import com.ikmr.banbara23.yaeyama_liner_checker.util.AnimationUtil;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -22,12 +19,6 @@ import butterknife.OnClick;
  * トップActivity
  */
 public class TopActivity extends Activity {
-
-    @Bind(R.id.activity_bottom_toolbar)
-    Toolbar toolbar;
-
-    @Bind(R.id.activity_bottom_ship_image)
-    ImageView imageView;
 
     @OnClick(R.id.top_activity_annei)
     void anneiClick(View view) {
@@ -84,13 +75,18 @@ public class TopActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_top);
         ButterKnife.bind(this);
-
-
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+
+        View toolbar = findViewById(R.id.activity_bottom_toolbar);
+        final View imageView = findViewById(R.id.activity_bottom_ship_image);
+        if (toolbar == null)
+            return;
+        if (imageView == null)
+            return;
         imageView.setVisibility(View.GONE);
         toolbar.setVisibility(View.VISIBLE);
         toolbar.getViewTreeObserver()
