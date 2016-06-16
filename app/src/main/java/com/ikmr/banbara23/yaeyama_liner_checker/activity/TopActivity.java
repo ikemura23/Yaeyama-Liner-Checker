@@ -5,12 +5,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewTreeObserver;
+import android.widget.ImageView;
 
+import com.github.hujiaweibujidao.wava.Techniques;
+import com.github.hujiaweibujidao.wava.YoYo;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableTabActivity;
 import com.ikmr.banbara23.yaeyama_liner_checker.util.AnimationUtil;
 
+import java.util.Random;
+
+import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -18,6 +24,52 @@ import butterknife.OnClick;
  * トップActivity
  */
 public class TopActivity extends Activity {
+
+    @Bind(R.id.activity_bottom_ship_image)
+    ImageView shipView;
+
+    @OnClick(R.id.activity_bottom_ship_image)
+    void shipClick(View view) {
+        startShipRandomAnimation();
+    }
+
+    private void startShipRandomAnimation() {
+        try {
+            YoYo.with(getRandomTechniques()).playOn(shipView);
+        }
+        catch (Exception e) {
+        }
+    }
+
+    private Techniques getRandomTechniques() {
+        Random random = new Random();
+        switch (random.nextInt(11)) {
+            case 0:
+                return Techniques.Linear;
+            case 1:
+                return Techniques.Pulse;
+            case 2:
+                return Techniques.RubberBand;
+            case 3:
+                return Techniques.Shake;
+            case 4:
+                return Techniques.Swing;
+            case 5:
+                return Techniques.Wobble;
+            case 6:
+                return Techniques.Bounce;
+            case 7:
+                return Techniques.Tada;
+            case 8:
+                return Techniques.StandUp;
+            case 9:
+                return Techniques.Wave;
+            case 10:
+                return Techniques.BounceInLeft;
+            default:
+                return Techniques.Shake;
+        }
+    }
 
     @OnClick(R.id.top_activity_annei)
     void anneiClick(View view) {
@@ -74,25 +126,32 @@ public class TopActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_top);
         ButterKnife.bind(this);
+//        firstShowAnimationForShipImage();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        YoYo.with(Techniques.SlideInLeft).repeat(0).playOn(shipView);
+    }
 
+    /**
+     * 画面表示時に船のアニメーション表示
+     */
+    private void firstShowAnimationForShipImage() {
         View view = findViewById(R.id.activity_bottom_toolbar);
-        final View imageView = findViewById(R.id.activity_bottom_ship_image);
         if (view == null)
             return;
-        if (imageView == null)
+        if (shipView == null)
             return;
-        imageView.setVisibility(View.GONE);
+        shipView.setVisibility(View.GONE);
         view.setVisibility(View.VISIBLE);
         view.getViewTreeObserver()
                 .addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                     @Override
                     public void onGlobalLayout() {
-                        AnimationUtil.show(imageView, null);
+                        AnimationUtil.show(shipView, null);
+//                        shipView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
                     }
                 });
     }
