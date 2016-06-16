@@ -1,5 +1,7 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.activity;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -122,7 +124,13 @@ public class TopActivity extends Activity {
      */
     private void startShipRandomAnimation() {
         try {
-            YoYo.with(getRandomTechniques()).playOn(shipView);
+            YoYo.with(getRandomTechniques()).listen(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    super.onAnimationEnd(animation);
+                    // TODO: 2016/06/16 吹き出しを表示
+                }
+            }).playOn(shipView);
         }
         catch (Exception e) {
             // 処理なし
