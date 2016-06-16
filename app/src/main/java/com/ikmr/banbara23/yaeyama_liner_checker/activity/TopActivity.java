@@ -25,6 +25,21 @@ import butterknife.OnClick;
  */
 public class TopActivity extends Activity {
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_top);
+        ButterKnife.bind(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        YoYo.with(Techniques.SlideInLeft).repeat(0).playOn(shipView);
+    }
+
+    // butter knife --------------------------------------
+
     @Bind(R.id.activity_bottom_ship_image)
     ImageView shipView;
 
@@ -33,14 +48,91 @@ public class TopActivity extends Activity {
         startShipRandomAnimation();
     }
 
+    @OnClick(R.id.top_activity_annei)
+    void anneiClick(View view) {
+        startStatusListTabActivity(Company.ANNEI);
+    }
+
+    @OnClick(R.id.top_activity_ykf)
+    void ykfClick(View view) {
+        startStatusListTabActivity(Company.YKF);
+    }
+
+    @OnClick(R.id.top_activity_dream)
+    void dreamClick(View view) {
+        startStatusListTabActivity(Company.DREAM);
+    }
+
+    /**
+     * 設定画面に遷移
+     */
+    @OnClick(R.id.top_activity_setting)
+    void settinglick(View view) {
+        Intent intent = new Intent(this, PreferenceActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * 時刻表のタップ
+     *
+     * @param view
+     */
+    @OnClick(R.id.top_activity_timetable)
+    void timeTableClick(View view) {
+        Intent intent = new Intent(this, TimeTableTabActivity.class);
+        startActivity(intent);
+    }
+
+    // private method -------------------------------------------
+
+    /**
+     * 一覧タブ画面に遷移
+     *
+     * @param company
+     */
+    private void startStatusListTabActivity(Company company) {
+        Intent intent = new Intent(this, StatusListTabActivity.class);
+        intent.putExtra(StatusListTabActivity.class.getCanonicalName(), company);
+        startActivity(intent);
+    }
+
+    /**
+     * 画面表示時に船のアニメーション表示
+     */
+    private void firstShowAnimationForShipImage() {
+        View view = findViewById(R.id.activity_bottom_toolbar);
+        if (view == null)
+            return;
+        if (shipView == null)
+            return;
+        shipView.setVisibility(View.GONE);
+        view.setVisibility(View.VISIBLE);
+        view.getViewTreeObserver()
+                .addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                    @Override
+                    public void onGlobalLayout() {
+                        AnimationUtil.show(shipView, null);
+//                        shipView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                    }
+                });
+    }
+
+    /**
+     * 船のアニメーション開始
+     */
     private void startShipRandomAnimation() {
         try {
             YoYo.with(getRandomTechniques()).playOn(shipView);
         }
         catch (Exception e) {
+            // 処理なし
         }
     }
 
+    /**
+     * ランダムなアニメーションを返す
+     * @return アニメーション種類
+     */
     private Techniques getRandomTechniques() {
         Random random = new Random();
         switch (random.nextInt(11)) {
@@ -69,90 +161,5 @@ public class TopActivity extends Activity {
             default:
                 return Techniques.Shake;
         }
-    }
-
-    @OnClick(R.id.top_activity_annei)
-    void anneiClick(View view) {
-        startStatusListTabActivity(Company.ANNEI);
-    }
-
-    @OnClick(R.id.top_activity_ykf)
-    void ykfClick(View view) {
-        startStatusListTabActivity(Company.YKF);
-    }
-
-    @OnClick(R.id.top_activity_dream)
-    void dreamClick(View view) {
-        startStatusListTabActivity(Company.DREAM);
-    }
-
-    @OnClick(R.id.top_activity_setting)
-    void settinglick(View view) {
-        startSettingActivity();
-    }
-
-    /**
-     * 設定画面に遷移
-     */
-    private void startSettingActivity() {
-        Intent intent = new Intent(this, PreferenceActivity.class);
-        startActivity(intent);
-    }
-
-    /**
-     * 一覧タブ画面に遷移
-     *
-     * @param company
-     */
-    private void startStatusListTabActivity(Company company) {
-        Intent intent = new Intent(this, StatusListTabActivity.class);
-        intent.putExtra(StatusListTabActivity.class.getCanonicalName(), company);
-        startActivity(intent);
-    }
-
-    /**
-     * 時刻表のタップ
-     *
-     * @param view
-     */
-    @OnClick(R.id.top_activity_timetable)
-    void timeTableClick(View view) {
-        Intent intent = new Intent(this, TimeTableTabActivity.class);
-        startActivity(intent);
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_top);
-        ButterKnife.bind(this);
-//        firstShowAnimationForShipImage();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        YoYo.with(Techniques.SlideInLeft).repeat(0).playOn(shipView);
-    }
-
-    /**
-     * 画面表示時に船のアニメーション表示
-     */
-    private void firstShowAnimationForShipImage() {
-        View view = findViewById(R.id.activity_bottom_toolbar);
-        if (view == null)
-            return;
-        if (shipView == null)
-            return;
-        shipView.setVisibility(View.GONE);
-        view.setVisibility(View.VISIBLE);
-        view.getViewTreeObserver()
-                .addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-                    @Override
-                    public void onGlobalLayout() {
-                        AnimationUtil.show(shipView, null);
-//                        shipView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                    }
-                });
     }
 }
