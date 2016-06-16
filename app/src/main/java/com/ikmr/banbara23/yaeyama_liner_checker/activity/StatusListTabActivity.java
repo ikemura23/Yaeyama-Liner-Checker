@@ -7,10 +7,13 @@ import android.support.v4.view.ViewPager;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.ikmr.banbara23.yaeyama_liner_checker.Base;
+import com.ikmr.banbara23.yaeyama_liner_checker.BuildConfig;
 import com.ikmr.banbara23.yaeyama_liner_checker.PagerAdapter;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusListTabFragment;
+import com.nifty.cloud.mb.core.NCMB;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -42,6 +45,9 @@ public class StatusListTabActivity extends BaseActivity implements StatusListTab
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
         ButterKnife.bind(this);
+        NCMB.initialize(Base.getContext(),
+                BuildConfig.NCMB_APPLICATION_ID,
+                BuildConfig.NCMB_CLIENT_KEY);
         createTab();
     }
 
