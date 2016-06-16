@@ -9,3 +9,4 @@ app/app.iml
 gradle.properties
 app/*.log
 /.idea/misc.xml
+app/fabric.properties
