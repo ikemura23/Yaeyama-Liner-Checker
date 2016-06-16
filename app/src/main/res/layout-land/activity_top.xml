@@ -164,12 +164,12 @@
         </LinearLayout>
     </LinearLayout>
 
-    <android.support.v7.widget.Toolbar
+    <FrameLayout
         android:id="@+id/activity_bottom_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="#007AB7" />
+        android:background="#007AB7"
+        android:layout_width="match_parent"
+        android:layout_height="38dp" />
 
     <ImageView
         android:id="@+id/activity_bottom_ship_image"

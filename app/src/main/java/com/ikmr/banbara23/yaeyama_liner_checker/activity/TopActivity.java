@@ -1,4 +1,3 @@
-
 package com.ikmr.banbara23.yaeyama_liner_checker.activity;
 
 import android.app.Activity;
@@ -50,7 +49,7 @@ public class TopActivity extends Activity {
 
     /**
      * 一覧タブ画面に遷移
-     * 
+     *
      * @param company
      */
     private void startStatusListTabActivity(Company company) {
@@ -61,7 +60,7 @@ public class TopActivity extends Activity {
 
     /**
      * 時刻表のタップ
-     * 
+     *
      * @param view
      */
     @OnClick(R.id.top_activity_timetable)
@@ -81,15 +80,15 @@ public class TopActivity extends Activity {
     protected void onResume() {
         super.onResume();
 
-        View toolbar = findViewById(R.id.activity_bottom_toolbar);
+        View view = findViewById(R.id.activity_bottom_toolbar);
         final View imageView = findViewById(R.id.activity_bottom_ship_image);
-        if (toolbar == null)
+        if (view == null)
             return;
         if (imageView == null)
             return;
         imageView.setVisibility(View.GONE);
-        toolbar.setVisibility(View.VISIBLE);
-        toolbar.getViewTreeObserver()
+        view.setVisibility(View.VISIBLE);
+        view.getViewTreeObserver()
                 .addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                     @Override
                     public void onGlobalLayout() {
