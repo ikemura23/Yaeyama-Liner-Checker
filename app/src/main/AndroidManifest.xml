@@ -66,7 +66,6 @@
 
         <activity
             android:name=".activity.WeatherActivity"
-            android:label="@string/title_activity_weater"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>
