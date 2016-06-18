@@ -17,6 +17,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.psdev.licensesdialog.LicensesDialog;
 import de.psdev.licensesdialog.licenses.ApacheSoftwareLicense20;
+import de.psdev.licensesdialog.licenses.MITLicense;
 import de.psdev.licensesdialog.model.Notice;
 import de.psdev.licensesdialog.model.Notices;
 
@@ -124,6 +125,7 @@ public class OtherActivity extends BaseActivity {
         notices.addNotice(new Notice("RxAndroid", "https://github.com/ReactiveX/RxAndroid", "Copyright 2015 The RxAndroid authors", new ApacheSoftwareLicense20()));
         notices.addNotice(new Notice("Material Ripple Layout", "https://github.com/balysv/material-ripple", "Copyright 2015 Balys Valentukevicius", new ApacheSoftwareLicense20()));
         notices.addNotice(new Notice("Timber", "https://github.com/JakeWharton/timber", "Copyright 2013 Jake Wharton", new ApacheSoftwareLicense20()));
+        notices.addNotice(new Notice("BubbleLayout", "https://github.com/MasayukiSuda/BubbleLayout", "Copyright 2016 MasayukiSuda", new MITLicense()));
         new LicensesDialog.Builder(this)
                 .setNotices(notices)
                 .setIncludeOwnLicense(true)
