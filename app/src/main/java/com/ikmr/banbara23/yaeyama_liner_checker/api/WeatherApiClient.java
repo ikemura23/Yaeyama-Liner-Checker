@@ -2,6 +2,8 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.api;
 
 import com.google.gson.Gson;
+import com.ikmr.banbara23.yaeyama_liner_checker.Base;
+import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Weather;
 import com.nifty.cloud.mb.core.NCMBException;
 import com.nifty.cloud.mb.core.NCMBObject;
@@ -31,6 +33,7 @@ public class WeatherApiClient {
                         String tableName = "Weather";
                         NCMBQuery<NCMBObject> query = new NCMBQuery<>(tableName);
                         query.setLimit(1);
+                        query.addOrderByDescending(Base.getContext().getString(R.string.NCMB_sort_column_name));
                         List<NCMBObject> results = null;
                         try {
                             results = query.find();
