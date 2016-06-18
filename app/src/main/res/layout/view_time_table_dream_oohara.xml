@@ -274,6 +274,7 @@
             style="@style/time_table_caution_description_text"
             android:layout_toRightOf="@+id/view_time_table_description_dream_oohara1"
             android:text="高速カーフェリー 月 木 土運航"
+            android:textColor="@color/secondary_text"
             />
     </RelativeLayout>
 
@@ -297,6 +298,7 @@
             style="@style/time_table_caution_description_text"
             android:layout_toRightOf="@+id/view_time_table_description_dream_oohara2"
             android:text="竹富経由"
+            android:textColor="@color/secondary_text"
             />
     </RelativeLayout>
 
@@ -320,6 +322,7 @@
             style="@style/time_table_caution_description_text"
             android:layout_toRightOf="@+id/view_time_table_description_dream_oohara3"
             android:text="小浜経由"
+            android:textColor="@color/secondary_text"
             />
     </RelativeLayout>
 

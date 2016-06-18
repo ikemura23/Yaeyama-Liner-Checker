@@ -310,6 +310,7 @@
             style="@style/time_table_caution_description_text"
             android:layout_toRightOf="@+id/view_time_table_description_dream_kohama1"
             android:text="高速カーフェリー 月火木土運航"
+            android:textColor="@color/secondary_text"
             />
     </RelativeLayout>
 
@@ -333,6 +334,7 @@
             style="@style/time_table_caution_description_text"
             android:layout_toRightOf="@+id/view_time_table_description_dream_kohama2"
             android:text="竹富経由"
+            android:textColor="@color/secondary_text"
             />
     </RelativeLayout>
 </LinearLayout>

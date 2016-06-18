@@ -410,6 +410,7 @@
             />
 
         <TextView
+            android:textColor="@color/secondary_text"
             style="@style/time_table_caution_description_text"
             android:layout_toRightOf="@+id/view_time_table_description_dream_oohara1"
             android:text="高速カーフェリー 火 金運航"

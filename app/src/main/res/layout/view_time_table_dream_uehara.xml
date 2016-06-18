@@ -379,6 +379,7 @@
             style="@style/time_table_caution_description_text"
             android:layout_toRightOf="@+id/view_time_table_dream_uehara_description"
             android:text="高速カーフェリー 月 木 土運航運航"
+            android:textColor="@color/secondary_text"
             />
     </RelativeLayout>
 </LinearLayout>

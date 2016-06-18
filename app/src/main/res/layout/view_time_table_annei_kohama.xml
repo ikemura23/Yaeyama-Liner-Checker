@@ -231,6 +231,7 @@
 
         <TextView
             style="@style/time_table_caution_description_text"
+            android:textColor="@color/secondary_text"
             android:layout_toRightOf="@+id/view_time_table_description_ykf_hatoma"
             android:text="@string/time_table_note_take_description"
             />

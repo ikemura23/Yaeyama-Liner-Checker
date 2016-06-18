@@ -191,6 +191,7 @@
             style="@style/time_table_caution_description_text"
             android:layout_toRightOf="@+id/view_time_table_description_ykf_hatoma"
             android:text="@string/time_table_note_take_irregular_description"
+            android:textColor="@color/secondary_text"
             />
     </RelativeLayout>
 
@@ -202,6 +203,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:text="@string/time_table_oohara_buzz_description"
+        android:textColor="@color/secondary_text"
         />
 
     <!-- バス -->

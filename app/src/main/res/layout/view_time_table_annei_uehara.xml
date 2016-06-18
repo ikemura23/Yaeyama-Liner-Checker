@@ -405,6 +405,7 @@
             android:layout_marginLeft="8dp"
             android:layout_toRightOf="@+id/view_time_table_description_annei_uehara_1"
             android:text="@string/time_table_note_789"
+            android:textColor="@color/secondary_text"
             android:textSize="12dp"
             />
     </RelativeLayout>
@@ -435,6 +436,7 @@
             android:layout_marginLeft="8dp"
             android:layout_toRightOf="@+id/view_time_table_description_annei_uehara_2"
             android:text="4・5・6月のみ運航"
+            android:textColor="@color/secondary_text"
             android:textSize="12dp"
             />
     </RelativeLayout>
@@ -465,6 +467,7 @@
             android:layout_marginLeft="8dp"
             android:layout_toRightOf="@+id/view_time_table_description_annei_uehara_3"
             android:text="鳩間経由"
+            android:textColor="@color/secondary_text"
             android:textSize="12dp"
             />
     </RelativeLayout>

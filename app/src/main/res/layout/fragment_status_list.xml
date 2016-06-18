@@ -8,17 +8,19 @@
     >
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/adView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/linearLayout2">
+        >
         <!--リスト-->
         <ListView
             android:id="@id/android:list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:overScrollMode="never"
             />
     </LinearLayout>
     <!--広告-->
@@ -43,8 +45,8 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:text="@string/empty_button_message"
-        android:textSize="20sp"
         android:textColor="@color/text_description"
+        android:textSize="20sp"
         android:visibility="gone"
         />
 

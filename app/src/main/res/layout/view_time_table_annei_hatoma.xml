@@ -99,6 +99,7 @@
             android:layout_marginLeft="8dp"
             android:layout_toRightOf="@+id/view_time_table_description_ykf_hatoma"
             android:text="@string/time_table_note_ue_description"
+            android:textColor="@color/secondary_text"
             android:textSize="12dp"
             />
     </RelativeLayout>
@@ -113,6 +114,7 @@
         android:layout_marginTop="8dp"
         android:layout_toRightOf="@+id/view_time_table_description_ykf_hatoma"
         android:text="@string/time_table_note_ue_description2"
+        android:textColor="@color/secondary_text"
         android:textSize="12dp"
         />
 </LinearLayout>

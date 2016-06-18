@@ -387,6 +387,7 @@
             android:layout_marginLeft="8dp"
             android:layout_toRightOf="@+id/view_time_table_description_annei_taketomi"
             android:text="@string/time_table_note_789_description"
+            android:textColor="@color/secondary_text"
             android:textSize="12dp"
             />
     </RelativeLayout>
