@@ -18,20 +18,20 @@
 
 
         <TextView
-            android:id="@+id/activity_top_weather_temperature"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/text_margin"
-            android:text="気温；"
-            android:textSize="18sp"
-            />
-
-        <TextView
             android:id="@+id/activity_top_weather"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/text_margin"
             android:text="天気："
+            android:textSize="18sp"
+            />
+
+        <TextView
+            android:id="@+id/activity_top_weather_temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:text="気温；"
             android:textSize="18sp"
             />
 

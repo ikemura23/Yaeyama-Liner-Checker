@@ -1,9 +1,11 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker.activity;
 
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.customtabs.CustomTabsIntent;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -29,9 +31,10 @@ public class WeatherActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, weatherUrl,
-                        Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                startCustomTab();
+                // Snackbar.make(view, weatherUrl,
+                // Snackbar.LENGTH_LONG)
+                // .setAction("Action", null).show();
             }
         });
 
@@ -43,5 +46,17 @@ public class WeatherActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.activity_top_weather_wind)).append(weather.getWind());
         ((TextView) findViewById(R.id.activity_top_weather_wave)).append(weather.getWave());
         weatherUrl = weather.getUrl();
+    }
+
+    private void startCustomTab() {
+        Uri uri = Uri.parse(weatherUrl);
+
+        final CustomTabsIntent tabsIntent = new CustomTabsIntent.Builder()
+                .setShowTitle(true)
+                .setToolbarColor(ContextCompat.getColor(this, R.color.primary))
+                .build();
+
+        // Chromeの起動
+        tabsIntent.launchUrl(this, uri);
     }
 }
