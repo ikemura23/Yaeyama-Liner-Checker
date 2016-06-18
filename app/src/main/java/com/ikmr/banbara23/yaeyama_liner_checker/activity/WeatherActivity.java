@@ -1,11 +1,8 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker.activity;
 
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.customtabs.CustomTabsIntent;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -13,6 +10,7 @@ import android.widget.TextView;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Weather;
+import com.ikmr.banbara23.yaeyama_liner_checker.util.CustomTabUtil;
 
 public class WeatherActivity extends AppCompatActivity {
     private String weatherUrl;
@@ -49,14 +47,6 @@ public class WeatherActivity extends AppCompatActivity {
     }
 
     private void startCustomTab() {
-        Uri uri = Uri.parse(weatherUrl);
-
-        final CustomTabsIntent tabsIntent = new CustomTabsIntent.Builder()
-                .setShowTitle(true)
-                .setToolbarColor(ContextCompat.getColor(this, R.color.primary))
-                .build();
-
-        // Chromeの起動
-        tabsIntent.launchUrl(this, uri);
+        CustomTabUtil.start(this, weatherUrl);
     }
 }
