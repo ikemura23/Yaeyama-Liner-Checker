@@ -1,3 +1,4 @@
+
 package com.ikmr.banbara23.yaeyama_liner_checker.activity;
 
 import android.animation.Animator;
@@ -8,7 +9,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.daasuu.bl.BubbleLayout;
 import com.github.hujiaweibujidao.wava.Techniques;
 import com.github.hujiaweibujidao.wava.YoYo;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
@@ -37,13 +40,21 @@ public class TopActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        YoYo.with(Techniques.SlideInLeft).repeat(0).playOn(shipView);
+        // bubbleLayout.setVisibility(View.GONE);
+        // YoYo.with(Techniques.SlideInLeft).repeat(0).playOn(shipView);
+        createBubbleText();
     }
 
     // butter knife --------------------------------------
 
     @Bind(R.id.activity_bottom_ship_image)
     ImageView shipView;
+
+    @Bind(R.id.activity_top_bubble)
+    BubbleLayout bubbleLayout;
+
+    @Bind(R.id.activity_top_weather_text)
+    TextView weatherText;
 
     @OnClick(R.id.activity_bottom_ship_image)
     void shipClick(View view) {
@@ -85,6 +96,12 @@ public class TopActivity extends Activity {
         startActivity(intent);
     }
 
+    @OnClick(R.id.activity_top_bubble)
+    void bubbleClick(View view) {
+        Intent intent = new Intent(this, WeatherActivity.class);
+        startActivity(intent);
+    }
+
     // private method -------------------------------------------
 
     /**
@@ -102,7 +119,7 @@ public class TopActivity extends Activity {
      * 画面表示時に船のアニメーション表示
      */
     private void firstShowAnimationForShipImage() {
-        View view = findViewById(R.id.activity_bottom_toolbar);
+        View view = findViewById(R.id.activity_bottom_view);
         if (view == null)
             return;
         if (shipView == null)
@@ -114,7 +131,7 @@ public class TopActivity extends Activity {
                     @Override
                     public void onGlobalLayout() {
                         AnimationUtil.show(shipView, null);
-//                        shipView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                        // shipView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
                     }
                 });
     }
@@ -128,17 +145,18 @@ public class TopActivity extends Activity {
                 @Override
                 public void onAnimationEnd(Animator animation) {
                     super.onAnimationEnd(animation);
-                    // TODO: 2016/06/16 吹き出しを表示
+                    bubbleLayout.setVisibility(View.VISIBLE);
+                    // createBubbleText();
                 }
             }).playOn(shipView);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             // 処理なし
         }
     }
 
     /**
      * ランダムなアニメーションを返す
+     * 
      * @return アニメーション種類
      */
     private Techniques getRandomTechniques() {
@@ -169,5 +187,15 @@ public class TopActivity extends Activity {
             default:
                 return Techniques.Shake;
         }
+    }
+
+    private void createBubbleText() {
+        weatherText.setText("南の風、波1.5メートル後1メートル");
+        // List<String> weather = new ArrayList<>();
+        // weather.add("晴れ");
+        // weather.add("31/29度");
+        // weather.add("風：３ｍ");
+        // weather.add("波：３m");
+        // marqueeView.startWithList(weather);
     }
 }

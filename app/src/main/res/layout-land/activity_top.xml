@@ -165,7 +165,7 @@
     </LinearLayout>
 
     <FrameLayout
-        android:id="@+id/activity_bottom_toolbar"
+        android:id="@+id/activity_bottom_view"
         android:layout_alignParentBottom="true"
         android:background="#007AB7"
         android:layout_width="match_parent"
@@ -175,8 +175,37 @@
         android:id="@+id/activity_bottom_ship_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/activity_bottom_toolbar"
+        android:layout_alignTop="@+id/activity_bottom_view"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="-30dp"
         android:src="@drawable/ship" />
+
+    <com.daasuu.bl.BubbleLayout
+        android:id="@+id/activity_top_bubble"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/activity_bottom_view"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="-30dp"
+        android:layout_toRightOf="@+id/activity_bottom_ship_image"
+        android:padding="8dp"
+        app:bl_arrowDirection="left"
+        app:bl_arrowHeight="8dp"
+        app:bl_arrowPosition="20dp"
+        app:bl_arrowWidth="8dp"
+        app:bl_strokeColor="@color/white"
+        app:bl_cornersRadius="30dp"
+        app:bl_strokeWidth="1dp"
+        >
+
+        <TextView
+            android:id="@+id/activity_top_weather_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="天気"
+            />
+
+    </com.daasuu.bl.BubbleLayout>
 </RelativeLayout>
