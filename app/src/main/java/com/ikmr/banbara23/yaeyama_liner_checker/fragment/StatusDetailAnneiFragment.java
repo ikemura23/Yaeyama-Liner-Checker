@@ -23,6 +23,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Price;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
+import com.ikmr.banbara23.yaeyama_liner_checker.util.CustomTabUtil;
 import com.ikmr.banbara23.yaeyama_liner_checker.util.PortUtil;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailDistanceAndTimeView;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailPriceHandicappedView;
@@ -439,12 +440,6 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
      */
     private void startWeb() {
         String urlString = PortUtil.getAnneiDetailUrl(getContext(), getPort());
-        Uri uri = Uri.parse(urlString);
-        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-        try {
-            startActivity(intent);
-        } catch (Exception e) {
-            Crashlytics.logException(e);
-        }
+        CustomTabUtil.start(getActivity(), urlString);
     }
 }

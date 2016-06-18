@@ -22,6 +22,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Price;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.YkfLinerDetail;
+import com.ikmr.banbara23.yaeyama_liner_checker.util.CustomTabUtil;
 import com.ikmr.banbara23.yaeyama_liner_checker.util.PortUtil;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailDistanceAndTimeView;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailPriceDreamKohamaView;
@@ -231,13 +232,7 @@ public class StatusDetailDreamFragment extends BaseDetailFragment {
      * 外部ブラウザアプリ起動
      */
     private void startWeb() {
-        Uri uri = Uri.parse(HP_DREAM);
-        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-        try {
-            startActivity(intent);
-        } catch (Exception e) {
-            Crashlytics.logException(e);
-        }
+        CustomTabUtil.start(getActivity(), HP_DREAM);
     }
 
     /**

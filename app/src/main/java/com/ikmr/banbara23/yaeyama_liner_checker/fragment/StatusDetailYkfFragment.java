@@ -22,6 +22,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Price;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.YkfLinerDetail;
+import com.ikmr.banbara23.yaeyama_liner_checker.util.CustomTabUtil;
 import com.ikmr.banbara23.yaeyama_liner_checker.util.PortUtil;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailDistanceAndTimeView;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailPriceView;
@@ -154,13 +155,7 @@ public class StatusDetailYkfFragment extends BaseDetailFragment {
      */
     private void startWeb() {
         String hpUrl = getActivity().getApplicationContext().getString(R.string.hp_ykf);
-        Uri uri = Uri.parse(hpUrl);
-        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-        try {
-            startActivity(intent);
-        } catch (Exception e) {
-            Crashlytics.logException(e);
-        }
+        CustomTabUtil.start(getActivity(), hpUrl);
     }
 
     private void initViews() {
