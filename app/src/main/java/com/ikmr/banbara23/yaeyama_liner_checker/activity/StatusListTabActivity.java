@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.Base;
 import com.ikmr.banbara23.yaeyama_liner_checker.BuildConfig;
@@ -17,7 +16,6 @@ import com.nifty.cloud.mb.core.NCMB;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * 一覧タブActivity
@@ -28,14 +26,11 @@ public class StatusListTabActivity extends BaseActivity implements StatusListTab
     private static final int TAB_SECOND = 1;
     private static final int TAB_THREAD = 2;
 
-
     @Bind(R.id.activity_list_tab_layout)
     TabLayout tabLayout;
 
     @Bind(R.id.activity_list_tab_view_pager)
     ViewPager viewPager;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +48,7 @@ public class StatusListTabActivity extends BaseActivity implements StatusListTab
 
     /**
      * 前回開いていたタブ番号を取得
+     * 
      * @return タブ番号を取得
      */
     private int getCurrentPosition() {
@@ -65,7 +61,7 @@ public class StatusListTabActivity extends BaseActivity implements StatusListTab
             case DREAM:
                 return TAB_THREAD;
             default:
-                return  0;
+                return 0;
         }
     }
 
@@ -73,8 +69,10 @@ public class StatusListTabActivity extends BaseActivity implements StatusListTab
      * タブの作成
      */
     private void createTab() {
-        if (tabLayout == null)  return;
-        if (viewPager == null) return;
+        if (tabLayout == null)
+            return;
+        if (viewPager == null)
+            return;
 
         tabLayout.removeAllTabs();
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.company_tab_name_annei)));
@@ -83,24 +81,8 @@ public class StatusListTabActivity extends BaseActivity implements StatusListTab
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         final PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
-        viewPager.setCurrentItem(getCurrentPosition());
+        viewPager.setCurrentItem(getCurrentPosition()); // 初期選択タブ
+        tabLayout.setupWithViewPager(viewPager); // オートマチックsync
     }
 
     @Override
