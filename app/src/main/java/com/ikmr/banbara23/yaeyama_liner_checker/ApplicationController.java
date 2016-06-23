@@ -5,6 +5,7 @@ import android.app.Application;
 
 import com.crashlytics.android.Crashlytics;
 import com.crashlytics.android.core.CrashlyticsCore;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.nifty.cloud.mb.core.NCMB;
 
 import io.fabric.sdk.android.Fabric;
@@ -28,6 +29,9 @@ public class ApplicationController extends Application {
         NCMB.initialize(Base.getContext(),
                 BuildConfig.NCMB_APPLICATION_ID,
                 BuildConfig.NCMB_CLIENT_KEY);
+
+        Analytics analytics = Analytics.getInstance(this);
+        Analytics.logEvent(FirebaseAnalytics.Event.APP_OPEN, null);
     }
 
     public static synchronized ApplicationController getInstance() {

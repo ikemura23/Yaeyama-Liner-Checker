@@ -118,7 +118,7 @@ public class TopActivity extends Activity {
     }
 
     /**
-     * <<<<<<< HEAD 天気タップ
+     * 天気タップ
      * 
      * @param view
      */
@@ -135,7 +135,7 @@ public class TopActivity extends Activity {
     // private method -------------------------------------------
 
     /**
-     * ======= >>>>>>> issue/127 一覧タブ画面に遷移
+     * 一覧タブ画面に遷移
      *
      * @param company
      */
@@ -147,7 +147,7 @@ public class TopActivity extends Activity {
     }
 
     /**
-     * <<<<<<< HEAD 画面表示時に船のアニメーション表示
+     * 画面表示時に船のアニメーション表示
      */
     private void firstShowAnimationForShipImage() {
         View view = findViewById(R.id.activity_bottom_view);
