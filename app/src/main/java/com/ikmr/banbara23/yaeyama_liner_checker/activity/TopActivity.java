@@ -15,6 +15,7 @@ import com.crashlytics.android.Crashlytics;
 import com.daasuu.bl.BubbleLayout;
 import com.github.hujiaweibujidao.wava.Techniques;
 import com.github.hujiaweibujidao.wava.YoYo;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.WeatherApiClient;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
@@ -46,6 +47,7 @@ public class TopActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_top);
         ButterKnife.bind(this);
+        firebaseAnalytics = FirebaseAnalytics.getInstance(this);
     }
 
     @Override
@@ -76,6 +78,8 @@ public class TopActivity extends Activity {
     void shipClick(View view) {
         startShipRandomAnimation();
     }
+
+    FirebaseAnalytics firebaseAnalytics;
 
     @OnClick(R.id.top_activity_annei)
     void anneiClick(View view) {
@@ -109,11 +113,12 @@ public class TopActivity extends Activity {
     @OnClick(R.id.top_activity_timetable)
     void timeTableClick(View view) {
         Intent intent = new Intent(this, TimeTableTabActivity.class);
+        sendLogEvent("setting");
         startActivity(intent);
     }
 
     /**
-     * 天気タップ
+     * <<<<<<< HEAD 天気タップ
      * 
      * @param view
      */
@@ -130,18 +135,19 @@ public class TopActivity extends Activity {
     // private method -------------------------------------------
 
     /**
-     * 一覧タブ画面に遷移
+     * ======= >>>>>>> issue/127 一覧タブ画面に遷移
      *
      * @param company
      */
     private void startStatusListTabActivity(Company company) {
+        sendLogEvent("list");
         Intent intent = new Intent(this, StatusListTabActivity.class);
         intent.putExtra(StatusListTabActivity.class.getCanonicalName(), company);
         startActivity(intent);
     }
 
     /**
-     * 画面表示時に船のアニメーション表示
+     * <<<<<<< HEAD 画面表示時に船のアニメーション表示
      */
     private void firstShowAnimationForShipImage() {
         View view = findViewById(R.id.activity_bottom_view);
@@ -245,5 +251,14 @@ public class TopActivity extends Activity {
     private void displayWeather(Weather weather) {
         String value = weather.getWind() + "、波" + weather.getWave();
         weatherText.setText(value);
+    }
+
+    private void sendLogEvent(String buttonName) {
+        try {
+            Bundle bundle = new Bundle();
+            bundle.putString("name", buttonName);
+            firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
+        } catch (Exception ex) {
+        }
     }
 }

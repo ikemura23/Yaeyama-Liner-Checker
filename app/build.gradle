@@ -5,6 +5,7 @@ buildscript {
 
     dependencies {
         classpath 'io.fabric.tools:gradle:1.21.2'
+        apply plugin: 'com.google.gms.google-services'
     }
 }
 apply plugin: 'com.android.application'
@@ -37,7 +38,7 @@ android {
         debug {
             buildConfigField "String", "NCMB_APPLICATION_ID", "\"${project.property("NcmbApplicationKeyDebug")}\""
             buildConfigField "String", "NCMB_CLIENT_KEY", "\"${project.property("NcmbClientKeydebug")}\""
-            applicationIdSuffix 'debug'
+            applicationIdSuffix '.debug'
         }
     }
 }
@@ -62,5 +63,6 @@ dependencies {
     compile 'com.github.hujiaweibujidao:wava:1.0.0'
     compile 'com.daasuu:BubbleLayout:1.1.1'
     compile 'com.android.support:customtabs:23.3.0'
-
+    compile 'com.google.firebase:firebase-analytics:9.0.0'
+    compile 'com.google.firebase:firebase-crash:9.0.0'
 }
