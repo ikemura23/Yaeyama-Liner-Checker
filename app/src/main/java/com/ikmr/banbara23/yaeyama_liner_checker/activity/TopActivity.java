@@ -144,6 +144,7 @@ public class TopActivity extends Activity {
         Intent intent = new Intent(this, WeatherActivity.class);
         intent.putExtra(Weather.class.getCanonicalName(), mWeather);
         startActivity(intent);
+        AnalyticsUtils.logSelectEvent(TAG, "weather");
     }
 
     // private method -------------------------------------------
