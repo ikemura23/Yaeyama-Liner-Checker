@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.crashlytics.android.Crashlytics;
+import com.ikmr.banbara23.yaeyama_liner_checker.AnalyticsUtils;
 import com.ikmr.banbara23.yaeyama_liner_checker.BuildConfig;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 
@@ -29,6 +30,8 @@ public class OtherActivity extends BaseActivity {
     @Bind(R.id.activity_other_version_name)
     TextView mVersionNameText;
 
+    private static final String TAG = "other";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +41,7 @@ public class OtherActivity extends BaseActivity {
         }
         ButterKnife.bind(this);
         mVersionNameText.setText(BuildConfig.VERSION_NAME);
+        AnalyticsUtils.logAppOpenEvent(TAG);
     }
 
     @Override
@@ -94,6 +98,7 @@ public class OtherActivity extends BaseActivity {
         } catch (Exception e) {
             Crashlytics.logException(e);
         }
+        AnalyticsUtils.logSelectEvent(TAG, "form");
     }
 
     /**
@@ -110,6 +115,7 @@ public class OtherActivity extends BaseActivity {
         } catch (Exception e) {
             Crashlytics.logException(e);
         }
+        AnalyticsUtils.logSelectEvent(TAG, "playStore");
     }
 
     /**
@@ -131,5 +137,6 @@ public class OtherActivity extends BaseActivity {
                 .setIncludeOwnLicense(true)
                 .build()
                 .show();
+        AnalyticsUtils.logSelectEvent(TAG, "license");
     }
 }
