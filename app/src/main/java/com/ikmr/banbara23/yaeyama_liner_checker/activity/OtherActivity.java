@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.crashlytics.android.Crashlytics;
 import com.ikmr.banbara23.yaeyama_liner_checker.AnalyticsUtils;
 import com.ikmr.banbara23.yaeyama_liner_checker.BuildConfig;
+import com.ikmr.banbara23.yaeyama_liner_checker.Const;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 
 import butterknife.Bind;
@@ -30,7 +31,7 @@ public class OtherActivity extends BaseActivity {
     @Bind(R.id.activity_other_version_name)
     TextView mVersionNameText;
 
-    private static final String TAG = "other";
+    private static final String TAG = Const.FireBaseAnalitycsTag.OTHER;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,11 @@ public class OtherActivity extends BaseActivity {
         }
         ButterKnife.bind(this);
         mVersionNameText.setText(BuildConfig.VERSION_NAME);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         AnalyticsUtils.logAppOpenEvent(TAG);
     }
 

@@ -9,6 +9,8 @@ import android.view.MenuItem;
 import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.ikmr.banbara23.yaeyama_liner_checker.AnalyticsUtils;
+import com.ikmr.banbara23.yaeyama_liner_checker.Const;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.YkfLinerDetail;
@@ -23,8 +25,9 @@ public class StatusDetailYkfActivity extends BaseActivity implements FragmentApi
 
     YkfLinerDetail mYkfLinerDetail;
     Liner mLiner;
-
     Fragment mFragment;
+
+    private static final String TAG = Const.FireBaseAnalitycsTag.STATUS_DETAIL_YKF;
 
     /**
      * クエリ起動中かどうか
@@ -60,6 +63,12 @@ public class StatusDetailYkfActivity extends BaseActivity implements FragmentApi
         if (mFragment == null) {
             createFragment();
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        AnalyticsUtils.logAppOpenEvent(TAG);
     }
 
     /**

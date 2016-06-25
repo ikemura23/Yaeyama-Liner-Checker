@@ -16,6 +16,8 @@ import com.daasuu.bl.BubbleLayout;
 import com.github.hujiaweibujidao.wava.Techniques;
 import com.github.hujiaweibujidao.wava.YoYo;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.ikmr.banbara23.yaeyama_liner_checker.AnalyticsUtils;
+import com.ikmr.banbara23.yaeyama_liner_checker.Const;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.WeatherApiClient;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
@@ -41,6 +43,7 @@ public class TopActivity extends Activity {
     private CompositeSubscription mCompositeSubscription = new CompositeSubscription();
     static final int RandomNextInt = 11;
     Weather mWeather = null;
+    private static final String TAG = Const.FireBaseAnalitycsTag.TOP;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +58,12 @@ public class TopActivity extends Activity {
         super.onResume();
         bubbleLayout.setVisibility(View.GONE);
         createBubbleText();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        AnalyticsUtils.logAppOpenEvent(TAG);
     }
 
     @Override
@@ -77,6 +86,7 @@ public class TopActivity extends Activity {
     @OnClick(R.id.activity_bottom_ship_image)
     void shipClick(View view) {
         startShipRandomAnimation();
+        AnalyticsUtils.logSelectEvent(TAG, "ship");
     }
 
     FirebaseAnalytics firebaseAnalytics;
@@ -84,16 +94,19 @@ public class TopActivity extends Activity {
     @OnClick(R.id.top_activity_annei)
     void anneiClick(View view) {
         startStatusListTabActivity(Company.ANNEI);
+        AnalyticsUtils.logSelectEvent(TAG, "annei");
     }
 
     @OnClick(R.id.top_activity_ykf)
     void ykfClick(View view) {
         startStatusListTabActivity(Company.YKF);
+        AnalyticsUtils.logSelectEvent(TAG, "ykf");
     }
 
     @OnClick(R.id.top_activity_dream)
     void dreamClick(View view) {
         startStatusListTabActivity(Company.DREAM);
+        AnalyticsUtils.logSelectEvent(TAG, "dream");
     }
 
     /**
@@ -101,8 +114,9 @@ public class TopActivity extends Activity {
      */
     @OnClick(R.id.top_activity_setting)
     void settinglick(View view) {
-        Intent intent = new Intent(this, PreferenceActivity.class);
+        Intent intent = new Intent(this, SettingActivity.class);
         startActivity(intent);
+        AnalyticsUtils.logSelectEvent(TAG, "setting");
     }
 
     /**
@@ -113,7 +127,7 @@ public class TopActivity extends Activity {
     @OnClick(R.id.top_activity_timetable)
     void timeTableClick(View view) {
         Intent intent = new Intent(this, TimeTableTabActivity.class);
-        sendLogEvent("setting");
+        AnalyticsUtils.logSelectEvent(TAG, "timetable");
         startActivity(intent);
     }
 
@@ -140,10 +154,10 @@ public class TopActivity extends Activity {
      * @param company
      */
     private void startStatusListTabActivity(Company company) {
-        sendLogEvent("list");
         Intent intent = new Intent(this, StatusListTabActivity.class);
         intent.putExtra(StatusListTabActivity.class.getCanonicalName(), company);
         startActivity(intent);
+        AnalyticsUtils.logSelectEvent(TAG, "list");
     }
 
     /**
@@ -251,14 +265,5 @@ public class TopActivity extends Activity {
     private void displayWeather(Weather weather) {
         String value = weather.getWind() + "、波" + weather.getWave();
         weatherText.setText(value);
-    }
-
-    private void sendLogEvent(String buttonName) {
-        try {
-            Bundle bundle = new Bundle();
-            bundle.putString("name", buttonName);
-            firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
-        } catch (Exception ex) {
-        }
     }
 }

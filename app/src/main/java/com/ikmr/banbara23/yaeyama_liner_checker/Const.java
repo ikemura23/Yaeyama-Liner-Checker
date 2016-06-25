@@ -43,4 +43,18 @@ public class Const {
 
     // キャッシュの保存時間(分)
     public static final int SAVE_TIME = 3;
+
+    // FireBase Analytics
+    public class FireBaseAnalitycsTag {
+        public static final String TOP = "top";
+        public static final String OTHER = "other";
+        public static final String SETTING = "setting";
+        public static final String STATUS_LIST = "status_list";
+        public static final String STATUS_DETAIL_ANNEI = "status_detail_annei";
+        public static final String STATUS_DETAIL_YKF = "status_detail_ykf";
+        public static final String STATUS_DETAIL_DREAM = "status_detail_dream";
+        public static final String WEATHER = "weather";
+        public static final String TIME_TABLE = "time_table";
+        public static final String TIME_TABLE_SPINNER = "time_table_spinner";
+    }
 }

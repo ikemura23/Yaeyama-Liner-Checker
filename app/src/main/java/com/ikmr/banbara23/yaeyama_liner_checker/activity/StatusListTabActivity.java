@@ -5,10 +5,11 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.MenuItem;
-import android.view.View;
 
+import com.ikmr.banbara23.yaeyama_liner_checker.AnalyticsUtils;
 import com.ikmr.banbara23.yaeyama_liner_checker.Base;
 import com.ikmr.banbara23.yaeyama_liner_checker.BuildConfig;
+import com.ikmr.banbara23.yaeyama_liner_checker.Const;
 import com.ikmr.banbara23.yaeyama_liner_checker.PagerAdapter;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
@@ -17,25 +18,22 @@ import com.nifty.cloud.mb.core.NCMB;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * 一覧タブActivity
  */
 public class StatusListTabActivity extends BaseActivity implements StatusListTabFragment.EmptyClickListener {
 
+    private static final String TAG = Const.FireBaseAnalitycsTag.STATUS_LIST;
     private static final int TAB_FIRST = 0;
     private static final int TAB_SECOND = 1;
     private static final int TAB_THREAD = 2;
-
 
     @Bind(R.id.activity_list_tab_layout)
     TabLayout tabLayout;
 
     @Bind(R.id.activity_list_tab_view_pager)
     ViewPager viewPager;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +49,15 @@ public class StatusListTabActivity extends BaseActivity implements StatusListTab
         createTab();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        AnalyticsUtils.logAppOpenEvent(TAG);
+    }
+
     /**
      * 前回開いていたタブ番号を取得
+     * 
      * @return タブ番号を取得
      */
     private int getCurrentPosition() {
@@ -65,7 +70,7 @@ public class StatusListTabActivity extends BaseActivity implements StatusListTab
             case DREAM:
                 return TAB_THREAD;
             default:
-                return  0;
+                return 0;
         }
     }
 
@@ -73,8 +78,10 @@ public class StatusListTabActivity extends BaseActivity implements StatusListTab
      * タブの作成
      */
     private void createTab() {
-        if (tabLayout == null)  return;
-        if (viewPager == null) return;
+        if (tabLayout == null)
+            return;
+        if (viewPager == null)
+            return;
 
         tabLayout.removeAllTabs();
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.company_tab_name_annei)));
@@ -116,5 +123,6 @@ public class StatusListTabActivity extends BaseActivity implements StatusListTab
     @Override
     public void emptyClick() {
         createTab();
+        AnalyticsUtils.logSelectEvent(TAG, "empty");
     }
 }

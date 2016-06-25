@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.crashlytics.android.Crashlytics;
+import com.ikmr.banbara23.yaeyama_liner_checker.AnalyticsUtils;
+import com.ikmr.banbara23.yaeyama_liner_checker.Const;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.AnneiStatusDetailApi;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.StatusListApi;
@@ -43,6 +45,8 @@ import rx.subscriptions.CompositeSubscription;
  * 安栄の詳細フラグメント
  */
 public class StatusDetailAnneiFragment extends BaseDetailFragment {
+
+    private static final String TAG = Const.FireBaseAnalitycsTag.STATUS_DETAIL_ANNEI;
 
     // ButterKnife Bind View --------------------------------------------
     @Bind(R.id.fragment_status_detail_progressbar)
@@ -77,26 +81,29 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
             // API通信処理の開始準備の完了
             ((QueryInterface) activity).startQuery();
         }
+        AnalyticsUtils.logSelectEvent(TAG, "reload");
     }
 
     /**
-     * 電話する押下
+     * サイトを観る
      *
      * @param view
      */
     @OnClick(R.id.view_status_detail_web_layout)
     void telClick(View view) {
         startWeb();
+        AnalyticsUtils.logSelectEvent(TAG, "web");
     }
 
     /**
-     * サイトを見る押下
+     * 電話をする
      *
      * @param view
      */
     @OnClick(R.id.view_status_detail_tell_layout)
     void webClick(View view) {
         startTel();
+        AnalyticsUtils.logSelectEvent(TAG, "tell");
     }
 
     // ButterKnife BindString --------------------------------------------
@@ -111,7 +118,6 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
     // プライベート変数 --------------------------------------------
     private boolean listQuerying = false;
     private boolean detailQuerying = false;
-    private String dialogMessage;
 
     private CompositeSubscription mCompositeSubscription = new CompositeSubscription();
 
@@ -364,7 +370,6 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
             return;
         }
         mStatusDetailTopView.setCommentText(comment);
-        dialogMessage = comment;
     }
 
     /**

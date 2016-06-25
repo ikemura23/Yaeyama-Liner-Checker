@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.ikmr.banbara23.yaeyama_liner_checker.AnalyticsUtils;
+import com.ikmr.banbara23.yaeyama_liner_checker.Const;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.FragmentApiQueryInterface;
@@ -21,6 +23,7 @@ public class StatusDetailAnneiActivity extends BaseActivity implements FragmentA
 
     Liner mLiner;
     Fragment mFragment;
+    private static final String TAG = Const.FireBaseAnalitycsTag.STATUS_DETAIL_ANNEI;
     /**
      * クエリ起動中かどうか
      */
@@ -49,6 +52,12 @@ public class StatusDetailAnneiActivity extends BaseActivity implements FragmentA
         if (mFragment == null) {
             createFragment();
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        AnalyticsUtils.logAppOpenEvent(TAG);
     }
 
     @Override

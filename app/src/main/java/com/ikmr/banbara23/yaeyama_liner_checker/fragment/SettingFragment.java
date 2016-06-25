@@ -7,12 +7,16 @@ import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
 
+import com.ikmr.banbara23.yaeyama_liner_checker.AnalyticsUtils;
+import com.ikmr.banbara23.yaeyama_liner_checker.Const;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 
 /**
  * PreferenceFragment継承
  */
 public class SettingFragment extends PreferenceFragment {
+    private static final String TAG = Const.FireBaseAnalitycsTag.SETTING;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +31,7 @@ public class SettingFragment extends PreferenceFragment {
                         getActivity(),
                         com.ikmr.banbara23.yaeyama_liner_checker.activity.OtherActivity.class);
                 startActivity(intent);
+                AnalyticsUtils.logSelectEvent(TAG, "playStore");
                 return true;
             }
         });

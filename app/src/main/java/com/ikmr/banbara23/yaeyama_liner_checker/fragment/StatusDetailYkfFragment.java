@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.crashlytics.android.Crashlytics;
+import com.ikmr.banbara23.yaeyama_liner_checker.AnalyticsUtils;
+import com.ikmr.banbara23.yaeyama_liner_checker.Const;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.StatusListApi;
 import com.ikmr.banbara23.yaeyama_liner_checker.cache.CacheManager;
@@ -43,6 +45,8 @@ import rx.subscriptions.CompositeSubscription;
  */
 public class StatusDetailYkfFragment extends BaseDetailFragment {
 
+    private static final String TAG = Const.FireBaseAnalitycsTag.STATUS_DETAIL_DREAM;
+
     @Bind(R.id.fragment_status_detail_ykf_top_view)
     StatusDetailTopView mStatusDetailTopView;
 
@@ -61,6 +65,11 @@ public class StatusDetailYkfFragment extends BaseDetailFragment {
     @Bind(R.id.fragment_time_ykf_table_timetable_view)
     CardView mFragmentTimeYkfTableTimetableView;
 
+    /**
+     * リロードボタン押下
+     * 
+     * @param view
+     */
     @OnClick(R.id.fragment_ykf_status_detail_reload_button)
     void reloadClick(View view) {
         Activity activity = getActivity();
@@ -71,23 +80,25 @@ public class StatusDetailYkfFragment extends BaseDetailFragment {
     }
 
     /**
-     * ブラウザで表示 押下
+     * 電話する
      *
      * @param view
      */
     @OnClick(R.id.view_status_detail_tell_layout)
     void telClick(View view) {
         startTell();
+        AnalyticsUtils.logSelectEvent(TAG, "tell");
     }
 
     /**
-     * 電話 押下
+     * webでみる
      *
      * @param view
      */
     @OnClick(R.id.view_status_detail_web_layout)
     void webClick(View view) {
         startWeb();
+        AnalyticsUtils.logSelectEvent(TAG, "web");
     }
 
     @BindString(R.string.url_ykf_list)

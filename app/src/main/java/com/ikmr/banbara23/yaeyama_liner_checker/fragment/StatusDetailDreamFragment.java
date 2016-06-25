@@ -1,18 +1,9 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker.fragment;
 
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.CardView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-
 import com.crashlytics.android.Crashlytics;
+import com.ikmr.banbara23.yaeyama_liner_checker.AnalyticsUtils;
+import com.ikmr.banbara23.yaeyama_liner_checker.Const;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.StatusListApi;
 import com.ikmr.banbara23.yaeyama_liner_checker.cache.CacheManager;
@@ -31,6 +22,18 @@ import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailPriceDreamView;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailTopView;
 import com.pnikosis.materialishprogress.ProgressWheel;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.CardView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+
 import butterknife.Bind;
 import butterknife.BindString;
 import butterknife.ButterKnife;
@@ -44,6 +47,8 @@ import rx.subscriptions.CompositeSubscription;
  * ドリーム観光の詳細画面フラグメント
  */
 public class StatusDetailDreamFragment extends BaseDetailFragment {
+
+    private static final String TAG = Const.FireBaseAnalitycsTag.STATUS_DETAIL_YKF;
 
     // ButterKnife Bind View --------------------------------------------
     @Bind(R.id.fragment_status_detail_dream_top_view)
@@ -74,16 +79,22 @@ public class StatusDetailDreamFragment extends BaseDetailFragment {
     @OnClick(R.id.view_status_detail_tell_layout)
     void tellClick(View view) {
         startTell();
+        AnalyticsUtils.logSelectEvent(TAG, "tell");
     }
 
     @OnClick(R.id.view_status_detail_web_layout)
     void webClick(View view) {
         startWeb();
+        AnalyticsUtils.logSelectEvent(TAG, "web");
     }
 
     @OnClick(R.id.fragment_dream_status_detail_reload_button)
     void errorReloadClick(View view) {
-        // TODO: 16/01/05 エラー再読み込みボタン押下
+        Activity activity = getActivity();
+        if (activity != null && activity instanceof QueryInterface) {
+            // API通信処理の開始準備の完了
+            ((QueryInterface) activity).startQuery();
+        }
     }
 
     // ButterKnife BindString --------------------------------------------
