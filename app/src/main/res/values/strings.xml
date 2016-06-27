@@ -9,11 +9,6 @@
     <string name="title_activity_setting">設定</string>
     <string name="title_activity_other">アプリ情報</string>
 
-    <string name="top_description">今日の運航状況を見る</string>
-    <string name="top_other">その他</string>
-    <string name="detail_dialog_title">本日の運航状況</string>
-    <string name="cache_dialog_title">キャッシュ値の設定</string>
-
     <!--URL-->
     <!--安栄-->
     <string name="url_annei_list">http://www.aneikankou.co.jp/</string>
@@ -25,18 +20,8 @@
     <string name="url_annei_hateruma">http://www.aneikankou.co.jp/liner/haterumajima.html</string>
     <string name="url_annei_hatoma">http://aneikankou.co.jp/liner/hatomajima.html</string>
 
-    <!--八重山観光フェリー-->
-    <string name="url_ykf_list">http://sync5-cnsl.digitalstage.jp/sync/docs.action?s=document%3A1s9n6naZmRe88T4iHVVZkHfyOgyci5qvWMkuaySZJFM0</string>
-    <string name="url_ykf_facebook">https://www.facebook.com/yaekan.ishigaki</string>
-
-    <!--ドリーム観光-->
-    <string name="url_dream_list">http://ishigaki-dream.co.jp/</string>
-
     <!--広告-->
-    <!--<string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>-->
     <string name="banner_ad_unit_id">ca-app-pub-3362500010746452/4785171723</string>
-
-    <string name="transition_top_annei">transition_top_annei</string>
 
     <!--安栄の電話番号-->
     <string name="tel_annei">0980830055</string>
@@ -45,7 +30,7 @@
     <!--八重山観光フェリーの電話番号-->
     <string name="tel_ykf">0980825010</string>
     <!--八重山観光フェリーのHP-->
-    <string name="hp_ykf">http://www.yaeyama.co.jp/pg104.html</string>
+    <string name="hp_ykf">http://www.yaeyama.co.jp</string>
     <!--ドリーム観光の電話番号-->
     <string name="tel_dream">0980843178</string>
     <!--ドリーム観光のHP-->
@@ -90,14 +75,6 @@
     <string name="company_tab_name_annei">安栄観光</string>
     <string name="company_tab_name_ykf">八重山観光\nフェリー</string>
     <string name="company_tab_name_dream">ドリーム観光</string>
-
-    <string name="company_simple_name_annei">安栄</string>
-    <string name="company_simple_name_ykf">八重山観光フ</string>
-    <string name="company_simple_name_dream">ドリーム観光</string>
-
-    <string name="status_normal">○</string>
-    <string name="status_cation">△</string>
-    <string name="status_cancel">×</string>
 
     <!--安栄の詳細情報-->
     <!--竹富-->

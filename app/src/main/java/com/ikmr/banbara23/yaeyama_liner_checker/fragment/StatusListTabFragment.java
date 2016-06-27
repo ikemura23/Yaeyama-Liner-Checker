@@ -1,20 +1,11 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker.fragment;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.TextView;
-
 import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.ikmr.banbara23.yaeyama_liner_checker.AnalyticsUtils;
+import com.ikmr.banbara23.yaeyama_liner_checker.Const;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.StatusListAdapter;
 import com.ikmr.banbara23.yaeyama_liner_checker.activity.StatusDetailAnneiActivity;
@@ -28,6 +19,17 @@ import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.YkfLinerDetail;
 import com.ikmr.banbara23.yaeyama_liner_checker.util.StringUtils;
 import com.pnikosis.materialishprogress.ProgressWheel;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import butterknife.Bind;
 import butterknife.BindString;
@@ -43,6 +45,7 @@ import rx.subscriptions.CompositeSubscription;
  */
 public class StatusListTabFragment extends BaseListFragment {
 
+    private static final String TAG = Const.FireBaseAnalitycsTag.STATUS_LIST;
     StatusListAdapter mListAdapter;
     TextView mTitleText;
     TextView mUpdateText;
@@ -55,11 +58,6 @@ public class StatusListTabFragment extends BaseListFragment {
     @BindString(R.string.url_annei_list)
     String URL_ANNEI_LIST;
 
-    @BindString(R.string.url_dream_list)
-    String URL_DREAM_LIST;
-
-    @BindString(R.string.url_ykf_list)
-    String URL_YKF_LIST;
     @Bind(R.id.fragment_status_list_progressbar)
     ProgressWheel mProgressWheel;
 
@@ -68,13 +66,15 @@ public class StatusListTabFragment extends BaseListFragment {
 
     /**
      * リロードタップ
+     * 
      * @param view リロードボタン
      */
     @OnClick(R.id.fragment_status_list_empty_button)
     void emptyClick(View view) {
         if (getActivity() != null) {
-            ((EmptyClickListener)getActivity()).emptyClick();
+            ((EmptyClickListener) getActivity()).emptyClick();
         }
+        AnalyticsUtils.logSelectEvent(TAG, "reload");
     }
 
     public interface EmptyClickListener {
@@ -92,8 +92,6 @@ public class StatusListTabFragment extends BaseListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_status_list, container, false);
-        // mProgressWheel = (ProgressWheel)
-        // view.findViewById(R.id.fragment_status_list_progressbar);
         mAdView = (AdView) view.findViewById(R.id.adView);
         ButterKnife.bind(this, view);
         initViews();
@@ -295,6 +293,7 @@ public class StatusListTabFragment extends BaseListFragment {
             default:
                 break;
         }
+        AnalyticsUtils.logSelectEvent(TAG, "list_item");
     }
 
     /**

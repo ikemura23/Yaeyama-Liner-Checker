@@ -4,12 +4,16 @@ package com.ikmr.banbara23.yaeyama_liner_checker.activity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.ikmr.banbara23.yaeyama_liner_checker.AnalyticsUtils;
+import com.ikmr.banbara23.yaeyama_liner_checker.Const;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.SettingFragment;
 
 /**
  * 設定画面のアクティビティ
  */
-public class PreferenceActivity extends BaseActivity {
+public class SettingActivity extends BaseActivity {
+
+    private static final String TAG = Const.FireBaseAnalitycsTag.SETTING;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +24,7 @@ public class PreferenceActivity extends BaseActivity {
         getFragmentManager().beginTransaction()
                 .add(android.R.id.content, new SettingFragment())
                 .commit();
+        AnalyticsUtils.logAppOpenEvent(TAG);
     }
 
     @Override

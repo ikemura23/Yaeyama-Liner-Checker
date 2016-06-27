@@ -7,6 +7,8 @@ import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.ikmr.banbara23.yaeyama_liner_checker.AnalyticsUtils;
+import com.ikmr.banbara23.yaeyama_liner_checker.Const;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.activity.BaseActivity;
 
@@ -16,6 +18,8 @@ import butterknife.ButterKnife;
  * 時刻表タブ画面Activity
  */
 public class TimeTableTabActivity extends BaseActivity {
+
+    private static final String TAG = Const.FireBaseAnalitycsTag.TIME_TABLE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +33,17 @@ public class TimeTableTabActivity extends BaseActivity {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        AnalyticsUtils.logAppOpenEvent(TAG);
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         TabLayout tabLayout = (TabLayout) findViewById(R.id.activity_timetable_tab_layout);
-        if (tabLayout == null) return;
+        if (tabLayout == null)
+            return;
         TimeTablePositionHelper.setCurrentTabPosition(tabLayout.getSelectedTabPosition());
     }
 
@@ -72,6 +83,7 @@ public class TimeTableTabActivity extends BaseActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
+                AnalyticsUtils.logSelectEvent(TAG, "tab_select_" + tab.getPosition());
             }
 
             @Override

@@ -6,8 +6,10 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.MenuItem;
 
+import com.ikmr.banbara23.yaeyama_liner_checker.AnalyticsUtils;
 import com.ikmr.banbara23.yaeyama_liner_checker.Base;
 import com.ikmr.banbara23.yaeyama_liner_checker.BuildConfig;
+import com.ikmr.banbara23.yaeyama_liner_checker.Const;
 import com.ikmr.banbara23.yaeyama_liner_checker.PagerAdapter;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
@@ -22,6 +24,7 @@ import butterknife.ButterKnife;
  */
 public class StatusListTabActivity extends BaseActivity implements StatusListTabFragment.EmptyClickListener {
 
+    private static final String TAG = Const.FireBaseAnalitycsTag.STATUS_LIST;
     private static final int TAB_FIRST = 0;
     private static final int TAB_SECOND = 1;
     private static final int TAB_THREAD = 2;
@@ -44,6 +47,12 @@ public class StatusListTabActivity extends BaseActivity implements StatusListTab
                 BuildConfig.NCMB_APPLICATION_ID,
                 BuildConfig.NCMB_CLIENT_KEY);
         createTab();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        AnalyticsUtils.logAppOpenEvent(TAG);
     }
 
     /**
@@ -98,5 +107,6 @@ public class StatusListTabActivity extends BaseActivity implements StatusListTab
     @Override
     public void emptyClick() {
         createTab();
+        AnalyticsUtils.logSelectEvent(TAG, "empty");
     }
 }

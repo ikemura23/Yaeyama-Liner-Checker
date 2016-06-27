@@ -15,6 +15,8 @@ import android.widget.Spinner;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.ikmr.banbara23.yaeyama_liner_checker.AnalyticsUtils;
+import com.ikmr.banbara23.yaeyama_liner_checker.Const;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 
@@ -26,6 +28,8 @@ import timber.log.Timber;
  * 時刻表フラグメント
  */
 public class TimeTableFragment extends Fragment implements AdapterView.OnItemSelectedListener {
+
+    private static final String TAG = Const.FireBaseAnalitycsTag.TIME_TABLE;
 
     @Bind(R.id.fragment_timetable_tab_spinner)
     Spinner mSpinner;
@@ -186,6 +190,7 @@ public class TimeTableFragment extends Fragment implements AdapterView.OnItemSel
         }
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(viewResourceId, mTimeTableLayout);
+        AnalyticsUtils.logSelectEvent(TAG, "port_select_" + company.getCompanyName());
     }
 
     /**

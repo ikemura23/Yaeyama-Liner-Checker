@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "925175298626",
+    "firebase_url": "https://yaimafuni-eb0bc.firebaseio.com",
+    "project_id": "yaimafuni-eb0bc",
+    "storage_bucket": "yaimafuni-eb0bc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:925175298626:android:7e403459cdfb9e22",
+        "android_client_info": {
+          "package_name": "com.banbara.yaeyama.liner.checker.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "925175298626-e25jgnu4cem0otert13h9ikls50t8e4f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMicMXCE2F9VlFdHAoGU5_WJ-geeYPAkI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

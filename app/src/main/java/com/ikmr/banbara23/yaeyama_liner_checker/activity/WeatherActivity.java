@@ -8,12 +8,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
+import com.ikmr.banbara23.yaeyama_liner_checker.AnalyticsUtils;
+import com.ikmr.banbara23.yaeyama_liner_checker.Const;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Weather;
 import com.ikmr.banbara23.yaeyama_liner_checker.util.CustomTabUtil;
 
 public class WeatherActivity extends AppCompatActivity {
     private String weatherUrl;
+    private static final String TAG = Const.FireBaseAnalitycsTag.WEATHER;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,12 @@ public class WeatherActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.activity_top_weather_wind)).append(weather.getWind());
         ((TextView) findViewById(R.id.activity_top_weather_wave)).append(weather.getWave());
         weatherUrl = weather.getUrl();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        AnalyticsUtils.logAppOpenEvent(TAG);
     }
 
     private void startCustomTab() {

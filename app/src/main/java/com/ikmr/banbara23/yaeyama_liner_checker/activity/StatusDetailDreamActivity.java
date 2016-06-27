@@ -9,6 +9,8 @@ import android.view.MenuItem;
 import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.ikmr.banbara23.yaeyama_liner_checker.AnalyticsUtils;
+import com.ikmr.banbara23.yaeyama_liner_checker.Const;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Liner;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.YkfLinerDetail;
@@ -23,15 +25,14 @@ public class StatusDetailDreamActivity extends BaseActivity implements FragmentA
 
     YkfLinerDetail mYkfLinerDetail;
     Liner mLiner;
-
     Fragment mFragment;
+    private static final String TAG = Const.FireBaseAnalitycsTag.TOP;
 
     private boolean mQuerying = false;
 
     /**
      * クエリ起動中かどうか
      */
-    // private boolean mQuerying;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +62,12 @@ public class StatusDetailDreamActivity extends BaseActivity implements FragmentA
         if (mFragment == null) {
             createFragment();
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        AnalyticsUtils.logAppOpenEvent(TAG);
     }
 
     /**

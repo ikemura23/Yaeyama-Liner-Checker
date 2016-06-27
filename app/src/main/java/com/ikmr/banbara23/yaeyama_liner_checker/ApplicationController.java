@@ -28,6 +28,8 @@ public class ApplicationController extends Application {
         NCMB.initialize(Base.getContext(),
                 BuildConfig.NCMB_APPLICATION_ID,
                 BuildConfig.NCMB_CLIENT_KEY);
+
+        AnalyticsUtils.initialize(getApplicationContext());
     }
 
     public static synchronized ApplicationController getInstance() {
