@@ -32,7 +32,6 @@ import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailTopView;
 import com.pnikosis.materialishprogress.ProgressWheel;
 
 import butterknife.Bind;
-import butterknife.BindString;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import rx.Subscriber;
@@ -100,9 +99,6 @@ public class StatusDetailYkfFragment extends BaseDetailFragment {
         startWeb();
         AnalyticsUtils.logSelectEvent(TAG, "web");
     }
-
-    @BindString(R.string.url_ykf_list)
-    String URL_YKF_LIST;
 
     private CompositeSubscription mCompositeSubscription = new CompositeSubscription();
 

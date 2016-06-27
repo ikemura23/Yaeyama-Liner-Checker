@@ -98,9 +98,6 @@ public class StatusDetailDreamFragment extends BaseDetailFragment {
     }
 
     // ButterKnife BindString --------------------------------------------
-    @BindString(R.string.url_dream_list)
-    String URL_DREAM_LIST;
-
     @BindString(R.string.tel_dream)
     String TEL_DREAM;
 
