@@ -15,6 +15,16 @@ public class BaseDetailFragment extends BaseFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                initAdView();
+            }
+        });
+    }
+
+    private void initAdView() {
         if (mAdView == null) {
             return;
         }
