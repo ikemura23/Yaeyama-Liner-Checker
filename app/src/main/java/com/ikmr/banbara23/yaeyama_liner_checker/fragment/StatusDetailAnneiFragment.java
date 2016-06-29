@@ -138,10 +138,15 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_status_detail_annei, container, false);
+        final View view = inflater.inflate(R.layout.fragment_status_detail_annei, container, false);
         ButterKnife.bind(this, view);
-        mAdView = ButterKnife.findById(view, R.id.adView);
-        setTimeTableView();
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mAdView = ButterKnife.findById(view, R.id.adView);
+                setTimeTableView();
+            }
+        });
         return view;
     }
 
@@ -263,7 +268,7 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
                                 saveResultDetailToCache(s);
                             }
                         })
-                );
+        );
     }
 
     /**
@@ -324,7 +329,7 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
                                 saveResultListToCache(result);
                             }
                         })
-                );
+        );
     }
 
     /**

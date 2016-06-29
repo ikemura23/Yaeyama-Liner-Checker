@@ -66,7 +66,7 @@ public class StatusDetailYkfFragment extends BaseDetailFragment {
 
     /**
      * リロードボタン押下
-     * 
+     *
      * @param view
      */
     @OnClick(R.id.fragment_ykf_status_detail_reload_button)
@@ -122,10 +122,15 @@ public class StatusDetailYkfFragment extends BaseDetailFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_status_detail_ykf, container, false);
+        final View view = inflater.inflate(R.layout.fragment_status_detail_ykf, container, false);
         ButterKnife.bind(this, view);
-        mAdView = ButterKnife.findById(view, R.id.adView);
-        initViews();
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mAdView = ButterKnife.findById(view, R.id.adView);
+                initViews();
+            }
+        });
         return view;
     }
 
@@ -259,7 +264,7 @@ public class StatusDetailYkfFragment extends BaseDetailFragment {
                                 onResultListQuery(result);
                             }
                         })
-                );
+        );
     }
 
     /**
