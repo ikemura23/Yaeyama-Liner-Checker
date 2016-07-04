@@ -80,8 +80,13 @@ public class TimeTableFragment extends Fragment implements AdapterView.OnItemSel
         if (mAdView == null) {
             return;
         }
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        final AdRequest adRequest = new AdRequest.Builder().build();
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mAdView.loadAd(adRequest);
+            }
+        });
     }
 
     @Override
