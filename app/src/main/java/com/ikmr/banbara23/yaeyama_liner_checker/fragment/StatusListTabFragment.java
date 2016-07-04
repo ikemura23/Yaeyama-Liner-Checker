@@ -1,6 +1,17 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker.fragment;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
+
 import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -19,17 +30,6 @@ import com.ikmr.banbara23.yaeyama_liner_checker.entity.Result;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.YkfLinerDetail;
 import com.ikmr.banbara23.yaeyama_liner_checker.util.StringUtils;
 import com.pnikosis.materialishprogress.ProgressWheel;
-
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.TextView;
 
 import butterknife.Bind;
 import butterknife.BindString;
@@ -66,7 +66,7 @@ public class StatusListTabFragment extends BaseListFragment {
 
     /**
      * リロードタップ
-     * 
+     *
      * @param view リロードボタン
      */
     @OnClick(R.id.fragment_status_list_empty_button)
@@ -141,8 +141,13 @@ public class StatusListTabFragment extends BaseListFragment {
         mTitleText = (TextView) mHeaderView.findViewById(R.id.fragment_status_list_toolbar_title_text);
         mUpdateText = (TextView) mHeaderView.findViewById(R.id.fragment_status_list_toolbar_update_text);
         mListAdapter = new StatusListAdapter();
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        final AdRequest adRequest = new AdRequest.Builder().build();
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mAdView.loadAd(adRequest);
+            }
+        });
     }
 
     /**
@@ -159,7 +164,7 @@ public class StatusListTabFragment extends BaseListFragment {
         mHeaderView.setVisibility(View.GONE);
         mListAdapter.clear();
         setListAdapter(mListAdapter);
-        emptyButton.setVisibility(View.GONE);
+//        emptyButton.setVisibility(View.GONE);
         // キャッシュ処理
         CacheManager cacheManager = CacheManager.getInstance();
         if (cacheManager.isPreferenceCacheDisable() || cacheManager.isExpiryList(getParam())) {
@@ -203,7 +208,7 @@ public class StatusListTabFragment extends BaseListFragment {
                                 saveResultToCache(result);
                             }
                         })
-                );
+        );
     }
 
     /**
