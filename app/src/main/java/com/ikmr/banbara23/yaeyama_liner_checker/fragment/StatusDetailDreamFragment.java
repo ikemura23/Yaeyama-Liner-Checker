@@ -1,7 +1,20 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker.fragment;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.CardView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+
 import com.crashlytics.android.Crashlytics;
+import com.google.android.gms.ads.AdView;
 import com.ikmr.banbara23.yaeyama_liner_checker.AnalyticsUtils;
 import com.ikmr.banbara23.yaeyama_liner_checker.Const;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
@@ -21,18 +34,6 @@ import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailPriceDreamOohar
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailPriceDreamView;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailTopView;
 import com.pnikosis.materialishprogress.ProgressWheel;
-
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.CardView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 
 import butterknife.Bind;
 import butterknife.BindString;
@@ -74,6 +75,9 @@ public class StatusDetailDreamFragment extends BaseDetailFragment {
 
     @Bind(R.id.fragment_status_detail_dream_price_kohama_view)
     StatusDetailPriceDreamKohamaView mStatusDetailPriceDreamKohamaView;
+
+    @Bind(R.id.adView)
+    AdView mAdView;
 
     // ButterKnife OnClick --------------------------------------------
     @OnClick(R.id.view_status_detail_tell_layout)
@@ -120,7 +124,6 @@ public class StatusDetailDreamFragment extends BaseDetailFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_status_detail_dream, container, false);
         ButterKnife.bind(this, view);
-        mAdView = ButterKnife.findById(view, R.id.adView);
         return view;
     }
 
@@ -142,13 +145,54 @@ public class StatusDetailDreamFragment extends BaseDetailFragment {
      * 各Viewの初期設定
      */
     private void initViews() {
+        initAdView(mAdView);
 
         // プレミアムドリーム・スーパードリームは時刻表がないので表示しない
         if (isTimeTableShow()) {
             mDreamTimeCardView.setVisibility(View.VISIBLE);
-            setTimeTableView();
+            initTimeTableView();
         }
+        initPriceView();
+        initDistanceAndTimeView();
+    }
 
+    /**
+     * 時刻表の初期設定
+     */
+    private void initTimeTableView() {
+        mDreamTimeCardView.removeAllViews();
+        int viewResourceId = getTimeTableLayoutResourceId();
+        LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater.inflate(viewResourceId, mDreamTimeCardView);
+    }
+
+    /**
+     * 表示する港のViewを取得
+     *
+     * @return 港のリソースID
+     */
+    private int getTimeTableLayoutResourceId() {
+
+        switch (getParam().getPort()) {
+            case TAKETOMI:
+                return R.layout.view_time_table_dream_taketomi;
+            case KOHAMA:
+                return R.layout.view_time_table_dream_kohama;
+            case KUROSHIMA:
+                return R.layout.view_time_table_dream_kuroshima;
+            case OOHARA:
+                return R.layout.view_time_table_dream_oohara;
+            case HATOMA_UEHARA:
+                return R.layout.view_time_table_dream_uehara;
+            default:
+                return R.layout.view_time_table_ykf_taketomi;
+        }
+    }
+
+    /**
+     * 値段Viewの初期設定
+     */
+    private void initPriceView() {
         // 値段の設定、大原と小浜は値段のレイアウトが違う
         switch (getParam().getPort()) {
             case KOHAMA:
@@ -172,35 +216,15 @@ public class StatusDetailDreamFragment extends BaseDetailFragment {
                 mStatusDetailDistanceAndTimeView.setTimeText(getTime());
                 return;
         }
+    }
 
+    /**
+     * 走行時間、距離の初期設定
+     */
+    private void initDistanceAndTimeView() {
         // 走行時間と距離、ドリームは距離を公開していないのでnullを入れて非表示にする
         mStatusDetailDistanceAndTimeView.setDistanceText(null);
         mStatusDetailDistanceAndTimeView.setTimeText(getTime());
-    }
-
-    private void setTimeTableView() {
-        mDreamTimeCardView.removeAllViews();
-        int viewResourceId = getTimeTableLayoutResourceId();
-        LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(viewResourceId, mDreamTimeCardView);
-    }
-
-    private int getTimeTableLayoutResourceId() {
-
-        switch (getParam().getPort()) {
-            case TAKETOMI:
-                return R.layout.view_time_table_dream_taketomi;
-            case KOHAMA:
-                return R.layout.view_time_table_dream_kohama;
-            case KUROSHIMA:
-                return R.layout.view_time_table_dream_kuroshima;
-            case OOHARA:
-                return R.layout.view_time_table_dream_oohara;
-            case HATOMA_UEHARA:
-                return R.layout.view_time_table_dream_uehara;
-            default:
-                return R.layout.view_time_table_ykf_taketomi;
-        }
     }
 
     /**
@@ -213,7 +237,7 @@ public class StatusDetailDreamFragment extends BaseDetailFragment {
     }
 
     /**
-     * 時刻表を表示する港か？ （プレミアムドリームとスーパードリームはじ時刻表を持っていないので表示しない）
+     * 時刻表を表示する港か？ （プレミアムドリームとスーパードリームは時刻表を持っていないので表示しない）
      *
      * @return true:表示 false:非表示
      */
@@ -306,7 +330,7 @@ public class StatusDetailDreamFragment extends BaseDetailFragment {
                                 onResultListQuery(result);
                             }
                         })
-                );
+        );
     }
 
     /**

@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.crashlytics.android.Crashlytics;
+import com.google.android.gms.ads.AdView;
 import com.ikmr.banbara23.yaeyama_liner_checker.AnalyticsUtils;
 import com.ikmr.banbara23.yaeyama_liner_checker.Const;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
@@ -66,6 +67,9 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
 
     @Bind(R.id.fragment_status_detail_price_view)
     StatusDetailPriceHandicappedView mPriceView;
+
+    @Bind(R.id.adView)
+    AdView mAdView;
 
     // ButterKnife OnClick --------------------------------------------
 
@@ -140,17 +144,12 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_status_detail_annei, container, false);
         ButterKnife.bind(this, view);
-        getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                mAdView = ButterKnife.findById(view, R.id.adView);
-                setTimeTableView();
-            }
-        });
+        initAdView(mAdView);
+        initTimeTableView();
         return view;
     }
 
-    private void setTimeTableView() {
+    private void initTimeTableView() {
         mTimeTableLayout.removeAllViews();
         int viewResourceId = getAnneiTimeTableLayoutResourceId();
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);

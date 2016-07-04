@@ -1,8 +1,6 @@
 
 package com.ikmr.banbara23.yaeyama_liner_checker.fragment;
 
-import android.os.Bundle;
-
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
@@ -10,26 +8,20 @@ import com.google.android.gms.ads.AdView;
  * AdView用のベースフラグメント
  */
 public class BaseDetailFragment extends BaseFragment {
-    public AdView mAdView;
+    private AdView mAdView;
 
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
+    public void initAdView(AdView adView) {
+        mAdView = adView;
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                initAdView();
+                if (mAdView == null) {
+                    return;
+                }
+                AdRequest adRequest = new AdRequest.Builder().build();
+                mAdView.loadAd(adRequest);
             }
         });
-    }
-
-    private void initAdView() {
-        if (mAdView == null) {
-            return;
-        }
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
     }
 
     @Override

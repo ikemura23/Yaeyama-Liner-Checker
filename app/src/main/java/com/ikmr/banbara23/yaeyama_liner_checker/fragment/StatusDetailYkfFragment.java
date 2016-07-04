@@ -1,4 +1,3 @@
-
 package com.ikmr.banbara23.yaeyama_liner_checker.fragment;
 
 import android.app.Activity;
@@ -14,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.crashlytics.android.Crashlytics;
+import com.google.android.gms.ads.AdView;
 import com.ikmr.banbara23.yaeyama_liner_checker.AnalyticsUtils;
 import com.ikmr.banbara23.yaeyama_liner_checker.Const;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
@@ -63,6 +63,9 @@ public class StatusDetailYkfFragment extends BaseDetailFragment {
 
     @Bind(R.id.fragment_time_ykf_table_timetable_view)
     CardView mFragmentTimeYkfTableTimetableView;
+
+    @Bind(R.id.adView)
+    AdView mAdView;
 
     /**
      * リロードボタン押下
@@ -124,13 +127,7 @@ public class StatusDetailYkfFragment extends BaseDetailFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_status_detail_ykf, container, false);
         ButterKnife.bind(this, view);
-        getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                mAdView = ButterKnife.findById(view, R.id.adView);
-                initViews();
-            }
-        });
+        initViews();
         return view;
     }
 
@@ -174,10 +171,11 @@ public class StatusDetailYkfFragment extends BaseDetailFragment {
         mStatusDetailDistanceAndTimeView.setDistanceText(null);
         mStatusDetailDistanceAndTimeView.setTimeText(getTime());
         mStatusDetailPriceView.setPrice(getPrice());
-        setTimeTableView();
+        initAdView(mAdView);
+        initTimeTableView();
     }
 
-    private void setTimeTableView() {
+    private void initTimeTableView() {
         mFragmentTimeYkfTableTimetableView.removeAllViews();
         int viewResourceId = getYkfTimeTableLayoutResourceId();
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);

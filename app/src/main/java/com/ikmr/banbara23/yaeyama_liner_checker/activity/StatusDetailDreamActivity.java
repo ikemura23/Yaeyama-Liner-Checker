@@ -6,9 +6,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.crashlytics.android.Crashlytics;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 import com.ikmr.banbara23.yaeyama_liner_checker.AnalyticsUtils;
 import com.ikmr.banbara23.yaeyama_liner_checker.Const;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
@@ -46,9 +43,6 @@ public class StatusDetailDreamActivity extends BaseActivity implements FragmentA
 
         // タイトル
         setTitleString();
-
-        // 広告
-        loadAd();
 
         if (savedInstanceState != null) {
             mYkfLinerDetail = (YkfLinerDetail) savedInstanceState.get(YkfLinerDetail.class.getCanonicalName());
@@ -109,22 +103,6 @@ public class StatusDetailDreamActivity extends BaseActivity implements FragmentA
         }
 
         setTitle(mLiner.getPort().getPort() + "航路");
-    }
-
-    /**
-     * 広告読み込み
-     */
-    protected void loadAd() {
-        AdView adView = (AdView) findViewById(R.id.adView);
-        if (adView == null) {
-            return;
-        }
-        try {
-            AdRequest adRequest = new AdRequest.Builder().build();
-            adView.loadAd(adRequest);
-        } catch (Exception e) {
-            Crashlytics.logException(e);
-        }
     }
 
     @Override
