@@ -91,6 +91,12 @@ public class TopActivity extends Activity {
 
     FirebaseAnalytics firebaseAnalytics;
 
+    @OnClick(R.id.activity_top_description)
+    void labelClick(View view) {
+        startStatusListTabActivity(Company.ANNEI);
+        AnalyticsUtils.logSelectEvent(TAG, "label");
+    }
+
     @OnClick(R.id.top_activity_annei)
     void anneiClick(View view) {
         startStatusListTabActivity(Company.ANNEI);
