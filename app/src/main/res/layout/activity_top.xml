@@ -209,6 +209,7 @@
         android:layout_alignTop="@+id/activity_bottom_view"
         android:layout_marginBottom="30dp"
         android:layout_marginLeft="4dp"
+        android:layout_marginRight="16dp"
         android:layout_marginTop="-44dp"
         android:layout_toRightOf="@+id/activity_bottom_ship_image"
         android:padding="8dp"
@@ -216,8 +217,8 @@
         app:bl_arrowHeight="8dp"
         app:bl_arrowPosition="20dp"
         app:bl_arrowWidth="8dp"
-        app:bl_strokeColor="@color/white"
         app:bl_cornersRadius="30dp"
+        app:bl_strokeColor="@color/white"
         app:bl_strokeWidth="1dp"
         >
 
