@@ -57,4 +57,18 @@ public class Const {
         public static final String TIME_TABLE = "time_table";
         public static final String TIME_TABLE_SPINNER = "time_table_spinner";
     }
+
+    //テーブル名
+    public class NcmbTable {
+        public final static String ANEI_LIST_TABLE = "AneiLinerStatusList";
+        public final static String ANEI_DETAIL_TABLE = "AneiLinerStatusDetail";
+    }
+
+    //カラム名
+    public class NcmbColumn {
+        public final static String UPDATE_DATE = "updateDate";
+        public final static String LINER_ID = "linerId";
+        public final static String OBJECT_ID = "objectId";
+        public final static String JSON = "json";
+    }
 }
