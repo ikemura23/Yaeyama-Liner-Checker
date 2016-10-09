@@ -31,7 +31,9 @@ import com.ikmr.banbara23.yaeyama_liner_checker.util.PortUtil;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailDistanceAndTimeView;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailPriceHandicappedView;
 import com.ikmr.banbara23.yaeyama_liner_checker.view.StatusDetailTopView;
+import com.nifty.cloud.mb.core.NCMBObject;
 import com.pnikosis.materialishprogress.ProgressWheel;
+import com.socks.library.KLog;
 
 import butterknife.Bind;
 import butterknife.BindString;
@@ -232,7 +234,7 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
         }
         // キャッシュ有効なので不要
         String comment = cacheManager.getDetailAnneiResultCache();
-        onResultDetailQuery(comment);
+//        onResultDetailQuery(comment);
         detailQuerying = false;
         finishQuery();
     }
@@ -246,7 +248,7 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
                 AnneiStatusDetailApi.request(url)
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeOn(Schedulers.newThread())
-                        .subscribe(new Subscriber<String>() {
+                        .subscribe(new Subscriber<NCMBObject>() {
                             @Override
                             public void onCompleted() {
                                 // 完了
@@ -258,13 +260,15 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
                             public void onError(Throwable e) {
                                 detailQuerying = false;
                                 Crashlytics.logException(e);
+                                KLog.e(e.getMessage());
                             }
 
                             @Override
-                            public void onNext(String s) {
+                            public void onNext(NCMBObject ncmbObject) {
                                 // 値うけとる
-                                onResultDetailQuery(s);
-                                saveResultDetailToCache(s);
+                                KLog.d(ncmbObject.toString());
+                                onResultDetailQuery(ncmbObject);
+//                                saveResultDetailToCache(s);
                             }
                         })
         );
@@ -365,15 +369,15 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
 
     /**
      * 詳細を取得した
-     *
-     * @param comment
      */
-    private void onResultDetailQuery(String comment) {
-        if (comment == null) {
+    private void onResultDetailQuery(NCMBObject ncmbObject) {
+        if (ncmbObject == null) {
             mStatusDetailTopView.setVisibility(View.GONE);
             return;
         }
-        mStatusDetailTopView.setCommentText(comment);
+        ncmbObject.getString(getPort().getPortSimple());
+
+        mStatusDetailTopView.setCommentText("");
     }
 
     /**

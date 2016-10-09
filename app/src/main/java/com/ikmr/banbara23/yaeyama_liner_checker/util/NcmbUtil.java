@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.LinerStatusList;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.Port;
 import com.nifty.cloud.mb.core.DoneCallback;
 import com.nifty.cloud.mb.core.NCMBException;
 import com.nifty.cloud.mb.core.NCMBObject;
@@ -43,5 +44,30 @@ public class NcmbUtil {
                 }
             }
         });
+    }
+
+    public String convertNcmbToEntity(Port port, NCMBObject ncmbObject) {
+        return null;
+    }
+
+    private String getPortKey(Port port) {
+        switch (port) {
+            case TAKETOMI:
+                return "taketomi";
+            case KOHAMA:
+                return "kohama";
+            case KUROSHIMA:
+                return "kuroshima";
+            case HATOMA:
+                return "hatoma";
+            case OOHARA:
+                return "oohara";
+            case UEHARA:
+                return "uehara";
+            case HATERUMA:
+                return "hateruma";
+            default:
+                return "";
+        }
     }
 }
