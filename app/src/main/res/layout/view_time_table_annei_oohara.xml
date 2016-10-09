@@ -28,7 +28,6 @@
             />
 
     </LinearLayout>
-
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
     <include layout="@layout/view_time_table_line_yoko"/>
 
@@ -42,19 +41,61 @@
         <TextView
             style="@style/time_table_text.body"
             android:layout_weight="1"
-            android:text="08:30"
+            android:text="07:10"
             />
 
         <TextView
             style="@style/time_table_text.body"
             android:layout_weight="1"
-            android:text="09:30"
+            android:text="07:60"
+            />
+    </LinearLayout>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <include layout="@layout/view_time_table_line_yoko"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+
+        <TextView
+            style="@style/time_table_text.body"
+            android:layout_weight="1"
+            android:text="08:00"
+            />
+
+        <TextView
+            style="@style/time_table_text.body"
+            android:layout_weight="1"
+            android:text="08:45"
+            />
+    </LinearLayout>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <include layout="@layout/view_time_table_line_yoko"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+
+        <TextView
+            style="@style/time_table_text.body"
+            android:layout_weight="1"
+            android:text="08:40"
+            />
+
+        <TextView
+            style="@style/time_table_text.body"
+            android:layout_weight="1"
+            android:text="-"
             />
     </LinearLayout>
 
     <include layout="@layout/view_time_table_line_yoko"/>
-
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -102,6 +143,27 @@
 
     <include layout="@layout/view_time_table_line_yoko"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+
+        <TextView
+            style="@style/time_table_text.body"
+            android:layout_weight="1"
+            android:text="12:00"
+            />
+
+        <TextView
+            style="@style/time_table_text.body"
+            android:layout_weight="1"
+            android:text="-"
+            />
+    </LinearLayout>
+
+    <include layout="@layout/view_time_table_line_yoko"/>
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
 
     <LinearLayout
@@ -146,6 +208,46 @@
     <include layout="@layout/view_time_table_line_yoko"/>
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+
+        <TextView
+            style="@style/time_table_text.body"
+            android:layout_weight="1"
+            android:text="-"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            >
+
+            <TextView
+                android:id="@+id/view_time_table_annei_oohara_text3"
+                style="@style/time_table_text.body"
+                android:layout_width="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="14:30"
+                />
+
+            <TextView
+                style="@style/time_table_caution_text"
+                android:layout_toEndOf="@+id/view_time_table_annei_oohara_text3"
+                android:layout_toRightOf="@+id/view_time_table_annei_oohara_text3"
+                android:background="@drawable/corner_round"
+                android:text="@string/time_table_note_take"
+                />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <include layout="@layout/view_time_table_line_yoko"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -157,18 +259,64 @@
         <TextView
             style="@style/time_table_text.body"
             android:layout_weight="1"
-            android:text="15:30"
+            android:text="14:40"
             />
 
         <TextView
             style="@style/time_table_text.body"
             android:layout_weight="1"
-            android:text="16:30"
+            android:text="15:30"
             />
     </LinearLayout>
 
     <include layout="@layout/view_time_table_line_yoko"/>
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+
+        <TextView
+            style="@style/time_table_text.body"
+            android:layout_weight="1"
+            android:text="16:10"
+            />
+
+        <TextView
+            style="@style/time_table_text.body"
+            android:layout_weight="1"
+            android:text="17:00"
+            />
+    </LinearLayout>
+
+    <include layout="@layout/view_time_table_line_yoko"/>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~説明~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+
+        <TextView
+            style="@style/time_table_text.body"
+            android:layout_weight="1"
+            android:text="16:40"
+            />
+
+        <TextView
+            style="@style/time_table_text.body"
+            android:layout_weight="1"
+            android:text="17:30"
+            />
+    </LinearLayout>
+
+    <include layout="@layout/view_time_table_line_yoko"/>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~説明~~~~~~~~~~~~~~~~~~~~~~~ -->
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -207,189 +355,189 @@
         />
 
     <!-- バス -->
-    <TextView
-        style="@style/time_table_text.header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="上原欠航時送迎あんえいバス時刻"
-        android:textStyle="bold"
-        />
+    <!--<TextView-->
+    <!--style="@style/time_table_text.header"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="8dp"-->
+    <!--android:text="上原欠航時送迎あんえいバス時刻"-->
+    <!--android:textStyle="bold"-->
+    <!--/>-->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/light_grey"
-        android:orientation="horizontal"
-        android:weightSum="2"
-        >
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="@color/light_grey"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:weightSum="2"-->
+    <!--&gt;-->
 
-        <TextView
-            style="@style/time_table_text.header"
-            android:layout_weight="1"
-            android:text="バス・上原港発"
-            />
+    <!--<TextView-->
+    <!--style="@style/time_table_text.header"-->
+    <!--android:layout_weight="1"-->
+    <!--android:text="バス・上原港発"-->
+    <!--/>-->
 
-        <TextView
-            style="@style/time_table_text.header"
-            android:layout_weight="1"
-            android:text="船・大原港発"
-            />
+    <!--<TextView-->
+    <!--style="@style/time_table_text.header"-->
+    <!--android:layout_weight="1"-->
+    <!--android:text="船・大原港発"-->
+    <!--/>-->
 
-    </LinearLayout>
+    <!--</LinearLayout>-->
 
-    <include layout="@layout/view_time_table_line_yoko"/>
+    <!--<include layout="@layout/view_time_table_line_yoko"/>-->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2"
-        >
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:weightSum="2"-->
+    <!--&gt;-->
 
-        <TextView
-            style="@style/time_table_text.body"
-            android:layout_weight="1"
-            android:text="06:40"
-            />
+    <!--<TextView-->
+    <!--style="@style/time_table_text.body"-->
+    <!--android:layout_weight="1"-->
+    <!--android:text="06:40"-->
+    <!--/>-->
 
-        <TextView
-            style="@style/time_table_text.body"
-            android:layout_weight="1"
-            android:text="07:40"
-            />
-    </LinearLayout>
+    <!--<TextView-->
+    <!--style="@style/time_table_text.body"-->
+    <!--android:layout_weight="1"-->
+    <!--android:text="07:40"-->
+    <!--/>-->
+    <!--</LinearLayout>-->
 
-    <include layout="@layout/view_time_table_line_yoko"/>
+    <!--<include layout="@layout/view_time_table_line_yoko"/>-->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2"
-        >
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:weightSum="2"-->
+    <!--&gt;-->
 
-        <TextView
-            style="@style/time_table_text.body"
-            android:layout_weight="1"
-            android:text="08:30"
-            />
+    <!--<TextView-->
+    <!--style="@style/time_table_text.body"-->
+    <!--android:layout_weight="1"-->
+    <!--android:text="08:30"-->
+    <!--/>-->
 
-        <TextView
-            style="@style/time_table_text.body"
-            android:layout_weight="1"
-            android:text="09:30"
-            />
-    </LinearLayout>
+    <!--<TextView-->
+    <!--style="@style/time_table_text.body"-->
+    <!--android:layout_weight="1"-->
+    <!--android:text="09:30"-->
+    <!--/>-->
+    <!--</LinearLayout>-->
 
-    <include layout="@layout/view_time_table_line_yoko"/>
+    <!--<include layout="@layout/view_time_table_line_yoko"/>-->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2"
-        >
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:weightSum="2"-->
+    <!--&gt;-->
 
-        <TextView
-            style="@style/time_table_text.body"
-            android:layout_weight="1"
-            android:text="09:30"
-            />
+    <!--<TextView-->
+    <!--style="@style/time_table_text.body"-->
+    <!--android:layout_weight="1"-->
+    <!--android:text="09:30"-->
+    <!--/>-->
 
-        <TextView
-            style="@style/time_table_text.body"
-            android:layout_weight="1"
-            android:text="10:30"
-            />
-    </LinearLayout>
+    <!--<TextView-->
+    <!--style="@style/time_table_text.body"-->
+    <!--android:layout_weight="1"-->
+    <!--android:text="10:30"-->
+    <!--/>-->
+    <!--</LinearLayout>-->
 
-    <include layout="@layout/view_time_table_line_yoko"/>
+    <!--<include layout="@layout/view_time_table_line_yoko"/>-->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2"
-        >
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:weightSum="2"-->
+    <!--&gt;-->
 
-        <TextView
-            style="@style/time_table_text.body"
-            android:layout_weight="1"
-            android:text="11:20"
-            />
+    <!--<TextView-->
+    <!--style="@style/time_table_text.body"-->
+    <!--android:layout_weight="1"-->
+    <!--android:text="11:20"-->
+    <!--/>-->
 
-        <TextView
-            style="@style/time_table_text.body"
-            android:layout_weight="1"
-            android:text="12:30"
-            />
-    </LinearLayout>
+    <!--<TextView-->
+    <!--style="@style/time_table_text.body"-->
+    <!--android:layout_weight="1"-->
+    <!--android:text="12:30"-->
+    <!--/>-->
+    <!--</LinearLayout>-->
 
-    <include layout="@layout/view_time_table_line_yoko"/>
+    <!--<include layout="@layout/view_time_table_line_yoko"/>-->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2"
-        >
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:weightSum="2"-->
+    <!--&gt;-->
 
-        <TextView
-            style="@style/time_table_text.body"
-            android:layout_weight="1"
-            android:text="13:00"
-            />
+    <!--<TextView-->
+    <!--style="@style/time_table_text.body"-->
+    <!--android:layout_weight="1"-->
+    <!--android:text="13:00"-->
+    <!--/>-->
 
-        <TextView
-            style="@style/time_table_text.body"
-            android:layout_weight="1"
-            android:text="14:00"
-            />
-    </LinearLayout>
+    <!--<TextView-->
+    <!--style="@style/time_table_text.body"-->
+    <!--android:layout_weight="1"-->
+    <!--android:text="14:00"-->
+    <!--/>-->
+    <!--</LinearLayout>-->
 
-    <include layout="@layout/view_time_table_line_yoko"/>
+    <!--<include layout="@layout/view_time_table_line_yoko"/>-->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2"
-        >
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:weightSum="2"-->
+    <!--&gt;-->
 
-        <TextView
-            style="@style/time_table_text.body"
-            android:layout_weight="1"
-            android:text="16:00"
-            />
+    <!--<TextView-->
+    <!--style="@style/time_table_text.body"-->
+    <!--android:layout_weight="1"-->
+    <!--android:text="16:00"-->
+    <!--/>-->
 
-        <TextView
-            style="@style/time_table_text.body"
-            android:layout_weight="1"
-            android:text="17:00"
-            />
-    </LinearLayout>
+    <!--<TextView-->
+    <!--style="@style/time_table_text.body"-->
+    <!--android:layout_weight="1"-->
+    <!--android:text="17:00"-->
+    <!--/>-->
+    <!--</LinearLayout>-->
 
-    <include layout="@layout/view_time_table_line_yoko"/>
+    <!--<include layout="@layout/view_time_table_line_yoko"/>-->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2"
-        >
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:weightSum="2"-->
+    <!--&gt;-->
 
-        <TextView
-            style="@style/time_table_text.body"
-            android:layout_weight="1"
-            android:text="17:20"
-            />
+    <!--<TextView-->
+    <!--style="@style/time_table_text.body"-->
+    <!--android:layout_weight="1"-->
+    <!--android:text="17:20"-->
+    <!--/>-->
 
-        <TextView
-            style="@style/time_table_text.body"
-            android:layout_weight="1"
-            android:text="18:20"
-            />
-    </LinearLayout>
+    <!--<TextView-->
+    <!--style="@style/time_table_text.body"-->
+    <!--android:layout_weight="1"-->
+    <!--android:text="18:20"-->
+    <!--/>-->
+    <!--</LinearLayout>-->
 
 </LinearLayout>
