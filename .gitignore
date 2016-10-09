@@ -10,3 +10,4 @@ gradle.properties
 app/*.log
 /.idea/misc.xml
 app/fabric.properties
+workspace.xml
