@@ -43,6 +43,29 @@
         <TextView
             style="@style/time_table_text.body"
             android:layout_weight="1"
+            android:text="08:00"
+            />
+
+        <TextView
+            style="@style/time_table_text.body"
+            android:layout_weight="1"
+            android:text="08:35"
+            />
+    </LinearLayout>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <include layout="@layout/view_time_table_line_yoko"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+
+        <TextView
+            style="@style/time_table_text.body"
+            android:layout_weight="1"
             android:text="09:30"
             />
 
@@ -53,7 +76,6 @@
             />
     </LinearLayout>
 
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
     <include layout="@layout/view_time_table_line_yoko"/>
 
     <LinearLayout
@@ -73,6 +95,28 @@
             style="@style/time_table_text.body"
             android:layout_weight="1"
             android:text="16:00"
+            />
+    </LinearLayout>
+
+    <include layout="@layout/view_time_table_line_yoko"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+
+        <TextView
+            style="@style/time_table_text.body"
+            android:layout_weight="1"
+            android:text="17:00"
+            />
+
+        <TextView
+            style="@style/time_table_text.body"
+            android:layout_weight="1"
+            android:text="17:35"
             />
     </LinearLayout>
 
