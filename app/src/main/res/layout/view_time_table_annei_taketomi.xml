@@ -65,6 +65,29 @@
         <TextView
             style="@style/time_table_text.body"
             android:layout_weight="1"
+            android:text="08:00"
+            />
+
+        <TextView
+            style="@style/time_table_text.body"
+            android:layout_weight="1"
+            android:text="08:15"
+            />
+    </LinearLayout>
+
+    <include layout="@layout/view_time_table_line_yoko"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+
+        <TextView
+            style="@style/time_table_text.body"
+            android:layout_weight="1"
             android:text="08:30"
             />
 
@@ -77,6 +100,27 @@
 
     <include layout="@layout/view_time_table_line_yoko"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+
+        <TextView
+            style="@style/time_table_text.body"
+            android:layout_weight="1"
+            android:text="09:00"
+            />
+
+        <TextView
+            style="@style/time_table_text.body"
+            android:layout_weight="1"
+            android:text="09:15"
+            />
+    </LinearLayout>
+
+    <include layout="@layout/view_time_table_line_yoko"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -100,7 +144,27 @@
 
     <include layout="@layout/view_time_table_line_yoko"/>
 
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~７列目~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+
+        <TextView
+            style="@style/time_table_text.body"
+            android:layout_weight="1"
+            android:text="10:00"
+            />
+
+        <TextView
+            style="@style/time_table_text.body"
+            android:layout_weight="1"
+            android:text="10:15"
+            />
+    </LinearLayout>
+
+    <include layout="@layout/view_time_table_line_yoko"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -124,7 +188,27 @@
 
     <include layout="@layout/view_time_table_line_yoko"/>
 
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~８列目~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+
+        <TextView
+            style="@style/time_table_text.body"
+            android:layout_weight="1"
+            android:text="11:00"
+            />
+
+        <TextView
+            style="@style/time_table_text.body"
+            android:layout_weight="1"
+            android:text="11:15"
+            />
+    </LinearLayout>
+
+    <include layout="@layout/view_time_table_line_yoko"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -155,120 +239,39 @@
         android:weightSum="2"
         >
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+        <TextView
+            style="@style/time_table_text.body"
             android:layout_weight="1"
-            >
+            android:text="12:30"
+            />
 
-            <TextView
-                android:id="@+id/view_time_table_annei_taketomi_1_1"
-                style="@style/time_table_text.body"
-                android:layout_width="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:text="13:00"
-                />
-
-            <TextView
-                style="@style/time_table_caution_text"
-                android:layout_toEndOf="@+id/view_time_table_annei_taketomi_1_1"
-                android:layout_toRightOf="@+id/view_time_table_annei_taketomi_1_1"
-                android:background="@drawable/corner_round"
-                android:text="@string/time_table_note_789"
-                />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+        <TextView
+            style="@style/time_table_text.body"
             android:layout_weight="1"
-            >
-
-            <TextView
-                android:id="@+id/view_time_table_annei_taketomi_1_2"
-                style="@style/time_table_text.body"
-                android:layout_width="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:text="13:15"
-                />
-
-            <TextView
-                style="@style/time_table_caution_text"
-                android:layout_toEndOf="@+id/view_time_table_annei_taketomi_1_2"
-                android:layout_toRightOf="@+id/view_time_table_annei_taketomi_1_2"
-                android:background="@drawable/corner_round"
-                android:text="@string/time_table_note_789"
-                />
-
-        </RelativeLayout>
+            android:text="12:45"
+            />
     </LinearLayout>
 
     <include layout="@layout/view_time_table_line_yoko"/>
 
     <LinearLayout
-        android:id="@+id/kohama_ykf_row1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="2"
         >
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+        <TextView
+            style="@style/time_table_text.body"
             android:layout_weight="1"
-            >
+            android:text="13:30"
+            />
 
-            <TextView
-                android:id="@+id/view_time_table_ykf_hatoma_row_2_1"
-                style="@style/time_table_text.body"
-                android:layout_width="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:text="14:00"
-                />
-
-            <TextView
-                style="@style/time_table_caution_text"
-                android:layout_toEndOf="@+id/view_time_table_ykf_hatoma_row_2_1"
-                android:layout_toRightOf="@+id/view_time_table_ykf_hatoma_row_2_1"
-                android:background="@drawable/corner_round"
-                android:text="@string/time_table_note_789"
-                />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+        <TextView
+            style="@style/time_table_text.body"
             android:layout_weight="1"
-            >
-
-            <TextView
-                android:id="@+id/view_time_table_ykf_hatoma_row_2_2"
-                style="@style/time_table_text.body"
-                android:layout_width="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:text="14:15"
-                />
-
-            <TextView
-                style="@style/time_table_caution_text"
-                android:layout_toEndOf="@+id/view_time_table_ykf_hatoma_row_2_2"
-                android:layout_toRightOf="@+id/view_time_table_ykf_hatoma_row_2_2"
-                android:background="@drawable/corner_round"
-                android:text="@string/time_table_note_789"
-                />
-
-        </RelativeLayout>
+            android:text="13:45"
+            />
     </LinearLayout>
 
     <include layout="@layout/view_time_table_line_yoko"/>
@@ -305,6 +308,50 @@
         <TextView
             style="@style/time_table_text.body"
             android:layout_weight="1"
+            android:text="15:00"
+            />
+
+        <TextView
+            style="@style/time_table_text.body"
+            android:layout_weight="1"
+            android:text="15:15"
+            />
+    </LinearLayout>
+
+    <include layout="@layout/view_time_table_line_yoko"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+
+        <TextView
+            style="@style/time_table_text.body"
+            android:layout_weight="1"
+            android:text="15:30"
+            />
+
+        <TextView
+            style="@style/time_table_text.body"
+            android:layout_weight="1"
+            android:text="15:45"
+            />
+    </LinearLayout>
+
+    <include layout="@layout/view_time_table_line_yoko"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+
+        <TextView
+            style="@style/time_table_text.body"
+            android:layout_weight="1"
             android:text="16:00"
             />
 
@@ -317,7 +364,27 @@
 
     <include layout="@layout/view_time_table_line_yoko"/>
 
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~１７列目~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+
+        <TextView
+            style="@style/time_table_text.body"
+            android:layout_weight="1"
+            android:text="16:30"
+            />
+
+        <TextView
+            style="@style/time_table_text.body"
+            android:layout_weight="1"
+            android:text="16:45"
+            />
+    </LinearLayout>
+
+    <include layout="@layout/view_time_table_line_yoko"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -351,44 +418,44 @@
         <TextView
             style="@style/time_table_text.body"
             android:layout_weight="1"
-            android:text="18:00"
+            android:text="17:30"
             />
 
         <TextView
             style="@style/time_table_text.body"
             android:layout_weight="1"
-            android:text="18:15"
+            android:text="17:45"
             />
     </LinearLayout>
 
     <include layout="@layout/view_time_table_line_yoko"/>
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="8dp"
-        >
+    <!--<RelativeLayout-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginBottom="8dp"-->
+    <!--android:layout_marginLeft="16dp"-->
+    <!--android:layout_marginRight="16dp"-->
+    <!--android:layout_marginTop="8dp"-->
+    <!--&gt;-->
 
-        <!--カーフェリー説明-->
-        <TextView
-            android:id="@+id/view_time_table_description_annei_taketomi"
-            style="@style/time_table_caution_text"
-            android:background="@drawable/corner_round"
-            android:text="@string/time_table_note_789"
-            />
+    <!--&lt;!&ndash;カーフェリー説明&ndash;&gt;-->
+    <!--<TextView-->
+    <!--android:id="@+id/view_time_table_description_annei_taketomi"-->
+    <!--style="@style/time_table_caution_text"-->
+    <!--android:background="@drawable/corner_round"-->
+    <!--android:text="@string/time_table_note_789"-->
+    <!--/>-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="8dp"
-            android:layout_toRightOf="@+id/view_time_table_description_annei_taketomi"
-            android:text="@string/time_table_note_789_description"
-            android:textColor="@color/secondary_text"
-            android:textSize="12dp"
-            />
-    </RelativeLayout>
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:layout_marginLeft="8dp"-->
+    <!--android:layout_toRightOf="@+id/view_time_table_description_annei_taketomi"-->
+    <!--android:text="@string/time_table_note_789_description"-->
+    <!--android:textColor="@color/secondary_text"-->
+    <!--android:textSize="12dp"-->
+    <!--/>-->
+    <!--</RelativeLayout>-->
 </LinearLayout>
