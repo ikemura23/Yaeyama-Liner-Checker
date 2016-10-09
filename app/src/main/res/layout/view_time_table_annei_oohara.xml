@@ -47,7 +47,7 @@
         <TextView
             style="@style/time_table_text.body"
             android:layout_weight="1"
-            android:text="07:60"
+            android:text="07:50"
             />
     </LinearLayout>
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
