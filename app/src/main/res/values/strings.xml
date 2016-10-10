@@ -75,7 +75,7 @@
     <string name="company_tab_name_annei">安栄観光</string>
     <string name="company_tab_name_ykf">八重山観光\nフェリー</string>
     <string name="company_tab_name_dream">ドリーム観光</string>
-
+    <string name="company_tab_name_annei_and_ykf">安栄観光＆\n八重山観光フェリー</string>
     <!--安栄の詳細情報-->
     <!--竹富-->
     <string name="annei_taketomi_distance">6.5km</string>
