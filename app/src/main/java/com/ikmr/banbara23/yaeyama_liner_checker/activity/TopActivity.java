@@ -24,6 +24,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Weather;
 import com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableTabActivity;
 import com.ikmr.banbara23.yaeyama_liner_checker.util.AnimationUtil;
+import com.ikmr.banbara23.yaeyama_liner_checker.util.CustomTabUtil;
 
 import java.util.Random;
 
@@ -147,9 +148,10 @@ public class TopActivity extends Activity {
         if (mWeather == null) {
             return;
         }
-        Intent intent = new Intent(this, WeatherActivity.class);
-        intent.putExtra(Weather.class.getCanonicalName(), mWeather);
-        startActivity(intent);
+        CustomTabUtil.start(this, mWeather.getUrl());
+//        Intent intent = new Intent(this, WeatherActivity.class);
+//        intent.putExtra(Weather.class.getCanonicalName(), mWeather);
+//        startActivity(intent);
         AnalyticsUtils.logSelectEvent(TAG, "weather");
     }
 
