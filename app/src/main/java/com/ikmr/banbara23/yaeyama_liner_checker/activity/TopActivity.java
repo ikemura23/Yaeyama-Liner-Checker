@@ -148,11 +148,8 @@ public class TopActivity extends Activity {
         if (mWeather == null) {
             return;
         }
-        CustomTabUtil.start(this, mWeather.getUrl());
-//        Intent intent = new Intent(this, WeatherActivity.class);
-//        intent.putExtra(Weather.class.getCanonicalName(), mWeather);
-//        startActivity(intent);
         AnalyticsUtils.logSelectEvent(TAG, "weather");
+        CustomTabUtil.start(this, mWeather.getUrl());
     }
 
     // private method -------------------------------------------
