@@ -41,6 +41,9 @@ android {
             applicationIdSuffix '.debug'
         }
     }
+    lintOptions {
+        disable "ResourceType"
+    }
 }
 
 dependencies {
