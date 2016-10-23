@@ -11,3 +11,4 @@ app/*.log
 /.idea/misc.xml
 app/fabric.properties
 workspace.xml
+.idea/misc.xml
