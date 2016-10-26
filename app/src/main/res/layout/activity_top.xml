@@ -55,7 +55,7 @@
                 </android.support.v7.widget.CardView>
 
                 <!--運航情報-->
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
@@ -68,9 +68,13 @@
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:layout_gravity="left"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="16dp"
                         android:gravity="left|center_vertical"
-                        android:paddingLeft="16dp"
                         android:text="@string/company_name_annei"
                         android:textColor="@color/secondary_text"
                         android:textSize="15sp"
@@ -79,6 +83,7 @@
                     <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
+                        android:layout_below="@+id/top_activity_annei"
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
                         android:background="@color/background"
@@ -90,9 +95,15 @@
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:layout_gravity="left"
+                        android:layout_below="@+id/top_activity_annei"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_below="@+id/top_activity_annei"
+                        android:layout_marginLeft="16dp"
                         android:gravity="left|center_vertical"
-                        android:paddingLeft="16dp"
                         android:text="@string/company_name_ykf"
                         android:textColor="@color/secondary_text"
                         android:textSize="15sp"
@@ -101,6 +112,7 @@
                     <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
+                        android:layout_below="@+id/top_activity_ykf"
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
                         android:background="@color/background"
@@ -112,14 +124,20 @@
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:layout_gravity="left"
+                        android:layout_below="@+id/top_activity_ykf"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_below="@+id/top_activity_ykf"
+                        android:layout_marginLeft="16dp"
                         android:gravity="left|center_vertical"
-                        android:paddingLeft="16dp"
                         android:text="@string/company_name_dream"
                         android:textColor="@color/secondary_text"
                         android:textSize="15sp"
                         />
-                </LinearLayout>
+                </RelativeLayout>
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
