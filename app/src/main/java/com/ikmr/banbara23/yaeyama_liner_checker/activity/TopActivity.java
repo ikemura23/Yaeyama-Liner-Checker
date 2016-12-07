@@ -59,6 +59,11 @@ public class TopActivity extends Activity {
         super.onResume();
         bubbleLayout.setVisibility(View.GONE);
         createBubbleText();
+        startTopInfo();
+    }
+
+    private void startTopInfo() {
+        topProgressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -83,6 +88,9 @@ public class TopActivity extends Activity {
 
     @Bind(R.id.activity_top_weather_text)
     TextView weatherText;
+
+    @Bind(R.id.activity_top_progress_bar)
+    View topProgressBar;
 
     @OnClick(R.id.activity_bottom_ship_image)
     void shipClick(View view) {
@@ -140,7 +148,7 @@ public class TopActivity extends Activity {
 
     /**
      * 天気タップ
-     * 
+     *
      * @param view
      */
     @OnClick(R.id.activity_top_bubble)
@@ -207,7 +215,7 @@ public class TopActivity extends Activity {
 
     /**
      * ランダムなアニメーションを返す
-     * 
+     *
      * @return アニメーション種類
      */
     private Techniques getRandomTechniques() {
@@ -265,7 +273,7 @@ public class TopActivity extends Activity {
                                 mWeather = weather;
                             }
                         })
-                );
+        );
     }
 
     private void displayWeather(Weather weather) {
