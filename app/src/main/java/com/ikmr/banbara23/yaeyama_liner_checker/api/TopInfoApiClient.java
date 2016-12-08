@@ -2,8 +2,9 @@
 package com.ikmr.banbara23.yaeyama_liner_checker.api;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.Base;
+import com.ikmr.banbara23.yaeyama_liner_checker.Const;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
-import com.ikmr.banbara23.yaeyama_liner_checker.entity.Weather;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.top.TopInfo;
 import com.nifty.cloud.mb.core.NCMBException;
 import com.nifty.cloud.mb.core.NCMBObject;
 import com.nifty.cloud.mb.core.NCMBQuery;
@@ -24,13 +25,12 @@ public class TopInfoApiClient {
      *
      * @return
      */
-    public Observable<Weather> request() {
+    public Observable<TopInfo> request() {
         return Observable
                 .create(new Observable.OnSubscribe<NCMBObject>() {
                     @Override
                     public void call(Subscriber<? super NCMBObject> subscriber) {
-                        String tableName = "TopInfo";
-                        NCMBQuery<NCMBObject> query = new NCMBQuery<>(tableName);
+                        NCMBQuery<NCMBObject> query = new NCMBQuery<>(Const.NcmbTable.TopInfo);
                         query.setLimit(1);
                         query.addOrderByDescending(Base.getContext().getString(R.string.NCMB_sort_column_name));
                         List<NCMBObject> results = null;
@@ -48,10 +48,10 @@ public class TopInfoApiClient {
                         subscriber.onCompleted();
                     }
                 })
-                .map(new Func1<NCMBObject, Weather>() {
+                .map(new Func1<NCMBObject, TopInfo>() {
                     @Override
-                    public Weather call(NCMBObject ncmbObject) {
-                        return null;
+                    public TopInfo call(NCMBObject ncmbObject) {
+                        return new NcmbConverter().convertToTopInfo(ncmbObject);
                     }
                 });
     }

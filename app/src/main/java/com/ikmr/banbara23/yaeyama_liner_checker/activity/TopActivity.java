@@ -19,12 +19,15 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 import com.ikmr.banbara23.yaeyama_liner_checker.AnalyticsUtils;
 import com.ikmr.banbara23.yaeyama_liner_checker.Const;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
+import com.ikmr.banbara23.yaeyama_liner_checker.api.TopInfoApiClient;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.WeatherApiClient;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Weather;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.top.TopInfo;
 import com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableTabActivity;
 import com.ikmr.banbara23.yaeyama_liner_checker.util.AnimationUtil;
 import com.ikmr.banbara23.yaeyama_liner_checker.util.CustomTabUtil;
+import com.orhanobut.logger.Logger;
 
 import java.util.Random;
 
@@ -64,6 +67,25 @@ public class TopActivity extends Activity {
 
     private void startTopInfo() {
         topProgressBar.setVisibility(View.VISIBLE);
+        new TopInfoApiClient().request()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.newThread())
+                .subscribe(new Subscriber<TopInfo>() {
+                    @Override
+                    public void onCompleted() {
+                        topProgressBar.setVisibility(View.GONE);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Crashlytics.logException(e);
+                    }
+
+                    @Override
+                    public void onNext(TopInfo topInfo) {
+                        Logger.d(topInfo.toString());
+                    }
+                });
     }
 
     @Override

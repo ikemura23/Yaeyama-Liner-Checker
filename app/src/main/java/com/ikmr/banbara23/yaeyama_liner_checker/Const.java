@@ -62,6 +62,8 @@ public class Const {
     public class NcmbTable {
         public final static String ANEI_LIST_TABLE = "AneiLinerStatusList";
         public final static String ANEI_DETAIL_TABLE = "AneiLinerStatusDetail";
+        public final static String TopInfo = "TopInfo";
+
     }
 
     //カラム名
@@ -70,5 +72,19 @@ public class Const {
         public final static String LINER_ID = "linerId";
         public final static String OBJECT_ID = "objectId";
         public final static String JSON = "json";
+    }
+
+    public class TopInfo {
+        public final static String company_anei_status_type = "company_anei_status_type";
+        public final static String company_ykf_status_type = "company_ykf_status_type";
+        public final static String company_dream_status_type = "company_dream_status_type";
+        public final static String port_taketomi_status_type = "port_taketomi_status_type";
+        public final static String port_kohama_status_type = "port_kohama_status_type";
+        public final static String port_kuroshima_status_type = "port_kuroshima_status_type";
+        public final static String port_uehara_status_type = "port_uehara_status_type";
+        public final static String port_oohara_status_type = "port_oohara_status_type";
+        public final static String port_hatoma_status_type = "port_hatoma_status_type";
+        public final static String port_hateruma_status_type = "port_hateruma_status_type";
+
     }
 }
