@@ -39,16 +39,16 @@ public class StatusListAdapter extends ArrayAdapter<Liner> {
         int imageResource = 0;
         switch (liner.getStatus()) {
             case NORMAL:
-                imageResource = R.drawable.status_nomal;
+                imageResource = R.drawable.ic_status_normal;
                 break;
             case CANCEL:
-                imageResource = R.drawable.status_cancel;
+                imageResource = R.drawable.ic_status_cancel;
                 break;
             case CAUTION:
-                imageResource = R.drawable.status_cation;
+                imageResource = R.drawable.ic_status_cation;
                 break;
             case SUSPEND:
-                imageResource = R.drawable.status_cancel;
+                imageResource = R.drawable.ic_status_cancel;
         }
         statusIconImage.setImageResource(imageResource);
         descriptionText.setText(liner.getText());

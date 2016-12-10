@@ -47,7 +47,7 @@ public class StatusDetailTopView extends FrameLayout {
 
     /**
      * ステータスの設定
-     * 
+     *
      * @param liner 運航情報
      */
     public void bindStatus(Liner liner) {
@@ -70,16 +70,16 @@ public class StatusDetailTopView extends FrameLayout {
         int imageResource = 0;
         switch (status) {
             case NORMAL:
-                imageResource = R.drawable.status_nomal;
+                imageResource = R.drawable.ic_status_normal;
                 break;
             case CANCEL:
-                imageResource = R.drawable.status_cancel;
+                imageResource = R.drawable.ic_status_cancel;
                 break;
             case CAUTION:
-                imageResource = R.drawable.status_cation;
+                imageResource = R.drawable.ic_status_cation;
                 break;
             case SUSPEND:
-                imageResource = R.drawable.status_cancel;
+                imageResource = R.drawable.ic_status_cancel;
         }
         mViewStatusDetailTopImage.setImageResource(imageResource);
     }
@@ -93,7 +93,7 @@ public class StatusDetailTopView extends FrameLayout {
 
     /**
      * 更新日時
-     * 
+     *
      * @param update
      */
     public void setUpdateText(String update) {
@@ -106,7 +106,7 @@ public class StatusDetailTopView extends FrameLayout {
 
     /**
      * コメント
-     * 
+     *
      * @param comment
      */
     public void setCommentText(String comment) {
