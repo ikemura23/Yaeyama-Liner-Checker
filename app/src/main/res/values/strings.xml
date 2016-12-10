@@ -226,4 +226,9 @@
     <string name="NCMB_get_column_name">result_json</string>
     <string name="NCMB_sort_column_name">createDate</string>
     <string name="empty_button_message">取得できませんでした\nタップしてリトライしてください</string>
+
+    <!--トップ画面の港別ステータス-->
+    <string name="top_status_normal">全便運航</string>
+    <string name="top_status_cancel">欠航あり</string>
+    <string name="top_status_cation">注意あり</string>
 </resources>

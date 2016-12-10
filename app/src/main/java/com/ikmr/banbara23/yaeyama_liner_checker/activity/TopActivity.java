@@ -6,6 +6,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
@@ -23,6 +24,8 @@ import com.ikmr.banbara23.yaeyama_liner_checker.api.TopInfoApiClient;
 import com.ikmr.banbara23.yaeyama_liner_checker.api.WeatherApiClient;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Weather;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.top.CompanyStatus;
+import com.ikmr.banbara23.yaeyama_liner_checker.entity.top.CompanyStatusInfo;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.top.TopInfo;
 import com.ikmr.banbara23.yaeyama_liner_checker.timetable.TimeTableTabActivity;
 import com.ikmr.banbara23.yaeyama_liner_checker.util.AnimationUtil;
@@ -49,6 +52,15 @@ public class TopActivity extends Activity {
     Weather mWeather = null;
     private static final String TAG = Const.FireBaseAnalitycsTag.TOP;
 
+    @Bind(R.id.top_activity_status_annei)
+    TextView anneiStatusText;
+
+    @Bind(R.id.top_activity_status_ykf)
+    TextView ykfStatusText;
+
+    @Bind(R.id.top_activity_status_dream)
+    TextView dreamStatusText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +78,10 @@ public class TopActivity extends Activity {
     }
 
     private void startTopInfo() {
+        anneiStatusText.setVisibility(View.GONE);
+        ykfStatusText.setVisibility(View.GONE);
+        dreamStatusText.setVisibility(View.GONE);
+
         topProgressBar.setVisibility(View.VISIBLE);
         new TopInfoApiClient().request()
                 .observeOn(AndroidSchedulers.mainThread())
@@ -83,9 +99,38 @@ public class TopActivity extends Activity {
 
                     @Override
                     public void onNext(TopInfo topInfo) {
+                        changeCompanyStatus(topInfo.getCompanyStatusInfo());
                         Logger.d(topInfo.toString());
                     }
                 });
+    }
+
+    private void changeCompanyStatus(CompanyStatusInfo companyStatusInfo) {
+        setCompanyStatusView(companyStatusInfo.getAneiStatus(), anneiStatusText);
+        setCompanyStatusView(companyStatusInfo.getYkfStatus(), ykfStatusText);
+        setCompanyStatusView(companyStatusInfo.getYkfStatus(), dreamStatusText);
+    }
+
+    private void setCompanyStatusView(CompanyStatus companyStatus, TextView textView) {
+        textView.setVisibility(View.VISIBLE);
+        switch (companyStatus.getStatus()) {
+            case NORMAL:
+                textView.setText(getString(R.string.top_status_normal));
+                textView.setTextColor(ContextCompat.getColor(this, R.color.status_normal));
+                break;
+            case CAUTION:
+                textView.setText(getString(R.string.top_status_cation));
+                textView.setTextColor(ContextCompat.getColor(this, R.color.status_cation));
+                break;
+            case CANCEL:
+                textView.setText(getString(R.string.top_status_cancel));
+                textView.setTextColor(ContextCompat.getColor(this, R.color.status_cancel));
+                break;
+            default:
+                textView.setText(getString(R.string.top_status_cation));
+                textView.setTextColor(ContextCompat.getColor(this, R.color.status_cation));
+                break;
+        }
     }
 
     @Override

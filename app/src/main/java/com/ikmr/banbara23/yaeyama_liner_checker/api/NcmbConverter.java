@@ -43,7 +43,7 @@ public class NcmbConverter {
         if (statusType.equals(Status.NORMAL.getStatus())) {
             return Status.NORMAL;
         } else if (statusType.equals(Status.CANCEL.getStatus())) {
-            return Status.NORMAL;
+            return Status.CANCEL;
         } else if (statusType.equals(Status.CAUTION.getStatus())) {
             return Status.CAUTION;
         } else {
