@@ -52,7 +52,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center|center_vertical"
-                android:drawableLeft="@drawable/ic_phone_grey600_18dp"
+                android:drawableLeft="@drawable/ic_call_black"
                 android:text="電話"
                 android:textColor="@color/secondary_text"
                 android:textSize="16sp"
