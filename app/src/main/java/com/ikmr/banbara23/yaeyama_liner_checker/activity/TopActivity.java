@@ -108,7 +108,7 @@ public class TopActivity extends Activity {
     private void changeCompanyStatus(CompanyStatusInfo companyStatusInfo) {
         setCompanyStatusView(companyStatusInfo.getAneiStatus(), anneiStatusText);
         setCompanyStatusView(companyStatusInfo.getYkfStatus(), ykfStatusText);
-        setCompanyStatusView(companyStatusInfo.getYkfStatus(), dreamStatusText);
+        setCompanyStatusView(companyStatusInfo.getDreamStatus(), dreamStatusText);
     }
 
     private void setCompanyStatusView(CompanyStatus companyStatus, TextView textView) {
