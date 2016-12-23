@@ -46,6 +46,8 @@ public class NcmbConverter {
             return Status.CANCEL;
         } else if (statusType.equals(Status.CAUTION.getStatus())) {
             return Status.CAUTION;
+        } else if (statusType.equals(Status.SUSPEND.getStatus())) {
+            return Status.SUSPEND;
         } else {
             return null;
         }

@@ -229,4 +229,5 @@
     <string name="top_status_normal">全便運航</string>
     <string name="top_status_cancel">欠航あり</string>
     <string name="top_status_cation">注意あり</string>
+    <string name="top_status_suspend">運休あり</string>
 </resources>

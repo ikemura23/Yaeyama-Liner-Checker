@@ -127,6 +127,10 @@ public class TopActivity extends Activity {
                 textView.setText(getString(R.string.top_status_cancel));
                 textView.setTextColor(ContextCompat.getColor(this, R.color.status_cancel));
                 break;
+            case SUSPEND:
+                textView.setText(getString(R.string.top_status_suspend));
+                textView.setTextColor(ContextCompat.getColor(this, R.color.status_cancel));
+                break;
             default:
                 textView.setText(getString(R.string.top_status_cation));
                 textView.setTextColor(ContextCompat.getColor(this, R.color.status_cation));
