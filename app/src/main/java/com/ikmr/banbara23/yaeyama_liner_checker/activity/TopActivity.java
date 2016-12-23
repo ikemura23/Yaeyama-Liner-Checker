@@ -95,6 +95,7 @@ public class TopActivity extends Activity {
                     @Override
                     public void onError(Throwable e) {
                         Crashlytics.logException(e);
+                        topProgressBar.setVisibility(View.GONE);
                     }
 
                     @Override
