@@ -17,6 +17,7 @@ import com.daasuu.bl.BubbleLayout;
 import com.github.hujiaweibujidao.wava.Techniques;
 import com.github.hujiaweibujidao.wava.YoYo;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.gson.Gson;
 import com.ikmr.banbara23.yaeyama_liner_checker.AnalyticsUtils;
 import com.ikmr.banbara23.yaeyama_liner_checker.Const;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
@@ -101,7 +102,7 @@ public class TopActivity extends Activity {
                     @Override
                     public void onNext(TopInfo topInfo) {
                         changeCompanyStatus(topInfo.getCompanyStatusInfo());
-                        Logger.d(topInfo.toString());
+                        Logger.json(new Gson().toJson(topInfo, TopInfo.class));
                     }
                 });
     }

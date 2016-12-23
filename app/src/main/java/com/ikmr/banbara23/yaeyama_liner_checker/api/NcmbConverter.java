@@ -49,7 +49,7 @@ public class NcmbConverter {
         } else if (statusType.equals(Status.SUSPEND.getStatus())) {
             return Status.SUSPEND;
         } else {
-            return null;
+            return Status.CAUTION;
         }
     }
 }
