@@ -343,6 +343,7 @@ public class TopActivity extends Activity {
                             @Override
                             public void onNext(Weather weather) {
                                 displayWeather(weather);
+                                Logger.d(weather.toString());
                                 mWeather = weather;
                             }
                         })

@@ -87,4 +87,6 @@ public class Const {
         public final static String port_hateruma_status_type = "port_hateruma_status_type";
 
     }
+
+    public static final String weatherUrl = "http://weather.yahoo.co.jp/weather/jp/47/9410.html";
 }
