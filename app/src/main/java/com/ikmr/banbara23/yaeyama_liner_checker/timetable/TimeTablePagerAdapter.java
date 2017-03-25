@@ -26,9 +26,6 @@ public class TimeTablePagerAdapter extends FragmentStatePagerAdapter {
                 company = Company.ANNEI;
                 break;
             case 1:
-                company = Company.YKF;
-                break;
-            case 2:
                 company = Company.DREAM;
                 break;
             default:

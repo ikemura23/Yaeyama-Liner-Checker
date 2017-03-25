@@ -22,7 +22,6 @@ import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import timber.log.Timber;
 
 /**
  * 時刻表フラグメント
@@ -137,7 +136,6 @@ public class TimeTableFragment extends Fragment implements AdapterView.OnItemSel
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         mSpinner.setAdapter(adapter);
         Company company = getParamCompany();
-        Timber.d("getInitSpinnerPosition:" + TimeTablePositionHelper.getInitSpinnerPosition(company));
         mSpinner.setSelection(TimeTablePositionHelper.getInitSpinnerPosition(company));
     }
 
@@ -158,8 +156,6 @@ public class TimeTableFragment extends Fragment implements AdapterView.OnItemSel
         switch (company) {
             case ANNEI:
                 return getResources().getStringArray(R.array.annei_port_list);
-            case YKF:
-                return getResources().getStringArray(R.array.ykf_port_list);
             case DREAM:
                 return getResources().getStringArray(R.array.dream_port_list);
         }
@@ -185,9 +181,6 @@ public class TimeTableFragment extends Fragment implements AdapterView.OnItemSel
         switch (company) {
             case ANNEI:
                 viewResourceId = getAnneiTimeTableLayoutResourceId(position);
-                break;
-            case YKF:
-                viewResourceId = getYkfTimeTableLayoutResourceId(position);
                 break;
             case DREAM:
                 viewResourceId = getDreamTimeTableLayoutResourceId(position);
@@ -222,31 +215,6 @@ public class TimeTableFragment extends Fragment implements AdapterView.OnItemSel
                 return R.layout.view_time_table_annei_hateruma;
             default:
                 return R.layout.view_time_table_annei_taketomi;
-        }
-    }
-
-    /**
-     * 表示するViewのResourceを返す
-     *
-     * @param position スピナー選択値
-     * @return layoutのresource
-     */
-    private int getYkfTimeTableLayoutResourceId(int position) {
-        switch (position) {
-            case 0:
-                return R.layout.view_time_table_ykf_taketomi;
-            case 1:
-                return R.layout.view_time_table_ykf_kohama;
-            case 2:
-                return R.layout.view_time_table_ykf_kuroshima;
-            case 3:
-                return R.layout.view_time_table_ykf_oohara;
-            case 4:
-                return R.layout.view_time_table_ykf_uehara;
-            case 5:
-                return R.layout.view_time_table_ykf_hatoma;
-            default:
-                return R.layout.view_time_table_ykf_taketomi;
         }
     }
 
