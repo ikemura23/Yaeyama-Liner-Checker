@@ -28,7 +28,6 @@
             />
     </LinearLayout>
 
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~１列目~~~~~~~~~~~~~~~~~~~~~~~ -->
     <include layout="@layout/view_time_table_line_yoko"/>
 
     <LinearLayout
@@ -45,7 +44,6 @@
             android:text="08:30"
             />
 
-        <!--<include layout="@layout/view_time_table_line_tate"/>-->
 
         <TextView
             style="@style/time_table_text.body"
@@ -55,7 +53,28 @@
     </LinearLayout>
 
     <include layout="@layout/view_time_table_line_yoko"/>
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~２列目~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+
+        <TextView
+            style="@style/time_table_text.body"
+            android:layout_weight="1"
+            android:text="10:30"
+            />
+
+        <TextView
+            style="@style/time_table_text.body"
+            android:layout_weight="1"
+            android:text="12:00"
+            />
+    </LinearLayout>
+
+    <include layout="@layout/view_time_table_line_yoko"/>
 
     <LinearLayout
         android:layout_width="match_parent"

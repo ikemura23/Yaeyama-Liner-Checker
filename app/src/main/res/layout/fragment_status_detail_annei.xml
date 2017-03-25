@@ -28,7 +28,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:orientation="vertical"
             >
 
@@ -64,7 +64,6 @@
                 android:id="@+id/fragment_status_detail_distance_time_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
                 />
 
             <!--料金-->
@@ -72,7 +71,6 @@
                 android:id="@+id/fragment_status_detail_price_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
                 />
 
             <!--ブラウザで見る、電話ボタン-->
@@ -87,7 +85,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/status_detail_view_outer_space"
                 android:layout_marginRight="@dimen/status_detail_view_outer_space"
-                android:layout_marginTop="4dp"
                 android:descendantFocusability="blocksDescendants"
                 ads:adSize="BANNER"
                 ads:adUnitId="@string/banner_ad_unit_id"

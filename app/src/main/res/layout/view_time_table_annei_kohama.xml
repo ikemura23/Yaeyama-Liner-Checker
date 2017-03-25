@@ -193,7 +193,6 @@
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~区切り~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-    <!--時刻表 8列目-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -201,17 +200,48 @@
         android:weightSum="2"
         >
 
-        <TextView
-            style="@style/time_table_text.body"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="14:00"
-            />
+            >
 
-        <TextView
-            style="@style/time_table_text.body"
+            <TextView
+                android:id="@+id/view_time_table_annei_taketomi_text1"
+                style="@style/time_table_text.body"
+                android:layout_width="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="14:40"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="14:40"
-            />
+            >
+
+            <TextView
+                android:id="@+id/view_time_table_annei_taketomi_text2"
+                style="@style/time_table_text.body"
+                android:layout_width="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="14:40"
+                />
+
+            <TextView
+                style="@style/time_table_caution_text"
+                android:layout_toEndOf="@+id/view_time_table_annei_taketomi_text2"
+                android:layout_toRightOf="@+id/view_time_table_annei_taketomi_text2"
+                android:background="@drawable/corner_round"
+                android:text="@string/time_table_note_take"
+                />
+        </RelativeLayout>
     </LinearLayout>
 
     <include layout="@layout/view_time_table_line_yoko"/>
@@ -309,28 +339,50 @@
 
     <include layout="@layout/view_time_table_line_yoko"/>
 
-    <!--<RelativeLayout-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_marginBottom="8dp"-->
-    <!--android:layout_marginLeft="16dp"-->
-    <!--android:layout_marginRight="16dp"-->
-    <!--android:layout_marginTop="8dp"-->
-    <!--&gt;-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
 
-    <!--&lt;!&ndash;カーフェリー説明&ndash;&gt;-->
-    <!--<TextView-->
-    <!--android:id="@+id/view_time_table_description_ykf_hatoma"-->
-    <!--style="@style/time_table_caution_text"-->
-    <!--android:background="@drawable/corner_round"-->
-    <!--android:text="@string/time_table_note_take"-->
-    <!--/>-->
+        <TextView
+            style="@style/time_table_text.body"
+            android:layout_weight="1"
+            android:text="18:00"
+            />
 
-    <!--<TextView-->
-    <!--style="@style/time_table_caution_description_text"-->
-    <!--android:layout_toRightOf="@+id/view_time_table_description_ykf_hatoma"-->
-    <!--android:text="@string/time_table_note_take_description"-->
-    <!--android:textColor="@color/secondary_text"-->
-    <!--/>-->
-    <!--</RelativeLayout>-->
+        <TextView
+            style="@style/time_table_text.body"
+            android:layout_weight="1"
+            android:text="18:35"
+            />
+    </LinearLayout>
+
+    <include layout="@layout/view_time_table_line_yoko"/>
+
+    <!--バッジの説明-->
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        >
+
+        <TextView
+            android:id="@+id/view_time_table_description_ykf_hatoma"
+            style="@style/time_table_caution_text"
+            android:background="@drawable/corner_round"
+            android:text="@string/time_table_note_take"
+            />
+
+        <TextView
+            style="@style/time_table_caution_description_text"
+            android:layout_toRightOf="@+id/view_time_table_description_ykf_hatoma"
+            android:text="@string/time_table_note_take_description"
+            android:textColor="@color/secondary_text"
+            />
+    </RelativeLayout>
 </LinearLayout>
