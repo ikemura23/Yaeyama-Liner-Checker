@@ -163,6 +163,70 @@
 
     <include layout="@layout/view_time_table_line_yoko"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            >
+
+            <TextView
+                android:id="@+id/view_time_table_dream_taketomi_text3"
+                style="@style/time_table_text.body"
+                android:layout_width="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="1dp"
+                android:text="09:45"
+                />
+
+            <TextView
+                style="@style/time_table_caution_text"
+                android:layout_toEndOf="@+id/view_time_table_dream_taketomi_text3"
+                android:layout_toRightOf="@+id/view_time_table_dream_taketomi_text3"
+                android:background="@drawable/corner_round"
+                android:text="@string/time_table_note_4_9"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            >
+
+            <TextView
+                android:id="@+id/view_time_table_dream_taketomi_text4"
+                style="@style/time_table_text.body"
+                android:layout_width="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="1dp"
+                android:text="10:00"
+                />
+
+            <TextView
+                style="@style/time_table_caution_text"
+                android:layout_toEndOf="@+id/view_time_table_dream_taketomi_text4"
+                android:layout_toRightOf="@+id/view_time_table_dream_taketomi_text4"
+                android:background="@drawable/corner_round"
+                android:text="@string/time_table_note_4_9"
+                />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <include layout="@layout/view_time_table_line_yoko"/>
+
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~４列目~~~~~~~~~~~~~~~~~~~~~~~ -->
     <LinearLayout
         android:layout_width="match_parent"
@@ -171,17 +235,59 @@
         android:weightSum="2"
         >
 
-        <TextView
-            style="@style/time_table_text.body"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="10:15"
-            />
+            >
 
-        <TextView
-            style="@style/time_table_text.body"
+            <TextView
+                android:id="@+id/view_time_table_dream_taketomi_text5"
+                style="@style/time_table_text.body"
+                android:layout_width="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="1dp"
+                android:text="10:15"
+                />
+
+            <TextView
+                style="@style/time_table_caution_text"
+                android:layout_toEndOf="@+id/view_time_table_dream_taketomi_text5"
+                android:layout_toRightOf="@+id/view_time_table_dream_taketomi_text5"
+                android:background="@drawable/corner_round"
+                android:text="@string/time_table_note_4_9"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="10:30"
-            />
+            >
+
+            <TextView
+                android:id="@+id/view_time_table_dream_taketomi_text6"
+                style="@style/time_table_text.body"
+                android:layout_width="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="1dp"
+                android:text="10:30"
+                />
+
+            <TextView
+                style="@style/time_table_caution_text"
+                android:layout_toEndOf="@+id/view_time_table_dream_taketomi_text6"
+                android:layout_toRightOf="@+id/view_time_table_dream_taketomi_text6"
+                android:background="@drawable/corner_round"
+                android:text="@string/time_table_note_4_9"
+                />
+
+        </RelativeLayout>
     </LinearLayout>
 
     <include layout="@layout/view_time_table_line_yoko"/>
@@ -294,7 +400,7 @@
         <TextView
             style="@style/time_table_text.body"
             android:layout_weight="1"
-            android:text="15:50"
+            android:text="15:00"
             />
     </LinearLayout>
 
@@ -369,7 +475,7 @@
 
     <include layout="@layout/view_time_table_line_yoko"/>
 
-    <!--カーフェリー説明-->
+    <!--バッジ説明-->
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -390,6 +496,30 @@
             style="@style/time_table_caution_description_text"
             android:layout_toRightOf="@+id/view_time_table_description_dream_oohara1"
             android:text="高速カーフェリー 火 金運航"
+            android:textColor="@color/secondary_text"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        >
+
+        <TextView
+            android:id="@+id/view_time_table_description_dream_taketomi2"
+            style="@style/time_table_caution_text"
+            android:background="@drawable/corner_round"
+            android:text="@string/time_table_note_4_9"
+            />
+
+        <TextView
+            style="@style/time_table_caution_description_text"
+            android:layout_toRightOf="@+id/view_time_table_description_dream_taketomi2"
+            android:text="@string/time_table_note_4_9_description"
             android:textColor="@color/secondary_text"
             />
     </RelativeLayout>

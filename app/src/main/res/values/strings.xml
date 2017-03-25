@@ -189,6 +189,9 @@
     <string name="time_table_note_789">7~9月</string>
     <string name="time_table_note_789_description">7・8・9月のみ運航</string>
 
+    <string name="time_table_note_4_9">4~9月</string>
+    <string name="time_table_note_4_9_description">4〜9月のみ運航</string>
+
     <string name="time_table_note_456">4~6月</string>
     <string name="time_table_note_456_description">4・5・4月のみ運航</string>
 

@@ -183,11 +183,31 @@
             android:text="-"
             />
 
-        <TextView
-            style="@style/time_table_text.body"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="14:30"
-            />
+            >
+
+            <TextView
+                android:id="@+id/view_time_table_dream_kohama_text3"
+                style="@style/time_table_text.body"
+                android:layout_width="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="14:30"
+                />
+
+            <TextView
+                style="@style/time_table_caution_text"
+                android:layout_toEndOf="@+id/view_time_table_dream_kohama_text3"
+                android:layout_toRightOf="@+id/view_time_table_dream_kohama_text3"
+                android:background="@drawable/corner_round"
+                android:text="@string/time_table_note_take"
+                />
+
+        </RelativeLayout>
     </LinearLayout>
 
     <include layout="@layout/view_time_table_line_yoko"/>
