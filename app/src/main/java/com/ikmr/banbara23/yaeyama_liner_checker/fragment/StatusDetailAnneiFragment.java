@@ -294,6 +294,7 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
         Result result = cacheManager.getListResultCache(Company.ANNEI);
         onResultListQuery(result);
         listQuerying = false;
+        detailQuerying = false;
         finishQuery();
     }
 
