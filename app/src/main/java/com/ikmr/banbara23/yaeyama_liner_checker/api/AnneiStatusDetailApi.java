@@ -9,9 +9,10 @@ import org.jsoup.nodes.Document;
 
 import java.io.IOException;
 
-import rx.Observable;
-import rx.Subscriber;
-import rx.functions.Func1;
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+
 
 /**
  * 指定した安栄の詳細を取得
@@ -19,23 +20,18 @@ import rx.functions.Func1;
 public class AnneiStatusDetailApi {
     public static Observable<String> request(final String url) {
         return Observable
-                .create(new Observable.OnSubscribe<Document>() {
+                .create(new ObservableOnSubscribe<String>() {
                     @Override
-                    public void call(Subscriber<? super Document> subscriber) {
+                    public void subscribe(ObservableEmitter<String> emitter) {
                         Document document;
                         try {
                             document = Jsoup.connect(url).timeout(Const.CONNECTION_TIME_OUT).get();
-                            subscriber.onNext(document);
-                            subscriber.onCompleted();
+                            String value = AnneiDetailParser.pars(document);
+                            emitter.onNext(value);
+                            emitter.onComplete();
                         } catch (IOException e) {
-                            subscriber.onError(e);
+                            emitter.onError(e);
                         }
-                    }
-                })
-                .map(new Func1<Document, String>() {
-                    @Override
-                    public String call(Document document) {
-                        return AnneiDetailParser.pars(document);
                     }
                 });
     }

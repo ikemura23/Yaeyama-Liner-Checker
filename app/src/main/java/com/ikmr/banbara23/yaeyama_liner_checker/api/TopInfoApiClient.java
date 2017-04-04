@@ -11,9 +11,10 @@ import com.nifty.cloud.mb.core.NCMBQuery;
 
 import java.util.List;
 
-import rx.Observable;
-import rx.Subscriber;
-import rx.functions.Func1;
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+
 
 /**
  * 安栄一覧の取得
@@ -27,9 +28,9 @@ public class TopInfoApiClient {
      */
     public Observable<TopInfo> request() {
         return Observable
-                .create(new Observable.OnSubscribe<NCMBObject>() {
+                .create(new ObservableOnSubscribe<TopInfo>() {
                     @Override
-                    public void call(Subscriber<? super NCMBObject> subscriber) {
+                    public void subscribe(ObservableEmitter<TopInfo> emitter) {
                         NCMBQuery<NCMBObject> query = new NCMBQuery<>(Const.NcmbTable.TopInfo);
                         query.setLimit(1);
                         query.addOrderByDescending(Base.getContext().getString(R.string.NCMB_sort_column_name));
@@ -37,21 +38,16 @@ public class TopInfoApiClient {
                         try {
                             results = query.find();
                         } catch (NCMBException e) {
-                            subscriber.onError(e);
+                            emitter.onError(e);
                         }
                         if (results == null) {
-                            subscriber.onError(new Exception("データが空"));
+                            emitter.onError(new Exception("データが空"));
                             return;
                         }
                         NCMBObject object = results.get(0);
-                        subscriber.onNext(object);
-                        subscriber.onCompleted();
-                    }
-                })
-                .map(new Func1<NCMBObject, TopInfo>() {
-                    @Override
-                    public TopInfo call(NCMBObject ncmbObject) {
-                        return new NcmbConverter().convertToTopInfo(ncmbObject);
+                        TopInfo topInfo = new NcmbConverter().convertToTopInfo(object);
+                        emitter.onNext(topInfo);
+                        emitter.onComplete();
                     }
                 });
     }

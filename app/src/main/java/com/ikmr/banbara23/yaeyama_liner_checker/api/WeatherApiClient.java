@@ -11,9 +11,11 @@ import com.nifty.cloud.mb.core.NCMBQuery;
 
 import java.util.List;
 
-import rx.Observable;
-import rx.Subscriber;
-import rx.functions.Func1;
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+
+;
 
 /**
  * 安栄一覧の取得
@@ -25,11 +27,11 @@ public class WeatherApiClient {
      *
      * @return
      */
-    public Observable<Weather> request() {
+    public static Observable<Weather> request() {
         return Observable
-                .create(new Observable.OnSubscribe<String>() {
+                .create(new ObservableOnSubscribe<Weather>() {
                     @Override
-                    public void call(Subscriber<? super String> subscriber) {
+                    public void subscribe(ObservableEmitter<Weather> emitter) {
                         String tableName = "Weather";
                         NCMBQuery<NCMBObject> query = new NCMBQuery<>(tableName);
                         query.setLimit(1);
@@ -38,22 +40,17 @@ public class WeatherApiClient {
                         try {
                             results = query.find();
                         } catch (NCMBException e) {
-                            subscriber.onError(e);
+                            emitter.onError(e);
                         }
                         if (results == null) {
-                            subscriber.onError(new Exception("データが空"));
+                            emitter.onError(new Exception("データが空"));
                             return;
                         }
                         NCMBObject object = results.get(0);
                         String json = object.getString("weather");
-                        subscriber.onNext(json);
-                        subscriber.onCompleted();
-                    }
-                })
-                .map(new Func1<String, Weather>() {
-                    @Override
-                    public Weather call(String json) {
-                        return new Gson().fromJson(json, Weather.class);
+                        Weather weather = new Gson().fromJson(json, Weather.class);
+                        emitter.onNext(weather);
+                        emitter.onComplete();
                     }
                 });
     }

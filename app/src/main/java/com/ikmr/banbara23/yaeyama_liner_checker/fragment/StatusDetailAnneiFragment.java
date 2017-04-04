@@ -37,10 +37,10 @@ import butterknife.Bind;
 import butterknife.BindString;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
-import rx.subscriptions.CompositeSubscription;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.observers.DisposableObserver;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * 安栄の詳細フラグメント
@@ -123,7 +123,7 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
     private boolean listQuerying = false;
     private boolean detailQuerying = false;
 
-    private CompositeSubscription mCompositeSubscription = new CompositeSubscription();
+    private CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     public static StatusDetailAnneiFragment NewInstance(Liner liner) {
         StatusDetailAnneiFragment fragment = new StatusDetailAnneiFragment();
@@ -182,7 +182,7 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
-        mCompositeSubscription.unsubscribe();
+        compositeDisposable.dispose();
     }
 
     /**
@@ -242,32 +242,31 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
      */
     private void startAnneiDetailQuery() {
         String url = PortUtil.getAnneiDetailUrl(getActivity().getApplicationContext(), getPort());
-        mCompositeSubscription.add(
-                AnneiStatusDetailApi.request(url)
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeOn(Schedulers.newThread())
-                        .subscribe(new Subscriber<String>() {
-                            @Override
-                            public void onCompleted() {
-                                // 完了
-                                detailQuerying = false;
-                                finishQuery();
-                            }
+        AnneiStatusDetailApi.request(url)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.newThread())
+                .subscribe(new DisposableObserver<String>() {
 
-                            @Override
-                            public void onError(Throwable e) {
-                                detailQuerying = false;
-                                Crashlytics.logException(e);
-                            }
+                    @Override
+                    public void onError(Throwable e) {
+                        detailQuerying = false;
+                        Crashlytics.logException(e);
+                    }
 
-                            @Override
-                            public void onNext(String s) {
-                                // 値うけとる
-                                onResultDetailQuery(s);
-                                saveResultDetailToCache(s);
-                            }
-                        })
-        );
+                    @Override
+                    public void onComplete() {
+                        // 完了
+                        detailQuerying = false;
+                        finishQuery();
+                    }
+
+                    @Override
+                    public void onNext(String s) {
+                        // 値うけとる
+                        onResultDetailQuery(s);
+                        saveResultDetailToCache(s);
+                    }
+                });
     }
 
     /**
@@ -302,13 +301,13 @@ public class StatusDetailAnneiFragment extends BaseDetailFragment {
      * 通信で安栄の一覧を取得
      */
     private void startAnneiListQuery() {
-        mCompositeSubscription.add(
+        compositeDisposable.add(
                 StatusListApi.request(Company.ANNEI)
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeOn(Schedulers.newThread())
-                        .subscribe(new Subscriber<Result>() {
+                        .subscribeWith(new DisposableObserver<Result>() {
                             @Override
-                            public void onCompleted() {
+                            public void onComplete() {
                                 // 完了
                                 listQuerying = false;
                                 finishQuery();

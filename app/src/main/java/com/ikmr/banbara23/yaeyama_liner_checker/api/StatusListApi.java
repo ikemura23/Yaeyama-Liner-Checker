@@ -12,9 +12,9 @@ import com.nifty.cloud.mb.core.NCMBQuery;
 
 import java.util.List;
 
-import rx.Observable;
-import rx.Subscriber;
-import rx.functions.Func1;
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
 
 /**
  * 安栄一覧の取得
@@ -29,9 +29,9 @@ public class StatusListApi {
      */
     public static Observable<Result> request(final Company company) {
         return Observable
-                .create(new Observable.OnSubscribe<String>() {
+                .create(new ObservableOnSubscribe<Result>() {
                     @Override
-                    public void call(Subscriber<? super String> subscriber) {
+                    public void subscribe(ObservableEmitter<Result> emitter) {
                         String ncmbTableName = null;
                         switch (company) {
                             case ANNEI:
@@ -51,22 +51,17 @@ public class StatusListApi {
                         try {
                             results = query.find();
                         } catch (NCMBException e) {
-                            subscriber.onError(e);
+                            emitter.onError(e);
                         }
                         try {
                             NCMBObject object = results.get(0);
                             String json = object.getString(Base.getContext().getString(R.string.NCMB_get_column_name));
-                            subscriber.onNext(json);
-                            subscriber.onCompleted();
+                            Result result = new Gson().fromJson(json, Result.class);
+                            emitter.onNext(result);
+                            emitter.onComplete();
                         } catch (Exception e) {
-                            subscriber.onError(e);
+                            emitter.onError(e);
                         }
-                    }
-                })
-                .map(new Func1<String, Result>() {
-                    @Override
-                    public Result call(String json) {
-                        return new Gson().fromJson(json, Result.class);
                     }
                 });
     }

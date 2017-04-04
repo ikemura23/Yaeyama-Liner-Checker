@@ -35,10 +35,10 @@ import butterknife.Bind;
 import butterknife.BindString;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
-import rx.subscriptions.CompositeSubscription;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.observers.DisposableObserver;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * 一覧タブListFragment
@@ -52,7 +52,7 @@ public class StatusListTabFragment extends BaseListFragment {
     View mHeaderView;
     private AdView mAdView;
 
-    private CompositeSubscription mCompositeSubscription = new CompositeSubscription();
+    private CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     // ButterKnife BindString --------------------------------------------
     @BindString(R.string.url_annei_list)
@@ -119,7 +119,7 @@ public class StatusListTabFragment extends BaseListFragment {
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
-        mCompositeSubscription.unsubscribe();
+        compositeDisposable.dispose();
         if (mAdView != null) {
             mAdView.destroy();
         }
@@ -184,13 +184,13 @@ public class StatusListTabFragment extends BaseListFragment {
      */
     private void startListQuery() {
         Company company = getParam();
-        mCompositeSubscription.add(
+        compositeDisposable.add(
                 StatusListApi.request(company)
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeOn(Schedulers.newThread())
-                        .subscribe(new Subscriber<Result>() {
+                        .subscribeWith(new DisposableObserver<Result>() {
                             @Override
-                            public void onCompleted() {
+                            public void onComplete() {
                                 // 完了
                                 finishQuery();
                             }

@@ -39,10 +39,11 @@ import butterknife.Bind;
 import butterknife.BindString;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
-import rx.subscriptions.CompositeSubscription;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.observers.DisposableObserver;
+import io.reactivex.schedulers.Schedulers;
+
 
 /**
  * ドリーム観光の詳細画面フラグメント
@@ -109,7 +110,7 @@ public class StatusDetailDreamFragment extends BaseDetailFragment {
     String HP_DREAM;
 
     // プライベート変数 --------------------------------------------
-    private CompositeSubscription mCompositeSubscription = new CompositeSubscription();
+    private CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     public static StatusDetailDreamFragment NewInstance(YkfLinerDetail ykfLinerDetail) {
         StatusDetailDreamFragment fragment = new StatusDetailDreamFragment();
@@ -138,7 +139,7 @@ public class StatusDetailDreamFragment extends BaseDetailFragment {
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
-        mCompositeSubscription.unsubscribe();
+        compositeDisposable.dispose();
     }
 
     /**
@@ -307,13 +308,13 @@ public class StatusDetailDreamFragment extends BaseDetailFragment {
      */
     private void startApiQuery() {
 
-        mCompositeSubscription.add(
+        compositeDisposable.add(
                 StatusListApi.request(Company.DREAM)
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeOn(Schedulers.newThread())
-                        .subscribe(new Subscriber<Result>() {
+                        .subscribeWith(new DisposableObserver<Result>() {
                             @Override
-                            public void onCompleted() {
+                            public void onComplete() {
                                 // 完了
                                 finishQuery();
                             }

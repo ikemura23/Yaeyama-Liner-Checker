@@ -38,17 +38,17 @@ import java.util.Random;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
-import rx.subscriptions.CompositeSubscription;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.observers.DisposableObserver;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * トップActivity
  */
 public class TopActivity extends Activity {
 
-    private CompositeSubscription mCompositeSubscription = new CompositeSubscription();
+    private CompositeDisposable compositeDisposable = new CompositeDisposable();
     static final int RandomNextInt = 11;
     Weather mWeather = null;
     private static final String TAG = Const.FireBaseAnalitycsTag.TOP;
@@ -87,9 +87,9 @@ public class TopActivity extends Activity {
         new TopInfoApiClient().request()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.newThread())
-                .subscribe(new Subscriber<TopInfo>() {
+                .subscribe(new DisposableObserver<TopInfo>() {
                     @Override
-                    public void onCompleted() {
+                    public void onComplete() {
                         topProgressBar.setVisibility(View.GONE);
                     }
 
@@ -148,7 +148,7 @@ public class TopActivity extends Activity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mCompositeSubscription.unsubscribe();
+        compositeDisposable.dispose();
     }
 
     // butter knife --------------------------------------
@@ -325,13 +325,13 @@ public class TopActivity extends Activity {
      * 天気取得して表示
      */
     private void createBubbleText() {
-        mCompositeSubscription.add(
-                new WeatherApiClient().request()
+        compositeDisposable.add(
+                WeatherApiClient.request()
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeOn(Schedulers.newThread())
-                        .subscribe(new Subscriber<Weather>() {
+                        .subscribeWith(new DisposableObserver<Weather>() {
                             @Override
-                            public void onCompleted() {
+                            public void onComplete() {
                                 bubbleLayout.setVisibility(View.VISIBLE);
                             }
 
@@ -348,6 +348,7 @@ public class TopActivity extends Activity {
                             }
                         })
         );
+
     }
 
     private void displayWeather(Weather weather) {
