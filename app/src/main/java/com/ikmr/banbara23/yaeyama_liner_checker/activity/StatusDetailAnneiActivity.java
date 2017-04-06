@@ -84,7 +84,7 @@ public class StatusDetailAnneiActivity extends BaseActivity implements FragmentA
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_list, menu);
+        getMenuInflater().inflate(R.menu.menu_detail, menu);
         return true;
     }
 

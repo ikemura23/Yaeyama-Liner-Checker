@@ -108,7 +108,7 @@ public class StatusDetailYkfActivity extends BaseActivity implements FragmentApi
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_list, menu);
+        getMenuInflater().inflate(R.menu.menu_detail, menu);
         return true;
     }
 
