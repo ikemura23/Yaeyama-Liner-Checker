@@ -49,7 +49,7 @@ public class StatusListTabActivity extends BaseActivity implements StatusListTab
         NCMB.initialize(Base.getContext(),
                 BuildConfig.NCMB_APPLICATION_ID,
                 BuildConfig.NCMB_CLIENT_KEY);
-        createTab();
+        createTab(getCurrentPosition());
     }
 
     @Override
@@ -79,8 +79,10 @@ public class StatusListTabActivity extends BaseActivity implements StatusListTab
 
     /**
      * タブの作成
+     *
+     * @param position
      */
-    private void createTab() {
+    private void createTab(int position) {
         if (tabLayout == null)
             return;
         if (viewPager == null)
@@ -93,6 +95,7 @@ public class StatusListTabActivity extends BaseActivity implements StatusListTab
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         final PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
+        viewPager.setCurrentItem(position);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
