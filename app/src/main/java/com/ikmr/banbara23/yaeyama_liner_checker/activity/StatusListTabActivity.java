@@ -4,6 +4,7 @@ package com.ikmr.banbara23.yaeyama_liner_checker.activity;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import com.ikmr.banbara23.yaeyama_liner_checker.AnalyticsUtils;
@@ -14,6 +15,7 @@ import com.ikmr.banbara23.yaeyama_liner_checker.PagerAdapter;
 import com.ikmr.banbara23.yaeyama_liner_checker.R;
 import com.ikmr.banbara23.yaeyama_liner_checker.entity.Company;
 import com.ikmr.banbara23.yaeyama_liner_checker.fragment.StatusListTabFragment;
+import com.ikmr.banbara23.yaeyama_liner_checker.util.CustomTabUtil;
 import com.nifty.cloud.mb.core.NCMB;
 
 import butterknife.Bind;
@@ -34,6 +36,7 @@ public class StatusListTabActivity extends BaseActivity implements StatusListTab
 
     @Bind(R.id.activity_list_tab_view_pager)
     ViewPager viewPager;
+    private String url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,7 +110,13 @@ public class StatusListTabActivity extends BaseActivity implements StatusListTab
 
             }
         });
-        viewPager.setCurrentItem(getCurrentPosition());
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_list, menu);
+        return true;
     }
 
     @Override
@@ -116,13 +125,37 @@ public class StatusListTabActivity extends BaseActivity implements StatusListTab
             case android.R.id.home:
                 finish();
                 break;
+            case R.id.action_browser:
+                launchBrowser();
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * カスタムタグでHPを表示
+     */
+    private void launchBrowser() {
+        AnalyticsUtils.logSelectEvent(TAG, "list_browser");
+        CustomTabUtil.start(this, getCompanyHomepageUrl());
+    }
+
     @Override
     public void emptyClick() {
-        createTab();
+        createTab(getCurrentPosition());
         AnalyticsUtils.logSelectEvent(TAG, "empty");
+    }
+
+    public String getCompanyHomepageUrl() {
+        switch (viewPager.getCurrentItem()) {
+            case TAB_FIRST:
+                return "http://www.aneikankou.co.jp/";
+            case TAB_SECOND:
+                return "http://www.yaeyama.co.jp/";
+            case TAB_THREAD:
+                return "http://ishigaki-dream.co.jp/";
+            default:
+                return null;
+        }
     }
 }
