@@ -10,11 +10,15 @@ class StatusList implements Parcelable {
     private String comment;
     private SimpleArrayMap portStatuses;
 
+    public StatusList() {
+    }
+    
     private class PortStatus {
         Port port;
         String comment;
         String name;
         StatusInfo statusInfo;
+
     }
 
     protected StatusList(Parcel in) {
@@ -45,4 +49,20 @@ class StatusList implements Parcelable {
             return new StatusList[size];
         }
     };
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public SimpleArrayMap getPortStatuses() {
+        return portStatuses;
+    }
+
+    public void setPortStatuses(SimpleArrayMap portStatuses) {
+        this.portStatuses = portStatuses;
+    }
 }
